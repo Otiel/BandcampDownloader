@@ -31,12 +31,12 @@ Screenshot
 
 ![Screenshot](http://i.imgur.com/DoCj1Pm.png)
 
-Credits
--------
+Dependencies
+------------
 
 _BandcampDownloader_ uses:
-    * [Json.NET](http://james.newtonking.com/json) to deserialize JSON data from the Bandcamp pages.
-    * [TagLibSharp](https://github.com/mono/taglib-sharp) to tag tracks.
+* [Json.NET](http://james.newtonking.com/json) to deserialize JSON data from the Bandcamp pages.
+* [TagLibSharp](https://github.com/mono/taglib-sharp) to tag tracks.
 
 Bugs/Ideas
 ----------
