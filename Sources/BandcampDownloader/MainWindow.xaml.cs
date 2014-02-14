@@ -421,7 +421,7 @@ namespace BandcampDownloader {
         }
 
         private void labelAbout_MouseDown(object sender, MouseButtonEventArgs e) {
-            Process.Start("http://otiel.github.io/CoDServerWatcher/");
+            Process.Start(Constants.ProjectWebsite);
         }
 
         private void textBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
