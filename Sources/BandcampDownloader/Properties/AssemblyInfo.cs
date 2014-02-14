@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BandcampDownloader")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Application used to download albums from Bandcamp")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BandcampDownloader")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("https://github.com/Otiel/BandcampDownloader")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
