@@ -124,7 +124,8 @@ namespace BandcampDownloader {
                 Directory.CreateDirectory(directoryPath);
             } catch {
                 Log("ERROR: An error occured when creating the album folder. Make sure you have " +
-                    "the rights to write file in the folder you chose");
+                    "the rights to write files in the folder you chose");
+                return;
             }
 
             // Download & tag tracks
