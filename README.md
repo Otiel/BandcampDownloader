@@ -6,7 +6,7 @@ A Windows app used to download albums from Bandcamp.
 Description
 -----------
 
-_BandcampDownloader_ is a Windows application written in C# using .NET 4 Framework that helps downloading albums from [http://bandcamp.com](http://bandcamp.com).
+_BandcampDownloader_ is a Windows application written in C# using .NET Framework 4 that helps downloading albums from [bandcamp.com](http://bandcamp.com).
 
 Features
 --------
@@ -15,8 +15,8 @@ Features
 * Tags tracks with Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and save it in tracks tags.
 
-Installation
-------------
+Usage
+-----
 
 1. If you're just looking to use the app right now, download the latest version from the [releases](https://github.com/Otiel/BandcampDownloader/releases) page as a zip file.
 2. Make sure the following files are located in the same folder:
