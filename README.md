@@ -52,3 +52,4 @@ Piracy
 ------
 
 You'll do what you want to do with this app, but remember to buy albums from your favorite artists if you want to support them!
+And for the artists, Bandcamp [says](https://bandcamp.com/help/audio_basics#steal) it all.
