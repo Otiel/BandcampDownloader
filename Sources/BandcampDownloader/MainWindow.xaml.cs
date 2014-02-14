@@ -28,6 +28,10 @@ namespace BandcampDownloader {
         // Used when user clicks on 'Stop' to manage the cancelation (UI...)
         private Boolean userCancelled;
 
+        // Used to compute and display the download speed
+        private long lastTotalReceivedBytes = 0;
+        private DateTime lastDownloadSpeedUpdate;
+
         #region Constructor
         public MainWindow() {
             InitializeComponent();
@@ -254,7 +258,7 @@ namespace BandcampDownloader {
                     checkBoxTag.IsEnabled = false;
                     checkBoxOneAlbumAtATime.IsEnabled = false;
                 } else {
-                    // We just finished the download
+                    // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
                     buttonStop.IsEnabled = false;
                     buttonBrowse.IsEnabled = true;
@@ -268,22 +272,47 @@ namespace BandcampDownloader {
                     checkBoxCoverArtInTags.IsEnabled = true;
                     checkBoxTag.IsEnabled = true;
                     checkBoxOneAlbumAtATime.IsEnabled = true;
+                    labelDownloadSpeed.Content = "";
                 }
             }));
         }
 
         private void UpdateProgress(String fileUrl, long bytesReceived) {
+            DateTime now = DateTime.Now;
+
             lock (this.filesToDownload) {
+                // Compute new progress values
                 File currentFile = this.filesToDownload.Where(f => f.Url == fileUrl).First();
                 currentFile.BytesReceived = bytesReceived;
                 long totalReceivedBytes = this.filesToDownload.Sum(f => f.BytesReceived);
                 long bytesToDownload = this.filesToDownload.Sum(f => f.Size);
 
+                Double bytesPerSecond;
+                if (this.lastTotalReceivedBytes == 0) {
+                    // First time we update the progress
+                    bytesPerSecond = 0;
+                    this.lastTotalReceivedBytes = totalReceivedBytes;
+                    this.lastDownloadSpeedUpdate = now;
+
+                } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
+                    // Last update of progress happened more than 500 milliseconds ago
+                    bytesPerSecond = ((Double) (totalReceivedBytes - this.lastTotalReceivedBytes)) /
+                        ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
+                    this.lastTotalReceivedBytes = totalReceivedBytes;
+                    this.lastDownloadSpeedUpdate = now;
+
+                    // Update UI
+                    this.Dispatcher.Invoke(new Action(() => {
+                        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + 
+                            " kB/s";
+                    }));
+                }
+
                 // Update UI
                 this.Dispatcher.Invoke(new Action(() => {
                     if (!this.userCancelled) {
                         // Update progress label
-                        labelProgress.Content =
+                        labelProgress.Content = 
                             ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") +
                             " MB / " +
                             ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") +
@@ -379,7 +408,7 @@ namespace BandcampDownloader {
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
-            Log("Cancelling downloads...");
+            Log("Cancelling downloads. Please wait...");
             progressBar.Foreground = System.Windows.Media.Brushes.Red;
             progressBar.IsIndeterminate = true;
             lock (this.pendingDownloads) {

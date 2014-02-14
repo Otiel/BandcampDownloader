@@ -17,5 +17,6 @@
         <CheckBox Content="Save cover art in tags" Height="16" HorizontalAlignment="Left" Margin="104,161,0,0" Name="checkBoxCoverArtInTags" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the cover art will be saved in the tracks tags." />
         <CheckBox Content="Save cover art in folder" Height="16" HorizontalAlignment="Left" Margin="255,161,0,0" Name="checkBoxCoverArtInFolder" VerticalAlignment="Top" ToolTip="If checked, the cover art will be downloaded in the albums folder." />
         <CheckBox Content="Download one album at a time" Height="16" Margin="415,161,0,0" Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" HorizontalAlignment="Left" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.\nIf not checked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." />
+        <Label Height="28" HorizontalAlignment="Left" Margin="9,234,0,0" Name="labelDownloadSpeed" VerticalAlignment="Top" />
     </Grid>
 </Window>
