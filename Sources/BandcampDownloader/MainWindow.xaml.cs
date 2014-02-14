@@ -18,21 +18,38 @@ namespace BandcampDownloader {
     /// </summary>
     public partial class MainWindow: Window {
 
-        // The files to download, or being downloaded, or downloaded
-        // Used to compute the current received bytes and the total bytes to download
-        private List<File> filesToDownload;
+        #region Fields
+        /// <summary>
+        /// The files to download, or being downloaded, or downloaded
+        /// Used to compute the current received bytes and the total bytes to download
+        /// </summary>
+        private List<File> filesDownload;
 
-        // Used when user clicks on 'Stop' to abort all current downloads
-        private List<WebClient> pendingDownloads;
-
-        // Used when user clicks on 'Stop' to manage the cancelation (UI...)
-        private Boolean userCancelled;
-
-        // Used to compute and display the download speed
-        private long lastTotalReceivedBytes = 0;
+        /// <summary>
+        /// Used to compute and display the download speed
+        /// </summary>
         private DateTime lastDownloadSpeedUpdate;
 
+        /// <summary>
+        /// Used to compute and display the download speed
+        /// </summary>
+        private long lastTotalReceivedBytes = 0;
+
+        /// <summary>
+        /// Used when user clicks on 'Stop' to abort all current downloads
+        /// </summary>
+        private List<WebClient> pendingDownloads;
+
+        /// <summary>
+        /// Used when user clicks on 'Stop' to manage the cancelation (UI...)
+        /// </summary>
+        private Boolean userCancelled; 
+        #endregion
+
         #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow() {
             InitializeComponent();
             // Increase the maximum of concurrent connections to be able to download more than 2
@@ -49,6 +66,16 @@ namespace BandcampDownloader {
         #endregion Constructor
 
         #region Methods
+        /// <summary>
+        /// Downloads an album.
+        /// </summary>
+        /// <param name="album">The album.</param>
+        /// <param name="downloadsFolder">The downloads folder.</param>
+        /// <param name="tagTracks">if set to <c>true</c>, tracks will be tagged.</param>
+        /// <param name="saveCoverArtInTags">if set to <c>true</c>, cover art will be saved in
+        /// tags.</param>
+        /// <param name="saveCovertArtInFolder">if set to <c>true</c>, cover art will be saved in
+        /// the downloads folder.</param>
         private void DownloadAlbum(Album album, String downloadsFolder, Boolean tagTracks,
             Boolean saveCoverArtInTags, Boolean saveCovertArtInFolder) {
             if (this.userCancelled) {
@@ -117,8 +144,18 @@ namespace BandcampDownloader {
             }
         }
 
+        /// <summary>
+        /// Downloads and tags a track.
+        /// </summary>
+        /// <param name="album">The album of the track to download.</param>
+        /// <param name="artwork">The cover art.</param>
+        /// <param name="albumDirectoryPath">The path where to save the tracks.</param>
+        /// <param name="track">The track to download.</param>
+        /// <param name="tagTrack">if set to <c>true</c>, the track will be tagged..</param>
+        /// <param name="saveCoverArtInTags">if set to <c>true</c>, the cover art will be saved in
+        /// the track tags.</param>
         private void DownloadAndTagTrack(Album album, TagLib.Picture artwork,
-            String albumDirectoryPath, Track track, Boolean tagTracks, Boolean saveCoverArtInTags) {
+            String albumDirectoryPath, Track track, Boolean tagTrack, Boolean saveCoverArtInTags) {
             // Set location to save the file
             String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
 
@@ -132,7 +169,7 @@ namespace BandcampDownloader {
 
                 webClient.DownloadFileCompleted += (s, e) => {
                     if (!e.Cancelled) {
-                        if (tagTracks) {
+                        if (tagTrack) {
                             // Tag (ID3V2) the file when downloaded
                             TagLib.File tagFile = TagLib.File.Create(trackPath);
                             tagFile.Tag.Album = album.Title;
@@ -175,6 +212,11 @@ namespace BandcampDownloader {
             doneEvent.WaitOne();
         }
 
+        /// <summary>
+        /// Returns the albums located at the provided URLs.
+        /// </summary>
+        /// <param name="urls">The URLs.</param>
+        /// <returns>The albums located at the provided URLs.</returns>
         private List<Album> GetAlbums(List<String> urls) {
             var albums = new List<Album>();
 
@@ -202,6 +244,13 @@ namespace BandcampDownloader {
             return albums;
         }
 
+        /// <summary>
+        /// Returns the size of the file located at the provided URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="protocolMethod">The protocol method to use in order to retrieve the file
+        /// size.</param>
+        /// <returns>The size of the file located at the provided URL.</returns>
         private long GetFileSize(String url, String protocolMethod) {
             var webRequest = HttpWebRequest.Create(url);
             webRequest.Method = protocolMethod;
@@ -212,6 +261,11 @@ namespace BandcampDownloader {
             return fileSize;
         }
 
+        /// <summary>
+        /// Returns the files to download from a list of albums.
+        /// </summary>
+        /// <param name="albums">The albums.</param>
+        /// <returns>The files to download.</returns>
         private List<File> GetFilesToDownload(List<Album> albums) {
             var files = new List<File>();
             foreach (Album album in albums) {
@@ -230,6 +284,10 @@ namespace BandcampDownloader {
             return files;
         }
 
+        /// <summary>
+        /// Displays the specified message in the log textbox.
+        /// </summary>
+        /// <param name="message">The message.</param>
         private void Log(String message) {
             this.Dispatcher.Invoke(new Action(() => {
                 textBoxLog.AppendText(DateTime.Now.ToString("HH:mm:ss") + " " + message +
@@ -240,6 +298,11 @@ namespace BandcampDownloader {
             }));
         }
 
+        /// <summary>
+        /// Updates the state of the controls.
+        /// </summary>
+        /// <param name="downloadStarted">True if the download just started, false if it just
+        /// stopped.</param>
         private void UpdateControlsState(Boolean downloadStarted) {
             this.Dispatcher.Invoke(new Action(() => {
                 if (downloadStarted) {
@@ -277,15 +340,20 @@ namespace BandcampDownloader {
             }));
         }
 
+        /// <summary>
+        /// Updates the progress messages and the progressbar.
+        /// </summary>
+        /// <param name="fileUrl">The URL of the file that just progressed.</param>
+        /// <param name="bytesReceived">The received bytes for the specified file.</param>
         private void UpdateProgress(String fileUrl, long bytesReceived) {
             DateTime now = DateTime.Now;
 
-            lock (this.filesToDownload) {
+            lock (this.filesDownload) {
                 // Compute new progress values
-                File currentFile = this.filesToDownload.Where(f => f.Url == fileUrl).First();
+                File currentFile = this.filesDownload.Where(f => f.Url == fileUrl).First();
                 currentFile.BytesReceived = bytesReceived;
-                long totalReceivedBytes = this.filesToDownload.Sum(f => f.BytesReceived);
-                long bytesToDownload = this.filesToDownload.Sum(f => f.Size);
+                long totalReceivedBytes = this.filesDownload.Sum(f => f.BytesReceived);
+                long bytesToDownload = this.filesDownload.Sum(f => f.Size);
 
                 Double bytesPerSecond;
                 if (this.lastTotalReceivedBytes == 0) {
@@ -293,17 +361,16 @@ namespace BandcampDownloader {
                     bytesPerSecond = 0;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
-
                 } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
                     // Last update of progress happened more than 500 milliseconds ago
-                    bytesPerSecond = ((Double) (totalReceivedBytes - this.lastTotalReceivedBytes)) /
+                    bytesPerSecond = ( (Double) ( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
                         ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
 
                     // Update UI
                     this.Dispatcher.Invoke(new Action(() => {
-                        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + 
+                        labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") +
                             " kB/s";
                     }));
                 }
@@ -312,7 +379,7 @@ namespace BandcampDownloader {
                 this.Dispatcher.Invoke(new Action(() => {
                     if (!this.userCancelled) {
                         // Update progress label
-                        labelProgress.Content = 
+                        labelProgress.Content =
                             ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") +
                             " MB / " +
                             ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") +
@@ -367,10 +434,10 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
-                this.filesToDownload = GetFilesToDownload(albums);
+                this.filesDownload = GetFilesToDownload(albums);
             }).ContinueWith(x => {
                 // Set progressBar max value
-                long bytesToDownload = this.filesToDownload.Sum(f => f.Size);
+                long bytesToDownload = this.filesDownload.Sum(f => f.Size);
                 if (bytesToDownload > 0) {
                     this.Dispatcher.Invoke(new Action(() => {
                         progressBar.IsIndeterminate = false;
