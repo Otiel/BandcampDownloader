@@ -1,11 +1,18 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace BandcampDownloader {
 
     internal static class BandcampHelper {
 
+        /// <summary>
+        /// Retrieves the data on the album of the specified Bandcamp page.
+        /// </summary>
+        /// <param name="htmlCode">The HTML source code of a Bandcamp album page.</param>
+        /// <returns>The data on the album of the specified Bandcamp page.</returns>
         public static Album GetAlbum(String htmlCode) {
             // Keep the interesting part of htmlCode only
             String albumData;
@@ -27,6 +34,36 @@ namespace BandcampDownloader {
             }
 
             return album;
+        }
+
+        /// <summary>
+        /// Retrieves all the albums URL existing on the specified Bandcamp page.
+        /// </summary>
+        /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
+        /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
+        public static List<String> GetAlbumsUrl(String htmlCode) {
+            // Get artist bandcamp page
+            var regex = new Regex("band_url = \"(?<url>.*)\"");
+            if (!regex.IsMatch(htmlCode)) {
+                throw new NoAlbumFoundException();
+            }
+            String artistPage = regex.Match(htmlCode).Groups["url"].Value;
+
+
+            // Get albums relative urls
+            regex = new Regex("href=\"(?<url>/album/.*)\"");
+            if (!regex.IsMatch(htmlCode)) {
+                throw new NoAlbumFoundException();
+            }
+
+            var albumsUrl = new List<String>();
+            foreach (Match m in regex.Matches(htmlCode)) {
+                albumsUrl.Add(artistPage + m.Groups["url"].Value);
+            }
+
+            // Remove duplicates
+            albumsUrl = albumsUrl.Distinct().ToList();
+            return albumsUrl;
         }
 
         private static String FixJson(String albumData) {

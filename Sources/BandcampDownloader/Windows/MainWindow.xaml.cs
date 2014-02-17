@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Documents;
 
 namespace BandcampDownloader {
 
@@ -54,7 +55,7 @@ namespace BandcampDownloader {
             InitializeComponent();
             // Increase the maximum of concurrent connections to be able to download more than 2
             // (which is the default value) files at the same time
-            ServicePointManager.DefaultConnectionLimit = 50;
+            ServicePointManager.DefaultConnectionLimit = 100;
             // Default options
             textBoxDownloadsLocation.Text =
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -98,7 +99,8 @@ namespace BandcampDownloader {
                 // Warn when downloaded
                 webClient.DownloadFileCompleted += (s, e) => {
                     if (!e.Cancelled) {
-                        Log("Downloaded artwork for album \"" + album.Title + "\"");
+                        Log("Downloaded artwork for album \"" + album.Title + "\"", 
+                            Brushes.MediumBlue);
                     }
                     doneEvent.Set();
                 };
@@ -116,17 +118,17 @@ namespace BandcampDownloader {
             }
             // Wait for download to be finished
             doneEvent.WaitOne();
-            var artwork = new TagLib.Picture(artworkPath);
 
             // Create directory to place track files
             String directoryPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + "\\";
             try {
                 Directory.CreateDirectory(directoryPath);
             } catch {
-                Log("ERROR: An error occured when creating the album folder. Make sure you have " +
-                    "the rights to write files in the folder you chose");
+                Log("An error occured when creating the album folder. Make sure you have " +
+                    "the rights to write files in the folder you chose", Brushes.Red);
                 return;
             }
+            var artwork = new TagLib.Picture(artworkPath);
 
             // Download & tag tracks
             Task[] tasks = new Task[album.Tracks.Count];
@@ -141,7 +143,7 @@ namespace BandcampDownloader {
             Task.WaitAll(tasks);
 
             if (!this.userCancelled) {
-                Log("Finished downloading album \"" + album.Title + "\"");
+                Log("Finished downloading album \"" + album.Title + "\"", Brushes.Green);
             }
         }
 
@@ -171,7 +173,7 @@ namespace BandcampDownloader {
                 webClient.DownloadFileCompleted += (s, e) => {
                     if (!e.Cancelled) {
                         if (tagTrack) {
-                            // Tag (ID3V2) the file when downloaded
+                            // Tag (ID3) the file when downloaded
                             TagLib.File tagFile = TagLib.File.Create(trackPath);
                             tagFile.Tag.Album = album.Title;
                             tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
@@ -191,7 +193,7 @@ namespace BandcampDownloader {
                         }
 
                         Log("Downloaded track \"" + track.GetFileName(album.Artist) +
-                            "\" from album \"" + album.Title + "\"");
+                            "\" from album \"" + album.Title + "\"", Brushes.MediumBlue);
                     }
 
                     doneEvent.Set();
@@ -214,21 +216,68 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the albums located at the provided URLs.
+        /// Returns the albums URLs referred in the specified URLs.
         /// </summary>
         /// <param name="urls">The URLs.</param>
-        /// <returns>The albums located at the provided URLs.</returns>
-        private List<Album> GetAlbums(List<String> urls) {
-            var albums = new List<Album>();
+        /// <returns>The albums URLs referred in the specified URLs.</returns>
+        private List<String> GetAlbumsUrl(List<String> urls) {
+            var albumsUrls = new List<String>();
 
             foreach (String url in urls) {
+                if (this.userCancelled) {
+                    // Abort
+                    return new List<String>();
+                }
+
+                Log("Retrieving albums referred on " + url, Brushes.Black);
+
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient()) {
                     try {
                         htmlCode = webClient.DownloadString(url);
                     } catch {
-                        Log("ERROR: could not retrieve album info for the following URL: " + url);
+                        Log("Could not retrieve data for " + url, Brushes.Red);
+                        continue;
+                    }
+                }
+
+                // Get albums referred on the page
+                try {
+                    albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
+                } catch (NoAlbumFoundException) {
+                    Log("No referred album could be found on " + url + ". Try " +
+                        "to uncheck the \"Force download of all albums\" option", Brushes.Red);
+                    continue;
+                }
+            }
+
+            return albumsUrls;
+        }
+
+        /// <summary>
+        /// Returns the albums located at the specified URLs.
+        /// </summary>
+        /// <param name="urls">The URLs.</param>
+        /// <returns>The albums located at the specified URLs.</returns>
+        private List<Album> GetAlbums(List<String> urls) {
+            var albums = new List<Album>();
+
+            foreach (String url in urls) {
+                if (this.userCancelled) {
+                    // Abort
+                    return new List<Album>();
+                }
+
+                Log("Retrieving album data for " + url, Brushes.Black);
+
+                // Retrieve URL HTML source code
+                String htmlCode = "";
+                using (var webClient = new WebClient()) {
+                    try {
+                        htmlCode = webClient.DownloadString(url);
+                    } catch {
+                        Log("Could not retrieve data for " + url, Brushes.Red);
                         continue;
                     }
                 }
@@ -237,7 +286,7 @@ namespace BandcampDownloader {
                 try {
                     albums.Add(BandcampHelper.GetAlbum(htmlCode));
                 } catch {
-                    Log("ERROR: could not retrieve album info for the following URL: " + url);
+                    Log("Could not retrieve album info for " + url, Brushes.Red);
                     continue;
                 }
             }
@@ -270,6 +319,13 @@ namespace BandcampDownloader {
         private List<File> GetFilesToDownload(List<Album> albums) {
             var files = new List<File>();
             foreach (Album album in albums) {
+                if (this.userCancelled) {
+                    // Abort
+                    return new List<File>();
+                }
+
+                Log("Computing size for album \"" + album.Title + "\"", Brushes.Black);
+
                 // Artwork
                 files.Add(new File(album.ArtworkUrl, 0, GetFileSize(album.ArtworkUrl, "HEAD")));
 
@@ -289,13 +345,21 @@ namespace BandcampDownloader {
         /// Displays the specified message in the log textbox.
         /// </summary>
         /// <param name="message">The message.</param>
-        private void Log(String message) {
+        private void Log(String message, Brush color) {
             this.Dispatcher.Invoke(new Action(() => {
-                textBoxLog.AppendText(DateTime.Now.ToString("HH:mm:ss") + " " + message +
-                    Environment.NewLine);
-                textBoxLog.Focus();
-                textBoxLog.CaretIndex = textBoxLog.Text.Length;
-                textBoxLog.ScrollToEnd();
+                // Time
+                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd,
+                    richTextBoxLog.Document.ContentEnd);
+                textRange.Text = DateTime.Now.ToString("HH:mm:ss") + " ";
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
+                // Message
+                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, 
+                    richTextBoxLog.Document.ContentEnd);
+                textRange.Text = message;
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, color);
+                // Line break
+                richTextBoxLog.ScrollToEnd();
+                richTextBoxLog.AppendText(Environment.NewLine);
             }));
         }
 
@@ -308,7 +372,7 @@ namespace BandcampDownloader {
             this.Dispatcher.Invoke(new Action(() => {
                 if (downloadStarted) {
                     // We just started the download
-                    textBoxLog.Text = "";
+                    richTextBoxLog.Document.Blocks.Clear();
                     labelProgress.Content = "";
                     progressBar.IsIndeterminate = true;
                     progressBar.Value = progressBar.Minimum;
@@ -321,6 +385,7 @@ namespace BandcampDownloader {
                     checkBoxCoverArtInTags.IsEnabled = false;
                     checkBoxTag.IsEnabled = false;
                     checkBoxOneAlbumAtATime.IsEnabled = false;
+                    checkBoxForceAlbumsDownload.IsEnabled = false;
                 } else {
                     // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
@@ -328,7 +393,7 @@ namespace BandcampDownloader {
                     buttonBrowse.IsEnabled = true;
                     textBoxUrls.IsReadOnly = false;
                     progressBar.Foreground = new SolidColorBrush(
-                        (Color) ColorConverter.ConvertFromString("#FF01D328"));
+                        (Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                     progressBar.IsIndeterminate = false;
                     progressBar.Value = progressBar.Minimum;
                     textBoxDownloadsLocation.IsReadOnly = false;
@@ -336,6 +401,7 @@ namespace BandcampDownloader {
                     checkBoxCoverArtInTags.IsEnabled = true;
                     checkBoxTag.IsEnabled = true;
                     checkBoxOneAlbumAtATime.IsEnabled = true;
+                    checkBoxForceAlbumsDownload.IsEnabled = true;
                     labelDownloadSpeed.Content = "";
                 }
             }));
@@ -406,7 +472,7 @@ namespace BandcampDownloader {
         private void buttonStart_Click(object sender, RoutedEventArgs e) {
             if (textBoxUrls.Text == Constants.UrlsHint) {
                 // No URL to look
-                Log("ERROR: Paste some albums URLs to be downloaded");
+                Log("Paste some albums URLs to be downloaded", Brushes.Red);
                 return;
             }
 
@@ -416,16 +482,25 @@ namespace BandcampDownloader {
             Boolean saveCoverArtInTags = checkBoxCoverArtInTags.IsChecked.Value;
             Boolean saveCoverArtInFolder = checkBoxCoverArtInFolder.IsChecked.Value;
             Boolean oneAlbumAtATime = checkBoxOneAlbumAtATime.IsChecked.Value;
+            Boolean forceAlbumsDownload = checkBoxForceAlbumsDownload.IsChecked.Value;
             String downloadsFolder = textBoxDownloadsLocation.Text;
             this.pendingDownloads = new List<WebClient>();
 
             // Set controls to "downloading..." state
             UpdateControlsState(true);
 
-            Log("Starting download...");
+            Log("Starting download...", Brushes.Black);
 
-            List<String> urls = textBoxUrls.Text.Split(new String[] { Environment.NewLine },
+            List<String> userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine },
                 StringSplitOptions.RemoveEmptyEntries).ToList();
+            userUrls = userUrls.Distinct().ToList();
+
+            List<String> urls = new List<String>();
+            if (forceAlbumsDownload) {
+                urls = GetAlbumsUrl(userUrls);
+            } else {
+                urls = userUrls;
+            }
             urls = urls.Distinct().ToList();
 
             var albums = new List<Album>();
@@ -468,7 +543,7 @@ namespace BandcampDownloader {
             }).ContinueWith(x => {
                 if (this.userCancelled) {
                     // Display message if user cancelled
-                    Log("Downloads cancelled by user");
+                    Log("Downloads cancelled by user", Brushes.Black);
                 }
             }).ContinueWith(x =>
                 // Set controls to "ready" state
@@ -476,7 +551,8 @@ namespace BandcampDownloader {
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
-            Log("Cancelling downloads. Please wait...");
+            Log("Cancelling downloads. Please wait...", Brushes.Black);
+            buttonStop.IsEnabled = false;
             progressBar.Foreground = System.Windows.Media.Brushes.Red;
             progressBar.IsIndeterminate = true;
             lock (this.pendingDownloads) {
