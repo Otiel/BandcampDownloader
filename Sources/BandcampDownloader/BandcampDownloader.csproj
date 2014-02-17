@@ -104,7 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Miscellaneous\BandcampHelper.cs" />
+    <Compile Include="Helpers\BandcampHelper.cs" />
     <Compile Include="Business Objects\Album.cs" />
     <Compile Include="Business Objects\File.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
@@ -121,7 +121,8 @@
     <Compile Include="Business Objects\JSON\JsonMp3File.cs" />
     <Compile Include="Business Objects\Track.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
-    <Compile Include="Miscellaneous\Extensions.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

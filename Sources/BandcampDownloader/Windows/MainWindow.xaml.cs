@@ -55,7 +55,7 @@ namespace BandcampDownloader {
             InitializeComponent();
             // Increase the maximum of concurrent connections to be able to download more than 2
             // (which is the default value) files at the same time
-            ServicePointManager.DefaultConnectionLimit = 100;
+            ServicePointManager.DefaultConnectionLimit = 50;
             // Default options
             textBoxDownloadsLocation.Text =
                 Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -220,7 +220,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="urls">The URLs.</param>
         /// <returns>The albums URLs referred in the specified URLs.</returns>
-        private List<String> GetAlbumsUrl(List<String> urls) {
+        private List<String> GetAlbumsUrls(List<String> urls) {
             var albumsUrls = new List<String>();
 
             foreach (String url in urls) {
@@ -295,23 +295,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the size of the file located at the provided URL.
-        /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <param name="protocolMethod">The protocol method to use in order to retrieve the file
-        /// size.</param>
-        /// <returns>The size of the file located at the provided URL.</returns>
-        private long GetFileSize(String url, String protocolMethod) {
-            var webRequest = HttpWebRequest.Create(url);
-            webRequest.Method = protocolMethod;
-            long fileSize;
-            using (WebResponse webResponse = webRequest.GetResponse()) {
-                fileSize = webResponse.ContentLength;
-            }
-            return fileSize;
-        }
-
-        /// <summary>
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
@@ -327,15 +310,30 @@ namespace BandcampDownloader {
                 Log("Computing size for album \"" + album.Title + "\"", Brushes.Black);
 
                 // Artwork
-                files.Add(new File(album.ArtworkUrl, 0, GetFileSize(album.ArtworkUrl, "HEAD")));
+                long size = 0;
+                try {
+                    size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
+                } catch {
+                    Log("Failed to retrieve the size of the cover art file for album \"" + 
+                        album.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
+                }
+                files.Add(new File(album.ArtworkUrl, 0, size));
 
                 // Tracks
                 foreach (Track track in album.Tracks) {
-                    // Using the HEAD method on tracks urls does not work
-                    // (Error 405: Method not allowed)
-                    // Surprisingly, using the GET method does not seem to download the whole file,
-                    // so we will use it to retrieve the mp3 sizes
-                    files.Add(new File(track.Mp3Url, 0, GetFileSize(track.Mp3Url, "GET")));
+                    size = 0;
+                    try {
+                        // Using the HEAD method on tracks urls does not work
+                        // (Error 405: Method not allowed)
+                        // Surprisingly, using the GET method does not seem to download the whole 
+                        // file, so we will use it to retrieve the mp3 sizes
+                        size = FileHelper.GetFileSize(track.Mp3Url, "GET");
+                    } catch {
+                        Log("Failed to retrieve the size of the MP3 file for the track \"" + 
+                            track.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
+                    }
+
+                    files.Add(new File(track.Mp3Url, 0, size));
                 }
             }
             return files;
@@ -477,6 +475,7 @@ namespace BandcampDownloader {
             }
 
             this.userCancelled = false;
+
             // Get options
             Boolean tagTracks = checkBoxTag.IsChecked.Value;
             Boolean saveCoverArtInTags = checkBoxCoverArtInTags.IsChecked.Value;
@@ -491,21 +490,23 @@ namespace BandcampDownloader {
 
             Log("Starting download...", Brushes.Black);
 
+            // Get user inputs
             List<String> userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine },
                 StringSplitOptions.RemoveEmptyEntries).ToList();
             userUrls = userUrls.Distinct().ToList();
 
-            List<String> urls = new List<String>();
-            if (forceAlbumsDownload) {
-                urls = GetAlbumsUrl(userUrls);
-            } else {
-                urls = userUrls;
-            }
-            urls = urls.Distinct().ToList();
-
+            var urls = new List<String>();
             var albums = new List<Album>();
 
             Task.Factory.StartNew(() => {
+                // Get URLs of albums to download
+                if (forceAlbumsDownload) {
+                    urls = GetAlbumsUrls(userUrls);
+                } else {
+                    urls = userUrls;
+                }
+                urls = urls.Distinct().ToList();
+            }).ContinueWith(x => {
                 // Get info on albums
                 albums = GetAlbums(urls);
             }).ContinueWith(x => {
