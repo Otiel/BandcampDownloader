@@ -15,7 +15,6 @@ Features
   * From artist pages: http://[artist].bandcamp.com. `TODO`
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and save it in tracks tags.
-* Resizes cover art. `TODO`
 
 Usage
 -----
