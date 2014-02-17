@@ -11,8 +11,7 @@ Features
 
 * Downloads MP3 files from Bandcamp:
   * From album pages: http://[artist].bandcamp.com/album/[album],
-  * From track pages: http://[artist].bandcamp.com/track/[track], `TODO`
-  * From artist pages: http://[artist].bandcamp.com. `TODO`
+  * From artist pages: http://[artist].bandcamp.com.
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and save it in tracks tags.
 
