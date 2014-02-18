@@ -25,5 +25,6 @@
         <CheckBox Content="Download one album at a time" Height="16" Margin="415,161,0,0" Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" HorizontalAlignment="Left" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.&#x0a;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." />
         <Label Height="28" HorizontalAlignment="Left" Margin="9,229,0,0" Name="labelDownloadSpeed" VerticalAlignment="Top" />
         <CheckBox Content="Force download of all albums" Height="16" HorizontalAlignment="Left" IsEnabled="True" Margin="617,161,0,0" Name="checkBoxForceAlbumsDownload" ToolTip="If checked, all albums referred on the page will be downloaded.&#x0a;Check this box if you want to download all albums of an artist." VerticalAlignment="Top" />
+        <Label Content="v x.x.x.x" HorizontalAlignment="Left" Margin="8,0,0,-3" Name="labelVersion" Foreground="Gray" Height="28" VerticalAlignment="Bottom" />
     </Grid>
 </Window>

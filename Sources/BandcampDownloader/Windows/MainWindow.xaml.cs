@@ -11,6 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Reflection;
 
 namespace BandcampDownloader {
 
@@ -63,6 +64,8 @@ namespace BandcampDownloader {
             // Hints
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
+            // Version
+            labelVersion.Content = "v " + Assembly.GetEntryAssembly().GetName().Version;
         }
 
         #endregion Constructor
