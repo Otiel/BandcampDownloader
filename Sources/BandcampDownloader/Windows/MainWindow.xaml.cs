@@ -171,7 +171,7 @@ namespace BandcampDownloader {
                 };
 
                 webClient.DownloadFileCompleted += (s, e) => {
-                    if (!e.Cancelled) {
+                    if (!e.Cancelled && e.Error == null) {
                         if (tagTrack) {
                             // Tag (ID3) the file when downloaded
                             TagLib.File tagFile = TagLib.File.Create(trackPath);
@@ -194,7 +194,10 @@ namespace BandcampDownloader {
 
                         Log("Downloaded track \"" + track.GetFileName(album.Artist) +
                             "\" from album \"" + album.Title + "\"", Brushes.MediumBlue);
-                    }
+                    } else if (!e.Cancelled && e.Error != null) {
+                        Log("Unable to download the track \"" + track.GetFileName(album.Artist) +
+                            "\" from album \"" + album.Title + "\"", Brushes.Red);
+                    } // Else the download has been cancelled (by the user)
 
                     doneEvent.Set();
                 };
@@ -428,13 +431,16 @@ namespace BandcampDownloader {
                     this.lastDownloadSpeedUpdate = now;
                 } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
                     // Last update of progress happened more than 500 milliseconds ago
-                    bytesPerSecond = ( (Double) ( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
+                    // We only update the download speed every 500+ milliseconds
+                    bytesPerSecond = 
+                        ( (Double) ( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
                         ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
 
                     // Update UI
                     this.Dispatcher.Invoke(new Action(() => {
+                        // Update download speed
                         labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") +
                             " kB/s";
                     }));
