@@ -88,6 +88,16 @@ namespace BandcampDownloader {
                 return;
             }
 
+            // Create directory to place track files
+            String directoryPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + "\\";
+            try {
+                Directory.CreateDirectory(directoryPath);
+            } catch {
+                Log("An error occured when creating the album folder. Make sure you have " +
+                    "the rights to write files in the folder you chose", Brushes.Red);
+                return;
+            }
+
             // Download artwork
             String artworkPath = ( saveCovertArtInFolder ?
                 downloadsFolder + "\\" + album.Title.ToAllowedFileName() :
@@ -122,16 +132,6 @@ namespace BandcampDownloader {
             }
             // Wait for download to be finished
             doneEvent.WaitOne();
-
-            // Create directory to place track files
-            String directoryPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + "\\";
-            try {
-                Directory.CreateDirectory(directoryPath);
-            } catch {
-                Log("An error occured when creating the album folder. Make sure you have " +
-                    "the rights to write files in the folder you chose", Brushes.Red);
-                return;
-            }
             var artwork = new TagLib.Picture(artworkPath);
 
             // Download & tag tracks
