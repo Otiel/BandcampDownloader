@@ -1,13 +1,12 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BandcampDownloader {
 
     internal static class BandcampHelper {
-
         /// <summary>
         /// Retrieves the data on the album of the specified Bandcamp page.
         /// </summary>
@@ -48,7 +47,6 @@ namespace BandcampDownloader {
                 throw new NoAlbumFoundException();
             }
             String artistPage = regex.Match(htmlCode).Groups["url"].Value;
-
 
             // Get albums relative urls
             regex = new Regex("href=\"(?<url>/album/.*)\"");

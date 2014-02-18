@@ -7,10 +7,10 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Documents;
 
 namespace BandcampDownloader {
 
@@ -20,6 +20,7 @@ namespace BandcampDownloader {
     public partial class MainWindow: Window {
 
         #region Fields
+
         /// <summary>
         /// The files to download, or being downloaded, or downloaded
         /// Used to compute the current received bytes and the total bytes to download
@@ -44,8 +45,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Used when user clicks on 'Stop' to manage the cancelation (UI...)
         /// </summary>
-        private Boolean userCancelled; 
-        #endregion
+        private Boolean userCancelled;
+        #endregion Fields
 
         #region Constructor
         /// <summary>
@@ -99,7 +100,7 @@ namespace BandcampDownloader {
                 // Warn when downloaded
                 webClient.DownloadFileCompleted += (s, e) => {
                     if (!e.Cancelled) {
-                        Log("Downloaded artwork for album \"" + album.Title + "\"", 
+                        Log("Downloaded artwork for album \"" + album.Title + "\"",
                             Brushes.MediumBlue);
                     }
                     doneEvent.Set();
@@ -317,7 +318,7 @@ namespace BandcampDownloader {
                 try {
                     size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
                 } catch {
-                    Log("Failed to retrieve the size of the cover art file for album \"" + 
+                    Log("Failed to retrieve the size of the cover art file for album \"" +
                         album.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
                 }
                 files.Add(new File(album.ArtworkUrl, 0, size));
@@ -328,11 +329,11 @@ namespace BandcampDownloader {
                     try {
                         // Using the HEAD method on tracks urls does not work
                         // (Error 405: Method not allowed)
-                        // Surprisingly, using the GET method does not seem to download the whole 
+                        // Surprisingly, using the GET method does not seem to download the whole
                         // file, so we will use it to retrieve the mp3 sizes
                         size = FileHelper.GetFileSize(track.Mp3Url, "GET");
                     } catch {
-                        Log("Failed to retrieve the size of the MP3 file for the track \"" + 
+                        Log("Failed to retrieve the size of the MP3 file for the track \"" +
                             track.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
                     }
 
@@ -354,7 +355,7 @@ namespace BandcampDownloader {
                 textRange.Text = DateTime.Now.ToString("HH:mm:ss") + " ";
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
                 // Message
-                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, 
+                textRange = new TextRange(richTextBoxLog.Document.ContentEnd,
                     richTextBoxLog.Document.ContentEnd);
                 textRange.Text = message;
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, color);
@@ -432,7 +433,7 @@ namespace BandcampDownloader {
                 } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
                     // Last update of progress happened more than 500 milliseconds ago
                     // We only update the download speed every 500+ milliseconds
-                    bytesPerSecond = 
+                    bytesPerSecond =
                         ( (Double) ( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
                         ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
