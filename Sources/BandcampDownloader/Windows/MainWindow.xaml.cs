@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Reflection;
+using System.Media;
 
 namespace BandcampDownloader {
 
@@ -556,9 +557,14 @@ namespace BandcampDownloader {
                     // Display message if user cancelled
                     Log("Downloads cancelled by user", Brushes.Black);
                 }
-            }).ContinueWith(x =>
                 // Set controls to "ready" state
-                UpdateControlsState(false));
+                UpdateControlsState(false);
+                // Play a sound
+                try {
+                    ( new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav") ).Play();
+                } catch {
+                }
+            });
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
