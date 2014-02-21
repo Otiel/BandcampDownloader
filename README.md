@@ -29,7 +29,7 @@ Usage
 Screenshot
 ----------
 
-![Screenshot](http://i.imgur.com/3l9IqiZ.png)
+![Screenshot](http://i.imgur.com/2fLjGn6.png)
 
 Dependencies
 ------------
