@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,8 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Reflection;
-using System.Media;
+using System.Windows.Shell;
 
 namespace BandcampDownloader {
 
@@ -382,6 +383,8 @@ namespace BandcampDownloader {
                     labelProgress.Content = "";
                     progressBar.IsIndeterminate = true;
                     progressBar.Value = progressBar.Minimum;
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
+                    TaskbarItemInfo.ProgressValue = 0;
                     buttonStart.IsEnabled = false;
                     buttonStop.IsEnabled = true;
                     buttonBrowse.IsEnabled = false;
@@ -402,6 +405,8 @@ namespace BandcampDownloader {
                         (Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                     progressBar.IsIndeterminate = false;
                     progressBar.Value = progressBar.Minimum;
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+                    TaskbarItemInfo.ProgressValue = 0;
                     textBoxDownloadsLocation.IsReadOnly = false;
                     checkBoxCoverArtInFolder.IsEnabled = true;
                     checkBoxCoverArtInTags.IsEnabled = true;
@@ -462,6 +467,8 @@ namespace BandcampDownloader {
                             " MB";
                         // Update progress bar
                         progressBar.Value = totalReceivedBytes;
+                        // Taskbar progress is between 0 and 1
+                        TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
                     }
                 }));
             }
@@ -530,6 +537,7 @@ namespace BandcampDownloader {
                     this.Dispatcher.Invoke(new Action(() => {
                         progressBar.IsIndeterminate = false;
                         progressBar.Maximum = bytesToDownload;
+                        TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
                     }));
                 }
             }).ContinueWith(x => {
@@ -572,6 +580,8 @@ namespace BandcampDownloader {
             buttonStop.IsEnabled = false;
             progressBar.Foreground = System.Windows.Media.Brushes.Red;
             progressBar.IsIndeterminate = true;
+            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+            TaskbarItemInfo.ProgressValue = 0;
             lock (this.pendingDownloads) {
                 this.userCancelled = true;
                 // Stop current downloads

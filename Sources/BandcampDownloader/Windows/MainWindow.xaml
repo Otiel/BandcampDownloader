@@ -2,6 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Bandcamp Downloader" Height="468" Width="826" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" Icon="pack://application:,,,/Resources/Cloud.ico" Name="WindowMain" MinWidth="826" MinHeight="468">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo />
+    </Window.TaskbarItemInfo>
     <Grid>
         <RichTextBox Margin="12,255,12,21" Name="richTextBoxLog" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True">
             <RichTextBox.Resources>
