@@ -6,6 +6,7 @@ using System.Linq;
 using System.Media;
 using System.Net;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -242,7 +243,7 @@ namespace BandcampDownloader {
 
                 // Retrieve URL HTML source code
                 String htmlCode = "";
-                using (var webClient = new WebClient()) {
+                using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     try {
                         htmlCode = webClient.DownloadString(url);
                     } catch {
@@ -282,7 +283,7 @@ namespace BandcampDownloader {
 
                 // Retrieve URL HTML source code
                 String htmlCode = "";
-                using (var webClient = new WebClient()) {
+                using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     try {
                         htmlCode = webClient.DownloadString(url);
                     } catch {
