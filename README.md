@@ -1,4 +1,4 @@
-![Logo](http://i.imgur.com/JhuZzEz.png) Bandcamp Downloader
+![Logo](http://i.imgur.com/S6AZHOg.png) Bandcamp Downloader
 ===========================================================
 
 Description
