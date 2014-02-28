@@ -23,7 +23,6 @@ Download
 2. Make sure the following files are located in the same folder:
     * `BandcampDownloader.exe`,
     * `Newtonsoft.Json.dll`,
-    * `policy.2.0.taglib-sharp.dll`,
     * `taglib-sharp.dll`.
 3. Run `BandcampDownloader.exe`.
 
