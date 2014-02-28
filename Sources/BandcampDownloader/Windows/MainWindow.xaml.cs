@@ -42,12 +42,12 @@ namespace BandcampDownloader {
         private long lastTotalReceivedBytes = 0;
 
         /// <summary>
-        /// Used when user clicks on 'Stop' to abort all current downloads
+        /// Used when user clicks on 'Cancel' to abort all current downloads
         /// </summary>
         private List<WebClient> pendingDownloads;
 
         /// <summary>
-        /// Used when user clicks on 'Stop' to manage the cancelation (UI...)
+        /// Used when user clicks on 'Cancel' to manage the cancelation (UI...)
         /// </summary>
         private Boolean userCancelled;
         #endregion Fields
@@ -101,48 +101,52 @@ namespace BandcampDownloader {
                 return;
             }
 
-            // Download artwork
-            String artworkPath = ( saveCovertArtInFolder ?
-                downloadsFolder + "\\" + album.Title.ToAllowedFileName() :
-                Path.GetTempPath() ) + "\\" +
-                album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
-            var doneEvent = new AutoResetEvent(false);
-            using (var webClient = new WebClient()) {
-                // Update progress bar when downloading
-                webClient.DownloadProgressChanged += (s, e) => {
-                    UpdateProgress(album.ArtworkUrl, e.BytesReceived);
-                };
+            TagLib.Picture artwork = null;
 
-                // Warn when downloaded
-                webClient.DownloadFileCompleted += (s, e) => {
-                    if (!e.Cancelled) {
-                        Log("Downloaded artwork for album \"" + album.Title + "\"",
-                            Brushes.MediumBlue);
-                    }
-                    doneEvent.Set();
-                };
+            if (saveCoverArtInTags || saveCovertArtInFolder) {
+                // Download artwork
+                String artworkPath = ( saveCovertArtInFolder ?
+                    downloadsFolder + "\\" + album.Title.ToAllowedFileName() :
+                    Path.GetTempPath() ) + "\\" +
+                    album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+                var doneEvent = new AutoResetEvent(false);
+                using (var webClient = new WebClient()) {
+                    // Update progress bar when downloading
+                    webClient.DownloadProgressChanged += (s, e) => {
+                        UpdateProgress(album.ArtworkUrl, e.BytesReceived);
+                    };
 
-                lock (this.pendingDownloads) {
-                    if (this.userCancelled) {
-                        // Abort
-                        return;
+                    // Warn when downloaded
+                    webClient.DownloadFileCompleted += (s, e) => {
+                        if (!e.Cancelled) {
+                            Log("Downloaded artwork for album \"" + album.Title + "\"",
+                                Brushes.MediumBlue);
+                        }
+                        doneEvent.Set();
+                    };
+
+                    lock (this.pendingDownloads) {
+                        if (this.userCancelled) {
+                            // Abort
+                            return;
+                        }
+                        // Register current download
+                        this.pendingDownloads.Add(webClient);
+                        // Start download
+                        webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkPath);
                     }
-                    // Register current download
-                    this.pendingDownloads.Add(webClient);
-                    // Start download
-                    webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkPath);
                 }
-            }
-            // Wait for download to be finished
-            doneEvent.WaitOne();
-            var artwork = new TagLib.Picture(artworkPath);
+                // Wait for download to be finished
+                doneEvent.WaitOne();
+                artwork = new TagLib.Picture(artworkPath);
 
-            // Delete the cover art file if it was saved in Temp
-            if (!saveCovertArtInFolder) {
-                try {
-                    System.IO.File.Delete(artworkPath);
-                } catch {
-                    // Could not delete the file. Whatever, it's in Temp/ folder...
+                // Delete the cover art file if it was saved in Temp
+                if (!saveCovertArtInFolder) {
+                    try {
+                        System.IO.File.Delete(artworkPath);
+                    } catch {
+                        // Could not delete the file. Whatever, it's in Temp/ folder...
+                    }
                 }
             }
 
@@ -194,7 +198,6 @@ namespace BandcampDownloader {
                             tagFile.Tag.Album = album.Title;
                             tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
                             tagFile.Tag.Performers = new String[1] { album.Artist };
-                            tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
                             tagFile.Tag.Title = track.Title;
                             tagFile.Tag.Track = (uint) track.Number;
                             tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
@@ -359,7 +362,7 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Displays the specified message in the log textbox.
+        /// Displays the specified message in the log.
         /// </summary>
         /// <param name="message">The message.</param>
         private void Log(String message, Brush color) {
