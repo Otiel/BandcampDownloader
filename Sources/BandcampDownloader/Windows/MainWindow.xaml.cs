@@ -154,9 +154,8 @@ namespace BandcampDownloader {
             Task[] tasks = new Task[album.Tracks.Count];
             for (int i = 0; i < album.Tracks.Count; i++) {
                 Track track = album.Tracks[i]; // Mandatory or else => race condition
-                tasks[i] = Task.Factory.StartNew(() =>
-                    DownloadAndTagTrack(album, artwork, directoryPath, track, tagTracks,
-                    saveCoverArtInTags));
+                tasks[i] = Task.Factory.StartNew(() => DownloadAndTagTrack(directoryPath, album, 
+                    track, tagTracks, saveCoverArtInTags, artwork));
             }
 
             // Wait for all tracks to be downloaded before saying the album is downloaded
@@ -177,8 +176,8 @@ namespace BandcampDownloader {
         /// <param name="tagTrack">if set to <c>true</c>, the track will be tagged..</param>
         /// <param name="saveCoverArtInTags">if set to <c>true</c>, the cover art will be saved in
         /// the track tags.</param>
-        private void DownloadAndTagTrack(Album album, TagLib.Picture artwork,
-            String albumDirectoryPath, Track track, Boolean tagTrack, Boolean saveCoverArtInTags) {
+        private void DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track,
+            Boolean tagTrack, Boolean saveCoverArtInTags, TagLib.Picture artwork) {
             // Set location to save the file
             String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
 
@@ -320,7 +319,7 @@ namespace BandcampDownloader {
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
-        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false 
+        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false
         /// otherwise.</param>
         /// <returns>
         /// The files to download.
@@ -549,7 +548,7 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
-                this.filesDownload = GetFilesToDownload(albums, saveCoverArtInTags || 
+                this.filesDownload = GetFilesToDownload(albums, saveCoverArtInTags ||
                     saveCoverArtInFolder);
             }).ContinueWith(x => {
                 // Set progressBar max value
