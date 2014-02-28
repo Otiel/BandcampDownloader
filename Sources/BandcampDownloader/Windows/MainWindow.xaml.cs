@@ -320,8 +320,12 @@ namespace BandcampDownloader {
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
-        /// <returns>The files to download.</returns>
-        private List<File> GetFilesToDownload(List<Album> albums) {
+        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false 
+        /// otherwise.</param>
+        /// <returns>
+        /// The files to download.
+        /// </returns>
+        private List<File> GetFilesToDownload(List<Album> albums, Boolean downloadCoverArt) {
             var files = new List<File>();
             foreach (Album album in albums) {
                 if (this.userCancelled) {
@@ -331,15 +335,18 @@ namespace BandcampDownloader {
 
                 Log("Computing size for album \"" + album.Title + "\"", Brushes.Black);
 
-                // Artwork
                 long size = 0;
-                try {
-                    size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
-                } catch {
-                    Log("Failed to retrieve the size of the cover art file for album \"" +
-                        album.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
+
+                // Artwork
+                if (downloadCoverArt) {
+                    try {
+                        size += FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
+                    } catch {
+                        Log("Failed to retrieve the size of the cover art file for album \"" +
+                            album.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
+                    }
+                    files.Add(new File(album.ArtworkUrl, 0, size));
                 }
-                files.Add(new File(album.ArtworkUrl, 0, size));
 
                 // Tracks
                 foreach (Track track in album.Tracks) {
@@ -542,7 +549,8 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
-                this.filesDownload = GetFilesToDownload(albums);
+                this.filesDownload = GetFilesToDownload(albums, saveCoverArtInTags || 
+                    saveCoverArtInFolder);
             }).ContinueWith(x => {
                 // Set progressBar max value
                 long bytesToDownload = this.filesDownload.Sum(f => f.Size);
