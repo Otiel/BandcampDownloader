@@ -137,6 +137,15 @@ namespace BandcampDownloader {
             doneEvent.WaitOne();
             var artwork = new TagLib.Picture(artworkPath);
 
+            // Delete the cover art file if it was saved in Temp
+            if (!saveCovertArtInFolder) {
+                try {
+                    System.IO.File.Delete(artworkPath);
+                } catch {
+                    // Could not delete the file. Whatever, it's in Temp/ folder...
+                }
+            }
+
             // Download & tag tracks
             Task[] tasks = new Task[album.Tracks.Count];
             for (int i = 0; i < album.Tracks.Count; i++) {
