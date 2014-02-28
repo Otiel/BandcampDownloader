@@ -334,12 +334,11 @@ namespace BandcampDownloader {
 
                 Log("Computing size for album \"" + album.Title + "\"", Brushes.Black);
 
-                long size = 0;
-
                 // Artwork
                 if (downloadCoverArt) {
+                    long size = 0;
                     try {
-                        size += FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
+                        size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
                     } catch {
                         Log("Failed to retrieve the size of the cover art file for album \"" +
                             album.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
@@ -349,7 +348,7 @@ namespace BandcampDownloader {
 
                 // Tracks
                 foreach (Track track in album.Tracks) {
-                    size = 0;
+                    long size = 0;
                     try {
                         // Using the HEAD method on tracks urls does not work
                         // (Error 405: Method not allowed)
