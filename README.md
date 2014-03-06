@@ -19,7 +19,7 @@ Features
 Download
 --------
 
-1. If you're just looking to use the app right now, download the latest version from the [releases](https://github.com/Otiel/BandcampDownloader/releases) page as a zip file.
+1. If you're just looking to use the app right now, [download](https://github.com/Otiel/BandcampDownloader/releases/latest) the latest version from the releases page as a zip file.
 2. Make sure the following files are located in the same folder:
     * `BandcampDownloader.exe`,
     * `Newtonsoft.Json.dll`,
