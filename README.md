@@ -15,10 +15,10 @@ Features
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and save it in tracks tags.
 
-Download
---------
+Usage
+-----
 
-1. If you're just looking to use the app right now, [download](https://github.com/Otiel/BandcampDownloader/releases/latest) the latest version from the releases page as a zip file.
+1. [Download](https://github.com/Otiel/BandcampDownloader/releases/latest) the latest version from the releases page as a zip file.
 2. Make sure the following files are located in the same folder:
     * `BandcampDownloader.exe`,
     * `Newtonsoft.Json.dll`,
