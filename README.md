@@ -14,9 +14,9 @@ Features
   * From artist pages: http://[artist].bandcamp.com.
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and:
-  * Convert cover art to jpg,
-  * Resize cover art,
-  * Save cover art in tracks tags.
+  * Converts cover art to jpg,
+  * Resizes cover art,
+  * Saves cover art in tracks tags.
 
 Usage
 -----
