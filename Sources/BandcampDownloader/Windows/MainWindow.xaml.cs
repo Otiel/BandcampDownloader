@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shell;
+using ImageResizer;
 
 namespace BandcampDownloader {
 
@@ -26,28 +27,28 @@ namespace BandcampDownloader {
         #region Fields
 
         /// <summary>
-        /// The files to download, or being downloaded, or downloaded
-        /// Used to compute the current received bytes and the total bytes to download
+        /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to
+        /// download.
         /// </summary>
         private List<File> filesDownload;
 
         /// <summary>
-        /// Used to compute and display the download speed
+        /// Used to compute and display the download speed.
         /// </summary>
         private DateTime lastDownloadSpeedUpdate;
 
         /// <summary>
-        /// Used to compute and display the download speed
+        /// Used to compute and display the download speed.
         /// </summary>
         private long lastTotalReceivedBytes = 0;
 
         /// <summary>
-        /// Used when user clicks on 'Cancel' to abort all current downloads
+        /// Used when user clicks on 'Cancel' to abort all current downloads.
         /// </summary>
         private List<WebClient> pendingDownloads;
 
         /// <summary>
-        /// Used when user clicks on 'Cancel' to manage the cancelation (UI...)
+        /// Used when user clicks on 'Cancel' to manage the cancelation (UI...).
         /// </summary>
         private Boolean userCancelled;
         #endregion Fields
@@ -58,12 +59,11 @@ namespace BandcampDownloader {
         /// </summary>
         public MainWindow() {
             InitializeComponent();
-            // Increase the maximum of concurrent connections to be able to download more than 2
-            // (which is the default value) files at the same time
+            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the
+            // same time
             ServicePointManager.DefaultConnectionLimit = 50;
             // Default options
-            textBoxDownloadsLocation.Text =
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            textBoxDownloadsLocation.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             // Hints
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
@@ -77,15 +77,16 @@ namespace BandcampDownloader {
         /// <summary>
         /// Downloads an album.
         /// </summary>
-        /// <param name="album">The album.</param>
+        /// <param name="album">The album to download.</param>
         /// <param name="downloadsFolder">The downloads folder.</param>
-        /// <param name="tagTracks">if set to <c>true</c>, tracks will be tagged.</param>
-        /// <param name="saveCoverArtInTags">if set to <c>true</c>, cover art will be saved in
-        /// tags.</param>
-        /// <param name="saveCovertArtInFolder">if set to <c>true</c>, cover art will be saved in
-        /// the downloads folder.</param>
-        private void DownloadAlbum(Album album, String downloadsFolder, Boolean tagTracks,
-            Boolean saveCoverArtInTags, Boolean saveCovertArtInFolder) {
+        /// <param name="tagTracks">True to tag tracks; false otherwise.</param>
+        /// <param name="saveCoverArtInTags">True to save cover art in tags; false otherwise.</param>
+        /// <param name="saveCovertArtInFolder">True to save cover art in the downloads folder; false otherwise.</param>
+        /// <param name="convertCoverArtToJpg">True to convert the cover art to jpg; false otherwise.</param>
+        /// <param name="resizeCoverArt">True to resize the covert art; false otherwise.</param>
+        /// <param name="coverArtMaxSize">The maximum width/height of the cover art when resizing.</param>
+        private void DownloadAlbum(Album album, String downloadsFolder, Boolean tagTracks, Boolean saveCoverArtInTags,
+            Boolean saveCovertArtInFolder, Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
             if (this.userCancelled) {
                 // Abort
                 return;
@@ -96,57 +97,20 @@ namespace BandcampDownloader {
             try {
                 Directory.CreateDirectory(directoryPath);
             } catch {
-                Log("An error occured when creating the album folder. Make sure you have " +
-                    "the rights to write files in the folder you chose", Brushes.Red);
+                Log("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose",
+                    Brushes.Red);
                 return;
             }
 
             TagLib.Picture artwork = null;
 
+            // Download artwork
             if (saveCoverArtInTags || saveCovertArtInFolder) {
-                // Download artwork
-                String artworkPath = ( saveCovertArtInFolder ?
-                    downloadsFolder + "\\" + album.Title.ToAllowedFileName() :
-                    Path.GetTempPath() ) + "\\" +
-                    album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
-                var doneEvent = new AutoResetEvent(false);
-                using (var webClient = new WebClient()) {
-                    // Update progress bar when downloading
-                    webClient.DownloadProgressChanged += (s, e) => {
-                        UpdateProgress(album.ArtworkUrl, e.BytesReceived);
-                    };
-
-                    // Warn when downloaded
-                    webClient.DownloadFileCompleted += (s, e) => {
-                        if (!e.Cancelled) {
-                            Log("Downloaded artwork for album \"" + album.Title + "\"",
-                                Brushes.MediumBlue);
-                        }
-                        doneEvent.Set();
-                    };
-
-                    lock (this.pendingDownloads) {
-                        if (this.userCancelled) {
-                            // Abort
-                            return;
-                        }
-                        // Register current download
-                        this.pendingDownloads.Add(webClient);
-                        // Start download
-                        webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkPath);
-                    }
-                }
-                // Wait for download to be finished
-                doneEvent.WaitOne();
-                artwork = new TagLib.Picture(artworkPath);
-
-                // Delete the cover art file if it was saved in Temp
-                if (!saveCovertArtInFolder) {
-                    try {
-                        System.IO.File.Delete(artworkPath);
-                    } catch {
-                        // Could not delete the file. Whatever, it's in Temp/ folder...
-                    }
+                artwork = DownloadCoverArt(album, downloadsFolder, saveCovertArtInFolder, convertCoverArtToJpg, resizeCoverArt,
+                    coverArtMaxSize);
+                if (this.userCancelled) {
+                    // Abort
+                    return;
                 }
             }
 
@@ -154,8 +118,8 @@ namespace BandcampDownloader {
             Task[] tasks = new Task[album.Tracks.Count];
             for (int i = 0; i < album.Tracks.Count; i++) {
                 Track track = album.Tracks[i]; // Mandatory or else => race condition
-                tasks[i] = Task.Factory.StartNew(() => DownloadAndTagTrack(directoryPath, album, 
-                    track, tagTracks, saveCoverArtInTags, artwork));
+                tasks[i] = Task.Factory.StartNew(() => DownloadAndTagTrack(directoryPath, album, track, tagTracks, saveCoverArtInTags,
+                    artwork));
             }
 
             // Wait for all tracks to be downloaded before saying the album is downloaded
@@ -169,15 +133,14 @@ namespace BandcampDownloader {
         /// <summary>
         /// Downloads and tags a track.
         /// </summary>
-        /// <param name="album">The album of the track to download.</param>
-        /// <param name="artwork">The cover art.</param>
         /// <param name="albumDirectoryPath">The path where to save the tracks.</param>
+        /// <param name="album">The album of the track to download.</param>
         /// <param name="track">The track to download.</param>
-        /// <param name="tagTrack">if set to <c>true</c>, the track will be tagged..</param>
-        /// <param name="saveCoverArtInTags">if set to <c>true</c>, the cover art will be saved in
-        /// the track tags.</param>
-        private void DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track,
-            Boolean tagTrack, Boolean saveCoverArtInTags, TagLib.Picture artwork) {
+        /// <param name="tagTrack">True to tag the track; false otherwise.</param>
+        /// <param name="saveCoverArtInTags">True to save the cover art in the tag tracks; false otherwise.</param>
+        /// <param name="artwork">The cover art.</param>
+        private void DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, Boolean tagTrack, Boolean saveCoverArtInTags,
+            TagLib.Picture artwork) {
             // Set location to save the file
             String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
 
@@ -210,11 +173,11 @@ namespace BandcampDownloader {
                             tagFile.Save();
                         }
 
-                        Log("Downloaded track \"" + track.GetFileName(album.Artist) +
-                            "\" from album \"" + album.Title + "\"", Brushes.MediumBlue);
+                        Log("Downloaded track \"" + track.GetFileName(album.Artist) + "\" from album \"" + album.Title + "\"",
+                            Brushes.MediumBlue);
                     } else if (!e.Cancelled && e.Error != null) {
-                        Log("Unable to download the track \"" + track.GetFileName(album.Artist) +
-                            "\" from album \"" + album.Title + "\"", Brushes.Red);
+                        Log("Unable to download the track \"" + track.GetFileName(album.Artist) + "\" from album \"" + album.Title + "\"",
+                            Brushes.Red);
                     } // Else the download has been cancelled (by the user)
 
                     doneEvent.Set();
@@ -237,50 +200,81 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the albums URLs referred in the specified URLs.
+        /// Downloads the cover art.
         /// </summary>
-        /// <param name="urls">The URLs.</param>
-        /// <returns>The albums URLs referred in the specified URLs.</returns>
-        private List<String> GetAlbumsUrls(List<String> urls) {
-            var albumsUrls = new List<String>();
+        /// <param name="album">The album to download.</param>
+        /// <param name="downloadsFolder">The downloads folder.</param>
+        /// <param name="saveCovertArtInFolder">True to save cover art in the downloads folder; false otherwise.</param>
+        /// <param name="convertCoverArtToJpg">True to convert the cover art to jpg; false otherwise.</param>
+        /// <param name="resizeCoverArt">True to resize the covert art; false otherwise.</param>
+        /// <param name="coverArtMaxSize">The maximum width/height of the cover art when resizing.</param>
+        /// <returns></returns>
+        private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder, Boolean saveCovertArtInFolder,
+            Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
+            // Compute path where to save artwork
+            String artworkPath = ( saveCovertArtInFolder ? downloadsFolder + "\\" + album.Title.ToAllowedFileName() :
+                Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
 
-            foreach (String url in urls) {
-                if (this.userCancelled) {
-                    // Abort
-                    return new List<String>();
-                }
+            var doneEvent = new AutoResetEvent(false);
+            using (var webClient = new WebClient()) {
+                // Update progress bar when downloading
+                webClient.DownloadProgressChanged += (s, e) => {
+                    UpdateProgress(album.ArtworkUrl, e.BytesReceived);
+                };
 
-                Log("Retrieving albums referred on " + url, Brushes.Black);
-
-                // Retrieve URL HTML source code
-                String htmlCode = "";
-                using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    try {
-                        htmlCode = webClient.DownloadString(url);
-                    } catch {
-                        Log("Could not retrieve data for " + url, Brushes.Red);
-                        continue;
+                // Warn when downloaded
+                webClient.DownloadFileCompleted += (s, e) => {
+                    if (!e.Cancelled) {
+                        Log("Downloaded artwork for album \"" + album.Title + "\"", Brushes.MediumBlue);
                     }
-                }
+                    doneEvent.Set();
+                };
 
-                // Get albums referred on the page
+                lock (this.pendingDownloads) {
+                    if (this.userCancelled) {
+                        // Abort
+                        return null;
+                    }
+                    // Register current download
+                    this.pendingDownloads.Add(webClient);
+                    // Start download
+                    webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkPath);
+                }
+            }
+            // Wait for download to be finished
+            doneEvent.WaitOne();
+
+            if (convertCoverArtToJpg || resizeCoverArt) {
+                var settings = new ResizeSettings();
+                if (convertCoverArtToJpg) {
+                    settings.Format = "jpg";
+                    settings.Quality = 90;
+                }
+                if (resizeCoverArt) {
+                    settings.MaxHeight = coverArtMaxSize;
+                    settings.MaxWidth = coverArtMaxSize;
+                }
+                ImageBuilder.Current.Build(artworkPath, artworkPath, settings);
+            }
+
+            TagLib.Picture artwork = new TagLib.Picture(artworkPath);
+
+            // Delete the cover art file if it was saved in Temp
+            if (!saveCovertArtInFolder) {
                 try {
-                    albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
-                } catch (NoAlbumFoundException) {
-                    Log("No referred album could be found on " + url + ". Try " +
-                        "to uncheck the \"Force download of all albums\" option", Brushes.Red);
-                    continue;
+                    System.IO.File.Delete(artworkPath);
+                } catch {
+                    // Could not delete the file. Whatever, it's in Temp/ folder...
                 }
             }
 
-            return albumsUrls;
+            return artwork;
         }
 
         /// <summary>
         /// Returns the albums located at the specified URLs.
         /// </summary>
         /// <param name="urls">The URLs.</param>
-        /// <returns>The albums located at the specified URLs.</returns>
         private List<Album> GetAlbums(List<String> urls) {
             var albums = new List<Album>();
 
@@ -316,14 +310,49 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
+        /// Returns the albums URLs referred in the specified URLs.
+        /// </summary>
+        /// <param name="urls">The URLs.</param>
+        private List<String> GetAlbumsUrls(List<String> urls) {
+            var albumsUrls = new List<String>();
+
+            foreach (String url in urls) {
+                if (this.userCancelled) {
+                    // Abort
+                    return new List<String>();
+                }
+
+                Log("Retrieving albums referred on " + url, Brushes.Black);
+
+                // Retrieve URL HTML source code
+                String htmlCode = "";
+                using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
+                    try {
+                        htmlCode = webClient.DownloadString(url);
+                    } catch {
+                        Log("Could not retrieve data for " + url, Brushes.Red);
+                        continue;
+                    }
+                }
+
+                // Get albums referred on the page
+                try {
+                    albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
+                } catch (NoAlbumFoundException) {
+                    Log("No referred album could be found on " + url + ". Try to uncheck the \"Force download of all albums\" option",
+                        Brushes.Red);
+                    continue;
+                }
+            }
+
+            return albumsUrls;
+        }
+
+        /// <summary>
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
-        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false
-        /// otherwise.</param>
-        /// <returns>
-        /// The files to download.
-        /// </returns>
+        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false otherwise.</param>
         private List<File> GetFilesToDownload(List<Album> albums, Boolean downloadCoverArt) {
             var files = new List<File>();
             foreach (Album album in albums) {
@@ -340,8 +369,8 @@ namespace BandcampDownloader {
                     try {
                         size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
                     } catch {
-                        Log("Failed to retrieve the size of the cover art file for album \"" +
-                            album.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
+                        Log("Failed to retrieve the size of the cover art file for album \"" + album.Title +
+                            "\". Progress update may be wrong.", Brushes.OrangeRed);
                     }
                     files.Add(new File(album.ArtworkUrl, 0, size));
                 }
@@ -350,14 +379,13 @@ namespace BandcampDownloader {
                 foreach (Track track in album.Tracks) {
                     long size = 0;
                     try {
-                        // Using the HEAD method on tracks urls does not work
-                        // (Error 405: Method not allowed)
-                        // Surprisingly, using the GET method does not seem to download the whole
-                        // file, so we will use it to retrieve the mp3 sizes
+                        // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
+                        // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve the
+                        // mp3 sizes
                         size = FileHelper.GetFileSize(track.Mp3Url, "GET");
                     } catch {
-                        Log("Failed to retrieve the size of the MP3 file for the track \"" +
-                            track.Title + "\". Progress update may be wrong.", Brushes.OrangeRed);
+                        Log("Failed to retrieve the size of the MP3 file for the track \"" + track.Title +
+                            "\". Progress update may be wrong.", Brushes.OrangeRed);
                     }
 
                     files.Add(new File(track.Mp3Url, 0, size));
@@ -367,19 +395,18 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Displays the specified message in the log.
+        /// Displays the specified message in the log with the specified color.
         /// </summary>
         /// <param name="message">The message.</param>
+        /// <param name="color">The color.</param>
         private void Log(String message, Brush color) {
             this.Dispatcher.Invoke(new Action(() => {
                 // Time
-                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd,
-                    richTextBoxLog.Document.ContentEnd);
+                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
                 textRange.Text = DateTime.Now.ToString("HH:mm:ss") + " ";
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
                 // Message
-                textRange = new TextRange(richTextBoxLog.Document.ContentEnd,
-                    richTextBoxLog.Document.ContentEnd);
+                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
                 textRange.Text = message;
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, color);
                 // Line break
@@ -391,8 +418,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Updates the state of the controls.
         /// </summary>
-        /// <param name="downloadStarted">True if the download just started, false if it just
-        /// stopped.</param>
+        /// <param name="downloadStarted">True if the download just started, false if it just stopped.</param>
         private void UpdateControlsState(Boolean downloadStarted) {
             this.Dispatcher.Invoke(new Action(() => {
                 if (downloadStarted) {
@@ -413,14 +439,18 @@ namespace BandcampDownloader {
                     checkBoxTag.IsEnabled = false;
                     checkBoxOneAlbumAtATime.IsEnabled = false;
                     checkBoxForceAlbumsDownload.IsEnabled = false;
+                    checkBoxConvertToJpg.IsEnabled = false;
+                    checkBoxResizeCoverArt.IsEnabled = false;
+                    textBoxCoverArtMaxSize.IsEnabled = false;
+                    labelPixels.IsEnabled = false;
+                    labelCoverArt.IsEnabled = false;
                 } else {
                     // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
                     buttonStop.IsEnabled = false;
                     buttonBrowse.IsEnabled = true;
                     textBoxUrls.IsReadOnly = false;
-                    progressBar.Foreground = new SolidColorBrush(
-                        (Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
+                    progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                     progressBar.IsIndeterminate = false;
                     progressBar.Value = progressBar.Minimum;
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
@@ -432,6 +462,11 @@ namespace BandcampDownloader {
                     checkBoxOneAlbumAtATime.IsEnabled = true;
                     checkBoxForceAlbumsDownload.IsEnabled = true;
                     labelDownloadSpeed.Content = "";
+                    checkBoxConvertToJpg.IsEnabled = true;
+                    checkBoxResizeCoverArt.IsEnabled = true;
+                    textBoxCoverArtMaxSize.IsEnabled = true;
+                    labelPixels.IsEnabled = true;
+                    labelCoverArt.IsEnabled = true;
                 }
             }));
         }
@@ -469,8 +504,7 @@ namespace BandcampDownloader {
                     // Update UI
                     this.Dispatcher.Invoke(new Action(() => {
                         // Update download speed
-                        labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") +
-                            " kB/s";
+                        labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") + " kB/s";
                     }));
                 }
 
@@ -479,10 +513,8 @@ namespace BandcampDownloader {
                     if (!this.userCancelled) {
                         // Update progress label
                         labelProgress.Content =
-                            ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") +
-                            " MB / " +
-                            ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") +
-                            " MB";
+                            ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") + " MB / " +
+                            ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") + " MB";
                         // Update progress bar
                         progressBar.Value = totalReceivedBytes;
                         // Taskbar progress is between 0 and 1
@@ -509,6 +541,11 @@ namespace BandcampDownloader {
                 Log("Paste some albums URLs to be downloaded", Brushes.Red);
                 return;
             }
+            int coverArtMaxSize = 0;
+            if (checkBoxResizeCoverArt.IsChecked.Value && !Int32.TryParse(textBoxCoverArtMaxSize.Text, out coverArtMaxSize)) {
+                Log("Cover art max width/height must be an integer", Brushes.Red);
+                return;
+            }
 
             this.userCancelled = false;
 
@@ -516,6 +553,8 @@ namespace BandcampDownloader {
             Boolean tagTracks = checkBoxTag.IsChecked.Value;
             Boolean saveCoverArtInTags = checkBoxCoverArtInTags.IsChecked.Value;
             Boolean saveCoverArtInFolder = checkBoxCoverArtInFolder.IsChecked.Value;
+            Boolean convertCoverArtToJpg = checkBoxConvertToJpg.IsChecked.Value;
+            Boolean resizeCoverArt = checkBoxResizeCoverArt.IsChecked.Value;
             Boolean oneAlbumAtATime = checkBoxOneAlbumAtATime.IsChecked.Value;
             Boolean forceAlbumsDownload = checkBoxForceAlbumsDownload.IsChecked.Value;
             String downloadsFolder = textBoxDownloadsLocation.Text;
@@ -547,8 +586,7 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
-                this.filesDownload = GetFilesToDownload(albums, saveCoverArtInTags ||
-                    saveCoverArtInFolder);
+                this.filesDownload = GetFilesToDownload(albums, saveCoverArtInTags || saveCoverArtInFolder);
             }).ContinueWith(x => {
                 // Set progressBar max value
                 long bytesToDownload = this.filesDownload.Sum(f => f.Size);
@@ -564,8 +602,8 @@ namespace BandcampDownloader {
                 if (oneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags,
-                            saveCoverArtInFolder);
+                        DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg,
+                            resizeCoverArt, coverArtMaxSize);
                     }
                 } else {
                     // Parallel download
@@ -573,8 +611,8 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags,
-                                saveCoverArtInFolder));
+                            DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg,
+                                resizeCoverArt, coverArtMaxSize));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
@@ -610,8 +648,32 @@ namespace BandcampDownloader {
             }
         }
 
+        private void CheckBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
+            if (checkBoxResizeCoverArt == null || textBoxCoverArtMaxSize == null) {
+                return;
+            }
+
+            textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
+        }
+
         private void labelAbout_MouseDown(object sender, MouseButtonEventArgs e) {
             Process.Start(Constants.ProjectWebsite);
+        }
+
+        private void SaveCoverArtCheckBox_CheckedChanged(object sender, RoutedEventArgs e) {
+            if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null) {
+                return;
+            }
+
+            if (!checkBoxCoverArtInFolder.IsChecked.Value && !checkBoxCoverArtInTags.IsChecked.Value) {
+                checkBoxConvertToJpg.IsEnabled = false;
+                checkBoxResizeCoverArt.IsEnabled = false;
+                textBoxCoverArtMaxSize.IsEnabled = false;
+            } else {
+                checkBoxConvertToJpg.IsEnabled = true;
+                checkBoxResizeCoverArt.IsEnabled = true;
+                textBoxCoverArtMaxSize.IsEnabled = true;
+            }
         }
 
         private void textBoxUrls_GotFocus(object sender, RoutedEventArgs e) {

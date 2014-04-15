@@ -13,7 +13,10 @@ Features
   * From album pages: http://[artist].bandcamp.com/album/[album],
   * From artist pages: http://[artist].bandcamp.com.
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
-* Downloads cover art and save it in tracks tags.
+* Downloads cover art and:
+  * Convert cover art to jpg,
+  * Resize cover art,
+  * Save cover art in tracks tags.
 
 Usage
 -----
@@ -21,6 +24,7 @@ Usage
 1. [Download](https://github.com/Otiel/BandcampDownloader/releases/latest) the latest version from the releases page as a zip file.
 2. Make sure the following files are located in the same folder:
     * `BandcampDownloader.exe`,
+    * `ImageResizer.dll`,
     * `Newtonsoft.Json.dll`,
     * `taglib-sharp.dll`.
 3. Run `BandcampDownloader.exe`.
@@ -28,7 +32,7 @@ Usage
 Screenshot
 ----------
 
-![Screenshot](http://i.imgur.com/sBCKZTg.png)
+![Screenshot](http://i.imgur.com/s8RYXJi.png)
 
 Dependencies
 ------------
@@ -36,6 +40,7 @@ Dependencies
 _BandcampDownloader_ uses:
 * [Json.NET](http://james.newtonking.com/json) to deserialize JSON data from the Bandcamp pages.
 * [TagLibSharp](https://github.com/mono/taglib-sharp) to tag tracks.
+* [ImageResizer](http://imageresizing.net/) to convert/resize covert arts.
 
 Bugs/Ideas
 ----------

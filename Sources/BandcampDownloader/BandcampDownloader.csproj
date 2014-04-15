@@ -11,7 +11,8 @@
     <RootNamespace>BandcampDownloader</RootNamespace>
     <AssemblyName>BandcampDownloader</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -74,6 +75,9 @@
     <ApplicationIcon>Resources\Cloud.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ImageResizer">
+      <HintPath>..\packages\ImageResizer.3.4.2\lib\ImageResizer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -113,7 +117,7 @@
     <Compile Include="Business Objects\JSON\JsonMp3File.cs" />
     <Compile Include="Business Objects\Track.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -139,6 +143,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
