@@ -7,6 +7,6 @@ namespace BandcampDownloader {
 
         public static readonly String ProjectWebsite = "https://github.com/Otiel/BandcampDownloader";
 
-        public static readonly int DownloadMaxTries = 20;
+        public static readonly int DownloadMaxTries = 10;
     }
 }
