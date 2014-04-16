@@ -116,7 +116,9 @@
     </Compile>
     <Compile Include="Business Objects\JSON\JsonMp3File.cs" />
     <Compile Include="Business Objects\Track.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
+    <Compile Include="Miscellaneous\LogType.cs" />
     <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">

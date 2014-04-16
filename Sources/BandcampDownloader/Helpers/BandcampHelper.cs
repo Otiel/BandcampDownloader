@@ -65,8 +65,7 @@ namespace BandcampDownloader {
         }
 
         private static String FixJson(String albumData) {
-            // Some JSON is not correctly formatted in bandcamp pages, so it needs to be fixed
-            // before we can deserialize it
+            // Some JSON is not correctly formatted in bandcamp pages, so it needs to be fixed before we can deserialize it
 
             // In trackinfo property, we have for instance:
             //     url: "http://verbalclick.bandcamp.com" + "/album/404"
@@ -83,12 +82,10 @@ namespace BandcampDownloader {
 
             if (htmlCode.IndexOf(startString) == -1) {
                 // Could not find startString
-                throw new Exception("Could not find the following string in HTML code: " +
-                    "var TralbumData = {");
+                throw new Exception("Could not find the following string in HTML code: var TralbumData = {");
             }
 
-            String albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) +
-                startString.Length - 1);
+            String albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) + startString.Length - 1);
             String albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString) + 1);
 
             return albumData;
