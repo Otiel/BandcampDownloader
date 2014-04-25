@@ -10,8 +10,8 @@ Features
 --------
 
 * Downloads MP3 files from Bandcamp:
-  * From album pages: http://[artist].bandcamp.com/album/[album],
-  * From artist pages: http://[artist].bandcamp.com.
+  * From album pages: [http://[artist].bandcamp.com/album/[album]](http://bandcamp.com),
+  * From artist pages: [http://[artist].bandcamp.com](http://bandcamp.com).
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and:
   * Converts cover art to jpg,
