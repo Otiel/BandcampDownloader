@@ -274,7 +274,7 @@ namespace BandcampDownloader {
                                 ImageBuilder.Current.Build(artworkPath, artworkPath, settings);
                             }
 
-                            artwork = new TagLib.Picture(artworkPath);
+                            artwork = new TagLib.Picture(artworkPath) { Description = "Picture" };
 
                             // Delete the cover art file if it was saved in Temp
                             if (!saveCovertArtInFolder) {
