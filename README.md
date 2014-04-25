@@ -32,7 +32,7 @@ Usage
 Screenshot
 ----------
 
-![Screenshot](http://i.imgur.com/s8RYXJi.png)
+![Screenshot](http://i.imgur.com/J41KgJI.png)
 
 Dependencies
 ------------
