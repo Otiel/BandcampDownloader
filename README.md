@@ -1,6 +1,8 @@
 ![Logo](http://i.imgur.com/S6AZHOg.png) Bandcamp Downloader
 ===========================================================
 
+[![Download](http://i.imgur.com/UjPs7Sr.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
+
 Description
 -----------
 
