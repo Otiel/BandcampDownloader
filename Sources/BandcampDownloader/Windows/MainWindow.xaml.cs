@@ -149,9 +149,7 @@ namespace BandcampDownloader {
         private Boolean DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, Boolean tagTrack,
             Boolean saveCoverArtInTags, TagLib.Picture artwork) {
                 
-            //Log the URL so we can check if it correct in Verbose Mode
-            Log("Mp3Url: " + track.Mp3Url,LogType.VerboseInfo);
-
+            Log("Downloading track \"" + track.Title + "\" from url: " + track.Mp3Url, LogType.VerboseInfo);
                 
             // Set location to save the file
             String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
