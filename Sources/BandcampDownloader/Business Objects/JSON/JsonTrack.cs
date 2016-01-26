@@ -15,7 +15,7 @@ namespace BandcampDownloader {
 
         public Track ToTrack() {
             return new Track() {
-                Mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url,// "//example.com" Uri lacks protocol :(
+                Mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url, // "//example.com" Uri lacks protocol
                 Number = Number,
                 Title = Title
             };
