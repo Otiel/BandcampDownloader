@@ -29,7 +29,7 @@ namespace BandcampDownloader {
         /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to
         /// download.
         /// </summary>
-        private List<File> filesDownload;
+        private List<TrackFile> filesDownload;
 
         /// <summary>
         /// Used to compute and display the download speed.
@@ -406,8 +406,8 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="albums">The albums.</param>
         /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false otherwise.</param>
-        private List<File> GetFilesToDownload(List<Album> albums, Boolean downloadCoverArt) {
-            var files = new List<File>();
+        private List<TrackFile> GetFilesToDownload(List<Album> albums, Boolean downloadCoverArt) {
+            var files = new List<TrackFile>();
             foreach (Album album in albums) {
                 Log("Computing size for album \"" + album.Title + "\"...", LogType.Info);
 
@@ -420,7 +420,7 @@ namespace BandcampDownloader {
                     do {
                         if (this.userCancelled) {
                             // Abort
-                            return new List<File>();
+                            return new List<TrackFile>();
                         }
 
                         tries++;
@@ -441,7 +441,7 @@ namespace BandcampDownloader {
                         }
                     } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
 
-                    files.Add(new File(album.ArtworkUrl, 0, size));
+                    files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
 
                 // Tracks
@@ -453,7 +453,7 @@ namespace BandcampDownloader {
                     do {
                         if (this.userCancelled) {
                             // Abort
-                            return new List<File>();
+                            return new List<TrackFile>();
                         }
 
                         tries++;
@@ -477,7 +477,7 @@ namespace BandcampDownloader {
                         }
                     } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
 
-                    files.Add(new File(track.Mp3Url, 0, size));
+                    files.Add(new TrackFile(track.Mp3Url, 0, size));
                 }
             }
             return files;
@@ -574,7 +574,7 @@ namespace BandcampDownloader {
 
             lock (this.filesDownload) {
                 // Compute new progress values
-                File currentFile = this.filesDownload.Where(f => f.Url == fileUrl).First();
+                TrackFile currentFile = this.filesDownload.Where(f => f.Url == fileUrl).First();
                 currentFile.BytesReceived = bytesReceived;
                 long totalReceivedBytes = this.filesDownload.Sum(f => f.BytesReceived);
                 long bytesToDownload = this.filesDownload.Sum(f => f.Size);

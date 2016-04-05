@@ -103,7 +103,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\BandcampHelper.cs" />
     <Compile Include="Business Objects\Album.cs" />
-    <Compile Include="Business Objects\File.cs" />
+    <Compile Include="Business Objects\TrackFile.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
     <Page Include="Windows\MainWindow.xaml">
