@@ -759,7 +759,7 @@ namespace BandcampDownloader {
             Cursor = Cursors.Arrow;
         }
 
-        private void CheckBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
+        private void checkBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
             if (checkBoxResizeCoverArt == null || textBoxCoverArtMaxSize == null) {
                 return;
             }
@@ -767,7 +767,7 @@ namespace BandcampDownloader {
             textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
         }
 
-        private void CheckBoxVerboseLog_CheckedChanged(object sender, RoutedEventArgs e) {
+        private void checkBoxVerboseLog_CheckedChanged(object sender, RoutedEventArgs e) {
             this.verboseLog = checkBoxVerboseLog.IsChecked.Value;
         }
 
@@ -783,7 +783,7 @@ namespace BandcampDownloader {
             Process.Start(Constants.ProjectWebsite);
         }
 
-        private void SaveCoverArtCheckBox_CheckedChanged(object sender, RoutedEventArgs e) {
+        private void checkBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
             if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null) {
                 return;
             }
