@@ -17,6 +17,13 @@ namespace BandcampDownloader {
         public Boolean TagTracks { get; set; }
 
         /// <summary>
+        ///  Creates a new UserSettings with default values.
+        /// </summary>
+        public UserSettings() {
+            ResetToDefault();
+        }
+
+        /// <summary>
         /// Reads the JSON content from the specified file and returns the equivalent UserSettings.
         /// </summary>
         /// <param name="filePath">The absolute path to the file.</param>
@@ -34,7 +41,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Resets all values to default.
         /// </summary>
-        public void ResetToDefault() {
+        private void ResetToDefault() {
             ConvertCoverArtToJpg = true;
             CoverArtMaxSize = "1000";
             DownloadOneAlbumAtATime = false;

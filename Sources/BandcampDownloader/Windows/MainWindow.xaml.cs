@@ -461,18 +461,18 @@ namespace BandcampDownloader {
         /// </summary>
         private void LoadSettings() {
             if (File.Exists(Constants.UserSettingsFilePath)) {
-                // Load settings from file
                 try {
+                    // Load settings from file
                     UserSettings userSettings = UserSettings.ReadFromFile(Constants.UserSettingsFilePath);
                     LoadSettingsToUserInterface(userSettings);
                 } catch {
+                    // Set settings to default
+                    LoadSettingsToUserInterface(new UserSettings());
                     MessageBoxResult userChoice = MessageBox.Show("An error occurred while reading the settings file. Would you like to reset it to the default values?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Error);
 
                     if (userChoice == MessageBoxResult.Yes) {
                         // Save default settings to file
                         var userSettings = new UserSettings();
-                        userSettings.ResetToDefault();
-
                         try {
                             userSettings.SaveToFile(Constants.UserSettingsFilePath);
                         } catch {
@@ -482,9 +482,7 @@ namespace BandcampDownloader {
                 }
             } else {
                 // Set settings to default
-                UserSettings userSettings = new UserSettings();
-                userSettings.ResetToDefault();
-                LoadSettingsToUserInterface(userSettings);
+                LoadSettingsToUserInterface(new UserSettings());
             }
         }
 
