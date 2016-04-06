@@ -133,9 +133,9 @@ namespace BandcampDownloader {
             if (!this.userCancelled) {
                 // Tasks have not been aborted
                 if (tracksDownloaded.All(x => x == true)) {
-                    Log("Successfully downloaded album \"" + album.Title + "\"", LogType.Success);
+                    Log($"Successfully downloaded album \"{album.Title}\"", LogType.Success);
                 } else {
-                    Log("Finished downloading album \"" + album.Title + "\". Some tracks could not be downloaded", LogType.Success);
+                    Log($"Finished downloading album \"{album.Title}\". Some tracks could not be downloaded", LogType.Success);
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace BandcampDownloader {
         /// <param name="artwork">The cover art.</param>
         private Boolean DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, Boolean tagTrack,
             Boolean saveCoverArtInTags, TagLib.Picture artwork) {
-            Log("Downloading track \"" + track.Title + "\" from url: " + track.Mp3Url, LogType.VerboseInfo);
+            Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
             // Set location to save the file
             String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
@@ -194,15 +194,13 @@ namespace BandcampDownloader {
                                 tagFile.Save();
                             }
 
-                            Log("Downloaded track \"" + track.GetFileName(album.Artist) + "\" from album \"" + album.Title + "\"",
+                            Log($"Downloaded track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\"", 
                                 LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < Constants.DownloadMaxTries) {
-                                Log("Unable to download track \"" + track.GetFileName(album.Artist) + "\" from album \"" + album.Title +
-                                    "\". " + "Try " + tries + " of " + Constants.DownloadMaxTries, LogType.Warning);
+                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log("Unable to download track \"" + track.GetFileName(album.Artist) + "\" from album \"" + album.Title +
-                                    "\". " + "Hit max retries of " + Constants.DownloadMaxTries, LogType.Error);
+                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -290,14 +288,12 @@ namespace BandcampDownloader {
                                 }
                             }
 
-                            Log("Downloaded artwork for album \"" + album.Title + "\"", LogType.IntermediateSuccess);
+                            Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < Constants.DownloadMaxTries) {
-                                Log("Unable to download artwork for album \"" + album.Title + "\". " + "Try " + tries + " of " +
-                                    Constants.DownloadMaxTries, LogType.Warning);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log("Unable to download artwork for album \"" + album.Title + "\". " + "Hit max retries of " +
-                                    Constants.DownloadMaxTries, LogType.Error);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -334,7 +330,7 @@ namespace BandcampDownloader {
             var albums = new List<Album>();
 
             foreach (String url in urls) {
-                Log("Retrieving album data for " + url, LogType.Info);
+                Log($"Retrieving album data for {url}", LogType.Info);
 
                 // Retrieve URL HTML source code
                 String htmlCode = "";
@@ -347,7 +343,7 @@ namespace BandcampDownloader {
                     try {
                         htmlCode = webClient.DownloadString(url);
                     } catch {
-                        Log("Could not retrieve data for " + url, LogType.Error);
+                        Log($"Could not retrieve data for {url}", LogType.Error);
                         continue;
                     }
                 }
@@ -356,7 +352,7 @@ namespace BandcampDownloader {
                 try {
                     albums.Add(BandcampHelper.GetAlbum(htmlCode));
                 } catch {
-                    Log("Could not retrieve album info for " + url, LogType.Error);
+                    Log($"Could not retrieve album info for {url}", LogType.Error);
                     continue;
                 }
             }
@@ -372,7 +368,7 @@ namespace BandcampDownloader {
             var albumsUrls = new List<String>();
 
             foreach (String url in urls) {
-                Log("Retrieving albums referred on " + url, LogType.Info);
+                Log($"Retrieving albums referred on {url}", LogType.Info);
 
                 // Retrieve URL HTML source code
                 String htmlCode = "";
@@ -385,7 +381,7 @@ namespace BandcampDownloader {
                     try {
                         htmlCode = webClient.DownloadString(url);
                     } catch {
-                        Log("Could not retrieve data for " + url, LogType.Error);
+                        Log($"Could not retrieve data for {url}", LogType.Error);
                         continue;
                     }
                 }
@@ -394,7 +390,7 @@ namespace BandcampDownloader {
                 try {
                     albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
                 } catch (NoAlbumFoundException) {
-                    Log("No referred album could be found on " + url + ". Try to uncheck the \"Force download of all albums\" option",
+                    Log($"No referred album could be found on {url}. Try to uncheck the \"Force download of all albums\" option",
                         LogType.Error);
                     continue;
                 }
@@ -411,7 +407,7 @@ namespace BandcampDownloader {
         private List<TrackFile> GetFilesToDownload(List<Album> albums, Boolean downloadCoverArt) {
             var files = new List<TrackFile>();
             foreach (Album album in albums) {
-                Log("Computing size for album \"" + album.Title + "\"...", LogType.Info);
+                Log($"Computing size for album \"{album.Title}\"...", LogType.Info);
 
                 // Artwork
                 if (downloadCoverArt) {
@@ -429,15 +425,13 @@ namespace BandcampDownloader {
                         try {
                             size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
                             sizeRetrieved = true;
-                            Log("Retrieved the size of the cover art file for album \"" + album.Title + "\"", LogType.VerboseInfo);
+                            Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
                         } catch {
                             sizeRetrieved = false;
                             if (tries < Constants.DownloadMaxTries) {
-                                Log("Failed to retrieve the size of the cover art file for album \"" + album.Title +
-                                    "\". Try " + tries + " of " + Constants.DownloadMaxTries, LogType.Warning);
+                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log("Failed to retrieve the size of the cover art file for album \"" + album.Title +
-                                    "\". Hit max retries of " + Constants.DownloadMaxTries + ". Progress update may be wrong.",
+                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}. Progress update may be wrong.",
                                     LogType.Error);
                             }
                         }
@@ -465,16 +459,13 @@ namespace BandcampDownloader {
                             // the mp3 sizes
                             size = FileHelper.GetFileSize(track.Mp3Url, "GET");
                             sizeRetrieved = true;
-                            Log("Retrieved the size of the MP3 file for the track \"" + track.Title + "\"", LogType.VerboseInfo);
+                            Log($"Retrieved the size of the MP3 file for the track \"{track.Title}\"", LogType.VerboseInfo);
                         } catch {
                             sizeRetrieved = false;
                             if (tries < Constants.DownloadMaxTries) {
-                                Log("Failed to retrieve the size of the MP3 file for the track \"" + track.Title +
-                                    "\". Try " + tries + " of " + Constants.DownloadMaxTries, LogType.Warning);
+                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log("Failed to retrieve the size of the MP3 file for the track \"" + track.Title +
-                                    "\". Hit max retries of " + Constants.DownloadMaxTries + ". Progress update may be wrong.",
-                                    LogType.Error);
+                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {Constants.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                             }
                         }
                     } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
