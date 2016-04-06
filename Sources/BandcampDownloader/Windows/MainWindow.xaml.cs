@@ -55,9 +55,11 @@ namespace BandcampDownloader {
         /// Indicates if all messages should be displayed on the log.
         /// </summary>
         private Boolean verboseLog = false;
+
         #endregion Fields
 
         #region Constructor
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
@@ -66,8 +68,8 @@ namespace BandcampDownloader {
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the
             // same time
             ServicePointManager.DefaultConnectionLimit = 50;
-            // Default options
-            textBoxDownloadsLocation.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            // Load settings
+            LoadSettings();
             // Hints
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
@@ -78,6 +80,7 @@ namespace BandcampDownloader {
         #endregion Constructor
 
         #region Methods
+
         /// <summary>
         /// Downloads an album.
         /// </summary>
@@ -148,9 +151,8 @@ namespace BandcampDownloader {
         /// <param name="artwork">The cover art.</param>
         private Boolean DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, Boolean tagTrack,
             Boolean saveCoverArtInTags, TagLib.Picture artwork) {
-                
             Log("Downloading track \"" + track.Title + "\" from url: " + track.Mp3Url, LogType.VerboseInfo);
-                
+
             // Set location to save the file
             String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
 
@@ -484,6 +486,56 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
+        /// If the settings file exists, reads it to sets the settings to the user interface; otherwise sets the settings to their default
+        /// values.
+        /// </summary>
+        private void LoadSettings() {
+            if (File.Exists(Constants.UserSettingsFilePath)) {
+                // Load settings from file
+                try {
+                    UserSettings userSettings = UserSettings.ReadFromFile(Constants.UserSettingsFilePath);
+                    LoadSettingsToUserInterface(userSettings);
+                } catch {
+                    MessageBoxResult userChoice = MessageBox.Show("An error occurred while reading the settings file. Would you like to reset it to the default values?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+                    if (userChoice == MessageBoxResult.Yes) {
+                        // Save default settings to file
+                        var userSettings = new UserSettings();
+                        userSettings.ResetToDefault();
+
+                        try {
+                            userSettings.SaveToFile(Constants.UserSettingsFilePath);
+                        } catch {
+                            MessageBox.Show($"An error occurred while trying to save the settings file. Make sure BandcampDownloader has the right to write to the file: {Constants.UserSettingsFilePath}", "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            } else {
+                // Set settings to default
+                UserSettings userSettings = new UserSettings();
+                userSettings.ResetToDefault();
+                LoadSettingsToUserInterface(userSettings);
+            }
+        }
+
+        /// <summary>
+        /// Sets the user interface according to the specified UserSettings.
+        /// </summary>
+        /// <param name="userSettings">The UserSettings to use.</param>
+        private void LoadSettingsToUserInterface(UserSettings userSettings) {
+            checkBoxConvertToJpg.IsChecked = userSettings.ConvertCoverArtToJpg;
+            checkBoxCoverArtInFolder.IsChecked = userSettings.SaveCoverArtInFolder;
+            checkBoxCoverArtInTags.IsChecked = userSettings.SaveCoverArtInTags;
+            checkBoxForceAlbumsDownload.IsChecked = userSettings.ForceDownloadsOfAllAlbums;
+            checkBoxOneAlbumAtATime.IsChecked = userSettings.DownloadOneAlbumAtATime;
+            checkBoxResizeCoverArt.IsChecked = userSettings.ResizeCoverArt;
+            checkBoxTag.IsChecked = userSettings.TagTracks;
+            checkBoxVerboseLog.IsChecked = userSettings.ShowVerboseLog;
+            textBoxCoverArtMaxSize.Text = userSettings.CoverArtMaxSize;
+            textBoxDownloadsLocation.Text = userSettings.DownloadsLocation;
+        }
+
+        /// <summary>
         /// Displays the specified message in the log with the specified color.
         /// </summary>
         /// <param name="message">The message.</param>
@@ -506,6 +558,33 @@ namespace BandcampDownloader {
                 richTextBoxLog.ScrollToEnd();
                 richTextBoxLog.AppendText(Environment.NewLine);
             }));
+        }
+
+        /// <summary>
+        /// Saves the current settings to the settings file.
+        /// </summary>
+        private void SaveCurrentSettingsToFile() {
+            var userSettings = new UserSettings() {
+                ConvertCoverArtToJpg = checkBoxConvertToJpg.IsChecked.Value,
+                CoverArtMaxSize = textBoxCoverArtMaxSize.Text,
+                DownloadOneAlbumAtATime = checkBoxOneAlbumAtATime.IsChecked.Value,
+                DownloadsLocation = textBoxDownloadsLocation.Text,
+                ForceDownloadsOfAllAlbums = checkBoxForceAlbumsDownload.IsChecked.Value,
+                ResizeCoverArt = checkBoxResizeCoverArt.IsChecked.Value,
+                SaveCoverArtInFolder = checkBoxCoverArtInFolder.IsChecked.Value,
+                SaveCoverArtInTags = checkBoxCoverArtInTags.IsChecked.Value,
+                ShowVerboseLog = checkBoxVerboseLog.IsChecked.Value,
+                TagTracks = checkBoxTag.IsChecked.Value,
+            };
+
+            try {
+                userSettings.SaveToFile(Constants.UserSettingsFilePath);
+            } catch {
+                MessageBox.Show($"An error occurred while trying to save the settings file. Make sure BandcampDownloader has the right to write to the file: {Constants.UserSettingsFilePath}", "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            MessageBox.Show($"Settings have been successfully saved to file: {Constants.UserSettingsFilePath}", "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -620,12 +699,17 @@ namespace BandcampDownloader {
         #endregion Methods
 
         #region Events
+
         private void buttonBrowse_Click(object sender, RoutedEventArgs e) {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
             dialog.Description = "Select the folder to save albums";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsLocation.Text = dialog.SelectedPath;
             }
+        }
+
+        private void buttonSaveSettingsToFile_Click(object sender, RoutedEventArgs e) {
+            SaveCurrentSettingsToFile();
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e) {
@@ -726,7 +810,7 @@ namespace BandcampDownloader {
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Would you like to cancel all downloads?", "Cancel downloads", MessageBoxButton.YesNo,
+            if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo,
                 MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
                 return;
             }
@@ -767,22 +851,6 @@ namespace BandcampDownloader {
             textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
         }
 
-        private void checkBoxVerboseLog_CheckedChanged(object sender, RoutedEventArgs e) {
-            this.verboseLog = checkBoxVerboseLog.IsChecked.Value;
-        }
-
-        private void checkBoxVerboseLog_MouseEnter(object sender, MouseEventArgs e) {
-            checkBoxVerboseLog.Opacity = 1;
-        }
-
-        private void checkBoxVerboseLog_MouseLeave(object sender, MouseEventArgs e) {
-            checkBoxVerboseLog.Opacity = 0.5;
-        }
-
-        private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
-            Process.Start(Constants.ProjectWebsite);
-        }
-
         private void checkBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
             if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null) {
                 return;
@@ -797,6 +865,22 @@ namespace BandcampDownloader {
                 checkBoxResizeCoverArt.IsEnabled = true;
                 textBoxCoverArtMaxSize.IsEnabled = true;
             }
+        }
+
+        private void checkBoxVerboseLog_CheckedChanged(object sender, RoutedEventArgs e) {
+            this.verboseLog = checkBoxVerboseLog.IsChecked.Value;
+        }
+
+        private void checkBoxVerboseLog_MouseEnter(object sender, MouseEventArgs e) {
+            checkBoxVerboseLog.Opacity = 1;
+        }
+
+        private void checkBoxVerboseLog_MouseLeave(object sender, MouseEventArgs e) {
+            checkBoxVerboseLog.Opacity = 0.5;
+        }
+
+        private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
+            Process.Start(Constants.ProjectWebsite);
         }
 
         private void textBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
