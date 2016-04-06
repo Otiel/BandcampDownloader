@@ -550,11 +550,11 @@ namespace BandcampDownloader {
             try {
                 userSettings.SaveToFile(Constants.UserSettingsFilePath);
             } catch {
-                MessageBox.Show($"An error occurred while trying to save the settings file. Make sure BandcampDownloader has the right to write to the file: {Constants.UserSettingsFilePath}", "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log($"An error occurred while trying to save the settings file. Make sure BandcampDownloader has the right to write to the file: {Constants.UserSettingsFilePath}", LogType.Error);
                 return;
             }
 
-            MessageBox.Show($"Settings have been successfully saved to file: {Constants.UserSettingsFilePath}", "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
+            Log($"Settings have been successfully saved to file: {Constants.UserSettingsFilePath}", LogType.Success);
         }
 
         /// <summary>
@@ -777,8 +777,7 @@ namespace BandcampDownloader {
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo,
-                MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+            if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
                 return;
             }
 
