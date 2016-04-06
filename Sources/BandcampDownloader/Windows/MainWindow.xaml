@@ -20,8 +20,8 @@
         </RichTextBox>
         <TextBox Margin="12,12,12,0" Name="textBoxUrls" AcceptsReturn="True" Height="111" VerticalAlignment="Top" Text="" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" GotFocus="textBoxUrls_GotFocus" LostFocus="textBoxUrls_LostFocus" TabIndex="0" />
         <ProgressBar Margin="12,235,12,0" Name="progressBar" Height="15" VerticalAlignment="Top" IsTabStop="False" />
-        <Button Content="Start download" Height="23" Margin="242,206,300,0" Name="buttonStart" VerticalAlignment="Top" HorizontalAlignment="Center" Click="buttonStart_Click" HorizontalContentAlignment="Center" Width="103" TabIndex="11" />
-        <Button Content="Cancel" Height="23" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="419,206,289,0" Name="buttonStop" VerticalAlignment="Top" Visibility="Visible" Click="buttonStop_Click" Width="55" IsEnabled="False" TabIndex="12" />
+        <Button Content="Start download" Height="23" Margin="242,206,300,0" Name="buttonStart" VerticalAlignment="Top" HorizontalAlignment="Center" Click="buttonStart_Click" HorizontalContentAlignment="Center" Width="103" TabIndex="12" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="419,206,289,0" Name="buttonStop" VerticalAlignment="Top" Visibility="Visible" Click="buttonStop_Click" Width="55" IsEnabled="False" TabIndex="13" />
         <Label Height="28" Margin="0,247,10,0" Name="labelProgress" VerticalAlignment="Top" HorizontalAlignment="Right" />
         <TextBox Height="23" Margin="104,129,50,0" Name="textBoxDownloadsLocation" VerticalAlignment="Top" TabIndex="1" />
         <Label Content="Save albums to" Height="28" HorizontalAlignment="Left" Margin="8,127,0,0" Name="labelDownloadsLocation" VerticalAlignment="Top" />
@@ -39,7 +39,7 @@
         <Label Content="pixels" Height="28" HorizontalAlignment="Left" Margin="616,175,0,0" Name="labelPixels" VerticalAlignment="Top" />
         <Label Content="Cover art:" Height="28" HorizontalAlignment="Left" Margin="8,175,0,0" Name="labelCoverArt" VerticalAlignment="Top" />
         <CheckBox Content="Verbose" Height="16" Margin="0,274,32,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="Black" HorizontalAlignment="Right" Width="60" Checked="checkBoxVerboseLog_CheckedChanged" Unchecked="checkBoxVerboseLog_CheckedChanged" MouseEnter="checkBoxVerboseLog_MouseEnter" MouseLeave="checkBoxVerboseLog_MouseLeave" Opacity="0.5" IsTabStop="False" />
-        <Button Height="22" Margin="0,177,12,0" x:Name="buttonSaveSettingsToFile" VerticalAlignment="Top" HorizontalAlignment="Right" Width="22" Click="buttonSaveSettingsToFile_Click" TabIndex="2" ToolTip="Save current settings to file">
+        <Button Height="22" Margin="0,177,12,0" x:Name="buttonSaveSettingsToFile" VerticalAlignment="Top" HorizontalAlignment="Right" Width="22" Click="buttonSaveSettingsToFile_Click" TabIndex="11" ToolTip="Save current settings to file">
             <StackPanel>
                 <Image x:Name="imageGearDisk" Source="pack://application:,,,/Resources/GearDisk.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" />
             </StackPanel>
