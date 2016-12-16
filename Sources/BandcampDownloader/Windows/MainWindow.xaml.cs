@@ -88,7 +88,7 @@ namespace BandcampDownloader {
             }
 
             // Create directory to place track files
-            String directoryPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + "\\";
+            String directoryPath = downloadsFolder + "\\";
             try {
                 Directory.CreateDirectory(directoryPath);
             } catch {
@@ -746,7 +746,7 @@ namespace BandcampDownloader {
                 if (oneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
+                        DownloadAlbum(album, downloadLocationParse(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
                     }
                 } else {
                     // Parallel download
@@ -754,7 +754,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize));
+                            DownloadAlbum(album, downloadLocationParse(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
@@ -772,6 +772,12 @@ namespace BandcampDownloader {
                 } catch {
                 }
             });
+        }
+
+        private string downloadLocationParse(string downloadLocation, Album album){
+            downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
+            downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
+            return downloadLocation;
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
