@@ -18,6 +18,12 @@ namespace BandcampDownloader {
         // Annotation required to allow serialization of static field
         [JsonProperty]
         public static int DownloadMaxTries { get; set; }
+        // Time in seconds between retries
+        [JsonProperty]
+        public static double DownloadRetryCooldown { get; set; }
+        // Exponential per cooldown - ex. (value of 1.2 would yield cooldowns of x^(1.2^0), x^(1.2^1), x^(1.2^2), ..)
+        [JsonProperty]
+        public static double DownloadRetryExponential { get; set; }
 
         /// <summary>
         ///  Creates a new UserSettings with default values.
@@ -56,6 +62,8 @@ namespace BandcampDownloader {
             ShowVerboseLog = false;
             TagTracks = true;
             DownloadMaxTries = 10;
+            DownloadRetryCooldown = 0;
+            DownloadRetryExponential = 1;
         }
 
         /// <summary>

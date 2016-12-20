@@ -153,7 +153,9 @@ namespace BandcampDownloader {
                     };
 
                     // Warn & tag when downloaded
-                    webClient.DownloadFileCompleted += (s, e) => {
+                    webClient.DownloadFileCompleted += (s, e) =>
+                    {
+                        cooldown(tries);
                         tries++;
 
                         if (!e.Cancelled && e.Error == null) {
@@ -400,7 +402,7 @@ namespace BandcampDownloader {
                             // Abort
                             return new List<TrackFile>();
                         }
-
+                        cooldown(tries);
                         tries++;
                         try {
                             size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
@@ -430,7 +432,7 @@ namespace BandcampDownloader {
                             // Abort
                             return new List<TrackFile>();
                         }
-
+                        cooldown(tries);
                         tries++;
                         try {
                             // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
@@ -867,6 +869,12 @@ namespace BandcampDownloader {
                 textBoxUrls.Text = Constants.UrlsHint;
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             }
+        }
+
+        private void cooldown(int NumTries)
+        {
+            if (UserSettings.DownloadRetryCooldown != 0)
+                Thread.Sleep((int) ((Math.Pow(UserSettings.DownloadRetryExponential, NumTries))*UserSettings.DownloadRetryCooldown*1000));
         }
 
         #endregion Events
