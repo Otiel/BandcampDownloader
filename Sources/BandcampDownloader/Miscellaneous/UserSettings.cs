@@ -15,6 +15,9 @@ namespace BandcampDownloader {
         public Boolean SaveCoverArtInTags { get; set; }
         public Boolean ShowVerboseLog { get; set; }
         public Boolean TagTracks { get; set; }
+        // Annotation required to allow serialization of static field
+        [JsonProperty]
+        public static int DownloadMaxTries { get; set; }
 
         /// <summary>
         ///  Creates a new UserSettings with default values.
@@ -52,6 +55,7 @@ namespace BandcampDownloader {
             SaveCoverArtInTags = true;
             ShowVerboseLog = false;
             TagTracks = true;
+            DownloadMaxTries = 10;
         }
 
         /// <summary>

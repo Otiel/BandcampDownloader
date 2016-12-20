@@ -180,10 +180,10 @@ namespace BandcampDownloader {
 
                             Log($"Downloaded track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -207,7 +207,7 @@ namespace BandcampDownloader {
                         this.pendingDownloads.Remove(webClient);
                     }
                 }
-            } while (!trackDownloaded && tries < Constants.DownloadMaxTries);
+            } while (!trackDownloaded && tries < UserSettings.DownloadMaxTries);
 
             return trackDownloaded;
         }
@@ -271,10 +271,10 @@ namespace BandcampDownloader {
 
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -298,7 +298,7 @@ namespace BandcampDownloader {
                         this.pendingDownloads.Remove(webClient);
                     }
                 }
-            } while (!artworkDownloaded && tries < Constants.DownloadMaxTries);
+            } while (!artworkDownloaded && tries < UserSettings.DownloadMaxTries);
 
             return artwork;
         }
@@ -408,13 +408,13 @@ namespace BandcampDownloader {
                             Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
                         } catch {
                             sizeRetrieved = false;
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                             }
                         }
-                    } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
+                    } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
 
                     files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
@@ -441,13 +441,13 @@ namespace BandcampDownloader {
                             Log($"Retrieved the size of the MP3 file for the track \"{track.Title}\"", LogType.VerboseInfo);
                         } catch {
                             sizeRetrieved = false;
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {Constants.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                             }
                         }
-                    } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
+                    } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
 
                     files.Add(new TrackFile(track.Mp3Url, 0, size));
                 }
