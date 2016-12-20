@@ -24,6 +24,8 @@ namespace BandcampDownloader {
         // Exponential per cooldown - ex. (value of 1.2 would yield cooldowns of x^(1.2^0), x^(1.2^1), x^(1.2^2), ..)
         [JsonProperty]
         public static double DownloadRetryExponential { get; set; }
+        [JsonProperty]
+        public static double AllowableFileSizeDifference { get; set; }
 
         /// <summary>
         ///  Creates a new UserSettings with default values.
@@ -64,6 +66,7 @@ namespace BandcampDownloader {
             DownloadMaxTries = 10;
             DownloadRetryCooldown = 0;
             DownloadRetryExponential = 1;
+            AllowableFileSizeDifference = 0.05;
         }
 
         /// <summary>

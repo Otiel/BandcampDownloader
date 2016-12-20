@@ -120,7 +120,7 @@ namespace BandcampDownloader {
                 if (tracksDownloaded.All(x => x == true)) {
                     Log($"Successfully downloaded album \"{album.Title}\"", LogType.Success);
                 } else {
-                    Log($"Finished downloading album \"{album.Title}\". Some tracks could not be downloaded", LogType.Success);
+                    Log($"Finished downloading album \"{album.Title}\". Some tracks were not downloaded", LogType.Success);
                 }
             }
         }
@@ -143,10 +143,24 @@ namespace BandcampDownloader {
             int tries = 0;
             Boolean trackDownloaded = false;
 
-            do {
+            if (File.Exists(trackPath))
+            {
+                long length = new FileInfo(trackPath).Length;
+                foreach (TrackFile trackFile in filesDownload)
+                    if (track.Mp3Url == trackFile.Url &&
+                        trackFile.Size > length - (trackFile.Size * UserSettings.AllowableFileSizeDifference) &&
+                        trackFile.Size < length + (trackFile.Size * UserSettings.AllowableFileSizeDifference))
+                    {
+                        Log($"Track already exists within allowed filesize range: track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                        return false;
+                    }
+            }
+
+            do
+            {
                 var doneEvent = new AutoResetEvent(false);
 
-                using (var webClient = new WebClient()) {
+                    using (var webClient = new WebClient()) {
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
                         UpdateProgress(track.Mp3Url, e.BytesReceived);
