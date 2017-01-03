@@ -49,6 +49,11 @@ Bugs/Ideas
 
 If you have a bug to report, or simply an idea for an improvement or a new feature, please add them in the [issue tracker](https://github.com/Otiel/BandcampDownloader/issues).
 
+Help
+----
+
+Check the [wiki](https://github.com/Otiel/BandcampDownloader/wiki) for first help or open an [issue](https://github.com/Otiel/BandcampDownloader/issues) if you cannot find what you are looking for.
+
 License
 -------
 
