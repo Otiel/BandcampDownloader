@@ -88,7 +88,7 @@ namespace BandcampDownloader {
             }
 
             // Create directory to place track files
-            String directoryPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + "\\";
+            String directoryPath = downloadsFolder + "\\";
             try {
                 Directory.CreateDirectory(directoryPath);
             } catch {
@@ -120,7 +120,7 @@ namespace BandcampDownloader {
                 if (tracksDownloaded.All(x => x == true)) {
                     Log($"Successfully downloaded album \"{album.Title}\"", LogType.Success);
                 } else {
-                    Log($"Finished downloading album \"{album.Title}\". Some tracks could not be downloaded", LogType.Success);
+                    Log($"Finished downloading album \"{album.Title}\". Some tracks were not downloaded", LogType.Success);
                 }
             }
         }
@@ -143,17 +143,33 @@ namespace BandcampDownloader {
             int tries = 0;
             Boolean trackDownloaded = false;
 
-            do {
+            if (File.Exists(trackPath))
+            {
+                long length = new FileInfo(trackPath).Length;
+                foreach (TrackFile trackFile in filesDownload)
+                    if (track.Mp3Url == trackFile.Url &&
+                        trackFile.Size > length - (trackFile.Size * UserSettings.AllowableFileSizeDifference) &&
+                        trackFile.Size < length + (trackFile.Size * UserSettings.AllowableFileSizeDifference))
+                    {
+                        Log($"Track already exists within allowed filesize range: track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                        return false;
+                    }
+            }
+
+            do
+            {
                 var doneEvent = new AutoResetEvent(false);
 
-                using (var webClient = new WebClient()) {
+                    using (var webClient = new WebClient()) {
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
                         UpdateProgress(track.Mp3Url, e.BytesReceived);
                     };
 
                     // Warn & tag when downloaded
-                    webClient.DownloadFileCompleted += (s, e) => {
+                    webClient.DownloadFileCompleted += (s, e) =>
+                    {
+                        cooldown(tries);
                         tries++;
 
                         if (!e.Cancelled && e.Error == null) {
@@ -180,10 +196,10 @@ namespace BandcampDownloader {
 
                             Log($"Downloaded track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -207,7 +223,7 @@ namespace BandcampDownloader {
                         this.pendingDownloads.Remove(webClient);
                     }
                 }
-            } while (!trackDownloaded && tries < Constants.DownloadMaxTries);
+            } while (!trackDownloaded && tries < UserSettings.DownloadMaxTries);
 
             return trackDownloaded;
         }
@@ -271,10 +287,10 @@ namespace BandcampDownloader {
 
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -298,7 +314,7 @@ namespace BandcampDownloader {
                         this.pendingDownloads.Remove(webClient);
                     }
                 }
-            } while (!artworkDownloaded && tries < Constants.DownloadMaxTries);
+            } while (!artworkDownloaded && tries < UserSettings.DownloadMaxTries);
 
             return artwork;
         }
@@ -400,7 +416,7 @@ namespace BandcampDownloader {
                             // Abort
                             return new List<TrackFile>();
                         }
-
+                        cooldown(tries);
                         tries++;
                         try {
                             size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
@@ -408,13 +424,13 @@ namespace BandcampDownloader {
                             Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
                         } catch {
                             sizeRetrieved = false;
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {Constants.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                             }
                         }
-                    } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
+                    } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
 
                     files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
@@ -430,7 +446,7 @@ namespace BandcampDownloader {
                             // Abort
                             return new List<TrackFile>();
                         }
-
+                        cooldown(tries);
                         tries++;
                         try {
                             // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
@@ -441,13 +457,13 @@ namespace BandcampDownloader {
                             Log($"Retrieved the size of the MP3 file for the track \"{track.Title}\"", LogType.VerboseInfo);
                         } catch {
                             sizeRetrieved = false;
-                            if (tries < Constants.DownloadMaxTries) {
-                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {Constants.DownloadMaxTries}", LogType.Warning);
+                            if (tries < UserSettings.DownloadMaxTries) {
+                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {Constants.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                             }
                         }
-                    } while (!sizeRetrieved && tries < Constants.DownloadMaxTries);
+                    } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
 
                     files.Add(new TrackFile(track.Mp3Url, 0, size));
                 }
@@ -746,7 +762,7 @@ namespace BandcampDownloader {
                 if (oneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
+                        DownloadAlbum(album, downloadLocationParse(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
                     }
                 } else {
                     // Parallel download
@@ -754,7 +770,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, downloadsFolder, tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize));
+                            DownloadAlbum(album, downloadLocationParse(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
@@ -772,6 +788,12 @@ namespace BandcampDownloader {
                 } catch {
                 }
             });
+        }
+
+        private string downloadLocationParse(string downloadLocation, Album album){
+            downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
+            downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
+            return downloadLocation;
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
@@ -861,6 +883,12 @@ namespace BandcampDownloader {
                 textBoxUrls.Text = Constants.UrlsHint;
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             }
+        }
+
+        private void cooldown(int NumTries)
+        {
+            if (UserSettings.DownloadRetryCooldown != 0)
+                Thread.Sleep((int) ((Math.Pow(UserSettings.DownloadRetryExponential, NumTries))*UserSettings.DownloadRetryCooldown*1000));
         }
 
         #endregion Events

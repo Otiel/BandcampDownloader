@@ -15,6 +15,17 @@ namespace BandcampDownloader {
         public Boolean SaveCoverArtInTags { get; set; }
         public Boolean ShowVerboseLog { get; set; }
         public Boolean TagTracks { get; set; }
+        // Annotation required to allow serialization of static field
+        [JsonProperty]
+        public static int DownloadMaxTries { get; set; }
+        // Time in seconds between retries
+        [JsonProperty]
+        public static double DownloadRetryCooldown { get; set; }
+        // Exponential per cooldown - ex. (value of 1.2 would yield cooldowns of x^(1.2^0), x^(1.2^1), x^(1.2^2), ..)
+        [JsonProperty]
+        public static double DownloadRetryExponential { get; set; }
+        [JsonProperty]
+        public static double AllowableFileSizeDifference { get; set; }
 
         /// <summary>
         ///  Creates a new UserSettings with default values.
@@ -45,13 +56,17 @@ namespace BandcampDownloader {
             ConvertCoverArtToJpg = true;
             CoverArtMaxSize = "1000";
             DownloadOneAlbumAtATime = false;
-            DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{album}";
             ForceDownloadsOfAllAlbums = false;
             ResizeCoverArt = true;
             SaveCoverArtInFolder = false;
             SaveCoverArtInTags = true;
             ShowVerboseLog = false;
             TagTracks = true;
+            DownloadMaxTries = 10;
+            DownloadRetryCooldown = 0;
+            DownloadRetryExponential = 1;
+            AllowableFileSizeDifference = 0.05;
         }
 
         /// <summary>

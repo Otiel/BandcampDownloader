@@ -4,11 +4,7 @@ using System.Reflection;
 
 namespace BandcampDownloader {
 
-    internal static class Constants {
-        /// <summary>
-        /// The maximum tries that can be done when downloading a file.
-        /// </summary>
-        public static readonly int DownloadMaxTries = 10;
+    internal static class Constants {      
         /// <summary>
         /// The website URL of BandcampDownloader.
         /// </summary>
