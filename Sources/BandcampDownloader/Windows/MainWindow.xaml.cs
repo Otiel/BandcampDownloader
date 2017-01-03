@@ -143,33 +143,29 @@ namespace BandcampDownloader {
             int tries = 0;
             Boolean trackDownloaded = false;
 
-            if (File.Exists(trackPath))
-            {
+            if (File.Exists(trackPath)) {
                 long length = new FileInfo(trackPath).Length;
                 foreach (TrackFile trackFile in filesDownload)
                     if (track.Mp3Url == trackFile.Url &&
-                        trackFile.Size > length - (trackFile.Size * UserSettings.AllowableFileSizeDifference) &&
-                        trackFile.Size < length + (trackFile.Size * UserSettings.AllowableFileSizeDifference))
-                    {
+                        trackFile.Size > length - ( trackFile.Size * UserSettings.AllowableFileSizeDifference ) &&
+                        trackFile.Size < length + ( trackFile.Size * UserSettings.AllowableFileSizeDifference )) {
                         Log($"Track already exists within allowed filesize range: track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
             }
 
-            do
-            {
+            do {
                 var doneEvent = new AutoResetEvent(false);
 
-                    using (var webClient = new WebClient()) {
+                using (var webClient = new WebClient()) {
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
                         UpdateProgress(track.Mp3Url, e.BytesReceived);
                     };
 
                     // Warn & tag when downloaded
-                    webClient.DownloadFileCompleted += (s, e) =>
-                    {
-                        cooldown(tries);
+                    webClient.DownloadFileCompleted += (s, e) => {
+                        WaitForCooldown(tries);
                         tries++;
 
                         if (!e.Cancelled && e.Error == null) {
@@ -416,7 +412,7 @@ namespace BandcampDownloader {
                             // Abort
                             return new List<TrackFile>();
                         }
-                        cooldown(tries);
+                        WaitForCooldown(tries);
                         tries++;
                         try {
                             size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
@@ -446,7 +442,7 @@ namespace BandcampDownloader {
                             // Abort
                             return new List<TrackFile>();
                         }
-                        cooldown(tries);
+                        WaitForCooldown(tries);
                         tries++;
                         try {
                             // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
@@ -542,6 +538,17 @@ namespace BandcampDownloader {
                 richTextBoxLog.ScrollToEnd();
                 richTextBoxLog.AppendText(Environment.NewLine);
             }));
+        }
+
+        /// <summary>
+        /// Replaces "{artist}" and "{album}" strings by the corresponding values in the specified download location.
+        /// </summary>
+        /// <param name="downloadLocation">The download location to parse.</param>
+        /// <param name="album">The album currently downloaded.</param>
+        private String ParseDownloadLocation(string downloadLocation, Album album) {
+            downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
+            downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
+            return downloadLocation;
         }
 
         /// <summary>
@@ -680,6 +687,12 @@ namespace BandcampDownloader {
             }
         }
 
+        private void WaitForCooldown(int NumTries) {
+            if (UserSettings.DownloadRetryCooldown != 0) {
+                Thread.Sleep((int) ( ( Math.Pow(UserSettings.DownloadRetryExponential, NumTries) ) * UserSettings.DownloadRetryCooldown * 1000 ));
+            }
+        }
+
         #endregion Methods
 
         #region Events
@@ -762,7 +775,7 @@ namespace BandcampDownloader {
                 if (oneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, downloadLocationParse(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
+                        DownloadAlbum(album, ParseDownloadLocation(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
                     }
                 } else {
                     // Parallel download
@@ -770,7 +783,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, downloadLocationParse(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize));
+                            DownloadAlbum(album, ParseDownloadLocation(downloadsFolder, album), tagTracks, saveCoverArtInTags, saveCoverArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
@@ -788,12 +801,6 @@ namespace BandcampDownloader {
                 } catch {
                 }
             });
-        }
-
-        private string downloadLocationParse(string downloadLocation, Album album){
-            downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
-            downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
-            return downloadLocation;
         }
 
         private void buttonStop_Click(object sender, RoutedEventArgs e) {
@@ -883,12 +890,6 @@ namespace BandcampDownloader {
                 textBoxUrls.Text = Constants.UrlsHint;
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             }
-        }
-
-        private void cooldown(int NumTries)
-        {
-            if (UserSettings.DownloadRetryCooldown != 0)
-                Thread.Sleep((int) ((Math.Pow(UserSettings.DownloadRetryExponential, NumTries))*UserSettings.DownloadRetryCooldown*1000));
         }
 
         #endregion Events
