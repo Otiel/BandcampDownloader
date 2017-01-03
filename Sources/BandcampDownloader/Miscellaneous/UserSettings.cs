@@ -56,7 +56,7 @@ namespace BandcampDownloader {
             ConvertCoverArtToJpg = true;
             CoverArtMaxSize = "1000";
             DownloadOneAlbumAtATime = false;
-            DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{album}";
+            DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
             ForceDownloadsOfAllAlbums = false;
             ResizeCoverArt = true;
             SaveCoverArtInFolder = false;
