@@ -137,9 +137,8 @@ namespace BandcampDownloader {
             }
 
             // Create directory to place track files
-            String directoryPath = downloadsFolder + "\\";
             try {
-                Directory.CreateDirectory(directoryPath);
+                Directory.CreateDirectory(downloadsFolder);
             } catch {
                 Log("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose", LogType.Error);
                 return;
@@ -158,7 +157,7 @@ namespace BandcampDownloader {
             for (int i = 0; i < album.Tracks.Count; i++) {
                 // Temporarily save the index or we will have a race condition exception when i hits its maximum value
                 int currentIndex = i;
-                tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(directoryPath, album, album.Tracks[currentIndex], tagTracks, saveCoverArtInTags, artwork));
+                tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(downloadsFolder, album, album.Tracks[currentIndex], tagTracks, saveCoverArtInTags, artwork));
             }
 
             // Wait for all tracks to be downloaded before saying the album is downloaded
@@ -187,7 +186,7 @@ namespace BandcampDownloader {
             Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
             // Set location to save the file
-            String trackPath = albumDirectoryPath + track.GetFileName(album.Artist);
+            String trackPath = albumDirectoryPath + "\\" + track.GetFileName(album.Artist);
 
             int tries = 0;
             Boolean trackDownloaded = false;
@@ -285,7 +284,7 @@ namespace BandcampDownloader {
         /// <returns></returns>
         private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder, Boolean saveCovertArtInFolder, Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
             // Compute path where to save artwork
-            String artworkPath = ( saveCovertArtInFolder ? downloadsFolder + "\\" + album.Title.ToAllowedFileName() : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+            String artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             TagLib.Picture artwork = null;
 
             int tries = 0;
