@@ -52,8 +52,8 @@ namespace BandcampDownloader {
             }
             String artistPage = regex.Match(htmlCode).Groups["url"].Value;
 
-            // Get albums relative urls
-            regex = new Regex("href=\"(?<url>/album/.*)\"");
+            // Get albums ("real" albums or track-only pages) relative urls
+            regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
             if (!regex.IsMatch(htmlCode)) {
                 throw new NoAlbumFoundException();
             }
