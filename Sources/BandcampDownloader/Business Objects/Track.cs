@@ -7,8 +7,7 @@ namespace BandcampDownloader {
         public int    Number { get; set; }
         public String Mp3Url { get; set; }
 
-        public String GetFileName(String artist)
-        {
+        public String GetFileName(String artist) {
             String fileName =
                 UserSettings.FilenameFormat.Replace("{artist}", artist)
                     .Replace("{title}", Title)

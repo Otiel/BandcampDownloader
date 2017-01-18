@@ -27,8 +27,7 @@ namespace BandcampDownloader {
             // Deserialize JSON
             Album album;
             try {
-                var settings = new JsonSerializerSettings
-                {
+                var settings = new JsonSerializerSettings {
                     NullValueHandling = NullValueHandling.Ignore,
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
