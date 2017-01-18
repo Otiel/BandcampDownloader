@@ -26,6 +26,8 @@ namespace BandcampDownloader {
         public static double DownloadRetryExponential { get; set; }
         [JsonProperty]
         public static double AllowableFileSizeDifference { get; set; }
+        [JsonProperty]
+        public static String FilenameFormat { get; set; }
 
         /// <summary>
         ///  Creates a new UserSettings with default values.
@@ -67,6 +69,7 @@ namespace BandcampDownloader {
             DownloadRetryCooldown = 0;
             DownloadRetryExponential = 1;
             AllowableFileSizeDifference = 0.05;
+            FilenameFormat = "{tracknum} {artist} - {title}.mp3";//Number.ToString("00") + " " + artist + " - " + Title + ".mp3";
         }
 
         /// <summary>
