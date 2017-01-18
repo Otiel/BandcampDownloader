@@ -9,7 +9,7 @@ namespace BandcampDownloader {
         public String CoverArtMaxSize { get; set; }
         public Boolean DownloadOneAlbumAtATime { get; set; }
         public String DownloadsLocation { get; set; }
-        public Boolean ForceDownloadsOfAllAlbums { get; set; }
+        public Boolean DownloadArtistDiscography { get; set; }
         public Boolean ResizeCoverArt { get; set; }
         public Boolean SaveCoverArtInFolder { get; set; }
         public Boolean SaveCoverArtInTags { get; set; }
@@ -59,7 +59,7 @@ namespace BandcampDownloader {
             CoverArtMaxSize = "1000";
             DownloadOneAlbumAtATime = false;
             DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
-            ForceDownloadsOfAllAlbums = false;
+            DownloadArtistDiscography = false;
             ResizeCoverArt = true;
             SaveCoverArtInFolder = false;
             SaveCoverArtInTags = true;

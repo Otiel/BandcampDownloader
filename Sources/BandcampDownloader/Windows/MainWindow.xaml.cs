@@ -7,6 +7,7 @@ using System.Media;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -402,14 +403,14 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the albums URLs referred in the specified URLs.
+        /// Returns the artists discography from any URL (artist, album, track).
         /// </summary>
         /// <param name="urls">The URLs.</param>
-        private List<String> GetAlbumsUrls(List<String> urls) {
+        private List<String> GetArtistDiscography(List<String> urls) {
             var albumsUrls = new List<String>();
 
             foreach (String url in urls) {
-                Log($"Retrieving albums referred on {url}", LogType.Info);
+                Log($"Retrieving artist discography from {url}", LogType.Info);
 
                 // Retrieve URL HTML source code
                 String htmlCode = "";
@@ -427,11 +428,34 @@ namespace BandcampDownloader {
                     }
                 }
 
+                // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
+                var regex = new Regex("band_url = \"(?<url>.*)\"");
+                if (!regex.IsMatch(htmlCode)) {
+                    Log($"No discography could be found on {url}. Try to uncheck the \"Download artist discography\" option", LogType.Error);
+                    continue;
+                }
+                String artistMusicPage = regex.Match(htmlCode).Groups["url"].Value + "/music";
+
+                // Retrieve artist "music" page HTML source code
+                using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
+                    if (this.userCancelled) {
+                        // Abort
+                        return new List<String>();
+                    }
+
+                    try {
+                        htmlCode = webClient.DownloadString(artistMusicPage);
+                    } catch {
+                        Log($"Could not retrieve data for {artistMusicPage}", LogType.Error);
+                        continue;
+                    }
+                }
+
                 // Get albums referred on the page
                 try {
                     albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
                 } catch (NoAlbumFoundException) {
-                    Log($"No referred album could be found on {url}. Try to uncheck the \"Force download of all albums\" option", LogType.Error);
+                    Log($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error);
                     continue;
                 }
             }
@@ -554,7 +578,7 @@ namespace BandcampDownloader {
             checkBoxConvertToJpg.IsChecked = userSettings.ConvertCoverArtToJpg;
             checkBoxCoverArtInFolder.IsChecked = userSettings.SaveCoverArtInFolder;
             checkBoxCoverArtInTags.IsChecked = userSettings.SaveCoverArtInTags;
-            checkBoxForceAlbumsDownload.IsChecked = userSettings.ForceDownloadsOfAllAlbums;
+            checkBoxDownloadDiscography.IsChecked = userSettings.DownloadArtistDiscography;
             checkBoxOneAlbumAtATime.IsChecked = userSettings.DownloadOneAlbumAtATime;
             checkBoxResizeCoverArt.IsChecked = userSettings.ResizeCoverArt;
             checkBoxTag.IsChecked = userSettings.TagTracks;
@@ -608,7 +632,7 @@ namespace BandcampDownloader {
                 CoverArtMaxSize = textBoxCoverArtMaxSize.Text,
                 DownloadOneAlbumAtATime = checkBoxOneAlbumAtATime.IsChecked.Value,
                 DownloadsLocation = textBoxDownloadsLocation.Text,
-                ForceDownloadsOfAllAlbums = checkBoxForceAlbumsDownload.IsChecked.Value,
+                DownloadArtistDiscography = checkBoxDownloadDiscography.IsChecked.Value,
                 ResizeCoverArt = checkBoxResizeCoverArt.IsChecked.Value,
                 SaveCoverArtInFolder = checkBoxCoverArtInFolder.IsChecked.Value,
                 SaveCoverArtInTags = checkBoxCoverArtInTags.IsChecked.Value,
@@ -649,7 +673,7 @@ namespace BandcampDownloader {
                     checkBoxCoverArtInTags.IsEnabled = false;
                     checkBoxTag.IsEnabled = false;
                     checkBoxOneAlbumAtATime.IsEnabled = false;
-                    checkBoxForceAlbumsDownload.IsEnabled = false;
+                    checkBoxDownloadDiscography.IsEnabled = false;
                     checkBoxConvertToJpg.IsEnabled = false;
                     checkBoxResizeCoverArt.IsEnabled = false;
                     textBoxCoverArtMaxSize.IsEnabled = false;
@@ -671,7 +695,7 @@ namespace BandcampDownloader {
                     checkBoxCoverArtInTags.IsEnabled = true;
                     checkBoxTag.IsEnabled = true;
                     checkBoxOneAlbumAtATime.IsEnabled = true;
-                    checkBoxForceAlbumsDownload.IsEnabled = true;
+                    checkBoxDownloadDiscography.IsEnabled = true;
                     labelDownloadSpeed.Content = "";
                     checkBoxConvertToJpg.IsEnabled = true;
                     checkBoxResizeCoverArt.IsEnabled = true;
@@ -778,7 +802,7 @@ namespace BandcampDownloader {
             Boolean convertCoverArtToJpg = checkBoxConvertToJpg.IsChecked.Value;
             Boolean resizeCoverArt = checkBoxResizeCoverArt.IsChecked.Value;
             Boolean oneAlbumAtATime = checkBoxOneAlbumAtATime.IsChecked.Value;
-            Boolean forceAlbumsDownload = checkBoxForceAlbumsDownload.IsChecked.Value;
+            Boolean downloadArtistDiscography = checkBoxDownloadDiscography.IsChecked.Value;
             String downloadsFolder = textBoxDownloadsLocation.Text;
             this.pendingDownloads = new List<WebClient>();
 
@@ -796,8 +820,8 @@ namespace BandcampDownloader {
 
             Task.Factory.StartNew(() => {
                 // Get URLs of albums to download
-                if (forceAlbumsDownload) {
-                    urls = GetAlbumsUrls(userUrls);
+                if (downloadArtistDiscography) {
+                    urls = GetArtistDiscography(userUrls);
                 } else {
                     urls = userUrls;
                 }
