@@ -27,7 +27,12 @@ namespace BandcampDownloader {
             // Deserialize JSON
             Album album;
             try {
-                album = JsonConvert.DeserializeObject<JsonAlbum>(albumData).ToAlbum();
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore
+                };
+                album = JsonConvert.DeserializeObject<JsonAlbum>(albumData, settings).ToAlbum();
             } catch (Exception e) {
                 throw new Exception("Could not deserialize JSON data.", e);
             }
