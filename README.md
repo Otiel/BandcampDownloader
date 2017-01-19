@@ -37,6 +37,11 @@ Screenshot
 
 ![Screenshot](http://i.imgur.com/J41KgJI.png)
 
+Release notes
+-------------
+
+See the [releases page](https://github.com/Otiel/BandcampDownloader/releases).
+
 Dependencies
 ------------
 
