@@ -207,6 +207,9 @@ namespace BandcampDownloader {
                 var doneEvent = new AutoResetEvent(false);
 
                 using (var webClient = new WebClient()) {
+                    if (webClient.Proxy != null)
+                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
                         UpdateProgress(track.Mp3Url, e.BytesReceived);
@@ -295,6 +298,9 @@ namespace BandcampDownloader {
                 var doneEvent = new AutoResetEvent(false);
 
                 using (var webClient = new WebClient()) {
+                    if (webClient.Proxy != null)
+                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
                         UpdateProgress(album.ArtworkUrl, e.BytesReceived);
@@ -377,6 +383,9 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
+                    if (webClient.Proxy != null)
+                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+
                     if (this.userCancelled) {
                         // Abort
                         return new List<Album>();
@@ -415,6 +424,9 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
+                    if (webClient.Proxy != null)
+                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+
                     if (this.userCancelled) {
                         // Abort
                         return new List<String>();
@@ -438,6 +450,9 @@ namespace BandcampDownloader {
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
+                    if (webClient.Proxy != null)
+                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+
                     if (this.userCancelled) {
                         // Abort
                         return new List<String>();
