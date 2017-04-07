@@ -65,11 +65,11 @@ namespace BandcampDownloader {
             SaveCoverArtInTags = true;
             ShowVerboseLog = false;
             TagTracks = true;
-            DownloadMaxTries = 10;
-            DownloadRetryCooldown = 0;
-            DownloadRetryExponential = 1;
+            DownloadMaxTries = 7;
+            DownloadRetryCooldown = 0.2;
+            DownloadRetryExponential = 4;
             AllowableFileSizeDifference = 0.05;
-            FilenameFormat = "{tracknum} {artist} - {title}.mp3";//Number.ToString("00") + " " + artist + " - " + Title + ".mp3";
+            FilenameFormat = "{tracknum} {artist} - {title}.mp3";
         }
 
         /// <summary>
