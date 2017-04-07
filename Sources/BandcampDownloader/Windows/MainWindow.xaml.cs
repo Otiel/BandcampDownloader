@@ -633,6 +633,8 @@ namespace BandcampDownloader {
         /// <param name="downloadLocation">The download location to parse.</param>
         /// <param name="album">The album currently downloaded.</param>
         private String ParseDownloadLocation(string downloadLocation, Album album) {
+            string ReleaseDate = album.ReleaseDate.Day + "_" + album.ReleaseDate.Month + "_" + album.ReleaseDate.Year;
+            downloadLocation = downloadLocation.Replace("{date}", ReleaseDate.ToAllowedFileName());
             downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
             downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
             return downloadLocation;
