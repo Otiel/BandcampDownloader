@@ -58,6 +58,7 @@ namespace BandcampDownloader {
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the
             // same time
             ServicePointManager.DefaultConnectionLimit = 50;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             // Load settings
             LoadSettings();
             // Hints
