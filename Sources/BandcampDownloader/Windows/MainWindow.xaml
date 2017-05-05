@@ -6,7 +6,7 @@
         MinWidth="780" MinHeight="400"
         WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" 
         Icon="pack://application:,,,/Resources/Cloud.ico" 
-        Name="WindowMain">
+        Name="WindowMain" Closing="WindowMain_Closing">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>

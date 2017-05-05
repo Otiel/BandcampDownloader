@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace BandcampDownloader {
 
         #region Fields
 
+        /// <summary>
+        /// Indicates if there are active downloads
+        /// </summary>
+        private Boolean activeDownloads = false;
         /// <summary>
         /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to
         /// download.
@@ -73,6 +78,7 @@ namespace BandcampDownloader {
         #endregion Constructor
 
         #region Methods
+
         /// <summary>
         /// Displays a message if a new version is available.
         /// </summary>
@@ -826,6 +832,7 @@ namespace BandcampDownloader {
             this.pendingDownloads = new List<WebClient>();
 
             // Set controls to "downloading..." state
+            this.activeDownloads = true;
             UpdateControlsState(true);
 
             Log("Starting download...", LogType.Info);
@@ -885,6 +892,7 @@ namespace BandcampDownloader {
                     Log("Downloads cancelled by user", LogType.Info);
                 }
                 // Set controls to "ready" state
+                this.activeDownloads = false;
                 UpdateControlsState(false);
                 // Play a sound
                 try {
@@ -980,6 +988,16 @@ namespace BandcampDownloader {
                 // Show the hint message
                 textBoxUrls.Text = Constants.UrlsHint;
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
+            }
+        }
+
+        private void WindowMain_Closing(object sender, CancelEventArgs e) {
+            if (this.activeDownloads) {
+                // There are active downloads, ask for confirmation
+                if (MessageBox.Show("There are currently active downloads. Are you sure you want to close the application and stop all downloads?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                    // Cancel closing the window
+                    e.Cancel = true;
+                }
             }
         }
 
