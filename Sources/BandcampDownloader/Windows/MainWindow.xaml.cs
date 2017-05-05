@@ -296,6 +296,11 @@ namespace BandcampDownloader {
         private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder, Boolean saveCovertArtInFolder, Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
             // Compute path where to save artwork
             String artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+            if (artworkPath.Length > 256) {
+                // Shorten the path (Windows doesn't support a path > 256 characters)
+                artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+            }
+
             TagLib.Picture artwork = null;
 
             int tries = 0;
@@ -635,11 +640,11 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces "{artist}" and "{album}" strings by the corresponding values in the specified download location.
+        /// Replaces placeholders strings by the corresponding values in the specified download location.
         /// </summary>
         /// <param name="downloadLocation">The download location to parse.</param>
         /// <param name="album">The album currently downloaded.</param>
-        private String ParseDownloadLocation(string downloadLocation, Album album) {
+        private String ParseDownloadLocation(String downloadLocation, Album album) {
             downloadLocation = downloadLocation.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
             downloadLocation = downloadLocation.Replace("{month}", album.ReleaseDate.Month.ToString().ToAllowedFileName());
             downloadLocation = downloadLocation.Replace("{day}", album.ReleaseDate.Day.ToString().ToAllowedFileName());
