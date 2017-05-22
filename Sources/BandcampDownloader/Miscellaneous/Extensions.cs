@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace BandcampDownloader {
 
@@ -22,6 +23,7 @@ namespace BandcampDownloader {
             fileName = fileName.Replace(">", "_");
             fileName = fileName.Replace("|", "_");
             fileName = fileName.Replace(Environment.NewLine, "_");
+            fileName = Regex.Replace(fileName, @"\s+", " ");
 
             return fileName;
         }
