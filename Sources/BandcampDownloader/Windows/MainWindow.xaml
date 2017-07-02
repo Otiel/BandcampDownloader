@@ -44,5 +44,6 @@
                 <Image x:Name="imageGearDisk" Source="pack://application:,,,/Resources/GearDisk.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" />
             </StackPanel>
         </Button>
+        <CheckBox Content="Retrieve Filesizes" Height="16" IsEnabled="True" Margin="483,157,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, filesizes will be retrieved so that download progress can be shown." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" Width="173" Checked="checkBoxRetrieveFilesizes_CheckedChanged" Unchecked="checkBoxRetrieveFilesizes_CheckedChanged"/>
     </Grid>
 </Window>

@@ -505,28 +505,27 @@ namespace BandcampDownloader {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;
-
-                    do {
-                        if (this.userCancelled) {
-                            // Abort
-                            return new List<TrackFile>();
-                        }
-                        WaitForCooldown(tries);
-                        tries++;
-                        try {
-                            size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
-                            sizeRetrieved = true;
-                            Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
-                        } catch {
-                            sizeRetrieved = false;
-                            if (tries < UserSettings.DownloadMaxTries) {
-                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
-                            } else {
-                                Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                    if (UserSettings.RetrieveFilesizes)
+                        do {
+                            if (this.userCancelled) {
+                                // Abort
+                                return new List<TrackFile>();
                             }
-                        }
-                    } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
-
+                            WaitForCooldown(tries);
+                            tries++;
+                            try {
+                                size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
+                                sizeRetrieved = true;
+                                Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
+                            } catch {
+                                sizeRetrieved = false;
+                                if (tries < UserSettings.DownloadMaxTries) {
+                                    Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
+                                } else {
+                                    Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                }
+                            }
+                        } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
                     files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
 
@@ -535,31 +534,30 @@ namespace BandcampDownloader {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;
-
-                    do {
-                        if (this.userCancelled) {
-                            // Abort
-                            return new List<TrackFile>();
-                        }
-                        WaitForCooldown(tries);
-                        tries++;
-                        try {
-                            // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
-                            // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
-                            // the mp3 sizes
-                            size = FileHelper.GetFileSize(track.Mp3Url, "GET");
-                            sizeRetrieved = true;
-                            Log($"Retrieved the size of the MP3 file for the track \"{track.Title}\"", LogType.VerboseInfo);
-                        } catch {
-                            sizeRetrieved = false;
-                            if (tries < UserSettings.DownloadMaxTries) {
-                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
-                            } else {
-                                Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                    if(UserSettings.RetrieveFilesizes)
+                        do {
+                            if (this.userCancelled) {
+                                // Abort
+                                return new List<TrackFile>();
                             }
-                        }
-                    } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
-
+                            WaitForCooldown(tries);
+                            tries++;
+                            try {
+                                // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
+                                // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
+                                // the mp3 sizes
+                                size = FileHelper.GetFileSize(track.Mp3Url, "GET");
+                                sizeRetrieved = true;
+                                Log($"Retrieved the size of the MP3 file for the track \"{track.Title}\"", LogType.VerboseInfo);
+                            } catch {
+                                sizeRetrieved = false;
+                                if (tries < UserSettings.DownloadMaxTries) {
+                                    Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {UserSettings.DownloadMaxTries}", LogType.Warning);
+                                } else {
+                                    Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                }
+                            }
+                        } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
                     files.Add(new TrackFile(track.Mp3Url, 0, size));
                 }
             }
@@ -608,6 +606,7 @@ namespace BandcampDownloader {
             checkBoxDownloadDiscography.IsChecked = userSettings.DownloadArtistDiscography;
             checkBoxOneAlbumAtATime.IsChecked = userSettings.DownloadOneAlbumAtATime;
             checkBoxResizeCoverArt.IsChecked = userSettings.ResizeCoverArt;
+            checkBoxRetrieveFilesizes.IsChecked = UserSettings.RetrieveFilesizes;
             checkBoxTag.IsChecked = userSettings.TagTracks;
             checkBoxVerboseLog.IsChecked = userSettings.ShowVerboseLog;
             textBoxCoverArtMaxSize.Text = userSettings.CoverArtMaxSize;
@@ -946,6 +945,16 @@ namespace BandcampDownloader {
             }
 
             textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
+        }
+
+        private void checkBoxRetrieveFilesizes_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            if (checkBoxRetrieveFilesizes == null)
+            {
+                return;
+            }
+
+            UserSettings.RetrieveFilesizes = checkBoxRetrieveFilesizes.IsChecked.Value;
         }
 
         private void checkBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
