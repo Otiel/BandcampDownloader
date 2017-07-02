@@ -53,6 +53,10 @@ namespace BandcampDownloader {
         /// Indicates if all messages should be displayed on the log.
         /// </summary>
         private Boolean verboseLog = false;
+        /// <summary>
+        /// Indicates if log should scroll with appended text
+        /// </summary>
+        private Boolean autoScrollLog = true;
 
         #endregion Fields
 
@@ -609,6 +613,7 @@ namespace BandcampDownloader {
             checkBoxRetrieveFilesizes.IsChecked = UserSettings.RetrieveFilesizes;
             checkBoxTag.IsChecked = userSettings.TagTracks;
             checkBoxVerboseLog.IsChecked = userSettings.ShowVerboseLog;
+            checkBoxAutoScroll.IsChecked = UserSettings.AutoScroll;
             textBoxCoverArtMaxSize.Text = userSettings.CoverArtMaxSize;
             textBoxDownloadsLocation.Text = userSettings.DownloadsLocation;
         }
@@ -633,8 +638,12 @@ namespace BandcampDownloader {
                 textRange.Text = message;
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
                 // Line break
-                richTextBoxLog.ScrollToEnd();
+                
                 richTextBoxLog.AppendText(Environment.NewLine);
+                if (autoScrollLog)
+                {
+                    richTextBoxLog.ScrollToEnd();
+                }
             }));
         }
 
@@ -983,6 +992,20 @@ namespace BandcampDownloader {
 
         private void checkBoxVerboseLog_MouseLeave(object sender, MouseEventArgs e) {
             checkBoxVerboseLog.Opacity = 0.5;
+        }
+        private void checkBoxAutoScroll_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            this.autoScrollLog = checkBoxAutoScroll.IsChecked.Value;
+        }
+
+        private void checkBoxAutoScroll_MouseEnter(object sender, MouseEventArgs e)
+        {
+            checkBoxAutoScroll.Opacity = 1;
+        }
+
+        private void checkBoxAutoScroll_MouseLeave(object sender, MouseEventArgs e)
+        {
+            checkBoxAutoScroll.Opacity = 0.5;
         }
 
         private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
