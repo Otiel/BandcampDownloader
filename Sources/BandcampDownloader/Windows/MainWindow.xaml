@@ -1,4 +1,4 @@
-﻿<Window x:Class="BandcampDownloader.MainWindow"
+<Window x:Class="BandcampDownloader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Bandcamp Downloader" 
@@ -27,6 +27,7 @@
                         </Style>
                     </RichTextBox.Resources>
                 </RichTextBox>
+                <CheckBox Content="AutoScroll" Height="16" Margin="0,4,80,0" x:Name="checkBoxAutoScroll" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="Black" HorizontalAlignment="Right" Width="79" Checked="checkBoxAutoScroll_CheckedChanged" Unchecked="checkBoxAutoScroll_CheckedChanged" MouseEnter="checkBoxAutoScroll_MouseEnter" MouseLeave="checkBoxAutoScroll_MouseLeave" Opacity="0.5" IsTabStop="False" IsChecked="True" />
                 <CheckBox Content="Verbose" Height="16" Margin="0,4,10,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="Black" HorizontalAlignment="Right" Width="65" Checked="checkBoxVerboseLog_CheckedChanged" Unchecked="checkBoxVerboseLog_CheckedChanged" MouseEnter="checkBoxVerboseLog_MouseEnter" MouseLeave="checkBoxVerboseLog_MouseLeave" Opacity="0.5" IsTabStop="False" />
             </Grid>
             <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right">
@@ -47,14 +48,15 @@
                     <Label Content="px" Height="26" HorizontalAlignment="Left" Margin="130,84,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" />
                 </Grid>
             </GroupBox>
-            <GroupBox Margin="0,143,0,0" Height="99" VerticalAlignment="Top" Header="Misc">
+            <GroupBox Margin="0,143,0,0" Height="116" VerticalAlignment="Top" Header="Misc">
                 <Grid>
                     <CheckBox Content="Tag tracks" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="checkBoxTag" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags." TabIndex="3" />
                     <CheckBox Content="Download one album at a time" Height="16" Margin="10,31,0,0" x:Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." TabIndex="4" HorizontalAlignment="Left" Width="181" />
                     <CheckBox Content="Download artist discography" Height="16" IsEnabled="True" Margin="10,52,0,0" x:Name="checkBoxDownloadDiscography" ToolTip="If checked, the whole artist discography will be downloaded." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" Width="173" />
+                    <CheckBox Content="Retrieve Filesizes" Height="16" IsEnabled="True" Margin="10,73,0,-12" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, filesizes will be retrieved so that download progress can be shown." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" Width="173" Checked="checkBoxRetrieveFilesizes_CheckedChanged" Unchecked="checkBoxRetrieveFilesizes_CheckedChanged"/>
                 </Grid>
             </GroupBox>
-            <Button Margin="0,0,0,119" x:Name="buttonSaveSettingsToFile" HorizontalAlignment="Right" Width="25" Click="buttonSaveSettingsToFile_Click" TabIndex="11" ToolTip="Save current settings to file" Height="25" VerticalAlignment="Bottom">
+            <Button Margin="0,0,0,102" x:Name="buttonSaveSettingsToFile" HorizontalAlignment="Right" Width="25" Click="buttonSaveSettingsToFile_Click" TabIndex="11" ToolTip="Save current settings to file" Height="25" VerticalAlignment="Bottom">
                 <Image x:Name="imageGearDisk" Source="pack://application:,,,/Resources/GearDisk.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Width="16" />
             </Button>
             <Grid VerticalAlignment="Bottom" Height="35">
