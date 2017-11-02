@@ -715,6 +715,7 @@ namespace BandcampDownloader {
                     checkBoxConvertToJpg.IsEnabled = false;
                     checkBoxResizeCoverArt.IsEnabled = false;
                     textBoxCoverArtMaxSize.IsEnabled = false;
+                    checkBoxRetrieveFilesizes.IsEnabled = false;
                 } else {
                     // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
@@ -736,6 +737,7 @@ namespace BandcampDownloader {
                     checkBoxConvertToJpg.IsEnabled = true;
                     checkBoxResizeCoverArt.IsEnabled = true;
                     textBoxCoverArtMaxSize.IsEnabled = true;
+                    checkBoxRetrieveFilesizes.IsEnabled = true;
                 }
             }));
         }
