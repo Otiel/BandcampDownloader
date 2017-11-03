@@ -11,7 +11,7 @@
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
     <Grid>
-        <RichTextBox Margin="12,272,12,21" Name="richTextBoxLog" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="False">
+        <RichTextBox Margin="12,272,12,21" Name="richTextBoxLog" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsTabStop="False">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0" />
@@ -44,5 +44,7 @@
                 <Image x:Name="imageGearDisk" Source="pack://application:,,,/Resources/GearDisk.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" />
             </StackPanel>
         </Button>
+        <CheckBox Content="Retrieve Filesizes" Height="16" IsEnabled="True" Margin="483,157,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, filesizes will be retrieved so that download progress can be shown." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" Width="173" Checked="checkBoxRetrieveFilesizes_CheckedChanged" Unchecked="checkBoxRetrieveFilesizes_CheckedChanged"/>
+        <CheckBox Content="AutoScroll" Height="16" Margin="0,274,97,0" x:Name="checkBoxAutoScroll" VerticalAlignment="Top" FlowDirection="RightToLeft" Foreground="Black" HorizontalAlignment="Right" Width="79" Checked="checkBoxAutoScroll_CheckedChanged" Unchecked="checkBoxAutoScroll_CheckedChanged" MouseEnter="checkBoxAutoScroll_MouseEnter" MouseLeave="checkBoxAutoScroll_MouseLeave" Opacity="0.5" IsTabStop="False" IsChecked="True" />
     </Grid>
 </Window>
