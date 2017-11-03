@@ -31,7 +31,7 @@ namespace BandcampDownloader {
         [JsonProperty]
         public static Boolean RetrieveFilesizes { get; set; }
         [JsonProperty]
-        public static Boolean AutoScroll { get; set; }
+        public static Boolean AutoScrollLog { get; set; }
 
         /// <summary>
         ///  Creates a new UserSettings with default values.
@@ -75,7 +75,7 @@ namespace BandcampDownloader {
             AllowableFileSizeDifference = 0.05;
             FilenameFormat = "{tracknum} {artist} - {title}.mp3";
             RetrieveFilesizes = true;
-            AutoScroll = true;
+            AutoScrollLog = true;
         }
 
         /// <summary>

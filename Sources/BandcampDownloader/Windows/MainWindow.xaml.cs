@@ -20,8 +20,8 @@ using ImageResizer;
 
 namespace BandcampDownloader {
 
-    public partial class MainWindow: Window {
-
+    public partial class MainWindow: Window
+    {
         #region Fields
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace BandcampDownloader {
         /// </summary>
         private Boolean verboseLog = false;
         /// <summary>
-        /// Indicates if log should scroll with appended text
+        /// Indicates if log should scroll with appended text.
         /// </summary>
         private Boolean autoScrollLog = true;
 
@@ -74,7 +74,7 @@ namespace BandcampDownloader {
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             // Version
-            labelVersion.Content = "v " + Assembly.GetEntryAssembly().GetName().Version;
+            labelVersion.Content = "v" + Assembly.GetEntryAssembly().GetName().Version;
             // Check for updates
             Task.Factory.StartNew(() => { CheckForUpdates(); });
         }
@@ -205,13 +205,14 @@ namespace BandcampDownloader {
 
             if (File.Exists(trackPath)) {
                 long length = new FileInfo(trackPath).Length;
-                foreach (TrackFile trackFile in filesDownload)
+                foreach (TrackFile trackFile in filesDownload) {
                     if (track.Mp3Url == trackFile.Url &&
                         trackFile.Size > length - ( trackFile.Size * UserSettings.AllowableFileSizeDifference ) &&
                         trackFile.Size < length + ( trackFile.Size * UserSettings.AllowableFileSizeDifference )) {
                         Log($"Track already exists within allowed filesize range: track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
+                }
             }
 
             do {
@@ -253,6 +254,9 @@ namespace BandcampDownloader {
                                 tagFile.Save();
                             }
 
+                            // Note the file as downloaded
+                            TrackFile currentFile = this.filesDownload.Where(f => f.Url == track.Mp3Url).First();
+                            currentFile.Downloaded = true;
                             Log($"Downloaded track \"{track.GetFileName(album.Artist)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < UserSettings.DownloadMaxTries) {
@@ -352,6 +356,9 @@ namespace BandcampDownloader {
                                 }
                             }
 
+                            // Note the file as downloaded
+                            TrackFile currentFile = this.filesDownload.Where(f => f.Url == album.ArtworkUrl).First();
+                            currentFile.Downloaded = true;
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < UserSettings.DownloadMaxTries) {
@@ -509,7 +516,7 @@ namespace BandcampDownloader {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;
-                    if (UserSettings.RetrieveFilesizes)
+                    if (UserSettings.RetrieveFilesizes) {
                         do {
                             if (this.userCancelled) {
                                 // Abort
@@ -530,6 +537,7 @@ namespace BandcampDownloader {
                                 }
                             }
                         } while (!sizeRetrieved && tries < UserSettings.DownloadMaxTries);
+                    }
                     files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
 
@@ -538,7 +546,7 @@ namespace BandcampDownloader {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;
-                    if(UserSettings.RetrieveFilesizes)
+                    if (UserSettings.RetrieveFilesizes)
                         do {
                             if (this.userCancelled) {
                                 // Abort
@@ -613,7 +621,7 @@ namespace BandcampDownloader {
             checkBoxRetrieveFilesizes.IsChecked = UserSettings.RetrieveFilesizes;
             checkBoxTag.IsChecked = userSettings.TagTracks;
             checkBoxVerboseLog.IsChecked = userSettings.ShowVerboseLog;
-            checkBoxAutoScroll.IsChecked = UserSettings.AutoScroll;
+            checkBoxAutoScrollLog.IsChecked = UserSettings.AutoScrollLog;
             textBoxCoverArtMaxSize.Text = userSettings.CoverArtMaxSize;
             textBoxDownloadsLocation.Text = userSettings.DownloadsLocation;
         }
@@ -638,10 +646,9 @@ namespace BandcampDownloader {
                 textRange.Text = message;
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
                 // Line break
-                
+
                 richTextBoxLog.AppendText(Environment.NewLine);
-                if (autoScrollLog)
-                {
+                if (autoScrollLog) {
                     richTextBoxLog.ScrollToEnd();
                 }
             }));
@@ -756,6 +763,7 @@ namespace BandcampDownloader {
                 currentFile.BytesReceived = bytesReceived;
                 long totalReceivedBytes = this.filesDownload.Sum(f => f.BytesReceived);
                 long bytesToDownload = this.filesDownload.Sum(f => f.Size);
+                Double downloadedFilesCount = this.filesDownload.Count(f => f.Downloaded);
 
                 Double bytesPerSecond;
                 if (this.lastTotalReceivedBytes == 0) {
@@ -784,12 +792,19 @@ namespace BandcampDownloader {
                     if (!this.userCancelled) {
                         // Update progress label
                         labelProgress.Content =
-                            ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") + " MB / " +
-                            ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") + " MB";
-                        // Update progress bar
-                        progressBar.Value = totalReceivedBytes;
-                        // Taskbar progress is between 0 and 1
-                        TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
+                            ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") + " MB" +
+                            ( UserSettings.RetrieveFilesizes ? ( " / " + ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") + " MB" ) : "" );
+                        if (UserSettings.RetrieveFilesizes) {
+                            // Update progress bar based on bytes received
+                            progressBar.Value = totalReceivedBytes;
+                            // Taskbar progress is between 0 and 1
+                            TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
+                        } else {
+                            // Update progress bar based on downloaded files
+                            progressBar.Value = downloadedFilesCount;
+                            // Taskbar progress is between 0 and count of files to download
+                            TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
+                        }
                     }
                 }));
             }
@@ -871,11 +886,16 @@ namespace BandcampDownloader {
                 this.filesDownload = GetFilesToDownload(albums, saveCoverArtInTags || saveCoverArtInFolder);
             }).ContinueWith(x => {
                 // Set progressBar max value
-                long bytesToDownload = this.filesDownload.Sum(f => f.Size);
-                if (bytesToDownload > 0) {
+                long maxProgressBarValue;
+                if (UserSettings.RetrieveFilesizes) {
+                    maxProgressBarValue = this.filesDownload.Sum(f => f.Size); // Bytes to download
+                } else {
+                    maxProgressBarValue = this.filesDownload.Count; // Number of files to download
+                }
+                if (maxProgressBarValue > 0) {
                     this.Dispatcher.Invoke(new Action(() => {
                         progressBar.IsIndeterminate = false;
-                        progressBar.Maximum = bytesToDownload;
+                        progressBar.Maximum = maxProgressBarValue;
                         TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
                     }));
                 }
@@ -954,10 +974,8 @@ namespace BandcampDownloader {
             textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
         }
 
-        private void checkBoxRetrieveFilesizes_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            if (checkBoxRetrieveFilesizes == null)
-            {
+        private void checkBoxRetrieveFilesizes_CheckedChanged(object sender, RoutedEventArgs e) {
+            if (checkBoxRetrieveFilesizes == null) {
                 return;
             }
 
@@ -984,26 +1002,8 @@ namespace BandcampDownloader {
             this.verboseLog = checkBoxVerboseLog.IsChecked.Value;
         }
 
-        private void checkBoxVerboseLog_MouseEnter(object sender, MouseEventArgs e) {
-            checkBoxVerboseLog.Opacity = 1;
-        }
-
-        private void checkBoxVerboseLog_MouseLeave(object sender, MouseEventArgs e) {
-            checkBoxVerboseLog.Opacity = 0.5;
-        }
-        private void checkBoxAutoScroll_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            this.autoScrollLog = checkBoxAutoScroll.IsChecked.Value;
-        }
-
-        private void checkBoxAutoScroll_MouseEnter(object sender, MouseEventArgs e)
-        {
-            checkBoxAutoScroll.Opacity = 1;
-        }
-
-        private void checkBoxAutoScroll_MouseLeave(object sender, MouseEventArgs e)
-        {
-            checkBoxAutoScroll.Opacity = 0.5;
+        private void checkBoxAutoScrollLog_CheckedChanged(object sender, RoutedEventArgs e) {
+            this.autoScrollLog = checkBoxAutoScrollLog.IsChecked.Value;
         }
 
         private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
