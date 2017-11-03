@@ -35,7 +35,7 @@ Usage
 Screenshot
 ----------
 
-![Screenshot](http://i.imgur.com/J41KgJI.png)
+![Screenshot](https://i.imgur.com/2b4hYuD.png)
 
 Release notes
 -------------
