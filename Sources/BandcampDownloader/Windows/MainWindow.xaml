@@ -33,7 +33,15 @@
             </Grid>
         </Grid>
         <Grid x:Name="gridRight" HorizontalAlignment="Right" Margin="0,10,10,10">
-            <GroupBox x:Name="groupBoxSettingsCoverArt" Margin="0,97,0,0" Header="Cover art" VerticalAlignment="Top">
+            <GroupBox x:Name="groupBoxSettingsMisc" Margin="0,0,0,272" VerticalAlignment="Bottom" Header="Settings">
+                <Grid x:Name="gridSettingsMisc">
+                    <CheckBox Content="Tag tracks" Height="16" HorizontalAlignment="Left" Margin="6,4,0,0" x:Name="checkBoxTag" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags." TabIndex="3" />
+                    <CheckBox Content="Download one album at a time" Height="16" Margin="6,22,0,0" x:Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." TabIndex="4" HorizontalAlignment="Left" Width="190" />
+                    <CheckBox Content="Download artist discography" Height="16" IsEnabled="True" Margin="6,40,0,0" x:Name="checkBoxDownloadDiscography" ToolTip="If checked, the whole artist discography will be downloaded." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" />
+                    <CheckBox Content="Retrieve files size" Height="16" IsEnabled="True" Margin="6,58,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, files size will be retrieved so that precise download progress can be shown." VerticalAlignment="Top" TabIndex="6" HorizontalAlignment="Left" Checked="checkBoxRetrieveFilesizes_CheckedChanged" Unchecked="checkBoxRetrieveFilesizes_CheckedChanged"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="groupBoxSettingsCoverArt" Margin="0,97,0,151" Header="Cover art">
                 <Grid x:Name="gridSettingsCoverArt">
                     <CheckBox Content="Save in tags" Height="16" HorizontalAlignment="Left" x:Name="checkBoxCoverArtInTags" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the cover art will be saved in the tracks tags." TabIndex="7" Checked="checkBoxSaveCoverArt_CheckedChanged" Unchecked="checkBoxSaveCoverArt_CheckedChanged" Margin="6,4,0,0" />
                     <CheckBox Content="Save in folder" Height="16" HorizontalAlignment="Left" Margin="6,22,0,0" x:Name="checkBoxCoverArtInFolder" VerticalAlignment="Top" ToolTip="If checked, the cover art will be downloaded in the albums folder." IsChecked="False" TabIndex="8" Checked="checkBoxSaveCoverArt_CheckedChanged" Unchecked="checkBoxSaveCoverArt_CheckedChanged" />
@@ -44,12 +52,14 @@
                     <Label x:Name="labelPixels" Content="px" Height="26" HorizontalAlignment="Left" Margin="119,72,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" />
                 </Grid>
             </GroupBox>
-            <GroupBox x:Name="groupBoxSettingsMisc" Margin="0" VerticalAlignment="Top" Header="Settings">
-                <Grid x:Name="gridSettingsMisc">
-                    <CheckBox Content="Tag tracks" Height="16" HorizontalAlignment="Left" Margin="6,4,0,0" x:Name="checkBoxTag" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags." TabIndex="3" />
-                    <CheckBox Content="Download one album at a time" Height="16" Margin="6,22,0,0" x:Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." TabIndex="4" HorizontalAlignment="Left" Width="190" />
-                    <CheckBox Content="Download artist discography" Height="16" IsEnabled="True" Margin="6,40,0,0" x:Name="checkBoxDownloadDiscography" ToolTip="If checked, the whole artist discography will be downloaded." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" />
-                    <CheckBox Content="Retrieve files size" Height="16" IsEnabled="True" Margin="6,58,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, files size will be retrieved so that precise download progress can be shown." VerticalAlignment="Top" TabIndex="6" HorizontalAlignment="Left" Checked="checkBoxRetrieveFilesizes_CheckedChanged" Unchecked="checkBoxRetrieveFilesizes_CheckedChanged"/>
+            <GroupBox x:Name="groupBoxSettingsLog" Header="Log" Margin="0,218,0,0" VerticalAlignment="Top">
+                <Grid x:Name="gridSettingsLog">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Content="Auto scroll" Height="16" Margin="6,4,0,0" x:Name="checkBoxAutoScrollLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="79" Checked="checkBoxAutoScrollLog_CheckedChanged" Unchecked="checkBoxAutoScrollLog_CheckedChanged" IsChecked="True" TabIndex="12" />
+                    <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" Checked="checkBoxVerboseLog_CheckedChanged" Unchecked="checkBoxVerboseLog_CheckedChanged" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
                 </Grid>
             </GroupBox>
             <Button Margin="0,284,0,0" x:Name="buttonSaveSettingsToFile" HorizontalAlignment="Right" Width="25" Click="buttonSaveSettingsToFile_Click" TabIndex="14" ToolTip="Save current settings to file" Height="25" VerticalAlignment="Top" RenderTransformOrigin="0.509,1.74">
@@ -59,17 +69,6 @@
                 <Button Content="Start download" Margin="0" x:Name="buttonStart" VerticalAlignment="Bottom" Click="buttonStart_Click" HorizontalContentAlignment="Center" TabIndex="15" HorizontalAlignment="Left" Width="105" Height="24" />
                 <Button Content="Cancel" HorizontalContentAlignment="Center" Margin="0" x:Name="buttonStop" VerticalAlignment="Bottom" Visibility="Visible" Click="buttonStop_Click" IsEnabled="False" TabIndex="16" HorizontalAlignment="Right" Width="105" Height="24" />
             </Grid>
-            <GroupBox x:Name="groupBoxSettingsLog" Header="Log" Margin="0,218,0,0" VerticalAlignment="Top">
-                <Grid x:Name="gridSettingsLog">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="27*"/>
-                        <ColumnDefinition Width="10*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <CheckBox Content="Auto scroll" Height="16" Margin="6,4,0,0" x:Name="checkBoxAutoScrollLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="79" Checked="checkBoxAutoScrollLog_CheckedChanged" Unchecked="checkBoxAutoScrollLog_CheckedChanged" IsChecked="True" TabIndex="12" />
-                    <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" Checked="checkBoxVerboseLog_CheckedChanged" Unchecked="checkBoxVerboseLog_CheckedChanged" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
-                </Grid>
-            </GroupBox>
         </Grid>
     </Grid>
 </Window>
