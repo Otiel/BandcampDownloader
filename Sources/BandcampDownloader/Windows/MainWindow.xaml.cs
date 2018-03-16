@@ -490,11 +490,18 @@ namespace BandcampDownloader {
                 }
 
                 // Get albums referred on the page
-                try {
-                    albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
-                } catch (NoAlbumFoundException) {
-                    Log($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error);
-                    continue;
+                regex = new Regex("TralbumData.*\n.*url:.*'/music'\n");
+                if (!regex.IsMatch(htmlCode)) {
+                    // This seem to be a one-album artist with no "music" page => URL redirects to the unique album URL
+                    albumsUrls.Add(url);
+                } else {
+                    // We are on a real "music" page
+                    try {
+                        albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
+                    } catch (NoAlbumFoundException) {
+                        Log($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error);
+                        continue;
+                    }
                 }
             }
 
