@@ -199,6 +199,10 @@ namespace BandcampDownloader {
 
             // Set location to save the file
             String trackPath = albumDirectoryPath + "\\" + track.GetFileName(album.Artist);
+            if (trackPath.Length > 256) {
+                // Shorten the path (Windows doesn't support a path > 256 characters)
+                trackPath = albumDirectoryPath + "\\" + track.GetFileName(album.Artist).Substring(0, 3) + Path.GetExtension(trackPath);
+            }
 
             int tries = 0;
             Boolean trackDownloaded = false;
