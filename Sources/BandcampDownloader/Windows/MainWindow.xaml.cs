@@ -21,8 +21,7 @@ using ImageResizer;
 
 namespace BandcampDownloader {
 
-    public partial class MainWindow: Window
-    {
+    public partial class MainWindow : Window {
         #region Fields
 
         /// <summary>
@@ -101,7 +100,7 @@ namespace BandcampDownloader {
             request.AllowAutoRedirect = false;
             String redirectPage = "";
             try {
-                using (HttpWebResponse response = (HttpWebResponse) request.GetResponse()) {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse()) {
                     redirectPage = response.GetResponseHeader("Location");
                     // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X.X"
                 }
@@ -213,8 +212,8 @@ namespace BandcampDownloader {
                 long length = new FileInfo(trackPath).Length;
                 foreach (TrackFile trackFile in filesDownload) {
                     if (track.Mp3Url == trackFile.Url &&
-                        trackFile.Size > length - ( trackFile.Size * settings.AllowableFileSizeDifference ) &&
-                        trackFile.Size < length + ( trackFile.Size * settings.AllowableFileSizeDifference )) {
+                        trackFile.Size > length - (trackFile.Size * settings.AllowableFileSizeDifference) &&
+                        trackFile.Size < length + (trackFile.Size * settings.AllowableFileSizeDifference)) {
                         Log($"Track already exists within allowed filesize range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
@@ -248,8 +247,8 @@ namespace BandcampDownloader {
                                 tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
                                 tagFile.Tag.Performers = new String[1] { album.Artist };
                                 tagFile.Tag.Title = track.Title;
-                                tagFile.Tag.Track = (uint) track.Number;
-                                tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
+                                tagFile.Tag.Track = (uint)track.Number;
+                                tagFile.Tag.Year = (uint)album.ReleaseDate.Year;
                                 tagFile.Save();
                             }
 
@@ -308,10 +307,10 @@ namespace BandcampDownloader {
         /// <returns></returns>
         private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder, Boolean saveCovertArtInFolder, Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
             // Compute path where to save artwork
-            String artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+            String artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             if (artworkPath.Length > 256) {
                 // Shorten the path (Windows doesn't support a path > 256 characters)
-                artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+                artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
             }
 
             TagLib.Picture artwork = null;
@@ -582,32 +581,12 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Sets the user interface according to the specified UserSettings.
-        /// </summary>
-        /// <param name="userSettings">The UserSettings to use.</param>
-        private void LoadSettingsToUserInterface() {
-            checkBoxConvertToJpg.IsChecked = settings.ConvertCoverArtToJpg;
-            checkBoxCoverArtInFolder.IsChecked = settings.SaveCoverArtInFolder;
-            checkBoxCoverArtInTags.IsChecked = settings.SaveCoverArtInTags;
-            checkBoxDownloadDiscography.IsChecked = settings.DownloadArtistDiscography;
-            checkBoxOneAlbumAtATime.IsChecked = settings.DownloadOneAlbumAtATime;
-            checkBoxResizeCoverArt.IsChecked = settings.ResizeCoverArt;
-            checkBoxRetrieveFilesizes.IsChecked = settings.RetrieveFilesizes;
-            checkBoxTag.IsChecked = settings.TagTracks;
-            checkBoxVerboseLog.IsChecked = settings.ShowVerboseLog;
-            checkBoxAutoScrollLog.IsChecked = settings.AutoScrollLog;
-            textBoxCoverArtMaxSize.Text = settings.CoverArtMaxSize;
-            textBoxDownloadsLocation.Text = settings.DownloadsLocation;
-            textFilenameFormat.Text = settings.FilenameFormat;
-        }
-
-        /// <summary>
         /// Displays the specified message in the log with the specified color.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="color">The color.</param>
         private void Log(String message, LogType logType) {
-            if (!verboseLog && ( logType == LogType.Warning || logType == LogType.VerboseInfo )) {
+            if (!verboseLog && (logType == LogType.Warning || logType == LogType.VerboseInfo)) {
                 return;
             }
 
@@ -647,8 +626,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="downloadLocation">The download location to parse.</param>
         /// <param name="album">The album currently downloaded.</param>
-        private String GetFileName(Album album, Track track)
-        {
+        private String GetFileName(Album album, Track track) {
             String fileName =
                 settings.FilenameFormat.Replace("{artist}", album.Artist)
                     .Replace("{title}", track.Title)
@@ -690,7 +668,7 @@ namespace BandcampDownloader {
                     buttonStop.IsEnabled = false;
                     buttonBrowse.IsEnabled = true;
                     textBoxUrls.IsReadOnly = false;
-                    progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
+                    progressBar.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF01D328")); // Green
                     progressBar.IsIndeterminate = false;
                     progressBar.Value = progressBar.Minimum;
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
@@ -732,19 +710,19 @@ namespace BandcampDownloader {
                     bytesPerSecond = 0;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
-                } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
+                } else if ((now - this.lastDownloadSpeedUpdate).TotalMilliseconds > 500) {
                     // Last update of progress happened more than 500 milliseconds ago
                     // We only update the download speed every 500+ milliseconds
                     bytesPerSecond =
-                        ( (Double) ( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
-                        ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
+                        ((Double)(totalReceivedBytes - this.lastTotalReceivedBytes)) /
+                        (now - this.lastDownloadSpeedUpdate).TotalSeconds;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
 
                     // Update UI
                     this.Dispatcher.Invoke(new Action(() => {
                         // Update download speed
-                        labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") + " kB/s";
+                        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
                     }));
                 }
 
@@ -753,8 +731,8 @@ namespace BandcampDownloader {
                     if (!this.userCancelled) {
                         // Update progress label
                         labelProgress.Content =
-                            ( (Double) totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") + " MB" +
-                            (settings.RetrieveFilesizes ? ( " / " + ( (Double) bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") + " MB" ) : "" );
+                            ((Double)totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
+                            (settings.RetrieveFilesizes ? (" / " + ((Double)bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
                         if (settings.RetrieveFilesizes) {
                             // Update progress bar based on bytes received
                             progressBar.Value = totalReceivedBytes;
@@ -773,7 +751,7 @@ namespace BandcampDownloader {
 
         private void WaitForCooldown(int NumTries) {
             if (settings.DownloadRetryCooldown != 0) {
-                Thread.Sleep((int) ( ( Math.Pow(settings.DownloadRetryExponential, NumTries) ) * settings.DownloadRetryCooldown * 1000 ));
+                Thread.Sleep((int)((Math.Pow(settings.DownloadRetryExponential, NumTries)) * settings.DownloadRetryCooldown * 1000));
             }
         }
 
@@ -885,7 +863,7 @@ namespace BandcampDownloader {
                 UpdateControlsState(false);
                 // Play a sound
                 try {
-                    ( new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav") ).Play();
+                    (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
                 } catch {
                 }
             });
@@ -924,46 +902,6 @@ namespace BandcampDownloader {
             Cursor = Cursors.Arrow;
         }
 
-        private void checkBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
-            if (checkBoxResizeCoverArt == null || textBoxCoverArtMaxSize == null) {
-                return;
-            }
-
-            textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
-        }
-
-        private void checkBoxRetrieveFilesizes_CheckedChanged(object sender, RoutedEventArgs e) {
-            if (checkBoxRetrieveFilesizes == null) {
-                return;
-            }
-
-            settings.RetrieveFilesizes = checkBoxRetrieveFilesizes.IsChecked.Value;
-        }
-
-        private void checkBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
-            if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null) {
-                return;
-            }
-
-            if (!checkBoxCoverArtInFolder.IsChecked.Value && !checkBoxCoverArtInTags.IsChecked.Value) {
-                checkBoxConvertToJpg.IsEnabled = false;
-                checkBoxResizeCoverArt.IsEnabled = false;
-                textBoxCoverArtMaxSize.IsEnabled = false;
-            } else {
-                checkBoxConvertToJpg.IsEnabled = true;
-                checkBoxResizeCoverArt.IsEnabled = true;
-                textBoxCoverArtMaxSize.IsEnabled = true;
-            }
-        }
-
-        private void checkBoxVerboseLog_CheckedChanged(object sender, RoutedEventArgs e) {
-            this.verboseLog = checkBoxVerboseLog.IsChecked.Value;
-        }
-
-        private void checkBoxAutoScrollLog_CheckedChanged(object sender, RoutedEventArgs e) {
-            this.autoScrollLog = checkBoxAutoScrollLog.IsChecked.Value;
-        }
-
         private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
             Process.Start(Constants.ProjectWebsite);
         }
@@ -984,19 +922,16 @@ namespace BandcampDownloader {
             }
         }
 
-        private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e)
-        {
+        private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e) {
             initializeSettings(true);
         }
 
-        private void InitializeSettings()
-        {
+        private void InitializeSettings() {
             initializeSettings(false);
         }
-        private void initializeSettings(Boolean resetToDefaults)
-        {
-            if(resetToDefaults)
-            File.Delete(Constants.UserSettingsFilePath);
+        private void initializeSettings(Boolean resetToDefaults) {
+            if (resetToDefaults)
+                File.Delete(Constants.UserSettingsFilePath);
             // Must set this before UI forms, cannot default in settings as it isn't determined by a constant function
             if (String.IsNullOrEmpty(settings.DownloadsLocation))
                 settings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
