@@ -13,11 +13,15 @@ namespace BandcampDownloader {
         [JsonProperty("track_num")]
         public int Number { get; set; }
 
+        [JsonProperty("lyrics")]
+        public String Lyrics { get; set; }
+
         public Track ToTrack() {
             return new Track() {
                 Mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url, // "//example.com" Uri lacks protocol
                 Number = Number == 0 ? 1 : Number, // For bandcamp track pages, Number will be 0. Set 1 instead
-                Title = Title
+                Title = Title,
+                Lyrics = Lyrics
             };
         }
     }
