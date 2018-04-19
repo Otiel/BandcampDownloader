@@ -65,10 +65,6 @@
             </GroupBox>
             <GroupBox x:Name="groupBoxSettingsLog" Header="Log" Margin="0,0,0,0" VerticalAlignment="Top">
                 <Grid x:Name="gridSettingsLog">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="27*"/>
-                        <ColumnDefinition Width="10*"/>
-                    </Grid.ColumnDefinitions>
                     <CheckBox Content="Auto scroll" Height="16" Margin="6,4,0,0" x:Name="checkBoxAutoScrollLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="79" IsChecked="{Binding AutoScrollLog}" TabIndex="12" />
                     <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" IsChecked="{Binding ShowVerboseLog}" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
                 </Grid>
