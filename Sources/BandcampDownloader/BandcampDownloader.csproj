@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Business Objects\JSON\JsonMp3File.cs" />
     <Compile Include="Business Objects\Track.cs" />
+    <Compile Include="Helpers\OnlyDigitsValidationRule.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
     <Compile Include="Miscellaneous\LogType.cs" />

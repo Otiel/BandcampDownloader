@@ -6,8 +6,8 @@ namespace BandcampDownloader {
     public interface UserSettings {
         [Option(DefaultValue = true)]
         Boolean ConvertCoverArtToJpg { get; set; }
-        [Option(DefaultValue = "1000")]
-        String CoverArtMaxSize { get; set; }
+        [Option(DefaultValue = 1000)]
+        int CoverArtMaxSize { get; set; }
         [Option(DefaultValue = false)]
         Boolean DownloadOneAlbumAtATime { get; set; }
         [Option(DefaultValue = "")]
