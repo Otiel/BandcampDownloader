@@ -18,11 +18,14 @@ using System.Windows.Media;
 using System.Windows.Shell;
 using Config.Net;
 using ImageResizer;
+
 namespace BandcampDownloader {
 
-    public partial class MainWindow : Window {
+    public partial class MainWindow: Window {
+
         #region Fields
 
+        public UserSettings settings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
         /// <summary>
         /// Indicates if there are active downloads
         /// </summary>
@@ -49,16 +52,12 @@ namespace BandcampDownloader {
         /// </summary>
         private Boolean userCancelled;
 
-        public UserSettings settings = new ConfigurationBuilder<UserSettings>()
-        .UseIniFile(Constants.UserSettingsFilePath)
-        .Build();
-
         #endregion Fields
 
         #region Constructor
 
         public MainWindow() {
-            InitializeSettings();
+            InitializeSettings(false);
             InitializeComponent();
             DataContext = this.settings;
 
@@ -206,8 +205,8 @@ namespace BandcampDownloader {
                 long length = new FileInfo(trackPath).Length;
                 foreach (TrackFile trackFile in filesDownload) {
                     if (track.Mp3Url == trackFile.Url &&
-                        trackFile.Size > length - (trackFile.Size * settings.AllowableFileSizeDifference) &&
-                        trackFile.Size < length + (trackFile.Size * settings.AllowableFileSizeDifference)) {
+                        trackFile.Size > length - ( trackFile.Size * settings.AllowableFileSizeDifference ) &&
+                        trackFile.Size < length + ( trackFile.Size * settings.AllowableFileSizeDifference )) {
                         Log($"Track already exists within allowed filesize range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
@@ -305,7 +304,7 @@ namespace BandcampDownloader {
             String artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             if (artworkPath.Length > 256) {
                 // Shorten the path (Windows doesn't support a path > 256 characters)
-                artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+                artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
             }
 
             TagLib.Picture artwork = null;
@@ -508,6 +507,19 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
+        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat location.
+        /// </summary>
+        /// <param name="downloadLocation">The download location to parse.</param>
+        /// <param name="album">The album currently downloaded.</param>
+        private String GetFileName(Album album, Track track) {
+            String fileName =
+                settings.FilenameFormat.Replace("{artist}", album.Artist)
+                    .Replace("{title}", track.Title)
+                    .Replace("{tracknum}", track.Number.ToString("00"));
+            return fileName.ToAllowedFileName();
+        }
+
+        /// <summary>
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
@@ -588,7 +600,7 @@ namespace BandcampDownloader {
         /// <param name="message">The message.</param>
         /// <param name="color">The color.</param>
         private void Log(String message, LogType logType) {
-            if (!settings.ShowVerboseLog && (logType == LogType.Warning || logType == LogType.VerboseInfo)) {
+            if (!settings.ShowVerboseLog && ( logType == LogType.Warning || logType == LogType.VerboseInfo )) {
                 return;
             }
 
@@ -622,18 +634,6 @@ namespace BandcampDownloader {
             downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
             downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
             return downloadLocation;
-        }
-        /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat location.
-        /// </summary>
-        /// <param name="downloadLocation">The download location to parse.</param>
-        /// <param name="album">The album currently downloaded.</param>
-        private String GetFileName(Album album, Track track) {
-            String fileName =
-                settings.FilenameFormat.Replace("{artist}", album.Artist)
-                    .Replace("{title}", track.Title)
-                    .Replace("{tracknum}", track.Number.ToString("00"));
-            return fileName.ToAllowedFileName();
         }
 
         /// <summary>
@@ -712,19 +712,19 @@ namespace BandcampDownloader {
                     bytesPerSecond = 0;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
-                } else if ((now - this.lastDownloadSpeedUpdate).TotalMilliseconds > 500) {
+                } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
                     // Last update of progress happened more than 500 milliseconds ago
                     // We only update the download speed every 500+ milliseconds
                     bytesPerSecond =
-                        ((Double)(totalReceivedBytes - this.lastTotalReceivedBytes)) /
-                        (now - this.lastDownloadSpeedUpdate).TotalSeconds;
+                        ( (Double)( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
+                        ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
 
                     // Update UI
                     this.Dispatcher.Invoke(new Action(() => {
                         // Update download speed
-                        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
+                        labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") + " kB/s";
                     }));
                 }
 
@@ -733,8 +733,8 @@ namespace BandcampDownloader {
                     if (!this.userCancelled) {
                         // Update progress label
                         labelProgress.Content =
-                            ((Double)totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-                            (settings.RetrieveFilesizes ? (" / " + ((Double)bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
+                            ( (Double)totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") + " MB" +
+                            ( settings.RetrieveFilesizes ? ( " / " + ( (Double)bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") + " MB" ) : "" );
                         if (settings.RetrieveFilesizes) {
                             // Update progress bar based on bytes received
                             progressBar.Value = totalReceivedBytes;
@@ -753,7 +753,7 @@ namespace BandcampDownloader {
 
         private void WaitForCooldown(int NumTries) {
             if (settings.DownloadRetryCooldown != 0) {
-                Thread.Sleep((int)((Math.Pow(settings.DownloadRetryExponential, NumTries)) * settings.DownloadRetryCooldown * 1000));
+                Thread.Sleep((int)( ( Math.Pow(settings.DownloadRetryExponential, NumTries) ) * settings.DownloadRetryCooldown * 1000 ));
             }
         }
 
@@ -767,6 +767,10 @@ namespace BandcampDownloader {
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsLocation.Text = dialog.SelectedPath;
             }
+        }
+
+        private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e) {
+            initializeSettings(true);
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e) {
@@ -855,7 +859,7 @@ namespace BandcampDownloader {
                 UpdateControlsState(false);
                 // Play a sound
                 try {
-                    (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
+                    ( new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav") ).Play();
                 } catch {
                 }
             });
@@ -894,6 +898,18 @@ namespace BandcampDownloader {
             Cursor = Cursors.Arrow;
         }
 
+        private void InitializeSettings(Boolean resetToDefaults) {
+            if (resetToDefaults) {
+                File.Delete(Constants.UserSettingsFilePath);
+            }
+            // Must set this before UI forms, cannot default in settings as it isn't determined by a constant function
+            if (String.IsNullOrEmpty(settings.DownloadsLocation)) {
+                settings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
+            }
+            settings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+            DataContext = this.settings;
+        }
+
         private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
             Process.Start(Constants.ProjectWebsite);
         }
@@ -912,25 +928,6 @@ namespace BandcampDownloader {
                 textBoxUrls.Text = Constants.UrlsHint;
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             }
-        }
-
-        private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e) {
-            initializeSettings(true);
-        }
-
-        private void InitializeSettings() {
-            initializeSettings(false);
-        }
-        private void initializeSettings(Boolean resetToDefaults) {
-            if (resetToDefaults)
-                File.Delete(Constants.UserSettingsFilePath);
-            // Must set this before UI forms, cannot default in settings as it isn't determined by a constant function
-            if (String.IsNullOrEmpty(settings.DownloadsLocation))
-                settings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
-            settings = new ConfigurationBuilder<UserSettings>()
-                          .UseIniFile(Constants.UserSettingsFilePath)
-        .Build();
-            DataContext = this.settings;
         }
 
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
