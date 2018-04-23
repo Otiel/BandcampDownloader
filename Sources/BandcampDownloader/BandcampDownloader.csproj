@@ -158,6 +158,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -198,9 +199,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cloud.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\GearDisk.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ArrowCircle225Left.png" />
