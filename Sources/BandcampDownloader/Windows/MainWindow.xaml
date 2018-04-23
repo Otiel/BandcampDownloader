@@ -1,8 +1,9 @@
 <Window x:Class="BandcampDownloader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:conv="clr-namespace:BandcampDownloader.Helpers"
         Title="Bandcamp Downloader" 
-        Height="420" Width="920" 
+        Height="445" Width="920" 
         MinHeight="420" MinWidth="750"
         WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" 
         Icon="pack://application:,,,/Resources/Cloud.ico" 
@@ -15,7 +16,7 @@
             <TextBox Margin="0" Name="textBoxUrls" AcceptsReturn="True" Height="111" VerticalAlignment="Top" Text="" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" GotFocus="textBoxUrls_GotFocus" LostFocus="textBoxUrls_LostFocus" TabIndex="0" />
             <Grid x:Name="gridDownloadsLocation" Margin="0,117,0,0" VerticalAlignment="Top">
                 <Label Content="Save albums to" HorizontalAlignment="Left" Margin="0,-3,0,0" Name="labelDownloadsLocation" VerticalAlignment="Top" ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" />
-                <TextBox Margin="95,0,32,0" Name="textBoxDownloadsLocation" TabIndex="1" ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" VerticalAlignment="Top" Height="20"  />
+                <TextBox Text="{Binding DownloadsLocation}" Margin="95,0,32,0"  Name="textBoxDownloadsLocation" TabIndex="1" ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" VerticalAlignment="Top" Height="20"  />
                 <Button Content="..." Margin="0" Name="buttonBrowse" HorizontalAlignment="Right" Width="27" Click="buttonBrowse_Click" TabIndex="2" ToolTip="Browse for folder" VerticalAlignment="Top" />
             </Grid>
             <ProgressBar Margin="0,143,0,0" Name="progressBar" VerticalAlignment="Top" IsTabStop="False" Height="18" />
@@ -32,44 +33,49 @@
                 <Label Margin="0,0,155,0" x:Name="labelDownloadSpeed" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
             </Grid>
         </Grid>
-        <Grid x:Name="gridRight" HorizontalAlignment="Right" Margin="0,10,10,10">
-            <GroupBox x:Name="groupBoxSettingsCoverArt" Margin="0,97,0,0" Header="Cover art" VerticalAlignment="Top">
+        <StackPanel x:Name="gridRight" HorizontalAlignment="Right" Margin="0,10,10,10">
+            <GroupBox x:Name="groupBoxSettingsMisc" Margin="0,0,0,0" VerticalAlignment="Bottom" Header="Settings">
+                <Grid x:Name="gridSettingsMisc">
+                    <CheckBox Content="Tag tracks" Height="16" HorizontalAlignment="Left" Margin="6,4,0,0" x:Name="checkBoxTag" VerticalAlignment="Top" IsChecked="{Binding TagTracks}" ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags." TabIndex="3" />
+                    <CheckBox Content="Download one album at a time" Height="16" Margin="6,22,0,0" x:Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" IsChecked="{Binding DownloadOneAlbumAtATime}" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." TabIndex="4" HorizontalAlignment="Left" Width="190" />
+                    <CheckBox Content="Download artist discography" Height="16" IsEnabled="True" Margin="6,40,0,0" x:Name="checkBoxDownloadDiscography" ToolTip="If checked, the whole artist discography will be downloaded." VerticalAlignment="Top" IsChecked="{Binding DownloadArtistDiscography}" TabIndex="5" HorizontalAlignment="Left" />
+                    <CheckBox Content="Retrieve files size" Height="16" IsEnabled="True" Margin="6,58,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, files size will be retrieved so that precise download progress can be shown." VerticalAlignment="Top" IsChecked="{Binding RetrieveFilesizes}" TabIndex="6" HorizontalAlignment="Left" />
+                    <Label x:Name="lableFilenameFormat" Content="Filename Format:" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="27" />
+                    <TextBox HorizontalAlignment="Right" Margin="0,91,0,0" x:Name="textFilenameFormat" VerticalAlignment="Top" Text="{Binding FilenameFormat}" TabIndex="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="197" />
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="groupBoxSettingsCoverArt" Margin="0,0,0,0" Header="Cover art">
                 <Grid x:Name="gridSettingsCoverArt">
-                    <CheckBox Content="Save in tags" Height="16" HorizontalAlignment="Left" x:Name="checkBoxCoverArtInTags" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the cover art will be saved in the tracks tags." TabIndex="7" Checked="checkBoxSaveCoverArt_CheckedChanged" Unchecked="checkBoxSaveCoverArt_CheckedChanged" Margin="6,4,0,0" />
-                    <CheckBox Content="Save in folder" Height="16" HorizontalAlignment="Left" Margin="6,22,0,0" x:Name="checkBoxCoverArtInFolder" VerticalAlignment="Top" ToolTip="If checked, the cover art will be downloaded in the albums folder." IsChecked="False" TabIndex="8" Checked="checkBoxSaveCoverArt_CheckedChanged" Unchecked="checkBoxSaveCoverArt_CheckedChanged" />
-                    <CheckBox Content="Convert to jpg" Height="16" HorizontalAlignment="Left" Margin="6,40,0,0" x:Name="checkBoxConvertToJpg" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." TabIndex="9" />
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,58,0,0" x:Name="checkBoxResizeCoverArt" VerticalAlignment="Top" Content="Constrain maximum width/height" IsChecked="True" Checked="checkBoxResizeCoverArt_CheckedChanged" Unchecked="checkBoxResizeCoverArt_CheckedChanged" ToolTip="If checked, the cover art will be resized with the specified max width/height." TabIndex="10" />
+                    <CheckBox Content="Save in tags" Height="16" HorizontalAlignment="Left" x:Name="checkBoxCoverArtInTags" VerticalAlignment="Top" IsChecked="{Binding SaveCoverArtInTags}" ToolTip="If checked, the cover art will be saved in the tracks tags." TabIndex="7" Margin="6,4,0,0" />
+                    <CheckBox Content="Save in folder" Height="16" HorizontalAlignment="Left" Margin="6,22,0,0" x:Name="checkBoxCoverArtInFolder" VerticalAlignment="Top" IsChecked="{Binding SaveCoverArtInFolder}" ToolTip="If checked, the cover art will be downloaded in the albums folder." TabIndex="8" />
+                    <CheckBox Content="Convert to jpg" Height="16" HorizontalAlignment="Left" Margin="6,40,0,0" x:Name="checkBoxConvertToJpg" VerticalAlignment="Top" IsChecked="{Binding ConvertCoverArtToJpg}" ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." TabIndex="9" />
+                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,58,0,0" x:Name="checkBoxResizeCoverArt" VerticalAlignment="Top" Content="Constrain maximum width/height" IsChecked="{Binding ResizeCoverArt}" ToolTip="If checked, the cover art will be resized with the specified max width/height." TabIndex="10" />
                     <Label x:Name="labelCoverArtMaxSize" Content="Max size:" HorizontalAlignment="Left" Margin="21,72,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" />
-                    <TextBox HorizontalAlignment="Left" Margin="79,76,0,0" x:Name="textBoxCoverArtMaxSize" VerticalAlignment="Top" Text="1000" TabIndex="11" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="40" />
+                    <TextBox HorizontalAlignment="Left" Margin="79,76,0,0" x:Name="textBoxCoverArtMaxSize" VerticalAlignment="Top" TabIndex="11" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="40" IsEnabled="{Binding ElementName=checkBoxResizeCoverArt, Path=IsChecked}" >
+                        <TextBox.Text>
+                            <Binding Path="CoverArtMaxSize" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <conv:OnlyDigitsValidationRule />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                     <Label x:Name="labelPixels" Content="px" Height="26" HorizontalAlignment="Left" Margin="119,72,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" />
                 </Grid>
             </GroupBox>
-            <GroupBox x:Name="groupBoxSettingsMisc" Margin="0" VerticalAlignment="Top" Header="Settings">
-                <Grid x:Name="gridSettingsMisc">
-                    <CheckBox Content="Tag tracks" Height="16" HorizontalAlignment="Left" Margin="6,4,0,0" x:Name="checkBoxTag" VerticalAlignment="Top" IsChecked="True" ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags." TabIndex="3" />
-                    <CheckBox Content="Download one album at a time" Height="16" Margin="6,22,0,0" x:Name="checkBoxOneAlbumAtATime" VerticalAlignment="Top" IsEnabled="True" ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." TabIndex="4" HorizontalAlignment="Left" Width="190" />
-                    <CheckBox Content="Download artist discography" Height="16" IsEnabled="True" Margin="6,40,0,0" x:Name="checkBoxDownloadDiscography" ToolTip="If checked, the whole artist discography will be downloaded." VerticalAlignment="Top" TabIndex="5" HorizontalAlignment="Left" />
-                    <CheckBox Content="Retrieve files size" Height="16" IsEnabled="True" Margin="6,58,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, files size will be retrieved so that precise download progress can be shown." VerticalAlignment="Top" TabIndex="6" HorizontalAlignment="Left" Checked="checkBoxRetrieveFilesizes_CheckedChanged" Unchecked="checkBoxRetrieveFilesizes_CheckedChanged"/>
+            <GroupBox x:Name="groupBoxSettingsLog" Header="Log" Margin="0,0,0,0" VerticalAlignment="Top">
+                <Grid x:Name="gridSettingsLog">
+                    <CheckBox Content="Auto scroll" Height="16" Margin="6,4,0,0" x:Name="checkBoxAutoScrollLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="79" IsChecked="{Binding AutoScrollLog}" TabIndex="12" />
+                    <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" IsChecked="{Binding ShowVerboseLog}" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
                 </Grid>
             </GroupBox>
-            <Button Margin="0,284,0,0" x:Name="buttonSaveSettingsToFile" HorizontalAlignment="Right" Width="25" Click="buttonSaveSettingsToFile_Click" TabIndex="14" ToolTip="Save current settings to file" Height="25" VerticalAlignment="Top" RenderTransformOrigin="0.509,1.74">
+            <Button Margin="10,10,0,10" x:Name="buttonDefaultSettings" HorizontalAlignment="Right" Width="25" Click="buttonDefaultSettings_Click" TabIndex="14" ToolTip="Resets settings to default values" Height="25" VerticalAlignment="Top" RenderTransformOrigin="0.509,1.74">
                 <Image x:Name="imageGearDisk" Source="pack://application:,,,/Resources/GearDisk.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Width="16" />
             </Button>
             <Grid x:Name="gridButtons" VerticalAlignment="Bottom" Margin="0">
                 <Button Content="Start download" Margin="0" x:Name="buttonStart" VerticalAlignment="Bottom" Click="buttonStart_Click" HorizontalContentAlignment="Center" TabIndex="15" HorizontalAlignment="Left" Width="105" Height="24" />
                 <Button Content="Cancel" HorizontalContentAlignment="Center" Margin="0" x:Name="buttonStop" VerticalAlignment="Bottom" Visibility="Visible" Click="buttonStop_Click" IsEnabled="False" TabIndex="16" HorizontalAlignment="Right" Width="105" Height="24" />
             </Grid>
-            <GroupBox x:Name="groupBoxSettingsLog" Header="Log" Margin="0,218,0,0" VerticalAlignment="Top">
-                <Grid x:Name="gridSettingsLog">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="27*"/>
-                        <ColumnDefinition Width="10*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <CheckBox Content="Auto scroll" Height="16" Margin="6,4,0,0" x:Name="checkBoxAutoScrollLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="79" Checked="checkBoxAutoScrollLog_CheckedChanged" Unchecked="checkBoxAutoScrollLog_CheckedChanged" IsChecked="True" TabIndex="12" />
-                    <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" Checked="checkBoxVerboseLog_CheckedChanged" Unchecked="checkBoxVerboseLog_CheckedChanged" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
-                </Grid>
-            </GroupBox>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Window>

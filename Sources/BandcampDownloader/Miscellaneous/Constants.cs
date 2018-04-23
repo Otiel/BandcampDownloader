@@ -20,6 +20,6 @@ namespace BandcampDownloader {
         /// <summary>
         /// The absolute path to the settings file.
         /// </summary>
-        public static readonly String UserSettingsFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BcDlSettings.json";
+        public static readonly String UserSettingsFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BcDlSettings.ini";
     }
 }
