@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:conv="clr-namespace:BandcampDownloader.Helpers"
         Title="Bandcamp Downloader" 
-        Height="445" Width="920" 
-        MinHeight="420" MinWidth="750"
+        Height="440" Width="920" 
+        MinHeight="440" MinWidth="815"
         WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" 
         Icon="pack://application:,,,/Resources/Cloud.ico" 
         Name="WindowMain" Closing="WindowMain_Closing">
@@ -20,17 +20,19 @@
                 <Button Content="..." Margin="0" Name="buttonBrowse" HorizontalAlignment="Right" Width="27" Click="buttonBrowse_Click" TabIndex="2" ToolTip="Browse for folder" VerticalAlignment="Top" />
             </Grid>
             <ProgressBar Margin="0,143,0,0" Name="progressBar" VerticalAlignment="Top" IsTabStop="False" Height="18" />
-            <RichTextBox Name="richTextBoxLog" Margin="0,167,0,26" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsTabStop="False" TabIndex="2">
+            <RichTextBox Name="richTextBoxLog" Margin="0,167,0,30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsTabStop="False" TabIndex="2">
                 <RichTextBox.Resources>
                     <Style TargetType="{x:Type Paragraph}">
                         <Setter Property="Margin" Value="0" />
                     </Style>
                 </RichTextBox.Resources>
             </RichTextBox>
-            <Grid x:Name="gridDownloadSpeed" VerticalAlignment="Bottom" Height="26">
-                <Label Margin="0" x:Name="labelProgress" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
+            <Grid x:Name="gridDownloadSpeed" VerticalAlignment="Bottom">
                 <Label Content="v0.0.0.0" Margin="0" x:Name="labelVersion" Foreground="#FF003BFF" VerticalAlignment="Bottom" ToolTip="Click to go to project website" HorizontalAlignment="Left" MouseDown="labelVersion_MouseDown" Cursor="Hand" RenderTransformOrigin="-3.58,0.601" />
-                <Label Margin="0,0,155,0" x:Name="labelDownloadSpeed" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
+                <Label Margin="0,0,220,0" x:Name="labelProgress" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
+                <Label Margin="0,0,370,0" x:Name="labelDownloadSpeed" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
+                <Button Content="Start download" Margin="0,0,110,0" x:Name="buttonStart" VerticalAlignment="Bottom" Click="buttonStart_Click" HorizontalContentAlignment="Center" TabIndex="15" HorizontalAlignment="Right" Width="105" Height="24" />
+                <Button Content="Cancel" HorizontalContentAlignment="Center" Margin="0" x:Name="buttonStop" VerticalAlignment="Bottom" Visibility="Visible" Click="buttonStop_Click" IsEnabled="False" TabIndex="16" HorizontalAlignment="Right" Width="105" Height="24" />
             </Grid>
         </Grid>
         <StackPanel x:Name="gridRight" HorizontalAlignment="Right" Margin="0,10,10,10">
@@ -41,7 +43,7 @@
                     <CheckBox Content="Download artist discography" Height="16" IsEnabled="True" Margin="6,40,0,0" x:Name="checkBoxDownloadDiscography" ToolTip="If checked, the whole artist discography will be downloaded." VerticalAlignment="Top" IsChecked="{Binding DownloadArtistDiscography}" TabIndex="5" HorizontalAlignment="Left" />
                     <CheckBox Content="Retrieve files size" Height="16" IsEnabled="True" Margin="6,58,0,0" x:Name="checkBoxRetrieveFilesizes" ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time." VerticalAlignment="Top" IsChecked="{Binding RetrieveFilesizes}" TabIndex="6" HorizontalAlignment="Left" />
                     <Label x:Name="lableFilenameFormat" Content="File name format:" HorizontalAlignment="Left" Margin="0,68,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="27" />
-                    <TextBox HorizontalAlignment="Right" Margin="0,91,0,0" x:Name="textFilenameFormat" VerticalAlignment="Top" Text="{Binding FilenameFormat}" TabIndex="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="197" ToolTip="You can use placeholders to customize the file name:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {title} will be replaced by the track name&#x0a;- {tracknum} will be replaced by the track number" />
+                    <TextBox HorizontalAlignment="Right" Margin="0,91,5,3" x:Name="textFilenameFormat" VerticalAlignment="Top" Text="{Binding FilenameFormat}" TabIndex="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Width="190" ToolTip="You can use placeholders to customize the file name:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {title} will be replaced by the track name&#x0a;- {tracknum} will be replaced by the track number" />
                 </Grid>
             </GroupBox>
             <GroupBox x:Name="groupBoxSettingsCoverArt" Margin="0,0,0,0" Header="Cover art">
@@ -69,16 +71,12 @@
                     <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" IsChecked="{Binding ShowVerboseLog}" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
                 </Grid>
             </GroupBox>
-            <Button Margin="10,10,0,10" x:Name="buttonDefaultSettings" HorizontalAlignment="Right" Width="110" Click="buttonDefaultSettings_Click" TabIndex="14" ToolTip="Resets settings to default values" Height="25" VerticalAlignment="Top">
+            <Button Margin="0,10,0,0" x:Name="buttonDefaultSettings" HorizontalAlignment="Right" Width="110" Click="buttonDefaultSettings_Click" TabIndex="14" ToolTip="Resets settings to default values" Height="25" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal">
                     <Image x:Name="imageArrowCircle225Left" Source="pack://application:,,,/Resources/ArrowCircle225Left.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Width="16" />
                     <Label Padding="0" Margin="7,0,0,0">Reset settings</Label>
                 </StackPanel>
             </Button>
-            <Grid x:Name="gridButtons" VerticalAlignment="Bottom" Margin="0">
-                <Button Content="Start download" Margin="0" x:Name="buttonStart" VerticalAlignment="Bottom" Click="buttonStart_Click" HorizontalContentAlignment="Center" TabIndex="15" HorizontalAlignment="Left" Width="105" Height="24" />
-                <Button Content="Cancel" HorizontalContentAlignment="Center" Margin="0" x:Name="buttonStop" VerticalAlignment="Bottom" Visibility="Visible" Click="buttonStop_Click" IsEnabled="False" TabIndex="16" HorizontalAlignment="Right" Width="105" Height="24" />
-            </Grid>
         </StackPanel>
     </Grid>
 </Window>
