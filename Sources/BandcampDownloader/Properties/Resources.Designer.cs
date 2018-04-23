@@ -63,6 +63,16 @@ namespace BandcampDownloader.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ArrowCircle225Left {
+            get {
+                object obj = ResourceManager.GetObject("ArrowCircle225Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cloud {
             get {
                 object obj = ResourceManager.GetObject("Cloud", resourceCulture);
