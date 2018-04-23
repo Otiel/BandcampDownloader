@@ -770,7 +770,9 @@ namespace BandcampDownloader {
         }
 
         private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e) {
-            InitializeSettings(true);
+            if (MessageBox.Show("Reset settings to their default values?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Question, MessageBoxResult.Cancel) == MessageBoxResult.OK) {
+                InitializeSettings(true);
+            }
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e) {
