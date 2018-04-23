@@ -770,7 +770,7 @@ namespace BandcampDownloader {
         }
 
         private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e) {
-            initializeSettings(true);
+            InitializeSettings(true);
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e) {
