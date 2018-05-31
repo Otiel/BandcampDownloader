@@ -33,17 +33,18 @@ namespace BandcampDownloader {
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
                 album = JsonConvert.DeserializeObject<JsonAlbum>(albumData, settings).ToAlbum();
-                HtmlDocument doc = new HtmlDocument();
-                doc.LoadHtml(htmlCode);
-                foreach (Track track in album.Tracks) {
-                    var lyricsElement = doc.GetElementbyId("_lyrics_" + track.Number);
-                    if(lyricsElement != null)
-                        track.Lyrics = lyricsElement.InnerText.Trim();
-                }
             } catch (Exception e) {
                 throw new Exception("Could not deserialize JSON data.", e);
             }
-            
+            // extract lyrics from album page
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(htmlCode);
+            foreach (Track track in album.Tracks)
+            {
+                var lyricsElement = doc.GetElementbyId("_lyrics_" + track.Number);
+                if (lyricsElement != null)
+                    track.Lyrics = lyricsElement.InnerText.Trim();
+            }
 
             return album;
         }
