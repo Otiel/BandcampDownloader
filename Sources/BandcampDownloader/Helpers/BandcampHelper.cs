@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 using Newtonsoft.Json;
 
 namespace BandcampDownloader {
@@ -32,16 +33,17 @@ namespace BandcampDownloader {
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
                 album = JsonConvert.DeserializeObject<JsonAlbum>(albumData, settings).ToAlbum();
-                // extract lyrics from album page
                 HtmlDocument doc = new HtmlDocument();
-				doc.LoadHtml(htmlCode);
-				foreach (Track track in album.Tracks) {
-					string lyrics = doc.GetElementbyId("_lyrics_" + track.Number).InnerText;
-					track.Lyrics = lyrics.Trim();
-				}
+                doc.LoadHtml(htmlCode);
+                foreach (Track track in album.Tracks) {
+                    var lyricsElement = doc.GetElementbyId("_lyrics_" + track.Number);
+                    if(lyricsElement != null)
+                        track.Lyrics = lyricsElement.InnerText.Trim();
+                }
             } catch (Exception e) {
                 throw new Exception("Could not deserialize JSON data.", e);
             }
+            
 
             return album;
         }
