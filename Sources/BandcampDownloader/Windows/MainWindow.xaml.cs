@@ -59,12 +59,22 @@ namespace BandcampDownloader {
         public MainWindow() {
             InitializeSettings(false);
             InitializeComponent();
-            DataContext = userSettings;
 
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the
             // same time
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            // Update controls status based on the settings values (possibly stored in the settings file)
+            textBoxCoverArtMaxSize.IsEnabled = userSettings.ResizeCoverArt;
+            if (!userSettings.SaveCoverArtInFolder && !userSettings.SaveCoverArtInTags) {
+                checkBoxConvertToJpg.IsEnabled = false;
+                checkBoxResizeCoverArt.IsEnabled = false;
+                textBoxCoverArtMaxSize.IsEnabled = false;
+            } else {
+                checkBoxConvertToJpg.IsEnabled = true;
+                checkBoxResizeCoverArt.IsEnabled = true;
+                textBoxCoverArtMaxSize.IsEnabled = true;
+            }
             // Hints
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
@@ -594,6 +604,20 @@ namespace BandcampDownloader {
             return files;
         }
 
+        private void InitializeSettings(Boolean resetToDefaults) {
+            if (resetToDefaults) {
+                File.Delete(Constants.UserSettingsFilePath);
+            }
+            // Must set this before UI forms
+            // Its default value cannot be set in settings as it isn't determined by a constant function
+            if (String.IsNullOrEmpty(userSettings.DownloadsLocation)) {
+                userSettings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
+            }
+            userSettings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+            // Save DataContext for bindings
+            DataContext = userSettings;
+        }
+
         /// <summary>
         /// Displays the specified message in the log with the specified color.
         /// </summary>
@@ -900,16 +924,28 @@ namespace BandcampDownloader {
             Cursor = Cursors.Arrow;
         }
 
-        private void InitializeSettings(Boolean resetToDefaults) {
-            if (resetToDefaults) {
-                File.Delete(Constants.UserSettingsFilePath);
+        private void checkBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
+            if (checkBoxResizeCoverArt == null || textBoxCoverArtMaxSize == null) {
+                return;
             }
-            // Must set this before UI forms, cannot default in settings as it isn't determined by a constant function
-            if (String.IsNullOrEmpty(userSettings.DownloadsLocation)) {
-                userSettings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
+
+            textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
+        }
+
+        private void checkBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
+            if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null || checkBoxConvertToJpg == null) {
+                return;
             }
-            userSettings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
-            DataContext = userSettings;
+
+            if (!checkBoxCoverArtInFolder.IsChecked.Value && !checkBoxCoverArtInTags.IsChecked.Value) {
+                checkBoxConvertToJpg.IsEnabled = false;
+                checkBoxResizeCoverArt.IsEnabled = false;
+                textBoxCoverArtMaxSize.IsEnabled = false;
+            } else {
+                checkBoxConvertToJpg.IsEnabled = true;
+                checkBoxResizeCoverArt.IsEnabled = true;
+                textBoxCoverArtMaxSize.IsEnabled = true;
+            }
         }
 
         private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
