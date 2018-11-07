@@ -9,7 +9,7 @@ namespace BandcampDownloader {
         
         // This uses the art_id variable to retrieve the image from the new bandcamp hosting site
         public String urlStart = "https://f4.bcbits.com/img/a";
-        public String urlEnd = "_10.jpg";
+        public String urlEnd = "_0.jpg";
         
         [JsonProperty("artist")]
         public String Artist { get; set; }
