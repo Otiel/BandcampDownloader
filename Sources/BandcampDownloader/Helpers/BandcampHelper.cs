@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 namespace BandcampDownloader {
 
     internal static class BandcampHelper {
+
         /// <summary>
         /// Retrieves the data on the album of the specified Bandcamp page.
         /// </summary>
@@ -36,14 +37,15 @@ namespace BandcampDownloader {
             } catch (Exception e) {
                 throw new Exception("Could not deserialize JSON data.", e);
             }
-            // extract lyrics from album page
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(htmlCode);
-            foreach (Track track in album.Tracks)
-            {
-                var lyricsElement = doc.GetElementbyId("_lyrics_" + track.Number);
-                if (lyricsElement != null)
+
+            // Extract lyrics from album page
+            HtmlDocument htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(htmlCode);
+            foreach (Track track in album.Tracks) {
+                HtmlNode lyricsElement = htmlDoc.GetElementbyId("_lyrics_" + track.Number);
+                if (lyricsElement != null) {
                     track.Lyrics = lyricsElement.InnerText.Trim();
+                }
             }
 
             return album;
