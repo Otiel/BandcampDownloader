@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace BandcampDownloader {
 
     internal class JsonAlbum {
-        
         // This uses the art_id variable to retrieve the image from the new bandcamp hosting site
         public String urlStart = "https://f4.bcbits.com/img/a";
         public String urlEnd = "_0.jpg";
-        
+
         [JsonProperty("artist")]
         public String Artist { get; set; }
 
@@ -29,7 +28,7 @@ namespace BandcampDownloader {
         public Album ToAlbum() {
             return new Album() {
                 Artist = Artist,
-                ArtworkUrl = urlStart+ artId.PadLeft(10, '0')+ urlEnd,
+                ArtworkUrl = urlStart + artId.PadLeft(10, '0') + urlEnd,
                 ReleaseDate = ReleaseDate,
                 Title = AlbumData.AlbumTitle,
                 // Some tracks do not have their URL filled on some albums (pre-release...)
