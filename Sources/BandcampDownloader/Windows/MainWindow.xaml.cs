@@ -253,6 +253,7 @@ namespace BandcampDownloader {
                                 tagFile.Tag.Track = (uint)track.Number;
                                 tagFile.Tag.Year = (uint)album.ReleaseDate.Year;
                                 tagFile.Tag.Lyrics = track.Lyrics;
+                                tagFile.Tag.Comment = "";
                                 tagFile.Save();
                             }
 
