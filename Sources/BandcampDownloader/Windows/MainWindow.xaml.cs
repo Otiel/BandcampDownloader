@@ -86,6 +86,10 @@ namespace BandcampDownloader {
             labelVersion.Content = "v" + Assembly.GetEntryAssembly().GetName().Version;
             // Check for updates
             Task.Factory.StartNew(() => { CheckForUpdates(); });
+
+#if DEBUG
+            textBoxUrls.Text = "https://goataholicskjald.bandcamp.com/album/dogma";
+#endif
         }
 
         #endregion Constructor
@@ -651,12 +655,14 @@ namespace BandcampDownloader {
             if (userSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success) {
                 this.Dispatcher.Invoke(new Action(() => {
                     // Time
-                    var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
-                    textRange.Text = DateTime.Now.ToString("HH:mm:ss") + " ";
+                    var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
+                        Text = DateTime.Now.ToString("HH:mm:ss") + " "
+                    };
                     textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
                     // Message
-                    textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
-                    textRange.Text = message;
+                    textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
+                        Text = message
+                    };
                     textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
                     // Line break
                     richTextBoxLog.AppendText(Environment.NewLine);
@@ -807,28 +813,28 @@ namespace BandcampDownloader {
 
         #region Events
 
-        private void buttonBrowse_Click(object sender, RoutedEventArgs e) {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog();
-            dialog.Description = "Select the folder to save albums";
+        private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
+            var dialog = new System.Windows.Forms.FolderBrowserDialog {
+                Description = "Select the folder to save albums"
+            };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsLocation.Text = dialog.SelectedPath;
             }
         }
 
-        private void buttonDefaultSettings_Click(object sender, RoutedEventArgs e) {
+        private void ButtonDefaultSettings_Click(object sender, RoutedEventArgs e) {
             if (MessageBox.Show("Reset settings to their default values?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Question, MessageBoxResult.Cancel) == MessageBoxResult.OK) {
                 InitializeSettings(true);
             }
         }
 
-        private void buttonStart_Click(object sender, RoutedEventArgs e) {
+        private void ButtonStart_Click(object sender, RoutedEventArgs e) {
             if (textBoxUrls.Text == Constants.UrlsHint) {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
                 return;
             }
-            int coverArtMaxSize = 0;
-            if (checkBoxResizeCoverArt.IsChecked.Value && !Int32.TryParse(textBoxCoverArtMaxSize.Text, out coverArtMaxSize)) {
+            if (checkBoxResizeCoverArt.IsChecked.Value && !int.TryParse(textBoxCoverArtMaxSize.Text, out int coverArtMaxSize)) {
                 Log("Cover art max width/height must be an integer", LogType.Error);
                 return;
             }
@@ -913,7 +919,7 @@ namespace BandcampDownloader {
             });
         }
 
-        private void buttonStop_Click(object sender, RoutedEventArgs e) {
+        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
             if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
                 return;
             }
@@ -946,7 +952,7 @@ namespace BandcampDownloader {
             Cursor = Cursors.Arrow;
         }
 
-        private void checkBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
+        private void CheckBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
             if (checkBoxResizeCoverArt == null || textBoxCoverArtMaxSize == null) {
                 return;
             }
@@ -954,7 +960,7 @@ namespace BandcampDownloader {
             textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
         }
 
-        private void checkBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
+        private void CheckBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
             if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null || checkBoxConvertToJpg == null) {
                 return;
             }
@@ -970,11 +976,11 @@ namespace BandcampDownloader {
             }
         }
 
-        private void labelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
+        private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
             Process.Start(Constants.ProjectWebsite);
         }
 
-        private void textBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
+        private void TextBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
             if (textBoxUrls.Text == Constants.UrlsHint) {
                 // Erase the hint message
                 textBoxUrls.Text = "";
@@ -982,7 +988,7 @@ namespace BandcampDownloader {
             }
         }
 
-        private void textBoxUrls_LostFocus(object sender, RoutedEventArgs e) {
+        private void TextBoxUrls_LostFocus(object sender, RoutedEventArgs e) {
             if (textBoxUrls.Text == "") {
                 // Show the hint message
                 textBoxUrls.Text = Constants.UrlsHint;

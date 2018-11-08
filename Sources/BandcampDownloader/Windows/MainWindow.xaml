@@ -13,11 +13,11 @@
     </Window.TaskbarItemInfo>
     <Grid x:Name="gridMain">
         <Grid x:Name="gridLeft" Margin="10,10,230,10">
-            <TextBox Margin="0" Name="textBoxUrls" AcceptsReturn="True" Height="111" VerticalAlignment="Top" Text="" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" GotFocus="textBoxUrls_GotFocus" LostFocus="textBoxUrls_LostFocus" TabIndex="0" />
+            <TextBox Margin="0" Name="textBoxUrls" AcceptsReturn="True" Height="111" VerticalAlignment="Top" Text="" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" GotFocus="TextBoxUrls_GotFocus" LostFocus="TextBoxUrls_LostFocus" TabIndex="0" />
             <Grid x:Name="gridDownloadsLocation" Margin="0,117,0,0" VerticalAlignment="Top">
                 <Label Content="Save albums to" HorizontalAlignment="Left" Margin="0,-3,0,0" Name="labelDownloadsLocation" VerticalAlignment="Top" ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" />
                 <TextBox Text="{Binding DownloadsLocation}" Margin="95,0,32,0"  Name="textBoxDownloadsLocation" TabIndex="1" ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" VerticalAlignment="Top" Height="20"  />
-                <Button Content="..." Margin="0" Name="buttonBrowse" HorizontalAlignment="Right" Width="27" Click="buttonBrowse_Click" TabIndex="2" ToolTip="Browse for folder" VerticalAlignment="Top" />
+                <Button Content="..." Margin="0" Name="buttonBrowse" HorizontalAlignment="Right" Width="27" Click="ButtonBrowse_Click" TabIndex="2" ToolTip="Browse for folder" VerticalAlignment="Top" />
             </Grid>
             <ProgressBar Margin="0,143,0,0" Name="progressBar" VerticalAlignment="Top" IsTabStop="False" Height="18" />
             <RichTextBox Name="richTextBoxLog" Margin="0,167,0,30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" IsReadOnlyCaretVisible="True" IsTabStop="False" TabIndex="2">
@@ -28,11 +28,11 @@
                 </RichTextBox.Resources>
             </RichTextBox>
             <Grid x:Name="gridDownloadSpeed" VerticalAlignment="Bottom">
-                <Label Content="v0.0.0.0" Margin="0" x:Name="labelVersion" Foreground="#FF003BFF" VerticalAlignment="Bottom" ToolTip="Click to go to project website" HorizontalAlignment="Left" MouseDown="labelVersion_MouseDown" Cursor="Hand" RenderTransformOrigin="-3.58,0.601" />
+                <Label Content="v0.0.0.0" Margin="0" x:Name="labelVersion" Foreground="#FF003BFF" VerticalAlignment="Bottom" ToolTip="Click to go to project website" HorizontalAlignment="Left" MouseDown="LabelVersion_MouseDown" Cursor="Hand" RenderTransformOrigin="-3.58,0.601" />
                 <Label Margin="0,0,220,0" x:Name="labelProgress" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
                 <Label Margin="0,0,370,0" x:Name="labelDownloadSpeed" HorizontalAlignment="Right" Width="150" HorizontalContentAlignment="Right" VerticalAlignment="Bottom" Content="" />
-                <Button Content="Start download" Margin="0,0,110,0" x:Name="buttonStart" VerticalAlignment="Bottom" Click="buttonStart_Click" HorizontalContentAlignment="Center" TabIndex="15" HorizontalAlignment="Right" Width="105" Height="24" />
-                <Button Content="Cancel" HorizontalContentAlignment="Center" Margin="0" x:Name="buttonStop" VerticalAlignment="Bottom" Visibility="Visible" Click="buttonStop_Click" IsEnabled="False" TabIndex="16" HorizontalAlignment="Right" Width="105" Height="24" />
+                <Button Content="Start download" Margin="0,0,110,0" x:Name="buttonStart" VerticalAlignment="Bottom" Click="ButtonStart_Click" HorizontalContentAlignment="Center" TabIndex="15" HorizontalAlignment="Right" Width="105" Height="24" />
+                <Button Content="Cancel" HorizontalContentAlignment="Center" Margin="0" x:Name="buttonStop" VerticalAlignment="Bottom" Visibility="Visible" Click="ButtonStop_Click" IsEnabled="False" TabIndex="16" HorizontalAlignment="Right" Width="105" Height="24" />
             </Grid>
         </Grid>
         <StackPanel x:Name="gridRight" HorizontalAlignment="Right" Margin="0,10,10,10">
@@ -48,10 +48,10 @@
             </GroupBox>
             <GroupBox x:Name="groupBoxSettingsCoverArt" Margin="0,0,0,0" Header="Cover art">
                 <Grid x:Name="gridSettingsCoverArt">
-                    <CheckBox Content="Save in tags" Height="16" HorizontalAlignment="Left" x:Name="checkBoxCoverArtInTags" VerticalAlignment="Top" IsChecked="{Binding SaveCoverArtInTags}" ToolTip="If checked, the cover art will be saved in the tracks tags." TabIndex="7" Margin="6,4,0,0" Checked="checkBoxSaveCoverArt_CheckedChanged" Unchecked="checkBoxSaveCoverArt_CheckedChanged"/>
-                    <CheckBox Content="Save in folder" Height="16" HorizontalAlignment="Left" Margin="6,23,0,0" x:Name="checkBoxCoverArtInFolder" VerticalAlignment="Top" IsChecked="{Binding SaveCoverArtInFolder}" ToolTip="If checked, the cover art will be downloaded in the albums folder." TabIndex="8" Checked="checkBoxSaveCoverArt_CheckedChanged" Unchecked="checkBoxSaveCoverArt_CheckedChanged"/>
+                    <CheckBox Content="Save in tags" Height="16" HorizontalAlignment="Left" x:Name="checkBoxCoverArtInTags" VerticalAlignment="Top" IsChecked="{Binding SaveCoverArtInTags}" ToolTip="If checked, the cover art will be saved in the tracks tags." TabIndex="7" Margin="6,4,0,0" Checked="CheckBoxSaveCoverArt_CheckedChanged" Unchecked="CheckBoxSaveCoverArt_CheckedChanged"/>
+                    <CheckBox Content="Save in folder" Height="16" HorizontalAlignment="Left" Margin="6,23,0,0" x:Name="checkBoxCoverArtInFolder" VerticalAlignment="Top" IsChecked="{Binding SaveCoverArtInFolder}" ToolTip="If checked, the cover art will be downloaded in the albums folder." TabIndex="8" Checked="CheckBoxSaveCoverArt_CheckedChanged" Unchecked="CheckBoxSaveCoverArt_CheckedChanged"/>
                     <CheckBox Content="Convert to jpg" Height="16" HorizontalAlignment="Left" Margin="6,40,0,0" x:Name="checkBoxConvertToJpg" VerticalAlignment="Top" IsChecked="{Binding ConvertCoverArtToJpg}" ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." TabIndex="9" />
-                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,58,0,0" x:Name="checkBoxResizeCoverArt" VerticalAlignment="Top" Content="Constrain maximum width/height" IsChecked="{Binding ResizeCoverArt}" ToolTip="If checked, the cover art will be resized with the specified max width/height." TabIndex="10" Checked="checkBoxResizeCoverArt_CheckedChanged" Unchecked="checkBoxResizeCoverArt_CheckedChanged"/>
+                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="6,58,0,0" x:Name="checkBoxResizeCoverArt" VerticalAlignment="Top" Content="Constrain maximum width/height" IsChecked="{Binding ResizeCoverArt}" ToolTip="If checked, the cover art will be resized with the specified max width/height." TabIndex="10" Checked="CheckBoxResizeCoverArt_CheckedChanged" Unchecked="CheckBoxResizeCoverArt_CheckedChanged"/>
                     <Label x:Name="labelCoverArtMaxSize" Content="Max size:" HorizontalAlignment="Left" Margin="21,72,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" />
                     <TextBox HorizontalAlignment="Left" Margin="79,76,0,0" x:Name="textBoxCoverArtMaxSize" VerticalAlignment="Top" TabIndex="11" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="40" IsEnabled="{Binding ElementName=checkBoxResizeCoverArt, Path=IsChecked}" >
                         <TextBox.Text>
@@ -71,7 +71,7 @@
                     <CheckBox Content="Verbose" Height="16" Margin="6,22,0,0" Name="checkBoxVerboseLog" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Width="65" IsChecked="{Binding ShowVerboseLog}" RenderTransformOrigin="12.352,6.887" TabIndex="13" />
                 </Grid>
             </GroupBox>
-            <Button Margin="0,10,0,0" x:Name="buttonDefaultSettings" HorizontalAlignment="Right" Width="110" Click="buttonDefaultSettings_Click" TabIndex="14" ToolTip="Resets settings to default values" Height="25" VerticalAlignment="Top">
+            <Button Margin="0,10,0,0" x:Name="buttonDefaultSettings" HorizontalAlignment="Right" Width="110" Click="ButtonDefaultSettings_Click" TabIndex="14" ToolTip="Resets settings to default values" Height="25" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal">
                     <Image x:Name="imageArrowCircle225Left" Source="pack://application:,,,/Resources/ArrowCircle225Left.png" Stretch="None" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="16" Width="16" />
                     <Label Padding="0" Margin="7,0,0,0">Reset settings</Label>
