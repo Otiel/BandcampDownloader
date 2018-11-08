@@ -120,8 +120,7 @@ namespace BandcampDownloader {
                 failedToRetrieveLatestVersion = true;
             }
 
-            Version latestVersion;
-            if (Version.TryParse(latestVersionNumber, out latestVersion)) {
+            if (Version.TryParse(latestVersionNumber, out Version latestVersion)) {
                 Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 if (currentVersion.CompareTo(latestVersion) < 0) {
                     // The latest version is newer than the current one
