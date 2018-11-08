@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace BandcampDownloader {
 
     internal static class Extensions {
+
         /// <summary>
         /// Replaces the forbidden chars \ / : * ? " &lt; &gt; | from the System.String
         /// object by an underscore _ in order to be used for a Windows file or folder.

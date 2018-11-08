@@ -4,6 +4,7 @@ using System.Windows.Media;
 namespace BandcampDownloader {
 
     internal static class LogHelper {
+
         /// <summary>
         /// Returns the color associated to the specified log type.
         /// </summary>

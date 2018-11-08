@@ -6,24 +6,23 @@ using Newtonsoft.Json;
 namespace BandcampDownloader {
 
     internal class JsonAlbum {
-        // This uses the art_id variable to retrieve the image from the new bandcamp hosting site
-        public String urlStart = "https://f4.bcbits.com/img/a";
         public String urlEnd = "_0.jpg";
+        public String urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
-        [JsonProperty("artist")]
-        public String Artist { get; set; }
+        [JsonProperty("current")]
+        public JsonAlbumData AlbumData { get; set; }
 
         [JsonProperty("art_id")]
         public String artId { get; set; }
+
+        [JsonProperty("artist")]
+        public String Artist { get; set; }
 
         [JsonProperty("album_release_date")]
         public DateTime ReleaseDate { get; set; }
 
         [JsonProperty("trackinfo")]
         public List<JsonTrack> Tracks { get; set; }
-
-        [JsonProperty("current")]
-        public JsonAlbumData AlbumData { get; set; }
 
         public Album ToAlbum() {
             return new Album() {

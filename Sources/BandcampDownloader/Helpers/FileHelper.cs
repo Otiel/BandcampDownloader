@@ -4,6 +4,7 @@ using System.Net;
 namespace BandcampDownloader {
 
     internal static class FileHelper {
+
         /// <summary>
         /// Returns the size of the file located at the provided URL.
         /// </summary>

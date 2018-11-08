@@ -4,15 +4,15 @@ using System.Reflection;
 
 namespace BandcampDownloader {
 
-    internal static class Constants {      
-        /// <summary>
-        /// The website URL of BandcampDownloader.
-        /// </summary>
-        public static readonly String ProjectWebsite = "https://github.com/Otiel/BandcampDownloader";
+    internal static class Constants {
         /// <summary>
         /// The URL redirecting to the latest release on GitHub.
         /// </summary>
         public static readonly String LatestReleaseWebsite = "https://github.com/Otiel/BandcampDownloader/releases/latest";
+        /// <summary>
+        /// The website URL of BandcampDownloader.
+        /// </summary>
+        public static readonly String ProjectWebsite = "https://github.com/Otiel/BandcampDownloader";
         /// <summary>
         /// The help text displayed in the URL list textbox.
         /// </summary>
