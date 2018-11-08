@@ -18,6 +18,9 @@ using System.Windows.Media;
 using System.Windows.Shell;
 using Config.Net;
 using ImageResizer;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
 
 namespace BandcampDownloader {
 
@@ -58,6 +61,7 @@ namespace BandcampDownloader {
 
         public MainWindow() {
             InitializeSettings(false);
+            InitializeLogger();
             InitializeComponent();
 
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the
@@ -605,6 +609,21 @@ namespace BandcampDownloader {
             return files;
         }
 
+        /// <summary>
+        /// Initializes the logger component.
+        /// </summary>
+        private void InitializeLogger() {
+            var fileTarget = new FileTarget() {
+                FileName = Constants.LogFilePath,
+                Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${message}"
+            };
+
+            var config = new LoggingConfiguration();
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, fileTarget);
+
+            LogManager.Configuration = config;
+        }
+
         private void InitializeSettings(Boolean resetToDefaults) {
             if (resetToDefaults) {
                 File.Delete(Constants.UserSettingsFilePath);
@@ -620,31 +639,34 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Displays the specified message in the log with the specified color.
+        /// Logs to file and displays the specified message in the log textbox with the specified color.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="color">The color.</param>
         private void Log(String message, LogType logType) {
-            if (!userSettings.ShowVerboseLog && ( logType == LogType.Warning || logType == LogType.VerboseInfo )) {
-                return;
+            // Log to file
+            var logger = LogManager.GetCurrentClassLogger();
+            logger.Log(logType.ToNLogLevel(), message);
+            
+            // Log to window
+            if (userSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success) {
+                this.Dispatcher.Invoke(new Action(() => {
+                    // Time
+                    var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
+                    textRange.Text = DateTime.Now.ToString("HH:mm:ss") + " ";
+                    textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
+                    // Message
+                    textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
+                    textRange.Text = message;
+                    textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
+                    // Line break
+                    richTextBoxLog.AppendText(Environment.NewLine);
+
+                    if (userSettings.AutoScrollLog) {
+                        richTextBoxLog.ScrollToEnd();
+                    }
+                }));
             }
-
-            this.Dispatcher.Invoke(new Action(() => {
-                // Time
-                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
-                textRange.Text = DateTime.Now.ToString("HH:mm:ss") + " ";
-                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
-                // Message
-                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd);
-                textRange.Text = message;
-                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
-                // Line break
-
-                richTextBoxLog.AppendText(Environment.NewLine);
-                if (userSettings.AutoScrollLog) {
-                    richTextBoxLog.ScrollToEnd();
-                }
-            }));
         }
 
         /// <summary>

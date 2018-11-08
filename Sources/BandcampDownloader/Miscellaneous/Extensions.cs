@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using NLog;
 
 namespace BandcampDownloader {
 
@@ -27,6 +28,29 @@ namespace BandcampDownloader {
             fileName = Regex.Replace(fileName, @"\s+", " ");
 
             return fileName;
+        }
+
+        /// <summary>
+        /// Returns the NLog.LogLevel associated to the specified LogType.
+        /// </summary>
+        /// <param name="logType">The LogType to transform.</param>
+        public static LogLevel ToNLogLevel(this LogType logType) {
+            switch (logType) {
+                case LogType.VerboseInfo:
+                    return LogLevel.Debug;
+                case LogType.Info:
+                    return LogLevel.Info;
+                case LogType.IntermediateSuccess:
+                    return LogLevel.Info;
+                case LogType.Success:
+                    return LogLevel.Info;
+                case LogType.Warning:
+                    return LogLevel.Warn;
+                case LogType.Error:
+                    return LogLevel.Error;
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }
