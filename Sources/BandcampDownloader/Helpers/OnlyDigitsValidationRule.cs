@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
-namespace BandcampDownloader.Helpers {
+namespace BandcampDownloader {
 
     public class OnlyDigitsValidationRule: ValidationRule {
 
