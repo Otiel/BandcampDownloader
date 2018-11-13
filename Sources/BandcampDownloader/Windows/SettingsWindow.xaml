@@ -16,6 +16,7 @@
     mc:Ignorable="d">
     <Grid x:Name="gridMain" Margin="10,10,10,10">
         <DockPanel
+            x:Name="dockPanelInfo"
             Height="26"
             HorizontalAlignment="Center"
             VerticalAlignment="Top">
@@ -87,8 +88,7 @@
                     TabIndex="3"
                     ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time." />
                 <Label
-                    x:Name="lableFilenameFormat"
-                    Height="27"
+                    x:Name="labelFilenameFormat"
                     Margin="0,68,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
