@@ -212,7 +212,7 @@ namespace BandcampDownloader {
                     if (track.Mp3Url == trackFile.Url &&
                         trackFile.Size > length - ( trackFile.Size * userSettings.AllowableFileSizeDifference ) &&
                         trackFile.Size < length + ( trackFile.Size * userSettings.AllowableFileSizeDifference )) {
-                        Log($"Track already exists within allowed filesize range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                        Log($"Track already exists within allowed file size range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
                 }
