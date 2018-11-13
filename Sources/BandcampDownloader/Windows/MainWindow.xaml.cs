@@ -55,7 +55,7 @@ namespace BandcampDownloader {
         /// </summary>
         private Boolean userCancelled;
 
-        #endregion Fields
+        #endregion
 
         #region Constructor
 
@@ -92,7 +92,7 @@ namespace BandcampDownloader {
 #endif
         }
 
-        #endregion Constructor
+        #endregion
 
         #region Methods
 
@@ -809,7 +809,7 @@ namespace BandcampDownloader {
             }
         }
 
-        #endregion Methods
+        #endregion
 
         #region Events
 
@@ -1006,6 +1006,6 @@ namespace BandcampDownloader {
             }
         }
 
-        #endregion Events
+        #endregion
     }
 }
