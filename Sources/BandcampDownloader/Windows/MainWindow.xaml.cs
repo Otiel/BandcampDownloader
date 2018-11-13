@@ -793,7 +793,11 @@ namespace BandcampDownloader {
         }
 
         private void ButtonOpenSettingsWindow_Click(object sender, RoutedEventArgs e) {
-            new SettingsWindow(activeDownloads).ShowDialog();
+            var settingsWindow = new SettingsWindow(activeDownloads) {
+                Owner = this,
+                ShowInTaskbar = false,
+            };
+            settingsWindow.ShowDialog();
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
