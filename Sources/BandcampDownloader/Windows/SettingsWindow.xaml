@@ -51,7 +51,7 @@
                     VerticalAlignment="Top"
                     Content="Tag tracks"
                     IsChecked="{Binding TagTracks}"
-                    TabIndex="3"
+                    TabIndex="0"
                     ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags.&#xA;Lyrics will be saved as well if available." />
                 <CheckBox
                     x:Name="checkBoxOneAlbumAtATime"
@@ -63,7 +63,7 @@
                     Content="Download one album at a time"
                     IsChecked="{Binding DownloadOneAlbumAtATime}"
                     IsEnabled="True"
-                    TabIndex="4"
+                    TabIndex="1"
                     ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." />
                 <CheckBox
                     x:Name="checkBoxDownloadDiscography"
@@ -74,7 +74,7 @@
                     Content="Download artist discography"
                     IsChecked="{Binding DownloadArtistDiscography}"
                     IsEnabled="True"
-                    TabIndex="5"
+                    TabIndex="2"
                     ToolTip="If checked, the whole artist discography will be downloaded." />
                 <CheckBox
                     x:Name="checkBoxRetrieveFilesizes"
@@ -85,7 +85,7 @@
                     Content="Retrieve files size"
                     IsChecked="{Binding RetrieveFilesizes}"
                     IsEnabled="True"
-                    TabIndex="6"
+                    TabIndex="3"
                     ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time." />
                 <Label
                     x:Name="lableFilenameFormat"
@@ -103,7 +103,7 @@
                     VerticalAlignment="Top"
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
-                    TabIndex="10"
+                    TabIndex="4"
                     Text="{Binding FilenameFormat}"
                     ToolTip="You can use placeholders to customize the file name:&#xA;- {artist} will be replaced by the album artist&#xA;- {title} will be replaced by the track name&#xA;- {tracknum} will be replaced by the track number" />
             </Grid>
@@ -126,7 +126,7 @@
                     Checked="CheckBoxSaveCoverArt_CheckedChanged"
                     Content="Save in tags"
                     IsChecked="{Binding SaveCoverArtInTags}"
-                    TabIndex="7"
+                    TabIndex="5"
                     ToolTip="If checked, the cover art will be saved in the tracks tags."
                     Unchecked="CheckBoxSaveCoverArt_CheckedChanged" />
                 <CheckBox
@@ -138,7 +138,7 @@
                     Checked="CheckBoxSaveCoverArt_CheckedChanged"
                     Content="Save in folder"
                     IsChecked="{Binding SaveCoverArtInFolder}"
-                    TabIndex="8"
+                    TabIndex="6"
                     ToolTip="If checked, the cover art will be downloaded in the albums folder."
                     Unchecked="CheckBoxSaveCoverArt_CheckedChanged" />
                 <CheckBox
@@ -149,7 +149,7 @@
                     VerticalAlignment="Top"
                     Content="Convert to jpg"
                     IsChecked="{Binding ConvertCoverArtToJpg}"
-                    TabIndex="9"
+                    TabIndex="7"
                     ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." />
                 <CheckBox
                     x:Name="checkBoxResizeCoverArt"
@@ -160,7 +160,7 @@
                     Checked="CheckBoxResizeCoverArt_CheckedChanged"
                     Content="Constrain maximum width/height"
                     IsChecked="{Binding ResizeCoverArt}"
-                    TabIndex="10"
+                    TabIndex="8"
                     ToolTip="If checked, the cover art will be resized with the specified max width/height."
                     Unchecked="CheckBoxResizeCoverArt_CheckedChanged" />
                 <Label
@@ -179,7 +179,7 @@
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     IsEnabled="{Binding IsChecked, ElementName=checkBoxResizeCoverArt}"
-                    TabIndex="11">
+                    TabIndex="9">
                     <Binding
                         Mode="TwoWay"
                         Path="CoverArtMaxSize"
@@ -218,7 +218,7 @@
                     Content="Auto scroll"
                     Foreground="Black"
                     IsChecked="{Binding AutoScrollLog}"
-                    TabIndex="12" />
+                    TabIndex="10" />
                 <CheckBox
                     x:Name="checkBoxVerboseLog"
                     Width="65"
@@ -229,7 +229,7 @@
                     Content="Verbose"
                     Foreground="Black"
                     IsChecked="{Binding ShowVerboseLog}"
-                    TabIndex="13" />
+                    TabIndex="11" />
             </Grid>
         </GroupBox>
         <Button
@@ -240,7 +240,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Click="ButtonResetSettings_Click"
-            TabIndex="14"
+            TabIndex="12"
             ToolTip="Resets settings to default values">
             <StackPanel Orientation="Horizontal">
                 <Image
@@ -267,6 +267,6 @@
             Content="_Close"
             IsCancel="True"
             IsDefault="True"
-            TabIndex="15" />
+            TabIndex="13" />
     </Grid>
 </Window>

@@ -72,7 +72,7 @@
             IsReadOnly="True"
             IsReadOnlyCaretVisible="True"
             IsTabStop="False"
-            TabIndex="2"
+            TabIndex="3"
             VerticalScrollBarVisibility="Auto">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
@@ -118,7 +118,7 @@
                 HorizontalContentAlignment="Center"
                 Click="ButtonStart_Click"
                 Content="Start _download"
-                TabIndex="15" />
+                TabIndex="4" />
             <Button
                 x:Name="buttonStop"
                 Width="105"
@@ -130,7 +130,7 @@
                 Click="ButtonStop_Click"
                 Content="_Cancel"
                 IsEnabled="False"
-                TabIndex="16"
+                TabIndex="5"
                 Visibility="Visible" />
             <Button
                 x:Name="buttonOpenSettingsWindow"
@@ -141,7 +141,7 @@
                 VerticalAlignment="Bottom"
                 Click="ButtonOpenSettingsWindow_Click"
                 Content="_Settings..."
-                TabIndex="14"
+                TabIndex="6"
                 ToolTip="Open settings" />
         </Grid>
     </Grid>
