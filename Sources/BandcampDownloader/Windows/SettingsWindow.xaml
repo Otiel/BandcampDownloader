@@ -11,7 +11,7 @@
     Width="680"
     Height="267"
     Icon="pack://application:,,,/Resources/Cloud.ico"
-    ResizeMode="CanResize"
+    ResizeMode="CanMinimize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
