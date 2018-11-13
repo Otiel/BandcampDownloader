@@ -3,7 +3,7 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
-    public interface UserSettings {
+    public interface IUserSettings {
 
         [Option(DefaultValue = 0.05)]
         Double AllowableFileSizeDifference { get; set; }

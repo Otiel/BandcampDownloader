@@ -70,7 +70,7 @@ namespace BandcampDownloader {
             String downloadsPath = MainWindow.userSettings.DownloadsLocation;
 
             File.Delete(Constants.UserSettingsFilePath);
-            MainWindow.userSettings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+            MainWindow.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
             MainWindow.userSettings.DownloadsLocation = downloadsPath;
             DataContext = MainWindow.userSettings;
         }
