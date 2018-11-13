@@ -28,7 +28,7 @@ namespace BandcampDownloader {
 
         #region Fields
 
-        public UserSettings userSettings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+        public static UserSettings userSettings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
         /// <summary>
         /// Indicates if there are active downloads
         /// </summary>
@@ -60,7 +60,7 @@ namespace BandcampDownloader {
         #region Constructor
 
         public MainWindow() {
-            InitializeSettings(false);
+            InitializeSettings();
             InitializeLogger();
             InitializeComponent();
 
@@ -68,17 +68,6 @@ namespace BandcampDownloader {
             // same time
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            // Update controls status based on the settings values (possibly stored in the settings file)
-            textBoxCoverArtMaxSize.IsEnabled = userSettings.ResizeCoverArt;
-            if (!userSettings.SaveCoverArtInFolder && !userSettings.SaveCoverArtInTags) {
-                checkBoxConvertToJpg.IsEnabled = false;
-                checkBoxResizeCoverArt.IsEnabled = false;
-                textBoxCoverArtMaxSize.IsEnabled = false;
-            } else {
-                checkBoxConvertToJpg.IsEnabled = true;
-                checkBoxResizeCoverArt.IsEnabled = true;
-                textBoxCoverArtMaxSize.IsEnabled = true;
-            }
             // Hints
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
@@ -86,7 +75,6 @@ namespace BandcampDownloader {
             labelVersion.Content = "v" + Assembly.GetEntryAssembly().GetName().Version;
             // Check for updates
             Task.Factory.StartNew(() => { CheckForUpdates(); });
-
 #if DEBUG
             textBoxUrls.Text = "https://goataholicskjald.bandcamp.com/album/dogma";
 #endif
@@ -627,13 +615,13 @@ namespace BandcampDownloader {
             LogManager.Configuration = config;
         }
 
-        private void InitializeSettings(Boolean resetToDefaults) {
-            if (resetToDefaults) {
-                File.Delete(Constants.UserSettingsFilePath);
-            }
-            // Must set this before UI forms
-            // Its default value cannot be set in settings as it isn't determined by a constant function
+        /// <summary>
+        /// Initializes data context for bindings between settings values and settings controls.
+        /// This must be called before initializing UI forms.
+        /// </summary>
+        private void InitializeSettings() {
             if (String.IsNullOrEmpty(userSettings.DownloadsLocation)) {
+                // Its default value cannot be set in settings as it isn't determined by a constant function
                 userSettings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
             }
             userSettings = new ConfigurationBuilder<UserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
@@ -650,7 +638,7 @@ namespace BandcampDownloader {
             // Log to file
             var logger = LogManager.GetCurrentClassLogger();
             logger.Log(logType.ToNLogLevel(), message);
-            
+
             // Log to window
             if (userSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success) {
                 this.Dispatcher.Invoke(new Action(() => {
@@ -707,15 +695,6 @@ namespace BandcampDownloader {
                     buttonBrowse.IsEnabled = false;
                     textBoxUrls.IsReadOnly = true;
                     textBoxDownloadsLocation.IsReadOnly = true;
-                    checkBoxCoverArtInFolder.IsEnabled = false;
-                    checkBoxCoverArtInTags.IsEnabled = false;
-                    checkBoxTag.IsEnabled = false;
-                    checkBoxOneAlbumAtATime.IsEnabled = false;
-                    checkBoxDownloadDiscography.IsEnabled = false;
-                    checkBoxConvertToJpg.IsEnabled = false;
-                    checkBoxResizeCoverArt.IsEnabled = false;
-                    textBoxCoverArtMaxSize.IsEnabled = false;
-                    checkBoxRetrieveFilesizes.IsEnabled = false;
                 } else {
                     // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
@@ -728,16 +707,7 @@ namespace BandcampDownloader {
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
                     TaskbarItemInfo.ProgressValue = 0;
                     textBoxDownloadsLocation.IsReadOnly = false;
-                    checkBoxCoverArtInFolder.IsEnabled = true;
-                    checkBoxCoverArtInTags.IsEnabled = true;
-                    checkBoxTag.IsEnabled = true;
-                    checkBoxOneAlbumAtATime.IsEnabled = true;
-                    checkBoxDownloadDiscography.IsEnabled = true;
                     labelDownloadSpeed.Content = "";
-                    checkBoxConvertToJpg.IsEnabled = true;
-                    checkBoxResizeCoverArt.IsEnabled = true;
-                    textBoxCoverArtMaxSize.IsEnabled = true;
-                    checkBoxRetrieveFilesizes.IsEnabled = true;
                 }
             }));
         }
@@ -822,20 +792,14 @@ namespace BandcampDownloader {
             }
         }
 
-        private void ButtonDefaultSettings_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Reset settings to their default values?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Question, MessageBoxResult.Cancel) == MessageBoxResult.OK) {
-                InitializeSettings(true);
-            }
+        private void ButtonOpenSettingsWindow_Click(object sender, RoutedEventArgs e) {
+            new SettingsWindow(activeDownloads).ShowDialog();
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
             if (textBoxUrls.Text == Constants.UrlsHint) {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
-                return;
-            }
-            if (checkBoxResizeCoverArt.IsChecked.Value && !int.TryParse(textBoxCoverArtMaxSize.Text, out int coverArtMaxSize)) {
-                Log("Cover art max width/height must be an integer", LogType.Error);
                 return;
             }
 
@@ -950,30 +914,6 @@ namespace BandcampDownloader {
             }
 
             Cursor = Cursors.Arrow;
-        }
-
-        private void CheckBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
-            if (checkBoxResizeCoverArt == null || textBoxCoverArtMaxSize == null) {
-                return;
-            }
-
-            textBoxCoverArtMaxSize.IsEnabled = checkBoxResizeCoverArt.IsChecked.Value;
-        }
-
-        private void CheckBoxSaveCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
-            if (checkBoxCoverArtInFolder == null || checkBoxCoverArtInTags == null || checkBoxConvertToJpg == null) {
-                return;
-            }
-
-            if (!checkBoxCoverArtInFolder.IsChecked.Value && !checkBoxCoverArtInTags.IsChecked.Value) {
-                checkBoxConvertToJpg.IsEnabled = false;
-                checkBoxResizeCoverArt.IsEnabled = false;
-                textBoxCoverArtMaxSize.IsEnabled = false;
-            } else {
-                checkBoxConvertToJpg.IsEnabled = true;
-                checkBoxResizeCoverArt.IsEnabled = true;
-                textBoxCoverArtMaxSize.IsEnabled = true;
-            }
         }
 
         private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {

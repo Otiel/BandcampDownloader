@@ -125,6 +125,10 @@
     <Compile Include="Business Objects\TrackFile.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
+    <Page Include="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,6 +147,9 @@
     <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Miscellaneous\UserSettings.cs" />
+    <Compile Include="Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -210,6 +217,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ArrowCircle225Left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\InformationSmallWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ExclamationSmall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

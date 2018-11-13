@@ -127,4 +127,10 @@
   <data name="CloudIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cloud.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ExclamationSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExclamationSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InformationSmallWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InformationSmallWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
