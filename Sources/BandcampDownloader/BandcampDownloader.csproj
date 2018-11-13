@@ -143,6 +143,7 @@
     <Compile Include="Helpers\OnlyDigitsValidationRule.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
+    <Compile Include="Helpers\DoubleToPercentConverter.cs" />
     <Compile Include="Miscellaneous\LogType.cs" />
     <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
