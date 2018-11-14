@@ -182,13 +182,8 @@
                     VerticalContentAlignment="Center"
                     IsEnabled="{Binding IsChecked, ElementName=checkBoxResizeCoverArt}"
                     TabIndex="9"
-                    TextChanged="TextBox_TextChanged">
-                    <Binding
-                        Mode="TwoWay"
-                        Path="CoverArtMaxSize"
-                        UpdateSourceTrigger="Explicit">
-                    </Binding>
-                </TextBox>
+                    Text="{Binding Path=CoverArtMaxSize, UpdateSourceTrigger=Explicit}"
+                    TextChanged="TextBox_TextChanged" />
                 <Label
                     x:Name="labelPixels"
                     Height="26"
@@ -279,13 +274,8 @@
                     Margin="179,34,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextChanged="TextBox_TextChanged">
-                    <Binding
-                        Mode="TwoWay"
-                        Path="DownloadMaxTries"
-                        UpdateSourceTrigger="Explicit">
-                    </Binding>
-                </TextBox>
+                    Text="{Binding Path=DownloadMaxTries, UpdateSourceTrigger=Explicit}"
+                    TextChanged="TextBox_TextChanged" />
                 <Label
                     x:Name="labelDownloadRetryCooldown"
                     Height="25"
@@ -300,13 +290,8 @@
                     Margin="179,61,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextChanged="TextBox_TextChanged">
-                    <Binding
-                        Mode="TwoWay"
-                        Path="DownloadRetryCooldown"
-                        UpdateSourceTrigger="Explicit">
-                    </Binding>
-                </TextBox>
+                    Text="{Binding Path=DownloadRetryCooldown, UpdateSourceTrigger=Explicit}"
+                    TextChanged="TextBox_TextChanged" />
                 <Label
                     x:Name="labelDownloadRetryExponential"
                     Height="25"
@@ -321,13 +306,8 @@
                     Margin="179,88,0,0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    TextChanged="TextBox_TextChanged">
-                    <Binding
-                        Mode="TwoWay"
-                        Path="DownloadRetryExponential"
-                        UpdateSourceTrigger="Explicit">
-                    </Binding>
-                </TextBox>
+                    Text="{Binding Path=DownloadRetryExponential, UpdateSourceTrigger=Explicit}"
+                    TextChanged="TextBox_TextChanged" />
             </Grid>
         </GroupBox>
         <Button
