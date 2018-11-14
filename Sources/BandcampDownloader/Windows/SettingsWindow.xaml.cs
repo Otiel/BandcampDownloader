@@ -66,7 +66,7 @@ namespace BandcampDownloader {
         /// Resets settings to their default values.
         /// </summary>
         private void ResetSettings() {
-            // Save the downloads path as we don't want to reset this setting
+            // Save the downloads path as we shouldn't reset this setting
             String downloadsPath = MainWindow.userSettings.DownloadsLocation;
 
             File.Delete(Constants.UserSettingsFilePath);
