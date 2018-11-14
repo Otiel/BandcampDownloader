@@ -95,7 +95,11 @@ namespace BandcampDownloader {
             checkBoxResizeCoverArt.IsEnabled = !activeDownloads;
             checkBoxRetrieveFilesizes.IsEnabled = !activeDownloads;
             checkBoxTag.IsEnabled = !activeDownloads;
+            textBoxAllowableFileSizeDifference.IsEnabled = !activeDownloads;
             textBoxCoverArtMaxSize.IsEnabled = !activeDownloads;
+            textBoxDownloadMaxTries.IsEnabled = !activeDownloads;
+            textBoxDownloadRetryCooldown.IsEnabled = !activeDownloads;
+            textBoxDownloadRetryExponential.IsEnabled = !activeDownloads;
             textBoxFilenameFormat.IsEnabled = !activeDownloads;
             imageInfo.Source = activeDownloads ? new BitmapImage(new Uri("/Resources/ExclamationSmall.png", UriKind.Relative)) : new BitmapImage(new Uri("/Resources/InformationSmallWhite.png", UriKind.Relative));
             labelInfo.Content = activeDownloads ? "Stop downloads in order to change your settings." : "Settings are automatically saved after change.";
