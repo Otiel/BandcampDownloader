@@ -187,9 +187,6 @@
                         Mode="TwoWay"
                         Path="CoverArtMaxSize"
                         UpdateSourceTrigger="Explicit">
-                        <Binding.ValidationRules>
-                            <local:OnlyDigitsValidationRule />
-                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
                 <Label
@@ -266,9 +263,6 @@
                         <Binding.Converter>
                             <local:DoubleToPercentConverter />
                         </Binding.Converter>
-                        <Binding.ValidationRules>
-                            <local:OnlyDigitsValidationRule />
-                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
                 <Label
@@ -290,9 +284,6 @@
                         Mode="TwoWay"
                         Path="DownloadMaxTries"
                         UpdateSourceTrigger="Explicit">
-                        <Binding.ValidationRules>
-                            <local:OnlyDigitsValidationRule />
-                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
                 <Label
@@ -314,9 +305,6 @@
                         Mode="TwoWay"
                         Path="DownloadRetryCooldown"
                         UpdateSourceTrigger="Explicit">
-                        <Binding.ValidationRules>
-                            <local:OnlyDigitsValidationRule />
-                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
                 <Label
@@ -338,9 +326,6 @@
                         Mode="TwoWay"
                         Path="DownloadRetryExponential"
                         UpdateSourceTrigger="Explicit">
-                        <Binding.ValidationRules>
-                            <local:OnlyDigitsValidationRule />
-                        </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
             </Grid>
