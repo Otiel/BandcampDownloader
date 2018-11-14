@@ -96,7 +96,7 @@ namespace BandcampDownloader {
             request.AllowAutoRedirect = false;
             String redirectPage = "";
             try {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse()) {
+                using (HttpWebResponse response = (HttpWebResponse) request.GetResponse()) {
                     redirectPage = response.GetResponseHeader("Location");
                     // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X.X"
                 }
@@ -210,8 +210,8 @@ namespace BandcampDownloader {
                 long length = new FileInfo(trackPath).Length;
                 foreach (TrackFile trackFile in filesDownload) {
                     if (track.Mp3Url == trackFile.Url &&
-                        trackFile.Size > length - ( trackFile.Size * userSettings.AllowableFileSizeDifference ) &&
-                        trackFile.Size < length + ( trackFile.Size * userSettings.AllowableFileSizeDifference )) {
+                        trackFile.Size > length - (trackFile.Size * userSettings.AllowableFileSizeDifference) &&
+                        trackFile.Size < length + (trackFile.Size * userSettings.AllowableFileSizeDifference)) {
                         Log($"Track already exists within allowed file size range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
@@ -245,8 +245,8 @@ namespace BandcampDownloader {
                                 tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
                                 tagFile.Tag.Performers = new String[1] { album.Artist };
                                 tagFile.Tag.Title = track.Title;
-                                tagFile.Tag.Track = (uint)track.Number;
-                                tagFile.Tag.Year = (uint)album.ReleaseDate.Year;
+                                tagFile.Tag.Track = (uint) track.Number;
+                                tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
                                 tagFile.Tag.Lyrics = track.Lyrics;
                                 tagFile.Tag.Comment = "";
                                 tagFile.Save();
@@ -310,7 +310,7 @@ namespace BandcampDownloader {
             String artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             if (artworkPath.Length > 256) {
                 // Shorten the path (Windows doesn't support a path > 256 characters)
-                artworkPath = ( saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath() ) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+                artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
             }
 
             TagLib.Picture artwork = null;
@@ -701,7 +701,7 @@ namespace BandcampDownloader {
                     buttonStop.IsEnabled = false;
                     buttonBrowse.IsEnabled = true;
                     textBoxUrls.IsReadOnly = false;
-                    progressBar.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF01D328")); // Green
+                    progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                     progressBar.IsIndeterminate = false;
                     progressBar.Value = progressBar.Minimum;
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
@@ -734,19 +734,19 @@ namespace BandcampDownloader {
                     bytesPerSecond = 0;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
-                } else if (( now - this.lastDownloadSpeedUpdate ).TotalMilliseconds > 500) {
+                } else if ((now - this.lastDownloadSpeedUpdate).TotalMilliseconds > 500) {
                     // Last update of progress happened more than 500 milliseconds ago
                     // We only update the download speed every 500+ milliseconds
                     bytesPerSecond =
-                        ( (Double)( totalReceivedBytes - this.lastTotalReceivedBytes ) ) /
-                        ( now - this.lastDownloadSpeedUpdate ).TotalSeconds;
+                        ((Double) (totalReceivedBytes - this.lastTotalReceivedBytes)) /
+                        (now - this.lastDownloadSpeedUpdate).TotalSeconds;
                     this.lastTotalReceivedBytes = totalReceivedBytes;
                     this.lastDownloadSpeedUpdate = now;
 
                     // Update UI
                     this.Dispatcher.Invoke(new Action(() => {
                         // Update download speed
-                        labelDownloadSpeed.Content = ( bytesPerSecond / 1024 ).ToString("0.0") + " kB/s";
+                        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
                     }));
                 }
 
@@ -755,8 +755,8 @@ namespace BandcampDownloader {
                     if (!this.userCancelled) {
                         // Update progress label
                         labelProgress.Content =
-                            ( (Double)totalReceivedBytes / ( 1024 * 1024 ) ).ToString("0.00") + " MB" +
-                            ( userSettings.RetrieveFilesizes ? ( " / " + ( (Double)bytesToDownload / ( 1024 * 1024 ) ).ToString("0.00") + " MB" ) : "" );
+                            ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
+                            (userSettings.RetrieveFilesizes ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
                         if (userSettings.RetrieveFilesizes) {
                             // Update progress bar based on bytes received
                             progressBar.Value = totalReceivedBytes;
@@ -775,7 +775,7 @@ namespace BandcampDownloader {
 
         private void WaitForCooldown(int triesNumber) {
             if (userSettings.DownloadRetryCooldown != 0) {
-                Thread.Sleep((int)( ( Math.Pow(userSettings.DownloadRetryExponential, triesNumber) ) * userSettings.DownloadRetryCooldown * 1000 ));
+                Thread.Sleep((int) ((Math.Pow(userSettings.DownloadRetryExponential, triesNumber)) * userSettings.DownloadRetryCooldown * 1000));
             }
         }
 
@@ -881,7 +881,7 @@ namespace BandcampDownloader {
                 UpdateControlsState(false);
                 // Play a sound
                 try {
-                    ( new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav") ).Play();
+                    (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
                 } catch {
                 }
             });

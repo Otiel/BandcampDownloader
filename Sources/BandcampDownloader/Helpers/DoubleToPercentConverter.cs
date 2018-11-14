@@ -10,7 +10,7 @@ namespace BandcampDownloader {
     public class DoubleToPercentConverter: IValueConverter {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (!( value is Double percentValue )) {
+            if (!(value is Double percentValue)) {
                 // Shouldn't happen
                 throw new ArgumentException("Value should be a Double", nameof(value));
             }
