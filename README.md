@@ -1,20 +1,20 @@
-![Logo](http://i.imgur.com/S6AZHOg.png) Bandcamp Downloader
+![Logo](https://i.imgur.com/S6AZHOg.png) Bandcamp Downloader
 ===========================================================
 
-[![Download](http://i.imgur.com/UjPs7Sr.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
+[![Download](https://i.imgur.com/UjPs7Sr.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
 
 Description
 -----------
 
-_BandcampDownloader_ is a Windows application written in C# using .NET Framework 4.5 that helps downloading albums from [bandcamp.com](http://bandcamp.com). _BandcampDownloader_ retrieves the 128 kbps MP3 files that are streamed on the website.
+_BandcampDownloader_ is a Windows application written in C# using .NET Framework 4.5 that helps downloading albums from [bandcamp.com](https://bandcamp.com). _BandcampDownloader_ retrieves the 128 kbps MP3 files that are streamed on the website.
 
 Features
 --------
 
 * Downloads MP3 files from Bandcamp:
-  * From album pages: http://[artist].bandcamp.com/album/[album],
-  * From track pages: http://[artist].bandcamp.com/track/[track],
-  * From artist pages: http://[artist].bandcamp.com.
+  * From album pages: https://[artist].bandcamp.com/album/[album],
+  * From track pages: https://[artist].bandcamp.com/track/[track],
+  * From artist pages: https://[artist].bandcamp.com.
 * Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Downloads cover art and:
   * Converts cover art to jpg,
@@ -46,9 +46,9 @@ Dependencies
 ------------
 
 _BandcampDownloader_ uses:
-* [Json.NET](http://james.newtonking.com/json) to deserialize JSON data from the Bandcamp pages.
+* [Json.NET](https://www.newtonsoft.com/json) to deserialize JSON data from the Bandcamp pages.
 * [TagLibSharp](https://github.com/mono/taglib-sharp) to tag tracks.
-* [ImageResizer](http://imageresizing.net/) to convert/resize covert arts.
+* [ImageResizer](https://imageresizing.net/) to convert/resize covert arts.
 
 Bugs/Ideas
 ----------
@@ -63,7 +63,7 @@ Check the [wiki](https://github.com/Otiel/BandcampDownloader/wiki) for first hel
 License
 -------
 
-_BandcampDownloader_ is licensed under the [WTFPL](http://www.wtfpl.net/) ![WTFPL icon](http://i.imgur.com/AsWaQQl.png).
+_BandcampDownloader_ is licensed under the [WTFPL](http://www.wtfpl.net/) ![WTFPL icon](https://i.imgur.com/AsWaQQl.png).
 
 Piracy
 ------
