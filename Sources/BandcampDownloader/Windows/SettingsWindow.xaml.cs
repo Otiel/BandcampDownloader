@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Config.Net;
 
@@ -24,7 +25,7 @@ namespace BandcampDownloader {
             UpdateControlsState();
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e) {
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e) {
             Close();
         }
 
@@ -32,6 +33,11 @@ namespace BandcampDownloader {
             if (MessageBox.Show("Reset settings to their default values?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Question, MessageBoxResult.Cancel) == MessageBoxResult.OK) {
                 ResetSettings();
             }
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e) {
+            SaveSettings();
+            Close();
         }
 
         private void CheckBoxResizeCoverArt_CheckedChanged(object sender, RoutedEventArgs e) {
@@ -75,6 +81,29 @@ namespace BandcampDownloader {
             DataContext = MainWindow.userSettings;
         }
 
+        private void SaveSettings() {
+            checkBoxAutoScrollLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxCoverArtInFolder.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxCoverArtInTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxDownloadDiscography.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxResizeCoverArt.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxRetrieveFilesizes.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxTag.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            textBoxAllowableFileSizeDifference.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxCoverArtMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDownloadMaxTries.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDownloadRetryCooldown.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDownloadRetryExponential.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxFilenameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            ((TextBox) sender).GetBindingExpression(TextBox.TextProperty).ValidateWithoutUpdate();
+        }
+
         /// <summary>
         /// Updates controls state.
         /// </summary>
@@ -101,8 +130,8 @@ namespace BandcampDownloader {
             textBoxDownloadRetryCooldown.IsEnabled = !activeDownloads;
             textBoxDownloadRetryExponential.IsEnabled = !activeDownloads;
             textBoxFilenameFormat.IsEnabled = !activeDownloads;
-            imageInfo.Source = activeDownloads ? new BitmapImage(new Uri("/Resources/ExclamationSmall.png", UriKind.Relative)) : new BitmapImage(new Uri("/Resources/InformationSmallWhite.png", UriKind.Relative));
-            labelInfo.Content = activeDownloads ? "Stop downloads in order to change your settings." : "Settings are automatically saved after change.";
+            imageInfo.Source = activeDownloads ? new BitmapImage(new Uri("/Resources/ExclamationSmall.png", UriKind.Relative)) : null;
+            labelInfo.Content = activeDownloads ? "Some settings cannot be changed while tracks are downloading." : "";
         }
     }
 }

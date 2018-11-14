@@ -29,12 +29,12 @@
                 Height="16"
                 Margin="5,0,0,0"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"
-                Source="pack://application:,,,/Resources/InformationSmallWhite.png"
+                Source="pack://application:,,,/Resources/ExclamationSmall.png"
                 Stretch="None" />
             <Label
                 x:Name="labelInfo"
                 Margin="0,0,0,0"
-                Content="Settings are automatically saved after change."
+                Content="Some settings cannot be changed while tracks are downloading."
                 Foreground="#FF858585" />
         </DockPanel>
         <GroupBox
@@ -53,7 +53,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Tag tracks"
-                    IsChecked="{Binding TagTracks}"
+                    IsChecked="{Binding TagTracks, UpdateSourceTrigger=Explicit}"
                     TabIndex="0"
                     ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags.&#xA;Lyrics will be saved as well if available." />
                 <CheckBox
@@ -64,7 +64,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Download one album at a time"
-                    IsChecked="{Binding DownloadOneAlbumAtATime}"
+                    IsChecked="{Binding DownloadOneAlbumAtATime, UpdateSourceTrigger=Explicit}"
                     IsEnabled="True"
                     TabIndex="1"
                     ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." />
@@ -75,7 +75,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Download artist discography"
-                    IsChecked="{Binding DownloadArtistDiscography}"
+                    IsChecked="{Binding DownloadArtistDiscography, UpdateSourceTrigger=Explicit}"
                     IsEnabled="True"
                     TabIndex="2"
                     ToolTip="If checked, the whole artist discography will be downloaded." />
@@ -86,7 +86,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Retrieve files size"
-                    IsChecked="{Binding RetrieveFilesizes}"
+                    IsChecked="{Binding RetrieveFilesizes, UpdateSourceTrigger=Explicit}"
                     IsEnabled="True"
                     TabIndex="3"
                     ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time." />
@@ -106,7 +106,7 @@
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
                     TabIndex="4"
-                    Text="{Binding FilenameFormat}"
+                    Text="{Binding FilenameFormat, UpdateSourceTrigger=Explicit}"
                     ToolTip="You can use placeholders to customize the file name:&#xA;- {artist} will be replaced by the album artist&#xA;- {title} will be replaced by the track name&#xA;- {tracknum} will be replaced by the track number" />
             </Grid>
         </GroupBox>
@@ -127,7 +127,7 @@
                     VerticalAlignment="Top"
                     Checked="CheckBoxSaveCoverArt_CheckedChanged"
                     Content="Save in tags"
-                    IsChecked="{Binding SaveCoverArtInTags}"
+                    IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
                     TabIndex="5"
                     ToolTip="If checked, the cover art will be saved in the tracks tags."
                     Unchecked="CheckBoxSaveCoverArt_CheckedChanged" />
@@ -139,7 +139,7 @@
                     VerticalAlignment="Top"
                     Checked="CheckBoxSaveCoverArt_CheckedChanged"
                     Content="Save in folder"
-                    IsChecked="{Binding SaveCoverArtInFolder}"
+                    IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
                     TabIndex="6"
                     ToolTip="If checked, the cover art will be downloaded in the albums folder."
                     Unchecked="CheckBoxSaveCoverArt_CheckedChanged" />
@@ -150,7 +150,7 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Content="Convert to jpg"
-                    IsChecked="{Binding ConvertCoverArtToJpg}"
+                    IsChecked="{Binding ConvertCoverArtToJpg, UpdateSourceTrigger=Explicit}"
                     TabIndex="7"
                     ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." />
                 <CheckBox
@@ -161,7 +161,7 @@
                     VerticalAlignment="Top"
                     Checked="CheckBoxResizeCoverArt_CheckedChanged"
                     Content="Constrain maximum width/height"
-                    IsChecked="{Binding ResizeCoverArt}"
+                    IsChecked="{Binding ResizeCoverArt, UpdateSourceTrigger=Explicit}"
                     TabIndex="8"
                     ToolTip="If checked, the cover art will be resized with the specified max width/height."
                     Unchecked="CheckBoxResizeCoverArt_CheckedChanged" />
@@ -181,11 +181,12 @@
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     IsEnabled="{Binding IsChecked, ElementName=checkBoxResizeCoverArt}"
-                    TabIndex="9">
+                    TabIndex="9"
+                    TextChanged="TextBox_TextChanged">
                     <Binding
                         Mode="TwoWay"
                         Path="CoverArtMaxSize"
-                        UpdateSourceTrigger="PropertyChanged">
+                        UpdateSourceTrigger="Explicit">
                         <Binding.ValidationRules>
                             <local:OnlyDigitsValidationRule />
                         </Binding.ValidationRules>
@@ -219,7 +220,7 @@
                     VerticalAlignment="Top"
                     Content="Auto scroll"
                     Foreground="Black"
-                    IsChecked="{Binding AutoScrollLog}"
+                    IsChecked="{Binding AutoScrollLog, UpdateSourceTrigger=Explicit}"
                     TabIndex="10" />
                 <CheckBox
                     x:Name="checkBoxVerboseLog"
@@ -230,7 +231,7 @@
                     VerticalAlignment="Top"
                     Content="Verbose"
                     Foreground="Black"
-                    IsChecked="{Binding ShowVerboseLog}"
+                    IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
                     TabIndex="11" />
             </Grid>
         </GroupBox>
@@ -256,11 +257,12 @@
                     Height="20"
                     Margin="179,7,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
+                    VerticalAlignment="Top"
+                    TextChanged="TextBox_TextChanged">
                     <Binding
                         Mode="TwoWay"
                         Path="AllowableFileSizeDifference"
-                        UpdateSourceTrigger="PropertyChanged">
+                        UpdateSourceTrigger="Explicit">
                         <Binding.Converter>
                             <local:DoubleToPercentConverter />
                         </Binding.Converter>
@@ -282,11 +284,12 @@
                     Height="20"
                     Margin="179,34,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
+                    VerticalAlignment="Top"
+                    TextChanged="TextBox_TextChanged">
                     <Binding
                         Mode="TwoWay"
                         Path="DownloadMaxTries"
-                        UpdateSourceTrigger="PropertyChanged">
+                        UpdateSourceTrigger="Explicit">
                         <Binding.ValidationRules>
                             <local:OnlyDigitsValidationRule />
                         </Binding.ValidationRules>
@@ -305,11 +308,12 @@
                     Height="20"
                     Margin="179,61,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
+                    VerticalAlignment="Top"
+                    TextChanged="TextBox_TextChanged">
                     <Binding
                         Mode="TwoWay"
                         Path="DownloadRetryCooldown"
-                        UpdateSourceTrigger="PropertyChanged">
+                        UpdateSourceTrigger="Explicit">
                         <Binding.ValidationRules>
                             <local:OnlyDigitsValidationRule />
                         </Binding.ValidationRules>
@@ -328,11 +332,12 @@
                     Height="20"
                     Margin="179,88,0,0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top">
+                    VerticalAlignment="Top"
+                    TextChanged="TextBox_TextChanged">
                     <Binding
                         Mode="TwoWay"
                         Path="DownloadRetryExponential"
-                        UpdateSourceTrigger="PropertyChanged">
+                        UpdateSourceTrigger="Explicit">
                         <Binding.ValidationRules>
                             <local:OnlyDigitsValidationRule />
                         </Binding.ValidationRules>
@@ -344,7 +349,7 @@
             x:Name="buttonResetSettings"
             Width="110"
             Height="24"
-            Margin="215,0,0,8"
+            Margin="544,0,0,340"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
             Click="ButtonResetSettings_Click"
@@ -365,14 +370,26 @@
             </StackPanel>
         </Button>
         <Button
-            x:Name="buttonClose"
+            x:Name="buttonSave"
             Width="110"
             Height="24"
-            Margin="334,0,0,8"
+            Margin="219,0,0,10"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Click="ButtonClose_Click"
-            Content="_Close"
+            Click="ButtonSave_Click"
+            Content="_Save and close"
+            IsCancel="True"
+            IsDefault="True"
+            TabIndex="13" />
+        <Button
+            x:Name="buttonCancel"
+            Width="110"
+            Height="24"
+            Margin="334,0,0,10"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Click="ButtonCancel_Click"
+            Content="_Cancel"
             IsCancel="True"
             IsDefault="True"
             TabIndex="13" />
