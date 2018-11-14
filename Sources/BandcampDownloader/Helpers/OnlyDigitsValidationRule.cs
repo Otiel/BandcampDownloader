@@ -8,19 +8,11 @@ namespace BandcampDownloader {
     public class OnlyDigitsValidationRule: ValidationRule {
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
-            var validationResult = new ValidationResult(true, null);
-
-            if (value != null) {
-                if (!String.IsNullOrEmpty(value.ToString())) {
-                    var regex = new Regex("[^0-9.-]+"); // Regex that matches disallowed text
-                    var parsingOk = !regex.IsMatch(value.ToString());
-                    if (!parsingOk) {
-                        validationResult = new ValidationResult(false, "Enter a numeric value");
-                    }
-                }
+            if (Double.TryParse(value.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out Double doubleValue)) {
+                return new ValidationResult(true, null);
+            } else {
+                return new ValidationResult(false, "Not a numeric value");
             }
-
-            return validationResult;
         }
     }
 }
