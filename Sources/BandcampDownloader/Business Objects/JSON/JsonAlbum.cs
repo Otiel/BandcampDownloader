@@ -13,7 +13,7 @@ namespace BandcampDownloader {
         public JsonAlbumData AlbumData { get; set; }
 
         [JsonProperty("art_id")]
-        public String artId { get; set; }
+        public String ArtId { get; set; }
 
         [JsonProperty("artist")]
         public String Artist { get; set; }
@@ -27,7 +27,7 @@ namespace BandcampDownloader {
         public Album ToAlbum() {
             return new Album() {
                 Artist = Artist,
-                ArtworkUrl = urlStart + artId.PadLeft(10, '0') + urlEnd,
+                ArtworkUrl = urlStart + ArtId.PadLeft(10, '0') + urlEnd,
                 ReleaseDate = ReleaseDate,
                 Title = AlbumData.AlbumTitle,
                 // Some tracks do not have their URL filled on some albums (pre-release...)
