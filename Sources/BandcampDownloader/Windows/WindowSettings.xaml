@@ -1,11 +1,11 @@
 ﻿<Window
-    x:Class="BandcampDownloader.SettingsWindow"
+    x:Class="BandcampDownloader.WindowSettings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="WindowSettings"
+    x:Name="windowSettings"
     Title="Settings"
     Width="584"
     Height="300"
@@ -26,7 +26,7 @@
             Height="26"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Visibility="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource BooleanToVisibilityConverter}}">
+            Visibility="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Image
                 x:Name="imageInfo"
                 Width="16"
@@ -62,7 +62,7 @@
             Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemTags, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsCoverArt
@@ -70,7 +70,7 @@
             Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemCoverArt, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsLog
@@ -85,7 +85,7 @@
             Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
@@ -96,7 +96,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
             Click="ButtonResetSettings_Click"
-            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="2"
             ToolTip="Resets settings to default values">
             <StackPanel Orientation="Horizontal">

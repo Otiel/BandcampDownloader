@@ -5,7 +5,7 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
-    public partial class SettingsWindow: Window {
+    public partial class WindowSettings: Window {
 
         /// <summary>
         /// True if there are active downloads; false otherwise.
@@ -16,9 +16,9 @@ namespace BandcampDownloader {
         /// Creates a new instance of SettingsWindow.
         /// </summary>
         /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
-        public SettingsWindow(Boolean activeDownloads) {
+        public WindowSettings(Boolean activeDownloads) {
             ActiveDownloads = activeDownloads; // Must be done before UI initialization
-            DataContext = MainWindow.userSettings;
+            DataContext = WindowMain.userSettings;
             InitializeComponent();
         }
 
@@ -42,12 +42,12 @@ namespace BandcampDownloader {
         /// </summary>
         private void ResetSettings() {
             // Save settings we shouldn't reset (as they're not on the Settings window)
-            String downloadsPath = MainWindow.userSettings.DownloadsLocation;
+            String downloadsPath = WindowMain.userSettings.DownloadsLocation;
 
             File.Delete(Constants.UserSettingsFilePath);
-            MainWindow.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
-            MainWindow.userSettings.DownloadsLocation = downloadsPath;
-            DataContext = MainWindow.userSettings;
+            WindowMain.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+            WindowMain.userSettings.DownloadsLocation = downloadsPath;
+            DataContext = WindowMain.userSettings;
         }
 
         /// <summary>

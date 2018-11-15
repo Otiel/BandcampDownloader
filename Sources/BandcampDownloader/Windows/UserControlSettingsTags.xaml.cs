@@ -7,7 +7,7 @@ namespace BandcampDownloader {
         public UserControlSettingsTags() {
             InitializeComponent();
             // Save data context for bindings
-            DataContext = MainWindow.userSettings;
+            DataContext = WindowMain.userSettings;
         }
 
         /// <summary>
