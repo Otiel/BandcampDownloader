@@ -17,7 +17,7 @@ namespace BandcampDownloader {
             textBoxAllowableFileSizeDifference.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textBoxDownloadMaxTries.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textBoxDownloadRetryCooldown.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            textBoxDownloadRetryExponential.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDownloadRetryExponent.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {

@@ -32,7 +32,7 @@ namespace BandcampDownloader {
 
         // Exponential per cooldown - ex. (value of 1.2 would yield cooldowns of x^(1.2^0), x^(1.2^1), x^(1.2^2), ..)
         [Option(DefaultValue = 4.0)]
-        Double DownloadRetryExponential { get; set; }
+        Double DownloadRetryExponent { get; set; }
 
         [Option(DefaultValue = "")]
         String DownloadsLocation { get; set; }

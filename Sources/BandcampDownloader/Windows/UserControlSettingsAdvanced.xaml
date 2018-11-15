@@ -66,20 +66,20 @@
             TextChanged="TextBox_TextChanged"
             ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 0.2" />
         <Label
-            x:Name="labelDownloadRetryExponential"
+            x:Name="labelDownloadRetryExponent"
             Margin="0,78,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Retry exponent" />
         <TextBox
-            x:Name="textBoxDownloadRetryExponential"
+            x:Name="textBoxDownloadRetryExponent"
             Width="40"
             Height="20"
             Margin="176,82,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="3"
-            Text="{Binding Path=DownloadRetryExponential, UpdateSourceTrigger=Explicit}"
+            Text="{Binding Path=DownloadRetryExponent, UpdateSourceTrigger=Explicit}"
             TextChanged="TextBox_TextChanged"
             ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 4" />
     </Grid>

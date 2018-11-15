@@ -773,7 +773,7 @@ namespace BandcampDownloader {
 
         private void WaitForCooldown(int triesNumber) {
             if (userSettings.DownloadRetryCooldown != 0) {
-                Thread.Sleep((int) ((Math.Pow(userSettings.DownloadRetryExponential, triesNumber)) * userSettings.DownloadRetryCooldown * 1000));
+                Thread.Sleep((int) ((Math.Pow(userSettings.DownloadRetryExponent, triesNumber)) * userSettings.DownloadRetryCooldown * 1000));
             }
         }
 
