@@ -47,7 +47,12 @@ namespace BandcampDownloader {
             File.Delete(Constants.UserSettingsFilePath);
             WindowMain.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
             WindowMain.userSettings.DownloadsLocation = downloadsPath;
-            DataContext = WindowMain.userSettings;
+
+            // Re-load settings on UI
+            userControlSettingsAdvanced.LoadSettings();
+            userControlSettingsCoverArt.LoadSettings();
+            userControlSettingsLog.LoadSettings();
+            userControlSettingsTags.LoadSettings();
         }
 
         /// <summary>
