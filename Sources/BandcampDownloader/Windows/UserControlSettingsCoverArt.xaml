@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="BandcampDownloader.UserControlSettingsCoverArt"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="userControlSettingsCoverArt"
+    Width="205"
+    Height="135"
+    KeyboardNavigation.TabNavigation="Local"
+    mc:Ignorable="d">
+    <Grid x:Name="gridMain">
+        <CheckBox
+            x:Name="checkBoxCoverArtInTags"
+            Height="16"
+            Margin="3,4,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save in tags"
+            IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
+            RenderTransformOrigin="0.234,0.536"
+            TabIndex="0"
+            ToolTip="If checked, the cover art will be saved in the tracks tags." />
+        <CheckBox
+            x:Name="checkBoxCoverArtInFolder"
+            Height="16"
+            Margin="3,30,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save in folder"
+            IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
+            TabIndex="1"
+            ToolTip="If checked, the cover art will be downloaded in the albums folder." />
+        <CheckBox
+            x:Name="checkBoxConvertToJpg"
+            Height="16"
+            Margin="3,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Convert to jpg"
+            IsChecked="{Binding ConvertCoverArtToJpg, UpdateSourceTrigger=Explicit}"
+            TabIndex="2"
+            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." />
+        <CheckBox
+            x:Name="checkBoxResizeCoverArt"
+            Height="16"
+            Margin="3,82,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Constrain maximum width/height"
+            IsChecked="{Binding ResizeCoverArt, UpdateSourceTrigger=Explicit}"
+            TabIndex="3"
+            ToolTip="If checked, the cover art will be resized with the specified max width/height." />
+        <Label
+            x:Name="labelCoverArtMaxSize"
+            Margin="33,104,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Max size (px)" />
+        <TextBox
+            x:Name="textBoxCoverArtMaxSize"
+            Width="40"
+            Height="20"
+            Margin="116,108,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsEnabled="{Binding ElementName=checkBoxResizeCoverArt, Path=IsChecked}"
+            TabIndex="4"
+            Text="{Binding Path=CoverArtMaxSize, UpdateSourceTrigger=Explicit}"
+            TextChanged="TextBox_TextChanged" />
+    </Grid>
+</UserControl>

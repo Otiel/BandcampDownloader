@@ -128,6 +128,20 @@
     <Compile Include="Business Objects\TrackFile.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
+    <Compile Include="Helpers\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Helpers\InverseBooleanConverter.cs" />
+    <Compile Include="Windows\UserControlSettingsAdvanced.xaml.cs">
+      <DependentUpon>UserControlSettingsAdvanced.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserControlSettingsCoverArt.xaml.cs">
+      <DependentUpon>UserControlSettingsCoverArt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserControlSettingsLog.xaml.cs">
+      <DependentUpon>UserControlSettingsLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserControlSettingsTags.xaml.cs">
+      <DependentUpon>UserControlSettingsTags.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +171,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\UserControlSettingsAdvanced.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UserControlSettingsCoverArt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UserControlSettingsLog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UserControlSettingsTags.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Miscellaneous\NoAlbumFoundException.cs" />

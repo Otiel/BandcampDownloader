@@ -1,0 +1,82 @@
+﻿<UserControl
+    x:Class="BandcampDownloader.UserControlSettingsAdvanced"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BandcampDownloader"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="userControlSettingsAdvanced"
+    Width="218"
+    Height="105"
+    KeyboardNavigation.TabNavigation="Local"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:DoubleToPercentConverter x:Key="DoubleToPercentConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid x:Name="gridMain">
+        <Label
+            x:Name="labelAllowableFileSizeDifference"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Allowed file size difference (%)" />
+        <TextBox
+            x:Name="textBoxAllowableFileSizeDifference"
+            Width="40"
+            Height="20"
+            Margin="176,4,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TabIndex="0"
+            Text="{Binding Path=AllowableFileSizeDifference, UpdateSourceTrigger=Explicit, Converter={StaticResource DoubleToPercentConverter}}"
+            TextChanged="TextBox_TextChanged" />
+        <Label
+            x:Name="labelDownloadMaxTries"
+            Margin="0,26,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Download max tries" />
+        <TextBox
+            x:Name="textBoxDownloadMaxTries"
+            Width="40"
+            Height="20"
+            Margin="176,30,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TabIndex="1"
+            Text="{Binding Path=DownloadMaxTries, UpdateSourceTrigger=Explicit}"
+            TextChanged="TextBox_TextChanged" />
+        <Label
+            x:Name="labelDownloadRetryCooldown"
+            Margin="0,52,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Retry cooldown (sec)" />
+        <TextBox
+            x:Name="textBoxDownloadRetryCooldown"
+            Width="40"
+            Height="20"
+            Margin="176,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TabIndex="2"
+            Text="{Binding Path=DownloadRetryCooldown, UpdateSourceTrigger=Explicit}"
+            TextChanged="TextBox_TextChanged" />
+        <Label
+            x:Name="labelDownloadRetryExponential"
+            Margin="0,78,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Retry exponent" />
+        <TextBox
+            x:Name="textBoxDownloadRetryExponential"
+            Width="40"
+            Height="20"
+            Margin="176,82,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TabIndex="3"
+            Text="{Binding Path=DownloadRetryExponential, UpdateSourceTrigger=Explicit}"
+            TextChanged="TextBox_TextChanged" />
+    </Grid>
+</UserControl>

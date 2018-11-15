@@ -5,24 +5,28 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Name="WindowSettings"
+    x:Name="WindowSettings"
     Title="Settings"
-    Width="680"
-    Height="413"
+    Width="584"
+    Height="300"
     Icon="pack://application:,,,/Resources/Cloud.ico"
-    ResizeMode="CanMinimize"
+    ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <local:DoubleToPercentConverter x:Key="DoubleToPercentConverter" />
+        <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <local:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
     </Window.Resources>
-    <Grid x:Name="gridMain" Margin="10,10,10,10">
+    <Grid x:Name="gridMain" Margin="10,0,10,10">
         <DockPanel
             x:Name="dockPanelInfo"
             Height="26"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top">
+            VerticalAlignment="Top"
+            Visibility="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Image
                 x:Name="imageInfo"
                 Width="16"
@@ -37,288 +41,63 @@
                 Content="Some settings cannot be changed while tracks are downloading."
                 Foreground="#FF858585" />
         </DockPanel>
-        <GroupBox
-            x:Name="groupBoxSettingsMisc"
-            Width="215"
-            Height="135"
-            Margin="0,31,0,0"
+        <ListBox
+            x:Name="listBoxSections"
+            Width="130"
+            Height="190"
+            Margin="0,26,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Header="Main settings">
-            <Grid x:Name="gridSettingsMisc">
-                <CheckBox
-                    x:Name="checkBoxTag"
-                    Height="16"
-                    Margin="6,4,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Tag tracks"
-                    IsChecked="{Binding TagTracks, UpdateSourceTrigger=Explicit}"
-                    TabIndex="0"
-                    ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags.&#xA;Lyrics will be saved as well if available." />
-                <CheckBox
-                    x:Name="checkBoxOneAlbumAtATime"
-                    Width="190"
-                    Height="16"
-                    Margin="6,22,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Download one album at a time"
-                    IsChecked="{Binding DownloadOneAlbumAtATime, UpdateSourceTrigger=Explicit}"
-                    IsEnabled="True"
-                    TabIndex="1"
-                    ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." />
-                <CheckBox
-                    x:Name="checkBoxDownloadDiscography"
-                    Height="16"
-                    Margin="6,40,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Download artist discography"
-                    IsChecked="{Binding DownloadArtistDiscography, UpdateSourceTrigger=Explicit}"
-                    IsEnabled="True"
-                    TabIndex="2"
-                    ToolTip="If checked, the whole artist discography will be downloaded." />
-                <CheckBox
-                    x:Name="checkBoxRetrieveFilesizes"
-                    Height="16"
-                    Margin="6,58,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Retrieve files size"
-                    IsChecked="{Binding RetrieveFilesizes, UpdateSourceTrigger=Explicit}"
-                    IsEnabled="True"
-                    TabIndex="3"
-                    ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time." />
-                <Label
-                    x:Name="labelFilenameFormat"
-                    Margin="0,68,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    VerticalContentAlignment="Center"
-                    Content="File name format:" />
-                <TextBox
-                    x:Name="textBoxFilenameFormat"
-                    Width="190"
-                    Margin="0,91,5,3"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    HorizontalContentAlignment="Left"
-                    VerticalContentAlignment="Center"
-                    TabIndex="4"
-                    Text="{Binding FilenameFormat, UpdateSourceTrigger=Explicit}"
-                    ToolTip="You can use placeholders to customize the file name:&#xA;- {artist} will be replaced by the album artist&#xA;- {title} will be replaced by the track name&#xA;- {tracknum} will be replaced by the track number" />
-            </Grid>
-        </GroupBox>
-        <GroupBox
-            x:Name="groupBoxSettingsCoverArt"
-            Width="215"
-            Height="121"
-            Margin="220,31,0,0"
+            TabIndex="0">
+            <ListBoxItem
+                x:Name="listBoxItemTags"
+                Content="Naming and tags"
+                IsSelected="True" />
+            <ListBoxItem x:Name="listBoxItemCoverArt" Content="Cover art" />
+            <ListBoxItem x:Name="listBoxItemLog" Content="Log" />
+            <ListBoxItem x:Name="listBoxItemAdvanced" Content="Advanced settings" />
+        </ListBox>
+        <local:UserControlSettingsTags
+            x:Name="userControlSettingsTags"
+            Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Header="Cover art">
-            <Grid x:Name="gridSettingsCoverArt">
-                <CheckBox
-                    x:Name="checkBoxCoverArtInTags"
-                    Height="16"
-                    Margin="6,4,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Checked="CheckBoxSaveCoverArt_CheckedChanged"
-                    Content="Save in tags"
-                    IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
-                    TabIndex="5"
-                    ToolTip="If checked, the cover art will be saved in the tracks tags."
-                    Unchecked="CheckBoxSaveCoverArt_CheckedChanged" />
-                <CheckBox
-                    x:Name="checkBoxCoverArtInFolder"
-                    Height="16"
-                    Margin="6,23,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Checked="CheckBoxSaveCoverArt_CheckedChanged"
-                    Content="Save in folder"
-                    IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
-                    TabIndex="6"
-                    ToolTip="If checked, the cover art will be downloaded in the albums folder."
-                    Unchecked="CheckBoxSaveCoverArt_CheckedChanged" />
-                <CheckBox
-                    x:Name="checkBoxConvertToJpg"
-                    Height="16"
-                    Margin="6,40,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Convert to jpg"
-                    IsChecked="{Binding ConvertCoverArtToJpg, UpdateSourceTrigger=Explicit}"
-                    TabIndex="7"
-                    ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." />
-                <CheckBox
-                    x:Name="checkBoxResizeCoverArt"
-                    Height="16"
-                    Margin="6,58,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Checked="CheckBoxResizeCoverArt_CheckedChanged"
-                    Content="Constrain maximum width/height"
-                    IsChecked="{Binding ResizeCoverArt, UpdateSourceTrigger=Explicit}"
-                    TabIndex="8"
-                    ToolTip="If checked, the cover art will be resized with the specified max width/height."
-                    Unchecked="CheckBoxResizeCoverArt_CheckedChanged" />
-                <Label
-                    x:Name="labelCoverArtMaxSize"
-                    Margin="21,72,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    VerticalContentAlignment="Center"
-                    Content="Max size:" />
-                <TextBox
-                    x:Name="textBoxCoverArtMaxSize"
-                    Width="40"
-                    Margin="79,76,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    IsEnabled="{Binding IsChecked, ElementName=checkBoxResizeCoverArt}"
-                    TabIndex="9"
-                    Text="{Binding Path=CoverArtMaxSize, UpdateSourceTrigger=Explicit}"
-                    TextChanged="TextBox_TextChanged" />
-                <Label
-                    x:Name="labelPixels"
-                    Height="26"
-                    Margin="119,72,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    VerticalContentAlignment="Center"
-                    Content="px" />
-            </Grid>
-        </GroupBox>
-        <GroupBox
-            x:Name="groupBoxSettingsLog"
-            Width="202"
-            Height="61"
-            Margin="440,31,0,0"
+            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            TabIndex="1"
+            Visibility="{Binding IsSelected, ElementName=listBoxItemTags, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <local:UserControlSettingsCoverArt
+            x:Name="userControlSettingsCoverArt"
+            Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Header="Log">
-            <Grid x:Name="gridSettingsLog">
-                <CheckBox
-                    x:Name="checkBoxAutoScrollLog"
-                    Width="79"
-                    Height="16"
-                    Margin="6,4,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Auto scroll"
-                    Foreground="Black"
-                    IsChecked="{Binding AutoScrollLog, UpdateSourceTrigger=Explicit}"
-                    TabIndex="10" />
-                <CheckBox
-                    x:Name="checkBoxVerboseLog"
-                    Width="65"
-                    Height="16"
-                    Margin="6,22,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Verbose"
-                    Foreground="Black"
-                    IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
-                    TabIndex="11" />
-            </Grid>
-        </GroupBox>
-        <GroupBox
-            x:Name="groupBoxSettingsAdvanced"
-            Width="228"
-            Height="139"
-            Margin="0,171,0,0"
+            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            TabIndex="1"
+            Visibility="{Binding IsSelected, ElementName=listBoxItemCoverArt, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <local:UserControlSettingsLog
+            x:Name="userControlSettingsLog"
+            Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Header="Advanced">
-            <Grid x:Name="gridSettingsAdvanced">
-                <Label
-                    x:Name="labelAllowableFileSizeDifference"
-                    Height="25"
-                    Margin="0,4,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Allowed file size difference (%)" />
-                <TextBox
-                    x:Name="textBoxAllowableFileSizeDifference"
-                    Width="30"
-                    Height="20"
-                    Margin="179,7,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    TextChanged="TextBox_TextChanged">
-                    <Binding
-                        Mode="TwoWay"
-                        Path="AllowableFileSizeDifference"
-                        UpdateSourceTrigger="Explicit">
-                        <Binding.Converter>
-                            <local:DoubleToPercentConverter />
-                        </Binding.Converter>
-                    </Binding>
-                </TextBox>
-                <Label
-                    x:Name="labelDownloadMaxTries"
-                    Height="25"
-                    Margin="0,31,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Download max tries" />
-                <TextBox
-                    x:Name="textBoxDownloadMaxTries"
-                    Width="30"
-                    Height="20"
-                    Margin="179,34,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Text="{Binding Path=DownloadMaxTries, UpdateSourceTrigger=Explicit}"
-                    TextChanged="TextBox_TextChanged" />
-                <Label
-                    x:Name="labelDownloadRetryCooldown"
-                    Height="25"
-                    Margin="0,58,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Retry cooldown (sec)" />
-                <TextBox
-                    x:Name="textBoxDownloadRetryCooldown"
-                    Width="30"
-                    Height="20"
-                    Margin="179,61,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Text="{Binding Path=DownloadRetryCooldown, UpdateSourceTrigger=Explicit}"
-                    TextChanged="TextBox_TextChanged" />
-                <Label
-                    x:Name="labelDownloadRetryExponential"
-                    Height="25"
-                    Margin="0,85,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Retry exponent" />
-                <TextBox
-                    x:Name="textBoxDownloadRetryExponential"
-                    Width="30"
-                    Height="20"
-                    Margin="179,88,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Text="{Binding Path=DownloadRetryExponential, UpdateSourceTrigger=Explicit}"
-                    TextChanged="TextBox_TextChanged" />
-            </Grid>
-        </GroupBox>
+            TabIndex="1"
+            Visibility="{Binding IsSelected, ElementName=listBoxItemLog, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <local:UserControlSettingsAdvanced
+            x:Name="userControlSettingsAdvanced"
+            Margin="135,31,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            TabIndex="1"
+            Visibility="{Binding IsSelected, ElementName=listBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
             x:Name="buttonResetSettings"
-            Width="110"
+            Width="130"
             Height="24"
-            Margin="544,0,0,340"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
+            Margin="0,221,428,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
             Click="ButtonResetSettings_Click"
-            TabIndex="12"
+            IsEnabled="{Binding ActiveDownloads, ElementName=WindowSettings, Converter={StaticResource InverseBooleanConverter}}"
+            TabIndex="2"
             ToolTip="Resets settings to default values">
             <StackPanel Orientation="Horizontal">
                 <Image
@@ -334,29 +113,27 @@
                     Content="_Reset settings" />
             </StackPanel>
         </Button>
-        <Button
-            x:Name="buttonSave"
-            Width="110"
-            Height="24"
-            Margin="219,0,0,10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Click="ButtonSave_Click"
-            Content="_Save and close"
-            IsCancel="True"
-            IsDefault="True"
-            TabIndex="13" />
-        <Button
-            x:Name="buttonCancel"
-            Width="110"
-            Height="24"
-            Margin="334,0,0,10"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Click="ButtonCancel_Click"
-            Content="_Cancel"
-            IsCancel="True"
-            IsDefault="True"
-            TabIndex="13" />
+        <DockPanel
+            x:Name="dockPanelButtons"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+            <Button
+                x:Name="buttonSave"
+                Width="90"
+                Height="24"
+                Click="ButtonSave_Click"
+                Content="_Ok"
+                IsDefault="True"
+                TabIndex="3" />
+            <Button
+                x:Name="buttonCancel"
+                Width="90"
+                Height="24"
+                Margin="10,0,0,0"
+                Click="ButtonCancel_Click"
+                Content="_Cancel"
+                IsCancel="True"
+                TabIndex="4" />
+        </DockPanel>
     </Grid>
 </Window>
