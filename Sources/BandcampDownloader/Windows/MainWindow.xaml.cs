@@ -30,12 +30,11 @@ namespace BandcampDownloader {
 
         public static IUserSettings userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
         /// <summary>
-        /// Indicates if there are active downloads
+        /// True if there are active downloads; false otherwise.
         /// </summary>
         private Boolean activeDownloads = false;
         /// <summary>
-        /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to
-        /// download.
+        /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to download.
         /// </summary>
         private List<TrackFile> filesDownload;
         /// <summary>
@@ -64,8 +63,7 @@ namespace BandcampDownloader {
             InitializeLogger();
             InitializeComponent();
 
-            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the
-            // same time
+            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             // Hints

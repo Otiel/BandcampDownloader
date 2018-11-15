@@ -4,8 +4,8 @@ using System.Windows.Data;
 
 namespace BandcampDownloader {
 
-    /// <summary>
-    /// Transforms a double to its percent value. For instance: "0.05 → 5".
+    /// /// <summary>
+    /// Represents the converter that transforms Double values to and from their percent value. For instance: "0.05 → 5".
     /// </summary>
     public class DoubleToPercentConverter: IValueConverter {
 
