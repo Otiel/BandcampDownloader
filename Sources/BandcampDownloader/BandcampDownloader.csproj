@@ -128,8 +128,9 @@
     <Compile Include="Business Objects\TrackFile.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
-    <Compile Include="Helpers\InverseBooleanToVisibilityConverter.cs" />
-    <Compile Include="Helpers\InverseBooleanConverter.cs" />
+    <Compile Include="Value Converters\DoubleToPercentConverter.cs" />
+    <Compile Include="Value Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Value Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="Windows\UserControlSettingsAdvanced.xaml.cs">
       <DependentUpon>UserControlSettingsAdvanced.xaml</DependentUpon>
     </Compile>
@@ -159,7 +160,6 @@
     <Compile Include="Business Objects\Track.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
-    <Compile Include="Helpers\DoubleToPercentConverter.cs" />
     <Compile Include="Miscellaneous\LogType.cs" />
     <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
@@ -260,6 +260,7 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
