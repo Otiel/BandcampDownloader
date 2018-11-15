@@ -28,9 +28,17 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="0"
-            Text="{Binding Path=AllowableFileSizeDifference, UpdateSourceTrigger=Explicit, Converter={StaticResource DoubleToPercentConverter}}"
             TextChanged="TextBox_TextChanged"
-            ToolTip="When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#xA;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#xA;&#xA;Recommended value = 5" />
+            ToolTip="When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#xA;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#xA;&#xA;Recommended value = 5">
+            <Binding
+                Converter="{StaticResource DoubleToPercentConverter}"
+                Path="AllowableFileSizeDifference"
+                UpdateSourceTrigger="Explicit">
+                <Binding.ValidationRules>
+                    <local:DoubleRule />
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
         <Label
             x:Name="labelDownloadMaxTries"
             Margin="0,26,0,0"

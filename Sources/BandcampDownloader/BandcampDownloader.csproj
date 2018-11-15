@@ -128,6 +128,7 @@
     <Compile Include="Business Objects\TrackFile.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
+    <Compile Include="Miscellaneous\DoubleRule.cs" />
     <Compile Include="Value Converters\DoubleToPercentConverter.cs" />
     <Compile Include="Value Converters\InverseBooleanConverter.cs" />
     <Compile Include="Value Converters\InverseBooleanToVisibilityConverter.cs" />
