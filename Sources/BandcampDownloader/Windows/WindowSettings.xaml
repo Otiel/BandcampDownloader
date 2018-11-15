@@ -11,7 +11,7 @@
     Height="300"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
-    WindowStartupLocation="CenterScreen"
+    WindowStartupLocation="CenterOwner"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">
     <Window.Resources>
