@@ -129,8 +129,7 @@
                 Click="ButtonStop_Click"
                 Content="_Cancel"
                 IsEnabled="False"
-                TabIndex="5"
-                Visibility="Visible" />
+                TabIndex="5" />
             <Button
                 x:Name="buttonOpenSettingsWindow"
                 Width="105"
