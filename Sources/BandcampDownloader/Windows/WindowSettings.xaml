@@ -98,7 +98,7 @@
             Click="ButtonResetSettings_Click"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="2"
-            ToolTip="Resets settings to default values">
+            ToolTip="Resets settings to their default values">
             <StackPanel Orientation="Horizontal">
                 <Image
                     x:Name="imageArrowCircle225Left"
