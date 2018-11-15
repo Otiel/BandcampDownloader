@@ -6,7 +6,7 @@ namespace BandcampDownloader {
     public interface IUserSettings {
 
         [Option(DefaultValue = 0.05)]
-        Double AllowableFileSizeDifference { get; set; }
+        Double AllowedFileSizeDifference { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean AutoScrollLog { get; set; }

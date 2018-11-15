@@ -16,12 +16,12 @@
     </UserControl.Resources>
     <Grid x:Name="gridMain">
         <Label
-            x:Name="labelAllowableFileSizeDifference"
+            x:Name="labelAllowedFileSizeDifference"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Allowed file size difference (%)" />
         <TextBox
-            x:Name="textBoxAllowableFileSizeDifference"
+            x:Name="textBoxAllowedFileSizeDifference"
             Width="40"
             Height="20"
             Margin="176,4,0,0"
@@ -32,7 +32,7 @@
             ToolTip="When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#xA;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#xA;&#xA;Recommended value = 5">
             <Binding
                 Converter="{StaticResource DoubleToPercentConverter}"
-                Path="AllowableFileSizeDifference"
+                Path="AllowedFileSizeDifference"
                 UpdateSourceTrigger="Explicit">
                 <Binding.ValidationRules>
                     <local:DoubleRule />

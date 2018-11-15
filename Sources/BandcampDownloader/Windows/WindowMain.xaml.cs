@@ -208,8 +208,8 @@ namespace BandcampDownloader {
                 long length = new FileInfo(trackPath).Length;
                 foreach (TrackFile trackFile in filesDownload) {
                     if (track.Mp3Url == trackFile.Url &&
-                        trackFile.Size > length - (trackFile.Size * userSettings.AllowableFileSizeDifference) &&
-                        trackFile.Size < length + (trackFile.Size * userSettings.AllowableFileSizeDifference)) {
+                        trackFile.Size > length - (trackFile.Size * userSettings.AllowedFileSizeDifference) &&
+                        trackFile.Size < length + (trackFile.Size * userSettings.AllowedFileSizeDifference)) {
                         Log($"Track already exists within allowed file size range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
