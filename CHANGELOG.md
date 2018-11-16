@@ -1,5 +1,10 @@
 # 0.2.0.0
 
+_Notes to upgraders:_
+
+* The settings file has changed, so your settings will be reset. You can delete your old `BcDlSettings.json` that will be replaced by `BandcampDownloader.ini`.
+* DLL files are now packed inside the EXE file. You can delete the DLL files you had next to `BandcampDownloader.exe`.
+
 ## New features
 
 * Added separate settings for the cover art downloaded in folder and the one saved in tags. #64
