@@ -6,7 +6,7 @@
 Description
 -----------
 
-_BandcampDownloader_ is a Windows application written in C# using .NET Framework 4.5 that helps downloading albums from [bandcamp.com](https://bandcamp.com). _BandcampDownloader_ retrieves the 128 kbps MP3 files that are streamed on the website.
+_BandcampDownloader_ is a Windows application written in C# (targeting .NET Framework 4.5.2) that helps downloading albums from [bandcamp.com](https://bandcamp.com). _BandcampDownloader_ retrieves the 128 kbps MP3 files that are streamed on the website.
 
 Features
 --------
