@@ -33,7 +33,7 @@
                 Height="16"
                 Margin="5,0,0,0"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"
-                Source="pack://application:,,,/Resources/ExclamationSmall.png"
+                Source="pack://application:,,,/Resources/InformationSmallWhite.png"
                 Stretch="None" />
             <Label
                 x:Name="labelInfo"
