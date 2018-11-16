@@ -34,7 +34,7 @@
             VerticalAlignment="Top">
             <Label
                 Name="labelDownloadsPath"
-                Margin="0,-3,0,0"
+                Margin="-4,-3,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Content="Save albums to"
@@ -42,7 +42,7 @@
             <TextBox
                 Name="textBoxDownloadsPath"
                 Height="20"
-                Margin="95,0,32,0"
+                Margin="91,0,32,0"
                 VerticalAlignment="Top"
                 TabIndex="1"
                 Text="{Binding DownloadsPath}"
@@ -58,15 +58,25 @@
                 TabIndex="2"
                 ToolTip="Browse for folder" />
         </Grid>
+        <CheckBox
+            x:Name="checkBoxDownloadDiscography"
+            Margin="0,143,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Download artist discography"
+            IsChecked="{Binding DownloadArtistDiscography}"
+            IsEnabled="True"
+            TabIndex="3"
+            ToolTip="If checked, the whole artist discography will be downloaded." />
         <ProgressBar
             Name="progressBar"
             Height="18"
-            Margin="0,143,0,0"
+            Margin="0,163,0,0"
             VerticalAlignment="Top"
             IsTabStop="False" />
         <RichTextBox
             Name="richTextBoxLog"
-            Margin="0,167,0,30"
+            Margin="0,187,0,30"
             HorizontalScrollBarVisibility="Auto"
             IsReadOnly="True"
             IsReadOnlyCaretVisible="True"

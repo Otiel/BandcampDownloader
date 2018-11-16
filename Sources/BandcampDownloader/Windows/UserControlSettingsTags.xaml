@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsTags"
     Width="340"
-    Height="128"
+    Height="100"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -49,18 +49,8 @@
             TabIndex="2"
             ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)." />
         <CheckBox
-            x:Name="checkBoxDownloadDiscography"
-            Margin="3,82,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Download artist discography"
-            IsChecked="{Binding DownloadArtistDiscography, UpdateSourceTrigger=Explicit}"
-            IsEnabled="True"
-            TabIndex="3"
-            ToolTip="If checked, the whole artist discography will be downloaded." />
-        <CheckBox
             x:Name="checkBoxRetrieveFilesSize"
-            Margin="3,108,0,0"
+            Margin="3,82,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Retrieve files size"

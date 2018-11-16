@@ -23,7 +23,6 @@ namespace BandcampDownloader {
         /// Saves settings to WindowMain.userSettings.
         /// </summary>
         public void SaveSettings() {
-            checkBoxDownloadDiscography.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxRetrieveFilesSize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxTag.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
