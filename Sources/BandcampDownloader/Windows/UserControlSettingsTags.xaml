@@ -59,12 +59,12 @@
             TabIndex="3"
             ToolTip="If checked, the whole artist discography will be downloaded." />
         <CheckBox
-            x:Name="checkBoxRetrieveFilesizes"
+            x:Name="checkBoxRetrieveFilesSize"
             Margin="3,108,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Retrieve files size"
-            IsChecked="{Binding RetrieveFilesizes, UpdateSourceTrigger=Explicit}"
+            IsChecked="{Binding RetrieveFilesSize, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
             TabIndex="4"
             ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time." />

@@ -538,7 +538,7 @@ namespace BandcampDownloader {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;
-                    if (userSettings.RetrieveFilesizes) {
+                    if (userSettings.RetrieveFilesSize) {
                         do {
                             if (this.userCancelled) {
                                 // Abort
@@ -568,7 +568,7 @@ namespace BandcampDownloader {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;
-                    if (userSettings.RetrieveFilesizes)
+                    if (userSettings.RetrieveFilesSize)
                         do {
                             if (this.userCancelled) {
                                 // Abort
@@ -754,8 +754,8 @@ namespace BandcampDownloader {
                         // Update progress label
                         labelProgress.Content =
                             ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-                            (userSettings.RetrieveFilesizes ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
-                        if (userSettings.RetrieveFilesizes) {
+                            (userSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
+                        if (userSettings.RetrieveFilesSize) {
                             // Update progress bar based on bytes received
                             progressBar.Value = totalReceivedBytes;
                             // Taskbar progress is between 0 and 1
@@ -839,7 +839,7 @@ namespace BandcampDownloader {
             }).ContinueWith(x => {
                 // Set progressBar max value
                 long maxProgressBarValue;
-                if (userSettings.RetrieveFilesizes) {
+                if (userSettings.RetrieveFilesSize) {
                     maxProgressBarValue = this.filesDownload.Sum(f => f.Size); // Bytes to download
                 } else {
                     maxProgressBarValue = this.filesDownload.Count; // Number of files to download

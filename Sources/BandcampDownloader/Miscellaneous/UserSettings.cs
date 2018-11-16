@@ -44,7 +44,7 @@ namespace BandcampDownloader {
         Boolean ResizeCoverArt { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean RetrieveFilesizes { get; set; }
+        Boolean RetrieveFilesSize { get; set; }
 
         [Option(DefaultValue = false)]
         Boolean SaveCoverArtInFolder { get; set; }
