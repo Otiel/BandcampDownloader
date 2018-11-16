@@ -41,7 +41,6 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the NLog.LogLevel associated to the specified LogType.
         /// </summary>
-        /// <param name="logType">The LogType to transform.</param>
         public static LogLevel ToNLogLevel(this LogType logType) {
             switch (logType) {
                 case LogType.VerboseInfo:
