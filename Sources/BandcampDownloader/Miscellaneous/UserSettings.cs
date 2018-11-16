@@ -56,6 +56,30 @@ namespace BandcampDownloader {
         Boolean ShowVerboseLog { get; set; }
 
         [Option(DefaultValue = true)]
+        Boolean TagRemoveComments { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveAlbum { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveAlbumArtist { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveArtist { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveLyrics { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveTitle { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveTrackNumber { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean TagSaveYear { get; set; }
+
+        [Option(DefaultValue = true)]
         Boolean TagTracks { get; set; }
     }
 }

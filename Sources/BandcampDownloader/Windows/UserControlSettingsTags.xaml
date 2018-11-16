@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsTags"
     Width="340"
-    Height="50"
+    Height="210"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -29,13 +29,93 @@
             Text="{Binding FileNameFormat, UpdateSourceTrigger=Explicit}"
             ToolTip="You can use placeholders to customize the file name:&#xA;- {artist} will be replaced by the album artist&#xA;- {title} will be replaced by the track name&#xA;- {tracknum} will be replaced by the track number" />
         <CheckBox
-            x:Name="checkBoxTag"
+            x:Name="checkBoxTagTracks"
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Tag tracks"
+            Content="Tag tracks (ID3)"
             IsChecked="{Binding TagTracks, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
-            ToolTip="If checked, the album, artist, album artist, title, track number and year will be saved in the tracks tags.&#xA;Lyrics will be saved as well if available." />
+            ToolTip="If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file." />
+        <CheckBox
+            x:Name="checkBoxTagSaveArtist"
+            Margin="24,50,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save artist"
+            IsChecked="{Binding TagSaveArtist, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the artist will be saved in the tags." />
+        <CheckBox
+            x:Name="checkBoxTagSaveTrackNumber"
+            Margin="24,70,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save track number"
+            IsChecked="{Binding TagSaveTrackNumber, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the track number will be saved in the tags." />
+        <CheckBox
+            x:Name="checkBoxTagSaveTitle"
+            Margin="24,90,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save track title"
+            IsChecked="{Binding TagSaveTitle, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the track title will be saved in the tags." />
+        <CheckBox
+            x:Name="checkBoxTagSaveAlbum"
+            Margin="24,110,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save album name"
+            IsChecked="{Binding TagSaveAlbum, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the album name will be saved in the tags." />
+        <CheckBox
+            x:Name="checkBoxTagSaveAlbumArtist"
+            Margin="24,130,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save album artist"
+            IsChecked="{Binding TagSaveAlbumArtist, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the album artist will be saved in the tags." />
+        <CheckBox
+            x:Name="checkBoxTagSaveYear"
+            Margin="24,150,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save album release year"
+            IsChecked="{Binding TagSaveYear, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the album release year will be saved in the tags." />
+        <CheckBox
+            x:Name="checkBoxTagSaveLyrics"
+            Margin="24,170,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Save lyrics"
+            IsChecked="{Binding TagSaveLyrics, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the lyrics will be saved in the tags if they're available." />
+        <CheckBox
+            x:Name="checkBoxTagRemoveComments"
+            Margin="24,190,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Remove comments"
+            IsChecked="{Binding TagRemoveComments, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            TabIndex="1"
+            ToolTip="If checked, the comments tags will be emptied." />
     </Grid>
 </UserControl>

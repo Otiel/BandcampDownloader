@@ -231,14 +231,30 @@ namespace BandcampDownloader {
                             if (userSettings.TagTracks) {
                                 // Tag (ID3) the file when downloaded
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
-                                tagFile.Tag.Album = album.Title;
-                                tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
-                                tagFile.Tag.Performers = new String[1] { album.Artist };
-                                tagFile.Tag.Title = track.Title;
-                                tagFile.Tag.Track = (uint) track.Number;
-                                tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
-                                tagFile.Tag.Lyrics = track.Lyrics;
-                                tagFile.Tag.Comment = "";
+                                if (userSettings.TagSaveAlbum) {
+                                    tagFile.Tag.Album = album.Title;
+                                }
+                                if (userSettings.TagSaveAlbumArtist) {
+                                    tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
+                                }
+                                if (userSettings.TagSaveArtist) {
+                                    tagFile.Tag.Performers = new String[1] { album.Artist };
+                                }
+                                if (userSettings.TagSaveTitle) {
+                                    tagFile.Tag.Title = track.Title;
+                                }
+                                if (userSettings.TagSaveTrackNumber) {
+                                    tagFile.Tag.Track = (uint) track.Number;
+                                }
+                                if (userSettings.TagSaveYear) {
+                                    tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
+                                }
+                                if (userSettings.TagSaveLyrics) {
+                                    tagFile.Tag.Lyrics = track.Lyrics;
+                                }
+                                if (userSettings.TagRemoveComments) {
+                                    tagFile.Tag.Comment = "";
+                                }
                                 tagFile.Save();
                             }
 
