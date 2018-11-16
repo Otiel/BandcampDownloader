@@ -517,7 +517,7 @@ namespace BandcampDownloader {
         /// <param name="track">The track currently downloaded.</param>
         private String GetFileName(Album album, Track track) {
             String fileName =
-                userSettings.FilenameFormat.Replace("{artist}", album.Artist)
+                userSettings.FileNameFormat.Replace("{artist}", album.Artist)
                     .Replace("{title}", track.Title)
                     .Replace("{tracknum}", track.Number.ToString("00"));
             return fileName.ToAllowedFileName();

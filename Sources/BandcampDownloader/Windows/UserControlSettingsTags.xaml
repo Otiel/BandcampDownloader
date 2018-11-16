@@ -11,13 +11,13 @@
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
         <Label
-            x:Name="labelFilenameFormat"
+            x:Name="labelFileNameFormat"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
             Content="File name format:" />
         <TextBox
-            x:Name="textBoxFilenameFormat"
+            x:Name="textBoxFileNameFormat"
             Width="230"
             Height="20"
             Margin="107,3,0,0"
@@ -26,7 +26,7 @@
             HorizontalContentAlignment="Left"
             VerticalContentAlignment="Center"
             TabIndex="0"
-            Text="{Binding FilenameFormat, UpdateSourceTrigger=Explicit}"
+            Text="{Binding FileNameFormat, UpdateSourceTrigger=Explicit}"
             ToolTip="You can use placeholders to customize the file name:&#xA;- {artist} will be replaced by the album artist&#xA;- {title} will be replaced by the track name&#xA;- {tracknum} will be replaced by the track number" />
         <CheckBox
             x:Name="checkBoxTag"

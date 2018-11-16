@@ -38,7 +38,7 @@ namespace BandcampDownloader {
         String DownloadsPath { get; set; }
 
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
-        String FilenameFormat { get; set; }
+        String FileNameFormat { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean ResizeCoverArt { get; set; }

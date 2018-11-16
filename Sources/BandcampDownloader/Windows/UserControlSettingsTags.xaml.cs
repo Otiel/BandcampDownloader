@@ -27,7 +27,7 @@ namespace BandcampDownloader {
             checkBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxRetrieveFilesSize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxTag.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            textBoxFilenameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
     }
 }
