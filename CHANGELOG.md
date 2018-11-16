@@ -8,7 +8,7 @@ _Notes to upgraders:_
 ## New features
 
 * Added separate settings for the cover art downloaded in folder and the one saved in tags. #64
-* Lyrics can be saved to tags when available. Thanks @ajsnyde!
+* Lyrics can be saved to tags when available. #42 Thanks @ajsnyde!
 * You can now choose which tag should be saved (artist, title, album...) or not.
 * Added an option to remove comments from tags.
 * Added an option to reset settings to their default values.
