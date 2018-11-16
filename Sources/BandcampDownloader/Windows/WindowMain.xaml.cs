@@ -195,7 +195,7 @@ namespace BandcampDownloader {
         private Boolean DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, Boolean tagTrack, Boolean saveCoverArtInTags, TagLib.Picture artwork) {
             Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
-            // Set location to save the file
+            // Set path to save the file
             String trackPath = albumDirectoryPath + "\\" + GetFileName(album, track);
             if (trackPath.Length > 256) {
                 // Shorten the path (Windows doesn't support a path > 256 characters)
@@ -618,9 +618,9 @@ namespace BandcampDownloader {
         /// This must be called before initializing UI forms.
         /// </summary>
         private void InitializeSettings() {
-            if (String.IsNullOrEmpty(userSettings.DownloadsLocation)) {
+            if (String.IsNullOrEmpty(userSettings.DownloadsPath)) {
                 // Its default value cannot be set in settings as it isn't determined by a constant function
-                userSettings.DownloadsLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
+                userSettings.DownloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
             }
             userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
             // Save DataContext for bindings
@@ -661,17 +661,17 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified download location.
+        /// Replaces placeholders strings by the corresponding values in the specified download path.
         /// </summary>
-        /// <param name="downloadLocation">The download location to parse.</param>
+        /// <param name="downloadPath">The download path to parse.</param>
         /// <param name="album">The album currently downloaded.</param>
-        private String ParseDownloadLocation(String downloadLocation, Album album) {
-            downloadLocation = downloadLocation.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
-            downloadLocation = downloadLocation.Replace("{month}", album.ReleaseDate.Month.ToString().ToAllowedFileName());
-            downloadLocation = downloadLocation.Replace("{day}", album.ReleaseDate.Day.ToString().ToAllowedFileName());
-            downloadLocation = downloadLocation.Replace("{artist}", album.Artist.ToAllowedFileName());
-            downloadLocation = downloadLocation.Replace("{album}", album.Title.ToAllowedFileName());
-            return downloadLocation;
+        private String ParseDownloadPath(String downloadPath, Album album) {
+            downloadPath = downloadPath.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString().ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString().ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{artist}", album.Artist.ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{album}", album.Title.ToAllowedFileName());
+            return downloadPath;
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace BandcampDownloader {
                     buttonStop.IsEnabled = true;
                     buttonBrowse.IsEnabled = false;
                     textBoxUrls.IsReadOnly = true;
-                    textBoxDownloadsLocation.IsReadOnly = true;
+                    textBoxDownloadsPath.IsReadOnly = true;
                 } else {
                     // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
@@ -704,7 +704,7 @@ namespace BandcampDownloader {
                     progressBar.Value = progressBar.Minimum;
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
                     TaskbarItemInfo.ProgressValue = 0;
-                    textBoxDownloadsLocation.IsReadOnly = false;
+                    textBoxDownloadsPath.IsReadOnly = false;
                     labelDownloadSpeed.Content = "";
                 }
             }));
@@ -786,7 +786,7 @@ namespace BandcampDownloader {
                 Description = "Select the folder to save albums"
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                textBoxDownloadsLocation.Text = dialog.SelectedPath;
+                textBoxDownloadsPath.Text = dialog.SelectedPath;
             }
         }
 
@@ -856,7 +856,7 @@ namespace BandcampDownloader {
                 if (userSettings.DownloadOneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, ParseDownloadLocation(userSettings.DownloadsLocation, album), userSettings.TagTracks, userSettings.SaveCoverArtInTags, userSettings.SaveCoverArtInFolder, userSettings.ConvertCoverArtToJpg, userSettings.ResizeCoverArt, userSettings.CoverArtMaxSize);
+                        DownloadAlbum(album, ParseDownloadPath(userSettings.DownloadsPath, album), userSettings.TagTracks, userSettings.SaveCoverArtInTags, userSettings.SaveCoverArtInFolder, userSettings.ConvertCoverArtToJpg, userSettings.ResizeCoverArt, userSettings.CoverArtMaxSize);
                     }
                 } else {
                     // Parallel download
@@ -864,7 +864,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, ParseDownloadLocation(userSettings.DownloadsLocation, album), userSettings.TagTracks, userSettings.SaveCoverArtInTags, userSettings.SaveCoverArtInFolder, userSettings.ConvertCoverArtToJpg, userSettings.ResizeCoverArt, userSettings.CoverArtMaxSize));
+                            DownloadAlbum(album, ParseDownloadPath(userSettings.DownloadsPath, album), userSettings.TagTracks, userSettings.SaveCoverArtInTags, userSettings.SaveCoverArtInFolder, userSettings.ConvertCoverArtToJpg, userSettings.ResizeCoverArt, userSettings.CoverArtMaxSize));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);

@@ -35,7 +35,7 @@ namespace BandcampDownloader {
         Double DownloadRetryExponent { get; set; }
 
         [Option(DefaultValue = "")]
-        String DownloadsLocation { get; set; }
+        String DownloadsPath { get; set; }
 
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
         String FilenameFormat { get; set; }

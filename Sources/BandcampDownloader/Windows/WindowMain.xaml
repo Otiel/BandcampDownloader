@@ -29,23 +29,23 @@
             Text=""
             VerticalScrollBarVisibility="Auto" />
         <Grid
-            x:Name="gridDownloadsLocation"
+            x:Name="gridDownloadsPath"
             Margin="0,117,0,0"
             VerticalAlignment="Top">
             <Label
-                Name="labelDownloadsLocation"
+                Name="labelDownloadsPath"
                 Margin="0,-3,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Content="Save albums to"
                 ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" />
             <TextBox
-                Name="textBoxDownloadsLocation"
+                Name="textBoxDownloadsPath"
                 Height="20"
                 Margin="95,0,32,0"
                 VerticalAlignment="Top"
                 TabIndex="1"
-                Text="{Binding DownloadsLocation}"
+                Text="{Binding DownloadsPath}"
                 ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" />
             <Button
                 Name="buttonBrowse"
