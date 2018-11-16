@@ -28,6 +28,9 @@ namespace BandcampDownloader {
 
         #region Fields
 
+        /// <summary>
+        /// The settings chosen by the user.
+        /// </summary>
         public static IUserSettings userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
         /// <summary>
         /// True if there are active downloads; false otherwise.
