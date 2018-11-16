@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsLog"
-    Width="71.75"
-    Height="24"
+    Width="240"
+    Height="26"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -22,5 +22,12 @@
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
             ToolTip="Show more information on the log." />
+        <Label
+            x:Name="labelInfo"
+            Margin="68,-2,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="(the log file is always verbose)"
+            Foreground="#FF858585" />
     </Grid>
 </UserControl>
