@@ -511,10 +511,10 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat location.
+        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
         /// </summary>
-        /// <param name="downloadLocation">The download location to parse.</param>
         /// <param name="album">The album currently downloaded.</param>
+        /// <param name="track">The track currently downloaded.</param>
         private String GetFileName(Album album, Track track) {
             String fileName =
                 userSettings.FilenameFormat.Replace("{artist}", album.Artist)
