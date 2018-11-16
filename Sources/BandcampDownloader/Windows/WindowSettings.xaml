@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="windowSettings"
     Title="Settings"
-    Width="584"
+    Width="515"
     Height="335"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
