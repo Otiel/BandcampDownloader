@@ -1,15 +1,12 @@
-![Logo](https://i.imgur.com/S6AZHOg.png) Bandcamp Downloader
-===========================================================
+# ![Logo](https://i.imgur.com/S6AZHOg.png) Bandcamp Downloader
 
 [![Download](https://i.imgur.com/UjPs7Sr.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
 
-Description
------------
+## Description
 
 _BandcampDownloader_ is a Windows application written in C# (targeting .NET Framework 4.5.2) that helps downloading albums from [bandcamp.com](https://bandcamp.com). _BandcampDownloader_ retrieves the 128 kbps MP3 files that are streamed on the website.
 
-Features
---------
+## Features
 
 * Downloads MP3 files from Bandcamp:
   * From album pages: `https://[artist].bandcamp.com/album/[album]`,
@@ -22,23 +19,19 @@ Features
   * Resizes it,
   * Saves it in tracks tags and in folder.
 
-Screenshot
-----------
+## Screenshot
 
 ![Screenshot](https://i.imgur.com/1CVdvjV.png)
 
-Release notes
--------------
+## Release notes
 
 See the [changelog](https://github.com/Otiel/BandcampDownloader/blob/master/CHANGELOG.md).
 
-License
--------
+## License
 
 _BandcampDownloader_ is licensed under the [WTFPL](http://www.wtfpl.net/) ![WTFPL icon](https://i.imgur.com/AsWaQQl.png).
 
-Piracy
-------
+## Piracy
 
 You'll do what you want to do with this app, but remember to buy albums from your favorite artists if you want to support them!
 
