@@ -21,17 +21,6 @@ Features
   * Resizes cover art,
   * Saves cover art in tracks tags.
 
-Usage
------
-
-1. [Download](https://github.com/Otiel/BandcampDownloader/releases/latest) the latest version from the releases page as a zip file.
-2. Make sure the following files are located in the same folder:
-    * `BandcampDownloader.exe`,
-    * `ImageResizer.dll`,
-    * `Newtonsoft.Json.dll`,
-    * `taglib-sharp.dll`.
-3. Run `BandcampDownloader.exe`.
-
 Screenshot
 ----------
 
