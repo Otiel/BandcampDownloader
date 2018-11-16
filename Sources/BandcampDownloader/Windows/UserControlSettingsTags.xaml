@@ -33,7 +33,7 @@
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Tag tracks (ID3)"
+            Content="Modify tracks tags (ID3)"
             IsChecked="{Binding TagTracks, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
             ToolTip="If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file." />
