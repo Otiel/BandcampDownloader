@@ -30,11 +30,6 @@ Screenshot
 Release notes
 -------------
 
-
-Help
-----
-
-Check the [wiki](https://github.com/Otiel/BandcampDownloader/wiki) for first help or open an [issue](https://github.com/Otiel/BandcampDownloader/issues) if you cannot find what you are looking for.
 See the [changelog](https://github.com/Otiel/BandcampDownloader/blob/master/CHANGELOG.md).
 
 License
