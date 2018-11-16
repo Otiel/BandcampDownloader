@@ -51,6 +51,7 @@ namespace BandcampDownloader {
             // Re-load settings on UI
             userControlSettingsAdvanced.LoadSettings();
             userControlSettingsCoverArt.LoadSettings();
+            userControlSettingsDownloads.LoadSettings();
             userControlSettingsLog.LoadSettings();
             userControlSettingsTags.LoadSettings();
         }
@@ -59,10 +60,11 @@ namespace BandcampDownloader {
         /// Save all settings.
         /// </summary>
         private void SaveSettings() {
-            userControlSettingsTags.SaveSettings();
-            userControlSettingsCoverArt.SaveSettings();
-            userControlSettingsLog.SaveSettings();
             userControlSettingsAdvanced.SaveSettings();
+            userControlSettingsCoverArt.SaveSettings();
+            userControlSettingsDownloads.SaveSettings();
+            userControlSettingsLog.SaveSettings();
+            userControlSettingsTags.SaveSettings();
         }
     }
 }

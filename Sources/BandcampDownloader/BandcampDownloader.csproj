@@ -141,6 +141,9 @@
     <Compile Include="Windows\UserControlSettingsLog.xaml.cs">
       <DependentUpon>UserControlSettingsLog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\UserControlSettingsDownloads.xaml.cs">
+      <DependentUpon>UserControlSettingsDownloads.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UserControlSettingsTags.xaml.cs">
       <DependentUpon>UserControlSettingsTags.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\UserControlSettingsLog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UserControlSettingsDownloads.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

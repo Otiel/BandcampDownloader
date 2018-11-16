@@ -2,9 +2,9 @@
 
 namespace BandcampDownloader {
 
-    public partial class UserControlSettingsTags: UserControl {
+    public partial class UserControlSettingsDownloads: UserControl {
 
-        public UserControlSettingsTags() {
+        public UserControlSettingsDownloads() {
             InitializeComponent();
             // Save data context for bindings
             DataContext = WindowMain.userSettings;
@@ -23,8 +23,8 @@ namespace BandcampDownloader {
         /// Saves settings to WindowMain.userSettings.
         /// </summary>
         public void SaveSettings() {
-            checkBoxTag.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            checkBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxRetrieveFilesSize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
         }
     }
 }
