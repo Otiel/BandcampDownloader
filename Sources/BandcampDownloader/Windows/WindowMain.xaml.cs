@@ -77,7 +77,14 @@ namespace BandcampDownloader {
             // Check for updates
             Task.Factory.StartNew(() => { CheckForUpdates(); });
 #if DEBUG
-            textBoxUrls.Text = "https://goataholicskjald.bandcamp.com/album/dogma";
+            textBoxUrls.Text =
+                //"https://goataholicskjald.bandcamp.com/album/dogma" + Environment.NewLine +
+                //"https://mstrvlk.bandcamp.com/album/-" + Environment.NewLine +
+                //"https://weneverlearnedtolive.bandcamp.com/album/silently-i-threw-them-skyward" + Environment.NewLine +
+                "https://goataholicskjald.bandcamp.com/track/europa" + Environment.NewLine +
+                "https://goataholicskjald.bandcamp.com/track/epilogue" + Environment.NewLine +
+                "https://mstrvlk.bandcamp.com/track/-" + Environment.NewLine +
+                "https://weneverlearnedtolive.bandcamp.com/track/shadows-in-hibernation-2";
 #endif
         }
 
