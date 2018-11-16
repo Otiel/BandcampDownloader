@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsAdvanced"
-    Width="220"
+    Width="240"
     Height="135"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
@@ -32,14 +32,15 @@
             <Label
                 x:Name="labelInfo"
                 Margin="0,0,0,0"
-                Content="Change these at your own risk."
+                Content="Change these settings at your own risk."
                 Foreground="#FF858585" />
         </DockPanel>
         <Label
             x:Name="labelAllowedFileSizeDifference"
+            Margin="0,26,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Allowed file size difference (%)" Margin="0,26,0,0" />
+            Content="Allowed file size difference (%)" />
         <TextBox
             x:Name="textBoxAllowedFileSizeDifference"
             Width="40"
