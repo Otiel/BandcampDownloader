@@ -31,11 +31,6 @@ Release notes
 -------------
 
 
-Bugs/Ideas
-----------
-
-If you have a bug to report, or simply an idea for an improvement or a new feature, please add them in the [issue tracker](https://github.com/Otiel/BandcampDownloader/issues).
-
 Help
 ----
 
