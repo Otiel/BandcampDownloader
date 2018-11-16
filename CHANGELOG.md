@@ -17,7 +17,7 @@ _Notes to upgraders:_
 ## Improvements
 
 * Settings are now displayed on their own window.
-* Added advanced settings to the UI. No need to edit your settings file anymore. Thanks @ajsnyde!
+* Added advanced settings to the UI. #46 No need to edit your settings file anymore. Thanks @ajsnyde!
 * Log is now automatically scrolled if position is at the end. "☑ Auto scroll log" option has been removed.
 * DLL files are now packed inside `BandcampDownloader.exe`.
 * Updated dependencies to their latest version.
