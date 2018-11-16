@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsAdvanced"
-    Width="218"
-    Height="105"
+    Width="220"
+    Height="135"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -15,16 +15,36 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
     <Grid x:Name="gridMain">
+        <DockPanel
+            x:Name="dockPanelInfo"
+            Height="26"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Visibility="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Image
+                x:Name="imageInfo"
+                Width="16"
+                Height="16"
+                Margin="5,0,0,0"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                Source="pack://application:,,,/Resources/ExclamationSmall.png"
+                Stretch="None" />
+            <Label
+                x:Name="labelInfo"
+                Margin="0,0,0,0"
+                Content="Change these at your own risk."
+                Foreground="#FF858585" />
+        </DockPanel>
         <Label
             x:Name="labelAllowedFileSizeDifference"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Allowed file size difference (%)" />
+            Content="Allowed file size difference (%)" Margin="0,26,0,0" />
         <TextBox
             x:Name="textBoxAllowedFileSizeDifference"
             Width="40"
             Height="20"
-            Margin="176,4,0,0"
+            Margin="176,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="0"
@@ -41,7 +61,7 @@
         </TextBox>
         <Label
             x:Name="labelDownloadMaxTries"
-            Margin="0,26,0,0"
+            Margin="0,52,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Download max tries" />
@@ -49,7 +69,7 @@
             x:Name="textBoxDownloadMaxTries"
             Width="40"
             Height="20"
-            Margin="176,30,0,0"
+            Margin="176,56,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
@@ -58,7 +78,7 @@
             ToolTip="Maximum number of tries performed to download a track if it fails. &#xA;After that number is reached (for each track), the track download will be skipped. &#xA;&#xA;Recommended value = 7" />
         <Label
             x:Name="labelDownloadRetryCooldown"
-            Margin="0,52,0,0"
+            Margin="0,78,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Retry cooldown (sec)" />
@@ -66,7 +86,7 @@
             x:Name="textBoxDownloadRetryCooldown"
             Width="40"
             Height="20"
-            Margin="176,56,0,0"
+            Margin="176,82,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="2"
@@ -75,7 +95,7 @@
             ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 0.2" />
         <Label
             x:Name="labelDownloadRetryExponent"
-            Margin="0,78,0,0"
+            Margin="0,104,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Retry exponent" />
@@ -83,7 +103,7 @@
             x:Name="textBoxDownloadRetryExponent"
             Width="40"
             Height="20"
-            Margin="176,82,0,0"
+            Margin="176,108,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="3"
