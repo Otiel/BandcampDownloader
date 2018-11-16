@@ -90,7 +90,7 @@
                 Foreground="#FF003BFF"
                 MouseDown="LabelVersion_MouseDown"
                 RenderTransformOrigin="-3.58,0.601"
-                ToolTip="Click to go to project website" />
+                ToolTip="Click to go to official project website" />
             <Label
                 x:Name="labelProgress"
                 Width="150"
