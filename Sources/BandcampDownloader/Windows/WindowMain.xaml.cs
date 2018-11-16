@@ -133,14 +133,8 @@ namespace BandcampDownloader {
         /// Downloads an album.
         /// </summary>
         /// <param name="album">The album to download.</param>
-        /// <param name="downloadsFolder">The downloads folder.</param>
-        /// <param name="tagTracks">True to tag tracks; false otherwise.</param>
-        /// <param name="saveCoverArtInTags">True to save cover art in tags; false otherwise.</param>
-        /// <param name="saveCovertArtInFolder">True to save cover art in the downloads folder; false otherwise.</param>
-        /// <param name="convertCoverArtToJpg">True to convert the cover art to jpg; false otherwise.</param>
-        /// <param name="resizeCoverArt">True to resize the covert art; false otherwise.</param>
-        /// <param name="coverArtMaxSize">The maximum width/height of the cover art when resizing.</param>
-        private void DownloadAlbum(Album album, String downloadsFolder, Boolean tagTracks, Boolean saveCoverArtInTags, Boolean saveCovertArtInFolder, Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
+        /// <param name="downloadsFolder">The path where to save the album.</param>
+        private void DownloadAlbum(Album album, String downloadsFolder) {
             if (this.userCancelled) {
                 // Abort
                 return;
@@ -157,8 +151,8 @@ namespace BandcampDownloader {
             TagLib.Picture artwork = null;
 
             // Download artwork
-            if (saveCoverArtInTags || saveCovertArtInFolder) {
-                artwork = DownloadCoverArt(album, downloadsFolder, saveCovertArtInFolder, convertCoverArtToJpg, resizeCoverArt, coverArtMaxSize);
+            if (userSettings.SaveCoverArtInTags || userSettings.SaveCoverArtInFolder) {
+                artwork = DownloadCoverArt(album, downloadsFolder);
             }
 
             // Download & tag tracks
@@ -167,7 +161,7 @@ namespace BandcampDownloader {
             for (int i = 0; i < album.Tracks.Count; i++) {
                 // Temporarily save the index or we will have a race condition exception when i hits its maximum value
                 int currentIndex = i;
-                tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(downloadsFolder, album, album.Tracks[currentIndex], tagTracks, saveCoverArtInTags, artwork));
+                tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(downloadsFolder, album, album.Tracks[currentIndex], artwork));
             }
 
             // Wait for all tracks to be downloaded before saying the album is downloaded
@@ -189,10 +183,8 @@ namespace BandcampDownloader {
         /// <param name="albumDirectoryPath">The path where to save the tracks.</param>
         /// <param name="album">The album of the track to download.</param>
         /// <param name="track">The track to download.</param>
-        /// <param name="tagTrack">True to tag the track; false otherwise.</param>
-        /// <param name="saveCoverArtInTags">True to save the cover art in the tag tracks; false otherwise.</param>
         /// <param name="artwork">The cover art.</param>
-        private Boolean DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, Boolean tagTrack, Boolean saveCoverArtInTags, TagLib.Picture artwork) {
+        private Boolean DownloadAndTagTrack(String albumDirectoryPath, Album album, Track track, TagLib.Picture artwork) {
             Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
             // Set path to save the file
@@ -236,7 +228,7 @@ namespace BandcampDownloader {
                         if (!e.Cancelled && e.Error == null) {
                             trackDownloaded = true;
 
-                            if (tagTrack) {
+                            if (userSettings.TagTracks) {
                                 // Tag (ID3) the file when downloaded
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
                                 tagFile.Tag.Album = album.Title;
@@ -250,7 +242,7 @@ namespace BandcampDownloader {
                                 tagFile.Save();
                             }
 
-                            if (saveCoverArtInTags && artwork != null) {
+                            if (userSettings.SaveCoverArtInTags && artwork != null) {
                                 // Save cover in tags when downloaded
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
                                 tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
@@ -297,18 +289,13 @@ namespace BandcampDownloader {
         /// Downloads the cover art.
         /// </summary>
         /// <param name="album">The album to download.</param>
-        /// <param name="downloadsFolder">The downloads folder.</param>
-        /// <param name="saveCovertArtInFolder">True to save cover art in the downloads folder; false otherwise.</param>
-        /// <param name="convertCoverArtToJpg">True to convert the cover art to jpg; false otherwise.</param>
-        /// <param name="resizeCoverArt">True to resize the covert art; false otherwise.</param>
-        /// <param name="coverArtMaxSize">The maximum width/height of the cover art when resizing.</param>
-        /// <returns></returns>
-        private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder, Boolean saveCovertArtInFolder, Boolean convertCoverArtToJpg, Boolean resizeCoverArt, int coverArtMaxSize) {
+        /// <param name="downloadsFolder">The path where to save the cover art.</param>
+        private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder) {
             // Compute path where to save artwork
-            String artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+            String artworkPath = (userSettings.SaveCoverArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             if (artworkPath.Length > 256) {
                 // Shorten the path (Windows doesn't support a path > 256 characters)
-                artworkPath = (saveCovertArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+                artworkPath = (userSettings.SaveCoverArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
             }
 
             TagLib.Picture artwork = null;
@@ -336,11 +323,11 @@ namespace BandcampDownloader {
                             // Convert/resize artwork
                             if (userSettings.ConvertCoverArtToJpg || userSettings.ResizeCoverArt) {
                                 var settings = new ResizeSettings();
-                                if (convertCoverArtToJpg) {
+                                if (userSettings.ConvertCoverArtToJpg) {
                                     settings.Format = "jpg";
                                     settings.Quality = 90;
                                 }
-                                if (resizeCoverArt) {
+                                if (userSettings.ResizeCoverArt) {
                                     settings.MaxHeight = userSettings.CoverArtMaxSize;
                                     settings.MaxWidth = userSettings.CoverArtMaxSize;
                                 }
@@ -350,7 +337,7 @@ namespace BandcampDownloader {
                             artwork = new TagLib.Picture(artworkPath) { Description = "Picture" };
 
                             // Delete the cover art file if it was saved in Temp
-                            if (!saveCovertArtInFolder) {
+                            if (!userSettings.SaveCoverArtInFolder) {
                                 try {
                                     System.IO.File.Delete(artworkPath);
                                 } catch {
@@ -856,7 +843,7 @@ namespace BandcampDownloader {
                 if (userSettings.DownloadOneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, ParseDownloadPath(userSettings.DownloadsPath, album), userSettings.TagTracks, userSettings.SaveCoverArtInTags, userSettings.SaveCoverArtInFolder, userSettings.ConvertCoverArtToJpg, userSettings.ResizeCoverArt, userSettings.CoverArtMaxSize);
+                        DownloadAlbum(album, ParseDownloadPath(userSettings.DownloadsPath, album));
                     }
                 } else {
                     // Parallel download
@@ -864,7 +851,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, ParseDownloadPath(userSettings.DownloadsPath, album), userSettings.TagTracks, userSettings.SaveCoverArtInTags, userSettings.SaveCoverArtInFolder, userSettings.ConvertCoverArtToJpg, userSettings.ResizeCoverArt, userSettings.CoverArtMaxSize));
+                            DownloadAlbum(album, ParseDownloadPath(userSettings.DownloadsPath, album)));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
