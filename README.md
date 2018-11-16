@@ -31,14 +31,6 @@ Release notes
 -------------
 
 
-Dependencies
-------------
-
-_BandcampDownloader_ uses:
-* [Json.NET](https://www.newtonsoft.com/json) to deserialize JSON data from the Bandcamp pages.
-* [TagLibSharp](https://github.com/mono/taglib-sharp) to tag tracks.
-* [ImageResizer](https://imageresizing.net/) to convert/resize covert arts.
-
 Bugs/Ideas
 ----------
 
