@@ -312,7 +312,7 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Downloads the cover art.
+        /// Downloads the cover art and returns the one to save in tags.
         /// </summary>
         /// <param name="album">The album to download.</param>
         /// <param name="downloadsFolder">The path where to save the cover art.</param>
