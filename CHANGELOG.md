@@ -3,7 +3,7 @@
 ## New features
 
 * Added separate settings for the cover art downloaded in folder and the one saved in tags. #64
-* Lyrics can be saved to tags when available. Thanks @ajsnyde
+* Lyrics can be saved to tags when available. Thanks @ajsnyde!
 * You can now choose which tag should be saved (artist, title, album...) or not.
 * Added an option to remove comments from tags.
 * Added an option to reset settings to their default values.
@@ -12,9 +12,9 @@
 ## Improvements
 
 * Settings are now displayed on their own window.
-* Added advanced settings to the UI. No need to edit your settings file anymore. Thanks @ajsnyde
+* Added advanced settings to the UI. No need to edit your settings file anymore. Thanks @ajsnyde!
 * Log is now automatically scrolled if position is at the end. "☑ Auto scroll log" option has been removed.
-* DLL files are now packed in `BandcampDownloader.exe`.
+* DLL files are now packed inside `BandcampDownloader.exe`.
 * Updated dependencies to their latest version.
 
 # 0.1.9.3
