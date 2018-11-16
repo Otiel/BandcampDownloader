@@ -317,14 +317,17 @@ namespace BandcampDownloader {
         /// <param name="album">The album to download.</param>
         /// <param name="downloadsFolder">The path where to save the cover art.</param>
         private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder) {
-            // Compute path where to save artwork
-            String artworkPath = (userSettings.SaveCoverArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
-            if (artworkPath.Length > 256) {
+            // Compute paths where to save artwork
+            String artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+            String artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+            if (artworkTempPath.Length > 256 || artworkFolderPath.Length > 256) {
                 // Shorten the path (Windows doesn't support a path > 256 characters)
-                artworkPath = (userSettings.SaveCoverArtInFolder ? downloadsFolder : Path.GetTempPath()) + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+                // There may be only one path to shorten, but it's better to use the same file name in both places
+                artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+                artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
             }
 
-            TagLib.Picture artwork = null;
+            TagLib.Picture artworkInTags = null;
 
             int tries = 0;
             Boolean artworkDownloaded = false;
@@ -333,8 +336,9 @@ namespace BandcampDownloader {
                 var doneEvent = new AutoResetEvent(false);
 
                 using (var webClient = new WebClient()) {
-                    if (webClient.Proxy != null)
+                    if (webClient.Proxy != null) {
                         webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                    }
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
@@ -346,29 +350,39 @@ namespace BandcampDownloader {
                         if (!e.Cancelled && e.Error == null) {
                             artworkDownloaded = true;
 
-                            // Convert/resize artwork
-                            if (userSettings.ConvertCoverArtToJpg || userSettings.ResizeCoverArt) {
+                            // Convert/resize artwork to be saved in album folder
+                            if (userSettings.SaveCoverArtInFolder && (userSettings.CoverArtInFolderConvertToJpg || userSettings.CoverArtInFolderResize)) {
                                 var settings = new ResizeSettings();
-                                if (userSettings.ConvertCoverArtToJpg) {
+                                if (userSettings.CoverArtInFolderConvertToJpg) {
                                     settings.Format = "jpg";
                                     settings.Quality = 90;
                                 }
-                                if (userSettings.ResizeCoverArt) {
-                                    settings.MaxHeight = userSettings.CoverArtMaxSize;
-                                    settings.MaxWidth = userSettings.CoverArtMaxSize;
+                                if (userSettings.CoverArtInFolderResize) {
+                                    settings.MaxHeight = userSettings.CoverArtInFolderMaxSize;
+                                    settings.MaxWidth = userSettings.CoverArtInFolderMaxSize;
                                 }
-                                ImageBuilder.Current.Build(artworkPath, artworkPath, settings);
+                                ImageBuilder.Current.Build(artworkTempPath, artworkFolderPath, settings); // Save it to the album folder
                             }
 
-                            artwork = new TagLib.Picture(artworkPath) { Description = "Picture" };
-
-                            // Delete the cover art file if it was saved in Temp
-                            if (!userSettings.SaveCoverArtInFolder) {
-                                try {
-                                    System.IO.File.Delete(artworkPath);
-                                } catch {
-                                    // Could not delete the file. Nevermind, it's in Temp/ folder...
+                            // Convert/resize artwork to be saved in tags
+                            if (userSettings.SaveCoverArtInTags && (userSettings.CoverArtInTagsConvertToJpg || userSettings.CoverArtInTagsResize)) {
+                                var settings = new ResizeSettings();
+                                if (userSettings.CoverArtInTagsConvertToJpg) {
+                                    settings.Format = "jpg";
+                                    settings.Quality = 90;
                                 }
+                                if (userSettings.CoverArtInTagsResize) {
+                                    settings.MaxHeight = userSettings.CoverArtInTagsMaxSize;
+                                    settings.MaxWidth = userSettings.CoverArtInTagsMaxSize;
+                                }
+                                ImageBuilder.Current.Build(artworkTempPath, artworkTempPath, settings); // Save it to %Temp%
+                            }
+                            artworkInTags = new TagLib.Picture(artworkTempPath) { Description = "Picture" };
+
+                            try {
+                                File.Delete(artworkTempPath);
+                            } catch {
+                                // Could not delete the file. Nevermind, it's in %Temp% folder...
                             }
 
                             // Note the file as downloaded
@@ -394,7 +408,7 @@ namespace BandcampDownloader {
                         // Register current download
                         this.pendingDownloads.Add(webClient);
                         // Start download
-                        webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkPath);
+                        webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkTempPath);
                     }
 
                     // Wait for download to be finished
@@ -405,7 +419,7 @@ namespace BandcampDownloader {
                 }
             } while (!artworkDownloaded && tries < userSettings.DownloadMaxTries);
 
-            return artwork;
+            return artworkInTags;
         }
 
         /// <summary>

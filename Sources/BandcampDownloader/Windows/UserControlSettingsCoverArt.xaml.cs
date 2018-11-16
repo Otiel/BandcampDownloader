@@ -23,11 +23,14 @@ namespace BandcampDownloader {
         /// Saves settings to WindowMain.userSettings.
         /// </summary>
         public void SaveSettings() {
-            checkBoxConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxCoverArtInFolder.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxCoverArtInTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxResizeCoverArt.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            textBoxCoverArtMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            checkBoxSaveCoverArtInFolder.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxCoverArtInFolderConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxCoverArtInFolderResize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            textBoxCoverArtInFolderMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            checkBoxSaveCoverArtInTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxCoverArtInTagsConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxCoverArtInTagsResize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            textBoxCoverArtInTagsMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {

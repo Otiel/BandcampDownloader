@@ -12,10 +12,22 @@ namespace BandcampDownloader {
         Boolean AutoScrollLog { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean ConvertCoverArtToJpg { get; set; }
+        Boolean CoverArtInFolderConvertToJpg { get; set; }
 
         [Option(DefaultValue = 1000)]
-        int CoverArtMaxSize { get; set; }
+        int CoverArtInFolderMaxSize { get; set; }
+
+        [Option(DefaultValue = false)]
+        Boolean CoverArtInFolderResize { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean CoverArtInTagsConvertToJpg { get; set; }
+
+        [Option(DefaultValue = 1000)]
+        int CoverArtInTagsMaxSize { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean CoverArtInTagsResize { get; set; }
 
         [Option(DefaultValue = false)]
         Boolean DownloadArtistDiscography { get; set; }
@@ -39,9 +51,6 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
         String FileNameFormat { get; set; }
-
-        [Option(DefaultValue = true)]
-        Boolean ResizeCoverArt { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean RetrieveFilesSize { get; set; }
