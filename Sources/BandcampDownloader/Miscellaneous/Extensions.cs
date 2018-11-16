@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Windows.Controls;
 using NLog;
 
 namespace BandcampDownloader {
 
     internal static class Extensions {
+
+        /// <summary>
+        /// Returns true if scroll position of the current RichTextBox is at the end; false otherwise.
+        /// </summary>
+        public static Boolean IsScrolledToEnd(this RichTextBox richTextBox) {
+            return richTextBox.VerticalOffset > richTextBox.ExtentHeight - richTextBox.ViewportHeight - 10;
+        }
 
         /// <summary>
         /// Replaces the forbidden chars \ / : * ? " &lt; &gt; | from the System.String

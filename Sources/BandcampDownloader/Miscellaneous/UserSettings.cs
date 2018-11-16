@@ -9,9 +9,6 @@ namespace BandcampDownloader {
         Double AllowedFileSizeDifference { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean AutoScrollLog { get; set; }
-
-        [Option(DefaultValue = true)]
         Boolean CoverArtInFolderConvertToJpg { get; set; }
 
         [Option(DefaultValue = 1000)]

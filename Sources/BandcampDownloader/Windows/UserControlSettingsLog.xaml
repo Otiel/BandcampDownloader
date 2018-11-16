@@ -5,32 +5,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsLog"
-    Width="85"
-    Height="48"
+    Width="71.75"
+    Height="24"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
         <CheckBox
-            x:Name="checkBoxAutoScrollLog"
-            Width="79"
-            Height="16"
-            Margin="3,4,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="Auto scroll"
-            Foreground="Black"
-            IsChecked="{Binding AutoScrollLog, UpdateSourceTrigger=Explicit}"
-            TabIndex="0" />
-        <CheckBox
             x:Name="checkBoxVerboseLog"
             Width="65"
             Height="16"
-            Margin="3,30,0,0"
+            Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Verbose"
             Foreground="Black"
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
-            TabIndex="1" />
+            TabIndex="0"
+            ToolTip="Show more information on the log." />
     </Grid>
 </UserControl>

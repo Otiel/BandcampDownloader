@@ -680,7 +680,7 @@ namespace BandcampDownloader {
                     // Line break
                     richTextBoxLog.AppendText(Environment.NewLine);
 
-                    if (userSettings.AutoScrollLog) {
+                    if (richTextBoxLog.IsScrolledToEnd()) {
                         richTextBoxLog.ScrollToEnd();
                     }
                 }));
