@@ -75,7 +75,9 @@ namespace BandcampDownloader {
             // Version
             labelVersion.Content = "v" + Assembly.GetEntryAssembly().GetName().Version;
             // Check for updates
-            Task.Factory.StartNew(() => { CheckForUpdates(); });
+            if (userSettings.CheckForUpdates) {
+                Task.Factory.StartNew(() => { CheckForUpdates(); });
+            }
 #if DEBUG
             textBoxUrls.Text =
                 "https://goataholicskjald.bandcamp.com/album/dogma" + Environment.NewLine +

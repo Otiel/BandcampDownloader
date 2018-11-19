@@ -5,25 +5,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsGeneral"
-    Width="288"
-    Height="26"
+    Width="287"
+    Height="51"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
         <CheckBox
-            x:Name="checkBoxVerboseLog"
+            x:Name="checkBoxCheckForUpdates"
             Height="16"
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Show verbose log"
-            Foreground="Black"
-            IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
+            Content="Check for updates at startup"
+            IsChecked="{Binding CheckForUpdates, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
-            ToolTip="Show more information on the log." />
+            ToolTip="If checked, will query {x:Static local:Constants.LatestReleaseWebsite} at application startup to check for a newer version." />
+        <CheckBox
+            x:Name="checkBoxVerboseLog"
+            Height="16"
+            Margin="3,30,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Show verbose log"
+            IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
+            TabIndex="1"
+            ToolTip="If checked, more information will be shown on the log." />
         <Label
             x:Name="labelInfo"
-            Margin="117,-2,0,0"
+            Margin="117,24,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="(the log file is always verbose)"
