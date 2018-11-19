@@ -98,45 +98,21 @@ namespace BandcampDownloader {
         /// Displays a message if a new version is available.
         /// </summary>
         private void CheckForUpdates() {
-            // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
-            Boolean failedToRetrieveLatestVersion = false;
-
-            // Retrieve the redirect page from the GitHub latest release page
-            HttpWebRequest request = HttpWebRequest.CreateHttp(Constants.LatestReleaseWebsite);
-            request.AllowAutoRedirect = false;
-            String redirectPage = "";
+            Version latestVersion = null;
             try {
-                using (HttpWebResponse response = (HttpWebResponse) request.GetResponse()) {
-                    redirectPage = response.GetResponseHeader("Location");
-                    // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X.X"
-                }
-            } catch {
-                failedToRetrieveLatestVersion = true;
-            }
-
-            // Extract the version number from the URL
-            String latestVersionNumber = "";
-            try {
-                latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X.X
-            } catch {
-                failedToRetrieveLatestVersion = true;
-            }
-
-            if (Version.TryParse(latestVersionNumber, out Version latestVersion)) {
-                Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-                if (currentVersion.CompareTo(latestVersion) < 0) {
-                    // The latest version is newer than the current one
-                    Dispatcher.BeginInvoke(new Action(() => {
-                        labelVersion.Content += " - A new version is available";
-                    }));
-                }
-            } else {
-                failedToRetrieveLatestVersion = true;
-            }
-
-            if (failedToRetrieveLatestVersion) {
+                latestVersion = UpdatesHelper.GetLatestVersion();
+            } catch (CouldNotCheckForUpdatesException) {
                 Dispatcher.BeginInvoke(new Action(() => {
                     labelVersion.Content += " - Could not check for updates";
+                }));
+                return;
+            }
+
+            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            if (currentVersion.CompareTo(latestVersion) < 0) {
+                // The latest version is newer than the current one
+                Dispatcher.BeginInvoke(new Action(() => {
+                    labelVersion.Content += " - A new version is available";
                 }));
             }
         }
