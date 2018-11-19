@@ -6,7 +6,7 @@ namespace BandcampDownloader {
     internal static class UpdatesHelper {
 
         /// <summary>
-        /// Displays a message if a new version is available.
+        /// Returns the latest version available.
         /// </summary>
         public static Version GetLatestVersion() {
             // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
