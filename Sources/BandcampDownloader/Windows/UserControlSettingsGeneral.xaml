@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsGeneral"
     Width="287"
@@ -18,8 +19,14 @@
             VerticalAlignment="Top"
             Content="Check for updates at startup"
             IsChecked="{Binding CheckForUpdates, UpdateSourceTrigger=Explicit}"
-            TabIndex="0"
-            ToolTip="If checked, will query {x:Static local:Constants.LatestReleaseWebsite} at application startup to check for a newer version." />
+            TabIndex="0">
+            <CheckBox.ToolTip>
+                <TextBlock>
+                    <Run Text="If checked, the application will query the following address when starting: &#xA;" />
+                    <Run Text="{Binding Source={x:Static local:Constants.LatestReleaseWebsite}, Mode=OneWay}" />
+                </TextBlock>
+            </CheckBox.ToolTip>
+        </CheckBox>
         <CheckBox
             x:Name="checkBoxVerboseLog"
             Height="16"
