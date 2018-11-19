@@ -129,6 +129,7 @@
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
     <Compile Include="Miscellaneous\DoubleRule.cs" />
+    <Compile Include="Miscellaneous\Exceptions.cs" />
     <Compile Include="Value Converters\DoubleToPercentConverter.cs" />
     <Compile Include="Value Converters\BooleanAndConverter.cs" />
     <Compile Include="Value Converters\InverseBooleanConverter.cs" />
@@ -197,7 +198,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Miscellaneous\NoAlbumFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
