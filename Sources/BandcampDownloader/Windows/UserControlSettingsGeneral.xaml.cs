@@ -2,9 +2,9 @@
 
 namespace BandcampDownloader {
 
-    public partial class UserControlSettingsLog: UserControl {
+    public partial class UserControlSettingsGeneral: UserControl {
 
-        public UserControlSettingsLog() {
+        public UserControlSettingsGeneral() {
             InitializeComponent();
             // Save data context for bindings
             DataContext = WindowMain.userSettings;

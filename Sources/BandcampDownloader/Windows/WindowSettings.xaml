@@ -55,7 +55,7 @@
                 IsSelected="True" />
             <ListBoxItem x:Name="listBoxItemCoverArt" Content="Cover art" />
             <ListBoxItem x:Name="listBoxItemDownloads" Content="Downloads" />
-            <ListBoxItem x:Name="listBoxItemLog" Content="Log" />
+            <ListBoxItem x:Name="listBoxItemGeneral" Content="General" />
             <ListBoxItem x:Name="listBoxItemAdvanced" Content="Advanced settings" />
         </ListBox>
         <local:UserControlSettingsTags
@@ -82,13 +82,13 @@
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemDownloads, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        <local:UserControlSettingsLog
-            x:Name="userControlSettingsLog"
+        <local:UserControlSettingsGeneral
+            x:Name="userControlSettingsGeneral"
             Margin="135,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemLog, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=listBoxItemGeneral, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsAdvanced
             x:Name="userControlSettingsAdvanced"
             Margin="135,31,0,0"

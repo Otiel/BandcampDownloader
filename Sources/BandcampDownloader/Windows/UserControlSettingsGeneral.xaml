@@ -1,30 +1,29 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsLog"
+    x:Class="BandcampDownloader.UserControlSettingsGeneral"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="userControlSettingsLog"
-    Width="240"
+    x:Name="userControlSettingsGeneral"
+    Width="288"
     Height="26"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
         <CheckBox
             x:Name="checkBoxVerboseLog"
-            Width="65"
             Height="16"
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Verbose"
+            Content="Show verbose log"
             Foreground="Black"
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
             ToolTip="Show more information on the log." />
         <Label
             x:Name="labelInfo"
-            Margin="68,-2,0,0"
+            Margin="117,-2,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="(the log file is always verbose)"
