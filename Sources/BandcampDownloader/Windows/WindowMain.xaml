@@ -2,6 +2,7 @@
     x:Class="BandcampDownloader.WindowMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:BandcampDownloader"
     Name="windowMain"
     Title="Bandcamp Downloader"
     Width="815"
@@ -98,8 +99,14 @@
                 Content="v0.0.0.0"
                 Cursor="Hand"
                 Foreground="#FF003BFF"
-                MouseDown="LabelVersion_MouseDown"
-                ToolTip="Click to go to official project website" />
+                MouseDown="LabelVersion_MouseDown">
+                <Label.ToolTip>
+                    <TextBlock>
+                        <Run Text="Click to go to official project website: &#xA;" />
+                        <Run Text="{Binding Source={x:Static local:Constants.ProjectWebsite}, Mode=OneWay}" />
+                    </TextBlock>
+                </Label.ToolTip>
+            </Label>
             <Label
                 x:Name="labelProgress"
                 Width="150"
