@@ -7,8 +7,8 @@ _Notes to upgraders:_
 
 ## New features
 
-* Added separate settings for the cover art downloaded in folder and the one saved in tags. #64
-* Lyrics can be saved to tags when available. #42 Thanks @ajsnyde!
+* Added separate settings for the cover art downloaded in folder and the one saved in tags. [#64](https://github.com/Otiel/BandcampDownloader/issues/64)
+* Lyrics can be saved to tags when available. [#42](https://github.com/Otiel/BandcampDownloader/issues/42) Thanks @ajsnyde!
 * You can now choose which tag should be saved (artist, title, album...) or not.
 * Added an option to remove comments from tags.
 * Added an option to reset settings to their default values.
@@ -17,7 +17,7 @@ _Notes to upgraders:_
 ## Improvements
 
 * Settings are now displayed on their own window.
-* Added advanced settings to the UI. #46 No need to edit your settings file anymore. Thanks @ajsnyde!
+* Added advanced settings to the UI. [#46](https://github.com/Otiel/BandcampDownloader/issues/46) No need to edit your settings file anymore. Thanks @ajsnyde!
 * Log is now automatically scrolled if position is at the end. "☑ Auto scroll log" option has been removed.
 * DLL files are now packed inside `BandcampDownloader.exe`.
 * Updated dependencies to their latest version.
@@ -34,15 +34,15 @@ _Notes to upgraders:_
 
 ## Bug fixes
 
-* Fixed issue #40 that prevented downloads of track when their name was too long.
-* Fixed issue #21 that prevented downloads of one-album artists when "☑Download artist discography" was checked.
+* Fixed issue [#40](https://github.com/Otiel/BandcampDownloader/issues/40) that prevented downloads of track when their name was too long.
+* Fixed issue [#21](https://github.com/Otiel/BandcampDownloader/issues/21) that prevented downloads of one-album artists when "☑Download artist discography" was checked.
 
 # 0.1.9.2
 
 ## New features
 
-* Added an option to skip retrieved the track size #27. Progress is then based on the downloaded files count. Thanks @ajsnyde for implementing this!
-* Added an option to stop scrolling the log #29. Thanks @ajsnyde for implementing this!
+* Added an option to skip retrieved the track size [#27](https://github.com/Otiel/BandcampDownloader/issues/27). Progress is then based on the downloaded files count. Thanks @ajsnyde for implementing this!
+* Added an option to stop scrolling the log [#29](https://github.com/Otiel/BandcampDownloader/issues/29). Thanks @ajsnyde for implementing this!
 
 ## Improvements
 
@@ -53,18 +53,18 @@ _Notes to upgraders:_
 
 ## Bug fixes
 
-* Fixed issue #34 that prevented to download albums or tracks that contained whitespaces in their name.
+* Fixed issue [#34](https://github.com/Otiel/BandcampDownloader/issues/34) that prevented to download albums or tracks that contained whitespaces in their name.
 
 # 0.1.9.0
 
 ## New features
 
-* Added a confirmation dialog on closing the application when there are active downloads #28
+* Added a confirmation dialog on closing the application when there are active downloads [#28](https://github.com/Otiel/BandcampDownloader/issues/28)
 
 ## Bug fixes
 
-* Fixed the issue that prevented the application to download the cover arts #31 #33
-* Fixed the issue that caused the application to crash when the album name was too long #22
+* Fixed the issue that prevented the application to download the cover arts [#31](https://github.com/Otiel/BandcampDownloader/issues/31) [#33](https://github.com/Otiel/BandcampDownloader/issues/33)
+* Fixed the issue that caused the application to crash when the album name was too long [#22](https://github.com/Otiel/BandcampDownloader/issues/22)
 
 # 0.1.8.0
 
@@ -81,8 +81,8 @@ _Notes to upgraders:_
 
 ## New features
 
-* Added support for track pages (http://[artist].bandcamp.com/track/[track]) #18
-* Added option in config file to modify the file naming scheme #17
+* Added support for track pages (http://[artist].bandcamp.com/track/[track]) [#18](https://github.com/Otiel/BandcampDownloader/issues/18)
+* Added option in config file to modify the file naming scheme [#17](https://github.com/Otiel/BandcampDownloader/issues/17)
 
 Thanks again to @ajsnyde!
 
@@ -90,7 +90,7 @@ Thanks again to @ajsnyde!
 
 ## Bug fixes
 
-* Fixed issue #15 that prevented BandcampDownloader to correctly save the cover art files.
+* Fixed issue [#15](https://github.com/Otiel/BandcampDownloader/issues/15) that prevented BandcampDownloader to correctly save the cover art files.
 
 # 0.1.6.0
 
@@ -116,7 +116,7 @@ Huge thanks to @ajsnyde for implementing all these new features!
 
 ## Bug fixes
 
-* Fixed issue #9 that prevented BandcampDownloader to retrieve the artwork file size. Thanks @dashWo for fixing this!
+* Fixed issue [#9](https://github.com/Otiel/BandcampDownloader/issues/9) that prevented BandcampDownloader to retrieve the artwork file size. Thanks @dashWo for fixing this!
 
 # 0.1.5.0
 
@@ -128,7 +128,7 @@ Huge thanks to @ajsnyde for implementing all these new features!
 
 ## Bug fixes
 
-* Fixed issue #1 that prevented BandcampDownloader to find the correct url to download tracks.
+* Fixed issue [#1](https://github.com/Otiel/BandcampDownloader/issues/1) that prevented BandcampDownloader to find the correct url to download tracks.
 
 # 0.1.4.2
 
