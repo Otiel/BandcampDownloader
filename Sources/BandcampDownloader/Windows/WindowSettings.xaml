@@ -9,6 +9,7 @@
     Title="Settings"
     Width="515"
     Height="335"
+    FocusManager.FocusedElement="{Binding ElementName=listBoxSections}"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterOwner"
