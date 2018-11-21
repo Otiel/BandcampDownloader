@@ -20,7 +20,7 @@
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save in folder"
+            Content="Save in _folder"
             IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
             ToolTip="If checked, the cover art will be downloaded in the albums folder." />
@@ -30,7 +30,7 @@
             Margin="24,25,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Convert to jpg"
+            Content="Convert to _jpg"
             IsChecked="{Binding CoverArtInFolderConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="1"
@@ -41,7 +41,7 @@
             Margin="24,46,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Constrain maximum width/height"
+            Content="Constrain _maximum width/height"
             IsChecked="{Binding CoverArtInFolderResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="2"
@@ -51,7 +51,8 @@
             Margin="56,63,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Max size (px)" />
+            Content="Max size (_px)"
+            Target="{Binding ElementName=textBoxCoverArtInFolderMaxSize}" />
         <TextBox
             x:Name="textBoxCoverArtInFolderMaxSize"
             Width="40"
@@ -75,7 +76,7 @@
             Margin="3,94,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save in tags"
+            Content="Save in _tags"
             IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
             RenderTransformOrigin="0.234,0.536"
             TabIndex="4"
@@ -87,7 +88,7 @@
             Margin="24,115,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Convert to jpg"
+            Content="Convert to jp_g"
             IsChecked="{Binding CoverArtInTagsConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="5"
@@ -98,7 +99,7 @@
             Margin="24,136,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Constrain maximum width/height"
+            Content="Constrain m_aximum width/height"
             IsChecked="{Binding CoverArtInTagsResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="6"
@@ -108,7 +109,8 @@
             Margin="56,153,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Max size (px)" />
+            Content="Max size (p_x)"
+            Target="{Binding ElementName=textBoxCoverArtInTagsMaxSize}" />
         <TextBox
             x:Name="textBoxCoverArtInTagsMaxSize"
             Width="40"

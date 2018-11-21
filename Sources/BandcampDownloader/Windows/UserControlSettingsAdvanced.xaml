@@ -40,7 +40,8 @@
             Margin="0,26,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Allowed file size difference (%)" />
+            Content="Allowed file _size difference (%)"
+            Target="{Binding ElementName=textBoxAllowedFileSizeDifference}" />
         <TextBox
             x:Name="textBoxAllowedFileSizeDifference"
             Width="40"
@@ -65,7 +66,8 @@
             Margin="0,52,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Download max tries" />
+            Content="Download _max tries"
+            Target="{Binding ElementName=textBoxDownloadMaxTries}" />
         <TextBox
             x:Name="textBoxDownloadMaxTries"
             Width="40"
@@ -82,7 +84,8 @@
             Margin="0,78,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Retry cooldown (sec)" />
+            Content="Retry c_ooldown (sec)"
+            Target="{Binding ElementName=textBoxDownloadRetryCooldown}" />
         <TextBox
             x:Name="textBoxDownloadRetryCooldown"
             Width="40"
@@ -99,7 +102,8 @@
             Margin="0,104,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Retry exponent" />
+            Content="Retry _exponent"
+            Target="{Binding ElementName=textBoxDownloadRetryExponent}" />
         <TextBox
             x:Name="textBoxDownloadRetryExponent"
             Width="40"

@@ -17,7 +17,7 @@
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Check for updates at startup"
+            Content="Check for _updates at startup"
             IsChecked="{Binding CheckForUpdates, UpdateSourceTrigger=Explicit}"
             TabIndex="0">
             <CheckBox.ToolTip>
@@ -33,7 +33,7 @@
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Show verbose log"
+            Content="Show _verbose log"
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
             ToolTip="If checked, more information will be shown on the log." />

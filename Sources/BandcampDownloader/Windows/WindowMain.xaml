@@ -64,7 +64,7 @@
             Margin="0,143,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Download artist discography"
+            Content="Download _artist discography"
             IsChecked="{Binding DownloadArtistDiscography}"
             IsEnabled="True"
             TabIndex="3"
