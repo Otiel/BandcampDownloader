@@ -31,6 +31,10 @@ See the [changelog](https://github.com/Otiel/BandcampDownloader/blob/master/CHAN
 
 _BandcampDownloader_ is licensed under the [WTFPL](http://www.wtfpl.net/) ![WTFPL icon](https://i.imgur.com/AsWaQQl.png).
 
+## Credits
+
+Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com) licensed under a [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0).
+
 ## Piracy
 
 You'll do what you want to do with this app, but remember to buy albums from your favorite artists if you want to support them!
