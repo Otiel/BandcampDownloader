@@ -22,6 +22,10 @@ _Notes to upgraders:_
 * DLL files are now packed inside `BandcampDownloader.exe`.
 * Updated dependencies to their latest version.
 
+## License
+
+* License has changed from [WTFPL](http://www.wtfpl.net) to MIT. See the [LICENSE](https://github.com/Otiel/BandcampDownloader/blob/master/LICENSE) file for details.
+
 # 0.1.9.3
 
 ## Improvements
