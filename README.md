@@ -29,7 +29,7 @@ See the [changelog](https://github.com/Otiel/BandcampDownloader/blob/master/CHAN
 
 ## License
 
-_BandcampDownloader_ is licensed under the [WTFPL](http://www.wtfpl.net/) ![WTFPL icon](https://i.imgur.com/AsWaQQl.png).
+_BandcampDownloader_ is licensed under the MIT license - see the [LICENSE](https://github.com/Otiel/BandcampDownloader/blob/master/LICENSE) file for details.
 
 ## Credits
 
