@@ -414,8 +414,9 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    if (webClient.Proxy != null)
+                    if (webClient.Proxy != null) {
                         webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                    }
 
                     if (this.userCancelled) {
                         // Abort
@@ -455,8 +456,9 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    if (webClient.Proxy != null)
+                    if (webClient.Proxy != null) {
                         webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                    }
 
                     if (this.userCancelled) {
                         // Abort
@@ -481,8 +483,9 @@ namespace BandcampDownloader {
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    if (webClient.Proxy != null)
+                    if (webClient.Proxy != null) {
                         webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                    }
 
                     if (this.userCancelled) {
                         // Abort
