@@ -795,7 +795,7 @@ namespace BandcampDownloader {
                 Description = "Select the folder to save albums"
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                textBoxDownloadsPath.Text = dialog.SelectedPath;
+                textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
             }
         }
 
