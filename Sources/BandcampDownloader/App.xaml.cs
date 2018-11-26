@@ -8,7 +8,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// The settings chosen by the user.
         /// </summary>
-        public static IUserSettings userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+        public static IUserSettings userSettings;
 
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
@@ -20,11 +20,11 @@ namespace BandcampDownloader {
         /// This must be called before initializing UI forms.
         /// </summary>
         private void InitializeSettings() {
+            App.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
             if (String.IsNullOrEmpty(userSettings.DownloadsPath)) {
                 // Its default value cannot be set in settings as it isn't determined by a constant function
                 App.userSettings.DownloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
             }
-            App.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
         }
     }
 }
