@@ -82,10 +82,10 @@ namespace BandcampDownloader {
         Boolean ShowVerboseLog { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
-        TagEditAction TagAlbum { get; set; }
+        TagEditAction TagAlbumArtist { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
-        TagEditAction TagAlbumArtist { get; set; }
+        TagEditAction TagAlbumTitle { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagArtist { get; set; }
@@ -97,13 +97,13 @@ namespace BandcampDownloader {
         TagEditAction TagLyrics { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
-        TagEditAction TagTitle { get; set; }
-
-        [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagTrackNumber { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean TagTracks { get; set; }
+
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagTrackTitle { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagYear { get; set; }

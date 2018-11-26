@@ -82,15 +82,15 @@
             SelectedValuePath="Value"
             TabIndex="3" />
         <Label
-            x:Name="labelTitle"
+            x:Name="labelTrackTitle"
             Margin="18,96,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
             Content="_Title"
-            Target="{Binding ElementName=comboBoxTitle}" />
+            Target="{Binding ElementName=comboBoxTrackTitle}" />
         <ComboBox
-            x:Name="comboBoxTitle"
+            x:Name="comboBoxTrackTitle"
             Width="120"
             Margin="133,98,0,0"
             HorizontalAlignment="Left"
@@ -98,19 +98,19 @@
             DisplayMemberPath="Description"
             IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
             ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-            SelectedValue="{Binding TagTitle, UpdateSourceTrigger=Explicit}"
+            SelectedValue="{Binding TagTrackTitle, UpdateSourceTrigger=Explicit}"
             SelectedValuePath="Value"
             TabIndex="4" />
         <Label
-            x:Name="labelAlbum"
+            x:Name="labelAlbumTitle"
             Margin="18,120,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
             Content="Album _name"
-            Target="{Binding ElementName=comboBoxAlbum}" />
+            Target="{Binding ElementName=comboBoxAlbumTitle}" />
         <ComboBox
-            x:Name="comboBoxAlbum"
+            x:Name="comboBoxAlbumTitle"
             Width="120"
             Margin="133,122,0,0"
             HorizontalAlignment="Left"
@@ -118,7 +118,7 @@
             DisplayMemberPath="Description"
             IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
             ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-            SelectedValue="{Binding TagAlbum, UpdateSourceTrigger=Explicit}"
+            SelectedValue="{Binding TagAlbumTitle, UpdateSourceTrigger=Explicit}"
             SelectedValuePath="Value"
             TabIndex="5" />
         <Label

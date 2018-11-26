@@ -220,10 +220,10 @@ namespace BandcampDownloader {
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
                                 tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
                                 tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
-                                tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbum);
+                                tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbumTitle);
                                 tagFile = TagHelper.UpdateAlbumYear(tagFile, (uint) album.ReleaseDate.Year, App.UserSettings.TagYear);
                                 tagFile = TagHelper.UpdateTrackNumber(tagFile, (uint) track.Number, App.UserSettings.TagTrackNumber);
-                                tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, App.UserSettings.TagTitle);
+                                tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, App.UserSettings.TagTrackTitle);
                                 tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
                                 tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
                                 tagFile.Save();
