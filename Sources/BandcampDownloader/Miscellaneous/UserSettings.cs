@@ -70,6 +70,9 @@ namespace BandcampDownloader {
         String FileNameFormat { get; set; }
 
         [Option(DefaultValue = true)]
+        Boolean ModifyTags { get; set; }
+
+        [Option(DefaultValue = true)]
         Boolean RetrieveFilesSize { get; set; }
 
         [Option(DefaultValue = false)]
@@ -98,9 +101,6 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagTrackNumber { get; set; }
-
-        [Option(DefaultValue = true)]
-        Boolean TagTracks { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagTrackTitle { get; set; }

@@ -37,7 +37,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="_Modify tracks tags (ID3)"
-            IsChecked="{Binding TagTracks, UpdateSourceTrigger=Explicit}"
+            IsChecked="{Binding ModifyTags, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
             ToolTip="If checked, each tag will be modified as specified below. &#xA;&#xA;If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. &#xA;This is equivalent to setting &quot;Do not modify&quot; on each tag."
             ToolTipService.ShowDuration="60000" />

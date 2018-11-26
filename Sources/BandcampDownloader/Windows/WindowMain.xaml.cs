@@ -215,7 +215,7 @@ namespace BandcampDownloader {
                         if (!e.Cancelled && e.Error == null) {
                             trackDownloaded = true;
 
-                            if (App.UserSettings.TagTracks) {
+                            if (App.UserSettings.ModifyTags) {
                                 // Tag (ID3) the file when downloaded
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
                                 tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
