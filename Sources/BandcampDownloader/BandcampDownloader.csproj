@@ -130,6 +130,7 @@
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
     <Compile Include="Miscellaneous\DoubleRule.cs" />
+    <Compile Include="Miscellaneous\EnumerationExtension.cs" />
     <Compile Include="Miscellaneous\Exceptions.cs" />
     <Compile Include="Value Converters\DoubleToPercentConverter.cs" />
     <Compile Include="Value Converters\BooleanAndConverter.cs" />

@@ -3,10 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsTags"
-    Width="340"
-    Height="210"
+    Width="345"
+    Height="245"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -38,95 +39,167 @@
             Content="_Modify tracks tags (ID3)"
             IsChecked="{Binding TagTracks, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
-            ToolTip="If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file."
+            ToolTip="If checked, each tag will be modified as specified below. &#xA;&#xA;If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. &#xA;This is equivalent to setting &quot;Do not modify&quot; on each tag."
             ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveArtist"
-            Margin="24,50,0,0"
+        <Label
+            x:Name="labelArtist"
+            Margin="18,48,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save _artist"
-            IsChecked="{Binding TagSaveArtist, UpdateSourceTrigger=Explicit}"
-            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the artist will be saved in the tags."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveTrackNumber"
-            Margin="24,70,0,0"
+            VerticalContentAlignment="Center"
+            Content="_Artist"
+            Target="{Binding ElementName=comboBoxArtist}" />
+        <ComboBox
+            x:Name="comboBoxArtist"
+            Width="120"
+            Margin="133,50,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save track n_umber"
-            IsChecked="{Binding TagSaveTrackNumber, UpdateSourceTrigger=Explicit}"
+            DisplayMemberPath="Description"
             IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the track number will be saved in the tags."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveTitle"
-            Margin="24,90,0,0"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagArtist, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="2" />
+        <Label
+            x:Name="labelTrackNumber"
+            Margin="18,72,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save track _title"
-            IsChecked="{Binding TagSaveTitle, UpdateSourceTrigger=Explicit}"
-            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the track title will be saved in the tags."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveAlbum"
-            Margin="24,110,0,0"
+            VerticalContentAlignment="Center"
+            Content="Track n_umber"
+            Target="{Binding ElementName=comboBoxTrackNumber}" />
+        <ComboBox
+            x:Name="comboBoxTrackNumber"
+            Width="120"
+            Margin="133,74,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save album _name"
-            IsChecked="{Binding TagSaveAlbum, UpdateSourceTrigger=Explicit}"
+            DisplayMemberPath="Description"
             IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the album name will be saved in the tags."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveAlbumArtist"
-            Margin="24,130,0,0"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagTrackNumber, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="3" />
+        <Label
+            x:Name="labelTitle"
+            Margin="18,96,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save album art_ist"
-            IsChecked="{Binding TagSaveAlbumArtist, UpdateSourceTrigger=Explicit}"
-            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the album artist will be saved in the tags."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveYear"
-            Margin="24,150,0,0"
+            VerticalContentAlignment="Center"
+            Content="_Title"
+            Target="{Binding ElementName=comboBoxTitle}" />
+        <ComboBox
+            x:Name="comboBoxTitle"
+            Width="120"
+            Margin="133,98,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save album release _year"
-            IsChecked="{Binding TagSaveYear, UpdateSourceTrigger=Explicit}"
+            DisplayMemberPath="Description"
             IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the album release year will be saved in the tags."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagSaveLyrics"
-            Margin="24,170,0,0"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagTitle, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="4" />
+        <Label
+            x:Name="labelAlbum"
+            Margin="18,120,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save _lyrics"
-            IsChecked="{Binding TagSaveLyrics, UpdateSourceTrigger=Explicit}"
-            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the lyrics will be saved in the tags if they're available."
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxTagRemoveComments"
-            Margin="24,190,0,0"
+            VerticalContentAlignment="Center"
+            Content="Album _name"
+            Target="{Binding ElementName=comboBoxAlbum}" />
+        <ComboBox
+            x:Name="comboBoxAlbum"
+            Width="120"
+            Margin="133,122,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Remove comm_ents"
-            IsChecked="{Binding TagRemoveComments, UpdateSourceTrigger=Explicit}"
+            DisplayMemberPath="Description"
             IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
-            TabIndex="1"
-            ToolTip="If checked, the comments tags will be emptied."
-            ToolTipService.ShowDuration="60000" />
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagAlbum, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="5" />
+        <Label
+            x:Name="labelAlbumArtist"
+            Margin="18,144,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Content="Album art_ist"
+            Target="{Binding ElementName=comboBoxAlbumArtist}" />
+        <ComboBox
+            x:Name="comboBoxAlbumArtist"
+            Width="120"
+            Margin="133,146,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayMemberPath="Description"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagAlbumArtist, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="6" />
+        <Label
+            x:Name="labelYear"
+            Margin="18,168,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Content="Album release _year"
+            Target="{Binding ElementName=comboBoxYear}" />
+        <ComboBox
+            x:Name="comboBoxYear"
+            Width="120"
+            Margin="133,170,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayMemberPath="Description"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagYear, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="7" />
+        <Label
+            x:Name="labelLyrics"
+            Margin="18,192,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Content="_Lyrics"
+            Target="{Binding ElementName=comboBoxLyrics}" />
+        <ComboBox
+            x:Name="comboBoxLyrics"
+            Width="120"
+            Margin="133,194,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayMemberPath="Description"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
+            SelectedValue="{Binding TagLyrics, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="8" />
+        <Label
+            x:Name="labelComments"
+            Margin="18,216,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            Content="Comm_ents"
+            Target="{Binding ElementName=comboBoxComments}" />
+        <ComboBox
+            x:Name="comboBoxComments"
+            Width="120"
+            Margin="133,218,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayMemberPath="Description"
+            IsEnabled="{Binding ElementName=checkBoxTagTracks, Path=IsChecked}"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagRemoveAction}}}"
+            SelectedValue="{Binding TagComments, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="9" />
     </Grid>
 </UserControl>

@@ -221,29 +221,98 @@ namespace BandcampDownloader {
                             if (userSettings.TagTracks) {
                                 // Tag (ID3) the file when downloaded
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
-                                if (userSettings.TagSaveAlbum) {
-                                    tagFile.Tag.Album = album.Title;
+                                switch (userSettings.TagAlbum) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.Album = "";
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.Album = album.Title;
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagSaveAlbumArtist) {
-                                    tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
+                                switch (userSettings.TagAlbumArtist) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.AlbumArtists = new String[1] { "" };
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagSaveArtist) {
-                                    tagFile.Tag.Performers = new String[1] { album.Artist };
+                                switch (userSettings.TagArtist) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.Performers = new String[1] { "" };
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.Performers = new String[1] { album.Artist };
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagSaveTitle) {
-                                    tagFile.Tag.Title = track.Title;
+                                switch (userSettings.TagTitle) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.Title = "";
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.Title = track.Title;
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagSaveTrackNumber) {
-                                    tagFile.Tag.Track = (uint) track.Number;
+                                switch (userSettings.TagTrackNumber) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.Track = 0;
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.Track = (uint) track.Number;
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagSaveYear) {
-                                    tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
+                                switch (userSettings.TagYear) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.Year = 0;
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagSaveLyrics) {
-                                    tagFile.Tag.Lyrics = track.Lyrics;
+                                switch (userSettings.TagLyrics) {
+                                    case TagEditAction.Empty:
+                                        tagFile.Tag.Lyrics = "";
+                                        break;
+                                    case TagEditAction.Modify:
+                                        tagFile.Tag.Lyrics = track.Lyrics;
+                                        break;
+                                    case TagEditAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
-                                if (userSettings.TagRemoveComments) {
-                                    tagFile.Tag.Comment = "";
+                                switch (userSettings.TagComments) {
+                                    case TagRemoveAction.Empty:
+                                        tagFile.Tag.Comment = "";
+                                        break;
+                                    case TagRemoveAction.DoNotModify:
+                                        break;
+                                    default:
+                                        break;
                                 }
                                 tagFile.Save();
                             }

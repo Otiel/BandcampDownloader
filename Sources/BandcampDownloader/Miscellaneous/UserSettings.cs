@@ -1,7 +1,24 @@
 ﻿using System;
+using System.ComponentModel;
 using Config.Net;
 
 namespace BandcampDownloader {
+
+    public enum TagEditAction {
+        [Description("Empty tag")]
+        Empty,
+        [Description("Save in tag")]
+        Modify,
+        [Description("Do not modify")]
+        DoNotModify
+    }
+
+    public enum TagRemoveAction {
+        [Description("Empty tag")]
+        Empty,
+        [Description("Do not modify")]
+        DoNotModify
+    }
 
     public interface IUserSettings {
 
@@ -64,31 +81,31 @@ namespace BandcampDownloader {
         [Option(DefaultValue = false)]
         Boolean ShowVerboseLog { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagRemoveComments { get; set; }
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagAlbum { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagSaveAlbum { get; set; }
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagAlbumArtist { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagSaveAlbumArtist { get; set; }
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagArtist { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagSaveArtist { get; set; }
+        [Option(DefaultValue = TagRemoveAction.Empty)]
+        TagRemoveAction TagComments { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagSaveLyrics { get; set; }
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagLyrics { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagSaveTitle { get; set; }
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagTitle { get; set; }
 
-        [Option(DefaultValue = true)]
-        Boolean TagSaveTrackNumber { get; set; }
-
-        [Option(DefaultValue = true)]
-        Boolean TagSaveYear { get; set; }
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagTrackNumber { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean TagTracks { get; set; }
+
+        [Option(DefaultValue = TagEditAction.Modify)]
+        TagEditAction TagYear { get; set; }
     }
 }

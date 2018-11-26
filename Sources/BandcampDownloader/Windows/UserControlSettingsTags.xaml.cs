@@ -25,14 +25,14 @@ namespace BandcampDownloader {
         public void SaveSettings() {
             textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             checkBoxTagTracks.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagRemoveComments.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveAlbum.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveAlbumArtist.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveArtist.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveLyrics.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveTitle.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveTrackNumber.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            checkBoxTagSaveYear.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            comboBoxAlbum.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxArtist.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxComments.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxLyrics.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxTitle.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxTrackNumber.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxYear.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
     }
 }
