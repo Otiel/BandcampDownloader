@@ -128,6 +128,7 @@
     <Compile Include="Business Objects\TrackFile.cs" />
     <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
     <Compile Include="Business Objects\JSON\JsonTrack.cs" />
+    <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
     <Compile Include="Miscellaneous\DoubleRule.cs" />
     <Compile Include="Miscellaneous\EnumerationExtension.cs" />

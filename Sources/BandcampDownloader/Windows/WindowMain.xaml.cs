@@ -218,99 +218,14 @@ namespace BandcampDownloader {
                             if (App.UserSettings.TagTracks) {
                                 // Tag (ID3) the file when downloaded
                                 TagLib.File tagFile = TagLib.File.Create(trackPath);
-                                switch (App.UserSettings.TagAlbum) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.Album = "";
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.Album = album.Title;
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagAlbumArtist) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.AlbumArtists = new String[1] { "" };
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.AlbumArtists = new String[1] { album.Artist };
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagArtist) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.Performers = new String[1] { "" };
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.Performers = new String[1] { album.Artist };
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagTitle) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.Title = "";
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.Title = track.Title;
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagTrackNumber) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.Track = 0;
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.Track = (uint) track.Number;
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagYear) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.Year = 0;
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.Year = (uint) album.ReleaseDate.Year;
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagLyrics) {
-                                    case TagEditAction.Empty:
-                                        tagFile.Tag.Lyrics = "";
-                                        break;
-                                    case TagEditAction.Modify:
-                                        tagFile.Tag.Lyrics = track.Lyrics;
-                                        break;
-                                    case TagEditAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                switch (App.UserSettings.TagComments) {
-                                    case TagRemoveAction.Empty:
-                                        tagFile.Tag.Comment = "";
-                                        break;
-                                    case TagRemoveAction.DoNotModify:
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
+                                tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
+                                tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbum);
+                                tagFile = TagHelper.UpdateAlbumYear(tagFile, (uint) album.ReleaseDate.Year, App.UserSettings.TagYear);
+                                tagFile = TagHelper.UpdateTrackNumber(tagFile, (uint) track.Number, App.UserSettings.TagTrackNumber);
+                                tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, App.UserSettings.TagTitle);
+                                tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
+                                tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
                                 tagFile.Save();
                             }
 
@@ -524,7 +439,7 @@ namespace BandcampDownloader {
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
                     }
 
                     if (this.userCancelled) {
@@ -551,7 +466,7 @@ namespace BandcampDownloader {
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
                     }
 
                     if (this.userCancelled) {
