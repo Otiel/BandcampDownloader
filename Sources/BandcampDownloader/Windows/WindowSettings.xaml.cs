@@ -18,7 +18,7 @@ namespace BandcampDownloader {
         /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
         public WindowSettings(Boolean activeDownloads) {
             ActiveDownloads = activeDownloads; // Must be done before UI initialization
-            DataContext = WindowMain.userSettings;
+            DataContext = App.userSettings;
             InitializeComponent();
         }
 
@@ -42,15 +42,15 @@ namespace BandcampDownloader {
         /// </summary>
         private void ResetSettings() {
             // Save settings we shouldn't reset (as they're not on the Settings window)
-            String downloadsPath = WindowMain.userSettings.DownloadsPath;
-            Boolean downloadArtistDiscography = WindowMain.userSettings.DownloadArtistDiscography;
+            String downloadsPath = App.userSettings.DownloadsPath;
+            Boolean downloadArtistDiscography = App.userSettings.DownloadArtistDiscography;
 
             File.Delete(Constants.UserSettingsFilePath);
-            WindowMain.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+            App.userSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
 
             // Load back settings we shouldn't reset
-            WindowMain.userSettings.DownloadsPath = downloadsPath;
-            WindowMain.userSettings.DownloadArtistDiscography = downloadArtistDiscography;
+            App.userSettings.DownloadsPath = downloadsPath;
+            App.userSettings.DownloadArtistDiscography = downloadArtistDiscography;
 
             // Re-load settings on UI
             userControlSettingsAdvanced.LoadSettings();
