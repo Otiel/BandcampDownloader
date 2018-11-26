@@ -7,7 +7,7 @@ namespace BandcampDownloader {
         public UserControlSettingsAdvanced() {
             InitializeComponent();
             // Save data context for bindings
-            DataContext = App.userSettings;
+            DataContext = App.UserSettings;
         }
 
         /// <summary>
@@ -15,7 +15,7 @@ namespace BandcampDownloader {
         /// </summary>
         public void LoadSettings() {
             // Reload DataContext in case settings have changed
-            DataContext = App.userSettings;
+            DataContext = App.UserSettings;
             // No need to call UpdateTarget, it is done automatically
         }
 
