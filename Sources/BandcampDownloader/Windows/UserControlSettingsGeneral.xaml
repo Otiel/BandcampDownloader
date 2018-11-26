@@ -19,7 +19,8 @@
             VerticalAlignment="Top"
             Content="Check for _updates at startup"
             IsChecked="{Binding CheckForUpdates, UpdateSourceTrigger=Explicit}"
-            TabIndex="0">
+            TabIndex="0"
+            ToolTipService.ShowDuration="60000">
             <CheckBox.ToolTip>
                 <TextBlock>
                     <Run Text="If checked, the application will query the following address when starting: &#xA;" />
@@ -36,7 +37,8 @@
             Content="Show _verbose log"
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
-            ToolTip="If checked, more information will be shown on the log." />
+            ToolTip="If checked, more information will be shown on the log."
+            ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelInfo"
             Margin="117,24,0,0"

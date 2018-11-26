@@ -51,7 +51,8 @@
             VerticalAlignment="Top"
             TabIndex="0"
             TextChanged="TextBox_TextChanged"
-            ToolTip="When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#xA;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#xA;&#xA;Recommended value = 5">
+            ToolTip="When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#xA;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#xA;&#xA;Recommended value = 5"
+            ToolTipService.ShowDuration="60000">
             <Binding
                 Converter="{StaticResource DoubleToPercentConverter}"
                 Path="AllowedFileSizeDifference"
@@ -78,7 +79,8 @@
             TabIndex="1"
             Text="{Binding Path=DownloadMaxTries, UpdateSourceTrigger=Explicit}"
             TextChanged="TextBox_TextChanged"
-            ToolTip="Maximum number of tries performed to download a track if it fails. &#xA;After that number is reached (for each track), the track download will be skipped. &#xA;&#xA;Recommended value = 7" />
+            ToolTip="Maximum number of tries performed to download a track if it fails. &#xA;After that number is reached (for each track), the track download will be skipped. &#xA;&#xA;Recommended value = 7"
+            ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelDownloadRetryCooldown"
             Margin="0,78,0,0"
@@ -96,7 +98,8 @@
             TabIndex="2"
             Text="{Binding Path=DownloadRetryCooldown, UpdateSourceTrigger=Explicit}"
             TextChanged="TextBox_TextChanged"
-            ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 0.2" />
+            ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 0.2"
+            ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelDownloadRetryExponent"
             Margin="0,104,0,0"
@@ -114,6 +117,7 @@
             TabIndex="3"
             Text="{Binding Path=DownloadRetryExponent, UpdateSourceTrigger=Explicit}"
             TextChanged="TextBox_TextChanged"
-            ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 4" />
+            ToolTip="Used to control the exponential back-off mechanism.&#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#xA;The formula used to compute the time to wait before trying again a download is the following: &#xA;time = cooldown * (exponent ^ try-count) &#xA;&#xA;Recommended value = 4"
+            ToolTipService.ShowDuration="60000" />
     </Grid>
 </UserControl>

@@ -47,7 +47,8 @@
                 VerticalAlignment="Top"
                 TabIndex="1"
                 Text="{Binding DownloadsPath}"
-                ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date" />
+                ToolTip="You can use placeholders to customize the download folder depending on the album:&#x0a;- {artist} will be replaced by the album artist&#x0a;- {album} will be replaced by the album name&#x0a;- {year}, {month} and {day} will be replaced by the album release date"
+                ToolTipService.ShowDuration="60000" />
             <Button
                 Name="buttonBrowse"
                 Width="27"
@@ -68,7 +69,8 @@
             IsChecked="{Binding DownloadArtistDiscography}"
             IsEnabled="True"
             TabIndex="3"
-            ToolTip="If checked, the whole artist discography will be downloaded." />
+            ToolTip="If checked, the whole artist discography will be downloaded."
+            ToolTipService.ShowDuration="60000" />
         <ProgressBar
             Name="progressBar"
             Height="18"

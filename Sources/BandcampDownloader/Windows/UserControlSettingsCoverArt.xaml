@@ -23,7 +23,8 @@
             Content="Save in _folder"
             IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
-            ToolTip="If checked, the cover art will be downloaded in the albums folder." />
+            ToolTip="If checked, the cover art will be downloaded in the albums folder."
+            ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInFolderConvertToJpg"
             Height="16"
@@ -34,7 +35,8 @@
             IsChecked="{Binding CoverArtInFolderConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="1"
-            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." />
+            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)."
+            ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInFolderResize"
             Height="16"
@@ -45,7 +47,8 @@
             IsChecked="{Binding CoverArtInFolderResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="2"
-            ToolTip="If checked, the cover art will be resized with the specified max width/height." />
+            ToolTip="If checked, the cover art will be resized with the specified max width/height."
+            ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelCoverArtInFolderMaxSize"
             Margin="56,63,0,0"
@@ -80,8 +83,8 @@
             IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
             RenderTransformOrigin="0.234,0.536"
             TabIndex="4"
-            ToolTip="If checked, the cover art will be saved in the tracks tags." />
-
+            ToolTip="If checked, the cover art will be saved in the tracks tags."
+            ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInTagsConvertToJpg"
             Height="16"
@@ -92,7 +95,8 @@
             IsChecked="{Binding CoverArtInTagsConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="5"
-            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)." />
+            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)."
+            ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInTagsResize"
             Height="16"
@@ -103,7 +107,8 @@
             IsChecked="{Binding CoverArtInTagsResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="6"
-            ToolTip="If checked, the cover art will be resized with the specified max width/height." />
+            ToolTip="If checked, the cover art will be resized with the specified max width/height."
+            ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelCoverArtInTagsMaxSize"
             Margin="56,153,0,0"
