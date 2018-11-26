@@ -24,7 +24,7 @@ namespace BandcampDownloader {
         /// </summary>
         public void SaveSettings() {
             textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            checkBoxTagTracks.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            checkBoxModifyTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             comboBoxAlbum.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             comboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             comboBoxArtist.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();

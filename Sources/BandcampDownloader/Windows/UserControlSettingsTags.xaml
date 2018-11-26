@@ -32,7 +32,7 @@
             ToolTip="You can use placeholders to customize the file name: &#xA;- {artist} will be replaced by the album artist &#xA;- {title} will be replaced by the track name &#xA;- {tracknum} will be replaced by the track number"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
-            x:Name="checkBoxTagTracks"
+            x:Name="checkBoxModifyTags"
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
