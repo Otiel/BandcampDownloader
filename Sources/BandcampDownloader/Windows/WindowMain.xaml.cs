@@ -138,7 +138,7 @@ namespace BandcampDownloader {
             TagLib.Picture artwork = null;
 
             // Download artwork
-            if (App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) {
+            if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork) {
                 artwork = DownloadCoverArt(album, downloadsFolder);
             }
 
@@ -526,7 +526,7 @@ namespace BandcampDownloader {
                 Log($"Computing size for album \"{album.Title}\"...", LogType.Info);
 
                 // Artwork
-                if (downloadCoverArt) {
+                if (downloadCoverArt && album.HasArtwork) {
                     long size = 0;
                     Boolean sizeRetrieved = false;
                     int tries = 0;

@@ -27,7 +27,8 @@ namespace BandcampDownloader {
         public Album ToAlbum() {
             return new Album() {
                 Artist = Artist,
-                ArtworkUrl = urlStart + ArtId.PadLeft(10, '0') + urlEnd,
+                // Some albums do not have a cover art
+                ArtworkUrl = ArtId == null ? null : urlStart + ArtId.PadLeft(10, '0') + urlEnd,
                 ReleaseDate = ReleaseDate,
                 Title = AlbumData.AlbumTitle,
                 // Some tracks do not have their URL filled on some albums (pre-release...)
