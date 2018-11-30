@@ -25,11 +25,11 @@ _BandcampDownloader_ is a Windows application written in C# (targeting .NET Fram
 
 ## Release notes
 
-See the [changelog](https://github.com/Otiel/BandcampDownloader/blob/master/CHANGELOG.md).
+See the [changelog](CHANGELOG.md).
 
 ## License
 
-_BandcampDownloader_ is licensed under the MIT license - see the [LICENSE](https://github.com/Otiel/BandcampDownloader/blob/master/LICENSE) file for details.
+_BandcampDownloader_ is licensed under the MIT license - see the [LICENSE](LICENSE) file for details.
 
 ## Credits
 
