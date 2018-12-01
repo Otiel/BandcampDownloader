@@ -18,6 +18,10 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String LogFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.log";
         /// <summary>
+        /// The log file maximum size in bytes.
+        /// </summary>
+        public static readonly long MaxLogSize = 1024 * 1024;
+        /// <summary>
         /// The website URL of BandcampDownloader.
         /// </summary>
         public static readonly String ProjectWebsite = "https://github.com/Otiel/BandcampDownloader";
