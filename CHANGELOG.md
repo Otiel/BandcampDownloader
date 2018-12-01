@@ -1,3 +1,25 @@
+# 0.2.1.0
+
+_Notes to upgraders:_
+
+* The settings file format has changed, so some of your settings may be reset.
+
+## New features
+
+* Added an option to empty tags from the downloaded files.
+* Added an option to disable checking for updates at startup.
+* Added a button to check for updates.
+
+## Improvements
+
+* Various UI improvements.
+* Log file will be archived to `BandcampDownloader.0.log` if its size exceed 1MB. Only one archive log file will be kept.
+* Updated dependencies to their latest version.
+
+## Bug fixes
+
+* After selecting a folder via the "Browse" button, the placeholders were lost. The default placeholders will now be added back.
+
 # 0.2.0.0
 
 _Notes to upgraders:_
