@@ -1,6 +1,6 @@
-# ![Logo](Docs\Cloud.png) Bandcamp Downloader
+# ![Logo](Docs/Cloud.png) Bandcamp Downloader
 
-[![Download](Docs\DownloadButton.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
+[![Download](Docs/DownloadButton.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
 
 ## Description
 
