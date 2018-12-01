@@ -28,6 +28,17 @@
                 </TextBlock>
             </CheckBox.ToolTip>
         </CheckBox>
+        <Button
+            x:Name="buttonCheckForUpdates"
+            Width="80"
+            Height="20"
+            Margin="188,1,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="ButtonCheckForUpdates_Click"
+            Content="Check _now"
+            IsDefault="True"
+            TabIndex="1" />
         <CheckBox
             x:Name="checkBoxVerboseLog"
             Height="16"
@@ -36,7 +47,7 @@
             VerticalAlignment="Top"
             Content="Show _verbose log"
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
-            TabIndex="1"
+            TabIndex="2"
             ToolTip="If checked, more information will be shown on the log."
             ToolTipService.ShowDuration="60000" />
         <Label
