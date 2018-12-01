@@ -597,7 +597,7 @@ namespace BandcampDownloader {
             var fileTarget = new FileTarget() {
                 FileName = Constants.LogFilePath,
                 Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${message}",
-                ArchiveAboveSize = 1024 * 1024,
+                ArchiveAboveSize = Constants.MaxLogSize,
                 MaxArchiveFiles = 1,
             };
 
