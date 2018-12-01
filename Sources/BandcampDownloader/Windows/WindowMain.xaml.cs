@@ -69,8 +69,6 @@ namespace BandcampDownloader {
             // Hints
             textBoxUrls.Text = Constants.UrlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
-            // Version
-            labelVersion.Content = Assembly.GetEntryAssembly().GetName().Version;
             // Check for updates
             if (App.UserSettings.CheckForUpdates) {
                 Task.Factory.StartNew(() => { CheckForUpdates(); });

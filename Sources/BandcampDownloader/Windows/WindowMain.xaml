@@ -98,12 +98,16 @@
                 Margin="0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Content="v0.0.0.0"
+                Content="{Binding Source={x:Static local:Constants.AppVersion}}"
                 Cursor="Hand"
                 Foreground="#FF003BFF"
-                MouseDown="LabelVersion_MouseDown">
+                MouseDown="LabelVersion_MouseDown"
+                ToolTipService.ShowDuration="60000">
                 <Label.ToolTip>
                     <TextBlock>
+                        <Run Text="BandcampDownloader version" />
+                        <Run Text="{Binding Source={x:Static local:Constants.AppVersion}, Mode=OneWay}" />
+                        <Run Text="&#xA;&#xA;" />
                         <Run Text="Click to go to official project website: &#xA;" />
                         <Run Text="{Binding Source={x:Static local:Constants.ProjectWebsite}, Mode=OneWay}" />
                     </TextBlock>
