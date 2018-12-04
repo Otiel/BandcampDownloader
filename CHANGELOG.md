@@ -18,6 +18,7 @@ _Notes to upgraders:_
 
 ## Bug fixes
 
+* Fixed issue [#69](https://github.com/Otiel/BandcampDownloader/issues/69) that prevented from downloading albums that have no cover.
 * After selecting a folder via the "Browse" button, the placeholders were lost. The default placeholders will now be added back.
 
 # 0.2.0.0
