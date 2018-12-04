@@ -21,7 +21,7 @@ _BandcampDownloader_ is a Windows application written in C# (targeting .NET Fram
 
 ## Screenshot
 
-![Screenshot](Docs\Screenshot.png)
+![Screenshot](Docs/Screenshot.png)
 
 ## Release notes
 
