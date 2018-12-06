@@ -566,13 +566,13 @@ namespace BandcampDownloader {
                 // Tracks
                 Task[] tasks = new Task[album.Tracks.Count];
                 for (int i = 0; i < album.Tracks.Count; i++) {
+                    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
+                    int currentIndex = i;
+
                     if (this.userCancelled) {
                         // Abort
                         return new List<TrackFile>();
                     }
-
-                    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
-                    int currentIndex = i;
 
                     tasks[currentIndex] = Task.Factory.StartNew(() => {
                         long size = 0;
