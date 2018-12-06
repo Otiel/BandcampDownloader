@@ -406,7 +406,7 @@ namespace BandcampDownloader {
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
                     }
 
                     if (this.userCancelled) {
