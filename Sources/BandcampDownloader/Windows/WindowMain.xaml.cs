@@ -564,36 +564,51 @@ namespace BandcampDownloader {
                 }
 
                 // Tracks
-                foreach (Track track in album.Tracks) {
-                    long size = 0;
-                    Boolean sizeRetrieved = false;
-                    int tries = 0;
-                    if (App.UserSettings.RetrieveFilesSize)
-                        do {
-                            if (this.userCancelled) {
-                                // Abort
-                                return new List<TrackFile>();
-                            }
-                            WaitForCooldown(tries);
-                            tries++;
-                            try {
-                                // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
-                                // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
-                                // the mp3 sizes
-                                size = FileHelper.GetFileSize(track.Mp3Url, "GET");
-                                sizeRetrieved = true;
-                                Log($"Retrieved the size of the MP3 file for the track \"{track.Title}\"", LogType.VerboseInfo);
-                            } catch {
-                                sizeRetrieved = false;
-                                if (tries < App.UserSettings.DownloadMaxTries) {
-                                    Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
-                                } else {
-                                    Log($"Failed to retrieve the size of the MP3 file for the track \"{track.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                Task[] tasks = new Task[album.Tracks.Count];
+                for (int i = 0; i < album.Tracks.Count; i++) {
+                    if (this.userCancelled) {
+                        // Abort
+                        return new List<TrackFile>();
+                    }
+
+                    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
+                    int currentIndex = i;
+
+                    tasks[currentIndex] = Task.Factory.StartNew(() => {
+                        long size = 0;
+                        Boolean sizeRetrieved = false;
+                        int tries = 0;
+                        if (App.UserSettings.RetrieveFilesSize) {
+                            do {
+                                if (this.userCancelled) {
+                                    // Abort
+                                    break;
                                 }
-                            }
-                        } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
-                    files.Add(new TrackFile(track.Mp3Url, 0, size));
+                                WaitForCooldown(tries);
+                                tries++;
+                                try {
+                                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
+                                    // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
+                                    // the mp3 sizes
+                                    size = FileHelper.GetFileSize(album.Tracks[currentIndex].Mp3Url, "GET");
+                                    sizeRetrieved = true;
+                                    Log($"Retrieved the size of the MP3 file for the track \"{album.Tracks[currentIndex].Title}\"", LogType.VerboseInfo);
+                                } catch {
+                                    sizeRetrieved = false;
+                                    if (tries < App.UserSettings.DownloadMaxTries) {
+                                        Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[currentIndex].Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                    } else {
+                                        Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[currentIndex].Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                                    }
+                                }
+                            } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
+                        }
+                        files.Add(new TrackFile(album.Tracks[currentIndex].Mp3Url, 0, size));
+                    });
                 }
+
+                // Wait for all tracks size to be retrieved
+                Task.WaitAll(tasks);
             }
             return files;
         }
