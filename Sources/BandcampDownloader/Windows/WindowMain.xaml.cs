@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -31,6 +32,10 @@ namespace BandcampDownloader {
         /// True if there are active downloads; false otherwise.
         /// </summary>
         private Boolean activeDownloads = false;
+        /// <summary>
+        /// Used to update the downloaded bytes / files count on the UI.
+        /// </summary>
+        private ConcurrentQueue<DownloadProgress> downloadProgresses;
         /// <summary>
         /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to download.
         /// </summary>
@@ -203,7 +208,8 @@ namespace BandcampDownloader {
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
-                        UpdateProgress(track.Mp3Url, e.BytesReceived);
+                        this.downloadProgresses.Enqueue(new DownloadProgress(track.Mp3Url, e.BytesReceived));
+                        UpdateProgress();
                     };
 
                     // Warn & tag when downloaded
@@ -302,7 +308,8 @@ namespace BandcampDownloader {
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
-                        UpdateProgress(album.ArtworkUrl, e.BytesReceived);
+                        this.downloadProgresses.Enqueue(new DownloadProgress(album.ArtworkUrl, e.BytesReceived));
+                        UpdateProgress();
                     };
 
                     // Warn when downloaded
@@ -691,62 +698,60 @@ namespace BandcampDownloader {
         /// <summary>
         /// Updates the progress messages and the progressbar.
         /// </summary>
-        /// <param name="fileUrl">The URL of the file that just progressed.</param>
-        /// <param name="bytesReceived">The received bytes for the specified file.</param>
-        private void UpdateProgress(String fileUrl, long bytesReceived) {
+        private void UpdateProgress() {
             DateTime now = DateTime.Now;
 
-            lock (this.filesDownload) {
-                // Compute new progress values
-                TrackFile currentFile = this.filesDownload.Where(f => f.Url == fileUrl).First();
-                currentFile.BytesReceived = bytesReceived;
-                long totalReceivedBytes = this.filesDownload.Sum(f => f.BytesReceived);
-                long bytesToDownload = this.filesDownload.Sum(f => f.Size);
-                Double downloadedFilesCount = this.filesDownload.Count(f => f.Downloaded);
+            this.downloadProgresses.TryDequeue(out DownloadProgress downloadProgress);
 
-                Double bytesPerSecond;
-                if (this.lastTotalReceivedBytes == 0) {
-                    // First time we update the progress
-                    bytesPerSecond = 0;
-                    this.lastTotalReceivedBytes = totalReceivedBytes;
-                    this.lastDownloadSpeedUpdate = now;
-                } else if ((now - this.lastDownloadSpeedUpdate).TotalMilliseconds > 500) {
-                    // Last update of progress happened more than 500 milliseconds ago
-                    // We only update the download speed every 500+ milliseconds
-                    bytesPerSecond =
-                        ((Double) (totalReceivedBytes - this.lastTotalReceivedBytes)) /
-                        (now - this.lastDownloadSpeedUpdate).TotalSeconds;
-                    this.lastTotalReceivedBytes = totalReceivedBytes;
-                    this.lastDownloadSpeedUpdate = now;
+            // Compute new progress values
+            TrackFile currentFile = this.filesDownload.Where(f => f.Url == downloadProgress.FileUrl).First();
+            currentFile.BytesReceived = downloadProgress.BytesReceived;
+            long totalReceivedBytes = this.filesDownload.Sum(f => f.BytesReceived);
+            long bytesToDownload = this.filesDownload.Sum(f => f.Size);
+            Double downloadedFilesCount = this.filesDownload.Count(f => f.Downloaded);
 
-                    // Update UI
-                    this.Dispatcher.Invoke(new Action(() => {
-                        // Update download speed
-                        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
-                    }));
-                }
+            Double bytesPerSecond;
+            if (this.lastTotalReceivedBytes == 0) {
+                // First time we update the progress
+                bytesPerSecond = 0;
+                this.lastTotalReceivedBytes = totalReceivedBytes;
+                this.lastDownloadSpeedUpdate = now;
+            } else if ((now - this.lastDownloadSpeedUpdate).TotalMilliseconds > 500) {
+                // Last update of progress happened more than 500 milliseconds ago
+                // We only update the download speed every 500+ milliseconds
+                bytesPerSecond =
+                    ((Double) (totalReceivedBytes - this.lastTotalReceivedBytes)) /
+                    (now - this.lastDownloadSpeedUpdate).TotalSeconds;
+                this.lastTotalReceivedBytes = totalReceivedBytes;
+                this.lastDownloadSpeedUpdate = now;
 
                 // Update UI
                 this.Dispatcher.Invoke(new Action(() => {
-                    if (!this.userCancelled) {
-                        // Update progress label
-                        labelProgress.Content =
-                            ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-                            (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
-                        if (App.UserSettings.RetrieveFilesSize) {
-                            // Update progress bar based on bytes received
-                            progressBar.Value = totalReceivedBytes;
-                            // Taskbar progress is between 0 and 1
-                            TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
-                        } else {
-                            // Update progress bar based on downloaded files
-                            progressBar.Value = downloadedFilesCount;
-                            // Taskbar progress is between 0 and count of files to download
-                            TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
-                        }
-                    }
+                    // Update download speed
+                    labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
                 }));
             }
+
+            // Update UI
+            this.Dispatcher.Invoke(new Action(() => {
+                if (!this.userCancelled) {
+                    // Update progress label
+                    labelProgress.Content =
+                        ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
+                        (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
+                    if (App.UserSettings.RetrieveFilesSize) {
+                        // Update progress bar based on bytes received
+                        progressBar.Value = totalReceivedBytes;
+                        // Taskbar progress is between 0 and 1
+                        TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
+                    } else {
+                        // Update progress bar based on downloaded files
+                        progressBar.Value = downloadedFilesCount;
+                        // Taskbar progress is between 0 and count of files to download
+                        TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
+                    }
+                }
+            }));
         }
 
         private void WaitForCooldown(int triesNumber) {
@@ -799,6 +804,7 @@ namespace BandcampDownloader {
 
             var urls = new List<String>();
             var albums = new List<Album>();
+            this.downloadProgresses = new ConcurrentQueue<DownloadProgress>();
 
             Task.Factory.StartNew(() => {
                 // Get URLs of albums to download
