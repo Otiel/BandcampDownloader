@@ -678,6 +678,7 @@ namespace BandcampDownloader {
                     buttonBrowse.IsEnabled = false;
                     textBoxUrls.IsReadOnly = true;
                     textBoxDownloadsPath.IsReadOnly = true;
+                    checkBoxDownloadDiscography.IsEnabled = false;
                 } else {
                     // We just finished the download (or user has cancelled)
                     buttonStart.IsEnabled = true;
@@ -690,6 +691,7 @@ namespace BandcampDownloader {
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
                     TaskbarItemInfo.ProgressValue = 0;
                     textBoxDownloadsPath.IsReadOnly = false;
+                    checkBoxDownloadDiscography.IsEnabled = true;
                     labelDownloadSpeed.Content = "";
                 }
             }));
