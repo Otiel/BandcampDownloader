@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -772,6 +773,8 @@ namespace BandcampDownloader {
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
+                // Force update of the settings file (it's not done unless the user give then lose focus on the textbox)
+                textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }
         }
 
