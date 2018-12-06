@@ -667,32 +667,32 @@ namespace BandcampDownloader {
             this.Dispatcher.Invoke(new Action(() => {
                 if (downloadStarted) {
                     // We just started the download
-                    richTextBoxLog.Document.Blocks.Clear();
+                    buttonBrowse.IsEnabled = false;
+                    buttonStart.IsEnabled = false;
+                    buttonStop.IsEnabled = true;
+                    checkBoxDownloadDiscography.IsEnabled = false;
                     labelProgress.Content = "";
                     progressBar.IsIndeterminate = true;
                     progressBar.Value = progressBar.Minimum;
+                    richTextBoxLog.Document.Blocks.Clear();
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
                     TaskbarItemInfo.ProgressValue = 0;
-                    buttonStart.IsEnabled = false;
-                    buttonStop.IsEnabled = true;
-                    buttonBrowse.IsEnabled = false;
-                    textBoxUrls.IsReadOnly = true;
                     textBoxDownloadsPath.IsReadOnly = true;
-                    checkBoxDownloadDiscography.IsEnabled = false;
+                    textBoxUrls.IsReadOnly = true;
                 } else {
                     // We just finished the download (or user has cancelled)
+                    buttonBrowse.IsEnabled = true;
                     buttonStart.IsEnabled = true;
                     buttonStop.IsEnabled = false;
-                    buttonBrowse.IsEnabled = true;
-                    textBoxUrls.IsReadOnly = false;
+                    checkBoxDownloadDiscography.IsEnabled = true;
+                    labelDownloadSpeed.Content = "";
                     progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                     progressBar.IsIndeterminate = false;
                     progressBar.Value = progressBar.Minimum;
                     TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
                     TaskbarItemInfo.ProgressValue = 0;
                     textBoxDownloadsPath.IsReadOnly = false;
-                    checkBoxDownloadDiscography.IsEnabled = true;
-                    labelDownloadSpeed.Content = "";
+                    textBoxUrls.IsReadOnly = false;
                 }
             }));
         }
