@@ -75,14 +75,14 @@ namespace BandcampDownloader {
             }
 #if DEBUG
             textBoxUrls.Text = ""
-                + "https://goataholicskjald.bandcamp.com/album/dogma" + Environment.NewLine                                 // #65 Downloaded size ≠ predicted
-                //+ "https://mstrvlk.bandcamp.com/album/-" + Environment.NewLine                                            // #64 Album with big cover
-                //+ "https://mstrvlk.bandcamp.com/track/-" + Environment.NewLine                                            // #64 Track with big cover
-                //+ "https://weneverlearnedtolive.bandcamp.com/album/silently-i-threw-them-skyward" + Environment.NewLine   // #42 Album with lyrics
-                //+ "https://weneverlearnedtolive.bandcamp.com/track/shadows-in-hibernation-2" + Environment.NewLine        // #42 Track with lyrics
+                + "https://goataholicskjald.bandcamp.com/album/dogma" /* #65 Downloaded size ≠ predicted */ + Environment.NewLine
+                //+ "https://mstrvlk.bandcamp.com/album/-" /* #64 Album with big cover */ + Environment.NewLine
+                //+ "https://mstrvlk.bandcamp.com/track/-" /* #64 Track with big cover */ + Environment.NewLine
+                //+ "https://weneverlearnedtolive.bandcamp.com/album/silently-i-threw-them-skyward" /* #42 Album with lyrics */ + Environment.NewLine
+                //+ "https://weneverlearnedtolive.bandcamp.com/track/shadows-in-hibernation-2" /* #42 Track with lyrics */ + Environment.NewLine
                 //+ "https://goataholicskjald.bandcamp.com/track/europa" + Environment.NewLine
                 //+ "https://goataholicskjald.bandcamp.com/track/epilogue" + Environment.NewLine
-                //+ "https://afterdarkrecordings.bandcamp.com/album/adr-unreleased-tracks"                                  // #69 Album without cover
+                //+ "https://afterdarkrecordings.bandcamp.com/album/adr-unreleased-tracks" /* #69 Album without cover */ + Environment.NewLine
                 ;
 #endif
         }
