@@ -330,6 +330,8 @@ namespace BandcampDownloader {
                                     settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
                                 }
                                 ImageBuilder.Current.Build(artworkTempPath, artworkFolderPath, settings); // Save it to the album folder
+                            } else if (App.UserSettings.SaveCoverArtInFolder) {
+                                File.Copy(artworkTempPath, artworkFolderPath);
                             }
 
                             // Convert/resize artwork to be saved in tags
