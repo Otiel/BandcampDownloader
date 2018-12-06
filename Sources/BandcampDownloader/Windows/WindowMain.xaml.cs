@@ -74,8 +74,8 @@ namespace BandcampDownloader {
                 Task.Factory.StartNew(() => { CheckForUpdates(); });
             }
 #if DEBUG
-            textBoxUrls.Text =
-                "https://goataholicskjald.bandcamp.com/album/dogma" + Environment.NewLine                                   // #65 Downloaded size ≠ predicted
+            textBoxUrls.Text = ""
+                + "https://goataholicskjald.bandcamp.com/album/dogma" + Environment.NewLine                                 // #65 Downloaded size ≠ predicted
                 //+ "https://mstrvlk.bandcamp.com/album/-" + Environment.NewLine                                            // #64 Album with big cover
                 //+ "https://mstrvlk.bandcamp.com/track/-" + Environment.NewLine                                            // #64 Track with big cover
                 //+ "https://weneverlearnedtolive.bandcamp.com/album/silently-i-threw-them-skyward" + Environment.NewLine   // #42 Album with lyrics
