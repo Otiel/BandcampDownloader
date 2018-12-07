@@ -11,7 +11,7 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Loads settings from WindowMain.userSettings.
+        /// Loads settings from App.UserSettings.
         /// </summary>
         public void LoadSettings() {
             // Reload DataContext in case settings have changed
@@ -20,7 +20,7 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Saves settings to WindowMain.userSettings.
+        /// Saves settings to App.UserSettings.
         /// </summary>
         public void SaveSettings() {
             checkBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
