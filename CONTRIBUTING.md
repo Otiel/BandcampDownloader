@@ -13,4 +13,4 @@ This repository follows [git flow](https://nvie.com/posts/a-successful-git-branc
 
 ## Commits
 
-Please follow the [commit message conventions](/Docs/Commits.md).
+Please follow the [commit message conventions](/Docs/commits-conventions.md).
