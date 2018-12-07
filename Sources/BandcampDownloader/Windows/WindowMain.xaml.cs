@@ -305,7 +305,7 @@ namespace BandcampDownloader {
 
                 using (var webClient = new WebClient()) {
                     if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
                     }
 
                     // Update progress bar when downloading
