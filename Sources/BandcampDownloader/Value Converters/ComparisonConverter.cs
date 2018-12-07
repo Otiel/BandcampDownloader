@@ -4,17 +4,14 @@ using System.Windows.Data;
 
 namespace BandcampDownloader {
 
-    /// <summary>
-    /// Converts Boolean values to and from their inverse Boolean values.
-    /// </summary>
-    internal class InverseBooleanConverter: IValueConverter {
+    internal class ComparisonConverter: IValueConverter {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            return !((Boolean) value);
+            return value?.Equals(parameter);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            return !((Boolean) value);
+            return value?.Equals(true) == true ? parameter : Binding.DoNothing;
         }
     }
 }

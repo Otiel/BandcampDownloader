@@ -84,8 +84,8 @@
     <Reference Include="Config.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=d836a57afd299520, processorArchitecture=MSIL">
       <HintPath>..\packages\Config.Net.4.11.0\lib\net452\Config.Net.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.8.10.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.8.10\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.8.11.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.8.11\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageResizer.4.2.5\lib\net45\ImageResizer.dll</HintPath>
@@ -131,8 +131,10 @@
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
     <Compile Include="Miscellaneous\DoubleRule.cs" />
+    <Compile Include="Miscellaneous\DownloadProgress.cs" />
     <Compile Include="Miscellaneous\EnumerationExtension.cs" />
     <Compile Include="Miscellaneous\Exceptions.cs" />
+    <Compile Include="Value Converters\ComparisonConverter.cs" />
     <Compile Include="Value Converters\DoubleToPercentConverter.cs" />
     <Compile Include="Value Converters\BooleanAndConverter.cs" />
     <Compile Include="Value Converters\InverseBooleanConverter.cs" />
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="Windows\UserControlSettingsGeneral.xaml.cs">
       <DependentUpon>UserControlSettingsGeneral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserControlSettingsNetwork.xaml.cs">
+      <DependentUpon>UserControlSettingsNetwork.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserControlSettingsTags.xaml.cs">
       <DependentUpon>UserControlSettingsTags.xaml</DependentUpon>
@@ -184,6 +189,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\UserControlSettingsGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UserControlSettingsNetwork.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

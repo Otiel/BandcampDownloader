@@ -7,7 +7,7 @@ namespace BandcampDownloader {
     /// /// <summary>
     /// Represents the converter that transforms Double values to and from their percent value. For instance: "0.05 → 5".
     /// </summary>
-    public class DoubleToPercentConverter: IValueConverter {
+    internal class DoubleToPercentConverter: IValueConverter {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             return (Double) value * 100; // 0.05 → 5%

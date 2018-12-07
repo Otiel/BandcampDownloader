@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace BandcampDownloader {
 
-    public class DoubleRule: ValidationRule {
+    internal class DoubleRule: ValidationRule {
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo) {
             if (Double.TryParse(value.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out Double doubleValue)) {
