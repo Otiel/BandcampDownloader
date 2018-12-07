@@ -1,3 +1,26 @@
+# 0.2.2.0
+
+## New features
+
+* Added an option to download through a specified proxy. [#70](https://github.com/Otiel/BandcampDownloader/issues/70) You can choose between:
+  * No proxy.
+  * The system proxy.
+  * A manually configured HTTP/SSL proxy.
+
+## Improvements
+
+* Tracks size download is now done asynchronously in order to speed up the process. For instance, when downloading 124 albums, we got the following results:
+  * Before: downloading tracks size took 33m30s.
+  * Now: downloading tracks size takes 2m30s.
+
+## Bug fixes
+
+* Fixed issue [#65](https://github.com/Otiel/BandcampDownloader/issues/65): the total downloaded size reported when downloads were finished was wrong under some circumstances.
+* Fixed the exponential back-off mechanism that forced to wait 200ms (with default settings) before the first download try.
+* Fixed issue that would prevent the cover art to be saved in the folder when "☑ Convert to jpg" was unchecked.
+* Fixed issue that would prevent the settings file to be correctly saved after clicking on "Browse".
+* "☑ Download artist discography" was (un)checkable during downloads. No more.
+
 # 0.2.1.0
 
 _Notes to upgraders:_
