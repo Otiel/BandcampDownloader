@@ -57,6 +57,7 @@
             <ListBoxItem x:Name="listBoxItemTags" Content="Naming and tags" />
             <ListBoxItem x:Name="listBoxItemCoverArt" Content="Cover art" />
             <ListBoxItem x:Name="listBoxItemDownloads" Content="Downloads" />
+            <ListBoxItem x:Name="listBoxItemNetwork" Content="Network" />
             <ListBoxItem x:Name="listBoxItemAdvanced" Content="Advanced settings" />
         </ListBox>
         <local:UserControlSettingsGeneral
@@ -90,6 +91,14 @@
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemDownloads, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <local:UserControlSettingsNetwork
+            x:Name="userControlSettingsNetwork"
+            Margin="135,31,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsEnabled="{Binding ActiveDownloads, Converter={StaticResource InverseBooleanConverter}, ElementName=windowSettings}"
+            TabIndex="1"
+            Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=listBoxItemNetwork}" />
         <local:UserControlSettingsAdvanced
             x:Name="userControlSettingsAdvanced"
             Margin="135,31,0,0"

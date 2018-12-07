@@ -4,6 +4,12 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
+    public enum ProxyType {
+        None,
+        System,
+        Manual,
+    }
+
     public enum TagEditAction {
         [Description("Empty tag")]
         Empty,
@@ -71,6 +77,15 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = true)]
         Boolean ModifyTags { get; set; }
+
+        [Option(DefaultValue = ProxyType.System)]
+        ProxyType Proxy { get; set; }
+
+        [Option(DefaultValue = "")]
+        String ProxyHttpAddress { get; set; }
+
+        [Option(DefaultValue = "")]
+        int ProxyHttpPort { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean RetrieveFilesSize { get; set; }
