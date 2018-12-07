@@ -204,8 +204,20 @@ namespace BandcampDownloader {
                 var doneEvent = new AutoResetEvent(false);
 
                 using (var webClient = new WebClient()) {
-                    if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    switch (App.UserSettings.Proxy) {
+                        case ProxyType.None:
+                            webClient.Proxy = null;
+                            break;
+                        case ProxyType.System:
+                            if (webClient.Proxy != null) {
+                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                            }
+                            break;
+                        case ProxyType.Manual:
+                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
+                            break;
+                        default:
+                            throw new NotImplementedException(); // Shouldn't happen
                     }
 
                     // Update progress bar when downloading
@@ -306,8 +318,20 @@ namespace BandcampDownloader {
                 var doneEvent = new AutoResetEvent(false);
 
                 using (var webClient = new WebClient()) {
-                    if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    switch (App.UserSettings.Proxy) {
+                        case ProxyType.None:
+                            webClient.Proxy = null;
+                            break;
+                        case ProxyType.System:
+                            if (webClient.Proxy != null) {
+                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                            }
+                            break;
+                        case ProxyType.Manual:
+                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
+                            break;
+                        default:
+                            throw new NotImplementedException(); // Shouldn't happen
                     }
 
                     // Update progress bar when downloading
@@ -408,8 +432,20 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    switch (App.UserSettings.Proxy) {
+                        case ProxyType.None:
+                            webClient.Proxy = null;
+                            break;
+                        case ProxyType.System:
+                            if (webClient.Proxy != null) {
+                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                            }
+                            break;
+                        case ProxyType.Manual:
+                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
+                            break;
+                        default:
+                            throw new NotImplementedException(); // Shouldn't happen
                     }
 
                     if (this.userCancelled) {
@@ -450,8 +486,20 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    switch (App.UserSettings.Proxy) {
+                        case ProxyType.None:
+                            webClient.Proxy = null;
+                            break;
+                        case ProxyType.System:
+                            if (webClient.Proxy != null) {
+                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                            }
+                            break;
+                        case ProxyType.Manual:
+                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
+                            break;
+                        default:
+                            throw new NotImplementedException(); // Shouldn't happen
                     }
 
                     if (this.userCancelled) {
@@ -477,8 +525,20 @@ namespace BandcampDownloader {
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    if (webClient.Proxy != null) {
-                        webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    switch (App.UserSettings.Proxy) {
+                        case ProxyType.None:
+                            webClient.Proxy = null;
+                            break;
+                        case ProxyType.System:
+                            if (webClient.Proxy != null) {
+                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+                            }
+                            break;
+                        case ProxyType.Manual:
+                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
+                            break;
+                        default:
+                            throw new NotImplementedException(); // Shouldn't happen
                     }
 
                     if (this.userCancelled) {
