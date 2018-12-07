@@ -7,7 +7,7 @@ namespace BandcampDownloader {
     /// <summary>
     /// Converts Boolean values to their logical AND operation result.
     /// </summary>
-    public class BooleanAndConverter: IMultiValueConverter {
+    internal class BooleanAndConverter: IMultiValueConverter {
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
             foreach (object value in values) {

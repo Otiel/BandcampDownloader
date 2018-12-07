@@ -8,7 +8,7 @@ namespace BandcampDownloader {
     /// <summary>
     /// Inverts Boolean values then converts them to and from Visibility enumeration values.
     /// </summary>
-    public class InverseBooleanToVisibilityConverter: IValueConverter {
+    internal class InverseBooleanToVisibilityConverter: IValueConverter {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             return (Boolean) value ? Visibility.Hidden : Visibility.Visible;
