@@ -216,9 +216,6 @@ namespace BandcampDownloader {
 
                     // Warn & tag when downloaded
                     webClient.DownloadFileCompleted += (s, e) => {
-                        WaitForCooldown(tries);
-                        tries++;
-
                         if (!e.Cancelled && e.Error == null) {
                             trackDownloaded = true;
 
@@ -248,12 +245,17 @@ namespace BandcampDownloader {
                             currentFile.Downloaded = true;
                             Log($"Downloaded track \"{GetFileName(album, track)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
-                            if (tries < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                            if (tries + 1 < App.UserSettings.DownloadMaxTries) {
+                                Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
                                 Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
+
+                        tries++;
+                        if (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries) {
+                            WaitForCooldown(tries);
+                        }
 
                         doneEvent.Set();
                     };
@@ -545,19 +547,23 @@ namespace BandcampDownloader {
                                 // Abort
                                 return new List<TrackFile>();
                             }
-                            WaitForCooldown(tries);
-                            tries++;
+
                             try {
                                 size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
                                 sizeRetrieved = true;
                                 Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
                             } catch {
                                 sizeRetrieved = false;
-                                if (tries < App.UserSettings.DownloadMaxTries) {
-                                    Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                if (tries + 1 < App.UserSettings.DownloadMaxTries) {
+                                    Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                                 } else {
                                     Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                                 }
+                            }
+
+                            tries++;
+                            if (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries) {
+                                WaitForCooldown(tries);
                             }
                         } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
                     }
@@ -585,8 +591,7 @@ namespace BandcampDownloader {
                                     // Abort
                                     break;
                                 }
-                                WaitForCooldown(tries);
-                                tries++;
+
                                 try {
                                     // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
                                     // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
@@ -596,11 +601,16 @@ namespace BandcampDownloader {
                                     Log($"Retrieved the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\"", LogType.VerboseInfo);
                                 } catch {
                                     sizeRetrieved = false;
-                                    if (tries < App.UserSettings.DownloadMaxTries) {
-                                        Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                    if (tries + 1 < App.UserSettings.DownloadMaxTries) {
+                                        Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                                     } else {
                                         Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
                                     }
+                                }
+
+                                tries++;
+                                if (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries) {
+                                    WaitForCooldown(tries);
                                 }
                             } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
                         }
