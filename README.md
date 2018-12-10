@@ -1,7 +1,7 @@
-# ![Logo](Docs/Cloud.png) Bandcamp Downloader
+# ![Logo](docs/images/Cloud.png) Bandcamp Downloader
 
 <p align="center">
-    <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="Docs/DownloadButton.png"></a>
+    <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="docs/images/DownloadButton.png"></a>
 </p>
 
 ## Description
@@ -24,7 +24,7 @@ BandcampDownloader is a Windows application that helps downloading albums from [
 ## Screenshot
 
 <p align="center">
-    <img alt="Screenshot" src="Docs/Screenshot.png">
+    <img alt="Screenshot" src="docs/images/Screenshot.png">
 </p>
 
 ## Release notes
