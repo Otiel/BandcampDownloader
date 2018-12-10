@@ -1,6 +1,8 @@
 # ![Logo](Docs/Cloud.png) Bandcamp Downloader
 
-[![Download](Docs/DownloadButton.png)](https://github.com/Otiel/BandcampDownloader/releases/latest)
+<p align="center">
+    <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="Docs/DownloadButton.png"></a>
+</p>
 
 ## Description
 
@@ -21,7 +23,9 @@ _BandcampDownloader_ is a Windows application written in C# (targeting .NET Fram
 
 ## Screenshot
 
-![Screenshot](Docs/Screenshot.png)
+<p align="center">
+    <img alt="Screenshot" src="Docs/Screenshot.png">
+</p>
 
 ## Release notes
 
