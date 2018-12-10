@@ -6,7 +6,7 @@
 
 ## Description
 
-_BandcampDownloader_ is a Windows application that helps downloading albums from [bandcamp.com](https://bandcamp.com) by retrieving the 128 kbps MP3 files streamed on the website. Its goal isn't to pirate albums, but simply to make life easier for those who prefer to listen to music on their favorite player.
+BandcampDownloader is a Windows application that helps downloading albums from [bandcamp.com](https://bandcamp.com) by retrieving the 128 kbps MP3 files streamed on the website. Its goal isn't to pirate albums, but simply to make life easier for those who prefer to listen to music on their favorite player.
 
 ## Features
 
@@ -33,7 +33,7 @@ See the [changelog](CHANGELOG.md).
 
 ## License
 
-_BandcampDownloader_ is licensed under the MIT license - see the [LICENSE](LICENSE) file for details.
+BandcampDownloader is licensed under the MIT license - see the [LICENSE](LICENSE) file for details.
 
 ## Credits
 
