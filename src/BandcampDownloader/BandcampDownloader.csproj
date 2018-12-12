@@ -139,22 +139,22 @@
     <Compile Include="Value Converters\BooleanAndConverter.cs" />
     <Compile Include="Value Converters\InverseBooleanConverter.cs" />
     <Compile Include="Value Converters\InverseBooleanToVisibilityConverter.cs" />
-    <Compile Include="Windows\UserControlSettingsAdvanced.xaml.cs">
+    <Compile Include="UI\UserControlSettingsAdvanced.xaml.cs">
       <DependentUpon>UserControlSettingsAdvanced.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserControlSettingsCoverArt.xaml.cs">
+    <Compile Include="UI\UserControlSettingsCoverArt.xaml.cs">
       <DependentUpon>UserControlSettingsCoverArt.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserControlSettingsDownloads.xaml.cs">
+    <Compile Include="UI\UserControlSettingsDownloads.xaml.cs">
       <DependentUpon>UserControlSettingsDownloads.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserControlSettingsGeneral.xaml.cs">
+    <Compile Include="UI\UserControlSettingsGeneral.xaml.cs">
       <DependentUpon>UserControlSettingsGeneral.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserControlSettingsNetwork.xaml.cs">
+    <Compile Include="UI\UserControlSettingsNetwork.xaml.cs">
       <DependentUpon>UserControlSettingsNetwork.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\UserControlSettingsTags.xaml.cs">
+    <Compile Include="UI\UserControlSettingsTags.xaml.cs">
       <DependentUpon>UserControlSettingsTags.xaml</DependentUpon>
     </Compile>
     <Compile Include="Business Objects\JSON\JsonAlbum.cs" />
@@ -170,41 +170,41 @@
     <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Miscellaneous\UserSettings.cs" />
-    <Compile Include="Windows\WindowMain.xaml.cs">
+    <Compile Include="UI\WindowMain.xaml.cs">
       <DependentUpon>WindowMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WindowSettings.xaml.cs">
+    <Compile Include="UI\WindowSettings.xaml.cs">
       <DependentUpon>WindowSettings.xaml</DependentUpon>
     </Compile>
-    <Page Include="Windows\UserControlSettingsAdvanced.xaml">
+    <Page Include="UI\UserControlSettingsAdvanced.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\UserControlSettingsCoverArt.xaml">
+    <Page Include="UI\UserControlSettingsCoverArt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\UserControlSettingsDownloads.xaml">
+    <Page Include="UI\UserControlSettingsDownloads.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\UserControlSettingsGeneral.xaml">
+    <Page Include="UI\UserControlSettingsGeneral.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\UserControlSettingsNetwork.xaml">
+    <Page Include="UI\UserControlSettingsNetwork.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\UserControlSettingsTags.xaml">
+    <Page Include="UI\UserControlSettingsTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\WindowMain.xaml">
+    <Page Include="UI\WindowMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\WindowSettings.xaml">
+    <Page Include="UI\WindowSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
