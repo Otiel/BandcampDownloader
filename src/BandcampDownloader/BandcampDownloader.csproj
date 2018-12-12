@@ -124,10 +124,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\BandcampHelper.cs" />
-    <Compile Include="Business Objects\Album.cs" />
-    <Compile Include="Business Objects\TrackFile.cs" />
-    <Compile Include="Business Objects\JSON\JsonAlbumData.cs" />
-    <Compile Include="Business Objects\JSON\JsonTrack.cs" />
+    <Compile Include="Model\Album.cs" />
+    <Compile Include="Model\TrackFile.cs" />
+    <Compile Include="Model\JSON\JsonAlbumData.cs" />
+    <Compile Include="Model\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
     <Compile Include="Miscellaneous\DoubleRule.cs" />
@@ -157,13 +157,13 @@
     <Compile Include="UI\UserControlSettingsTags.xaml.cs">
       <DependentUpon>UserControlSettingsTags.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Business Objects\JSON\JsonAlbum.cs" />
+    <Compile Include="Model\JSON\JsonAlbum.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Business Objects\JSON\JsonMp3File.cs" />
-    <Compile Include="Business Objects\Track.cs" />
+    <Compile Include="Model\JSON\JsonMp3File.cs" />
+    <Compile Include="Model\Track.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Miscellaneous\Constants.cs" />
     <Compile Include="Miscellaneous\LogType.cs" />
