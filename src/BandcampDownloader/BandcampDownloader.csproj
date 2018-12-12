@@ -130,7 +130,7 @@
     <Compile Include="Model\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
-    <Compile Include="Miscellaneous\DoubleRule.cs" />
+    <Compile Include="UI\Validation\DoubleRule.cs" />
     <Compile Include="Miscellaneous\DownloadProgress.cs" />
     <Compile Include="Miscellaneous\EnumerationExtension.cs" />
     <Compile Include="Miscellaneous\Exceptions.cs" />
