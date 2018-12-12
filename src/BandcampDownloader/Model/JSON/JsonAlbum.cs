@@ -6,8 +6,8 @@ using Newtonsoft.Json;
 namespace BandcampDownloader {
 
     internal class JsonAlbum {
-        private readonly String urlEnd = "_0.jpg";
-        private readonly String urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
+        private readonly String _urlEnd = "_0.jpg";
+        private readonly String _urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
         [JsonProperty("current")]
         public JsonAlbumData AlbumData { get; set; }
@@ -28,7 +28,7 @@ namespace BandcampDownloader {
             return new Album() {
                 Artist = Artist,
                 // Some albums do not have a cover art
-                ArtworkUrl = ArtId == null ? null : urlStart + ArtId.PadLeft(10, '0') + urlEnd,
+                ArtworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd,
                 ReleaseDate = ReleaseDate,
                 Title = AlbumData.AlbumTitle,
                 // Some tracks do not have their URL filled on some albums (pre-release...)
