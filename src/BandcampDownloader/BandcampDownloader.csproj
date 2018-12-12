@@ -132,8 +132,8 @@
     <Compile Include="Helpers\UpdatesHelper.cs" />
     <Compile Include="UI\Validation\DoubleRule.cs" />
     <Compile Include="Miscellaneous\DownloadProgress.cs" />
-    <Compile Include="Miscellaneous\EnumerationExtension.cs" />
-    <Compile Include="Miscellaneous\Exceptions.cs" />
+    <Compile Include="Helpers\EnumerationExtension.cs" />
+    <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="UI\Converters\ComparisonConverter.cs" />
     <Compile Include="UI\Converters\DoubleToPercentConverter.cs" />
     <Compile Include="UI\Converters\BooleanAndConverter.cs" />
@@ -167,7 +167,7 @@
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\LogType.cs" />
-    <Compile Include="Miscellaneous\Extensions.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Core\UserSettings.cs" />
     <Compile Include="UI\Dialogs\WindowMain.xaml.cs">
