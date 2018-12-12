@@ -165,11 +165,11 @@
     <Compile Include="Model\JSON\JsonMp3File.cs" />
     <Compile Include="Model\Track.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
-    <Compile Include="Miscellaneous\Constants.cs" />
-    <Compile Include="Miscellaneous\LogType.cs" />
+    <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\LogType.cs" />
     <Compile Include="Miscellaneous\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
-    <Compile Include="Miscellaneous\UserSettings.cs" />
+    <Compile Include="Core\UserSettings.cs" />
     <Compile Include="UI\Dialogs\WindowMain.xaml.cs">
       <DependentUpon>WindowMain.xaml</DependentUpon>
     </Compile>
