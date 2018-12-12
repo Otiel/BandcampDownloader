@@ -134,11 +134,11 @@
     <Compile Include="Miscellaneous\DownloadProgress.cs" />
     <Compile Include="Miscellaneous\EnumerationExtension.cs" />
     <Compile Include="Miscellaneous\Exceptions.cs" />
-    <Compile Include="Value Converters\ComparisonConverter.cs" />
-    <Compile Include="Value Converters\DoubleToPercentConverter.cs" />
-    <Compile Include="Value Converters\BooleanAndConverter.cs" />
-    <Compile Include="Value Converters\InverseBooleanConverter.cs" />
-    <Compile Include="Value Converters\InverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ComparisonConverter.cs" />
+    <Compile Include="Converters\DoubleToPercentConverter.cs" />
+    <Compile Include="Converters\BooleanAndConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\InverseBooleanToVisibilityConverter.cs" />
     <Compile Include="UI\UserControlSettingsAdvanced.xaml.cs">
       <DependentUpon>UserControlSettingsAdvanced.xaml</DependentUpon>
     </Compile>
