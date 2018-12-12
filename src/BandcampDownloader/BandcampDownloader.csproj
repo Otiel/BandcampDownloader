@@ -131,7 +131,7 @@
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
     <Compile Include="UI\Validation\DoubleRule.cs" />
-    <Compile Include="Miscellaneous\DownloadProgress.cs" />
+    <Compile Include="Model\DownloadProgress.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
     <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="UI\Converters\ComparisonConverter.cs" />
