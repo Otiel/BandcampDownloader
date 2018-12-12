@@ -2,9 +2,9 @@
 
 namespace BandcampDownloader {
 
-    internal class NoAlbumFoundException: Exception {
+    internal class CouldNotCheckForUpdatesException: Exception {
     }
 
-    internal class CouldNotCheckForUpdatesException: Exception {
+    internal class NoAlbumFoundException: Exception {
     }
 }
