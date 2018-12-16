@@ -182,9 +182,11 @@ namespace BandcampDownloader {
 
             // Set path to save the file
             String trackPath = albumDirectoryPath + "\\" + GetFileName(album, track);
-            if (trackPath.Length > 256) {
-                // Shorten the path (Windows doesn't support a path > 256 characters)
-                trackPath = albumDirectoryPath + "\\" + GetFileName(album, track).Substring(0, 3) + Path.GetExtension(trackPath);
+            if (trackPath.Length >= 260) {
+                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
+                // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
+                int fileNameMaxLength = 12 - Path.GetExtension(trackPath).ToString().Length;
+                trackPath = albumDirectoryPath + "\\" + GetFileName(album, track).Substring(0, fileNameMaxLength) + Path.GetExtension(trackPath);
             }
             int tries = 0;
             Boolean trackDownloaded = false;
@@ -303,11 +305,13 @@ namespace BandcampDownloader {
             // Compute paths where to save artwork
             String artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             String artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
-            if (artworkTempPath.Length > 256 || artworkFolderPath.Length > 256) {
-                // Shorten the path (Windows doesn't support a path > 256 characters)
-                // There may be only one path to shorten, but it's better to use the same file name in both places
-                artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
-                artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, 3) + Path.GetExtension(album.ArtworkUrl);
+            if (artworkTempPath.Length >= 260 || artworkFolderPath.Length >= 260) {
+                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
+                // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
+                // There may be only one path needed to shorten, but it's better to use the same file name in both places
+                int fileNameMaxLength = 12 - Path.GetExtension(album.ArtworkUrl).ToString().Length;
+                artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameMaxLength) + Path.GetExtension(album.ArtworkUrl);
+                artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameMaxLength) + Path.GetExtension(album.ArtworkUrl);
             }
 
             TagLib.Picture artworkInTags = null;
