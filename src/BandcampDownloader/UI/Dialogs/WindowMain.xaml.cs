@@ -746,6 +746,12 @@ namespace BandcampDownloader {
             downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString().ToAllowedFileName());
             downloadPath = downloadPath.Replace("{artist}", album.Artist.ToAllowedFileName());
             downloadPath = downloadPath.Replace("{album}", album.Title.ToAllowedFileName());
+
+            if (downloadPath.Length >= 248) {
+                // Windows doesn't do well with path >= 248 characters (and path + filename >= 260 characters)
+                downloadPath = downloadPath.Substring(0, 247);
+            }
+
             return downloadPath;
         }
 
