@@ -6,8 +6,8 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsGeneral"
-    Width="287"
-    Height="51"
+    Width="286"
+    Height="75"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -57,5 +57,16 @@
             VerticalAlignment="Top"
             Content="(the log file is always verbose)"
             Foreground="#FF858585" />
+        <CheckBox
+            x:Name="checkBoxEnableApplicationSounds"
+            Height="16"
+            Margin="3,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Play _notifications"
+            IsChecked="{Binding EnableApplicationSounds, UpdateSourceTrigger=Explicit}"
+            TabIndex="2"
+            ToolTip="If checked, a notification sound will be played when downloads are finished."
+            ToolTipService.ShowDuration="60000" />
     </Grid>
 </UserControl>

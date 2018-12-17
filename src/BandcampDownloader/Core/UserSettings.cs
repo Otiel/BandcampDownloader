@@ -72,6 +72,9 @@ namespace BandcampDownloader {
         [Option(DefaultValue = "")]
         String DownloadsPath { get; set; }
 
+        [Option(DefaultValue = false)]
+        Boolean EnableApplicationSounds { get; set; }
+
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
         String FileNameFormat { get; set; }
 
