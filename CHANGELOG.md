@@ -1,3 +1,14 @@
+# 0.2.3.0
+
+## New features
+
+* Added an option to disable notifications sound (off by default). [#71](https://github.com/Otiel/BandcampDownloader/issues/71)
+
+## Bug fixes
+
+* Fixed race condition [#54](https://github.com/Otiel/BandcampDownloader/issues/54) that would make the program crash when downloading two albums with the same name.
+* Fixed issue with albums name too long to be supported by Windows.
+
 # 0.2.2.0
 
 ## New features

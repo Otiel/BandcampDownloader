@@ -12,21 +12,21 @@ namespace BandcampDownloader {
             public Object Value { get; set; }
         }
 
-        private Type enumType;
+        private Type _enumType;
 
         public Type EnumType {
             get {
-                return enumType;
+                return _enumType;
             }
             private set {
-                if (enumType == value) {
+                if (_enumType == value) {
                     return;
                 }
                 var underlyingType = Nullable.GetUnderlyingType(value) ?? value;
                 if (!underlyingType.IsEnum) {
                     throw new ArgumentException("Type must be an Enum.");
                 }
-                enumType = value;
+                _enumType = value;
             }
         }
 

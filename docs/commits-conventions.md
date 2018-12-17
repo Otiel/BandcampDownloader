@@ -25,7 +25,6 @@
 
 ### Allowed `<type>` values:
 
-
 Type     | Release | Description | Changelog
 ---------|---------|-------------|----------
 feat     | `minor` | New feature or enhancement (for the user - not a new feature for a build script). | Visible
