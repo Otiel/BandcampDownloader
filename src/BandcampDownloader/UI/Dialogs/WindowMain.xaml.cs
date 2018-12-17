@@ -976,10 +976,12 @@ namespace BandcampDownloader {
                 // Set controls to "ready" state
                 _activeDownloads = false;
                 UpdateControlsState(false);
-                // Play a sound
-                try {
-                    (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
-                } catch {
+                if (App.UserSettings.EnableApplicationSounds) {
+                    // Play a sound
+                    try {
+                        (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
+                    } catch {
+                    }
                 }
             });
         }
