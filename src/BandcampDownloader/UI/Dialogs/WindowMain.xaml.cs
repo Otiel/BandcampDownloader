@@ -54,6 +54,10 @@ namespace BandcampDownloader {
         /// </summary>
         private List<WebClient> _pendingDownloads;
         /// <summary>
+        /// Random class used to create random numbers.
+        /// </summary>
+        private Random _random = new Random();
+        /// <summary>
         /// Used when user clicks on 'Cancel' to manage the cancelation (UI...).
         /// </summary>
         private Boolean _userCancelled;
@@ -305,6 +309,7 @@ namespace BandcampDownloader {
             // Compute paths where to save artwork
             String artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
             String artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
+
             if (artworkTempPath.Length >= 260 || artworkFolderPath.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
                 // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
@@ -313,6 +318,12 @@ namespace BandcampDownloader {
                 artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameMaxLength) + Path.GetExtension(album.ArtworkUrl);
                 artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameMaxLength) + Path.GetExtension(album.ArtworkUrl);
             }
+
+            // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread):
+            // Change the name of the artwork file: replace the last 3 characters with a random number between 1-999
+            String artworkFileWithoutExt = Path.GetFileNameWithoutExtension(artworkTempPath);
+            artworkFileWithoutExt = artworkFileWithoutExt.Remove(artworkFileWithoutExt.Length - 3, 3) + _random.Next(1, 1000).ToString("00#");
+            artworkTempPath = Path.GetDirectoryName(artworkTempPath) + "\\" + artworkFileWithoutExt + Path.GetExtension(artworkTempPath);
 
             TagLib.Picture artworkInTags = null;
 
