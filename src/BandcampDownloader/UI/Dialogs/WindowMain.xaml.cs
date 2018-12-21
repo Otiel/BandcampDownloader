@@ -590,19 +590,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
-        /// </summary>
-        /// <param name="album">The album currently downloaded.</param>
-        /// <param name="track">The track currently downloaded.</param>
-        private String ParseFileName(Album album, Track track) {
-            String fileName =
-                App.UserSettings.FileNameFormat.Replace("{artist}", album.Artist)
-                    .Replace("{title}", track.Title)
-                    .Replace("{tracknum}", track.Number.ToString("00"));
-            return fileName.ToAllowedFileName();
-        }
-
-        /// <summary>
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
@@ -768,6 +755,19 @@ namespace BandcampDownloader {
             }
 
             return downloadPath;
+        }
+
+        /// <summary>
+        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
+        /// </summary>
+        /// <param name="album">The album currently downloaded.</param>
+        /// <param name="track">The track currently downloaded.</param>
+        private String ParseFileName(Album album, Track track) {
+            String fileName =
+                App.UserSettings.FileNameFormat.Replace("{artist}", album.Artist)
+                    .Replace("{title}", track.Title)
+                    .Replace("{tracknum}", track.Number.ToString("00"));
+            return fileName.ToAllowedFileName();
         }
 
         /// <summary>
