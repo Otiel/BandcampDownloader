@@ -86,7 +86,7 @@ namespace BandcampDownloader {
 #if DEBUG
             textBoxUrls.Text = ""
                 //+ "https://projectmooncircle.bandcamp.com" /* Lots of albums (124) */ + Environment.NewLine
-                //+ "https://goataholicskjald.bandcamp.com/album/dogma" /* #65 Downloaded size ≠ predicted */ + Environment.NewLine
+                + "https://goataholicskjald.bandcamp.com/album/dogma" /* #65 Downloaded size ≠ predicted */ + Environment.NewLine
                 //+ "https://mstrvlk.bandcamp.com/album/-" /* #64 Album with big cover */ + Environment.NewLine
                 //+ "https://mstrvlk.bandcamp.com/track/-" /* #64 Track with big cover */ + Environment.NewLine
                 //+ "https://weneverlearnedtolive.bandcamp.com/album/silently-i-threw-them-skyward" /* #42 Album with lyrics */ + Environment.NewLine
@@ -94,7 +94,7 @@ namespace BandcampDownloader {
                 //+ "https://goataholicskjald.bandcamp.com/track/europa" + Environment.NewLine
                 //+ "https://goataholicskjald.bandcamp.com/track/epilogue" + Environment.NewLine
                 //+ "https://afterdarkrecordings.bandcamp.com/album/adr-unreleased-tracks" /* #69 Album without cover */ + Environment.NewLine
-                + "https://liluglymane.bandcamp.com/album/study-of-the-hypothesized-removable-and-or-expandable-nature-of-human-capability-and-limitations-primarily-regarding-introductory-experiences-with-new-and-exciting-technologies-by-way-of-motivati-2" /* #54 long path */ + Environment.NewLine
+                //+ "https://liluglymane.bandcamp.com/album/study-of-the-hypothesized-removable-and-or-expandable-nature-of-human-capability-and-limitations-primarily-regarding-introductory-experiences-with-new-and-exciting-technologies-by-way-of-motivati-2" /* #54 Long path */ + Environment.NewLine
                 ;
 #endif
         }
@@ -185,12 +185,12 @@ namespace BandcampDownloader {
             Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
             // Set path to save the file
-            String trackPath = albumDirectoryPath + "\\" + GetFileName(album, track);
+            String trackPath = albumDirectoryPath + "\\" + ParseFileName(album, track);
             if (trackPath.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
                 // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
                 int fileNameMaxLength = 12 - Path.GetExtension(trackPath).ToString().Length;
-                trackPath = albumDirectoryPath + "\\" + GetFileName(album, track).Substring(0, fileNameMaxLength) + Path.GetExtension(trackPath);
+                trackPath = albumDirectoryPath + "\\" + ParseFileName(album, track).Substring(0, fileNameMaxLength) + Path.GetExtension(trackPath);
             }
             int tries = 0;
             Boolean trackDownloaded = false;
@@ -201,7 +201,7 @@ namespace BandcampDownloader {
                     if (track.Mp3Url == trackFile.Url &&
                         trackFile.Size > length - (trackFile.Size * App.UserSettings.AllowedFileSizeDifference) &&
                         trackFile.Size < length + (trackFile.Size * App.UserSettings.AllowedFileSizeDifference)) {
-                        Log($"Track already exists within allowed file size range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                        Log($"Track already exists within allowed file size range: track \"{ParseFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
                 }
@@ -262,12 +262,12 @@ namespace BandcampDownloader {
                             // Note the file as downloaded
                             TrackFile currentFile = _filesDownload.Where(f => f.Url == track.Mp3Url).First();
                             currentFile.Downloaded = true;
-                            Log($"Downloaded track \"{GetFileName(album, track)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
+                            Log($"Downloaded track \"{ParseFileName(album, track)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries + 1 < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                Log($"Unable to download track \"{ParseFileName(album, track)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download track \"{ParseFileName(album, track)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -590,19 +590,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
-        /// </summary>
-        /// <param name="album">The album currently downloaded.</param>
-        /// <param name="track">The track currently downloaded.</param>
-        private String GetFileName(Album album, Track track) {
-            String fileName =
-                App.UserSettings.FileNameFormat.Replace("{artist}", album.Artist)
-                    .Replace("{title}", track.Title)
-                    .Replace("{tracknum}", track.Number.ToString("00"));
-            return fileName.ToAllowedFileName();
-        }
-
-        /// <summary>
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
@@ -757,8 +744,8 @@ namespace BandcampDownloader {
         /// <param name="album">The album currently downloaded.</param>
         private String ParseDownloadPath(String downloadPath, Album album) {
             downloadPath = downloadPath.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString().ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString().ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString("00").ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString("00").ToAllowedFileName());
             downloadPath = downloadPath.Replace("{artist}", album.Artist.ToAllowedFileName());
             downloadPath = downloadPath.Replace("{album}", album.Title.ToAllowedFileName());
 
@@ -768,6 +755,23 @@ namespace BandcampDownloader {
             }
 
             return downloadPath;
+        }
+
+        /// <summary>
+        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
+        /// </summary>
+        /// <param name="album">The album currently downloaded.</param>
+        /// <param name="track">The track currently downloaded.</param>
+        private String ParseFileName(Album album, Track track) {
+            String fileName = App.UserSettings.FileNameFormat
+                .Replace("{year}", album.ReleaseDate.Year.ToString())
+                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
+                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
+                .Replace("{album}", album.Title)
+                .Replace("{artist}", album.Artist)
+                .Replace("{title}", track.Title)
+                .Replace("{tracknum}", track.Number.ToString("00"));
+            return fileName.ToAllowedFileName();
         }
 
         /// <summary>

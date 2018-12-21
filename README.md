@@ -1,4 +1,4 @@
-# ![Logo](docs/images/Cloud.png) Bandcamp Downloader
+<h1 align="center"><img alt="Download" src="docs/images/Cloud.png"> Bandcamp Downloader</h1>
 
 <p align="center">
     <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="docs/images/DownloadButton.png"></a>

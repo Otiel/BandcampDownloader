@@ -1,3 +1,13 @@
+# 0.2.4.0
+
+## New features
+
+* Added {album}, {year}, {month} and {day} placeholders to the file name format. [#72](https://github.com/Otiel/BandcampDownloader/issues/72)
+
+## Bug fixes
+
+* {month} and {day} placeholders are now formatted on two digits; for instance: "05" instead of "5".
+
 # 0.2.3.0
 
 ## New features
