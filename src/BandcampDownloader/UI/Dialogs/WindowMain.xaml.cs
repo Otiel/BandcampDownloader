@@ -185,12 +185,12 @@ namespace BandcampDownloader {
             Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
             // Set path to save the file
-            String trackPath = albumDirectoryPath + "\\" + GetFileName(album, track);
+            String trackPath = albumDirectoryPath + "\\" + ParseFileName(album, track);
             if (trackPath.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
                 // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
                 int fileNameMaxLength = 12 - Path.GetExtension(trackPath).ToString().Length;
-                trackPath = albumDirectoryPath + "\\" + GetFileName(album, track).Substring(0, fileNameMaxLength) + Path.GetExtension(trackPath);
+                trackPath = albumDirectoryPath + "\\" + ParseFileName(album, track).Substring(0, fileNameMaxLength) + Path.GetExtension(trackPath);
             }
             int tries = 0;
             Boolean trackDownloaded = false;
@@ -201,7 +201,7 @@ namespace BandcampDownloader {
                     if (track.Mp3Url == trackFile.Url &&
                         trackFile.Size > length - (trackFile.Size * App.UserSettings.AllowedFileSizeDifference) &&
                         trackFile.Size < length + (trackFile.Size * App.UserSettings.AllowedFileSizeDifference)) {
-                        Log($"Track already exists within allowed file size range: track \"{GetFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                        Log($"Track already exists within allowed file size range: track \"{ParseFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
                 }
@@ -262,12 +262,12 @@ namespace BandcampDownloader {
                             // Note the file as downloaded
                             TrackFile currentFile = _filesDownload.Where(f => f.Url == track.Mp3Url).First();
                             currentFile.Downloaded = true;
-                            Log($"Downloaded track \"{GetFileName(album, track)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
+                            Log($"Downloaded track \"{ParseFileName(album, track)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries + 1 < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                Log($"Unable to download track \"{ParseFileName(album, track)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download track \"{GetFileName(album, track)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download track \"{ParseFileName(album, track)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -594,7 +594,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="album">The album currently downloaded.</param>
         /// <param name="track">The track currently downloaded.</param>
-        private String GetFileName(Album album, Track track) {
+        private String ParseFileName(Album album, Track track) {
             String fileName =
                 App.UserSettings.FileNameFormat.Replace("{artist}", album.Artist)
                     .Replace("{title}", track.Title)
