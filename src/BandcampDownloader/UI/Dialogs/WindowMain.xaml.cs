@@ -744,8 +744,8 @@ namespace BandcampDownloader {
         /// <param name="album">The album currently downloaded.</param>
         private String ParseDownloadPath(String downloadPath, Album album) {
             downloadPath = downloadPath.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString().ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString().ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString("00").ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString("00").ToAllowedFileName());
             downloadPath = downloadPath.Replace("{artist}", album.Artist.ToAllowedFileName());
             downloadPath = downloadPath.Replace("{album}", album.Title.ToAllowedFileName());
 
