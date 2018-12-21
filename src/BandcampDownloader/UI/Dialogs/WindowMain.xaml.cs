@@ -763,10 +763,14 @@ namespace BandcampDownloader {
         /// <param name="album">The album currently downloaded.</param>
         /// <param name="track">The track currently downloaded.</param>
         private String ParseFileName(Album album, Track track) {
-            String fileName =
-                App.UserSettings.FileNameFormat.Replace("{artist}", album.Artist)
-                    .Replace("{title}", track.Title)
-                    .Replace("{tracknum}", track.Number.ToString("00"));
+            String fileName = App.UserSettings.FileNameFormat
+                .Replace("{year}", album.ReleaseDate.Year.ToString())
+                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
+                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
+                .Replace("{album}", album.Title)
+                .Replace("{artist}", album.Artist)
+                .Replace("{title}", track.Title)
+                .Replace("{tracknum}", track.Number.ToString("00"));
             return fileName.ToAllowedFileName();
         }
 

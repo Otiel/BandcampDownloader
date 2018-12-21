@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsTags"
-    Width="345"
+    Width="395"
     Height="245"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
@@ -20,7 +20,7 @@
             Target="{Binding ElementName=textBoxFileNameFormat}" />
         <TextBox
             x:Name="textBoxFileNameFormat"
-            Width="230"
+            Width="285"
             Height="20"
             Margin="107,3,0,0"
             HorizontalAlignment="Left"
@@ -29,7 +29,7 @@
             VerticalContentAlignment="Center"
             TabIndex="0"
             Text="{Binding FileNameFormat, UpdateSourceTrigger=Explicit}"
-            ToolTip="You can use placeholders to customize the file name: &#xA;- {artist} will be replaced by the album artist &#xA;- {title} will be replaced by the track name &#xA;- {tracknum} will be replaced by the track number"
+            ToolTip="You can use placeholders to customize the file name: &#xA;- {artist} will be replaced by the album artist &#xA;- {title} will be replaced by the track name &#xA;- {tracknum} will be replaced by the track number &#xA;- {album} will be replaced by the album name &#xA;- {year}, {month} and {day} will be replaced by the album release date"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxModifyTags"
