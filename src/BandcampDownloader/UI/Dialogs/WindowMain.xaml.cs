@@ -647,7 +647,7 @@ namespace BandcampDownloader {
                         return new List<TrackFile>();
                     }
 
-                    tasks[trackIndex] = Task.Factory.StartNew(() => {
+                    tasks[trackIndex] = Task.Factory.StartNew(async () => {
                         long size = 0;
                         Boolean sizeRetrieved = false;
                         int tries = 0;
