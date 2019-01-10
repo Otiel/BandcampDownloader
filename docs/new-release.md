@@ -7,7 +7,7 @@ This repository follows [git flow](https://nvie.com/posts/a-successful-git-branc
 ## Prepare the release
 
 1. Merge all `fix` and `feature` branches that are to be incorporated in the new release on the `develop` branch.
-2. Update `CHANGELOG.md` based on the git history. Determine the new version number from the changes.
+2. Update `CHANGELOG.md` based on the git history. Determine the new version number from the changes. Do not commit yet.
 
 ## Create a new release branch
 
