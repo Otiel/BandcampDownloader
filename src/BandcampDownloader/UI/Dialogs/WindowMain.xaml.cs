@@ -374,7 +374,7 @@ namespace BandcampDownloader {
                                 }
                                 ImageBuilder.Current.Build(artworkTempPath, artworkFolderPath, settings); // Save it to the album folder
                             } else if (App.UserSettings.SaveCoverArtInFolder) {
-                                File.Copy(artworkTempPath, artworkFolderPath);
+                                File.Copy(artworkTempPath, artworkFolderPath, true);
                             }
 
                             // Convert/resize artwork to be saved in tags
