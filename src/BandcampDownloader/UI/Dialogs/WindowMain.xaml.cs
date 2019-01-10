@@ -283,14 +283,14 @@ namespace BandcampDownloader {
                     };
 
                     //lock (_pendingDownloads) {
-                        if (_userCancelled) {
-                            // Abort
-                            return false;
-                        }
-                        // Register current download
-                        _pendingDownloads.Add(webClient);
-                        // Start download
-                        await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), trackPath);
+                    if (_userCancelled) {
+                        // Abort
+                        return false;
+                    }
+                    // Register current download
+                    _pendingDownloads.Add(webClient);
+                    // Start download
+                    await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), trackPath);
                     //}
                     // Wait for download to be finished
                     //doneEvent.WaitOne();
@@ -417,14 +417,14 @@ namespace BandcampDownloader {
                     };
 
                     //lock (_pendingDownloads) {
-                        if (_userCancelled) {
-                            // Abort
-                            return null;
-                        }
-                        // Register current download
-                        _pendingDownloads.Add(webClient);
-                        // Start download
-                        await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), artworkTempPath);
+                    if (_userCancelled) {
+                        // Abort
+                        return null;
+                    }
+                    // Register current download
+                    _pendingDownloads.Add(webClient);
+                    // Start download
+                    await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), artworkTempPath);
                     //}
 
                     // Wait for download to be finished
@@ -613,7 +613,7 @@ namespace BandcampDownloader {
                                 // Abort
                                 return new List<TrackFile>();
                             }
-                            
+
                             try {
                                 size = await FileHelper.GetFileSizeAsync(album.ArtworkUrl, "HEAD");
                                 sizeRetrieved = true;
