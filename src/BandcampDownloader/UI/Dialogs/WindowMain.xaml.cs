@@ -615,7 +615,7 @@ namespace BandcampDownloader {
                             }
                             
                             try {
-                                size = FileHelper.GetFileSize(album.ArtworkUrl, "HEAD");
+                                size = await FileHelper.GetFileSizeAsync(album.ArtworkUrl, "HEAD");
                                 sizeRetrieved = true;
                                 Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
                             } catch {
@@ -662,7 +662,7 @@ namespace BandcampDownloader {
                                     // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
                                     // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
                                     // the mp3 sizes
-                                    size = FileHelper.GetFileSize(album.Tracks[trackIndex].Mp3Url, "GET");
+                                    size = await FileHelper.GetFileSizeAsync(album.Tracks[trackIndex].Mp3Url, "GET");
                                     sizeRetrieved = true;
                                     Log($"Retrieved the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\"", LogType.VerboseInfo);
                                 } catch {

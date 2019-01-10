@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace BandcampDownloader {
 
@@ -12,12 +13,12 @@ namespace BandcampDownloader {
         /// <param name="protocolMethod">The protocol method to use in order to retrieve the file
         /// size.</param>
         /// <returns>The size of the file located at the provided URL.</returns>
-        public static long GetFileSize(String url, String protocolMethod) {
+        public static async Task<long> GetFileSizeAsync(String url, String protocolMethod) {
             var webRequest = HttpWebRequest.Create(url);
             webRequest.Method = protocolMethod;
             long fileSize;
             try {
-                using (WebResponse webResponse = webRequest.GetResponse()) {
+                using (WebResponse webResponse = await webRequest.GetResponseAsync()) {
                     fileSize = webResponse.ContentLength;
                 }
             } catch (Exception e) {
