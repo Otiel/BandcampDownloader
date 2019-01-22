@@ -404,7 +404,7 @@ namespace BandcampDownloader {
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
                                 Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
