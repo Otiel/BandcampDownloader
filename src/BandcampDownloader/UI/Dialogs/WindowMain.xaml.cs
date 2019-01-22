@@ -410,6 +410,11 @@ namespace BandcampDownloader {
                             }
                         } // Else the download has been cancelled (by the user)
 
+                        tries++;
+                        if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
+                            //WaitForCooldown(tries);
+                        }
+
                         doneEvent.Set();
                     };
 
