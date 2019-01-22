@@ -374,7 +374,7 @@ namespace BandcampDownloader {
                                 }
                                 ImageBuilder.Current.Build(artworkTempPath, artworkFolderPath, settings); // Save it to the album folder
                             } else if (App.UserSettings.SaveCoverArtInFolder) {
-                                File.Copy(artworkTempPath, artworkFolderPath);
+                                File.Copy(artworkTempPath, artworkFolderPath, true);
                             }
 
                             // Convert/resize artwork to be saved in tags
@@ -404,11 +404,16 @@ namespace BandcampDownloader {
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
                                 Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
+
+                        tries++;
+                        if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
+                            //WaitForCooldown(tries);
+                        }
 
                         doneEvent.Set();
                     };

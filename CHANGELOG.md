@@ -1,3 +1,11 @@
+# 0.2.4.1
+
+## Bug fixes
+
+* Fixed issue that would cause the program to crash when the artwork file was already existing in the target folder.
+* Fixed issue [#73](https://github.com/Otiel/BandcampDownloader/issues/73) that would stuck the downloads in an endless loop when downloading a cover art failed.
+* Fixed issue that would report an incorrect number of tries when downloading a cover art failed.
+
 # 0.2.4.0
 
 ## New features
