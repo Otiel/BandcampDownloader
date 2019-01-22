@@ -10,16 +10,16 @@ BandcampDownloader is a Windows application that helps downloading albums from [
 
 ## Features
 
-* Downloads MP3 files from Bandcamp:
+* Download MP3 files from Bandcamp:
   * From album pages: `https://[artist].bandcamp.com/album/[album]`,
   * From track pages: `https://[artist].bandcamp.com/track/[track]`,
   * From artist pages: `https://[artist].bandcamp.com`.
-* Adds ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
+* Add ID3 tags to tracks: Album, Artist, Album Artist, Title, Track number and Year.
 * Save lyrics (if available) to ID3 tags.
-* Downloads cover art and:
-  * Converts it to jpg,
-  * Resizes it,
-  * Saves it in tracks tags and in folder.
+* Download cover art and:
+  * Convert it to jpg,
+  * Resize it,
+  * Save it in tracks tags and in folder.
 
 ## Screenshot
 
