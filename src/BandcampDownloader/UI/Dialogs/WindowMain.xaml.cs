@@ -412,7 +412,7 @@ namespace BandcampDownloader {
 
                         tries++;
                         if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
-                            //WaitForCooldown(tries);
+                            WaitForCooldown(tries);
                         }
 
                         doneEvent.Set();
