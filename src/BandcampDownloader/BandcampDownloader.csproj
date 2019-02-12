@@ -82,7 +82,7 @@
       <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Config.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=d836a57afd299520, processorArchitecture=MSIL">
-      <HintPath>..\packages\Config.Net.4.12.0\lib\net452\Config.Net.dll</HintPath>
+      <HintPath>..\packages\Config.Net.4.13.2\lib\net452\Config.Net.dll</HintPath>
     </Reference>
     <Reference Include="Costura, Version=3.3.1.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.3.3.1\lib\net40\Costura.dll</HintPath>
