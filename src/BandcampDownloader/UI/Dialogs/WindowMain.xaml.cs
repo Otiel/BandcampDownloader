@@ -121,7 +121,7 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content += " - A new version is available";
+                    labelVersion.Content = $"A new version ({latestVersion}) is available";
                 }));
             }
         }

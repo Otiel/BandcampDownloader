@@ -1,3 +1,10 @@
+# 0.2.5.0
+
+## Improvements
+
+* When a new version is available, its number is displayed on the main window.
+* Updated dependencies to their latest version. This should fix issue [#76](https://github.com/Otiel/BandcampDownloader/issues/76) (false positive from Windows Defender).
+
 # 0.2.4.2
 
 ## Bug fixes
