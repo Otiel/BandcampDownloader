@@ -11,3 +11,5 @@ BandcampDownloader relies on a number of open-source libraries, all listed below
 * [`Json.NET`](https://github.com/JamesNK/Newtonsoft.Json): used to parse Json from bandcamp.com pages.
 * [`NLog`](https://github.com/NLog/NLog): used to log events.
 * [`TagLib#`](https://github.com/mono/taglib-sharp): used to write MP3 tags.
+* [`WPFLocalizationExtension`](https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension): used to manage the localization.
+* [`XAMLMarkupExtensions`](https://github.com/XAMLMarkupExtensions/XAMLMarkupExtensions): required by `WpfLocalizeExtension`.
