@@ -3,12 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="windowSettings"
-    Title="Settings"
+    Title="{lex:Loc}"
     Width="557"
     Height="369"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     FocusManager.FocusedElement="{Binding ElementName=listBoxSections}"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
@@ -39,7 +43,7 @@
             <Label
                 x:Name="labelSettingsInfo"
                 Margin="0,0,0,0"
-                Content="Some settings cannot be changed while tracks are downloading."
+                Content="{lex:Loc}"
                 Foreground="#FF858585" />
         </DockPanel>
         <ListBox
@@ -52,13 +56,13 @@
             TabIndex="0">
             <ListBoxItem
                 x:Name="listBoxItemGeneral"
-                Content="General"
+                Content="{lex:Loc}"
                 IsSelected="True" />
-            <ListBoxItem x:Name="listBoxItemTags" Content="Naming and tags" />
-            <ListBoxItem x:Name="listBoxItemCoverArt" Content="Cover art" />
-            <ListBoxItem x:Name="listBoxItemDownloads" Content="Downloads" />
-            <ListBoxItem x:Name="listBoxItemNetwork" Content="Network" />
-            <ListBoxItem x:Name="listBoxItemAdvanced" Content="Advanced settings" />
+            <ListBoxItem x:Name="listBoxItemTags" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemCoverArt" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemDownloads" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemNetwork" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemAdvanced" Content="{lex:Loc}" />
         </ListBox>
         <local:UserControlSettingsGeneral
             x:Name="userControlSettingsGeneral"
@@ -117,7 +121,7 @@
             Click="ButtonResetSettings_Click"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="2"
-            ToolTip="Resets settings to their default values">
+            ToolTip="{lex:Loc}">
             <StackPanel Orientation="Horizontal">
                 <Image
                     x:Name="imageArrowCircle225Left"
@@ -127,9 +131,10 @@
                     Source="pack://application:,,,/Resources/ArrowCircle225Left.png"
                     Stretch="None" />
                 <Label
+                    x:Name="labelButtonResetSettings"
                     Margin="7,0,0,0"
                     Padding="0"
-                    Content="_Reset settings" />
+                    Content="{lex:Loc}" />
             </StackPanel>
         </Button>
         <DockPanel
@@ -141,7 +146,7 @@
                 Width="90"
                 Height="24"
                 Click="ButtonSave_Click"
-                Content="_Ok"
+                Content="{lex:Loc}"
                 IsDefault="True"
                 TabIndex="3" />
             <Button
@@ -150,7 +155,7 @@
                 Height="24"
                 Margin="10,0,0,0"
                 Click="ButtonCancel_Click"
-                Content="_Cancel"
+                Content="{lex:Loc}"
                 IsCancel="True"
                 TabIndex="4" />
         </DockPanel>

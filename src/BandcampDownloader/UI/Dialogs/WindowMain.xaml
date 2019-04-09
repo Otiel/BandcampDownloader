@@ -2,6 +2,7 @@
     x:Class="BandcampDownloader.WindowMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     Name="windowMain"
     Title="Bandcamp Downloader"
@@ -9,6 +10,9 @@
     Height="440"
     MinWidth="815"
     MinHeight="440"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     Closing="WindowMain_Closing"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     WindowStartupLocation="CenterScreen"
@@ -38,7 +42,7 @@
                 Margin="-4,-3,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Content="Save albums _to"
+                Content="{lex:Loc}"
                 Target="{Binding ElementName=textBoxDownloadsPath}" />
             <TextBox
                 Name="textBoxDownloadsPath"
@@ -47,7 +51,7 @@
                 VerticalAlignment="Top"
                 TabIndex="1"
                 Text="{Binding DownloadsPath}"
-                ToolTip="You can use placeholders to customize the download folder depending on the album: &#x0a;- {artist} will be replaced by the album artist &#x0a;- {album} will be replaced by the album name &#x0a;- {year}, {month} and {day} will be replaced by the album release date"
+                ToolTip="{lex:Loc}"
                 ToolTipService.ShowDuration="60000" />
             <Button
                 Name="buttonBrowse"
@@ -56,20 +60,20 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Click="ButtonBrowse_Click"
-                Content="..."
+                Content="{lex:Loc}"
                 TabIndex="2"
-                ToolTip="Browse for folder" />
+                ToolTip="{lex:Loc}" />
         </Grid>
         <CheckBox
             x:Name="checkBoxDownloadDiscography"
             Margin="0,143,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Download _artist discography"
+            Content="{lex:Loc}"
             IsChecked="{Binding DownloadArtistDiscography}"
             IsEnabled="True"
             TabIndex="3"
-            ToolTip="If checked, the whole artist discography will be downloaded."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <ProgressBar
             Name="progressBar"
@@ -108,7 +112,8 @@
                         <Run Text="BandcampDownloader version" />
                         <Run Text="{Binding Source={x:Static local:Constants.AppVersion}, Mode=OneWay}" />
                         <Run Text="&#xA;&#xA;" />
-                        <Run Text="Click to go to official project website: &#xA;" />
+                        <Run Text="{lex:Loc labelVersion_ToolTip_Part}" />
+                        <Run Text="&#xA;" />
                         <Run Text="{Binding Source={x:Static local:Constants.ProjectWebsite}, Mode=OneWay}" />
                     </TextBlock>
                 </Label.ToolTip>
@@ -138,7 +143,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalContentAlignment="Center"
                 Click="ButtonStart_Click"
-                Content="Start _download"
+                Content="{lex:Loc}"
                 TabIndex="4" />
             <Button
                 x:Name="buttonStop"
@@ -149,7 +154,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalContentAlignment="Center"
                 Click="ButtonStop_Click"
-                Content="_Cancel"
+                Content="{lex:Loc}"
                 IsEnabled="False"
                 TabIndex="5" />
             <Button
@@ -160,9 +165,9 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
                 Click="ButtonOpenSettingsWindow_Click"
-                Content="_Settings..."
+                Content="{lex:Loc}"
                 TabIndex="6"
-                ToolTip="Open settings" />
+                ToolTip="{lex:Loc}" />
         </Grid>
     </Grid>
 </Window>

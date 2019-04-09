@@ -3,11 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsCoverArt"
     Width="225"
     Height="180"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -20,10 +24,10 @@
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save in _folder"
+            Content="{lex:Loc}"
             IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
-            ToolTip="If checked, the cover art will be downloaded in the albums folder."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInFolderConvertToJpg"
@@ -31,11 +35,11 @@
             Margin="24,25,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Convert to _jpg"
+            Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInFolderConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="1"
-            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInFolderResize"
@@ -43,18 +47,18 @@
             Margin="24,46,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Constrain _maximum width/height"
+            Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInFolderResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="2"
-            ToolTip="If checked, the cover art will be resized with the specified max width/height."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelCoverArtInFolderMaxSize"
             Margin="56,63,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Max size (_px)"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=textBoxCoverArtInFolderMaxSize}" />
         <TextBox
             x:Name="textBoxCoverArtInFolderMaxSize"
@@ -79,11 +83,11 @@
             Margin="3,94,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Save in _tags"
+            Content="{lex:Loc}"
             IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
             RenderTransformOrigin="0.234,0.536"
             TabIndex="4"
-            ToolTip="If checked, the cover art will be saved in the tracks tags."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInTagsConvertToJpg"
@@ -91,11 +95,11 @@
             Margin="24,115,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Convert to jp_g"
+            Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInTagsConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="5"
-            ToolTip="If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxCoverArtInTagsResize"
@@ -103,18 +107,18 @@
             Margin="24,136,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Constrain m_aximum width/height"
+            Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInTagsResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="6"
-            ToolTip="If checked, the cover art will be resized with the specified max width/height."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelCoverArtInTagsMaxSize"
             Margin="56,153,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Max size (p_x)"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=textBoxCoverArtInTagsMaxSize}" />
         <TextBox
             x:Name="textBoxCoverArtInTagsMaxSize"

@@ -3,11 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsGeneral"
     Width="286"
     Height="105"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -17,13 +21,14 @@
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Check for _updates at startup"
+            Content="{lex:Loc}"
             IsChecked="{Binding CheckForUpdates, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
             ToolTipService.ShowDuration="60000">
             <CheckBox.ToolTip>
                 <TextBlock>
-                    <Run Text="If checked, the application will query the following address when starting: &#xA;" />
+                    <Run Text="{lex:Loc checkBoxCheckForUpdates_ToolTip_Part}" />
+                    <Run Text="&#xA;" />
                     <Run Text="{Binding Source={x:Static local:Constants.LatestReleaseWebsite}, Mode=OneWay}" />
                 </TextBlock>
             </CheckBox.ToolTip>
@@ -36,7 +41,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="ButtonCheckForUpdates_Click"
-            Content="Check _now"
+            Content="{lex:Loc}"
             IsDefault="True"
             TabIndex="1" />
         <CheckBox
@@ -45,17 +50,17 @@
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Show _verbose log"
+            Content="{lex:Loc}"
             IsChecked="{Binding ShowVerboseLog, UpdateSourceTrigger=Explicit}"
             TabIndex="2"
-            ToolTip="If checked, more information will be shown on the log."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
-            x:Name="labelInfo"
+            x:Name="labelVerboseLogInfo"
             Margin="117,24,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="(the log file is always verbose)"
+            Content="{lex:Loc}"
             Foreground="#FF858585" />
         <CheckBox
             x:Name="checkBoxEnableApplicationSounds"
@@ -63,10 +68,10 @@
             Margin="3,56,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Play _notifications"
+            Content="{lex:Loc}"
             IsChecked="{Binding EnableApplicationSounds, UpdateSourceTrigger=Explicit}"
             TabIndex="2"
-            ToolTip="If checked, a notification sound will be played when downloads are finished."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelLanguage"

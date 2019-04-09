@@ -3,11 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsTags"
     Width="395"
     Height="245"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -16,7 +20,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="_File name format:"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=textBoxFileNameFormat}" />
         <TextBox
             x:Name="textBoxFileNameFormat"
@@ -29,17 +33,17 @@
             VerticalContentAlignment="Center"
             TabIndex="0"
             Text="{Binding FileNameFormat, UpdateSourceTrigger=Explicit}"
-            ToolTip="You can use placeholders to customize the file name: &#xA;- {artist} will be replaced by the album artist &#xA;- {title} will be replaced by the track name &#xA;- {tracknum} will be replaced by the track number &#xA;- {album} will be replaced by the album name &#xA;- {year}, {month} and {day} will be replaced by the album release date"
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxModifyTags"
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="_Modify tracks tags (ID3)"
+            Content="{lex:Loc}"
             IsChecked="{Binding ModifyTags, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
-            ToolTip="If checked, each tag will be modified as specified below. &#xA;&#xA;If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. &#xA;This is equivalent to setting &quot;Do not modify&quot; on each tag."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="labelArtist"
@@ -47,7 +51,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="_Artist"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxArtist}" />
         <ComboBox
             x:Name="comboBoxArtist"
@@ -67,7 +71,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="Track n_umber"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxTrackNumber}" />
         <ComboBox
             x:Name="comboBoxTrackNumber"
@@ -87,7 +91,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="_Title"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxTrackTitle}" />
         <ComboBox
             x:Name="comboBoxTrackTitle"
@@ -107,7 +111,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="Album _name"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxAlbumTitle}" />
         <ComboBox
             x:Name="comboBoxAlbumTitle"
@@ -127,7 +131,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="Album art_ist"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxAlbumArtist}" />
         <ComboBox
             x:Name="comboBoxAlbumArtist"
@@ -147,7 +151,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="Album release _year"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxYear}" />
         <ComboBox
             x:Name="comboBoxYear"
@@ -167,7 +171,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="_Lyrics"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxLyrics}" />
         <ComboBox
             x:Name="comboBoxLyrics"
@@ -187,7 +191,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             VerticalContentAlignment="Center"
-            Content="Comm_ents"
+            Content="{lex:Loc}"
             Target="{Binding ElementName=comboBoxComments}" />
         <ComboBox
             x:Name="comboBoxComments"
