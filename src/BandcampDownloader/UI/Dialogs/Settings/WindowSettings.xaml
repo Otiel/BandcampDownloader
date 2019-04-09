@@ -37,7 +37,7 @@
                 Source="pack://application:,,,/Resources/InformationSmallWhite.png"
                 Stretch="None" />
             <Label
-                x:Name="labelInfo"
+                x:Name="labelSettingsInfo"
                 Margin="0,0,0,0"
                 Content="Some settings cannot be changed while tracks are downloading."
                 Foreground="#FF858585" />

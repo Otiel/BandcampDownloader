@@ -30,7 +30,7 @@
                 Source="pack://application:,,,/Resources/ExclamationSmall.png"
                 Stretch="None" />
             <Label
-                x:Name="labelInfo"
+                x:Name="labelAdvancedSettingsWarning"
                 Margin="0,0,0,0"
                 Content="Change these settings at your own risk."
                 Foreground="#FF858585" />
