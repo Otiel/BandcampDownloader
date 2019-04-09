@@ -133,4 +133,232 @@
   <data name="InformationSmallWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\InformationSmallWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Browse for folder</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Cancel</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Check no_w</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Settings</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Open settings</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Resets settings to their default values</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Save</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>Start _download</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Cancel</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Check for _updates at startup</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>If checked, the application will query the following address when starting:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Convert to _jpg</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Constrain _maximum width/height</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>If checked, the cover art will be resized with the specified max width/height.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Convert to jp_g</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Constrain m_aximum width/height</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>If checked, the cover art will be resized with the specified max width/height.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Download _artist discography</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>If checked, the whole artist discography will be downloaded.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Play _notifications sounds</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>If checked, a notification sound will be played when downloads are finished.</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Modify tracks tags (ID3)</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>If checked, each tag will be modified as specified below. &#x0a;&#x0a;If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. &#x0a;This is equivalent to setting &quot;Do not modify&quot; on each tag.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Download one album at a time</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>If checked, only one album at a time will be downloaded.&#x0a;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Retrieve files _size</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>If checked, files size will be retrieved so that precise download progress can be shown. &#x0a;Uncheck this option to save some time.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Save in _folder</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>If checked, the cover art will be downloaded in the albums folder.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Save in _tags</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>If checked, the cover art will be saved in the tracks tags.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Show _verbose log</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>If checked, more information will be shown on the log.</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Album art_ist</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Album _name</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Allowed file _size difference (%)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artist</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Reset settings</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Comm_ents</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Max size (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Max size (p_x)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>Download _max tries</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Retry c_ooldown (sec)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Retry _exponent</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Save albums _to</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_File name format:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) proxy</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Change these settings at your own risk.</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Language</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Lyrics</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Some settings cannot be changed while tracks are downloading.</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Track n_umber</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Title</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(the log file is always verbose)</value>
+  </data>
+  <data name="labelVersion_ToolTip_Part" xml:space="preserve">
+    <value>Click to go to official project website:</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Album release _year</value>
+  </data>
+  <data name="listBoxItemAdvanced" xml:space="preserve">
+    <value>Advanced settings</value>
+  </data>
+  <data name="listBoxItemCoverArt" xml:space="preserve">
+    <value>Cover art</value>
+  </data>
+  <data name="listBoxItemDownloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="listBoxItemGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="listBoxItemNetwork" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="listBoxItemTags" xml:space="preserve">
+    <value>Naming and tags</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Manual proxy configuration</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_No proxy</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>_System proxy</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#x0a;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#x0a;&#x0a;Recommended value = 5</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Maximum number of tries performed to download a track if it fails. &#x0a;After that number is reached (for each track), the track download will be skipped. &#x0a;&#x0a;Recommended value = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Used to control the exponential back-off mechanism. &#x0a;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#x0a;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#x0a;The formula used to compute the time to wait before trying again a download is the following: &#x0a;time = cooldown * (exponent ^ try-count) &#x0a;&#x0a;Recommended value = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Used to control the exponential back-off mechanism. &#x0a;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#x0a;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#x0a;The formula used to compute the time to wait before trying again a download is the following: &#x0a;time = cooldown * (exponent ^ try-count) &#x0a;&#x0a;Recommended value = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>You can use placeholders to customize the download folder depending on the album: &#x0a;- {artist} will be replaced by the album artist &#x0a;- {album} will be replaced by the album name &#x0a;- {year}, {month} and {day} will be replaced by the album release date</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>You can use placeholders to customize the file name: &#x0a;- {artist} will be replaced by the album artist &#x0a;- {title} will be replaced by the track name &#x0a;- {tracknum} will be replaced by the track number &#x0a;- {album} will be replaced by the album name &#x0a;- {year}, {month} and {day} will be replaced by the album release date</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>
