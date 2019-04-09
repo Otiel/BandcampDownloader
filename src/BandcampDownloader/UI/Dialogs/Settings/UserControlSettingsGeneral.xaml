@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsGeneral"
     Width="286"
-    Height="75"
+    Height="105"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -68,5 +68,23 @@
             TabIndex="2"
             ToolTip="If checked, a notification sound will be played when downloads are finished."
             ToolTipService.ShowDuration="60000" />
+        <Label
+            x:Name="labelLanguage"
+            Margin="0,76,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="{lex:Loc}"
+            Target="{Binding ElementName=comboBoxLanguage}" />
+        <ComboBox
+            x:Name="comboBoxLanguage"
+            Width="120"
+            Margin="67,78,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            DisplayMemberPath="Description"
+            ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:Language}}}"
+            SelectedValue="{Binding Language, UpdateSourceTrigger=Explicit}"
+            SelectedValuePath="Value"
+            TabIndex="4" />
     </Grid>
 </UserControl>

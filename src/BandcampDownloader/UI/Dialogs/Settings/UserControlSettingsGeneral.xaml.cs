@@ -30,6 +30,7 @@ namespace BandcampDownloader {
             checkBoxCheckForUpdates.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            comboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
 
         private void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
