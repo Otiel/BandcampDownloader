@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using WPFLocalizeExtension.Engine;
 
 namespace BandcampDownloader {
 
@@ -31,6 +33,9 @@ namespace BandcampDownloader {
             checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             comboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+
+            // Apply selected language
+            LocalizeDictionary.Instance.Culture = new CultureInfo(comboBoxLanguage.SelectedValue.ToString());
         }
 
         private void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {

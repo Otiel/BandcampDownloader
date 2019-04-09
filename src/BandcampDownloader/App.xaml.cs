@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using Config.Net;
+using WPFLocalizeExtension.Engine;
 
 namespace BandcampDownloader {
 
     public partial class App: Application {
+
         /// <summary>
         /// The settings chosen by the user.
         /// </summary>
@@ -13,6 +16,7 @@ namespace BandcampDownloader {
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
             InitializeSettings();
+            LoadLanguage();
         }
 
         /// <summary>
@@ -25,6 +29,13 @@ namespace BandcampDownloader {
                 // Its default value cannot be set in settings as it isn't determined by a constant function
                 App.UserSettings.DownloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
             }
+        }
+
+        /// <summary>
+        /// Sets the CultureInfo according to the language saved in settings.
+        /// </summary>
+        private void LoadLanguage() {
+            LocalizeDictionary.Instance.Culture = new CultureInfo(UserSettings.Language.ToString());
         }
     }
 }
