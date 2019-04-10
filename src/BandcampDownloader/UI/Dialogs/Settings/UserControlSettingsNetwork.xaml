@@ -7,8 +7,8 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsNetwork"
-    Width="353"
-    Height="127.667"
+    Width="410"
+    Height="105"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -39,37 +39,43 @@
             VerticalAlignment="Top"
             Content="{lex:Loc}"
             IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.Manual}, UpdateSourceTrigger=Explicit}" />
-        <Label
-            x:Name="labelHttp"
+        <Grid
+            x:Name="gridManualProxy"
             Margin="17,76,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxHttpAddress}" />
-        <TextBox
-            x:Name="textBoxHttpAddress"
-            Width="100"
-            Height="20"
-            Margin="107,80,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
-            Text="{Binding ProxyHttpAddress, UpdateSourceTrigger=Explicit}" />
-        <Label
-            x:Name="labelHttpPort"
-            Margin="222,76,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxHttpPort}" />
-        <TextBox
-            x:Name="textBoxHttpPort"
-            Width="50"
-            Height="20"
-            Margin="259,80,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
-            Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}" />
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="labelHttp"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxHttpAddress}" />
+            <TextBox
+                x:Name="textBoxHttpAddress"
+                Grid.Column="1"
+                Width="100"
+                Height="20"
+                IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
+                Text="{Binding ProxyHttpAddress, UpdateSourceTrigger=Explicit}" />
+            <Label
+                x:Name="labelHttpPort"
+                Grid.Column="2"
+                Margin="15,0,0,0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxHttpPort}" />
+            <TextBox
+                x:Name="textBoxHttpPort"
+                Grid.Column="3"
+                Width="50"
+                Height="20"
+                IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
+                Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}" />
+        </Grid>
     </Grid>
 </UserControl>

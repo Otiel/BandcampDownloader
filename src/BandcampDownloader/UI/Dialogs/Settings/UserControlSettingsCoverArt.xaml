@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsCoverArt"
-    Width="225"
+    Width="410"
     Height="180"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
@@ -53,30 +53,37 @@
             TabIndex="2"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
-        <Label
-            x:Name="labelCoverArtInFolderMaxSize"
-            Margin="56,63,0,0"
+        <Grid
+            x:Name="gridCoverArtInFolderMaxSize"
+            Margin="56,61,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxCoverArtInFolderMaxSize}" />
-        <TextBox
-            x:Name="textBoxCoverArtInFolderMaxSize"
-            Width="40"
-            Height="20"
-            Margin="139,67,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TabIndex="3"
-            Text="{Binding CoverArtInFolderMaxSize, UpdateSourceTrigger=Explicit}"
-            TextChanged="TextBox_TextChanged">
-            <TextBox.IsEnabled>
-                <MultiBinding Converter="{StaticResource BooleanAndConverter}">
-                    <Binding ElementName="checkBoxSaveCoverArtInFolder" Path="IsChecked" />
-                    <Binding ElementName="checkBoxCoverArtInFolderResize" Path="IsChecked" />
-                </MultiBinding>
-            </TextBox.IsEnabled>
-        </TextBox>
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="labelCoverArtInFolderMaxSize"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxCoverArtInFolderMaxSize}" />
+            <TextBox
+                x:Name="textBoxCoverArtInFolderMaxSize"
+                Grid.Column="1"
+                Width="40"
+                Height="20"
+                Margin="0,4,0,0"
+                TabIndex="3"
+                Text="{Binding CoverArtInFolderMaxSize, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged">
+                <TextBox.IsEnabled>
+                    <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                        <Binding ElementName="checkBoxSaveCoverArtInFolder" Path="IsChecked" />
+                        <Binding ElementName="checkBoxCoverArtInFolderResize" Path="IsChecked" />
+                    </MultiBinding>
+                </TextBox.IsEnabled>
+            </TextBox>
+        </Grid>
         <CheckBox
             x:Name="checkBoxSaveCoverArtInTags"
             Height="16"
@@ -113,29 +120,36 @@
             TabIndex="6"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
-        <Label
-            x:Name="labelCoverArtInTagsMaxSize"
-            Margin="56,153,0,0"
+        <Grid
+            x:Name="gridCoverArtInTagsMaxSize"
+            Margin="56,151,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxCoverArtInTagsMaxSize}" />
-        <TextBox
-            x:Name="textBoxCoverArtInTagsMaxSize"
-            Width="40"
-            Height="20"
-            Margin="139,157,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TabIndex="7"
-            Text="{Binding CoverArtInTagsMaxSize, UpdateSourceTrigger=Explicit}"
-            TextChanged="TextBox_TextChanged">
-            <TextBox.IsEnabled>
-                <MultiBinding Converter="{StaticResource BooleanAndConverter}">
-                    <Binding ElementName="checkBoxSaveCoverArtInTags" Path="IsChecked" />
-                    <Binding ElementName="checkBoxCoverArtInTagsResize" Path="IsChecked" />
-                </MultiBinding>
-            </TextBox.IsEnabled>
-        </TextBox>
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="labelCoverArtInTagsMaxSize"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxCoverArtInTagsMaxSize}" />
+            <TextBox
+                x:Name="textBoxCoverArtInTagsMaxSize"
+                Grid.Column="1"
+                Width="40"
+                Height="20"
+                Margin="0,4,0,0"
+                TabIndex="7"
+                Text="{Binding CoverArtInTagsMaxSize, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged">
+                <TextBox.IsEnabled>
+                    <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                        <Binding ElementName="checkBoxSaveCoverArtInTags" Path="IsChecked" />
+                        <Binding ElementName="checkBoxCoverArtInTagsResize" Path="IsChecked" />
+                    </MultiBinding>
+                </TextBox.IsEnabled>
+            </TextBox>
+        </Grid>
     </Grid>
 </UserControl>

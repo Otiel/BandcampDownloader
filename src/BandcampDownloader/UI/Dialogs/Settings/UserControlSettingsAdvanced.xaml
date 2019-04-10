@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsAdvanced"
-    Width="240"
+    Width="410"
     Height="135"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
@@ -39,89 +39,101 @@
                 Content="{lex:Loc}"
                 Foreground="#FF858585" />
         </DockPanel>
-        <Label
-            x:Name="labelAllowedFileSizeDifference"
+        <Grid
+            x:Name="gridAdvancedSettings"
             Margin="0,26,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxAllowedFileSizeDifference}" />
-        <TextBox
-            x:Name="textBoxAllowedFileSizeDifference"
-            Width="40"
-            Height="20"
-            Margin="176,30,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TabIndex="0"
-            TextChanged="TextBox_TextChanged"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000">
-            <Binding
-                Converter="{StaticResource DoubleToPercentConverter}"
-                Path="AllowedFileSizeDifference"
-                UpdateSourceTrigger="Explicit">
-                <Binding.ValidationRules>
-                    <local:DoubleRule />
-                </Binding.ValidationRules>
-            </Binding>
-        </TextBox>
-        <Label
-            x:Name="labelDownloadMaxTries"
-            Margin="0,52,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxDownloadMaxTries}" />
-        <TextBox
-            x:Name="textBoxDownloadMaxTries"
-            Width="40"
-            Height="20"
-            Margin="176,56,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TabIndex="1"
-            Text="{Binding Path=DownloadMaxTries, UpdateSourceTrigger=Explicit}"
-            TextChanged="TextBox_TextChanged"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
-        <Label
-            x:Name="labelDownloadRetryCooldown"
-            Margin="0,78,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxDownloadRetryCooldown}" />
-        <TextBox
-            x:Name="textBoxDownloadRetryCooldown"
-            Width="40"
-            Height="20"
-            Margin="176,82,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TabIndex="2"
-            Text="{Binding Path=DownloadRetryCooldown, UpdateSourceTrigger=Explicit}"
-            TextChanged="TextBox_TextChanged"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
-        <Label
-            x:Name="labelDownloadRetryExponent"
-            Margin="0,104,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxDownloadRetryExponent}" />
-        <TextBox
-            x:Name="textBoxDownloadRetryExponent"
-            Width="40"
-            Height="20"
-            Margin="176,108,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TabIndex="3"
-            Text="{Binding Path=DownloadRetryExponent, UpdateSourceTrigger=Explicit}"
-            TextChanged="TextBox_TextChanged"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
+            VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label
+                x:Name="labelAllowedFileSizeDifference"
+                Grid.Row="0"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxAllowedFileSizeDifference}" />
+            <TextBox
+                x:Name="textBoxAllowedFileSizeDifference"
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="40"
+                Height="20"
+                HorizontalAlignment="Left"
+                TabIndex="0"
+                TextChanged="TextBox_TextChanged"
+                ToolTip="{lex:Loc}"
+                ToolTipService.ShowDuration="60000">
+                <Binding
+                    Converter="{StaticResource DoubleToPercentConverter}"
+                    Path="AllowedFileSizeDifference"
+                    UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <local:DoubleRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <Label
+                x:Name="labelDownloadMaxTries"
+                Grid.Row="1"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxDownloadMaxTries}" />
+            <TextBox
+                x:Name="textBoxDownloadMaxTries"
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="40"
+                Height="20"
+                HorizontalAlignment="Left"
+                TabIndex="1"
+                Text="{Binding Path=DownloadMaxTries, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged"
+                ToolTip="{lex:Loc}"
+                ToolTipService.ShowDuration="60000" />
+            <Label
+                x:Name="labelDownloadRetryCooldown"
+                Grid.Row="2"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxDownloadRetryCooldown}" />
+            <TextBox
+                x:Name="textBoxDownloadRetryCooldown"
+                Grid.Row="2"
+                Grid.Column="1"
+                Width="40"
+                Height="20"
+                HorizontalAlignment="Left"
+                TabIndex="2"
+                Text="{Binding Path=DownloadRetryCooldown, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged"
+                ToolTip="{lex:Loc}"
+                ToolTipService.ShowDuration="60000" />
+            <Label
+                x:Name="labelDownloadRetryExponent"
+                Grid.Row="3"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxDownloadRetryExponent}" />
+            <TextBox
+                x:Name="textBoxDownloadRetryExponent"
+                Grid.Row="3"
+                Grid.Column="1"
+                Width="40"
+                Height="20"
+                HorizontalAlignment="Left"
+                TabIndex="3"
+                Text="{Binding Path=DownloadRetryExponent, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged"
+                ToolTip="{lex:Loc}"
+                ToolTipService.ShowDuration="60000" />
+        </Grid>
     </Grid>
 </UserControl>
