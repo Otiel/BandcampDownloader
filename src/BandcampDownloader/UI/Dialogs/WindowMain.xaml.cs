@@ -110,7 +110,7 @@ namespace BandcampDownloader {
                 latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content += " - Could not check for updates";
+                    labelVersion.Content += " - " + Properties.Resources.labelVersionError;
                 }));
                 return;
             }
@@ -119,7 +119,7 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content = $"A new version ({latestVersion}) is available";
+                    labelVersion.Content = String.Format(Properties.Resources.labelVersionNewUpdateAvailable, latestVersion);
                 }));
             }
         }

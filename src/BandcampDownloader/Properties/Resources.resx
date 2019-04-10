@@ -315,6 +315,12 @@ Uncheck this option to save some time.</value>
   <data name="labelVersion_ToolTip_Part" xml:space="preserve">
     <value>Click to go to official project website:</value>
   </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Could not check for updates</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>A new version ({0}) is available</value>
+  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album release _year</value>
   </data>

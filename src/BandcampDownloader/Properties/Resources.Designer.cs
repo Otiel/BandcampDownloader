@@ -647,6 +647,24 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not check for updates.
+        /// </summary>
+        internal static string labelVersionError {
+            get {
+                return ResourceManager.GetString("labelVersionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new version ({0}) is available.
+        /// </summary>
+        internal static string labelVersionNewUpdateAvailable {
+            get {
+                return ResourceManager.GetString("labelVersionNewUpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Album release _year.
         /// </summary>
         internal static string labelYear {
