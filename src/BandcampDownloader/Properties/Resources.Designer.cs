@@ -296,9 +296,9 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, each tag will be modified as specified below. 
+        ///   Looks up a localized string similar to If checked, each tag will be modified as specified below.
         ///
-        ///If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. 
+        ///If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file.
         ///This is equivalent to setting &quot;Do not modify&quot; on each tag..
         /// </summary>
         internal static string checkBoxModifyTags_ToolTip {
@@ -336,7 +336,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, files size will be retrieved so that precise download progress can be shown. 
+        ///   Looks up a localized string similar to If checked, files size will be retrieved so that precise download progress can be shown.
         ///Uncheck this option to save some time..
         /// </summary>
         internal static string checkBoxRetrieveFilesSize_ToolTip {
@@ -795,8 +795,8 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download. 
-        ///If the size of both files differ from less than this value (in percent), the track download will be skipped. 
+        ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
+        ///If the size of both files differ from less than this value (in percent), the track download will be skipped.
         ///
         ///Recommended value = 5.
         /// </summary>
@@ -807,8 +807,8 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum number of tries performed to download a track if it fails. 
-        ///After that number is reached (for each track), the track download will be skipped. 
+        ///   Looks up a localized string similar to Maximum number of tries performed to download a track if it fails.
+        ///After that number is reached (for each track), the track download will be skipped.
         ///
         ///Recommended value = 7.
         /// </summary>
@@ -819,11 +819,11 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism. 
-        ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
-        ///to download the track in order to avoid tickling the Bandcamp anti-spam filter. 
-        ///The formula used to compute the time to wait before trying again a download is the following: 
-        ///time = cooldown * (exponent ^ try-count) 
+        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism.
+        ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again
+        ///to download the track in order to avoid tickling the Bandcamp anti-spam filter.
+        ///The formula used to compute the time to wait before trying again a download is the following:
+        ///time = cooldown * (exponent ^ try-count)
         ///
         ///Recommended value = 0.2.
         /// </summary>
@@ -834,11 +834,11 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism. 
+        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism.
         ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
-        ///to download the track in order to avoid tickling the Bandcamp anti-spam filter. 
-        ///The formula used to compute the time to wait before trying again a download is the following: 
-        ///time = cooldown * (exponent ^ try-count) 
+        ///to download the track in order to avoid tickling the Bandcamp anti-spam filter.
+        ///The formula used to compute the time to wait before trying again a download is the following:
+        ///time = cooldown * (exponent ^ try-count)
         ///
         ///Recommended value = 4.
         /// </summary>
@@ -849,9 +849,9 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use placeholders to customize the download folder depending on the album: 
-        ///- {artist} will be replaced by the album artist 
-        ///- {album} will be replaced by the album name 
+        ///   Looks up a localized string similar to You can use placeholders to customize the download folder depending on the album:
+        ///- {artist} will be replaced by the album artist
+        ///- {album} will be replaced by the album name
         ///- {year}, {month} and {day} will be replaced by the album release date.
         /// </summary>
         internal static string textBoxDownloadsPath_ToolTip {
@@ -861,11 +861,11 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use placeholders to customize the file name: 
-        ///- {artist} will be replaced by the album artist 
-        ///- {title} will be replaced by the track name 
-        ///- {tracknum} will be replaced by the track number 
-        ///- {album} will be replaced by the album name 
+        ///   Looks up a localized string similar to You can use placeholders to customize the file name:
+        ///- {artist} will be replaced by the album artist
+        ///- {title} will be replaced by the track name
+        ///- {tracknum} will be replaced by the track number
+        ///- {album} will be replaced by the album name
         ///- {year}, {month} and {day} will be replaced by the album release date.
         /// </summary>
         internal static string textBoxFileNameFormat_ToolTip {
