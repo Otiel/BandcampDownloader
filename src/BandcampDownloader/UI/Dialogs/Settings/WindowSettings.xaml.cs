@@ -27,7 +27,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonResetSettings_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Reset all settings to their default values?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes) {
+            if (MessageBox.Show(Properties.Resources.messageBoxResetSettings, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes) {
                 ResetSettings();
             }
         }

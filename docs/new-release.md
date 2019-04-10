@@ -29,9 +29,11 @@ This repository follows [git flow](https://nvie.com/posts/a-successful-git-branc
 1. On Visual Studio, set the Solution Configuration to "Release".
 2. Build the solution.
 3. Create a new _zip_ archive containing the necessary files created under `src\BandcampDownloader\bin\Release`.
-4. Draft a new [release](https://github.com/Otiel/BandcampDownloader/releases) on GitHub:
+4. Compute hashes (MD5, SHA-1...) for the files.
+5. Draft a new [release](https://github.com/Otiel/BandcampDownloader/releases) on GitHub:
     * Choose the newly created tag (if you forgot to push it, now's the time to do it).
     * Set the title equal to `X.Y.Z`.
     * Copy-paste the changes from `CHANGELOG.md`.
+    * Add the hashes to the description.
     * Attach the _zip_ file.
-5. Publish the release!
+6. Publish the release!

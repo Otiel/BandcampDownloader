@@ -76,9 +76,7 @@ namespace BandcampDownloader {
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            // Hints
-            textBoxUrls.Text = Constants.UrlsHint;
-            textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
+
             // Check for updates
             if (App.UserSettings.CheckForUpdates) {
                 Task.Factory.StartNew(() => { CheckForUpdates(); });
@@ -112,7 +110,7 @@ namespace BandcampDownloader {
                 latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content += " - Could not check for updates";
+                    labelVersion.Content += " - " + Properties.Resources.labelVersionError;
                 }));
                 return;
             }
@@ -121,7 +119,7 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content = $"A new version ({latestVersion}) is available";
+                    labelVersion.Content = String.Format(Properties.Resources.labelVersionNewUpdateAvailable, latestVersion);
                 }));
             }
         }
@@ -319,7 +317,7 @@ namespace BandcampDownloader {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
                 // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
                 // There may be only one path needed to shorten, but it's better to use the same file name in both places
-                int fileNameInTempMaxLength = 12 - randomNumber.Length - artworkFileExt.Length; 
+                int fileNameInTempMaxLength = 12 - randomNumber.Length - artworkFileExt.Length;
                 int fileNameInFolderMaxLength = 12 - artworkFileExt.ToString().Length;
                 artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
                 artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
@@ -888,7 +886,7 @@ namespace BandcampDownloader {
 
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
             var dialog = new System.Windows.Forms.FolderBrowserDialog {
-                Description = "Select the folder to save albums"
+                Description = Properties.Resources.folderBrowserDialogDescription
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
@@ -906,7 +904,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Constants.UrlsHint) {
+            if (textBoxUrls.Text == "") {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
                 return;
@@ -996,7 +994,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
                 return;
             }
 
@@ -1032,26 +1030,10 @@ namespace BandcampDownloader {
             Process.Start(Constants.ProjectWebsite);
         }
 
-        private void TextBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Constants.UrlsHint) {
-                // Erase the hint message
-                textBoxUrls.Text = "";
-                textBoxUrls.Foreground = new SolidColorBrush(Colors.Black);
-            }
-        }
-
-        private void TextBoxUrls_LostFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == "") {
-                // Show the hint message
-                textBoxUrls.Text = Constants.UrlsHint;
-                textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
-            }
-        }
-
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
             if (_activeDownloads) {
                 // There are active downloads, ask for confirmation
-                if (MessageBox.Show("There are currently active downloads. Are you sure you want to close the application and stop all downloads?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
                 }

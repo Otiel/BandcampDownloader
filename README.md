@@ -6,7 +6,7 @@
 
 ## Description
 
-BandcampDownloader is a Windows application that helps downloading albums from [bandcamp.com](https://bandcamp.com) by retrieving the 128 kbps MP3 files streamed on the website. Its goal isn't to pirate albums, but simply to make life easier for those who prefer to listen to music on their favorite player.
+BandcampDownloader is a Windows application that helps downloading albums from [bandcamp.com](https://bandcamp.com) by retrieving the 128 kbps MP3 files streamed on the website. It aims to ease the life of those who prefer to listen to music on their favorite player rather than on their web browser, but offers only what is already freely available on Bandcamp.
 
 ## Features
 
@@ -21,8 +21,6 @@ BandcampDownloader is a Windows application that helps downloading albums from [
   * Resize it,
   * Save it in tracks tags and in folder.
 
-## Screenshot
-
 <p align="center">
     <img alt="Screenshot" src="docs/images/Screenshot.png">
 </p>
@@ -31,6 +29,10 @@ BandcampDownloader is a Windows application that helps downloading albums from [
 
 See the [changelog](CHANGELOG.md).
 
+## Contributing
+
+If you wish to help translate the application, please read the [guidelines](/docs/help-translate.md).
+
 ## License
 
 BandcampDownloader is licensed under the MIT license - see the [LICENSE](LICENSE) file for details.
@@ -38,6 +40,8 @@ BandcampDownloader is licensed under the MIT license - see the [LICENSE](LICENSE
 ## Credits
 
 Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com) licensed under a [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0).
+
+The list of open-source libraries used by BandcampDownloader can be found [here](docs/dependencies.md).
 
 ## Piracy
 

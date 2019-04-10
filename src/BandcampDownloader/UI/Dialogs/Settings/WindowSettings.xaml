@@ -3,12 +3,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="windowSettings"
-    Title="Settings"
-    Width="557"
-    Height="369"
+    Title="{lex:Loc}"
+    Width="600"
+    Height="370"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     FocusManager.FocusedElement="{Binding ElementName=listBoxSections}"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
@@ -37,14 +41,14 @@
                 Source="pack://application:,,,/Resources/InformationSmallWhite.png"
                 Stretch="None" />
             <Label
-                x:Name="labelInfo"
+                x:Name="labelSettingsInfo"
                 Margin="0,0,0,0"
-                Content="Some settings cannot be changed while tracks are downloading."
+                Content="{lex:Loc}"
                 Foreground="#FF858585" />
         </DockPanel>
         <ListBox
             x:Name="listBoxSections"
-            Width="130"
+            Width="150"
             Height="259"
             Margin="0,26,0,0"
             HorizontalAlignment="Left"
@@ -52,24 +56,24 @@
             TabIndex="0">
             <ListBoxItem
                 x:Name="listBoxItemGeneral"
-                Content="General"
+                Content="{lex:Loc}"
                 IsSelected="True" />
-            <ListBoxItem x:Name="listBoxItemTags" Content="Naming and tags" />
-            <ListBoxItem x:Name="listBoxItemCoverArt" Content="Cover art" />
-            <ListBoxItem x:Name="listBoxItemDownloads" Content="Downloads" />
-            <ListBoxItem x:Name="listBoxItemNetwork" Content="Network" />
-            <ListBoxItem x:Name="listBoxItemAdvanced" Content="Advanced settings" />
+            <ListBoxItem x:Name="listBoxItemTags" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemCoverArt" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemDownloads" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemNetwork" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemAdvanced" Content="{lex:Loc}" />
         </ListBox>
         <local:UserControlSettingsGeneral
             x:Name="userControlSettingsGeneral"
-            Margin="135,31,0,0"
+            Margin="155,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemGeneral, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsTags
             x:Name="userControlSettingsTags"
-            Margin="135,31,0,0"
+            Margin="155,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -77,7 +81,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemTags, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsCoverArt
             x:Name="userControlSettingsCoverArt"
-            Margin="135,31,0,0"
+            Margin="155,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -85,7 +89,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemCoverArt, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsDownloads
             x:Name="userControlSettingsDownloads"
-            Margin="135,31,0,0"
+            Margin="155,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -93,7 +97,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemDownloads, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsNetwork
             x:Name="userControlSettingsNetwork"
-            Margin="135,31,0,0"
+            Margin="155,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, Converter={StaticResource InverseBooleanConverter}, ElementName=windowSettings}"
@@ -101,7 +105,7 @@
             Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=listBoxItemNetwork}" />
         <local:UserControlSettingsAdvanced
             x:Name="userControlSettingsAdvanced"
-            Margin="135,31,0,0"
+            Margin="155,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -109,7 +113,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
             x:Name="buttonResetSettings"
-            Width="130"
+            Width="150"
             Height="24"
             Margin="0,290,0,0"
             HorizontalAlignment="Left"
@@ -117,7 +121,7 @@
             Click="ButtonResetSettings_Click"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="2"
-            ToolTip="Resets settings to their default values">
+            ToolTip="{lex:Loc}">
             <StackPanel Orientation="Horizontal">
                 <Image
                     x:Name="imageArrowCircle225Left"
@@ -127,32 +131,39 @@
                     Source="pack://application:,,,/Resources/ArrowCircle225Left.png"
                     Stretch="None" />
                 <Label
+                    x:Name="labelButtonResetSettings"
                     Margin="7,0,0,0"
                     Padding="0"
-                    Content="_Reset settings" />
+                    Content="{lex:Loc}" />
             </StackPanel>
         </Button>
-        <DockPanel
+        <Grid
             x:Name="dockPanelButtons"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Button
                 x:Name="buttonSave"
-                Width="90"
+                Grid.Column="0"
                 Height="24"
+                MinWidth="90"
                 Click="ButtonSave_Click"
-                Content="_Ok"
+                Content="{lex:Loc}"
                 IsDefault="True"
                 TabIndex="3" />
             <Button
                 x:Name="buttonCancel"
-                Width="90"
+                Grid.Column="1"
                 Height="24"
+                MinWidth="90"
                 Margin="10,0,0,0"
                 Click="ButtonCancel_Click"
-                Content="_Cancel"
+                Content="{lex:Loc}"
                 IsCancel="True"
                 TabIndex="4" />
-        </DockPanel>
+        </Grid>
     </Grid>
 </Window>
