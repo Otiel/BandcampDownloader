@@ -710,6 +710,42 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Cancel.
+        /// </summary>
+        internal static string messageBoxButtonCancel {
+            get {
+                return ResourceManager.GetString("messageBoxButtonCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;No.
+        /// </summary>
+        internal static string messageBoxButtonNo {
+            get {
+                return ResourceManager.GetString("messageBoxButtonNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;OK.
+        /// </summary>
+        internal static string messageBoxButtonOK {
+            get {
+                return ResourceManager.GetString("messageBoxButtonOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Yes.
+        /// </summary>
+        internal static string messageBoxButtonYes {
+            get {
+                return ResourceManager.GetString("messageBoxButtonYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Would you like to cancel all downloads?.
         /// </summary>
         internal static string messageBoxCancelDownloads {

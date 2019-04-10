@@ -336,6 +336,18 @@ Uncheck this option to save some time.</value>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Naming and tags</value>
   </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>&amp;No</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>&amp;Yes</value>
+  </data>
   <data name="messageBoxCancelDownloads" xml:space="preserve">
     <value>Would you like to cancel all downloads?</value>
   </data>

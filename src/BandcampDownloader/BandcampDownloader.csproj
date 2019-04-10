@@ -135,6 +135,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\BandcampHelper.cs" />
+    <Compile Include="Helpers\MessageBoxManager.cs" />
     <Compile Include="Model\Album.cs" />
     <Compile Include="Model\TrackFile.cs" />
     <Compile Include="Model\JSON\JsonAlbumData.cs" />

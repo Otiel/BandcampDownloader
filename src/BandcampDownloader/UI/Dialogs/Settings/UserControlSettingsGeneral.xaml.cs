@@ -36,6 +36,13 @@ namespace BandcampDownloader {
 
             // Apply selected language
             LocalizeDictionary.Instance.Culture = new CultureInfo(comboBoxLanguage.SelectedValue.ToString());
+            // Set system MessageBox buttons
+            MessageBoxManager.Unregister();
+            MessageBoxManager.OK = Properties.Resources.messageBoxButtonOK;
+            MessageBoxManager.Cancel = Properties.Resources.messageBoxButtonCancel;
+            MessageBoxManager.Yes = Properties.Resources.messageBoxButtonYes;
+            MessageBoxManager.No = Properties.Resources.messageBoxButtonNo;
+            MessageBoxManager.Register();
         }
 
         private void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {

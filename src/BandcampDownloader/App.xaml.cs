@@ -32,10 +32,18 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Sets the CultureInfo according to the language saved in settings.
+        /// Load settings for localization
         /// </summary>
         private void LoadLanguage() {
+            // Sets the CultureInfo according to the language saved in settings.
             LocalizeDictionary.Instance.Culture = new CultureInfo(UserSettings.Language.ToString());
+
+            // Set system MessageBox buttons
+            MessageBoxManager.OK = BandcampDownloader.Properties.Resources.messageBoxButtonOK;
+            MessageBoxManager.Cancel = BandcampDownloader.Properties.Resources.messageBoxButtonCancel;
+            MessageBoxManager.Yes = BandcampDownloader.Properties.Resources.messageBoxButtonYes;
+            MessageBoxManager.No = BandcampDownloader.Properties.Resources.messageBoxButtonNo;
+            MessageBoxManager.Register();
         }
     }
 }

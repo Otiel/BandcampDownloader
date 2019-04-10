@@ -320,6 +320,18 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Noms et métadonnées</value>
   </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>&amp;Annuler</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>&amp;Non</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>&amp;Oui</value>
+  </data>
   <data name="messageBoxCancelDownloads" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir arrêter les téléchargements ?</value>
   </data>
