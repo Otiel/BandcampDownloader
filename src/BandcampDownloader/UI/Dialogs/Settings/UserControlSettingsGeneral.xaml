@@ -65,7 +65,7 @@
             VerticalAlignment="Top"
             Content="Play _notifications"
             IsChecked="{Binding EnableApplicationSounds, UpdateSourceTrigger=Explicit}"
-            TabIndex="2"
+            TabIndex="3"
             ToolTip="If checked, a notification sound will be played when downloads are finished."
             ToolTipService.ShowDuration="60000" />
     </Grid>
