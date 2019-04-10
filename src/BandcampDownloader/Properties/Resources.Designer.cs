@@ -134,7 +134,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Ok.
+        ///   Looks up a localized string similar to _Save.
         /// </summary>
         internal static string buttonSave {
             get {
