@@ -120,11 +120,19 @@
             </RichTextBox.Resources>
         </RichTextBox>
         <Grid x:Name="gridActionBar" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <Label
                 x:Name="labelVersion"
+                Grid.Column="0"
                 Margin="0"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
                 Content="{Binding Source={x:Static local:Constants.AppVersion}}"
                 Cursor="Hand"
                 Foreground="#FF003BFF"
@@ -143,50 +151,40 @@
             </Label>
             <Label
                 x:Name="labelProgress"
-                Width="150"
-                Margin="0,0,330,0"
+                Grid.Column="1"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
                 HorizontalContentAlignment="Right"
                 Content="" />
             <Label
                 x:Name="labelDownloadSpeed"
-                Width="100"
-                Margin="0,0,480,0"
+                Grid.Column="2"
                 HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
                 HorizontalContentAlignment="Right"
                 Content="" />
             <Button
                 x:Name="buttonStart"
-                Width="105"
+                Grid.Column="3"
                 Height="24"
-                Margin="0,0,220,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                HorizontalContentAlignment="Center"
+                MinWidth="100"
                 Click="ButtonStart_Click"
                 Content="{lex:Loc}"
                 TabIndex="4" />
             <Button
                 x:Name="buttonStop"
-                Width="105"
+                Grid.Column="4"
                 Height="24"
-                Margin="0,0,110,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                HorizontalContentAlignment="Center"
+                MinWidth="100"
+                Margin="5,0,0,0"
                 Click="ButtonStop_Click"
                 Content="{lex:Loc}"
                 IsEnabled="False"
                 TabIndex="5" />
             <Button
                 x:Name="buttonOpenSettingsWindow"
-                Width="105"
+                Grid.Column="5"
                 Height="24"
-                Margin="0,0,0,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
+                MinWidth="100"
+                Margin="5,0,0,0"
                 Click="ButtonOpenSettingsWindow_Click"
                 Content="{lex:Loc}"
                 TabIndex="6"

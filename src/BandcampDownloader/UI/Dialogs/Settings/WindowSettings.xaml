@@ -137,27 +137,33 @@
                     Content="{lex:Loc}" />
             </StackPanel>
         </Button>
-        <DockPanel
+        <Grid
             x:Name="dockPanelButtons"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Button
                 x:Name="buttonSave"
-                Width="90"
+                Grid.Column="0"
                 Height="24"
+                MinWidth="90"
                 Click="ButtonSave_Click"
                 Content="{lex:Loc}"
                 IsDefault="True"
                 TabIndex="3" />
             <Button
                 x:Name="buttonCancel"
-                Width="90"
+                Grid.Column="1"
                 Height="24"
+                MinWidth="90"
                 Margin="10,0,0,0"
                 Click="ButtonCancel_Click"
                 Content="{lex:Loc}"
                 IsCancel="True"
                 TabIndex="4" />
-        </DockPanel>
+        </Grid>
     </Grid>
 </Window>
