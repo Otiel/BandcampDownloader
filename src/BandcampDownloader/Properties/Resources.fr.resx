@@ -325,22 +325,48 @@
     <value>Proxy _système</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Quand une chanson est téléchargée, si le même nom de fichier existe déjà, il sera comparé au fichier à téléchargé. &#x0a;Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage), la chanson ne sera pas re-téléchargée. &#x0a;&#x0a;Valeur conseillée = 5</value>
+    <value>Quand une chanson est téléchargée, si le même nom de fichier existe déjà dans le dossier, il sera comparé au fichier à télécharger.
+Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage), la chanson ne sera pas re-téléchargée.
+
+Valeur conseillée = 5</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Nombre maximum d'essais quand un téléchargement échoue. &#x0a;Si ce nombre est dépassé (par chanson), le téléchargement de la chanson sera abandonné. &#x0a;&#x0a;Valeur conseillée = 7</value>
+    <value>Nombre maximum d'essais quand un téléchargement échoue.
+Si ce nombre est dépassé (par chanson), le téléchargement de la chanson sera abandonné.
+
+Valeur conseillée = 7</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
-    <value>Utilisé pour contrôler l'algorithme d'attente exponentiel. &#x0a;Lorsque qu'un téléchargement échoue, BandcampDownloader attend un temps donné avant de ré-essayer de télécharger &#x0a;la chanson afin d'éviter de déclencher le filter anti-spam de Bandcamp. &#x0a;La formule utilisée pour calculer le temps à attendre est la suivante : &#x0a;temps = cooldown * (exposant ^ numéro-de-l'essai) &#x0a;&#x0a;Valeur conseillée = 0.2</value>
+    <value>Utilisé pour contrôler l'algorithme d'attente exponentiel.
+Lorsque qu'un téléchargement échoue, BandcampDownloader attend un temps donné avant de ré-essayer de 
+télécharger la chanson afin d'éviter de déclencher le filtre anti-spam de Bandcamp.
+La formule utilisée pour calculer le temps à attendre est la suivante :
+temps = temps-d'attente * (exposant ^ numéro-de-l'essai)
+
+Valeur conseillée = 0.2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Utilisé pour contrôler l'algorithme d'attente exponentiel. &#x0a;Lorsque qu'un téléchargement échoue, BandcampDownloader attend un temps donné avant de ré-essayer de télécharger &#x0a;la chanson afin d'éviter de déclencher le filter anti-spam de Bandcamp. &#x0a;La formule utilisée pour calculer le temps à attendre est la suivante : &#x0a;temps = cooldown * (exposant ^ numéro-de-l'essai) &#x0a;&#x0a;Valeur conseillée = 4</value>
+    <value>Utilisé pour contrôler l'algorithme d'attente exponentiel.
+Lorsque qu'un téléchargement échoue, BandcampDownloader attend un temps donné avant de ré-essayer de 
+télécharger la chanson afin d'éviter de déclencher le filtre anti-spam de Bandcamp.
+La formule utilisée pour calculer le temps à attendre est la suivante :
+temps = temps-d'attente * (exposant ^ numéro-de-l'essai)
+
+Valeur conseillée = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>Vous pouvez utiliser des paramètres de substitution relatifs à chaque album dans le chemin de téléchargement : &#x0a;- {artist} sera remplacé par l'interprète de l'album &#x0a;- {album} sera remplacé par le nom de l'album &#x0a;- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
+    <value>Vous pouvez utiliser des paramètres de substitution relatifs à chaque album dans le chemin de téléchargement :
+- {artist} sera remplacé par l'interprète de l'album
+- {album} sera remplacé par le nom de l'album
+- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers : &#x0a;- {artist} sera remplacé par l'interprète de l'album &#x0a;- {title} sera remplacé par le titre de la chanson &#x0a;- {tracknum} sera remplacé par le numéro de la piste &#x0a;- {album} sera remplacé par le nom de l'album &#x0a;- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
+    <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
+- {artist} sera remplacé par l'interprète de l'album
+- {title} sera remplacé par le titre de la chanson
+- {tracknum} sera remplacé par le numéro de la piste
+- {album} sera remplacé par le nom de l'album
+- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Paramètres</value>

@@ -209,19 +209,24 @@
     <value>_Modify tracks tags (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>If checked, each tag will be modified as specified below. &#x0a;&#x0a;If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. &#x0a;This is equivalent to setting &quot;Do not modify&quot; on each tag.</value>
+    <value>If checked, each tag will be modified as specified below.
+
+If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file.
+This is equivalent to setting "Do not modify" on each tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>_Download one album at a time</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>If checked, only one album at a time will be downloaded.&#x0a;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth).</value>
+    <value>If checked, only one album at a time will be downloaded.
+If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Retrieve files _size</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>If checked, files size will be retrieved so that precise download progress can be shown. &#x0a;Uncheck this option to save some time.</value>
+    <value>If checked, files size will be retrieved so that precise download progress can be shown.
+Uncheck this option to save some time.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Save in _folder</value>
@@ -341,22 +346,48 @@
     <value>_System proxy</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &#x0a;If the size of both files differ from less than this value (in percent), the track download will be skipped. &#x0a;&#x0a;Recommended value = 5</value>
+    <value>When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
+If the size of both files differ from less than this value (in percent), the track download will be skipped.
+
+Recommended value = 5</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Maximum number of tries performed to download a track if it fails. &#x0a;After that number is reached (for each track), the track download will be skipped. &#x0a;&#x0a;Recommended value = 7</value>
+    <value>Maximum number of tries performed to download a track if it fails.
+After that number is reached (for each track), the track download will be skipped.
+
+Recommended value = 7</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
-    <value>Used to control the exponential back-off mechanism. &#x0a;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#x0a;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#x0a;The formula used to compute the time to wait before trying again a download is the following: &#x0a;time = cooldown * (exponent ^ try-count) &#x0a;&#x0a;Recommended value = 0.2</value>
+    <value>Used to control the exponential back-off mechanism.
+After each failure of a track download, BandcampDownloader can wait for a specific time before trying again
+to download the track in order to avoid tickling the Bandcamp anti-spam filter.
+The formula used to compute the time to wait before trying again a download is the following:
+time = cooldown * (exponent ^ try-count)
+
+Recommended value = 0.2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Used to control the exponential back-off mechanism. &#x0a;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &#x0a;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &#x0a;The formula used to compute the time to wait before trying again a download is the following: &#x0a;time = cooldown * (exponent ^ try-count) &#x0a;&#x0a;Recommended value = 4</value>
+    <value>Used to control the exponential back-off mechanism.
+After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
+to download the track in order to avoid tickling the Bandcamp anti-spam filter.
+The formula used to compute the time to wait before trying again a download is the following:
+time = cooldown * (exponent ^ try-count)
+
+Recommended value = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>You can use placeholders to customize the download folder depending on the album: &#x0a;- {artist} will be replaced by the album artist &#x0a;- {album} will be replaced by the album name &#x0a;- {year}, {month} and {day} will be replaced by the album release date</value>
+    <value>You can use placeholders to customize the download folder depending on the album:
+- {artist} will be replaced by the album artist
+- {album} will be replaced by the album name
+- {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>You can use placeholders to customize the file name: &#x0a;- {artist} will be replaced by the album artist &#x0a;- {title} will be replaced by the track name &#x0a;- {tracknum} will be replaced by the track number &#x0a;- {album} will be replaced by the album name &#x0a;- {year}, {month} and {day} will be replaced by the album release date</value>
+    <value>You can use placeholders to customize the file name:
+- {artist} will be replaced by the album artist
+- {title} will be replaced by the track name
+- {tracknum} will be replaced by the track number
+- {album} will be replaced by the album name
+- {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Settings</value>

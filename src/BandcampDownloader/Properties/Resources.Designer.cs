@@ -296,7 +296,10 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, each tag will be modified as specified below. &amp;#xA;&amp;#xA;If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. &amp;#xA;This is equivalent to setting &amp;quot;Do not modify&amp;quot; on each tag..
+        ///   Looks up a localized string similar to If checked, each tag will be modified as specified below. 
+        ///
+        ///If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file. 
+        ///This is equivalent to setting &quot;Do not modify&quot; on each tag..
         /// </summary>
         internal static string checkBoxModifyTags_ToolTip {
             get {
@@ -314,7 +317,8 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, only one album at a time will be downloaded.&amp;#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)..
+        ///   Looks up a localized string similar to If checked, only one album at a time will be downloaded.
+        ///If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)..
         /// </summary>
         internal static string checkBoxOneAlbumAtATime_ToolTip {
             get {
@@ -332,7 +336,8 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, files size will be retrieved so that precise download progress can be shown.&amp;#xA;Uncheck this option to save some time..
+        ///   Looks up a localized string similar to If checked, files size will be retrieved so that precise download progress can be shown. 
+        ///Uncheck this option to save some time..
         /// </summary>
         internal static string checkBoxRetrieveFilesSize_ToolTip {
             get {
@@ -732,7 +737,10 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download. &amp;#xA;If the size of both files differ from less than this value (in percent), the track download will be skipped. &amp;#xA;&amp;#xA;Recommended value = 5.
+        ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download. 
+        ///If the size of both files differ from less than this value (in percent), the track download will be skipped. 
+        ///
+        ///Recommended value = 5.
         /// </summary>
         internal static string textBoxAllowedFileSizeDifference_ToolTip {
             get {
@@ -741,7 +749,10 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum number of tries performed to download a track if it fails. &amp;#xA;After that number is reached (for each track), the track download will be skipped. &amp;#xA;&amp;#xA;Recommended value = 7.
+        ///   Looks up a localized string similar to Maximum number of tries performed to download a track if it fails. 
+        ///After that number is reached (for each track), the track download will be skipped. 
+        ///
+        ///Recommended value = 7.
         /// </summary>
         internal static string textBoxDownloadMaxTries_ToolTip {
             get {
@@ -750,7 +761,13 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism.&amp;#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &amp;#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &amp;#xA;The formula used to compute the time to wait before trying again a download is the following: &amp;#xA;time = cooldown * (exponent ^ try-count) &amp;#xA;&amp;#xA;Recommended value = 0.2.
+        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism. 
+        ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
+        ///to download the track in order to avoid tickling the Bandcamp anti-spam filter. 
+        ///The formula used to compute the time to wait before trying again a download is the following: 
+        ///time = cooldown * (exponent ^ try-count) 
+        ///
+        ///Recommended value = 0.2.
         /// </summary>
         internal static string textBoxDownloadRetryCooldown_ToolTip {
             get {
@@ -759,7 +776,13 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism.&amp;#xA;After each failure of a track download, BandcampDownloader can wait for a specific time before trying again &amp;#xA;to download the track in order to avoid tickling the Bandcamp anti-spam filter. &amp;#xA;The formula used to compute the time to wait before trying again a download is the following: &amp;#xA;time = cooldown * (exponent ^ try-count) &amp;#xA;&amp;#xA;Recommended value = 4.
+        ///   Looks up a localized string similar to Used to control the exponential back-off mechanism. 
+        ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
+        ///to download the track in order to avoid tickling the Bandcamp anti-spam filter. 
+        ///The formula used to compute the time to wait before trying again a download is the following: 
+        ///time = cooldown * (exponent ^ try-count) 
+        ///
+        ///Recommended value = 4.
         /// </summary>
         internal static string textBoxDownloadRetryExponent_ToolTip {
             get {
@@ -768,7 +791,10 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use placeholders to customize the download folder depending on the album: &amp;#x0a;- {artist} will be replaced by the album artist &amp;#x0a;- {album} will be replaced by the album name &amp;#x0a;- {year}, {month} and {day} will be replaced by the album release date.
+        ///   Looks up a localized string similar to You can use placeholders to customize the download folder depending on the album: 
+        ///- {artist} will be replaced by the album artist 
+        ///- {album} will be replaced by the album name 
+        ///- {year}, {month} and {day} will be replaced by the album release date.
         /// </summary>
         internal static string textBoxDownloadsPath_ToolTip {
             get {
@@ -777,7 +803,12 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can use placeholders to customize the file name: &amp;#xA;- {artist} will be replaced by the album artist &amp;#xA;- {title} will be replaced by the track name &amp;#xA;- {tracknum} will be replaced by the track number &amp;#xA;- {album} will be replaced by the album name &amp;#xA;- {year}, {month} and {day} will be replaced by the album release date.
+        ///   Looks up a localized string similar to You can use placeholders to customize the file name: 
+        ///- {artist} will be replaced by the album artist 
+        ///- {title} will be replaced by the track name 
+        ///- {tracknum} will be replaced by the track number 
+        ///- {album} will be replaced by the album name 
+        ///- {year}, {month} and {day} will be replaced by the album release date.
         /// </summary>
         internal static string textBoxFileNameFormat_ToolTip {
             get {
