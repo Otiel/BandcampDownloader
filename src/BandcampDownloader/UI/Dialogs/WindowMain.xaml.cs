@@ -996,7 +996,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
                 return;
             }
 
@@ -1051,7 +1051,7 @@ namespace BandcampDownloader {
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
             if (_activeDownloads) {
                 // There are active downloads, ask for confirmation
-                if (MessageBox.Show("There are currently active downloads. Are you sure you want to close the application and stop all downloads?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
                 }

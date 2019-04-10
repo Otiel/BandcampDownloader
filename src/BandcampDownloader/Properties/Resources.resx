@@ -336,6 +336,28 @@ Uncheck this option to save some time.</value>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Naming and tags</value>
   </data>
+  <data name="messageBoxCancelDownloads" xml:space="preserve">
+    <value>Would you like to cancel all downloads?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>An error occured while checking for updates. Please retry later.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+    <value>There are currently active downloads. Are you sure you want to close the application and stop all downloads?</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>You already have the latest version available ({0}).</value>
+  </data>
+  <data name="messageBoxResetSettings" xml:space="preserve">
+    <value>Reset all settings to their default values?</value>
+  </data>
+  <data name="messageBoxUpdateAvailable" xml:space="preserve">
+    <value>A new version is available:
+Current version = {0}
+Latest version = {1}
+
+Would you like to go to the project website in order to download the latest version?</value>
+  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manual proxy configuration</value>
   </data>

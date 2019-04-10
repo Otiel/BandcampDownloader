@@ -710,6 +710,64 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Would you like to cancel all downloads?.
+        /// </summary>
+        internal static string messageBoxCancelDownloads {
+            get {
+                return ResourceManager.GetString("messageBoxCancelDownloads", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while checking for updates. Please retry later..
+        /// </summary>
+        internal static string messageBoxCheckForUpdatesError {
+            get {
+                return ResourceManager.GetString("messageBoxCheckForUpdatesError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are currently active downloads. Are you sure you want to close the application and stop all downloads?.
+        /// </summary>
+        internal static string messageBoxCloseWindowWhenDownloading {
+            get {
+                return ResourceManager.GetString("messageBoxCloseWindowWhenDownloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You already have the latest version available ({0})..
+        /// </summary>
+        internal static string messageBoxNoUpdateAvailable {
+            get {
+                return ResourceManager.GetString("messageBoxNoUpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset all settings to their default values?.
+        /// </summary>
+        internal static string messageBoxResetSettings {
+            get {
+                return ResourceManager.GetString("messageBoxResetSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new version is available:
+        ///Current version = {0}
+        ///Latest version = {1}
+        ///
+        ///Would you like to go to the project website in order to download the latest version?.
+        /// </summary>
+        internal static string messageBoxUpdateAvailable {
+            get {
+                return ResourceManager.GetString("messageBoxUpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Manual proxy configuration.
         /// </summary>
         internal static string radioButtonManualProxy {

@@ -320,6 +320,28 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Noms et métadonnées</value>
   </data>
+  <data name="messageBoxCancelDownloads" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir arrêter les téléchargements ?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Une erreur est intervenue lors de la vérification de mises à jour. Veuillez réessayer plus tard.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+    <value>Des téléchargements sont en cours. Êtes-vous sûr de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Vous avez déjà la dernière version disponible ({0}).</value>
+  </data>
+  <data name="messageBoxResetSettings" xml:space="preserve">
+    <value>Réinitialiser tous les paramètres à leur valeur par défaut ?</value>
+  </data>
+  <data name="messageBoxUpdateAvailable" xml:space="preserve">
+    <value>Une nouvelle version est disponible :
+Version actuelle = {0}
+Nouvelle version = {1}
+
+Voulez-vous aller sur le site web du projet afin de récupérer la dernière version ?</value>
+  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Proxy _manuel</value>
   </data>
