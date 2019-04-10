@@ -142,11 +142,6 @@
     <Compile Include="Model\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
-    <Compile Include="Properties\Resources.fr.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.fr.resx</DependentUpon>
-    </Compile>
     <Compile Include="UI\Validation\DoubleRule.cs" />
     <Compile Include="Model\DownloadProgress.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
