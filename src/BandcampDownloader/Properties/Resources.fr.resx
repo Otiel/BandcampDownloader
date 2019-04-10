@@ -127,7 +127,7 @@
     <value>_Annuler</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>_Vérifier maintenant</value>
+    <value>Vérifier _maintenant</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Paramètres</value>
@@ -148,7 +148,7 @@
     <value>_Annuler</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>_Vérifier les mises à jour au démarrage</value>
+    <value>Vérifier les mises à jour au _démarrage</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>L'application accèdera à l'adresse suivante en démarrant :</value>
@@ -160,7 +160,7 @@
     <value>La pochette sera convertie en jpg avec une compression jpeg égale à 90 (considéré comme un excellent compromis entre taille et qualité de l'image).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>_Restreindre la largeur / hauteur maximale</value>
+    <value>Restreindre la _largeur / hauteur maximale</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
     <value>La pochette sera redimensionnée pour ne pas être plus grande que la largeur / hauteur définie.</value>
@@ -172,40 +172,45 @@
     <value>La pochette sera convertie en jpg avec une compression jpeg égale à 90 (considéré comme un excellent compromis entre taille et qualité de l'image).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>R_estreindre la largeur / hauteur maximale</value>
+    <value>Restreindre la largeur / _hauteur maximale</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>La pochette sera redimensionnée pour ne pas être plus grande que la largeur / hauteur définie.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Télécharger la discographie de l'_artiste</value>
+    <value>Télécharger la _discographie de l'artiste</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
     <value>La discographie complète de l'artiste sera téléchargée.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>Jouer les sons de _notifications</value>
+    <value>Sons de _notifications</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Un son de notification sera joué lorsque les téléchargements sont terminés.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>_Modifier les tags des chansons (ID3)</value>
+    <value>_Modifier les métadonnées des chansons (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Chaque métadonnée sera modifiée selon les règles définies ci-dessous. &#x0a;&#x0a;Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. &#x0a;Cela revient à régler &quot;Do not modify&quot; (&quot;Ne pas modifier&quot;) pour chaque métadonnée.</value>
+    <value>Chaque métadonnée sera modifiée selon les règles définies ci-dessous.
+
+Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé.
+Cela revient à régler "Do not modify" ("Ne pas modifier") pour chaque métadonnée.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Télécharger un album à la fois</value>
+    <value>Télécharger un album à la _fois</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Un seul album sera téléchargé à la fois.&#x0a;Si cette option n'est pas cochée, tous les albums seront téléchargés en même temps (conseillé si vous avez une bande passante suffisante).</value>
+    <value>Un seul album sera téléchargé à la fois.
+Si cette option n'est pas cochée, tous les albums seront téléchargés en même temps (conseillé si vous avez une bande passante suffisante).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>_Récupérer la taille des fichiers</value>
+    <value>Récupérer la _taille des fichiers avant téléchargement</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>La taille des fichiers sera récupérée afin de calculer précisément l'avancement. &#x0a;Décocher cette option permet de gagner du temps.</value>
+    <value>La taille des fichiers sera récupérée afin de calculer précisément l'avancement.
+Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Sauvegarder dans le _dossier</value>
@@ -226,7 +231,7 @@
     <value>Toutes les informations seront affichées sur le log.</value>
   </data>
   <data name="labelAlbumArtist" xml:space="preserve">
-    <value>_Interprète de l'album</value>
+    <value>Interprète de l'al_bum</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
     <value>_Nom de l'album</value>
@@ -241,7 +246,7 @@
     <value>_Réinitialiser</value>
   </data>
   <data name="labelComments" xml:space="preserve">
-    <value>Comm_entaires</value>
+    <value>C_ommentaires</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Taille maximale (_px)</value>
@@ -256,13 +261,13 @@
     <value>_Temps d'attente avant nouvel essai (sec)</value>
   </data>
   <data name="labelDownloadRetryExponent" xml:space="preserve">
-    <value>Exposant de nouvel essai</value>
+    <value>E_xposant de nouvel essai</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
     <value>_Enregistrer les albums sous</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Format du nom de fichier:</value>
+    <value>_Format du nom de fichier :</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>Proxy _HTTP(S)</value>
@@ -295,7 +300,7 @@
     <value>Cliquer pour se rendre sur le site web du projet :</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>_Année de parution de l'album</value>
+    <value>Année _de parution de l'album</value>
   </data>
   <data name="listBoxItemAdvanced" xml:space="preserve">
     <value>Paramètres avancés</value>
@@ -319,7 +324,7 @@
     <value>Proxy _manuel</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Aucun proxy</value>
+    <value>A_ucun proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
