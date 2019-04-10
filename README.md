@@ -21,8 +21,6 @@ BandcampDownloader is a Windows application that helps downloading albums from [
   * Resize it,
   * Save it in tracks tags and in folder.
 
-## Screenshot
-
 <p align="center">
     <img alt="Screenshot" src="docs/images/Screenshot.png">
 </p>
