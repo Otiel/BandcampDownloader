@@ -246,6 +246,9 @@ Uncheck this option to save some time.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>If checked, more information will be shown on the log.</value>
   </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Select the folder to save albums</value>
+  </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Album art_ist</value>
   </data>
