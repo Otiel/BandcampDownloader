@@ -77,7 +77,7 @@ namespace BandcampDownloader {
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             // Hints
-            textBoxUrls.Text = Constants.UrlsHint;
+            textBoxUrls.Text = Properties.Resources.urlsHint;
             textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             // Check for updates
             if (App.UserSettings.CheckForUpdates) {
@@ -906,7 +906,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Constants.UrlsHint) {
+            if (textBoxUrls.Text == Properties.Resources.urlsHint) {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
                 return;
@@ -1033,7 +1033,7 @@ namespace BandcampDownloader {
         }
 
         private void TextBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Constants.UrlsHint) {
+            if (textBoxUrls.Text == Properties.Resources.urlsHint) {
                 // Erase the hint message
                 textBoxUrls.Text = "";
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.Black);
@@ -1043,7 +1043,7 @@ namespace BandcampDownloader {
         private void TextBoxUrls_LostFocus(object sender, RoutedEventArgs e) {
             if (textBoxUrls.Text == "") {
                 // Show the hint message
-                textBoxUrls.Text = Constants.UrlsHint;
+                textBoxUrls.Text = Properties.Resources.urlsHint;
                 textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
             }
         }

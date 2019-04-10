@@ -911,6 +911,18 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paste URLs of albums to download here. You can specify multiple URLs by writing one URL per line.
+        ///
+        ///A Bandcamp URL looks like: http://[artist].bandcamp.com/album/[album] or http://[artist].bandcamp.com/track/[track]
+        ///Paste artist pages: http://[artist].bandcamp.com and check &quot;☑ Download artist discography&quot; to download all their albums..
+        /// </summary>
+        internal static string urlsHint {
+            get {
+                return ResourceManager.GetString("urlsHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string windowSettings_Title {
