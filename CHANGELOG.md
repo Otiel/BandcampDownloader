@@ -7,14 +7,14 @@
 
 # 0.2.4.2
 
+## Improvements
+
+* Updated dependencies to their latest version.
+
 ## Bug fixes
 
 * Fixed issue [#75](https://github.com/Otiel/BandcampDownloader/issues/75) that would prevent downloading tracks with a name with less than 3 characters.
 * Fixed exponential back-off mechanism that was inactive for artwork files.
-
-## Improvements
-
-* Updated dependencies to their latest version.
 
 # 0.2.4.1
 
