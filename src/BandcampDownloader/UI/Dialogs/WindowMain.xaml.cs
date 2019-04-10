@@ -76,9 +76,7 @@ namespace BandcampDownloader {
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            // Hints
-            textBoxUrls.Text = Properties.Resources.urlsHint;
-            textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
+
             // Check for updates
             if (App.UserSettings.CheckForUpdates) {
                 Task.Factory.StartNew(() => { CheckForUpdates(); });
@@ -906,7 +904,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Properties.Resources.urlsHint) {
+            if (textBoxUrls.Text == "") {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
                 return;
@@ -1030,22 +1028,6 @@ namespace BandcampDownloader {
 
         private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
             Process.Start(Constants.ProjectWebsite);
-        }
-
-        private void TextBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Properties.Resources.urlsHint) {
-                // Erase the hint message
-                textBoxUrls.Text = "";
-                textBoxUrls.Foreground = new SolidColorBrush(Colors.Black);
-            }
-        }
-
-        private void TextBoxUrls_LostFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == "") {
-                // Show the hint message
-                textBoxUrls.Text = Properties.Resources.urlsHint;
-                textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
-            }
         }
 
         private void WindowMain_Closing(object sender, CancelEventArgs e) {

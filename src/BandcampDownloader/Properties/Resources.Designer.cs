@@ -916,9 +916,9 @@ namespace BandcampDownloader.Properties {
         ///A Bandcamp URL looks like: http://[artist].bandcamp.com/album/[album] or http://[artist].bandcamp.com/track/[track]
         ///Paste artist pages: http://[artist].bandcamp.com and check &quot;☑ Download artist discography&quot; to download all their albums..
         /// </summary>
-        internal static string urlsHint {
+        internal static string textBoxUrlsPlaceholder {
             get {
-                return ResourceManager.GetString("urlsHint", resourceCulture);
+                return ResourceManager.GetString("textBoxUrlsPlaceholder", resourceCulture);
             }
         }
         
