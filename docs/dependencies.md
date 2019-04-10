@@ -9,6 +9,7 @@ BandcampDownloader relies on a number of open-source libraries, all listed below
 * [`HtmlAgilityPack`](https://github.com/zzzprojects/html-agility-pack): used to parse Html from bandcamp.com pages.
 * [`ImageResizer`](https://github.com/imazen/resizer): used to resize/compress the album covers.
 * [`Json.NET`](https://github.com/JamesNK/Newtonsoft.Json): used to parse Json from bandcamp.com pages.
+* [`MessageBoxManager`](https://www.codeproject.com/Articles/18399/Localizing-System-MessageBox): used to localize the buttons of the Windows system message box.
 * [`NLog`](https://github.com/NLog/NLog): used to log events.
 * [`TagLib#`](https://github.com/mono/taglib-sharp): used to write MP3 tags.
 * [`WPFLocalizationExtension`](https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension): used to manage the localization.
