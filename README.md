@@ -29,6 +29,10 @@ BandcampDownloader is a Windows application that helps downloading albums from [
 
 See the [changelog](CHANGELOG.md).
 
+## Contributing
+
+If you wish to help translate the application, please read the [guidelines](/docs/help-translate.md).
+
 ## License
 
 BandcampDownloader is licensed under the MIT license - see the [LICENSE](LICENSE) file for details.

@@ -1,3 +1,9 @@
+# 0.2.6.0
+
+## New features
+
+* Added localization [#67](https://github.com/Otiel/BandcampDownloader/issues/67) for english and french. If you wish to help translate the application in another language, please see the [guidelines](/docs/help-translate.md).
+
 # 0.2.5.0
 
 ## Improvements
