@@ -4,6 +4,13 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
+    public enum Language {
+        [Description("English")]
+        en,
+        [Description("Français")]
+        fr
+    }
+
     public enum ProxyType {
         None,
         System,
@@ -77,6 +84,9 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
         String FileNameFormat { get; set; }
+
+        [Option(DefaultValue = Language.en)]
+        Language Language { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean ModifyTags { get; set; }

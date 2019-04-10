@@ -3,10 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsDownloads"
-    Width="195"
+    Width="410 "
     Height="48"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
@@ -16,22 +20,22 @@
             Margin="3,4,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="_Download one album at a time"
+            Content="{lex:Loc}"
             IsChecked="{Binding DownloadOneAlbumAtATime, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
             TabIndex="2"
-            ToolTip="If checked, only one album at a time will be downloaded.&#xA;If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxRetrieveFilesSize"
             Margin="3,30,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Retrieve files _size"
+            Content="{lex:Loc}"
             IsChecked="{Binding RetrieveFilesSize, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
             TabIndex="4"
-            ToolTip="If checked, files size will be retrieved so that precise download progress can be shown.&#xA;Uncheck this option to save some time."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
     </Grid>
 </UserControl>
