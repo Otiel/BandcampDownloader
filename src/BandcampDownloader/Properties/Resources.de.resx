@@ -247,7 +247,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Wenn ausgewählt werden mehr Informationen ausgegeben</value>
   </data>
 	<data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Ordner auswählen um </value>
+    <value>Ordner auswählen um</value>
   </data>
 	<data name="labelAlbumArtist" xml:space="preserve">
     <value>Album Art_ist</value>
@@ -256,13 +256,13 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Album _Name</value>
   </data>
 	<data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Erlaubte _dateigrößen unterschied in Prozent</value>
+    <value>Erlaubter _dateigrößen-unterschied in Prozent</value>
   </data>
 	<data name="labelArtist" xml:space="preserve">
     <value>_Artist</value>
   </data>
 	<data name="labelButtonResetSettings" xml:space="preserve">
-    <value>Einstellungen _Zurücksetzen</value>
+    <value>_Zurücksetzen</value>
   </data>
 	<data name="labelComments" xml:space="preserve">
     <value>Komm_entare</value>
@@ -274,10 +274,10 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Maximale Größe (p_x)</value>
   </data>
 	<data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>_Maximale Dwnloadversuche</value>
+    <value>_Maximale Downloadversuche</value>
   </data>
 	<data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Wiederholungs Q_artezeit</value>
+    <value>Wiederholungs W_artezeit</value>
   </data>
 	<data name="labelDownloadRetryExponent" xml:space="preserve">
     <value>Wiederholungs _Exponent</value>
@@ -286,7 +286,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Alben speicher _in</value>
   </data>
 	<data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Datei-name format:</value>
+    <value>_Dateiname format:</value>
   </data>
 	<data name="labelHttp" xml:space="preserve">
     <value>_HTTP(S) proxy</value>
@@ -361,7 +361,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Alle downloads abbrechen?</value>
   </data>
 	<data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>Währen nach updates gesucht wurde ist ein Fehler aufgetreten, versuchen sie es später erneut.</value>
+    <value>Während nach updates gesucht wurde ist ein Fehler aufgetreten, versuchen sie es später erneut.</value>
   </data>
 	<data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
     <value>Zurzeit sind Downloads aktiv. Wollen sie die Anwendung wirklich schließen und diese abbrechen?</value>
