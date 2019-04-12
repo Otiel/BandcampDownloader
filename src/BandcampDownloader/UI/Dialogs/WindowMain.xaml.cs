@@ -30,6 +30,10 @@ namespace BandcampDownloader {
         #region Fields
 
         /// <summary>
+        /// Random class used to create random numbers.
+        /// </summary>
+        private readonly Random _random = new Random();
+        /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
         private Boolean _activeDownloads = false;
@@ -53,10 +57,6 @@ namespace BandcampDownloader {
         /// Used when user clicks on 'Cancel' to abort all current downloads.
         /// </summary>
         private List<WebClient> _pendingDownloads;
-        /// <summary>
-        /// Random class used to create random numbers.
-        /// </summary>
-        private Random _random = new Random();
         /// <summary>
         /// Used when user clicks on 'Cancel' to manage the cancelation (UI...).
         /// </summary>
