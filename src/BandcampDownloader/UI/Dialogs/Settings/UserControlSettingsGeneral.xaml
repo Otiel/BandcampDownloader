@@ -91,7 +91,8 @@
             VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label
                 x:Name="labelLanguage"
@@ -109,6 +110,15 @@
                 SelectedValue="{Binding Language, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
                 TabIndex="4" />
+            <TextBlock Grid.Column="2" Margin="5,5,0,0">
+                <Hyperlink
+                    x:Name="hyperlinkTranslationHelp"
+                    NavigateUri="{Binding Source={x:Static local:Constants.HelpTranslateWebsite}}"
+                    RequestNavigate="Hyperlink_RequestNavigate"
+                    ToolTip="{Binding Source={x:Static local:Constants.HelpTranslateWebsite}}">
+                    <TextBlock x:Name="textBlockTranslationHelp" Text="{lex:Loc}" />
+                </Hyperlink>
+            </TextBlock>
         </Grid>
     </Grid>
 </UserControl>

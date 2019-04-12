@@ -64,5 +64,10 @@ namespace BandcampDownloader {
                 MessageBox.Show(String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
     }
 }

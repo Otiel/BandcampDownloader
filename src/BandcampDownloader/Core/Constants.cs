@@ -10,6 +10,10 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String AppVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
         /// <summary>
+        /// The URL redirecting to the help page on translating the app on GitHub.
+        /// </summary>
+        public static readonly String HelpTranslateWebsite = "https://github.com/Otiel/BandcampDownloader/blob/master/docs/help-translate.md";
+        /// <summary>
         /// The URL redirecting to the latest release on GitHub.
         /// </summary>
         public static readonly String LatestReleaseWebsite = "https://github.com/Otiel/BandcampDownloader/releases/latest";

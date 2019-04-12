@@ -432,6 +432,9 @@ Recommended value = 4</value>
 - {album} will be replaced by the album name
 - {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Help translate</value>
+  </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Paste URLs of albums to download here. You can specify multiple URLs by writing one URL per line.
 

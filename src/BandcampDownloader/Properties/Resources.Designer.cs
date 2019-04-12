@@ -858,6 +858,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help translate.
+        /// </summary>
+        internal static string textBlockTranslationHelp {
+            get {
+                return ResourceManager.GetString("textBlockTranslationHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
         ///If the size of both files differ from less than this value (in percent), the track download will be skipped.
         ///

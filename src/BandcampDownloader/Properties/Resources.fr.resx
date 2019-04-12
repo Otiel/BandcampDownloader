@@ -416,6 +416,9 @@ Valeur conseillée = 4</value>
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Aider à la traduction</value>
+  </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Copiez les URL d'albums à télécharger ici. Vous pouvez spécifier plusieurs URL en ayant un URL par ligne.
 

@@ -416,6 +416,9 @@ Empfohlender Wert = 4</value>
 - {album} Wird mit dem albumnamen ersetzt
 - {year}, {month} und {day} werden mit dem Erscheinungsdatum ersetzt</value>
   </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Hilfe zur Übersetzung</value>
+  </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Album und Diskografie URL's hier einfügen. Es ist möglich mehrere (Getrennt durch zeilenumbrüche) einzufügen.
 
