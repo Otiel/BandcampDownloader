@@ -420,7 +420,8 @@ Empfohlender Wert = 4</value>
     <value>Album und Diskografie URL's hier einfügen. Es ist möglich mehrere (Getrennt durch zeilenumbrüche) einzufügen.
 
 Eine Bandcamp URL sieht so aus: http://[artist].bandcamp.com/album/[album] / http://[artist].bandcamp.com/track/[track]
-Um die Diskografie herunterzuladen dies URL verweden: http://[artist].bandcamp.com und "☑ Artist Diskografie heruntergeladen" um alle seine alben herunterzuladen.</value>
+Um die Diskografie herunterzuladen dies URL verweden: http://[artist].bandcamp.com und "☑ Artist Diskografie heruntergeladen" um alle
+seine alben herunterzuladen.</value>
   </data>
 	<data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
