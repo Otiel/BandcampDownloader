@@ -83,7 +83,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding EnableApplicationSounds, UpdateSourceTrigger=Explicit}"
             TabIndex="3"
-            ToolTip="If checked, a notification sound will be played when downloads are finished."
+            ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Grid
             x:Name="gridLanguage"
