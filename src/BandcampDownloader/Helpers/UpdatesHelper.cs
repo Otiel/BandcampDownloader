@@ -25,7 +25,7 @@ namespace BandcampDownloader {
             }
 
             // Extract the version number from the URL
-            String latestVersionNumber = "";
+            String latestVersionNumber;
             try {
                 latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X.X
             } catch {

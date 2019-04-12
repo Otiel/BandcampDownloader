@@ -46,7 +46,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
-            Version latestVersion = null;
+            Version latestVersion;
             try {
                 latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
