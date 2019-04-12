@@ -876,7 +876,7 @@ namespace BandcampDownloader {
 
         private void WaitForCooldown(int triesNumber) {
             if (App.UserSettings.DownloadRetryCooldown != 0) {
-                Thread.Sleep((int) ((Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber)) * App.UserSettings.DownloadRetryCooldown * 1000));
+                Thread.Sleep((int) (Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber) * App.UserSettings.DownloadRetryCooldown * 1000));
             }
         }
 
@@ -986,7 +986,7 @@ namespace BandcampDownloader {
                 if (App.UserSettings.EnableApplicationSounds) {
                     // Play a sound
                     try {
-                        (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
+                        new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
                     } catch {
                     }
                 }
