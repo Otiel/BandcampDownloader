@@ -714,7 +714,7 @@ namespace BandcampDownloader {
         /// <param name="color">The color.</param>
         private void Log(String message, LogType logType) {
             // Log to file
-            var logger = LogManager.GetCurrentClassLogger();
+            Logger logger = LogManager.GetCurrentClassLogger();
             logger.Log(logType.ToNLogLevel(), message);
 
             // Log to window
