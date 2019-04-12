@@ -127,7 +127,7 @@
     <value>_Abbrechen</value>
   </data>
 	<data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Jetzt suchen</value>
+    <value>_Jetzt suchen</value>
   </data>
 	<data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Einstellungen</value>
@@ -142,7 +142,7 @@
     <value>_Speichern</value>
   </data>
 	<data name="buttonStart" xml:space="preserve">
-    <value>Herunterladen</value>
+    <value>_Herunterladen</value>
   </data>
 	<data name="buttonStop" xml:space="preserve">
     <value>_Abbrechen</value>
@@ -172,13 +172,13 @@
     <value>Wenn ausgewählt wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Mittelwert zwischen Speicherbedarf und Qualität ist)</value>
   </data>
 	<data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>M_aximale breite/höhe einschränken</value>
+    <value>Max_imale Breite/Höhe einschränken</value>
   </data>
 	<data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt wird das Cover auf die angegebene Größe skaliert.</value>
   </data>
 	<data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Diskografie vom _Artisten herunterladen</value>
+    <value>_Diskografie vom Artisten herunterladen</value>
   </data>
 	<data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt wird die gesamte Diskografie vom Artisten heruntergeladen.</value>
@@ -225,7 +225,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Wenn ausgewählt wird das Cover in den tracks gespeichert</value>
   </data>
 	<data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>_Ausführliches Log anzeigen</value>
+    <value>Ausführliches _Log anzeigen</value>
   </data>
 	<data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt werden mehr Informationen ausgegeben</value>
@@ -234,7 +234,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Ordner auswählen um</value>
   </data>
 	<data name="labelAlbumArtist" xml:space="preserve">
-    <value>Album Art_ist</value>
+    <value>Albu_m Artist</value>
   </data>
 	<data name="labelAlbumTitle" xml:space="preserve">
     <value>Album _Name</value>
@@ -243,7 +243,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Erlaubter _dateigrößen-unterschied in Prozent</value>
   </data>
 	<data name="labelArtist" xml:space="preserve">
-    <value>_Artist</value>
+    <value>A_rtist</value>
   </data>
 	<data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Zurücksetzen</value>
@@ -261,7 +261,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>_Maximale Downloadversuche</value>
   </data>
 	<data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Wiederholungs W_artezeit</value>
+    <value>Wiederholungs _Wartezeit</value>
   </data>
 	<data name="labelDownloadRetryExponent" xml:space="preserve">
     <value>Wiederholungs _Exponent</value>
@@ -282,10 +282,10 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Änderungen folgender Einstellungen auf eigener Gefahr:</value>
   </data>
 	<data name="labelLanguage" xml:space="preserve">
-    <value>_Sprache</value>
+    <value>S_prache</value>
   </data>
 	<data name="labelLyrics" xml:space="preserve">
-    <value>_Songtexte</value>
+    <value>Son_gtexte</value>
   </data>
 	<data name="labelSettingsInfo" xml:space="preserve">
     <value>Einige Einstellungen können nicht übernommen werden wärend ein Download stattfindet.</value>
@@ -370,7 +370,7 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
     <value>_Keine Proxy</value>
   </data>
 	<data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_System Proxy</value>
+    <value>S_ystem Proxy</value>
   </data>
 	<data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Wenn ein Song heruntergeladen wird, und einer mit dem selben Namen schon existiert, wird geprüft ob der größen-unterschied 
