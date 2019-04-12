@@ -163,7 +163,7 @@
     <value>_Maximale Breite/Höhe einschränken</value>
   </data>
 	<data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover auf die angegebene größe skaliert.</value>
+    <value>Wenn ausgewählt wird das Cover auf die angegebene Größe skaliert.</value>
   </data>
 	<data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>Cover zu jp_g umwandeln</value>
