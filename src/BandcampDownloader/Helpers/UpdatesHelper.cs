@@ -12,11 +12,11 @@ namespace BandcampDownloader {
             // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
 
             // Retrieve the redirect page from the GitHub latest release page
-            HttpWebRequest request = HttpWebRequest.CreateHttp(Constants.LatestReleaseWebsite);
+            var request = HttpWebRequest.CreateHttp(Constants.LatestReleaseWebsite);
             request.AllowAutoRedirect = false;
             String redirectPage = "";
             try {
-                using (HttpWebResponse response = (HttpWebResponse) request.GetResponse()) {
+                using (var response = (HttpWebResponse) request.GetResponse()) {
                     redirectPage = response.GetResponseHeader("Location");
                     // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X.X"
                 }

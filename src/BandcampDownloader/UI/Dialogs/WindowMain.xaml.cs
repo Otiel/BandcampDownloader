@@ -151,7 +151,7 @@ namespace BandcampDownloader {
             }
 
             // Download & tag tracks
-            Task[] tasks = new Task[album.Tracks.Count];
+            var tasks = new Task[album.Tracks.Count];
             Boolean[] tracksDownloaded = new Boolean[album.Tracks.Count];
             for (int i = 0; i < album.Tracks.Count; i++) {
                 // Temporarily save the index or we will have a race condition exception when i hits its maximum value
@@ -238,7 +238,7 @@ namespace BandcampDownloader {
 
                             if (App.UserSettings.ModifyTags) {
                                 // Tag (ID3) the file when downloaded
-                                TagLib.File tagFile = TagLib.File.Create(trackPath);
+                                var tagFile = TagLib.File.Create(trackPath);
                                 tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
                                 tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
                                 tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbumTitle);
@@ -252,7 +252,7 @@ namespace BandcampDownloader {
 
                             if (App.UserSettings.SaveCoverArtInTags && artwork != null) {
                                 // Save cover in tags when downloaded
-                                TagLib.File tagFile = TagLib.File.Create(trackPath);
+                                var tagFile = TagLib.File.Create(trackPath);
                                 tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
                                 tagFile.Save();
                             }
@@ -637,7 +637,7 @@ namespace BandcampDownloader {
                 }
 
                 // Tracks
-                Task[] tasks = new Task[album.Tracks.Count];
+                var tasks = new Task[album.Tracks.Count];
                 for (int i = 0; i < album.Tracks.Count; i++) {
                     // Temporarily save the index or we will have a race condition exception when i hits its maximum value
                     int trackIndex = i;
@@ -921,7 +921,7 @@ namespace BandcampDownloader {
             Log("Starting download...", LogType.Info);
 
             // Get user inputs
-            List<String> userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
             userUrls = userUrls.Distinct().ToList();
 
             var urls = new List<String>();
@@ -966,7 +966,7 @@ namespace BandcampDownloader {
                     }
                 } else {
                     // Parallel download
-                    Task[] tasks = new Task[albums.Count];
+                    var tasks = new Task[albums.Count];
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
