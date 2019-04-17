@@ -199,14 +199,14 @@ Wenn nicht werden sie ignoriert und beim ursprünglichen Zustand beibehalten.
 Entspricht dem setzen von Nicht verändern bei jedem tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Ein album auf einmal _Herunterladen.</value>
+    <value>Ein album auf einmal _Herunterladen</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt wird nur ein Album auf einmal heruntergeladen.
 Wenn nicht werden alle auf einmal heruntergeladen (Empfohlen wenn eine hohe bandbreite zur verfügung steht).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>_Dateigrößen vorkalkulieren.</value>
+    <value>_Dateigrößen vorkalkulieren</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt werden die Dateigrößen im vornherein abgerufen so dass eine genaue verbleibende Dauer berechnet werden kann.
@@ -270,7 +270,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Alben speicher _in</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Dateiname format:</value>
+    <value>_Dateiname format</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>_HTTP(S) proxy</value>

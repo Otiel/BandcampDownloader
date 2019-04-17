@@ -270,7 +270,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Enregistrer les albums sous</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Format du nom de fichier :</value>
+    <value>_Format du nom de fichier</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>Proxy _HTTP(S)</value>
