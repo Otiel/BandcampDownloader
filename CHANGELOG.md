@@ -12,7 +12,7 @@
 * The track file name setting is now checked and must have the _mp3_ extension. [#80](https://github.com/Otiel/BandcampDownloader/issues/80)
 * The proxy port setting is now checked and must be an integer.
 
-# Bug fixes
+## Bug fixes
 
 * Minor bug fixes relative to the UI.
 
