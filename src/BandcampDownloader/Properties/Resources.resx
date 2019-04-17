@@ -397,6 +397,12 @@ If the size of both files differ from less than this value (in percent), the tra
 
 Recommended value = 5</value>
   </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>You can use placeholders to customize the file name:
+- {artist} will be replaced by the album artist
+- {album} will be replaced by the album name
+- {year}, {month} and {day} will be replaced by the album release date</value>
+  </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Maximum number of tries performed to download a track if it fails.
 After that number is reached (for each track), the track download will be skipped.

@@ -19,7 +19,7 @@ namespace BandcampDownloader.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -875,6 +875,18 @@ namespace BandcampDownloader.Properties {
         internal static string textBoxAllowedFileSizeDifference_ToolTip {
             get {
                 return ResourceManager.GetString("textBoxAllowedFileSizeDifference_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use placeholders to customize the file name:
+        ///- {artist} will be replaced by the album artist
+        ///- {album} will be replaced by the album name
+        ///- {year}, {month} and {day} will be replaced by the album release date.
+        /// </summary>
+        internal static string textBoxCoverArtFileNameFormat_ToolTip {
+            get {
+                return ResourceManager.GetString("textBoxCoverArtFileNameFormat_ToolTip", resourceCulture);
             }
         }
         

@@ -24,6 +24,7 @@ namespace BandcampDownloader {
         /// </summary>
         public void SaveSettings() {
             checkBoxSaveCoverArtInFolder.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            textBoxCoverArtFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             checkBoxCoverArtInFolderConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxCoverArtInFolderResize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             textBoxCoverArtInFolderMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();

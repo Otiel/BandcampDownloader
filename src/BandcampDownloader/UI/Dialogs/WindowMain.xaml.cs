@@ -310,8 +310,8 @@ namespace BandcampDownloader {
             String randomNumber = _random.Next(1, 1000).ToString("00#");
 
             // Compute paths where to save artwork
-            String artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName() + randomNumber + artworkFileExt;
-            String artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + artworkFileExt;
+            String artworkTempPath = Path.GetTempPath() + "\\" + ParseCoverArtFileName(album) + randomNumber + artworkFileExt;
+            String artworkFolderPath = downloadsFolder + "\\" + ParseCoverArtFileName(album) + artworkFileExt;
 
             if (artworkTempPath.Length >= 260 || artworkFolderPath.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
@@ -319,8 +319,8 @@ namespace BandcampDownloader {
                 // There may be only one path needed to shorten, but it's better to use the same file name in both places
                 int fileNameInTempMaxLength = 12 - randomNumber.Length - artworkFileExt.Length;
                 int fileNameInFolderMaxLength = 12 - artworkFileExt.ToString().Length;
-                artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
-                artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
+                artworkTempPath = Path.GetTempPath() + "\\" + ParseCoverArtFileName(album).Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
+                artworkFolderPath = downloadsFolder + "\\" + ParseCoverArtFileName(album).Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
             }
 
             TagLib.Picture artworkInTags = null;
@@ -738,6 +738,21 @@ namespace BandcampDownloader {
                     }
                 }));
             }
+        }
+
+        /// <summary>
+        /// Returns the file name to be used for the cover art of the specified from the file name format saved in the
+        /// UserSettings, by replacing the placeholders strings with their corresponding values.
+        /// </summary>
+        /// <param name="album">The album currently downloaded.</param>
+        private String ParseCoverArtFileName(Album album) {
+            String fileName = App.UserSettings.CoverArtFileNameFormat
+                .Replace("{year}", album.ReleaseDate.Year.ToString())
+                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
+                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
+                .Replace("{album}", album.Title)
+                .Replace("{artist}", album.Artist);
+            return fileName.ToAllowedFileName();
         }
 
         /// <summary>

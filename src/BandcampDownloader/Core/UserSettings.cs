@@ -43,6 +43,9 @@ namespace BandcampDownloader {
         [Option(DefaultValue = true)]
         Boolean CheckForUpdates { get; set; }
 
+        [Option(DefaultValue = "{album}")]
+        String CoverArtFileNameFormat { get; set; }
+
         [Option(DefaultValue = true)]
         Boolean CoverArtInFolderConvertToJpg { get; set; }
 

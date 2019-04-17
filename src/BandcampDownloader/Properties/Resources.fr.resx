@@ -381,6 +381,12 @@ Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage),
 
 Valeur conseillée = 5</value>
   </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
+- {artist} sera remplacé par l'interprète de l'album
+- {album} sera remplacé par le nom de l'album
+- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
+  </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Nombre maximum d'essais quand un téléchargement échoue.
 Si ce nombre est dépassé (par chanson), le téléchargement de la chanson sera abandonné.
