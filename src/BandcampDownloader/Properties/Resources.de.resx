@@ -240,7 +240,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Album _Name</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Erlaubter _dateigrößen-unterschied in Prozent</value>
+    <value>Erlaubter _dateigrößen-unterschied (in Prozent)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>A_rtist</value>
