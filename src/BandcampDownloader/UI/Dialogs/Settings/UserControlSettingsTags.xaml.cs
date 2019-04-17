@@ -34,5 +34,9 @@ namespace BandcampDownloader {
             comboBoxTrackTitle.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
             comboBoxYear.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            ((TextBox) sender).GetBindingExpression(TextBox.TextProperty).ValidateWithoutUpdate();
+        }
     }
 }
