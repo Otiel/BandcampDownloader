@@ -55,6 +55,10 @@
                     <Binding ElementName="checkBoxSaveCoverArtInFolder" Path="IsChecked" />
                 </TextBox.IsEnabled>
             </TextBox>
+            <Label
+                x:Name="labelCoverArtFileNameExtension"
+                Grid.Column="2"
+                Content=".jpg" />
         </Grid>
         <CheckBox
             x:Name="checkBoxCoverArtInFolderConvertToJpg"
