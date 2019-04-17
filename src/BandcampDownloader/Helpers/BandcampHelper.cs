@@ -39,7 +39,7 @@ namespace BandcampDownloader {
             }
 
             // Extract lyrics from album page
-            HtmlDocument htmlDoc = new HtmlDocument();
+            var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(htmlCode);
             foreach (Track track in album.Tracks) {
                 HtmlNode lyricsElement = htmlDoc.GetElementbyId("_lyrics_" + track.Number);

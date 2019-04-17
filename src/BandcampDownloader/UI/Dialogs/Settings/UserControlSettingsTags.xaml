@@ -8,14 +8,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsTags"
     Width="410"
-    Height="245"
+    Height="280"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
-        <Grid x:Name="gridFileNameFormat" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridFileNameFormat" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -30,42 +35,59 @@
                 Grid.Column="1"
                 Height="20"
                 Margin="0,0,5,0"
+                VerticalContentAlignment="Center"
                 TabIndex="0"
-                Text="{Binding FileNameFormat, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged"
                 ToolTip="{lex:Loc}"
-                ToolTipService.ShowDuration="60000" />
+                ToolTipService.ShowDuration="60000">
+                <Binding Path="FileNameFormat" UpdateSourceTrigger="Explicit">
+                    <Binding.ValidationRules>
+                        <local:Mp3ExtensionRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
         </Grid>
         <CheckBox
             x:Name="checkBoxModifyTags"
-            Margin="3,30,0,0"
+            Grid.Row="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding ModifyTags, UpdateSourceTrigger=Explicit}"
             TabIndex="1"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
-        <Grid x:Name="gridTags" Margin="18,0,0,0">
+        <Grid
+            x:Name="gridTags"
+            Grid.Row="2"
+            Margin="18,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+                <RowDefinition Height="26" />
+            </Grid.RowDefinitions>
             <Label
                 x:Name="labelArtist"
+                Grid.Row="0"
                 Grid.Column="0"
-                Margin="0,48,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxArtist}" />
             <ComboBox
                 x:Name="comboBoxArtist"
+                Grid.Row="0"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,50,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -74,20 +96,17 @@
                 TabIndex="2" />
             <Label
                 x:Name="labelTrackNumber"
+                Grid.Row="1"
                 Grid.Column="0"
-                Margin="0,72,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxTrackNumber}" />
             <ComboBox
                 x:Name="comboBoxTrackNumber"
+                Grid.Row="1"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,74,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -96,20 +115,17 @@
                 TabIndex="3" />
             <Label
                 x:Name="labelTrackTitle"
+                Grid.Row="2"
                 Grid.Column="0"
-                Margin="0,96,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxTrackTitle}" />
             <ComboBox
                 x:Name="comboBoxTrackTitle"
+                Grid.Row="2"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,98,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -118,20 +134,17 @@
                 TabIndex="4" />
             <Label
                 x:Name="labelAlbumTitle"
+                Grid.Row="3"
                 Grid.Column="0"
-                Margin="0,120,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxAlbumTitle}" />
             <ComboBox
                 x:Name="comboBoxAlbumTitle"
+                Grid.Row="3"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,122,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -140,20 +153,17 @@
                 TabIndex="5" />
             <Label
                 x:Name="labelAlbumArtist"
+                Grid.Row="4"
                 Grid.Column="0"
-                Margin="0,144,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxAlbumArtist}" />
             <ComboBox
                 x:Name="comboBoxAlbumArtist"
+                Grid.Row="4"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,146,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -162,20 +172,17 @@
                 TabIndex="6" />
             <Label
                 x:Name="labelYear"
+                Grid.Row="5"
                 Grid.Column="0"
-                Margin="0,168,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxYear}" />
             <ComboBox
                 x:Name="comboBoxYear"
+                Grid.Row="5"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,170,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -184,20 +191,17 @@
                 TabIndex="7" />
             <Label
                 x:Name="labelLyrics"
+                Grid.Row="6"
                 Grid.Column="0"
-                Margin="0,192,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxLyrics}" />
             <ComboBox
                 x:Name="comboBoxLyrics"
+                Grid.Row="6"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,194,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
@@ -206,20 +210,17 @@
                 TabIndex="8" />
             <Label
                 x:Name="labelComments"
+                Grid.Row="7"
                 Grid.Column="0"
-                Margin="0,216,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                VerticalContentAlignment="Center"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxComments}" />
             <ComboBox
                 x:Name="comboBoxComments"
+                Grid.Row="7"
                 Grid.Column="1"
                 Width="120"
-                Margin="0,218,0,0"
+                Height="22"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagRemoveAction}}}"

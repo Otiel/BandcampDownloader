@@ -13,7 +13,7 @@ namespace BandcampDownloader {
         /// size.</param>
         /// <returns>The size of the file located at the provided URL.</returns>
         public static long GetFileSize(String url, String protocolMethod) {
-            var webRequest = HttpWebRequest.Create(url);
+            WebRequest webRequest = HttpWebRequest.Create(url);
             webRequest.Method = protocolMethod;
             long fileSize;
             try {

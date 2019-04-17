@@ -22,7 +22,7 @@ namespace BandcampDownloader {
                 if (_enumType == value) {
                     return;
                 }
-                var underlyingType = Nullable.GetUnderlyingType(value) ?? value;
+                Type underlyingType = Nullable.GetUnderlyingType(value) ?? value;
                 if (!underlyingType.IsEnum) {
                     throw new ArgumentException("Type must be an Enum.");
                 }
@@ -35,8 +35,8 @@ namespace BandcampDownloader {
         }
 
         public override Object ProvideValue(IServiceProvider serviceProvider) {
-            var enumValues = Enum.GetValues(EnumType);
-            var enumerationMembers = (
+            Array enumValues = Enum.GetValues(EnumType);
+            EnumerationMember[] enumerationMembers = (
               from Object enumValue in enumValues
               select new EnumerationMember {
                   Value = enumValue,

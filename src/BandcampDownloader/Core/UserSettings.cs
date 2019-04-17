@@ -7,8 +7,10 @@ namespace BandcampDownloader {
     public enum Language {
         [Description("English")]
         en,
-        [Description("Français")]
-        fr
+        [Description("Français (French)")]
+        fr,
+        [Description("Deutsch (German)")]
+        de
     }
 
     public enum ProxyType {
@@ -40,6 +42,9 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = true)]
         Boolean CheckForUpdates { get; set; }
+
+        [Option(DefaultValue = "{album}")]
+        String CoverArtFileNameFormat { get; set; }
 
         [Option(DefaultValue = true)]
         Boolean CoverArtInFolderConvertToJpg { get; set; }

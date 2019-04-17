@@ -7,34 +7,37 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsDownloads"
     Width="410 "
-    Height="48"
+    Height="60"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
-    <Grid x:Name="gridMain">
+    <Grid x:Name="gridMain" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
         <CheckBox
             x:Name="checkBoxOneAlbumAtATime"
-            Width="190"
-            Margin="3,4,0,0"
+            Grid.Row="0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding DownloadOneAlbumAtATime, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
-            TabIndex="2"
+            TabIndex="0"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="checkBoxRetrieveFilesSize"
-            Margin="3,30,0,0"
+            Grid.Row="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding RetrieveFilesSize, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
-            TabIndex="4"
+            TabIndex="1"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
     </Grid>

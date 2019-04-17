@@ -251,6 +251,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelComments" xml:space="preserve">
     <value>C_ommentaires</value>
   </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Format du _nom de fichier</value>
+  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Taille maximale (_px)</value>
   </data>
@@ -270,7 +273,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Enregistrer les albums sous</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Format du nom de fichier :</value>
+    <value>_Format du nom de fichier</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>Proxy _HTTP(S)</value>
@@ -372,11 +375,20 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
   </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Aider à la traduction</value>
+  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Quand une chanson est téléchargée, si le même nom de fichier existe déjà dans le dossier, il sera comparé au fichier à télécharger.
 Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage), la chanson ne sera pas re-téléchargée.
 
 Valeur conseillée = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
+- {artist} sera remplacé par l'interprète de l'album
+- {album} sera remplacé par le nom de l'album
+- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Nombre maximum d'essais quand un téléchargement échoue.

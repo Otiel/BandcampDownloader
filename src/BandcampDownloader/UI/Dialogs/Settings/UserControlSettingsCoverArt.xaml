@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsCoverArt"
     Width="410"
-    Height="180"
+    Height="240"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -17,47 +17,92 @@
     <UserControl.Resources>
         <local:BooleanAndConverter x:Key="BooleanAndConverter" />
     </UserControl.Resources>
-    <Grid x:Name="gridMain">
+    <Grid x:Name="gridMain" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
         <CheckBox
             x:Name="checkBoxSaveCoverArtInFolder"
-            Height="16"
-            Margin="3,4,0,0"
+            Grid.Row="0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding SaveCoverArtInFolder, UpdateSourceTrigger=Explicit}"
             TabIndex="0"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
+        <Grid
+            x:Name="gridCoverArtFileNameFormat"
+            Grid.Row="1"
+            Margin="15,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="labelCoverArtFileNameFormat"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=textBoxCoverArtFileNameFormat}" />
+            <TextBox
+                x:Name="textBoxCoverArtFileNameFormat"
+                Grid.Column="1"
+                Height="20"
+                VerticalContentAlignment="Center"
+                TabIndex="1"
+                Text="{Binding CoverArtFileNameFormat, UpdateSourceTrigger=Explicit}"
+                ToolTip="{lex:Loc}"
+                ToolTipService.ShowDuration="60000">
+                <TextBox.IsEnabled>
+                    <Binding ElementName="checkBoxSaveCoverArtInFolder" Path="IsChecked" />
+                </TextBox.IsEnabled>
+            </TextBox>
+            <Label
+                x:Name="labelCoverArtFileNameExtension"
+                Grid.Column="2"
+                Content=".jpg" />
+        </Grid>
         <CheckBox
             x:Name="checkBoxCoverArtInFolderConvertToJpg"
-            Height="16"
-            Margin="24,25,0,0"
+            Grid.Row="2"
+            Margin="20,0,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInFolderConvertToJpg, UpdateSourceTrigger=Explicit}"
-            IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
-            TabIndex="1"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxCoverArtInFolderResize"
-            Height="16"
-            Margin="24,46,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            IsChecked="{Binding CoverArtInFolderResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
             TabIndex="2"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
+        <CheckBox
+            x:Name="checkBoxCoverArtInFolderResize"
+            Grid.Row="3"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="{lex:Loc}"
+            IsChecked="{Binding CoverArtInFolderResize, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
+            TabIndex="3"
+            ToolTip="{lex:Loc}"
+            ToolTipService.ShowDuration="60000" />
         <Grid
             x:Name="gridCoverArtInFolderMaxSize"
-            Margin="56,61,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+            Grid.Row="4"
+            Margin="35,0,0,0"
+            HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -71,9 +116,9 @@
                 x:Name="textBoxCoverArtInFolderMaxSize"
                 Grid.Column="1"
                 Width="40"
+                VerticalContentAlignment="Center"
                 Height="20"
-                Margin="0,4,0,0"
-                TabIndex="3"
+                TabIndex="4"
                 Text="{Binding CoverArtInFolderMaxSize, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged">
                 <TextBox.IsEnabled>
@@ -86,45 +131,43 @@
         </Grid>
         <CheckBox
             x:Name="checkBoxSaveCoverArtInTags"
-            Height="16"
-            Margin="3,94,0,0"
+            Grid.Row="5"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
-            RenderTransformOrigin="0.234,0.536"
-            TabIndex="4"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
-        <CheckBox
-            x:Name="checkBoxCoverArtInTagsConvertToJpg"
-            Height="16"
-            Margin="24,115,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Content="{lex:Loc}"
-            IsChecked="{Binding CoverArtInTagsConvertToJpg, UpdateSourceTrigger=Explicit}"
-            IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="5"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
-            x:Name="checkBoxCoverArtInTagsResize"
-            Height="16"
-            Margin="24,136,0,0"
+            x:Name="checkBoxCoverArtInTagsConvertToJpg"
+            Grid.Row="6"
+            Margin="20,0,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
-            IsChecked="{Binding CoverArtInTagsResize, UpdateSourceTrigger=Explicit}"
+            IsChecked="{Binding CoverArtInTagsConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
             TabIndex="6"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
+        <CheckBox
+            x:Name="checkBoxCoverArtInTagsResize"
+            Grid.Row="7"
+            Margin="20,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="{lex:Loc}"
+            IsChecked="{Binding CoverArtInTagsResize, UpdateSourceTrigger=Explicit}"
+            IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
+            TabIndex="7"
+            ToolTip="{lex:Loc}"
+            ToolTipService.ShowDuration="60000" />
         <Grid
             x:Name="gridCoverArtInTagsMaxSize"
-            Margin="56,151,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+            Grid.Row="8"
+            Margin="35,0,0,0"
+            HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -138,9 +181,9 @@
                 x:Name="textBoxCoverArtInTagsMaxSize"
                 Grid.Column="1"
                 Width="40"
+                VerticalContentAlignment="Center"
                 Height="20"
-                Margin="0,4,0,0"
-                TabIndex="7"
+                TabIndex="8"
                 Text="{Binding CoverArtInTagsMaxSize, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged">
                 <TextBox.IsEnabled>

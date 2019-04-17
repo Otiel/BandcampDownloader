@@ -19,7 +19,7 @@ namespace BandcampDownloader.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -512,6 +512,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File _name format.
+        /// </summary>
+        internal static string labelCoverArtFileNameFormat {
+            get {
+                return ResourceManager.GetString("labelCoverArtFileNameFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max size (_px).
         /// </summary>
         internal static string labelCoverArtInFolderMaxSize {
@@ -858,6 +867,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help translate.
+        /// </summary>
+        internal static string textBlockTranslationHelp {
+            get {
+                return ResourceManager.GetString("textBlockTranslationHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
         ///If the size of both files differ from less than this value (in percent), the track download will be skipped.
         ///
@@ -866,6 +884,18 @@ namespace BandcampDownloader.Properties {
         internal static string textBoxAllowedFileSizeDifference_ToolTip {
             get {
                 return ResourceManager.GetString("textBoxAllowedFileSizeDifference_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use placeholders to customize the file name:
+        ///- {artist} will be replaced by the album artist
+        ///- {album} will be replaced by the album name
+        ///- {year}, {month} and {day} will be replaced by the album release date.
+        /// </summary>
+        internal static string textBoxCoverArtFileNameFormat_ToolTip {
+            get {
+                return ResourceManager.GetString("textBoxCoverArtFileNameFormat_ToolTip", resourceCulture);
             }
         }
         

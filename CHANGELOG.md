@@ -1,3 +1,21 @@
+# 0.2.7.0
+
+## New features
+
+* Added an option to customize the cover art file name. [#77](https://github.com/Otiel/BandcampDownloader/issues/77)
+* Added german localization. Thanks **@Simonwep** for the complete translation! [#78](https://github.com/Otiel/BandcampDownloader/pull/78)
+* Added link to the translation [guidelines](/docs/help-translate.md) next to the language setting.
+
+## Improvements
+
+* The English name of any language is now displayed next to the local language name in settings.
+* The track file name setting is now checked and must have the _mp3_ extension. [#80](https://github.com/Otiel/BandcampDownloader/issues/80)
+* The proxy port setting is now checked and must be an integer.
+
+# Bug fixes
+
+* Minor bug fixes relative to the UI.
+
 # 0.2.6.0
 
 ## New features

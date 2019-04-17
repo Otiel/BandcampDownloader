@@ -46,7 +46,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
-            Version latestVersion = null;
+            Version latestVersion;
             try {
                 latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
@@ -63,6 +63,11 @@ namespace BandcampDownloader {
             } else {
                 MessageBox.Show(String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }
