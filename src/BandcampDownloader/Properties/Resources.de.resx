@@ -261,7 +261,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>_Maximale Downloadversuche</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Wiederholungs _Wartezeit</value>
+    <value>Wiederholungs _Wartezeit (in Sekunde)</value>
   </data>
   <data name="labelDownloadRetryExponent" xml:space="preserve">
     <value>Wiederholungs _Exponent</value>
