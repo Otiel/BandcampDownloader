@@ -75,7 +75,8 @@
                 Width="50"
                 Height="20"
                 IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
-                Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}" />
+                Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged" />
         </Grid>
     </Grid>
 </UserControl>
