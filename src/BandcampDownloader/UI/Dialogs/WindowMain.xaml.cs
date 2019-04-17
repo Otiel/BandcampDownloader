@@ -741,7 +741,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified download path.
+        /// Returns the download path for the specified album from the specified path format, by replacing the
+        /// placeholders strings with their corresponding values.
         /// </summary>
         /// <param name="downloadPath">The download path to parse.</param>
         /// <param name="album">The album currently downloaded.</param>
@@ -761,7 +762,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
+        /// Returns the file name to be used for the specified track from the file name format saved in the UserSettings,
+        /// by replacing the placeholders strings with their corresponding values.
         /// </summary>
         /// <param name="album">The album currently downloaded.</param>
         /// <param name="track">The track currently downloaded.</param>
