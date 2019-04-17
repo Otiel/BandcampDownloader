@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsNetwork"
     Width="410"
-    Height="105"
+    Height="110"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -18,32 +18,38 @@
         <local:ComparisonConverter x:Key="ComparisonConverter" />
     </UserControl.Resources>
     <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
         <RadioButton
             x:Name="radioButtonNoProxy"
-            Margin="3,4,0,0"
+            Grid.Row="0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.None}, UpdateSourceTrigger=Explicit}" />
         <RadioButton
             x:Name="radioButtonSystemProxy"
-            Margin="3,30,0,0"
+            Grid.Row="1"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.System}, UpdateSourceTrigger=Explicit}" />
         <RadioButton
             x:Name="radioButtonManualProxy"
-            Margin="3,56,0,0"
+            Grid.Row="2"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
+            VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.Manual}, UpdateSourceTrigger=Explicit}" />
         <Grid
             x:Name="gridManualProxy"
-            Margin="17,76,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+            Grid.Row="3"
+            Margin="14,0,0,0"
+            HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -61,6 +67,7 @@
                 Grid.Column="1"
                 Width="100"
                 Height="20"
+                VerticalContentAlignment="Center"
                 IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
                 Text="{Binding ProxyHttpAddress, UpdateSourceTrigger=Explicit}" />
             <Label
@@ -74,6 +81,7 @@
                 Grid.Column="3"
                 Width="50"
                 Height="20"
+                VerticalContentAlignment="Center"
                 IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
                 Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged" />
