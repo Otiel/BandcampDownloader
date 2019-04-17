@@ -388,6 +388,9 @@ Would you like to go to the project website in order to download the latest vers
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>_System proxy</value>
   </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Help translate</value>
+  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
 If the size of both files differ from less than this value (in percent), the track download will be skipped.
@@ -431,9 +434,6 @@ Recommended value = 4</value>
 - {tracknum} will be replaced by the track number
 - {album} will be replaced by the album name
 - {year}, {month} and {day} will be replaced by the album release date</value>
-  </data>
-  <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Help translate</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Paste URLs of albums to download here. You can specify multiple URLs by writing one URL per line.

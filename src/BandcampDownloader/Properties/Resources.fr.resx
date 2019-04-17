@@ -372,6 +372,9 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
   </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Aider à la traduction</value>
+  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Quand une chanson est téléchargée, si le même nom de fichier existe déjà dans le dossier, il sera comparé au fichier à télécharger.
 Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage), la chanson ne sera pas re-téléchargée.
@@ -415,9 +418,6 @@ Valeur conseillée = 4</value>
 - {tracknum} sera remplacé par le numéro de la piste
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
-  </data>
-  <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Aider à la traduction</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Copiez les URL d'albums à télécharger ici. Vous pouvez spécifier plusieurs URL en ayant un URL par ligne.
