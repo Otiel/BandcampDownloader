@@ -512,6 +512,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File _name format.
+        /// </summary>
+        internal static string labelCoverArtFileNameFormat {
+            get {
+                return ResourceManager.GetString("labelCoverArtFileNameFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max size (_px).
         /// </summary>
         internal static string labelCoverArtInFolderMaxSize {

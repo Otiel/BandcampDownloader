@@ -251,6 +251,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelComments" xml:space="preserve">
     <value>Komm_entare</value>
   </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>_Dateiname format</value>
+  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Maximale Größe (_px)</value>
   </data>

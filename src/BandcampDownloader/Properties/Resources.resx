@@ -267,6 +267,9 @@ Uncheck this option to save some time.</value>
   <data name="labelComments" xml:space="preserve">
     <value>Comm_ents</value>
   </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>File _name format</value>
+  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Max size (_px)</value>
   </data>

@@ -251,6 +251,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelComments" xml:space="preserve">
     <value>C_ommentaires</value>
   </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Format du _nom de fichier</value>
+  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Taille maximale (_px)</value>
   </data>

@@ -40,7 +40,7 @@
             <Label
                 x:Name="labelCoverArtFileNameFormat"
                 Grid.Column="0"
-                Content="File _name format (without extension)"
+                Content="{lex:Loc}"
                 Target="{Binding ElementName=textBoxCoverArtFileNameFormat}" />
             <TextBox
                 x:Name="textBoxCoverArtFileNameFormat"
