@@ -26,7 +26,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding DownloadOneAlbumAtATime, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
-            TabIndex="2"
+            TabIndex="0"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
@@ -37,7 +37,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding RetrieveFilesSize, UpdateSourceTrigger=Explicit}"
             IsEnabled="True"
-            TabIndex="4"
+            TabIndex="1"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
     </Grid>

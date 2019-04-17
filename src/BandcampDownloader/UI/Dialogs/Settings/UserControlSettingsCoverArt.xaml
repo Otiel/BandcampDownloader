@@ -83,7 +83,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInFolderConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
-            TabIndex="1"
+            TabIndex="2"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
@@ -95,7 +95,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInFolderResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInFolder}"
-            TabIndex="2"
+            TabIndex="3"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Grid
@@ -118,7 +118,7 @@
                 Width="40"
                 VerticalContentAlignment="Center"
                 Height="20"
-                TabIndex="3"
+                TabIndex="4"
                 Text="{Binding CoverArtInFolderMaxSize, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged">
                 <TextBox.IsEnabled>
@@ -136,7 +136,7 @@
             VerticalAlignment="Center"
             Content="{lex:Loc}"
             IsChecked="{Binding SaveCoverArtInTags, UpdateSourceTrigger=Explicit}"
-            TabIndex="4"
+            TabIndex="5"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
@@ -148,7 +148,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInTagsConvertToJpg, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
-            TabIndex="5"
+            TabIndex="6"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
@@ -160,7 +160,7 @@
             Content="{lex:Loc}"
             IsChecked="{Binding CoverArtInTagsResize, UpdateSourceTrigger=Explicit}"
             IsEnabled="{Binding IsChecked, ElementName=checkBoxSaveCoverArtInTags}"
-            TabIndex="6"
+            TabIndex="7"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Grid
@@ -183,7 +183,7 @@
                 Width="40"
                 VerticalContentAlignment="Center"
                 Height="20"
-                TabIndex="7"
+                TabIndex="8"
                 Text="{Binding CoverArtInTagsMaxSize, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged">
                 <TextBox.IsEnabled>
