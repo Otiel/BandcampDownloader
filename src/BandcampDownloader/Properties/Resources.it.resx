@@ -197,7 +197,7 @@
     <value>Se si spunta, ogni tag sarà modificato come specificato sotto.
 
 Se non si spunta, tutte le impostazioni sotto saranno ignorate e i tag rimarranno come nel file scaricato.
-Ciò è uguale a scegliere “Non modificare” per ogni tag.</value>
+Ciò è uguale a scegliere "Non modificare" per ogni tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>_Scarica un album alla volta</value>
