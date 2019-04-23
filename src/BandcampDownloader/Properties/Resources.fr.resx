@@ -396,6 +396,7 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Quand une chanson est téléchargée, si le même nom de fichier existe déjà dans le dossier, il sera comparé au fichier à télécharger.
 Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage), la chanson ne sera pas re-téléchargée.
+Paramétrez cette valeur à 0 pour toujours re-télécharger les chansons.
 
 Valeur conseillée = 5</value>
   </data>

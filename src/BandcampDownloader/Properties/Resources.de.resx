@@ -396,6 +396,7 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Wenn ein Song heruntergeladen wird, und einer mit dem selben Namen schon existiert, wird geprüft ob der größen-unterschied 
 größer ist als die angegebene Zahl in prozent. Wenn dem so ist wird die Datei übersprungen.
+Setzen Sie diesen Wert auf 0, um Songs immer wieder neu herunterzuladen.
 
 Empfohlender Wert = 5</value>
   </data>
