@@ -604,10 +604,10 @@ namespace BandcampDownloader {
 
                 // Artwork
                 if (downloadCoverArt && album.HasArtwork) {
-                    long size = 0;
-                    Boolean sizeRetrieved = false;
-                    int tries = 0;
                     if (App.UserSettings.RetrieveFilesSize) {
+                        long size = 0;
+                        Boolean sizeRetrieved = false;
+                        int tries = 0;
                         do {
                             if (_userCancelled) {
                                 // Abort
@@ -632,26 +632,28 @@ namespace BandcampDownloader {
                                 WaitForCooldown(tries);
                             }
                         } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
+                        files.Add(new TrackFile(album.ArtworkUrl, 0, size));
+                    } else {
+                        files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
                     }
-                    files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
 
                 // Tracks
-                var tasks = new Task[album.Tracks.Count];
-                for (int i = 0; i < album.Tracks.Count; i++) {
-                    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
-                    int trackIndex = i;
+                if (App.UserSettings.RetrieveFilesSize) {
+                    var tasks = new Task[album.Tracks.Count];
+                    for (int i = 0; i < album.Tracks.Count; i++) {
+                        // Temporarily save the index or we will have a race condition exception when i hits its maximum value
+                        int trackIndex = i;
 
-                    if (_userCancelled) {
-                        // Abort
-                        return new List<TrackFile>();
-                    }
+                        if (_userCancelled) {
+                            // Abort
+                            return new List<TrackFile>();
+                        }
 
-                    tasks[trackIndex] = Task.Factory.StartNew(() => {
-                        long size = 0;
-                        Boolean sizeRetrieved = false;
-                        int tries = 0;
-                        if (App.UserSettings.RetrieveFilesSize) {
+                        tasks[trackIndex] = Task.Factory.StartNew(() => {
+                            long size = 0;
+                            Boolean sizeRetrieved = false;
+                            int tries = 0;
                             do {
                                 if (_userCancelled) {
                                     // Abort
@@ -679,14 +681,19 @@ namespace BandcampDownloader {
                                     WaitForCooldown(tries);
                                 }
                             } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
-                        }
-                        files.Add(new TrackFile(album.Tracks[trackIndex].Mp3Url, 0, size));
-                    });
-                }
+                            files.Add(new TrackFile(album.Tracks[trackIndex].Mp3Url, 0, size));
+                        });
+                    }
 
-                // Wait for all tracks size to be retrieved
-                Task.WaitAll(tasks);
+                    // Wait for all tracks size to be retrieved
+                    Task.WaitAll(tasks);
+                } else {
+                    foreach (Track track in album.Tracks) {
+                        files.Add(new TrackFile(track.Mp3Url, 0, 0));
+                    }
+                }
             }
+
             return files;
         }
 
