@@ -149,7 +149,7 @@
     <value>_Annulla</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Cerca _aggiornamenti all'avvio</value>
+    <value>_Cerca aggiornamenti all'avvio</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>Se si spunta, l'applicazione cercherà il seguente indirizzo all'avvio:</value>
@@ -173,7 +173,7 @@
     <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Limita larghezza_/altezza massime</value>
+    <value>Limita larg_hezza/altezza massime</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
@@ -185,7 +185,7 @@
     <value>Se si spunta, sarà scaricata l'intera discografia dell'artista.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>Emetti _suoni di notifica</value>
+    <value>_Emetti suoni di notifica</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Se si spunta, partirà una notifica sonora ad ogni scaricamento finito.</value>
@@ -200,7 +200,7 @@ Se non si spunta, tutte le impostazioni sotto saranno ignorate e i tag rimarrann
 Ciò è uguale a scegliere "Non modificare" per ogni tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Scarica un album alla volta</value>
+    <value>Scarica un album alla _volta</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Se si spunta, il programma scaricherà un album alla volta.
@@ -226,7 +226,7 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
     <value>Se si spunta, la copertina sarà salvata nei tag della traccia.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Mostra _registro informazioni esteso</value>
+    <value>_Mostra registro informazioni esteso</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Se si spunta, il registro sarà piú preciso.</value>
@@ -238,13 +238,13 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
     <value>Artista al_bum</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
-    <value>Nome _album</value>
+    <value>Nome a_lbum</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Differenza di gran_dezza (%) dei file permessa</value>
+    <value>_Differenza di grandezza (%) dei file permessa</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
-    <value>_Artista</value>
+    <value>Art_ista</value>
   </data>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Ripristina impostazioni</value>
@@ -256,25 +256,25 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
     <value>Dimensione massima (_px)</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Dimensione massima (_px)</value>
+    <value>Dimensione massima (p_x)</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Massimo numero _di tentativi</value>
+    <value>_Massimo numero di tentativi</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>Attesa (sec) _prima di un nuovo tentativo</value>
   </data>
   <data name="labelDownloadRetryExponent" xml:space="preserve">
-    <value>Esponente _di un nuovo tentativo</value>
+    <value>_Esponente di un nuovo tentativo</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Salva gli album _in</value>
+    <value>Salva _gli album in</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
     <value>_Formato nomi file:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
-    <value>_Proxy HTTP(S)</value>
+    <value>Proxy _HTTP(S)</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Porta</value>
@@ -286,13 +286,13 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
     <value>_Lingua</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
-    <value>_Testo canzoni</value>
+    <value>Testo can_zoni</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Alcune impostazioni non possono essere modificate durante lo scaricamento.</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
-    <value>Numero t_raccia</value>
+    <value>_Numero traccia</value>
   </data>
   <data name="labelTrackTitle" xml:space="preserve">
     <value>_Titolo</value>
@@ -310,7 +310,7 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
     <value>È disponibile una nuova versione ({0})</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>Anno di rilascio _album</value>
+    <value>Anno _di rilascio album</value>
   </data>
   <data name="listBoxItemAdvanced" xml:space="preserve">
     <value>Impostazioni avanzate</value>
@@ -371,7 +371,7 @@ Desideri andare sul sito ufficiale per scaricare l'ultima versione?</value>
     <value>_Nessun proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Proxy di sistema</value>
+    <value>Proxy _di sistema</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Scaricando una traccia, se esiste già un file con lo stesso nome, si comparerà alla traccia da scaricare.
