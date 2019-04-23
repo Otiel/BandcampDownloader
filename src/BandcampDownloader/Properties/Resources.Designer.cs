@@ -867,6 +867,51 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do not modify.
+        /// </summary>
+        internal static string TagEditAction_DoNotModify {
+            get {
+                return ResourceManager.GetString("TagEditAction_DoNotModify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty tag.
+        /// </summary>
+        internal static string TagEditAction_Empty {
+            get {
+                return ResourceManager.GetString("TagEditAction_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save in tag.
+        /// </summary>
+        internal static string TagEditAction_Modify {
+            get {
+                return ResourceManager.GetString("TagEditAction_Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not modify.
+        /// </summary>
+        internal static string TagRemoveAction_DoNotModify {
+            get {
+                return ResourceManager.GetString("TagRemoveAction_DoNotModify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty tag.
+        /// </summary>
+        internal static string TagRemoveAction_Empty {
+            get {
+                return ResourceManager.GetString("TagRemoveAction_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help translate.
         /// </summary>
         internal static string textBlockTranslationHelp {
