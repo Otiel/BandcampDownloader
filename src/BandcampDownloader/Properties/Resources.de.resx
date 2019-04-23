@@ -400,12 +400,6 @@ Setzen Sie diesen Wert auf 0, um Songs immer wieder neu herunterzuladen.
 
 Empfohlender Wert = 5</value>
   </data>
-  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Es können folgende Platzhalter verwendet werden um den Dateinamen zu modifizieren:
-- {artist} wird ersetzt mit dem Künstlernamen des Albums
-- {album} Wird mit dem albumnamen ersetzt
-- {year}, {month} und {day} werden mit dem Erscheinungsdatum ersetzt</value>
-  </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Maximale anzahl wie oft versucht werden soll den Song herunterzuladen.
 Wenn dieser überschritten wird, wird der Song übersprungen.
