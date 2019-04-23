@@ -327,7 +327,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieve files _size.
+        ///   Looks up a localized string similar to Retrieve files _size before downloading tracks.
         /// </summary>
         internal static string checkBoxRetrieveFilesSize {
             get {

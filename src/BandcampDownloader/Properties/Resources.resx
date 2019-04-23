@@ -222,7 +222,7 @@ This is equivalent to setting "Do not modify" on each tag.</value>
 If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Retrieve files _size</value>
+    <value>Retrieve files _size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>If checked, files size will be retrieved so that precise download progress can be shown.
