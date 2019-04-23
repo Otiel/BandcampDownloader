@@ -10,7 +10,9 @@ namespace BandcampDownloader {
         [Description("Français (French)")]
         fr,
         [Description("Deutsch (German)")]
-        de
+        de,
+        [Description("Italiano (Italian)")]
+        it
     }
 
     public enum ProxyType {
