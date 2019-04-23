@@ -155,10 +155,10 @@
     <value>Se si spunta, l'applicazione cercherà il seguente indirizzo all'avvio:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Converti in _JPG</value>
+    <value>Converti in _jpg</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà convertita in JPG con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
+    <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>Limita _larghezza/altezza massime</value>
@@ -167,10 +167,10 @@
     <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Converti in JP_G</value>
+    <value>Converti in jp_g</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà convertita in JPG con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
+    <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Limita larghezza_/altezza massime</value>
