@@ -291,6 +291,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelLyrics" xml:space="preserve">
     <value>Son_gtexte</value>
   </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>_Dateiname format</value>
+  </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Einige Einstellungen können nicht übernommen werden wärend ein Download stattfindet.</value>
   </data>

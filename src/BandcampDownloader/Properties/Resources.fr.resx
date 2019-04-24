@@ -178,6 +178,12 @@
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>La pochette sera redimensionnée pour ne pas être plus grande que la largeur / hauteur définie.</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Créer une _liste de lecture pour chaque album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Un fichier contenant la liste de lecture sera créé pour chaque album téléchargé.</value>
+  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Télécharger la _discographie de l'artiste</value>
   </data>
@@ -189,6 +195,12 @@
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Un son de notification sera joué lorsque les téléchargements sont terminés.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Format étend_u (seulement pour M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Le format étendu (contenant les mots-clés commençant par #) sera utilisé lors de la création de listes de lecture M3U.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modifier les métadonnées des chansons (ID3)</value>
@@ -291,6 +303,12 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelLyrics" xml:space="preserve">
     <value>_Paroles</value>
   </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Format du _nom de fichier</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>_Format de la liste de lecture</value>
+  </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Certains paramètres ne peuvent pas être modifiés lorsque des téléchargements sont en cours.</value>
   </data>
@@ -329,6 +347,9 @@ Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="listBoxItemNetwork" xml:space="preserve">
     <value>Réseau</value>
+  </data>
+  <data name="listBoxItemPlaylist" xml:space="preserve">
+    <value>Liste de lecture</value>
   </data>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Noms et métadonnées</value>
@@ -442,6 +463,12 @@ Valeur conseillée = 4</value>
 - {artist} sera remplacé par l'interprète de l'album
 - {title} sera remplacé par le titre de la chanson
 - {tracknum} sera remplacé par le numéro de la piste
+- {album} sera remplacé par le nom de l'album
+- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
+- {artist} sera remplacé par l'interprète de l'album
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>

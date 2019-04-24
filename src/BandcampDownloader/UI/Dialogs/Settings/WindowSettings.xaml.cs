@@ -58,6 +58,7 @@ namespace BandcampDownloader {
             userControlSettingsDownloads.LoadSettings();
             userControlSettingsGeneral.LoadSettings();
             userControlSettingsNetwork.LoadSettings();
+            userControlSettingsPlaylist.LoadSettings();
             userControlSettingsTags.LoadSettings();
         }
 
@@ -70,6 +71,7 @@ namespace BandcampDownloader {
             userControlSettingsDownloads.SaveSettings();
             userControlSettingsGeneral.SaveSettings();
             userControlSettingsNetwork.SaveSettings();
+            userControlSettingsPlaylist.SaveSettings();
             userControlSettingsTags.SaveSettings();
         }
     }

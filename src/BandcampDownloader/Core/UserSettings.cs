@@ -15,6 +15,17 @@ namespace BandcampDownloader {
         it
     }
 
+    public enum PlaylistFormat {
+        [Description("M3U")]
+        m3u,
+        [Description("PLS")]
+        pls,
+        [Description("WPL (Windows Media Player)")]
+        wpl,
+        [Description("ZPL (Zune Media Player)")]
+        zpl
+    }
+
     public enum ProxyType {
         None,
         System,
@@ -67,6 +78,9 @@ namespace BandcampDownloader {
         Boolean CoverArtInTagsResize { get; set; }
 
         [Option(DefaultValue = false)]
+        Boolean CreatePlaylist { get; set; }
+
+        [Option(DefaultValue = false)]
         Boolean DownloadArtistDiscography { get; set; }
 
         [Option(DefaultValue = 7)]
@@ -96,7 +110,16 @@ namespace BandcampDownloader {
         Language Language { get; set; }
 
         [Option(DefaultValue = true)]
+        Boolean M3uExtended { get; set; }
+
+        [Option(DefaultValue = true)]
         Boolean ModifyTags { get; set; }
+
+        [Option(DefaultValue = "{album}")]
+        String PlaylistFileNameFormat { get; set; }
+
+        [Option(DefaultValue = PlaylistFormat.m3u)]
+        PlaylistFormat PlaylistFormat { get; set; }
 
         [Option(DefaultValue = ProxyType.System)]
         ProxyType Proxy { get; set; }

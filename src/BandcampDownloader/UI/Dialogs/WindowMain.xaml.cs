@@ -1000,6 +1000,14 @@ namespace BandcampDownloader {
                     Task.WaitAll(tasks);
                 }
             }).ContinueWith(x => {
+                // Create playlist files
+                if (App.UserSettings.CreatePlaylist) {
+                    foreach (Album album in albums) {
+                        PlaylistHelper.SavePlaylistForAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                        Log($"Playlist saved for album \"{album.Title}\"", LogType.Success);
+                    }
+                }
+            }).ContinueWith(x => {
                 if (_userCancelled) {
                     // Display message if user cancelled
                     Log("Downloads cancelled by user", LogType.Info);
