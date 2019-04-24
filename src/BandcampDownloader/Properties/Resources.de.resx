@@ -234,6 +234,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Ordner auswählen um</value>
   </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Änderungen folgender Einstellungen auf eigener Gefahr:</value>
+  </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Albu_m Artist</value>
   </data>
@@ -281,9 +284,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Änderungen folgender Einstellungen auf eigener Gefahr:</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>S_prache</value>

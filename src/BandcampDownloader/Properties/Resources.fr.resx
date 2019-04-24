@@ -246,6 +246,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Sélectionner le dossier dans lequel télécharger les albums</value>
   </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Modifiez ces paramètres à vos risques et périls.</value>
+  </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Interprète de l'al_bum</value>
   </data>
@@ -293,9 +296,6 @@ Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Modifiez ces paramètres à vos risques et périls.</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Langue</value>

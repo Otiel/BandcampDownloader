@@ -261,6 +261,9 @@ Uncheck this option to save some time.</value>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Select the folder to save albums</value>
   </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Change these settings at your own risk.</value>
+  </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Album art_ist</value>
   </data>
@@ -308,9 +311,6 @@ Uncheck this option to save some time.</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Change these settings at your own risk.</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Language</value>

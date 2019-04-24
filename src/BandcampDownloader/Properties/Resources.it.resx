@@ -234,6 +234,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Scegli la cartella in cui salvare gli album</value>
   </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Cambia queste impostazioni a tuo rischio e pericolo.</value>
+  </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Artista al_bum</value>
   </data>
@@ -278,9 +281,6 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Porta</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Cambia queste impostazioni a tuo rischio e pericolo.</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Lingua</value>
