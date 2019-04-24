@@ -33,8 +33,7 @@ docs     | `patch` | A change to the documentation. | Hidden
 style    | `patch` | Formatting, missing semi colons, etc; no production code change | Hidden
 refactor | `patch` | Refactoring production code, eg. renaming a variable | Hidden
 test     | `patch` | Adding tests, refactoring tests; no production code change | Hidden
-chore    | `patch` | Updating grunt tasks, etc; no production code change | Hidden
-other    | `patch` | What doesn't fall in any other category (udpating a library...) | Conditional
+chore    | `patch` | Updating grunt tasks, updating a library, etc | Conditional
 
 ## Body
 

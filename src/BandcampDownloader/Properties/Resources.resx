@@ -193,6 +193,12 @@
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>If checked, the cover art will be resized with the specified max width/height.</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Create _playlist for each album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>If checked, a file containing the album tracks will be created for each downloaded album.</value>
+  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Download _artist discography</value>
   </data>
@@ -204,6 +210,12 @@
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>If checked, a notification sound will be played when downloads are finished.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Use _extended format (for M3U only)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modify tracks tags (ID3)</value>
@@ -222,7 +234,7 @@ This is equivalent to setting "Do not modify" on each tag.</value>
 If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Retrieve files _size</value>
+    <value>Retrieve files _size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>If checked, files size will be retrieved so that precise download progress can be shown.
@@ -248,6 +260,9 @@ Uncheck this option to save some time.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Select the folder to save albums</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Change these settings at your own risk.</value>
   </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Album art_ist</value>
@@ -297,14 +312,17 @@ Uncheck this option to save some time.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
   </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Change these settings at your own risk.</value>
-  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Language</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>_Lyrics</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>File _name format</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Playlist _format</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Some settings cannot be changed while tracks are downloading.</value>
@@ -344,6 +362,9 @@ Uncheck this option to save some time.</value>
   </data>
   <data name="listBoxItemNetwork" xml:space="preserve">
     <value>Network</value>
+  </data>
+  <data name="listBoxItemPlaylist" xml:space="preserve">
+    <value>Playlist</value>
   </data>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Naming and tags</value>
@@ -391,12 +412,28 @@ Would you like to go to the project website in order to download the latest vers
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>_System proxy</value>
   </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Do not modify</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Empty tag</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Do not modify</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Empty tag</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Save in tag</value>
+  </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Help translate</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
 If the size of both files differ from less than this value (in percent), the track download will be skipped.
+Set this value to 0 in order to always download tracks, even if already existing on disk.
 
 Recommended value = 5</value>
   </data>
@@ -441,6 +478,12 @@ Recommended value = 4</value>
 - {artist} will be replaced by the album artist
 - {title} will be replaced by the track name
 - {tracknum} will be replaced by the track number
+- {album} will be replaced by the album name
+- {year}, {month} and {day} will be replaced by the album release date</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>You can use placeholders to customize the file name:
+- {artist} will be replaced by the album artist
 - {album} will be replaced by the album name
 - {year}, {month} and {day} will be replaced by the album release date</value>
   </data>

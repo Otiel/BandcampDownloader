@@ -25,14 +25,14 @@ namespace BandcampDownloader {
         public void SaveSettings() {
             textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             checkBoxModifyTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-            comboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxAlbumTitle.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxArtist.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxComments.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxLyrics.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxTrackNumber.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxTrackTitle.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-            comboBoxYear.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxAlbumTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxComments.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxLyrics.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxTrackNumber.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxTrackTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+            comboBoxYear.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {

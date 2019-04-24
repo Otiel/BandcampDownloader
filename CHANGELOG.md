@@ -1,3 +1,19 @@
+# 0.2.8.0
+
+## New features
+
+* Added an option to create playlist files (m3u, psl, wpl or zpl). [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
+* Added italian localization. Thanks **@RichyZ99** for the complete translation! [#84](https://github.com/Otiel/BandcampDownloader/pull/84)
+
+## Improvements
+
+* Tag actions ("modify", "do not modify", "empty") are now localized.
+* Minor UI improvements.
+
+## Bug fixes
+
+* Fixed a crash that could occur when "☑ Retrieve files size" was unchecked. [#74](https://github.com/Otiel/BandcampDownloader/issues/74)
+
 # 0.2.7.0
 
 ## New features
@@ -12,7 +28,7 @@
 * The track file name setting is now checked and must have the _mp3_ extension. [#80](https://github.com/Otiel/BandcampDownloader/issues/80)
 * The proxy port setting is now checked and must be an integer.
 
-# Bug fixes
+## Bug fixes
 
 * Minor bug fixes relative to the UI.
 

@@ -251,6 +251,24 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create _playlist for each album.
+        /// </summary>
+        internal static string checkBoxCreatePlaylist {
+            get {
+                return ResourceManager.GetString("checkBoxCreatePlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If checked, a file containing the album tracks will be created for each downloaded album..
+        /// </summary>
+        internal static string checkBoxCreatePlaylist_ToolTip {
+            get {
+                return ResourceManager.GetString("checkBoxCreatePlaylist_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download _artist discography.
         /// </summary>
         internal static string checkBoxDownloadDiscography {
@@ -283,6 +301,24 @@ namespace BandcampDownloader.Properties {
         internal static string checkBoxEnableApplicationSounds_ToolTip {
             get {
                 return ResourceManager.GetString("checkBoxEnableApplicationSounds_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use _extended format (for M3U only).
+        /// </summary>
+        internal static string checkBoxM3uExtended {
+            get {
+                return ResourceManager.GetString("checkBoxM3uExtended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists..
+        /// </summary>
+        internal static string checkBoxM3uExtended_ToolTip {
+            get {
+                return ResourceManager.GetString("checkBoxM3uExtended_ToolTip", resourceCulture);
             }
         }
         
@@ -327,7 +363,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieve files _size.
+        ///   Looks up a localized string similar to Retrieve files _size before downloading tracks.
         /// </summary>
         internal static string checkBoxRetrieveFilesSize {
             get {
@@ -620,6 +656,24 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File _name format.
+        /// </summary>
+        internal static string labelPlaylistFileNameFormat {
+            get {
+                return ResourceManager.GetString("labelPlaylistFileNameFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Playlist _format.
+        /// </summary>
+        internal static string labelPlaylistFormat {
+            get {
+                return ResourceManager.GetString("labelPlaylistFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Some settings cannot be changed while tracks are downloading..
         /// </summary>
         internal static string labelSettingsInfo {
@@ -733,6 +787,15 @@ namespace BandcampDownloader.Properties {
         internal static string listBoxItemNetwork {
             get {
                 return ResourceManager.GetString("listBoxItemNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Playlist.
+        /// </summary>
+        internal static string listBoxItemPlaylist {
+            get {
+                return ResourceManager.GetString("listBoxItemPlaylist", resourceCulture);
             }
         }
         
@@ -867,6 +930,51 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do not modify.
+        /// </summary>
+        internal static string TagEditAction_DoNotModify {
+            get {
+                return ResourceManager.GetString("TagEditAction_DoNotModify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty tag.
+        /// </summary>
+        internal static string TagEditAction_Empty {
+            get {
+                return ResourceManager.GetString("TagEditAction_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save in tag.
+        /// </summary>
+        internal static string TagEditAction_Modify {
+            get {
+                return ResourceManager.GetString("TagEditAction_Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not modify.
+        /// </summary>
+        internal static string TagRemoveAction_DoNotModify {
+            get {
+                return ResourceManager.GetString("TagRemoveAction_DoNotModify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty tag.
+        /// </summary>
+        internal static string TagRemoveAction_Empty {
+            get {
+                return ResourceManager.GetString("TagRemoveAction_Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help translate.
         /// </summary>
         internal static string textBlockTranslationHelp {
@@ -878,6 +986,7 @@ namespace BandcampDownloader.Properties {
         /// <summary>
         ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
         ///If the size of both files differ from less than this value (in percent), the track download will be skipped.
+        ///Set this value to 0 in order to always download tracks, even if already existing on disk.
         ///
         ///Recommended value = 5.
         /// </summary>
@@ -964,6 +1073,18 @@ namespace BandcampDownloader.Properties {
         internal static string textBoxFileNameFormat_ToolTip {
             get {
                 return ResourceManager.GetString("textBoxFileNameFormat_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use placeholders to customize the file name:
+        ///- {artist} will be replaced by the album artist
+        ///- {album} will be replaced by the album name
+        ///- {year}, {month} and {day} will be replaced by the album release date.
+        /// </summary>
+        internal static string textBoxPlaylistFileNameFormat_ToolTip {
+            get {
+                return ResourceManager.GetString("textBoxPlaylistFileNameFormat_ToolTip", resourceCulture);
             }
         }
         

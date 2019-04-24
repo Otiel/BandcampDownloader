@@ -117,6 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonBrowse" xml:space="preserve">
     <value>...</value>
   </data>
@@ -177,6 +178,12 @@
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>La pochette sera redimensionnée pour ne pas être plus grande que la largeur / hauteur définie.</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Créer une _liste de lecture pour chaque album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Un fichier contenant la liste de lecture sera créé pour chaque album téléchargé.</value>
+  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Télécharger la _discographie de l'artiste</value>
   </data>
@@ -189,6 +196,12 @@
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Un son de notification sera joué lorsque les téléchargements sont terminés.</value>
   </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Format étend_u (seulement pour M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Le format étendu (contenant les mots-clés commençant par #) sera utilisé lors de la création de listes de lecture M3U.</value>
+  </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modifier les métadonnées des chansons (ID3)</value>
   </data>
@@ -196,7 +209,7 @@
     <value>Chaque métadonnée sera modifiée selon les règles définies ci-dessous.
 
 Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé.
-Cela revient à régler "Do not modify" ("Ne pas modifier") pour chaque métadonnée.</value>
+Cela revient à régler "Ne pas modifier" pour chaque métadonnée.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Télécharger un album à la _fois</value>
@@ -232,6 +245,9 @@ Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Sélectionner le dossier dans lequel télécharger les albums</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Modifiez ces paramètres à vos risques et périls.</value>
   </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Interprète de l'al_bum</value>
@@ -281,14 +297,17 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
   </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Modifiez ces paramètres à vos risques et périls.</value>
-  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Langue</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>_Paroles</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Format du _nom de fichier</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>_Format de la liste de lecture</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Certains paramètres ne peuvent pas être modifiés lorsque des téléchargements sont en cours.</value>
@@ -328,6 +347,9 @@ Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="listBoxItemNetwork" xml:space="preserve">
     <value>Réseau</value>
+  </data>
+  <data name="listBoxItemPlaylist" xml:space="preserve">
+    <value>Liste de lecture</value>
   </data>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Noms et métadonnées</value>
@@ -375,12 +397,28 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
   </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Ne pas modifier</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Vider les métadonnées</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Ne pas modifier</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Vider les métadonnées</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Enregistrer dans les métadonnées</value>
+  </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Aider à la traduction</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Quand une chanson est téléchargée, si le même nom de fichier existe déjà dans le dossier, il sera comparé au fichier à télécharger.
 Si la taille des deux fichiers diffère moins que cette valeur (en pourcentage), la chanson ne sera pas re-téléchargée.
+Paramétrez cette valeur à 0 pour toujours re-télécharger les chansons.
 
 Valeur conseillée = 5</value>
   </data>
@@ -425,6 +463,12 @@ Valeur conseillée = 4</value>
 - {artist} sera remplacé par l'interprète de l'album
 - {title} sera remplacé par le titre de la chanson
 - {tracknum} sera remplacé par le numéro de la piste
+- {album} sera remplacé par le nom de l'album
+- {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
+- {artist} sera remplacé par l'interprète de l'album
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>

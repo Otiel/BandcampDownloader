@@ -81,152 +81,144 @@
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxArtist}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxArtist"
                 Grid.Row="0"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagArtist, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="2" />
+                PrependType="True"
+                SelectedItem="{Binding TagArtist, UpdateSourceTrigger=Explicit}"
+                TabIndex="2"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelTrackNumber"
                 Grid.Row="1"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxTrackNumber}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxTrackNumber"
                 Grid.Row="1"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagTrackNumber, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="3" />
+                PrependType="True"
+                SelectedItem="{Binding TagTrackNumber, UpdateSourceTrigger=Explicit}"
+                TabIndex="3"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelTrackTitle"
                 Grid.Row="2"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxTrackTitle}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxTrackTitle"
                 Grid.Row="2"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagTrackTitle, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="4" />
+                PrependType="True"
+                SelectedItem="{Binding TagTrackTitle, UpdateSourceTrigger=Explicit}"
+                TabIndex="4"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelAlbumTitle"
                 Grid.Row="3"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxAlbumTitle}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxAlbumTitle"
                 Grid.Row="3"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagAlbumTitle, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="5" />
+                PrependType="True"
+                SelectedItem="{Binding TagAlbumTitle, UpdateSourceTrigger=Explicit}"
+                TabIndex="5"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelAlbumArtist"
                 Grid.Row="4"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxAlbumArtist}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxAlbumArtist"
                 Grid.Row="4"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagAlbumArtist, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="6" />
+                PrependType="True"
+                SelectedItem="{Binding TagAlbumArtist, UpdateSourceTrigger=Explicit}"
+                TabIndex="6"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelYear"
                 Grid.Row="5"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxYear}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxYear"
                 Grid.Row="5"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagYear, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="7" />
+                PrependType="True"
+                SelectedItem="{Binding TagYear, UpdateSourceTrigger=Explicit}"
+                TabIndex="7"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelLyrics"
                 Grid.Row="6"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxLyrics}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxLyrics"
                 Grid.Row="6"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagEditAction}}}"
-                SelectedValue="{Binding TagLyrics, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="8" />
+                PrependType="True"
+                SelectedItem="{Binding TagLyrics, UpdateSourceTrigger=Explicit}"
+                TabIndex="8"
+                Type="{x:Type local:TagEditAction}" />
             <Label
                 x:Name="labelComments"
                 Grid.Row="7"
                 Grid.Column="0"
                 Content="{lex:Loc}"
                 Target="{Binding ElementName=comboBoxComments}" />
-            <ComboBox
+            <lex:EnumComboBox
                 x:Name="comboBoxComments"
                 Grid.Row="7"
                 Grid.Column="1"
                 Width="120"
                 Height="22"
                 HorizontalAlignment="Left"
-                DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxModifyTags, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:TagRemoveAction}}}"
-                SelectedValue="{Binding TagComments, UpdateSourceTrigger=Explicit}"
-                SelectedValuePath="Value"
-                TabIndex="9" />
+                PrependType="True"
+                SelectedItem="{Binding TagComments, UpdateSourceTrigger=Explicit}"
+                TabIndex="9"
+                Type="{x:Type local:TagRemoveAction}" />
         </Grid>
     </Grid>
 </UserControl>
