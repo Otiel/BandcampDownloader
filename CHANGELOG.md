@@ -1,3 +1,9 @@
+# 0.2.8.1
+
+## Bug fixes
+
+*  Fixed a bug preventing the "Playlist file name format setting" to be saved in the _ini_ file.
+
 # 0.2.8.0
 
 ## New features
