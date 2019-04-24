@@ -173,6 +173,9 @@
     <Compile Include="UI\Dialogs\Settings\UserControlSettingsGeneral.xaml.cs">
       <DependentUpon>UserControlSettingsGeneral.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Dialogs\Settings\UserControlSettingsPlaylist.xaml.cs">
+      <DependentUpon>UserControlSettingsPlaylist.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Dialogs\Settings\UserControlSettingsNetwork.xaml.cs">
       <DependentUpon>UserControlSettingsNetwork.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\Dialogs\Settings\UserControlSettingsGeneral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Dialogs\Settings\UserControlSettingsPlaylist.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
