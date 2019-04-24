@@ -85,10 +85,6 @@
                     <Binding ElementName="checkBoxCreatePlaylist" Path="IsChecked" />
                 </TextBox.IsEnabled>
             </TextBox>
-            <!--<Label
-                x:Name="labelPlaylistFileNameExtensionDot"
-                Grid.Column="2"
-                Content="." />-->
             <Label
                 x:Name="labelPlaylistFileNameExtension"
                 Grid.Column="3"
