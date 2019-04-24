@@ -178,6 +178,12 @@
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Create _playlist for each album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>If checked, a file containing the album tracks will be created for each downloaded album.</value>
+  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Scarica _discografia</value>
   </data>
@@ -189,6 +195,12 @@
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Se si spunta, partirà una notifica sonora ad ogni scaricamento finito.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Use _extended format (for M3U only)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modifica i tag (ID3) delle tracce</value>
@@ -255,6 +267,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelComments" xml:space="preserve">
     <value>Comm_enti</value>
   </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>File _name format</value>
+  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Dimensione massima (_px)</value>
   </data>
@@ -287,6 +302,12 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Testo can_zoni</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>File _name format</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Playlist _format</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Alcune impostazioni non possono essere modificate durante lo scaricamento.</value>
@@ -326,6 +347,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   </data>
   <data name="listBoxItemNetwork" xml:space="preserve">
     <value>Rete</value>
+  </data>
+  <data name="listBoxItemPlaylist" xml:space="preserve">
+    <value>Playlist</value>
   </data>
   <data name="listBoxItemTags" xml:space="preserve">
     <value>Rinomina e tag</value>
@@ -373,11 +397,35 @@ Desideri andare sul sito ufficiale per scaricare l'ultima versione?</value>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _di sistema</value>
   </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Do not modify</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Empty tag</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Do not modify</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Empty tag</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Save in tag</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Help translate</value>
+  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Scaricando una traccia, se esiste già un file con lo stesso nome, si comparerà alla traccia da scaricare.
 Se la dimensione dei file differisce meno di questo valore (in percentuale), la traccia non sarà scaricata.
 
 Valore consigliato = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>You can use placeholders to customize the file name:
+- {artist} will be replaced by the album artist
+- {album} will be replaced by the album name
+- {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Numero massimo di tentativi per scaricare una traccia se fallisce lo scaricamento.
@@ -416,6 +464,12 @@ Valore consigliato = 4</value>
 - {tracknum} è sostituito col numero della traccia;
 - {album} è sostituito col nome dell'album;
 - {year}, {month} e {day} sono sostituiti con la data di rilascio.</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>You can use placeholders to customize the file name:
+- {artist} will be replaced by the album artist
+- {album} will be replaced by the album name
+- {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Incolla qui gli URL degli album da scaricare. Puoi scaricare piú URL in una volta mettendo un link per riga.
