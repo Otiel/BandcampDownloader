@@ -11,6 +11,7 @@ BandcampDownloader relies on a number of open-source libraries, all listed below
 * [`Json.NET`](https://github.com/JamesNK/Newtonsoft.Json): used to parse Json from bandcamp.com pages.
 * [`MessageBoxManager`](https://www.codeproject.com/Articles/18399/Localizing-System-MessageBox): used to localize the buttons of the Windows system message box.
 * [`NLog`](https://github.com/NLog/NLog): used to log events.
+* [`PlaylistsNET`](https://github.com/tmk907/PlaylistsNET): used to create playlists.
 * [`Resource.Embedder`](https://github.com/MarcStan/Resource.Embedder): used to embed localization resources (_*.resources.dll_) in the main _exe_ file (not supported by `Costura`).
 * [`TagLib#`](https://github.com/mono/taglib-sharp): used to save ID3 tags in MP3 files.
 * [`WPFLocalizationExtension`](https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension): used to manage the localization.
