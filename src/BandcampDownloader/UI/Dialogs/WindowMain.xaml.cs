@@ -748,8 +748,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the file name to be used for the cover art of the specified from the file name format saved in the
-        /// UserSettings, by replacing the placeholders strings with their corresponding values.
+        /// Returns the file name to be used for the cover art of the specified album from the file name format saved in
+        /// the UserSettings, by replacing the placeholders strings with their corresponding values.
         /// </summary>
         /// <param name="album">The album currently downloaded.</param>
         private String ParseCoverArtFileName(Album album) {
