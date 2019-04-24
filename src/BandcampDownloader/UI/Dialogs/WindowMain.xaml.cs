@@ -162,6 +162,12 @@ namespace BandcampDownloader {
             // Wait for all tracks to be downloaded before saying the album is downloaded
             Task.WaitAll(tasks);
 
+            // Create playlist file
+            if (App.UserSettings.CreatePlaylist) {
+                PlaylistHelper.SavePlaylistForAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                Log($"Playlist saved for album \"{album.Title}\"", LogType.Success);
+            }
+
             if (!_userCancelled) {
                 // Tasks have not been aborted
                 if (tracksDownloaded.All(x => x == true)) {
@@ -998,14 +1004,6 @@ namespace BandcampDownloader {
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
-                }
-            }).ContinueWith(x => {
-                // Create playlist files
-                if (App.UserSettings.CreatePlaylist) {
-                    foreach (Album album in albums) {
-                        PlaylistHelper.SavePlaylistForAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album));
-                        Log($"Playlist saved for album \"{album.Title}\"", LogType.Success);
-                    }
                 }
             }).ContinueWith(x => {
                 if (_userCancelled) {
