@@ -318,7 +318,7 @@ namespace BandcampDownloader {
                 // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
                 // There may be only one path needed to shorten, but it's better to use the same file name in both places
                 int fileNameInTempMaxLength = 12 - randomNumber.Length - artworkFileExt.Length;
-                int fileNameInFolderMaxLength = 12 - artworkFileExt.ToString().Length;
+                int fileNameInFolderMaxLength = 12 - artworkFileExt.Length;
                 artworkTempPath = Path.GetTempPath() + "\\" + ParseCoverArtFileName(album).Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
                 artworkFolderPath = downloadsFolder + "\\" + ParseCoverArtFileName(album).Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
             }
