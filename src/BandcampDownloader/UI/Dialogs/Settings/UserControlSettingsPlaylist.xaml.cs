@@ -26,6 +26,7 @@ namespace BandcampDownloader {
             checkBoxCreatePlaylist.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxM3uExtended.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             comboBoxPlaylistFormat.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            textBoxPlaylistFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
     }
 }
