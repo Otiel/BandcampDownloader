@@ -68,15 +68,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Sets the Path property of each Track from the specified folder.
-        /// </summary>
-        public void SetTracksPath() {
-            foreach (Track track in Tracks) {
-                track.SetPath();
-            }
-        }
-
-        /// <summary>
         /// Returns the file name to be used for the cover art of the specified album from the file name format saved in
         /// the UserSettings, by replacing the placeholders strings with their corresponding values.
         /// The returned file name does NOT contain the extension.

@@ -881,10 +881,6 @@ namespace BandcampDownloader {
             }).ContinueWith(x => {
                 // Get info on albums
                 albums = GetAlbums(urls);
-                // Compute paths for tracks and artworks
-                foreach (Album album in albums) {
-                    album.SetTracksPath();
-                }
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
                 _filesDownload = GetFilesToDownload(albums, App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder);

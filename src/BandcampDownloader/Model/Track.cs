@@ -42,24 +42,15 @@ namespace BandcampDownloader {
         /// <summary>
         /// Initializes a new Track.
         /// </summary>
-        /// <param name="album">The track album.</param>
-        public Track(Album album) {
+        public Track(Album album, Double duration, String lyrics, String mp3Url, int number, String title) {
             Album = album;
-        }
-
-        /// <summary>
-        /// Sets the Path property of the current Track.
-        /// </summary>
-        public void SetPath() {
-            String fileName = ParseTrackFileName();
-
-            Path = Album.Path + "\\" + fileName;
-            if (Path.Length >= 260) {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // album.Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
-                int fileNameMaxLength = 12 - System.IO.Path.GetExtension(Path).Length;
-                Path = Album.Path + "\\" + fileName.Substring(0, fileNameMaxLength) + System.IO.Path.GetExtension(Path);
-            }
+            Duration = duration;
+            Lyrics = lyrics;
+            Mp3Url = mp3Url;
+            Number = number;
+            Title = title;
+            // Must be done after other properties are filled!
+            SetPath();
         }
 
         /// <summary>
@@ -76,6 +67,21 @@ namespace BandcampDownloader {
                 .Replace("{title}", Title)
                 .Replace("{tracknum}", Number.ToString("00"));
             return fileName.ToAllowedFileName();
+        }
+
+        /// <summary>
+        /// Sets the Path property of the current Track.
+        /// </summary>
+        private void SetPath() {
+            String fileName = ParseTrackFileName();
+
+            Path = Album.Path + "\\" + fileName;
+            if (Path.Length >= 260) {
+                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
+                // album.Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
+                int fileNameMaxLength = 12 - System.IO.Path.GetExtension(Path).Length;
+                Path = Album.Path + "\\" + fileName.Substring(0, fileNameMaxLength) + System.IO.Path.GetExtension(Path);
+            }
         }
     }
 }
