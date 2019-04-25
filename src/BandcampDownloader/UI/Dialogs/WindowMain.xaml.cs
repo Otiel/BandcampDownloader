@@ -883,7 +883,6 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
                 // Compute paths for tracks and artworks
                 foreach (Album album in albums) {
-                    album.SetArtworkPaths();
                     album.SetTracksPath();
                 }
             }).ContinueWith(x => {
