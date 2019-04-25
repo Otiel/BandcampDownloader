@@ -164,7 +164,7 @@ namespace BandcampDownloader {
 
             // Create playlist file
             if (App.UserSettings.CreatePlaylist) {
-                PlaylistHelper.SavePlaylistForAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                PlaylistHelper.SavePlaylistForAlbum(album, FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
                 Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
             }
 
@@ -769,27 +769,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the download path for the specified album from the specified path format, by replacing the
-        /// placeholders strings with their corresponding values.
-        /// </summary>
-        /// <param name="downloadPath">The download path to parse.</param>
-        /// <param name="album">The album currently downloaded.</param>
-        private String ParseDownloadPath(String downloadPath, Album album) {
-            downloadPath = downloadPath.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString("00").ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString("00").ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{artist}", album.Artist.ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{album}", album.Title.ToAllowedFileName());
-
-            if (downloadPath.Length >= 248) {
-                // Windows doesn't do well with path >= 248 characters (and path + filename >= 260 characters)
-                downloadPath = downloadPath.Substring(0, 247);
-            }
-
-            return downloadPath;
-        }
-
-        /// <summary>
         /// Returns the file name to be used for the specified track from the file name format saved in the UserSettings,
         /// by replacing the placeholders strings with their corresponding values.
         /// </summary>
@@ -992,7 +971,7 @@ namespace BandcampDownloader {
                 if (App.UserSettings.DownloadOneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                        DownloadAlbum(album, FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
                     }
                 } else {
                     // Parallel download
@@ -1000,7 +979,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album)));
+                            DownloadAlbum(album, FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album)));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
