@@ -953,7 +953,7 @@ namespace BandcampDownloader {
             }
 
             buttonStop.IsEnabled = false;
-            progressBar.Foreground = System.Windows.Media.Brushes.Red;
+            progressBar.Foreground = Brushes.Red;
             progressBar.IsIndeterminate = true;
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
             TaskbarItemInfo.ProgressValue = 0;
