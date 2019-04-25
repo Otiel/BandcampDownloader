@@ -124,8 +124,7 @@ namespace BandcampDownloader {
         /// Downloads an album.
         /// </summary>
         /// <param name="album">The album to download.</param>
-        /// <param name="downloadsFolder">The path where to save the album.</param>
-        private void DownloadAlbum(Album album, String downloadsFolder) {
+        private void DownloadAlbum(Album album) {
             if (_userCancelled) {
                 // Abort
                 return;
@@ -133,7 +132,7 @@ namespace BandcampDownloader {
 
             // Create directory to place track files
             try {
-                Directory.CreateDirectory(downloadsFolder);
+                Directory.CreateDirectory(album.Path);
             } catch {
                 Log("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose", LogType.Error);
                 return;
@@ -160,7 +159,7 @@ namespace BandcampDownloader {
 
             // Create playlist file
             if (App.UserSettings.CreatePlaylist) {
-                PlaylistHelper.SavePlaylistForAlbum(album, album.ParseFolderPath(App.UserSettings.DownloadsPath));
+                PlaylistHelper.SavePlaylistForAlbum(album, album.Path);
                 Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
             }
 
@@ -884,8 +883,9 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
                 // Compute paths for tracks and artworks
                 foreach (Album album in albums) {
-                    album.SetArtworkPaths(album.ParseFolderPath(App.UserSettings.DownloadsPath));
-                    album.SetTracksPath(album.ParseFolderPath(App.UserSettings.DownloadsPath));
+                    album.SetAlbumPath(App.UserSettings.DownloadsPath);
+                    album.SetArtworkPaths();
+                    album.SetTracksPath();
                 }
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
@@ -910,7 +910,7 @@ namespace BandcampDownloader {
                 if (App.UserSettings.DownloadOneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, album.ParseFolderPath(App.UserSettings.DownloadsPath));
+                        DownloadAlbum(album);
                     }
                 } else {
                     // Parallel download
@@ -918,7 +918,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, album.ParseFolderPath(App.UserSettings.DownloadsPath)));
+                            DownloadAlbum(album));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);

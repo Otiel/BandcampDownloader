@@ -37,17 +37,16 @@ namespace BandcampDownloader {
         /// <summary>
         /// Sets the Path property of the current Track from the specified folder.
         /// </summary>
-        /// <param name="folderPath">The full path to the folder where the track file should be saved.</param>
         /// <param name="album">The album of the current Track.</param>
-        public void SetPath(String folderPath, Album album) {
+        public void SetPath(Album album) {
             String fileName = ParseTrackFileName(album);
 
-            Path = folderPath + "\\" + fileName;
+            Path = album.Path + "\\" + fileName;
             if (Path.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
+                // album.Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
                 int fileNameMaxLength = 12 - System.IO.Path.GetExtension(Path).Length;
-                Path = folderPath + "\\" + fileName.Substring(0, fileNameMaxLength) + System.IO.Path.GetExtension(Path);
+                Path = album.Path + "\\" + fileName.Substring(0, fileNameMaxLength) + System.IO.Path.GetExtension(Path);
             }
         }
 
