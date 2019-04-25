@@ -37,7 +37,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Sets the Path property of the current Track from the specified folder.
         /// </summary>
-        /// <param name="folderPath">The full path where the track file should be saved.</param>
+        /// <param name="folderPath">The full path to the folder where the track file should be saved.</param>
         /// <param name="album">The album of the current Track.</param>
         public void SetPath(String folderPath, Album album) {
             String fileName = ParseTrackFileName(album);
