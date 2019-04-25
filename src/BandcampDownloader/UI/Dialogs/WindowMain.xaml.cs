@@ -30,10 +30,6 @@ namespace BandcampDownloader {
         #region Fields
 
         /// <summary>
-        /// Random class used to create random numbers.
-        /// </summary>
-        private readonly Random _random = new Random();
-        /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
         private Boolean _activeDownloads = false;
@@ -147,7 +143,7 @@ namespace BandcampDownloader {
 
             // Download artwork
             if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork) {
-                artwork = DownloadCoverArt(album, downloadsFolder);
+                artwork = DownloadCoverArt(album);
             }
 
             // Download & tag tracks
@@ -299,27 +295,7 @@ namespace BandcampDownloader {
         /// Downloads the cover art and returns the one to save in tags.
         /// </summary>
         /// <param name="album">The album to download.</param>
-        /// <param name="downloadsFolder">The path where to save the cover art.</param>
-        private TagLib.Picture DownloadCoverArt(Album album, String downloadsFolder) {
-            String artworkFileExt = Path.GetExtension(album.ArtworkUrl);
-
-            // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread), we'll add a random number to the name of the artwork file saved in Temp directory
-            String randomNumber = _random.Next(1, 1000).ToString("00#");
-
-            // Compute paths where to save artwork
-            String artworkTempPath = Path.GetTempPath() + "\\" + ParseCoverArtFileName(album) + randomNumber + artworkFileExt;
-            String artworkFolderPath = downloadsFolder + "\\" + ParseCoverArtFileName(album) + artworkFileExt;
-
-            if (artworkTempPath.Length >= 260 || artworkFolderPath.Length >= 260) {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
-                // There may be only one path needed to shorten, but it's better to use the same file name in both places
-                int fileNameInTempMaxLength = 12 - randomNumber.Length - artworkFileExt.Length;
-                int fileNameInFolderMaxLength = 12 - artworkFileExt.Length;
-                artworkTempPath = Path.GetTempPath() + "\\" + ParseCoverArtFileName(album).Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
-                artworkFolderPath = downloadsFolder + "\\" + ParseCoverArtFileName(album).Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
-            }
-
+        private TagLib.Picture DownloadCoverArt(Album album) {
             TagLib.Picture artworkInTags = null;
 
             int tries = 0;
@@ -367,9 +343,9 @@ namespace BandcampDownloader {
                                     settings.MaxHeight = App.UserSettings.CoverArtInFolderMaxSize;
                                     settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
                                 }
-                                ImageBuilder.Current.Build(artworkTempPath, artworkFolderPath, settings); // Save it to the album folder
+                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
                             } else if (App.UserSettings.SaveCoverArtInFolder) {
-                                File.Copy(artworkTempPath, artworkFolderPath, true);
+                                File.Copy(album.ArtworkTempPath, album.ArtworkPath, true);
                             }
 
                             // Convert/resize artwork to be saved in tags
@@ -383,12 +359,12 @@ namespace BandcampDownloader {
                                     settings.MaxHeight = App.UserSettings.CoverArtInTagsMaxSize;
                                     settings.MaxWidth = App.UserSettings.CoverArtInTagsMaxSize;
                                 }
-                                ImageBuilder.Current.Build(artworkTempPath, artworkTempPath, settings); // Save it to %Temp%
+                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
                             }
-                            artworkInTags = new TagLib.Picture(artworkTempPath) { Description = "Picture" };
+                            artworkInTags = new TagLib.Picture(album.ArtworkTempPath) { Description = "Picture" };
 
                             try {
-                                File.Delete(artworkTempPath);
+                                File.Delete(album.ArtworkTempPath);
                             } catch {
                                 // Could not delete the file. Nevermind, it's in %Temp% folder...
                             }
@@ -421,7 +397,7 @@ namespace BandcampDownloader {
                         // Register current download
                         _pendingDownloads.Add(webClient);
                         // Start download
-                        webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), artworkTempPath);
+                        webClient.DownloadFileAsync(new Uri(album.ArtworkUrl), album.ArtworkTempPath);
                     }
 
                     // Wait for download to be finished
@@ -745,22 +721,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the file name to be used for the cover art of the specified album from the file name format saved in
-        /// the UserSettings, by replacing the placeholders strings with their corresponding values.
-        /// </summary>
-        /// <param name="album">The album currently downloaded.</param>
-        private String ParseCoverArtFileName(Album album) {
-            String fileName = App.UserSettings.CoverArtFileNameFormat
-                .Replace("{year}", album.ReleaseDate.Year.ToString())
-                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
-                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
-                .Replace("{album}", album.Title)
-                .Replace("{artist}", album.Artist);
-            return fileName.ToAllowedFileName();
-        }
-
-
-        /// <summary>
         /// Updates the state of the controls.
         /// </summary>
         /// <param name="downloadStarted">True if the download just started, false if it just stopped.</param>
@@ -924,6 +884,7 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
                 // Compute paths for tracks and artworks
                 foreach (Album album in albums) {
+                    album.SetArtworkPaths(FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
                     album.SetTracksPath(FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
                 }
             }).ContinueWith(x => {
