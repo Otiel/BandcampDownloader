@@ -27,7 +27,7 @@ If you wish to create a new language file, simply duplicate the English file (_R
 
 ## Submit changes
 
-Once you're done, commit your changes on a new branch and create a pull request.
+Once you're done, commit your changes and create a pull request.
 
 ## Closing
 
