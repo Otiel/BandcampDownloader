@@ -7,6 +7,8 @@ If you wish to help translate the application, the following should get you star
 Translations are stored in resources (_resx_) files, one file per language. As of today, the following translations exist:
 * English: [_Resources.resx_](/src/BandcampDownloader/Properties/Resources.resx)
 * French: [_Resources.fr.resx_](/src/BandcampDownloader/Properties/Resources.fr.resx)
+* German: [_Resources.de.resx_](/src/BandcampDownloader/Properties/Resources.de.resx)
+* Italian: [_Resources.it.resx_](/src/BandcampDownloader/Properties/Resources.it.resx)
 
 In order to modify the translations, you can either edit the files with your favorite text editor, or use a tool such as [Zeta Resource Editor](https://www.zeta-resource-editor.com). When editing a _resx_ file with a text editor, you will find the translations at the end of the file. A translation looks like this:
 ```
