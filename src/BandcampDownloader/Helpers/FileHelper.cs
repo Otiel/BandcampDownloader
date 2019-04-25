@@ -33,7 +33,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="downloadPath">The download path to parse.</param>
         /// <param name="album">The album.</param>
-        public static String ParseDownloadPath(String downloadPath, Album album) {
+        public static String ParseAlbumPath(String downloadPath, Album album) {
             downloadPath = downloadPath.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
             downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString("00").ToAllowedFileName());
             downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString("00").ToAllowedFileName());

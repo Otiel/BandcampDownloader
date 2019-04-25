@@ -160,7 +160,7 @@ namespace BandcampDownloader {
 
             // Create playlist file
             if (App.UserSettings.CreatePlaylist) {
-                PlaylistHelper.SavePlaylistForAlbum(album, FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                PlaylistHelper.SavePlaylistForAlbum(album, FileHelper.ParseAlbumPath(App.UserSettings.DownloadsPath, album));
                 Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
             }
 
@@ -884,8 +884,8 @@ namespace BandcampDownloader {
                 albums = GetAlbums(urls);
                 // Compute paths for tracks and artworks
                 foreach (Album album in albums) {
-                    album.SetArtworkPaths(FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
-                    album.SetTracksPath(FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                    album.SetArtworkPaths(FileHelper.ParseAlbumPath(App.UserSettings.DownloadsPath, album));
+                    album.SetTracksPath(FileHelper.ParseAlbumPath(App.UserSettings.DownloadsPath, album));
                 }
             }).ContinueWith(x => {
                 // Save files to download (we'll need the list to update the progressBar)
@@ -910,7 +910,7 @@ namespace BandcampDownloader {
                 if (App.UserSettings.DownloadOneAlbumAtATime) {
                     // Download one album at a time
                     foreach (Album album in albums) {
-                        DownloadAlbum(album, FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                        DownloadAlbum(album, FileHelper.ParseAlbumPath(App.UserSettings.DownloadsPath, album));
                     }
                 } else {
                     // Parallel download
@@ -918,7 +918,7 @@ namespace BandcampDownloader {
                     for (int i = 0; i < albums.Count; i++) {
                         Album album = albums[i]; // Mandatory or else => race condition
                         tasks[i] = Task.Factory.StartNew(() =>
-                            DownloadAlbum(album, FileHelper.ParseDownloadPath(App.UserSettings.DownloadsPath, album)));
+                            DownloadAlbum(album, FileHelper.ParseAlbumPath(App.UserSettings.DownloadsPath, album)));
                     }
                     // Wait for all albums to be downloaded
                     Task.WaitAll(tasks);
