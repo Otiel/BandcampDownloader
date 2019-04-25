@@ -5,6 +5,11 @@ namespace BandcampDownloader {
     internal class Track {
 
         /// <summary>
+        /// The track album.
+        /// </summary>
+        public Album Album { get; set; }
+
+        /// <summary>
         /// The track length (in seconds).
         /// </summary>
         public Double Duration { get; set; }
@@ -35,34 +40,39 @@ namespace BandcampDownloader {
         public String Title { get; set; }
 
         /// <summary>
-        /// Sets the Path property of the current Track from the specified folder.
+        /// Initializes a new Track.
         /// </summary>
-        /// <param name="album">The album of the current Track.</param>
-        public void SetPath(Album album) {
-            String fileName = ParseTrackFileName(album);
+        /// <param name="album">The track album.</param>
+        public Track(Album album) {
+            Album = album;
+        }
 
-            Path = album.Path + "\\" + fileName;
+        /// <summary>
+        /// Sets the Path property of the current Track.
+        /// </summary>
+        public void SetPath() {
+            String fileName = ParseTrackFileName();
+
+            Path = Album.Path + "\\" + fileName;
             if (Path.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
                 // album.Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
                 int fileNameMaxLength = 12 - System.IO.Path.GetExtension(Path).Length;
-                Path = album.Path + "\\" + fileName.Substring(0, fileNameMaxLength) + System.IO.Path.GetExtension(Path);
+                Path = Album.Path + "\\" + fileName.Substring(0, fileNameMaxLength) + System.IO.Path.GetExtension(Path);
             }
         }
 
         /// <summary>
-        /// Returns the file name to be used for the specified track and album from the file name format saved in the
-        /// UserSettings, by replacing the placeholders strings with their corresponding values.
-        /// The returned file name DOES contain the extension.
+        /// Returns the file name to be used for the track from the file name format saved in the UserSettings, by
+        /// replacing the placeholders strings with their corresponding values. The returned file name DOES contain the extension.
         /// </summary>
-        /// <param name="album">The album of the specified track.</param>
-        private String ParseTrackFileName(Album album) {
+        private String ParseTrackFileName() {
             String fileName = App.UserSettings.FileNameFormat
-                .Replace("{year}", album.ReleaseDate.Year.ToString())
-                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
-                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
-                .Replace("{album}", album.Title)
-                .Replace("{artist}", album.Artist)
+                .Replace("{year}", Album.ReleaseDate.Year.ToString())
+                .Replace("{month}", Album.ReleaseDate.Month.ToString("00"))
+                .Replace("{day}", Album.ReleaseDate.Day.ToString("00"))
+                .Replace("{album}", Album.Title)
+                .Replace("{artist}", Album.Artist)
                 .Replace("{title}", Title)
                 .Replace("{tracknum}", Number.ToString("00"));
             return fileName.ToAllowedFileName();

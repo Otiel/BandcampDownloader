@@ -97,7 +97,7 @@ namespace BandcampDownloader {
         /// </summary>
         public void SetTracksPath() {
             foreach (Track track in Tracks) {
-                track.SetPath(this);
+                track.SetPath();
             }
         }
 
