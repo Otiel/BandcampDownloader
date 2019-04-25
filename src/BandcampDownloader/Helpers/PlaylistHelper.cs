@@ -70,7 +70,7 @@ namespace BandcampDownloader {
                     Album = album.Title,
                     AlbumArtist = album.Artist,
                     Duration = TimeSpan.FromSeconds(track.Duration),
-                    Path = track.Title + ".mp3",
+                    Path = Path.GetFileName(track.Path),
                     Title = track.Title,
                 });
             }
@@ -88,7 +88,7 @@ namespace BandcampDownloader {
             foreach (Track track in album.Tracks) {
                 playlist.PlaylistEntries.Add(new PlsPlaylistEntry() {
                     Length = TimeSpan.FromSeconds(track.Duration),
-                    Path = track.Title + ".mp3",
+                    Path = Path.GetFileName(track.Path),
                     Title = track.Title,
                 });
             }
@@ -110,7 +110,7 @@ namespace BandcampDownloader {
                     AlbumArtist = album.Artist,
                     AlbumTitle = album.Title,
                     Duration = TimeSpan.FromSeconds(track.Duration),
-                    Path = track.Title + ".mp3",
+                    Path = Path.GetFileName(track.Path),
                     TrackArtist = album.Artist,
                     TrackTitle = track.Title,
                 });
@@ -133,7 +133,7 @@ namespace BandcampDownloader {
                     AlbumArtist = album.Artist,
                     AlbumTitle = album.Title,
                     Duration = TimeSpan.FromSeconds(track.Duration),
-                    Path = track.Title + ".mp3",
+                    Path = Path.GetFileName(track.Path),
                     TrackArtist = album.Artist,
                     TrackTitle = track.Title,
                 });
