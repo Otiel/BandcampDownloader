@@ -55,11 +55,15 @@ namespace BandcampDownloader {
         public List<Track> Tracks { get; set; }
 
         /// <summary>
-        /// Sets the Path property of the current album.
+        /// Initializes a new Album.
         /// </summary>
-        /// <param name="downloadPath">The download path to parse.</param>
-        public void SetAlbumPath(String downloadPath) {
-            Path = ParseFolderPath(downloadPath);
+        public Album(String artist, String artworkUrl, DateTime releaseDate, String title) {
+            Artist = artist;
+            ArtworkUrl = artworkUrl;
+            ReleaseDate = releaseDate;
+            Title = title;
+            // Must be done after other properties are filled!
+            Path = ParseFolderPath(App.UserSettings.DownloadsPath);
         }
 
         /// <summary>
