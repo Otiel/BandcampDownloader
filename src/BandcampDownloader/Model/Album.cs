@@ -38,5 +38,14 @@ namespace BandcampDownloader {
         /// The list of tracks contained in the album.
         /// </summary>
         public List<Track> Tracks { get; set; }
+        /// <summary>
+        /// Sets the Path property of each Track from the specified folder.
+        /// </summary>
+        /// <param name="folderPath">The full path where the tracks files should be saved.</param>
+        public void SetTracksPath(String folderPath) {
+            foreach (Track track in Tracks) {
+                track.SetPath(folderPath, this);
+            }
+        }
     }
 }
