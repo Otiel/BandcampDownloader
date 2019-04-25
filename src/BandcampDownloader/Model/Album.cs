@@ -51,6 +51,26 @@ namespace BandcampDownloader {
         public List<Track> Tracks { get; set; }
 
         /// <summary>
+        /// Returns the folder path from the specified path format, by replacing the placeholders strings with their
+        /// corresponding values. If the path is too long (&gt; 247 characters), it will be stripped.
+        /// </summary>
+        /// <param name="downloadPath">The download path to parse.</param>
+        public String ParseFolderPath(String downloadPath) {
+            downloadPath = downloadPath.Replace("{year}", ReleaseDate.Year.ToString().ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{month}", ReleaseDate.Month.ToString("00").ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{day}", ReleaseDate.Day.ToString("00").ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{artist}", Artist.ToAllowedFileName());
+            downloadPath = downloadPath.Replace("{album}", Title.ToAllowedFileName());
+
+            if (downloadPath.Length >= 248) {
+                // Windows doesn't do well with path >= 248 characters (and path + filename >= 260 characters)
+                downloadPath = downloadPath.Substring(0, 247);
+            }
+
+            return downloadPath;
+        }
+
+        /// <summary>
         /// Sets the ArtworkPath and ArtworkTempPath properties.
         /// </summary>
         /// <param name="folderPath">The full path to the folder where the artwork file should be saved.</param>
