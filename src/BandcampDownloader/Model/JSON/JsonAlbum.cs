@@ -25,16 +25,16 @@ namespace BandcampDownloader {
         public List<JsonTrack> Tracks { get; set; }
 
         public Album ToAlbum() {
-            return new Album() {
-                Artist = Artist,
-                // Some albums do not have a cover art
-                ArtworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd,
-                ReleaseDate = ReleaseDate,
-                Title = AlbumData.AlbumTitle,
-                // Some tracks do not have their URL filled on some albums (pre-release...)
-                // Forget those tracks here
-                Tracks = Tracks.Where(t => t.File != null).Select(t => t.ToTrack()).ToList()
-            };
+            // Some albums do not have a cover art
+            String artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
+
+            var album = new Album(Artist, artworkUrl, ReleaseDate, AlbumData.AlbumTitle);
+
+            // Some tracks do not have their URL filled on some albums (pre-release...)
+            // Forget those tracks here
+            album.Tracks = Tracks.Where(t => t.File != null).Select(t => t.ToTrack(album)).ToList();
+
+            return album;
         }
     }
 }

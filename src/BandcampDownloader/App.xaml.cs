@@ -7,6 +7,10 @@ using WPFLocalizeExtension.Engine;
 namespace BandcampDownloader {
 
     public partial class App: Application {
+        /// <summary>
+        /// Random class used to create random numbers.
+        /// </summary>
+        public static readonly Random Random = new Random();
 
         /// <summary>
         /// The settings chosen by the user.

@@ -1,3 +1,9 @@
+# 0.2.8.2
+
+## Bug fixes
+
+* Fixed the track path stored in playlist files. [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
+
 # 0.2.8.1
 
 ## Bug fixes
