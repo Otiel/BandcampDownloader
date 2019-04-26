@@ -118,10 +118,10 @@ namespace BandcampDownloader {
 
                 if (ArtworkTempPath.Length >= 260 || ArtworkPath.Length >= 260) {
                     // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                    // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
+                    // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11 character max for "filename.ext"
                     // There may be only one path needed to shorten, but it's better to use the same file name in both places
-                    int fileNameInTempMaxLength = 12 - randomNumber.Length - artworkFileExt.Length;
-                    int fileNameInFolderMaxLength = 12 - artworkFileExt.Length;
+                    int fileNameInTempMaxLength = 11 - randomNumber.Length - artworkFileExt.Length;
+                    int fileNameInFolderMaxLength = 11 - artworkFileExt.Length;
                     ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
                     ArtworkPath = Path + "\\" + ParseCoverArtFileName().Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
                 }
