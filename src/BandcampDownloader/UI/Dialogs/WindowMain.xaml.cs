@@ -17,6 +17,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shell;
+using System.Windows.Threading;
 using ImageResizer;
 using NLog;
 using NLog.Config;
@@ -143,7 +144,6 @@ namespace BandcampDownloader {
             if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork) {
                 artwork = await DownloadCoverArtAsync(album);
             }
-
 
             // Download & tag tracks
             Boolean[] tracksDownloaded = new Boolean[album.Tracks.Count];
@@ -825,7 +825,35 @@ namespace BandcampDownloader {
                 return;
             }
 
-            await StartDownloadAsync();
+            // Set controls to "downloading..." state
+            _activeDownloads = true;
+            UpdateControlsState(true);
+
+            Log("Starting download...", LogType.Info);
+
+            try {
+                await StartDownloadAsync();
+            } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
+                // Downloads cancelled by the user
+                // Do nothing
+            }
+
+            if (_userCancelled) {
+                // Display message if user cancelled
+                Log("Downloads cancelled by user", LogType.Info);
+            }
+
+            // Set controls to "ready" state
+            _activeDownloads = false;
+            UpdateControlsState(false);
+
+            if (App.UserSettings.EnableApplicationSounds) {
+                // Play a sound
+                try {
+                    new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
+                } catch {
+                }
+            }
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e) {
@@ -867,14 +895,7 @@ namespace BandcampDownloader {
 
         private async Task StartDownloadAsync() {
             _userCancelled = false;
-
             _pendingDownloads = new List<WebClient>();
-
-            // Set controls to "downloading..." state
-            _activeDownloads = true;
-            UpdateControlsState(true);
-
-            Log("Starting download...", LogType.Info);
 
             // Get user inputs
             var userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -921,23 +942,6 @@ namespace BandcampDownloader {
                 // Parallel download
                 Int32[] albumsIndexes = Enumerable.Range(0, albums.Count).ToArray();
                 await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(albums[i])));
-            }
-
-            if (_userCancelled) {
-                // Display message if user cancelled
-                Log("Downloads cancelled by user", LogType.Info);
-            }
-
-            // Set controls to "ready" state
-            _activeDownloads = false;
-            UpdateControlsState(false);
-
-            if (App.UserSettings.EnableApplicationSounds) {
-                // Play a sound
-                try {
-                    new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
-                } catch {
-                }
             }
         }
 
