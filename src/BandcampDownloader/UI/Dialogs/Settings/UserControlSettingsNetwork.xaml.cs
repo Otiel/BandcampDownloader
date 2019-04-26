@@ -29,5 +29,9 @@ namespace BandcampDownloader {
             textBoxHttpAddress.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textBoxHttpPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            ((TextBox) sender).GetBindingExpression(TextBox.TextProperty).ValidateWithoutUpdate();
+        }
     }
 }

@@ -4,6 +4,28 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
+    public enum Language {
+        [Description("English")]
+        en,
+        [Description("Deutsch (German)")]
+        de,
+        [Description("Français (French)")]
+        fr,
+        [Description("Italiano (Italian)")]
+        it
+    }
+
+    public enum PlaylistFormat {
+        [Description("M3U")]
+        m3u,
+        [Description("PLS")]
+        pls,
+        [Description("WPL (Windows Media Player)")]
+        wpl,
+        [Description("ZPL (Zune Media Player)")]
+        zpl
+    }
+
     public enum ProxyType {
         None,
         System,
@@ -34,6 +56,9 @@ namespace BandcampDownloader {
         [Option(DefaultValue = true)]
         Boolean CheckForUpdates { get; set; }
 
+        [Option(DefaultValue = "{album}")]
+        String CoverArtFileNameFormat { get; set; }
+
         [Option(DefaultValue = true)]
         Boolean CoverArtInFolderConvertToJpg { get; set; }
 
@@ -51,6 +76,9 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = true)]
         Boolean CoverArtInTagsResize { get; set; }
+
+        [Option(DefaultValue = false)]
+        Boolean CreatePlaylist { get; set; }
 
         [Option(DefaultValue = false)]
         Boolean DownloadArtistDiscography { get; set; }
@@ -78,8 +106,20 @@ namespace BandcampDownloader {
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
         String FileNameFormat { get; set; }
 
+        [Option(DefaultValue = Language.en)]
+        Language Language { get; set; }
+
+        [Option(DefaultValue = true)]
+        Boolean M3uExtended { get; set; }
+
         [Option(DefaultValue = true)]
         Boolean ModifyTags { get; set; }
+
+        [Option(DefaultValue = "{album}")]
+        String PlaylistFileNameFormat { get; set; }
+
+        [Option(DefaultValue = PlaylistFormat.m3u)]
+        PlaylistFormat PlaylistFormat { get; set; }
 
         [Option(DefaultValue = ProxyType.System)]
         ProxyType Proxy { get; set; }

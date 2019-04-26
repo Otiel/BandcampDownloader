@@ -9,9 +9,9 @@ namespace BandcampDownloader {
         public String Url { get; set; }
 
         public TrackFile(String url, long bytesReceived, long size) {
-            this.Url = url;
-            this.BytesReceived = bytesReceived;
-            this.Size = size;
+            Url = url;
+            BytesReceived = bytesReceived;
+            Size = size;
         }
     }
 }

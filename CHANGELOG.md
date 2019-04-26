@@ -1,3 +1,81 @@
+# 0.2.8.2
+
+## Bug fixes
+
+* Fixed the track path stored in playlist files. [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
+
+# 0.2.8.1
+
+## Bug fixes
+
+* Fixed a bug preventing the "Playlist file name format" setting to be saved in the _ini_ file.
+
+# 0.2.8.0
+
+## New features
+
+* Added an option to create playlist files (m3u, psl, wpl or zpl). [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
+* Added italian localization. Thanks **@RichyZ99** for the complete translation! [#84](https://github.com/Otiel/BandcampDownloader/pull/84)
+
+## Improvements
+
+* Tag actions ("modify", "do not modify", "empty") are now localized.
+* Minor UI improvements.
+
+## Bug fixes
+
+* Fixed a crash that could occur when "☑ Retrieve files size" was unchecked. [#74](https://github.com/Otiel/BandcampDownloader/issues/74)
+
+# 0.2.7.0
+
+## New features
+
+* Added an option to customize the cover art file name. [#77](https://github.com/Otiel/BandcampDownloader/issues/77)
+* Added german localization. Thanks **@Simonwep** for the complete translation! [#78](https://github.com/Otiel/BandcampDownloader/pull/78)
+* Added link to the translation [guidelines](/docs/help-translate.md) next to the language setting.
+
+## Improvements
+
+* The English name of any language is now displayed next to the local language name in settings.
+* The track file name setting is now checked and must have the _mp3_ extension. [#80](https://github.com/Otiel/BandcampDownloader/issues/80)
+* The proxy port setting is now checked and must be an integer.
+
+## Bug fixes
+
+* Minor bug fixes relative to the UI.
+
+# 0.2.6.0
+
+## New features
+
+* Added localization [#67](https://github.com/Otiel/BandcampDownloader/issues/67) for english and french. If you wish to help translate the application in another language, please see the [guidelines](/docs/help-translate.md).
+
+# 0.2.5.0
+
+## Improvements
+
+* When a new version is available, its number is displayed on the main window.
+* Updated dependencies to their latest version. This should fix issue [#76](https://github.com/Otiel/BandcampDownloader/issues/76) (false positive from Windows Defender).
+
+# 0.2.4.2
+
+## Improvements
+
+* Updated dependencies to their latest version.
+
+## Bug fixes
+
+* Fixed issue [#75](https://github.com/Otiel/BandcampDownloader/issues/75) that would prevent downloading tracks with a name with less than 3 characters.
+* Fixed exponential back-off mechanism that was inactive for artwork files.
+
+# 0.2.4.1
+
+## Bug fixes
+
+* Fixed issue that would cause the program to crash when the artwork file was already existing in the target folder.
+* Fixed issue [#73](https://github.com/Otiel/BandcampDownloader/issues/73) that would stuck the downloads in an endless loop when downloading a cover art failed.
+* Fixed issue that would report an incorrect number of tries when downloading a cover art failed.
+
 # 0.2.4.0
 
 ## New features

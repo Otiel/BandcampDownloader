@@ -30,18 +30,16 @@ Type     | Release | Description | Changelog
 feat     | `minor` | New feature or enhancement (for the user - not a new feature for a build script). | Visible
 fix      | `patch` | Bug fix (for the user - not a fix to a build script). | Visible
 docs     | `patch` | A change to the documentation. | Hidden
-style    | `patch` | Formatting, missing semi colons, etc; no production code change | Hidden
-refactor | `patch` | Refactoring production code, eg. renaming a variable | Hidden
+refactor | `patch` | Refactoring production code, eg. renaming a variable, formatting, etc | Hidden
 test     | `patch` | Adding tests, refactoring tests; no production code change | Hidden
-chore    | `patch` | Updating grunt tasks, etc; no production code change | Hidden
-other    | `patch` | What doesn't fall in any other category (udpating a library...) | Conditional
+chore    | `patch` | Updating grunt tasks, updating a library, etc | Conditional
 
 ## Body
 
 * Keep it wrapped at 72 characters.
 * Use the imperative, present tense: "change", not "changed" nor "changes".
 * Include motivation for the change and contrasts with previous behavior.
-* Don't forget to start the body with a blank line.
+* Start the body with a blank line.
 
 ## Footer
 

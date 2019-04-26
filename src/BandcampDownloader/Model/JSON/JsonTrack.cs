@@ -5,6 +5,9 @@ namespace BandcampDownloader {
 
     internal class JsonTrack {
 
+        [JsonProperty("duration")]
+        public Double Duration { get; set; }
+
         [JsonProperty("file")]
         public JsonMp3File File { get; set; }
 
@@ -17,13 +20,11 @@ namespace BandcampDownloader {
         [JsonProperty("title")]
         public String Title { get; set; }
 
-        public Track ToTrack() {
-            return new Track() {
-                Mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url, // "//example.com" Uri lacks protocol
-                Number = Number == 0 ? 1 : Number, // For bandcamp track pages, Number will be 0. Set 1 instead
-                Title = Title,
-                Lyrics = Lyrics
-            };
+        public Track ToTrack(Album album) {
+            String mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url; // "//example.com" Uri lacks protocol
+            int number = Number == 0 ? 1 : Number; // For bandcamp track pages, Number will be 0. Set 1 instead
+
+            return new Track(album, Duration, Lyrics, mp3Url, number, Title);
         }
     }
 }

@@ -53,10 +53,6 @@ namespace BandcampDownloader {
         /// </summary>
         private List<WebClient> _pendingDownloads;
         /// <summary>
-        /// Random class used to create random numbers.
-        /// </summary>
-        private Random _random = new Random();
-        /// <summary>
         /// Used when user clicks on 'Cancel' to manage the cancelation (UI...).
         /// </summary>
         private Boolean _userCancelled;
@@ -75,9 +71,7 @@ namespace BandcampDownloader {
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            // Hints
-            textBoxUrls.Text = Constants.UrlsHint;
-            textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
+
             // Check for updates
             if (App.UserSettings.CheckForUpdates) {
                 Task.Factory.StartNew(() => { CheckForUpdates(); });
@@ -111,7 +105,7 @@ namespace BandcampDownloader {
                 latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content += " - Could not check for updates";
+                    labelVersion.Content += " - " + Properties.Resources.labelVersionError;
                 }));
                 return;
             }
@@ -120,7 +114,7 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content += " - A new version is available";
+                    labelVersion.Content = String.Format(Properties.Resources.labelVersionNewUpdateAvailable, latestVersion);
                 }));
             }
         }
@@ -129,8 +123,7 @@ namespace BandcampDownloader {
         /// Downloads an album.
         /// </summary>
         /// <param name="album">The album to download.</param>
-        /// <param name="downloadsFolder">The path where to save the album.</param>
-        private async Task DownloadAlbumAsync(Album album, String downloadsFolder) {
+        private async Task DownloadAlbumAsync(Album album) {
             if (_userCancelled) {
                 // Abort
                 return;
@@ -138,7 +131,7 @@ namespace BandcampDownloader {
 
             // Create directory to place track files
             try {
-                Directory.CreateDirectory(downloadsFolder);
+                Directory.CreateDirectory(album.Path);
             } catch {
                 Log("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose", LogType.Error);
                 return;
@@ -148,7 +141,7 @@ namespace BandcampDownloader {
 
             // Download artwork
             if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork) {
-                artwork = await DownloadCoverArtAsync(album, downloadsFolder);
+                artwork = await DownloadCoverArtAsync(album);
             }
 
             // Download & tag tracks
@@ -157,14 +150,20 @@ namespace BandcampDownloader {
             //for (int i = 0; i < album.Tracks.Count; i++) {
             //    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
             //    int currentIndex = i;
-            //    tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(downloadsFolder, album, album.Tracks[currentIndex], artwork));
+            //    tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(album, album.Tracks[currentIndex], artwork));
             //}
 
             Int32[] indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-            await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(downloadsFolder, album, album.Tracks[i], artwork)));
+            await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
 
             // Wait for all tracks to be downloaded before saying the album is downloaded
             //Task.WaitAll(tasks);
+
+            // Create playlist file
+            if (App.UserSettings.CreatePlaylist) {
+                PlaylistHelper.SavePlaylistForAlbum(album, album.Path);
+                Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
+            }
 
             if (!_userCancelled) {
                 // Tasks have not been aborted
@@ -179,31 +178,22 @@ namespace BandcampDownloader {
         /// <summary>
         /// Downloads and tags a track. Returns true if the track has been correctly downloaded; false otherwise.
         /// </summary>
-        /// <param name="albumDirectoryPath">The path where to save the tracks.</param>
         /// <param name="album">The album of the track to download.</param>
         /// <param name="track">The track to download.</param>
         /// <param name="artwork">The cover art.</param>
-        private async Task<Boolean> DownloadAndTagTrackAsync(String albumDirectoryPath, Album album, Track track, TagLib.Picture artwork) {
+        private async Task<Boolean> DownloadAndTagTrackAsync(Album album, Track track, TagLib.Picture artwork) {
             Log($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo);
 
-            // Set path to save the file
-            String trackPath = albumDirectoryPath + "\\" + ParseFileName(album, track);
-            if (trackPath.Length >= 260) {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
-                int fileNameMaxLength = 12 - Path.GetExtension(trackPath).ToString().Length;
-                trackPath = albumDirectoryPath + "\\" + ParseFileName(album, track).Substring(0, fileNameMaxLength) + Path.GetExtension(trackPath);
-            }
             int tries = 0;
             Boolean trackDownloaded = false;
 
-            if (File.Exists(trackPath)) {
-                long length = new FileInfo(trackPath).Length;
+            if (File.Exists(track.Path)) {
+                long length = new FileInfo(track.Path).Length;
                 foreach (TrackFile trackFile in _filesDownload) {
                     if (track.Mp3Url == trackFile.Url &&
                         trackFile.Size > length - (trackFile.Size * App.UserSettings.AllowedFileSizeDifference) &&
                         trackFile.Size < length + (trackFile.Size * App.UserSettings.AllowedFileSizeDifference)) {
-                        Log($"Track already exists within allowed file size range: track \"{ParseFileName(album, track)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                        Log($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
                         return false;
                     }
                 }
@@ -242,7 +232,7 @@ namespace BandcampDownloader {
 
                             if (App.UserSettings.ModifyTags) {
                                 // Tag (ID3) the file when downloaded
-                                TagLib.File tagFile = TagLib.File.Create(trackPath);
+                                var tagFile = TagLib.File.Create(track.Path);
                                 tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
                                 tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
                                 tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbumTitle);
@@ -256,7 +246,7 @@ namespace BandcampDownloader {
 
                             if (App.UserSettings.SaveCoverArtInTags && artwork != null) {
                                 // Save cover in tags when downloaded
-                                TagLib.File tagFile = TagLib.File.Create(trackPath);
+                                var tagFile = TagLib.File.Create(track.Path);
                                 tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
                                 tagFile.Save();
                             }
@@ -264,12 +254,12 @@ namespace BandcampDownloader {
                             // Note the file as downloaded
                             TrackFile currentFile = _filesDownload.Where(f => f.Url == track.Mp3Url).First();
                             currentFile.Downloaded = true;
-                            Log($"Downloaded track \"{ParseFileName(album, track)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
+                            Log($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries + 1 < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download track \"{ParseFileName(album, track)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                Log($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
-                                Log($"Unable to download track \"{ParseFileName(album, track)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
+                                Log($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
 
@@ -289,7 +279,7 @@ namespace BandcampDownloader {
                     // Register current download
                     _pendingDownloads.Add(webClient);
                     // Start download
-                    await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), trackPath);
+                    await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), track.Path);
                     //}
                     // Wait for download to be finished
                     //doneEvent.WaitOne();
@@ -306,27 +296,7 @@ namespace BandcampDownloader {
         /// Downloads the cover art and returns the one to save in tags.
         /// </summary>
         /// <param name="album">The album to download.</param>
-        /// <param name="downloadsFolder">The path where to save the cover art.</param>
-        private async Task<TagLib.Picture> DownloadCoverArtAsync(Album album, String downloadsFolder) {
-            // Compute paths where to save artwork
-            String artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
-            String artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName() + Path.GetExtension(album.ArtworkUrl);
-
-            if (artworkTempPath.Length >= 260 || artworkFolderPath.Length >= 260) {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // Path has been shorten to 247 characters before, so we have 12 characters max left for filename.ext
-                // There may be only one path needed to shorten, but it's better to use the same file name in both places
-                int fileNameMaxLength = 12 - Path.GetExtension(album.ArtworkUrl).ToString().Length;
-                artworkTempPath = Path.GetTempPath() + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameMaxLength) + Path.GetExtension(album.ArtworkUrl);
-                artworkFolderPath = downloadsFolder + "\\" + album.Title.ToAllowedFileName().Substring(0, fileNameMaxLength) + Path.GetExtension(album.ArtworkUrl);
-            }
-
-            // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread):
-            // Change the name of the artwork file: replace the last 3 characters with a random number between 1-999
-            String artworkFileWithoutExt = Path.GetFileNameWithoutExtension(artworkTempPath);
-            artworkFileWithoutExt = artworkFileWithoutExt.Remove(artworkFileWithoutExt.Length - 3, 3) + _random.Next(1, 1000).ToString("00#");
-            artworkTempPath = Path.GetDirectoryName(artworkTempPath) + "\\" + artworkFileWithoutExt + Path.GetExtension(artworkTempPath);
-
+        private async Task<TagLib.Picture> DownloadCoverArtAsync(Album album) {
             TagLib.Picture artworkInTags = null;
 
             int tries = 0;
@@ -359,7 +329,7 @@ namespace BandcampDownloader {
                     };
 
                     // Warn when downloaded
-                    webClient.DownloadFileCompleted += (s, e) => {
+                    webClient.DownloadFileCompleted += async (s, e) => {
                         if (!e.Cancelled && e.Error == null) {
                             artworkDownloaded = true;
 
@@ -374,9 +344,9 @@ namespace BandcampDownloader {
                                     settings.MaxHeight = App.UserSettings.CoverArtInFolderMaxSize;
                                     settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
                                 }
-                                ImageBuilder.Current.Build(artworkTempPath, artworkFolderPath, settings); // Save it to the album folder
+                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
                             } else if (App.UserSettings.SaveCoverArtInFolder) {
-                                File.Copy(artworkTempPath, artworkFolderPath);
+                                File.Copy(album.ArtworkTempPath, album.ArtworkPath, true);
                             }
 
                             // Convert/resize artwork to be saved in tags
@@ -390,12 +360,12 @@ namespace BandcampDownloader {
                                     settings.MaxHeight = App.UserSettings.CoverArtInTagsMaxSize;
                                     settings.MaxWidth = App.UserSettings.CoverArtInTagsMaxSize;
                                 }
-                                ImageBuilder.Current.Build(artworkTempPath, artworkTempPath, settings); // Save it to %Temp%
+                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
                             }
-                            artworkInTags = new TagLib.Picture(artworkTempPath) { Description = "Picture" };
+                            artworkInTags = new TagLib.Picture(album.ArtworkTempPath) { Description = "Picture" };
 
                             try {
-                                File.Delete(artworkTempPath);
+                                File.Delete(album.ArtworkTempPath);
                             } catch {
                                 // Could not delete the file. Nevermind, it's in %Temp% folder...
                             }
@@ -406,11 +376,16 @@ namespace BandcampDownloader {
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
                             if (tries < App.UserSettings.DownloadMaxTries) {
-                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                                Log($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
                             } else {
                                 Log($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error);
                             }
                         } // Else the download has been cancelled (by the user)
+
+                        tries++;
+                        if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
+                            await WaitForCooldownAsync(tries);
+                        }
 
                         //doneEvent.Set();
                     };
@@ -423,7 +398,7 @@ namespace BandcampDownloader {
                     // Register current download
                     _pendingDownloads.Add(webClient);
                     // Start download
-                    await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), artworkTempPath);
+                    await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), album.ArtworkTempPath);
                     //}
 
                     // Wait for download to be finished
@@ -603,10 +578,10 @@ namespace BandcampDownloader {
 
                 // Artwork
                 if (downloadCoverArt && album.HasArtwork) {
-                    long size = 0;
-                    Boolean sizeRetrieved = false;
-                    int tries = 0;
                     if (App.UserSettings.RetrieveFilesSize) {
+                        long size = 0;
+                        Boolean sizeRetrieved = false;
+                        int tries = 0;
                         do {
                             if (_userCancelled) {
                                 // Abort
@@ -631,26 +606,28 @@ namespace BandcampDownloader {
                                 await WaitForCooldownAsync(tries);
                             }
                         } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
+                        files.Add(new TrackFile(album.ArtworkUrl, 0, size));
+                    } else {
+                        files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
                     }
-                    files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
 
                 // Tracks
-                Task[] tasks = new Task[album.Tracks.Count];
-                for (int i = 0; i < album.Tracks.Count; i++) {
-                    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
-                    int trackIndex = i;
+                if (App.UserSettings.RetrieveFilesSize) {
+                    var tasks = new Task[album.Tracks.Count];
+                    for (int i = 0; i < album.Tracks.Count; i++) {
+                        // Temporarily save the index or we will have a race condition exception when i hits its maximum value
+                        int trackIndex = i;
 
-                    if (_userCancelled) {
-                        // Abort
-                        return new List<TrackFile>();
-                    }
+                        if (_userCancelled) {
+                            // Abort
+                            return new List<TrackFile>();
+                        }
 
-                    tasks[trackIndex] = Task.Factory.StartNew(async () => {
-                        long size = 0;
-                        Boolean sizeRetrieved = false;
-                        int tries = 0;
-                        if (App.UserSettings.RetrieveFilesSize) {
+                        tasks[trackIndex] = Task.Factory.StartNew(async () => {
+                            long size = 0;
+                            Boolean sizeRetrieved = false;
+                            int tries = 0;
                             do {
                                 if (_userCancelled) {
                                     // Abort
@@ -678,14 +655,19 @@ namespace BandcampDownloader {
                                     await WaitForCooldownAsync(tries);
                                 }
                             } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
-                        }
-                        files.Add(new TrackFile(album.Tracks[trackIndex].Mp3Url, 0, size));
-                    });
-                }
+                            files.Add(new TrackFile(album.Tracks[trackIndex].Mp3Url, 0, size));
+                        });
+                    }
 
-                // Wait for all tracks size to be retrieved
-                Task.WaitAll(tasks);
+                    // Wait for all tracks size to be retrieved
+                    Task.WaitAll(tasks);
+                } else {
+                    foreach (Track track in album.Tracks) {
+                        files.Add(new TrackFile(track.Mp3Url, 0, 0));
+                    }
+                }
             }
+
             return files;
         }
 
@@ -713,7 +695,7 @@ namespace BandcampDownloader {
         /// <param name="color">The color.</param>
         private void Log(String message, LogType logType) {
             // Log to file
-            var logger = LogManager.GetCurrentClassLogger();
+            Logger logger = LogManager.GetCurrentClassLogger();
             logger.Log(logType.ToNLogLevel(), message);
 
             // Log to window
@@ -737,43 +719,6 @@ namespace BandcampDownloader {
                     }
                 }));
             }
-        }
-
-        /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified download path.
-        /// </summary>
-        /// <param name="downloadPath">The download path to parse.</param>
-        /// <param name="album">The album currently downloaded.</param>
-        private String ParseDownloadPath(String downloadPath, Album album) {
-            downloadPath = downloadPath.Replace("{year}", album.ReleaseDate.Year.ToString().ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{month}", album.ReleaseDate.Month.ToString("00").ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{day}", album.ReleaseDate.Day.ToString("00").ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{artist}", album.Artist.ToAllowedFileName());
-            downloadPath = downloadPath.Replace("{album}", album.Title.ToAllowedFileName());
-
-            if (downloadPath.Length >= 248) {
-                // Windows doesn't do well with path >= 248 characters (and path + filename >= 260 characters)
-                downloadPath = downloadPath.Substring(0, 247);
-            }
-
-            return downloadPath;
-        }
-
-        /// <summary>
-        /// Replaces placeholders strings by the corresponding values in the specified filenameFormat path.
-        /// </summary>
-        /// <param name="album">The album currently downloaded.</param>
-        /// <param name="track">The track currently downloaded.</param>
-        private String ParseFileName(Album album, Track track) {
-            String fileName = App.UserSettings.FileNameFormat
-                .Replace("{year}", album.ReleaseDate.Year.ToString())
-                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
-                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
-                .Replace("{album}", album.Title)
-                .Replace("{artist}", album.Artist)
-                .Replace("{title}", track.Title)
-                .Replace("{tracknum}", track.Number.ToString("00"));
-            return fileName.ToAllowedFileName();
         }
 
         /// <summary>
@@ -875,7 +820,7 @@ namespace BandcampDownloader {
 
         private async Task WaitForCooldownAsync(int triesNumber) {
             if (App.UserSettings.DownloadRetryCooldown != 0) {
-                await Task.Delay((int) ((Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber)) * App.UserSettings.DownloadRetryCooldown * 1000));
+                await Task.Delay((int) (Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber) * App.UserSettings.DownloadRetryCooldown * 1000));
             }
         }
 
@@ -885,7 +830,7 @@ namespace BandcampDownloader {
 
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
             var dialog = new System.Windows.Forms.FolderBrowserDialog {
-                Description = "Select the folder to save albums"
+                Description = Properties.Resources.folderBrowserDialogDescription
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
@@ -903,7 +848,7 @@ namespace BandcampDownloader {
         }
 
         private async void ButtonStart_Click(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Constants.UrlsHint) {
+            if (textBoxUrls.Text == "") {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
                 return;
@@ -924,7 +869,7 @@ namespace BandcampDownloader {
             Log("Starting download...", LogType.Info);
 
             // Get user inputs
-            List<String> userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var userUrls = textBoxUrls.Text.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
             userUrls = userUrls.Distinct().ToList();
 
             var urls = new List<String>();
@@ -965,7 +910,7 @@ namespace BandcampDownloader {
             if (App.UserSettings.DownloadOneAlbumAtATime) {
                 // Download one album at a time
                 foreach (Album album in albums) {
-                    await DownloadAlbumAsync(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album));
+                    await DownloadAlbumAsync(album);
                 }
             } else {
                 // Parallel download
@@ -973,13 +918,13 @@ namespace BandcampDownloader {
                 //for (int i = 0; i < albums.Count; i++) {
                 //    Album album = albums[i]; // Mandatory or else => race condition
                 //    tasks[i] = Task.Factory.StartNew(() =>
-                //        DownloadAlbum(album, ParseDownloadPath(App.UserSettings.DownloadsPath, album)));
+                //        DownloadAlbum(album);
                 //}
                 //// Wait for all albums to be downloaded
                 //Task.WaitAll(tasks);
 
                 Int32[] indexes = Enumerable.Range(0, albums.Count).ToArray();
-                await Task.WhenAll(indexes.Select(i => DownloadAlbumAsync(albums[i], ParseDownloadPath(App.UserSettings.DownloadsPath, albums[i]))));
+                await Task.WhenAll(indexes.Select(i => DownloadAlbumAsync(albums[i])));
             }
             //}).ContinueWith(x => {
             if (_userCancelled) {
@@ -992,7 +937,7 @@ namespace BandcampDownloader {
             if (App.UserSettings.EnableApplicationSounds) {
                 // Play a sound
                 try {
-                    (new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")).Play();
+                    new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
                 } catch {
                 }
             }
@@ -1000,7 +945,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show("Would you like to cancel all downloads?", "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
                 return;
             }
 
@@ -1017,7 +962,7 @@ namespace BandcampDownloader {
             }
 
             buttonStop.IsEnabled = false;
-            progressBar.Foreground = System.Windows.Media.Brushes.Red;
+            progressBar.Foreground = Brushes.Red;
             progressBar.IsIndeterminate = true;
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
             TaskbarItemInfo.ProgressValue = 0;
@@ -1036,26 +981,10 @@ namespace BandcampDownloader {
             Process.Start(Constants.ProjectWebsite);
         }
 
-        private void TextBoxUrls_GotFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == Constants.UrlsHint) {
-                // Erase the hint message
-                textBoxUrls.Text = "";
-                textBoxUrls.Foreground = new SolidColorBrush(Colors.Black);
-            }
-        }
-
-        private void TextBoxUrls_LostFocus(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == "") {
-                // Show the hint message
-                textBoxUrls.Text = Constants.UrlsHint;
-                textBoxUrls.Foreground = new SolidColorBrush(Colors.DarkGray);
-            }
-        }
-
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
             if (_activeDownloads) {
                 // There are active downloads, ask for confirmation
-                if (MessageBox.Show("There are currently active downloads. Are you sure you want to close the application and stop all downloads?", "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
                 }
