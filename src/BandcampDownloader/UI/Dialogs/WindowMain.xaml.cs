@@ -620,14 +620,13 @@ namespace BandcampDownloader {
         /// Returns the files to download from a list of albums.
         /// </summary>
         /// <param name="albums">The albums.</param>
-        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false otherwise.</param>
-        private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums, Boolean downloadCoverArt) {
+        private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums) {
             var files = new List<TrackFile>();
             foreach (Album album in albums) {
                 Log($"Computing size for album \"{album.Title}\"...", LogType.Info);
 
                 // Artwork
-                if (downloadCoverArt && album.HasArtwork) {
+                if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork) {
                     if (App.UserSettings.RetrieveFilesSize) {
                         long size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
                         files.Add(new TrackFile(album.ArtworkUrl, 0, size));
@@ -907,9 +906,9 @@ namespace BandcampDownloader {
             // Get info on albums
             albums = await GetAlbumsAsync(urls);
             //}).ContinueWith(x => {
-            // Save files to download (we'll need the list to update the progressBar)
-            _filesDownload = await GetFilesToDownloadAsync(albums, App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder);
             //}).ContinueWith(x => {
+            // Save the files to download and get their size (we'll need this list to update the progressBar)
+            _filesDownload = await GetFilesToDownloadAsync(albums);
             // Set progressBar max value
             long maxProgressBarValue;
             if (App.UserSettings.RetrieveFilesSize) {
