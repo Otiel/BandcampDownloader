@@ -159,7 +159,7 @@ namespace BandcampDownloader {
 
             // Create playlist file
             if (App.UserSettings.CreatePlaylist) {
-                PlaylistHelper.SavePlaylistForAlbum(album, album.Path);
+                PlaylistHelper.SavePlaylistForAlbum(album);
                 Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
             }
 
