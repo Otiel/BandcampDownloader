@@ -865,14 +865,6 @@ namespace BandcampDownloader {
             Cursor = Cursors.Wait;
             Log("Cancelling downloads. Please wait...", LogType.Info);
 
-            lock (_pendingDownloads) {
-                if (_pendingDownloads.Count == 0) {
-                    // Nothing to cancel
-                    Cursor = Cursors.Arrow;
-                    return;
-                }
-            }
-
             buttonStop.IsEnabled = false;
             progressBar.Foreground = Brushes.Red;
             progressBar.IsIndeterminate = true;
