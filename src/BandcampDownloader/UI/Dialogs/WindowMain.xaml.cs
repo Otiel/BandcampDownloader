@@ -566,43 +566,6 @@ namespace BandcampDownloader {
             return albumsUrls;
         }
 
-        /// <summary>
-        /// Returns the files to download from a list of albums.
-        /// </summary>
-        /// <param name="albums">The albums.</param>
-        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false otherwise.</param>
-        private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums, Boolean downloadCoverArt) {
-            var files = new List<TrackFile>();
-            foreach (Album album in albums) {
-                Log($"Computing size for album \"{album.Title}\"...", LogType.Info);
-
-                // Artwork
-                if (downloadCoverArt && album.HasArtwork) {
-                    if (App.UserSettings.RetrieveFilesSize) {
-                        long size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
-                        files.Add(new TrackFile(album.ArtworkUrl, 0, size));
-                    } else {
-                        files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
-                    }
-                }
-
-                // Tracks
-                if (App.UserSettings.RetrieveFilesSize) {
-                    Int32[] tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-                    await Task.WhenAll(tracksIndexes.Select(async i => {
-                        long size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
-                        files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));
-                    }));
-                } else {
-                    foreach (Track track in album.Tracks) {
-                        files.Add(new TrackFile(track.Mp3Url, 0, 0));
-                    }
-                }
-            }
-
-            return files;
-        }
-
         private async Task<long> GetFileSizeAsync(String url, String titleForLog, FileType fileType) {
             long size = 0;
             Boolean sizeRetrieved;
@@ -651,6 +614,43 @@ namespace BandcampDownloader {
             } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
 
             return size;
+        }
+
+        /// <summary>
+        /// Returns the files to download from a list of albums.
+        /// </summary>
+        /// <param name="albums">The albums.</param>
+        /// <param name="downloadCoverArt">True if the cover arts must be downloaded, false otherwise.</param>
+        private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums, Boolean downloadCoverArt) {
+            var files = new List<TrackFile>();
+            foreach (Album album in albums) {
+                Log($"Computing size for album \"{album.Title}\"...", LogType.Info);
+
+                // Artwork
+                if (downloadCoverArt && album.HasArtwork) {
+                    if (App.UserSettings.RetrieveFilesSize) {
+                        long size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
+                        files.Add(new TrackFile(album.ArtworkUrl, 0, size));
+                    } else {
+                        files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
+                    }
+                }
+
+                // Tracks
+                if (App.UserSettings.RetrieveFilesSize) {
+                    Int32[] tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
+                    await Task.WhenAll(tracksIndexes.Select(async i => {
+                        long size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
+                        files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));
+                    }));
+                } else {
+                    foreach (Track track in album.Tracks) {
+                        files.Add(new TrackFile(track.Mp3Url, 0, 0));
+                    }
+                }
+            }
+
+            return files;
         }
 
         /// <summary>
@@ -839,6 +839,43 @@ namespace BandcampDownloader {
             await StartDownloadAsync();
         }
 
+        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+                return;
+            }
+
+            _userCancelled = true;
+            Cursor = Cursors.Wait;
+            Log("Cancelling downloads. Please wait...", LogType.Info);
+
+            lock (_pendingDownloads) {
+                if (_pendingDownloads.Count == 0) {
+                    // Nothing to cancel
+                    Cursor = Cursors.Arrow;
+                    return;
+                }
+            }
+
+            buttonStop.IsEnabled = false;
+            progressBar.Foreground = Brushes.Red;
+            progressBar.IsIndeterminate = true;
+            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+            TaskbarItemInfo.ProgressValue = 0;
+
+            lock (_pendingDownloads) {
+                // Stop current downloads
+                foreach (WebClient webClient in _pendingDownloads) {
+                    webClient.CancelAsync();
+                }
+            }
+
+            Cursor = Cursors.Arrow;
+        }
+
+        private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
+            Process.Start(Constants.ProjectWebsite);
+        }
+
         private async Task StartDownloadAsync() {
             _userCancelled = false;
 
@@ -924,43 +961,6 @@ namespace BandcampDownloader {
                 }
             }
             //});
-        }
-
-        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
-                return;
-            }
-
-            _userCancelled = true;
-            Cursor = Cursors.Wait;
-            Log("Cancelling downloads. Please wait...", LogType.Info);
-
-            lock (_pendingDownloads) {
-                if (_pendingDownloads.Count == 0) {
-                    // Nothing to cancel
-                    Cursor = Cursors.Arrow;
-                    return;
-                }
-            }
-
-            buttonStop.IsEnabled = false;
-            progressBar.Foreground = Brushes.Red;
-            progressBar.IsIndeterminate = true;
-            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
-            TaskbarItemInfo.ProgressValue = 0;
-
-            lock (_pendingDownloads) {
-                // Stop current downloads
-                foreach (WebClient webClient in _pendingDownloads) {
-                    webClient.CancelAsync();
-                }
-            }
-
-            Cursor = Cursors.Arrow;
-        }
-
-        private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
-            Process.Start(Constants.ProjectWebsite);
         }
 
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
