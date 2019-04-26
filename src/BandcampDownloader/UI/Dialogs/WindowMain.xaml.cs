@@ -88,7 +88,7 @@ namespace BandcampDownloader {
                 //+ "https://goataholicskjald.bandcamp.com/track/europa" + Environment.NewLine
                 //+ "https://goataholicskjald.bandcamp.com/track/epilogue" + Environment.NewLine
                 //+ "https://afterdarkrecordings.bandcamp.com/album/adr-unreleased-tracks" /* #69 Album without cover */ + Environment.NewLine
-                //+ "https://liluglymane.bandcamp.com/album/study-of-the-hypothesized-removable-and-or-expandable-nature-of-human-capability-and-limitations-primarily-regarding-introductory-experiences-with-new-and-exciting-technologies-by-way-of-motivati-2" /* #54 Long path */ + Environment.NewLine
+                + "https://liluglymane.bandcamp.com/album/study-of-the-hypothesized-removable-and-or-expandable-nature-of-human-capability-and-limitations-primarily-regarding-introductory-experiences-with-new-and-exciting-technologies-by-way-of-motivati-2" /* #54 Long path */ + Environment.NewLine
                 ;
 #endif
         }
@@ -159,7 +159,7 @@ namespace BandcampDownloader {
 
             // Create playlist file
             if (App.UserSettings.CreatePlaylist) {
-                PlaylistHelper.SavePlaylistForAlbum(album, album.Path);
+                PlaylistHelper.SavePlaylistForAlbum(album);
                 Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
             }
 

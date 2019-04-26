@@ -11,8 +11,7 @@ namespace BandcampDownloader {
         /// Saves the playlist file for the specified album in the specified folder.
         /// </summary>
         /// <param name="album">The album relative of the playlist.</param>
-        /// <param name="folderPath">The folder where the playlist should be stored.</param>
-        public static void SavePlaylistForAlbum(Album album, String folderPath) {
+        public static void SavePlaylistForAlbum(Album album) {
             String fileContent;
 
             switch (App.UserSettings.PlaylistFormat) {
@@ -32,28 +31,7 @@ namespace BandcampDownloader {
                     throw new NotImplementedException();
             }
 
-            File.WriteAllText(ComputeFilePath(album, folderPath), fileContent);
-        }
-
-        /// <summary>
-        /// Returns the full path where the playlist file should be saved.
-        /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        /// <param name="folderPath">The folder where the playlist should be stored.</param>
-        private static String ComputeFilePath(Album album, String folderPath) {
-            String fileExt = GetFileExtension();
-
-            // Compute paths where to save artwork
-            String filePath = folderPath + "\\" + ParseFileName(album) + fileExt;
-
-            if (filePath.Length >= 260) {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11 character max for "filename.ext"
-                int fileNameMaxLength = 11 - fileExt.Length;
-                filePath = folderPath + "\\" + ParseFileName(album).Substring(0, fileNameMaxLength) + fileExt;
-            }
-
-            return filePath;
+            File.WriteAllText(album.PlaylistPath, fileContent);
         }
 
         /// <summary>
@@ -140,39 +118,6 @@ namespace BandcampDownloader {
             }
 
             return new ZplContent().ToText(playlist);
-        }
-
-        /// <summary>
-        /// Returns the file extension to be used for the playlist, depending of the type of playlist defined in UserSettings.
-        /// </summary>
-        private static String GetFileExtension() {
-            switch (App.UserSettings.PlaylistFormat) {
-                case PlaylistFormat.m3u:
-                    return ".m3u";
-                case PlaylistFormat.pls:
-                    return ".pls";
-                case PlaylistFormat.wpl:
-                    return ".wpl";
-                case PlaylistFormat.zpl:
-                    return ".zpl";
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
-        /// <summary>
-        /// Returns the file name to be used for the playlist file of the specified album from the file name format saved
-        /// in the UserSettings, by replacing the placeholders strings with their corresponding values.
-        /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        private static String ParseFileName(Album album) {
-            String fileName = App.UserSettings.PlaylistFileNameFormat
-                .Replace("{year}", album.ReleaseDate.Year.ToString())
-                .Replace("{month}", album.ReleaseDate.Month.ToString("00"))
-                .Replace("{day}", album.ReleaseDate.Day.ToString("00"))
-                .Replace("{album}", album.Title)
-                .Replace("{artist}", album.Artist);
-            return fileName.ToAllowedFileName();
         }
     }
 }
