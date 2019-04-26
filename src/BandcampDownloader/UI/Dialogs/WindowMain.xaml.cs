@@ -144,20 +144,11 @@ namespace BandcampDownloader {
                 artwork = await DownloadCoverArtAsync(album);
             }
 
-            // Download & tag tracks
-            //Task[] tasks = new Task[album.Tracks.Count];
-            Boolean[] tracksDownloaded = new Boolean[album.Tracks.Count];
-            //for (int i = 0; i < album.Tracks.Count; i++) {
-            //    // Temporarily save the index or we will have a race condition exception when i hits its maximum value
-            //    int currentIndex = i;
-            //    tasks[currentIndex] = Task.Factory.StartNew(() => tracksDownloaded[currentIndex] = DownloadAndTagTrack(album, album.Tracks[currentIndex], artwork));
-            //}
 
+            // Download & tag tracks
+            Boolean[] tracksDownloaded = new Boolean[album.Tracks.Count];
             Int32[] indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
             await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
-
-            // Wait for all tracks to be downloaded before saying the album is downloaded
-            //Task.WaitAll(tasks);
 
             // Create playlist file
             if (App.UserSettings.CreatePlaylist) {
@@ -200,8 +191,6 @@ namespace BandcampDownloader {
             }
 
             do {
-                //var doneEvent = new AutoResetEvent(false);
-
                 using (var webClient = new WebClient()) {
                     switch (App.UserSettings.Proxy) {
                         case ProxyType.None:
@@ -267,22 +256,18 @@ namespace BandcampDownloader {
                         if (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries) {
                             await WaitForCooldownAsync(tries);
                         }
-
-                        //doneEvent.Set();
                     };
 
-                    //lock (_pendingDownloads) {
                     if (_userCancelled) {
                         // Abort
                         return false;
                     }
+
                     // Register current download
                     _pendingDownloads.Add(webClient);
                     // Start download
                     await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), track.Path);
-                    //}
-                    // Wait for download to be finished
-                    //doneEvent.WaitOne();
+
                     lock (_pendingDownloads) {
                         _pendingDownloads.Remove(webClient);
                     }
@@ -304,8 +289,6 @@ namespace BandcampDownloader {
             Boolean artworkDownloaded = false;
 
             do {
-                //var doneEvent = new AutoResetEvent(false);
-
                 using (var webClient = new WebClient()) {
                     switch (App.UserSettings.Proxy) {
                         case ProxyType.None:
@@ -387,23 +370,18 @@ namespace BandcampDownloader {
                         if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
                             await WaitForCooldownAsync(tries);
                         }
-
-                        //doneEvent.Set();
                     };
 
-                    //lock (_pendingDownloads) {
                     if (_userCancelled) {
                         // Abort
                         return null;
                     }
+
                     // Register current download
                     _pendingDownloads.Add(webClient);
                     // Start download
                     await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), album.ArtworkTempPath);
-                    //}
 
-                    // Wait for download to be finished
-                    //doneEvent.WaitOne();
                     lock (_pendingDownloads) {
                         _pendingDownloads.Remove(webClient);
                     }
@@ -906,7 +884,6 @@ namespace BandcampDownloader {
             var albums = new List<Album>();
             _downloadProgresses = new ConcurrentQueue<DownloadProgress>();
 
-            //Task.Factory.StartNew(() => {
             // Get URLs of albums to download
             if (App.UserSettings.DownloadArtistDiscography) {
                 urls = await GetArtistDiscographyAsync(userUrls);
@@ -914,13 +891,13 @@ namespace BandcampDownloader {
                 urls = userUrls;
             }
             urls = urls.Distinct().ToList();
-            //}).ContinueWith(x => {
+
             // Get info on albums
             albums = await GetAlbumsAsync(urls);
-            //}).ContinueWith(x => {
-            //}).ContinueWith(x => {
+
             // Save the files to download and get their size (we'll need this list to update the progressBar)
             _filesDownload = await GetFilesToDownloadAsync(albums);
+
             // Set progressBar max value
             long maxProgressBarValue;
             if (App.UserSettings.RetrieveFilesSize) {
@@ -929,13 +906,11 @@ namespace BandcampDownloader {
                 maxProgressBarValue = _filesDownload.Count; // Number of files to download
             }
             if (maxProgressBarValue > 0) {
-                //this.Dispatcher.Invoke(new Action(() => {
                 progressBar.IsIndeterminate = false;
                 progressBar.Maximum = maxProgressBarValue;
                 TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
-                //}));
             }
-            //}).ContinueWith(x => {
+
             // Start downloading albums
             if (App.UserSettings.DownloadOneAlbumAtATime) {
                 // Download one album at a time
@@ -944,26 +919,19 @@ namespace BandcampDownloader {
                 }
             } else {
                 // Parallel download
-                //Task[] tasks = new Task[albums.Count];
-                //for (int i = 0; i < albums.Count; i++) {
-                //    Album album = albums[i]; // Mandatory or else => race condition
-                //    tasks[i] = Task.Factory.StartNew(() =>
-                //        DownloadAlbum(album);
-                //}
-                //// Wait for all albums to be downloaded
-                //Task.WaitAll(tasks);
-
-                Int32[] indexes = Enumerable.Range(0, albums.Count).ToArray();
-                await Task.WhenAll(indexes.Select(i => DownloadAlbumAsync(albums[i])));
+                Int32[] albumsIndexes = Enumerable.Range(0, albums.Count).ToArray();
+                await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(albums[i])));
             }
-            //}).ContinueWith(x => {
+
             if (_userCancelled) {
                 // Display message if user cancelled
                 Log("Downloads cancelled by user", LogType.Info);
             }
+
             // Set controls to "ready" state
             _activeDownloads = false;
             UpdateControlsState(false);
+
             if (App.UserSettings.EnableApplicationSounds) {
                 // Play a sound
                 try {
@@ -971,7 +939,6 @@ namespace BandcampDownloader {
                 } catch {
                 }
             }
-            //});
         }
 
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
