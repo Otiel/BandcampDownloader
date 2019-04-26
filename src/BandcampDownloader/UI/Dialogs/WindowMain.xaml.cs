@@ -293,9 +293,10 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Downloads the cover art and returns the one to save in tags.
+        /// Downloads and returns the cover art of the specified album.
+        /// Depending on UserSettings, save the cover art in the album folder.
         /// </summary>
-        /// <param name="album">The album to download.</param>
+        /// <param name="album">The album.</param>
         private async Task<TagLib.Picture> DownloadCoverArtAsync(Album album) {
             TagLib.Picture artworkInTags = null;
 
@@ -566,6 +567,12 @@ namespace BandcampDownloader {
             return albumsUrls;
         }
 
+        /// <summary>
+        /// Returns the size of the file located at the specified URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="titleForLog">The title of the file to be displayed in the log.</param>
+        /// <param name="fileType">The type of the file.</param>
         private async Task<long> GetFileSizeAsync(String url, String titleForLog, FileType fileType) {
             long size = 0;
             Boolean sizeRetrieved;
@@ -670,10 +677,10 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Logs to file and displays the specified message in the log textbox with the specified color.
+        /// Logs to file and displays the specified message in the log textbox.
         /// </summary>
         /// <param name="message">The message.</param>
-        /// <param name="color">The color.</param>
+        /// <param name="logType">The log type.</param>
         private void Log(String message, LogType logType) {
             // Log to file
             Logger logger = LogManager.GetCurrentClassLogger();
@@ -799,6 +806,11 @@ namespace BandcampDownloader {
             }));
         }
 
+        /// <summary>
+        /// Waits for a "cooldown" time, computed from the specified number of download tries.
+        /// </summary>
+        /// <param name="triesNumber">The times count we tried to download the same file.</param>
+        /// <returns></returns>
         private async Task WaitForCooldownAsync(int triesNumber) {
             if (App.UserSettings.DownloadRetryCooldown != 0) {
                 await Task.Delay((int) (Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber) * App.UserSettings.DownloadRetryCooldown * 1000));
