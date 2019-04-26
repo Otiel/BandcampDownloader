@@ -579,33 +579,7 @@ namespace BandcampDownloader {
                 // Artwork
                 if (downloadCoverArt && album.HasArtwork) {
                     if (App.UserSettings.RetrieveFilesSize) {
-                        long size = 0;
-                        Boolean sizeRetrieved = false;
-                        int tries = 0;
-                        do {
-                            if (_userCancelled) {
-                                // Abort
-                                return new List<TrackFile>();
-                            }
-
-                            try {
-                                size = await FileHelper.GetFileSizeAsync(album.ArtworkUrl, "HEAD");
-                                sizeRetrieved = true;
-                                Log($"Retrieved the size of the cover art file for album \"{album.Title}\"", LogType.VerboseInfo);
-                            } catch {
-                                sizeRetrieved = false;
-                                if (tries + 1 < App.UserSettings.DownloadMaxTries) {
-                                    Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
-                                } else {
-                                    Log($"Failed to retrieve the size of the cover art file for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
-                                }
-                            }
-
-                            tries++;
-                            if (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries) {
-                                await WaitForCooldownAsync(tries);
-                            }
-                        } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
+                        long size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
                         files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                     } else {
                         files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
@@ -614,53 +588,11 @@ namespace BandcampDownloader {
 
                 // Tracks
                 if (App.UserSettings.RetrieveFilesSize) {
-                    var tasks = new Task[album.Tracks.Count];
-                    for (int i = 0; i < album.Tracks.Count; i++) {
-                        // Temporarily save the index or we will have a race condition exception when i hits its maximum value
-                        int trackIndex = i;
-
-                        if (_userCancelled) {
-                            // Abort
-                            return new List<TrackFile>();
-                        }
-
-                        tasks[trackIndex] = Task.Factory.StartNew(async () => {
-                            long size = 0;
-                            Boolean sizeRetrieved = false;
-                            int tries = 0;
-                            do {
-                                if (_userCancelled) {
-                                    // Abort
-                                    break;
-                                }
-
-                                try {
-                                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
-                                    // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve
-                                    // the mp3 sizes
-                                    size = await FileHelper.GetFileSizeAsync(album.Tracks[trackIndex].Mp3Url, "GET");
-                                    sizeRetrieved = true;
-                                    Log($"Retrieved the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\"", LogType.VerboseInfo);
-                                } catch {
-                                    sizeRetrieved = false;
-                                    if (tries + 1 < App.UserSettings.DownloadMaxTries) {
-                                        Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
-                                    } else {
-                                        Log($"Failed to retrieve the size of the MP3 file for the track \"{album.Tracks[trackIndex].Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
-                                    }
-                                }
-
-                                tries++;
-                                if (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries) {
-                                    await WaitForCooldownAsync(tries);
-                                }
-                            } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
-                            files.Add(new TrackFile(album.Tracks[trackIndex].Mp3Url, 0, size));
-                        });
-                    }
-
-                    // Wait for all tracks size to be retrieved
-                    Task.WaitAll(tasks);
+                    Int32[] tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
+                    await Task.WhenAll(tracksIndexes.Select(async i => {
+                        long size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
+                        files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));
+                    }));
                 } else {
                     foreach (Track track in album.Tracks) {
                         files.Add(new TrackFile(track.Mp3Url, 0, 0));
@@ -669,6 +601,56 @@ namespace BandcampDownloader {
             }
 
             return files;
+        }
+
+        private async Task<long> GetFileSizeAsync(String url, String titleForLog, FileType fileType) {
+            long size = 0;
+            Boolean sizeRetrieved;
+            int tries = 0;
+            String fileTypeForLog;
+            String protocolMethod;
+
+            switch (fileType) {
+                case FileType.Artwork:
+                    fileTypeForLog = "cover art file for album";
+                    protocolMethod = "HEAD";
+                    break;
+                case FileType.Track:
+                    fileTypeForLog = "MP3 file for the track";
+                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
+                    // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve the mp3 sizes
+                    protocolMethod = "GET";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            do {
+                if (_userCancelled) {
+                    // Abort
+                    return 0;
+                }
+
+                try {
+                    size = await FileHelper.GetFileSizeAsync(url, protocolMethod);
+                    sizeRetrieved = true;
+                    Log($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo);
+                } catch {
+                    sizeRetrieved = false;
+                    if (tries + 1 < App.UserSettings.DownloadMaxTries) {
+                        Log($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning);
+                    } else {
+                        Log($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error);
+                    }
+                }
+
+                tries++;
+                if (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries) {
+                    await WaitForCooldownAsync(tries);
+                }
+            } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
+
+            return size;
         }
 
         /// <summary>
