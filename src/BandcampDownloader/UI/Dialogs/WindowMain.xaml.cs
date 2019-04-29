@@ -324,7 +324,7 @@ namespace BandcampDownloader {
                     _pendingDownloads.Add(webClient);
                     // Start download
                     try {
-                        await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), track.Path);
+                        await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         // Do nothing
@@ -442,7 +442,7 @@ namespace BandcampDownloader {
                     _pendingDownloads.Add(webClient);
                     // Start download
                     try {
-                        await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), album.ArtworkTempPath);
+                        await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         // Do nothing
