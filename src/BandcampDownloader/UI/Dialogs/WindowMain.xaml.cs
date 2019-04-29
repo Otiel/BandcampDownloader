@@ -151,7 +151,7 @@ namespace BandcampDownloader {
             await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
 
             // Create playlist file
-            if (App.UserSettings.CreatePlaylist) {
+            if (App.UserSettings.CreatePlaylist && !_userCancelled) {
                 PlaylistHelper.SavePlaylistForAlbum(album);
                 Log($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess);
             }
