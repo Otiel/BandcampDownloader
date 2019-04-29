@@ -166,16 +166,14 @@ namespace BandcampDownloader {
 
             int tries = 0;
             Boolean trackDownloaded = false;
+            TrackFile currentFile = _filesDownload.Where(f => f.Url == track.Mp3Url).First();
 
             if (File.Exists(track.Path)) {
                 long length = new FileInfo(track.Path).Length;
-                foreach (TrackFile trackFile in _filesDownload) {
-                    if (track.Mp3Url == trackFile.Url &&
-                        trackFile.Size > length - (trackFile.Size * App.UserSettings.AllowedFileSizeDifference) &&
-                        trackFile.Size < length + (trackFile.Size * App.UserSettings.AllowedFileSizeDifference)) {
-                        Log($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
-                        return false;
-                    }
+                if (currentFile.Size > length - (currentFile.Size * App.UserSettings.AllowedFileSizeDifference) &&
+                    currentFile.Size < length + (currentFile.Size * App.UserSettings.AllowedFileSizeDifference)) {
+                    Log($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess);
+                    return false;
                 }
             }
 
@@ -230,7 +228,6 @@ namespace BandcampDownloader {
                             }
 
                             // Note the file as downloaded
-                            TrackFile currentFile = _filesDownload.Where(f => f.Url == track.Mp3Url).First();
                             currentFile.Downloaded = true;
                             Log($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
@@ -281,6 +278,7 @@ namespace BandcampDownloader {
 
             int tries = 0;
             Boolean artworkDownloaded = false;
+            TrackFile currentFile = _filesDownload.Where(f => f.Url == album.ArtworkUrl).First();
 
             do {
                 using (var webClient = new WebClient()) {
@@ -349,7 +347,6 @@ namespace BandcampDownloader {
                             }
 
                             // Note the file as downloaded
-                            TrackFile currentFile = _filesDownload.Where(f => f.Url == album.ArtworkUrl).First();
                             currentFile.Downloaded = true;
                             Log($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess);
                         } else if (!e.Cancelled && e.Error != null) {
