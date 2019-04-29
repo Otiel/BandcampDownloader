@@ -315,13 +315,15 @@ namespace BandcampDownloader {
                         }
                     };
 
-                    if (_userCancelled) {
-                        // Abort
-                        return false;
+                    lock (_pendingDownloads) {
+                        if (_userCancelled) {
+                            // Abort
+                            return false;
+                        }
+                        // Register current download
+                        _pendingDownloads.Add(webClient);
                     }
 
-                    // Register current download
-                    _pendingDownloads.Add(webClient);
                     // Start download
                     try {
                         await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
@@ -441,13 +443,15 @@ namespace BandcampDownloader {
                         }
                     };
 
-                    if (_userCancelled) {
-                        // Abort
-                        return null;
+                    lock (_pendingDownloads) {
+                        if (_userCancelled) {
+                            // Abort
+                            return null;
+                        }
+                        // Register current download
+                        _pendingDownloads.Add(webClient);
                     }
 
-                    // Register current download
-                    _pendingDownloads.Add(webClient);
                     // Start download
                     try {
                         await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
