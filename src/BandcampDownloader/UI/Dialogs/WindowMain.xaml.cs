@@ -54,7 +54,7 @@ namespace BandcampDownloader {
         /// </summary>
         private List<WebClient> _pendingDownloads;
         /// <summary>
-        /// Used when user clicks on 'Cancel' to manage the cancelation (UI...).
+        /// Used when user clicks on 'Cancel' to manage the cancellation (UI...).
         /// </summary>
         private Boolean _userCancelled;
 
@@ -700,7 +700,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Updates the state of the controls.
         /// </summary>
-        /// <param name="downloadStarted">True if the download just started, false if it just stopped.</param>
+        /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
         private void UpdateControlsState(Boolean downloadStarted) {
             Dispatcher.Invoke(new Action(() => {
                 if (downloadStarted) {
@@ -815,7 +815,7 @@ namespace BandcampDownloader {
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
-                // Force update of the settings file (it's not done unless the user give then lose focus on the textbox)
+                // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
                 textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }
         }
