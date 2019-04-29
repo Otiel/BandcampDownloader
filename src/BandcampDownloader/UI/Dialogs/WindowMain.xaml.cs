@@ -47,7 +47,7 @@ namespace BandcampDownloader {
         /// </summary>
         private long _lastTotalReceivedBytes = 0;
         /// <summary>
-        /// Used when user clicks on 'Cancel' to abort all current downloads.
+        /// The list of WebClients currently used to download files. Used when user clicks on 'Cancel' to abort all current downloads.
         /// </summary>
         private List<WebClient> _pendingDownloads;
         /// <summary>
