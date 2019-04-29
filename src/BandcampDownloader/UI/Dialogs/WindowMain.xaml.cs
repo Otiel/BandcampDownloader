@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -30,10 +29,6 @@ namespace BandcampDownloader {
         /// True if there are active downloads; false otherwise.
         /// </summary>
         private Boolean _activeDownloads = false;
-        /// <summary>
-        /// Used to update the downloaded bytes / files count on the UI.
-        /// </summary>
-        private ConcurrentQueue<DownloadProgress> _downloadProgresses;
         /// <summary>
         /// The files to download, or being downloaded, or downloaded. Used to compute the current received bytes and the total bytes to download.
         /// </summary>
@@ -197,8 +192,7 @@ namespace BandcampDownloader {
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
-                        _downloadProgresses.Enqueue(new DownloadProgress(track.Mp3Url, e.BytesReceived));
-                        UpdateProgress();
+                        currentFile.BytesReceived = e.BytesReceived;
                     };
 
                     // Warn & tag when downloaded
@@ -300,8 +294,7 @@ namespace BandcampDownloader {
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
-                        _downloadProgresses.Enqueue(new DownloadProgress(album.ArtworkUrl, e.BytesReceived));
-                        UpdateProgress();
+                        currentFile.BytesReceived = e.BytesReceived;
                     };
 
                     // Warn when downloaded
@@ -719,65 +712,6 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Updates the progress messages and the progressbar.
-        /// </summary>
-        private void UpdateProgress() {
-            DateTime now = DateTime.Now;
-
-            _downloadProgresses.TryDequeue(out DownloadProgress downloadProgress);
-
-            // Compute new progress values
-            TrackFile currentFile = _filesDownload.Where(f => f.Url == downloadProgress.FileUrl).First();
-            currentFile.BytesReceived = downloadProgress.BytesReceived;
-            long totalReceivedBytes = _filesDownload.Sum(f => f.BytesReceived);
-            long bytesToDownload = _filesDownload.Sum(f => f.Size);
-            Double downloadedFilesCount = _filesDownload.Count(f => f.Downloaded);
-
-            Double bytesPerSecond;
-            if (_lastTotalReceivedBytes == 0) {
-                // First time we update the progress
-                bytesPerSecond = 0;
-                _lastTotalReceivedBytes = totalReceivedBytes;
-                _lastDownloadSpeedUpdate = now;
-            } else if ((now - _lastDownloadSpeedUpdate).TotalMilliseconds > 500) {
-                // Last update of progress happened more than 500 milliseconds ago
-                // We only update the download speed every 500+ milliseconds
-                bytesPerSecond =
-                    ((Double) (totalReceivedBytes - _lastTotalReceivedBytes)) /
-                    (now - _lastDownloadSpeedUpdate).TotalSeconds;
-                _lastTotalReceivedBytes = totalReceivedBytes;
-                _lastDownloadSpeedUpdate = now;
-
-                // Update UI
-                Dispatcher.Invoke(new Action(() => {
-                    // Update download speed
-                    labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
-                }));
-            }
-
-            // Update UI
-            Dispatcher.Invoke(new Action(() => {
-                if (!_userCancelled) {
-                    // Update progress label
-                    labelProgress.Content =
-                        ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-                        (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
-                    if (App.UserSettings.RetrieveFilesSize) {
-                        // Update progress bar based on bytes received
-                        progressBar.Value = totalReceivedBytes;
-                        // Taskbar progress is between 0 and 1
-                        TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
-                    } else {
-                        // Update progress bar based on downloaded files
-                        progressBar.Value = downloadedFilesCount;
-                        // Taskbar progress is between 0 and count of files to download
-                        TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
-                    }
-                }
-            }));
-        }
-
-        /// <summary>
         /// Waits for a "cooldown" time, computed from the specified number of download tries.
         /// </summary>
         /// <param name="triesNumber">The times count we tried to download the same file.</param>
@@ -879,7 +813,6 @@ namespace BandcampDownloader {
 
             var urls = new List<String>();
             var albums = new List<Album>();
-            _downloadProgresses = new ConcurrentQueue<DownloadProgress>();
 
             // Get URLs of albums to download
             if (App.UserSettings.DownloadArtistDiscography) {
@@ -908,6 +841,20 @@ namespace BandcampDownloader {
                 TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
             }
 
+            // Start timer to update progress on UI
+            var updateProgressTimer = new DispatcherTimer() {
+                Interval = TimeSpan.FromMilliseconds(100)
+            };
+            updateProgressTimer.Tick += UpdateProgressTimer_Tick;
+            updateProgressTimer.Start();
+
+            // Start timer to update download speed on UI
+            var updateDownloadSpeedTimer = new DispatcherTimer() {
+                Interval = TimeSpan.FromMilliseconds(1000)
+            };
+            updateDownloadSpeedTimer.Tick += UpdateDownloadSpeedTimer_Tick; ;
+            updateDownloadSpeedTimer.Start();
+
             // Start downloading albums
             if (App.UserSettings.DownloadOneAlbumAtATime) {
                 // Download one album at a time
@@ -919,6 +866,21 @@ namespace BandcampDownloader {
                 Int32[] albumsIndexes = Enumerable.Range(0, albums.Count).ToArray();
                 await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(albums[i])));
             }
+
+            // Stop timers
+            updateProgressTimer.Stop();
+            updateDownloadSpeedTimer.Stop();
+
+            // Update progress one last time to make sure the downloaded bytes displayed on UI is up-to-date
+            UpdateProgress();
+        }
+
+        private void UpdateDownloadSpeedTimer_Tick(object sender, EventArgs e) {
+            UpdateDownloadSpeed();
+        }
+
+        private void UpdateProgressTimer_Tick(object sender, EventArgs e) {
+            UpdateProgress();
         }
 
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
@@ -927,6 +889,56 @@ namespace BandcampDownloader {
                 if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Updates the download speed on UI.
+        /// </summary>
+        private void UpdateDownloadSpeed() {
+            DateTime now = DateTime.Now;
+
+            // Compute new progress values
+            long totalReceivedBytes = _filesDownload.Sum(f => f.BytesReceived);
+
+            Double bytesPerSecond =
+                ((Double) (totalReceivedBytes - _lastTotalReceivedBytes)) /
+                (now - _lastDownloadSpeedUpdate).TotalSeconds;
+            _lastTotalReceivedBytes = totalReceivedBytes;
+            _lastDownloadSpeedUpdate = now;
+
+            // Update download speed on UI
+            labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
+        }
+
+        /// <summary>
+        /// Updates the progress label on UI.
+        /// </summary>
+        private void UpdateProgress() {
+            labelTimer.Content = DateTime.Now.ToString("mm:ss.fff");
+
+            if (!_userCancelled) {
+                // Compute new progress values
+                long totalReceivedBytes = _filesDownload.Sum(f => f.BytesReceived);
+                long bytesToDownload = _filesDownload.Sum(f => f.Size);
+
+                // Update progress label
+                labelProgress.Content =
+                    ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
+                    (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
+
+                if (App.UserSettings.RetrieveFilesSize) {
+                    // Update progress bar based on bytes received
+                    progressBar.Value = totalReceivedBytes;
+                    // Taskbar progress is between 0 and 1
+                    TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
+                } else {
+                    Double downloadedFilesCount = _filesDownload.Count(f => f.Downloaded);
+                    // Update progress bar based on downloaded files
+                    progressBar.Value = downloadedFilesCount;
+                    // Taskbar progress is between 0 and count of files to download
+                    TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
                 }
             }
         }
