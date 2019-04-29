@@ -142,7 +142,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\FileType.cs" />
+    <Compile Include="Model\FileType.cs" />
     <Compile Include="Helpers\BandcampHelper.cs" />
     <Compile Include="Helpers\MessageBoxManager.cs" />
     <Compile Include="Helpers\PlaylistHelper.cs" />
