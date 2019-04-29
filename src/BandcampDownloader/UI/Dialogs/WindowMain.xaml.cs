@@ -266,7 +266,12 @@ namespace BandcampDownloader {
                     // Register current download
                     _pendingDownloads.Add(webClient);
                     // Start download
-                    await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), track.Path);
+                    try {
+                        await webClient.DownloadFileTaskAsync(new Uri(track.Mp3Url), track.Path);
+                    } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
+                        // Downloads cancelled by the user
+                        // Do nothing
+                    }
 
                     lock (_pendingDownloads) {
                         _pendingDownloads.Remove(webClient);
@@ -380,7 +385,12 @@ namespace BandcampDownloader {
                     // Register current download
                     _pendingDownloads.Add(webClient);
                     // Start download
-                    await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), album.ArtworkTempPath);
+                    try {
+                        await webClient.DownloadFileTaskAsync(new Uri(album.ArtworkUrl), album.ArtworkTempPath);
+                    } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
+                        // Downloads cancelled by the user
+                        // Do nothing
+                    }
 
                     lock (_pendingDownloads) {
                         _pendingDownloads.Remove(webClient);
@@ -831,12 +841,7 @@ namespace BandcampDownloader {
 
             Log("Starting download...", LogType.Info);
 
-            try {
-                await StartDownloadAsync();
-            } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
-                // Downloads cancelled by the user
-                // Do nothing
-            }
+            await StartDownloadAsync();
 
             if (_userCancelled) {
                 // Display message if user cancelled
