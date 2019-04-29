@@ -26,9 +26,6 @@ using NLog.Targets;
 namespace BandcampDownloader {
 
     public partial class WindowMain: Window {
-
-        #region Fields
-
         /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
@@ -57,10 +54,6 @@ namespace BandcampDownloader {
         /// Used when user clicks on 'Cancel' to manage the cancellation (UI...).
         /// </summary>
         private Boolean _userCancelled;
-
-        #endregion
-
-        #region Constructor
 
         public WindowMain() {
             // Save DataContext for bindings (must be called before initializing UI)
@@ -92,10 +85,6 @@ namespace BandcampDownloader {
                 ;
 #endif
         }
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         /// Displays a message if a new version is available.
@@ -805,10 +794,6 @@ namespace BandcampDownloader {
             }
         }
 
-        #endregion
-
-        #region Events
-
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
             var dialog = new System.Windows.Forms.FolderBrowserDialog {
                 Description = Properties.Resources.folderBrowserDialogDescription
@@ -951,7 +936,5 @@ namespace BandcampDownloader {
                 }
             }
         }
-
-        #endregion
     }
 }
