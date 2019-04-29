@@ -665,24 +665,22 @@ namespace BandcampDownloader {
 
             // Log to window
             if (App.UserSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success) {
-                Dispatcher.Invoke(new Action(() => {
-                    // Time
-                    var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
-                        Text = DateTime.Now.ToString("HH:mm:ss") + " "
-                    };
-                    textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
-                    // Message
-                    textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
-                        Text = message
-                    };
-                    textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
-                    // Line break
-                    richTextBoxLog.AppendText(Environment.NewLine);
+                // Time
+                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
+                    Text = DateTime.Now.ToString("HH:mm:ss") + " "
+                };
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
+                // Message
+                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
+                    Text = message
+                };
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
+                // Line break
+                richTextBoxLog.AppendText(Environment.NewLine);
 
-                    if (richTextBoxLog.IsScrolledToEnd()) {
-                        richTextBoxLog.ScrollToEnd();
-                    }
-                }));
+                if (richTextBoxLog.IsScrolledToEnd()) {
+                    richTextBoxLog.ScrollToEnd();
+                }
             }
         }
 
@@ -691,37 +689,36 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
         private void UpdateControlsState(Boolean downloadStarted) {
-            Dispatcher.Invoke(new Action(() => {
-                if (downloadStarted) {
-                    // We just started the download
-                    buttonBrowse.IsEnabled = false;
-                    buttonStart.IsEnabled = false;
-                    buttonStop.IsEnabled = true;
-                    checkBoxDownloadDiscography.IsEnabled = false;
-                    labelProgress.Content = "";
-                    progressBar.IsIndeterminate = true;
-                    progressBar.Value = progressBar.Minimum;
-                    richTextBoxLog.Document.Blocks.Clear();
-                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
-                    TaskbarItemInfo.ProgressValue = 0;
-                    textBoxDownloadsPath.IsReadOnly = true;
-                    textBoxUrls.IsReadOnly = true;
-                } else {
-                    // We just finished the download (or user has cancelled)
-                    buttonBrowse.IsEnabled = true;
-                    buttonStart.IsEnabled = true;
-                    buttonStop.IsEnabled = false;
-                    checkBoxDownloadDiscography.IsEnabled = true;
-                    labelDownloadSpeed.Content = "";
-                    progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
-                    progressBar.IsIndeterminate = false;
-                    progressBar.Value = progressBar.Minimum;
-                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
-                    TaskbarItemInfo.ProgressValue = 0;
-                    textBoxDownloadsPath.IsReadOnly = false;
-                    textBoxUrls.IsReadOnly = false;
-                }
-            }));
+            if (downloadStarted) {
+                // We just started the download
+                buttonBrowse.IsEnabled = false;
+                buttonStart.IsEnabled = false;
+                buttonStop.IsEnabled = true;
+                checkBoxDownloadDiscography.IsEnabled = false;
+                labelProgress.Content = "";
+                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
+                progressBar.IsIndeterminate = true;
+                progressBar.Value = progressBar.Minimum;
+                richTextBoxLog.Document.Blocks.Clear();
+                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
+                TaskbarItemInfo.ProgressValue = 0;
+                textBoxDownloadsPath.IsReadOnly = true;
+                textBoxUrls.IsReadOnly = true;
+            } else {
+                // We just finished the download (or user has cancelled)
+                buttonBrowse.IsEnabled = true;
+                buttonStart.IsEnabled = true;
+                buttonStop.IsEnabled = false;
+                checkBoxDownloadDiscography.IsEnabled = true;
+                labelDownloadSpeed.Content = "";
+                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
+                progressBar.IsIndeterminate = false;
+                progressBar.Value = progressBar.Minimum;
+                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+                TaskbarItemInfo.ProgressValue = 0;
+                textBoxDownloadsPath.IsReadOnly = false;
+                textBoxUrls.IsReadOnly = false;
+            }
         }
 
         /// <summary>
