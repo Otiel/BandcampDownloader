@@ -146,6 +146,7 @@
     <Compile Include="Helpers\BandcampHelper.cs" />
     <Compile Include="Helpers\MessageBoxManager.cs" />
     <Compile Include="Helpers\PlaylistHelper.cs" />
+    <Compile Include="Helpers\ProxyHelper.cs" />
     <Compile Include="Model\Album.cs" />
     <Compile Include="Model\TrackFile.cs" />
     <Compile Include="Model\JSON\JsonAlbumData.cs" />

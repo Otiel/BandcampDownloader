@@ -251,21 +251,7 @@ namespace BandcampDownloader {
 
             do {
                 using (var webClient = new WebClient()) {
-                    switch (App.UserSettings.Proxy) {
-                        case ProxyType.None:
-                            webClient.Proxy = null;
-                            break;
-                        case ProxyType.System:
-                            if (webClient.Proxy != null) {
-                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                            }
-                            break;
-                        case ProxyType.Manual:
-                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
-                            break;
-                        default:
-                            throw new NotImplementedException(); // Shouldn't happen
-                    }
+                    ProxyHelper.SetProxy(webClient);
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
@@ -355,21 +341,7 @@ namespace BandcampDownloader {
 
             do {
                 using (var webClient = new WebClient()) {
-                    switch (App.UserSettings.Proxy) {
-                        case ProxyType.None:
-                            webClient.Proxy = null;
-                            break;
-                        case ProxyType.System:
-                            if (webClient.Proxy != null) {
-                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                            }
-                            break;
-                        case ProxyType.Manual:
-                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
-                            break;
-                        default:
-                            throw new NotImplementedException(); // Shouldn't happen
-                    }
+                    ProxyHelper.SetProxy(webClient);
 
                     // Update progress bar when downloading
                     webClient.DownloadProgressChanged += (s, e) => {
@@ -482,21 +454,7 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    switch (App.UserSettings.Proxy) {
-                        case ProxyType.None:
-                            webClient.Proxy = null;
-                            break;
-                        case ProxyType.System:
-                            if (webClient.Proxy != null) {
-                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                            }
-                            break;
-                        case ProxyType.Manual:
-                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
-                            break;
-                        default:
-                            throw new NotImplementedException(); // Shouldn't happen
-                    }
+                    ProxyHelper.SetProxy(webClient);
 
                     if (_userCancelled) {
                         // Abort
@@ -536,21 +494,7 @@ namespace BandcampDownloader {
                 // Retrieve URL HTML source code
                 String htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    switch (App.UserSettings.Proxy) {
-                        case ProxyType.None:
-                            webClient.Proxy = null;
-                            break;
-                        case ProxyType.System:
-                            if (webClient.Proxy != null) {
-                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                            }
-                            break;
-                        case ProxyType.Manual:
-                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
-                            break;
-                        default:
-                            throw new NotImplementedException(); // Shouldn't happen
-                    }
+                    ProxyHelper.SetProxy(webClient);
 
                     if (_userCancelled) {
                         // Abort
@@ -575,21 +519,7 @@ namespace BandcampDownloader {
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
-                    switch (App.UserSettings.Proxy) {
-                        case ProxyType.None:
-                            webClient.Proxy = null;
-                            break;
-                        case ProxyType.System:
-                            if (webClient.Proxy != null) {
-                                webClient.Proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
-                            }
-                            break;
-                        case ProxyType.Manual:
-                            webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
-                            break;
-                        default:
-                            throw new NotImplementedException(); // Shouldn't happen
-                    }
+                    ProxyHelper.SetProxy(webClient);
 
                     if (_userCancelled) {
                         // Abort
