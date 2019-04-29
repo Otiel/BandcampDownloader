@@ -81,6 +81,83 @@ namespace BandcampDownloader {
 #endif
         }
 
+        private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
+            var dialog = new System.Windows.Forms.FolderBrowserDialog {
+                Description = Properties.Resources.folderBrowserDialogDescription
+            };
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
+                // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
+                textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            }
+        }
+
+        private void ButtonOpenSettingsWindow_Click(object sender, RoutedEventArgs e) {
+            var windowSettings = new WindowSettings(_activeDownloads) {
+                Owner = this,
+                ShowInTaskbar = false,
+            };
+            windowSettings.ShowDialog();
+        }
+
+        private async void ButtonStart_Click(object sender, RoutedEventArgs e) {
+            if (textBoxUrls.Text == "") {
+                // No URL to look
+                Log("Paste some albums URLs to be downloaded", LogType.Error);
+                return;
+            }
+
+            // Set controls to "downloading..." state
+            _activeDownloads = true;
+            UpdateControlsState(true);
+
+            Log("Starting download...", LogType.Info);
+
+            await StartDownloadAsync();
+
+            if (_userCancelled) {
+                // Display message if user cancelled
+                Log("Downloads cancelled by user", LogType.Info);
+            }
+
+            // Set controls to "ready" state
+            _activeDownloads = false;
+            UpdateControlsState(false);
+
+            if (App.UserSettings.EnableApplicationSounds) {
+                // Play a sound
+                try {
+                    new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
+                } catch {
+                }
+            }
+        }
+
+        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+                return;
+            }
+
+            _userCancelled = true;
+            Cursor = Cursors.Wait;
+            Log("Cancelling downloads. Please wait...", LogType.Info);
+
+            buttonStop.IsEnabled = false;
+            progressBar.Foreground = Brushes.Red;
+            progressBar.IsIndeterminate = true;
+            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+            TaskbarItemInfo.ProgressValue = 0;
+
+            lock (_pendingDownloads) {
+                // Stop current downloads
+                foreach (WebClient webClient in _pendingDownloads) {
+                    webClient.CancelAsync();
+                }
+            }
+
+            Cursor = Cursors.Arrow;
+        }
+
         /// <summary>
         /// Displays a message if a new version is available.
         /// </summary>
@@ -643,6 +720,10 @@ namespace BandcampDownloader {
             LogManager.Configuration = config;
         }
 
+        private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
+            Process.Start(Constants.ProjectWebsite);
+        }
+
         /// <summary>
         /// Logs to file and displays the specified message in the log textbox.
         /// </summary>
@@ -672,135 +753,6 @@ namespace BandcampDownloader {
                     richTextBoxLog.ScrollToEnd();
                 }
             }
-        }
-
-        /// <summary>
-        /// Updates the state of the controls.
-        /// </summary>
-        /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
-        private void UpdateControlsState(Boolean downloadStarted) {
-            if (downloadStarted) {
-                // We just started the download
-                buttonBrowse.IsEnabled = false;
-                buttonStart.IsEnabled = false;
-                buttonStop.IsEnabled = true;
-                checkBoxDownloadDiscography.IsEnabled = false;
-                labelProgress.Content = "";
-                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
-                progressBar.IsIndeterminate = true;
-                progressBar.Value = progressBar.Minimum;
-                richTextBoxLog.Document.Blocks.Clear();
-                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
-                TaskbarItemInfo.ProgressValue = 0;
-                textBoxDownloadsPath.IsReadOnly = true;
-                textBoxUrls.IsReadOnly = true;
-            } else {
-                // We just finished the download (or user has cancelled)
-                buttonBrowse.IsEnabled = true;
-                buttonStart.IsEnabled = true;
-                buttonStop.IsEnabled = false;
-                checkBoxDownloadDiscography.IsEnabled = true;
-                labelDownloadSpeed.Content = "";
-                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
-                progressBar.IsIndeterminate = false;
-                progressBar.Value = progressBar.Minimum;
-                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
-                TaskbarItemInfo.ProgressValue = 0;
-                textBoxDownloadsPath.IsReadOnly = false;
-                textBoxUrls.IsReadOnly = false;
-            }
-        }
-
-        /// <summary>
-        /// Waits for a "cooldown" time, computed from the specified number of download tries.
-        /// </summary>
-        /// <param name="triesNumber">The times count we tried to download the same file.</param>
-        /// <returns></returns>
-        private async Task WaitForCooldownAsync(int triesNumber) {
-            if (App.UserSettings.DownloadRetryCooldown != 0) {
-                await Task.Delay((int) (Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber) * App.UserSettings.DownloadRetryCooldown * 1000));
-            }
-        }
-
-        private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog {
-                Description = Properties.Resources.folderBrowserDialogDescription
-            };
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
-                // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
-                textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            }
-        }
-
-        private void ButtonOpenSettingsWindow_Click(object sender, RoutedEventArgs e) {
-            var windowSettings = new WindowSettings(_activeDownloads) {
-                Owner = this,
-                ShowInTaskbar = false,
-            };
-            windowSettings.ShowDialog();
-        }
-
-        private async void ButtonStart_Click(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == "") {
-                // No URL to look
-                Log("Paste some albums URLs to be downloaded", LogType.Error);
-                return;
-            }
-
-            // Set controls to "downloading..." state
-            _activeDownloads = true;
-            UpdateControlsState(true);
-
-            Log("Starting download...", LogType.Info);
-
-            await StartDownloadAsync();
-
-            if (_userCancelled) {
-                // Display message if user cancelled
-                Log("Downloads cancelled by user", LogType.Info);
-            }
-
-            // Set controls to "ready" state
-            _activeDownloads = false;
-            UpdateControlsState(false);
-
-            if (App.UserSettings.EnableApplicationSounds) {
-                // Play a sound
-                try {
-                    new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
-                } catch {
-                }
-            }
-        }
-
-        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
-                return;
-            }
-
-            _userCancelled = true;
-            Cursor = Cursors.Wait;
-            Log("Cancelling downloads. Please wait...", LogType.Info);
-
-            buttonStop.IsEnabled = false;
-            progressBar.Foreground = Brushes.Red;
-            progressBar.IsIndeterminate = true;
-            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
-            TaskbarItemInfo.ProgressValue = 0;
-
-            lock (_pendingDownloads) {
-                // Stop current downloads
-                foreach (WebClient webClient in _pendingDownloads) {
-                    webClient.CancelAsync();
-                }
-            }
-
-            Cursor = Cursors.Arrow;
-        }
-
-        private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
-            Process.Start(Constants.ProjectWebsite);
         }
 
         private async Task StartDownloadAsync() {
@@ -875,21 +827,40 @@ namespace BandcampDownloader {
             UpdateProgress();
         }
 
-        private void UpdateDownloadSpeedTimer_Tick(object sender, EventArgs e) {
-            UpdateDownloadSpeed();
-        }
-
-        private void UpdateProgressTimer_Tick(object sender, EventArgs e) {
-            UpdateProgress();
-        }
-
-        private void WindowMain_Closing(object sender, CancelEventArgs e) {
-            if (_activeDownloads) {
-                // There are active downloads, ask for confirmation
-                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
-                    // Cancel closing the window
-                    e.Cancel = true;
-                }
+        /// <summary>
+        /// Updates the state of the controls.
+        /// </summary>
+        /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
+        private void UpdateControlsState(Boolean downloadStarted) {
+            if (downloadStarted) {
+                // We just started the download
+                buttonBrowse.IsEnabled = false;
+                buttonStart.IsEnabled = false;
+                buttonStop.IsEnabled = true;
+                checkBoxDownloadDiscography.IsEnabled = false;
+                labelProgress.Content = "";
+                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
+                progressBar.IsIndeterminate = true;
+                progressBar.Value = progressBar.Minimum;
+                richTextBoxLog.Document.Blocks.Clear();
+                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
+                TaskbarItemInfo.ProgressValue = 0;
+                textBoxDownloadsPath.IsReadOnly = true;
+                textBoxUrls.IsReadOnly = true;
+            } else {
+                // We just finished the download (or user has cancelled)
+                buttonBrowse.IsEnabled = true;
+                buttonStart.IsEnabled = true;
+                buttonStop.IsEnabled = false;
+                checkBoxDownloadDiscography.IsEnabled = true;
+                labelDownloadSpeed.Content = "";
+                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
+                progressBar.IsIndeterminate = false;
+                progressBar.Value = progressBar.Minimum;
+                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+                TaskbarItemInfo.ProgressValue = 0;
+                textBoxDownloadsPath.IsReadOnly = false;
+                textBoxUrls.IsReadOnly = false;
             }
         }
 
@@ -910,6 +881,10 @@ namespace BandcampDownloader {
 
             // Update download speed on UI
             labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
+        }
+
+        private void UpdateDownloadSpeedTimer_Tick(object sender, EventArgs e) {
+            UpdateDownloadSpeed();
         }
 
         /// <summary>
@@ -939,6 +914,31 @@ namespace BandcampDownloader {
                     progressBar.Value = downloadedFilesCount;
                     // Taskbar progress is between 0 and count of files to download
                     TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
+                }
+            }
+        }
+
+        private void UpdateProgressTimer_Tick(object sender, EventArgs e) {
+            UpdateProgress();
+        }
+
+        /// <summary>
+        /// Waits for a "cooldown" time, computed from the specified number of download tries.
+        /// </summary>
+        /// <param name="triesNumber">The times count we tried to download the same file.</param>
+        /// <returns></returns>
+        private async Task WaitForCooldownAsync(int triesNumber) {
+            if (App.UserSettings.DownloadRetryCooldown != 0) {
+                await Task.Delay((int) (Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber) * App.UserSettings.DownloadRetryCooldown * 1000));
+            }
+        }
+
+        private void WindowMain_Closing(object sender, CancelEventArgs e) {
+            if (_activeDownloads) {
+                // There are active downloads, ask for confirmation
+                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                    // Cancel closing the window
+                    e.Cancel = true;
                 }
             }
         }
