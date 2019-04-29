@@ -893,8 +893,6 @@ namespace BandcampDownloader {
         /// Updates the progress label on UI.
         /// </summary>
         private void UpdateProgress() {
-            labelTimer.Content = DateTime.Now.ToString("mm:ss.fff");
-
             if (!_userCancelled) {
                 // Compute new progress values
                 long totalReceivedBytes = _filesDownload.Sum(f => f.BytesReceived);
