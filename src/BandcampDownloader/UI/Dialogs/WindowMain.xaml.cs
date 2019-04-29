@@ -408,7 +408,9 @@ namespace BandcampDownloader {
                                 }
                                 ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
                             }
-                            artworkInTags = new TagLib.Picture(album.ArtworkTempPath) { Description = "Picture" };
+                            artworkInTags = new TagLib.Picture(album.ArtworkTempPath) {
+                                Description = "Picture"
+                            };
 
                             try {
                                 File.Delete(album.ArtworkTempPath);
