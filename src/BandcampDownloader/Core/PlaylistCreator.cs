@@ -6,48 +6,58 @@ using PlaylistsNET.Models;
 
 namespace BandcampDownloader {
 
-    internal static class PlaylistHelper {
+    internal class PlaylistCreator {
+        /// <summary>
+        /// The album.
+        /// </summary>
+        private readonly Album _album;
 
         /// <summary>
-        /// Saves the playlist file for the specified album in the specified folder.
+        /// Initializes a new instance of PlaylistCreator.
         /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        public static void SavePlaylistForAlbum(Album album) {
+        /// <param name="album"></param>
+        public PlaylistCreator(Album album) {
+            _album = album;
+        }
+
+        /// <summary>
+        /// Saves the playlist to a file.
+        /// </summary>
+        public void SavePlaylistToFile() {
             String fileContent;
 
             switch (App.UserSettings.PlaylistFormat) {
                 case PlaylistFormat.m3u:
-                    fileContent = CreateM3uPlaylist(album);
+                    fileContent = CreateM3uPlaylist();
                     break;
                 case PlaylistFormat.pls:
-                    fileContent = CreatePlsPlaylist(album);
+                    fileContent = CreatePlsPlaylist();
                     break;
                 case PlaylistFormat.wpl:
-                    fileContent = CreateWplPlaylist(album);
+                    fileContent = CreateWplPlaylist();
                     break;
                 case PlaylistFormat.zpl:
-                    fileContent = CreateZplPlaylist(album);
+                    fileContent = CreateZplPlaylist();
                     break;
                 default:
                     throw new NotImplementedException();
             }
 
-            File.WriteAllText(album.PlaylistPath, fileContent, Encoding.UTF8);
+            File.WriteAllText(_album.PlaylistPath, fileContent, Encoding.UTF8);
         }
 
         /// <summary>
-        /// Returns the playlist in m3u format for the specified album.
+        /// Returns the playlist in m3u format.
         /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        private static String CreateM3uPlaylist(Album album) {
+        private String CreateM3uPlaylist() {
             var playlist = new M3uPlaylist() {
                 IsExtended = App.UserSettings.M3uExtended,
             };
 
-            foreach (Track track in album.Tracks) {
+            foreach (Track track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new M3uPlaylistEntry() {
-                    Album = album.Title,
-                    AlbumArtist = album.Artist,
+                    Album = _album.Title,
+                    AlbumArtist = _album.Artist,
                     Duration = TimeSpan.FromSeconds(track.Duration),
                     Path = Path.GetFileName(track.Path),
                     Title = track.Title,
@@ -58,13 +68,12 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the playlist in pls format for the specified album.
+        /// Returns the playlist in pls format.
         /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        private static String CreatePlsPlaylist(Album album) {
+        private String CreatePlsPlaylist() {
             var playlist = new PlsPlaylist();
 
-            foreach (Track track in album.Tracks) {
+            foreach (Track track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new PlsPlaylistEntry() {
                     Length = TimeSpan.FromSeconds(track.Duration),
                     Path = Path.GetFileName(track.Path),
@@ -76,21 +85,20 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the playlist in wpl format for the specified album.
+        /// Returns the playlist in wpl format.
         /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        private static String CreateWplPlaylist(Album album) {
+        private String CreateWplPlaylist() {
             var playlist = new WplPlaylist() {
-                Title = album.Title,
+                Title = _album.Title,
             };
 
-            foreach (Track track in album.Tracks) {
+            foreach (Track track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new WplPlaylistEntry() {
-                    AlbumArtist = album.Artist,
-                    AlbumTitle = album.Title,
+                    AlbumArtist = _album.Artist,
+                    AlbumTitle = _album.Title,
                     Duration = TimeSpan.FromSeconds(track.Duration),
                     Path = Path.GetFileName(track.Path),
-                    TrackArtist = album.Artist,
+                    TrackArtist = _album.Artist,
                     TrackTitle = track.Title,
                 });
             }
@@ -99,21 +107,20 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Returns the playlist in zpl format for the specified album.
+        /// Returns the playlist in zpl format.
         /// </summary>
-        /// <param name="album">The album relative of the playlist.</param>
-        private static String CreateZplPlaylist(Album album) {
+        private String CreateZplPlaylist() {
             var playlist = new ZplPlaylist() {
-                Title = album.Title,
+                Title = _album.Title,
             };
 
-            foreach (Track track in album.Tracks) {
+            foreach (Track track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new ZplPlaylistEntry() {
-                    AlbumArtist = album.Artist,
-                    AlbumTitle = album.Title,
+                    AlbumArtist = _album.Artist,
+                    AlbumTitle = _album.Title,
                     Duration = TimeSpan.FromSeconds(track.Duration),
                     Path = Path.GetFileName(track.Path),
-                    TrackArtist = album.Artist,
+                    TrackArtist = _album.Artist,
                     TrackTitle = track.Title,
                 });
             }
