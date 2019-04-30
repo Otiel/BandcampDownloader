@@ -327,28 +327,26 @@ namespace BandcampDownloader {
         /// Updates the progress label on UI.
         /// </summary>
         private void UpdateProgress() {
-            if (!_userCancelled) {
-                // Compute new progress values
-                long totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
-                long bytesToDownload = _downloadManager.DownloadingFiles.Sum(f => f.Size);
+            // Compute new progress values
+            long totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
+            long bytesToDownload = _downloadManager.DownloadingFiles.Sum(f => f.Size);
 
-                // Update progress label
-                labelProgress.Content =
-                    ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-                    (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
+            // Update progress label
+            labelProgress.Content =
+                ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
+                (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
 
-                if (App.UserSettings.RetrieveFilesSize) {
-                    // Update progress bar based on bytes received
-                    progressBar.Value = totalReceivedBytes;
-                    // Taskbar progress is between 0 and 1
-                    TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
-                } else {
-                    Double downloadedFilesCount = _downloadManager.DownloadingFiles.Count(f => f.Downloaded);
-                    // Update progress bar based on downloaded files
-                    progressBar.Value = downloadedFilesCount;
-                    // Taskbar progress is between 0 and count of files to download
-                    TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
-                }
+            if (App.UserSettings.RetrieveFilesSize) {
+                // Update progress bar based on bytes received
+                progressBar.Value = totalReceivedBytes;
+                // Taskbar progress is between 0 and 1
+                TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
+            } else {
+                Double downloadedFilesCount = _downloadManager.DownloadingFiles.Count(f => f.Downloaded);
+                // Update progress bar based on downloaded files
+                progressBar.Value = downloadedFilesCount;
+                // Taskbar progress is between 0 and count of files to download
+                TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
             }
         }
 
