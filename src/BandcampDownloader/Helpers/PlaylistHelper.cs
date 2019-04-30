@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using PlaylistsNET.Content;
 using PlaylistsNET.Models;
 
@@ -31,7 +32,7 @@ namespace BandcampDownloader {
                     throw new NotImplementedException();
             }
 
-            File.WriteAllText(album.PlaylistPath, fileContent);
+            File.WriteAllText(album.PlaylistPath, fileContent, Encoding.UTF8);
         }
 
         /// <summary>
