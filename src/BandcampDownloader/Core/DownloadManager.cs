@@ -35,10 +35,17 @@ namespace BandcampDownloader {
 
         public delegate void LogAddedEventHandler(object sender, LogArgs eventArgs);
 
+        /// <summary>
+        /// Initializes a new instance of DownloadManager.
+        /// </summary>
+        /// <param name="urls">The URLs we'll download from.</param>
         public DownloadManager(String urls) {
             _urls = urls;
         }
 
+        /// <summary>
+        /// Cancels all downloads.
+        /// </summary>
         public void CancelDownloads() {
             _cancelDownloads = true;
 
@@ -50,6 +57,9 @@ namespace BandcampDownloader {
             }
         }
 
+        /// <summary>
+        /// Fetch albums data from the URLs specified when creating this DownloadManager.
+        /// </summary>
         public async Task FetchUrlsAsync() {
             var urls = _urls.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
             urls = urls.Distinct().ToList();
@@ -66,6 +76,9 @@ namespace BandcampDownloader {
             DownloadingFiles = await GetFilesToDownloadAsync(_albums);
         }
 
+        /// <summary>
+        /// Starts downloads.
+        /// </summary>
         public async Task StartDownloadsAsync() {
             if (_albums == null) {
                 throw new Exception("Must call FetchUrls before calling StartDownloadsAsync");

@@ -216,6 +216,9 @@ namespace BandcampDownloader {
             }
         }
 
+        /// <summary>
+        /// Starts downloads.
+        /// </summary>
         private async Task StartDownloadAsync() {
             _userCancelled = false;
 
