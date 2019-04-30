@@ -71,7 +71,6 @@ namespace BandcampDownloader {
                 throw new Exception("Must call FetchUrls before calling StartDownloadsAsync");
             }
 
-            _cancelDownloads = false;
             _pendingDownloads = new List<WebClient>();
 
             // Start downloading albums
