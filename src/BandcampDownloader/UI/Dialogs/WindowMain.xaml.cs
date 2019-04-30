@@ -131,18 +131,9 @@ namespace BandcampDownloader {
             }
 
             _userCancelled = true;
-            Cursor = Cursors.Wait;
-            Log("Cancelling downloads. Please wait...", LogType.Info);
-
             buttonStop.IsEnabled = false;
-            progressBar.Foreground = Brushes.Red;
-            progressBar.IsIndeterminate = true;
-            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
-            TaskbarItemInfo.ProgressValue = 0;
 
             _downloadManager.CancelDownloads();
-
-            Cursor = Cursors.Arrow;
         }
 
         /// <summary>
