@@ -10,6 +10,10 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String AppVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
         /// <summary>
+        /// The URL redirecting to the changelog file on GitHub.
+        /// </summary>
+        public static readonly String ChangelogUrl = "https://raw.githubusercontent.com/Otiel/BandcampDownloader/master/CHANGELOG.md";
+        /// <summary>
         /// The URL redirecting to the help page on translating the app on GitHub.
         /// </summary>
         public static readonly String HelpTranslateWebsite = "https://github.com/Otiel/BandcampDownloader/blob/master/docs/help-translate.md";
@@ -33,5 +37,9 @@ namespace BandcampDownloader {
         /// The absolute path to the settings file.
         /// </summary>
         public static readonly String UserSettingsFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.ini";
+        /// <summary>
+        /// The URL redirecting to the zip file. Must be formatted with a version.
+        /// </summary>
+        public static readonly String ZipUrl = "https://github.com/Otiel/BandcampDownloader/releases/download/v{0}/BandcampDownloader.zip";
     }
 }

@@ -107,6 +107,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Download update.
+        /// </summary>
+        internal static string buttonDownloadUpdate {
+            get {
+                return ResourceManager.GetString("buttonDownloadUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Settings.
         /// </summary>
         internal static string buttonOpenSettingsWindow {
@@ -157,6 +166,15 @@ namespace BandcampDownloader.Properties {
         internal static string buttonStop {
             get {
                 return ResourceManager.GetString("buttonStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not download changelog from {0}.
+        /// </summary>
+        internal static string changelogDownloadError {
+            get {
+                return ResourceManager.GetString("changelogDownloadError", resourceCulture);
             }
         }
         
@@ -539,6 +557,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
+        internal static string labelChangelogTitle {
+            get {
+                return ResourceManager.GetString("labelChangelogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comm_ents.
         /// </summary>
         internal static string labelComments {
@@ -571,6 +598,15 @@ namespace BandcampDownloader.Properties {
         internal static string labelCoverArtInTagsMaxSize {
             get {
                 return ResourceManager.GetString("labelCoverArtInTagsMaxSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current version:.
+        /// </summary>
+        internal static string labelCurrentVersion {
+            get {
+                return ResourceManager.GetString("labelCurrentVersion", resourceCulture);
             }
         }
         
@@ -710,15 +746,6 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click to go to official project website:.
-        /// </summary>
-        internal static string labelVersion_ToolTip_Part {
-            get {
-                return ResourceManager.GetString("labelVersion_ToolTip_Part", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Could not check for updates.
         /// </summary>
         internal static string labelVersionError {
@@ -728,7 +755,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new version ({0}) is available.
+        ///   Looks up a localized string similar to A new version is available.
         /// </summary>
         internal static string labelVersionNewUpdateAvailable {
             get {
@@ -975,6 +1002,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go to website.
+        /// </summary>
+        internal static string textBlockGoToWebsite {
+            get {
+                return ResourceManager.GetString("textBlockGoToWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help translate.
         /// </summary>
         internal static string textBlockTranslationHelp {
@@ -1106,6 +1142,15 @@ namespace BandcampDownloader.Properties {
         internal static string windowSettings_Title {
             get {
                 return ResourceManager.GetString("windowSettings_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string windowUpdate_Title {
+            get {
+                return ResourceManager.GetString("windowUpdate_Title", resourceCulture);
             }
         }
     }
