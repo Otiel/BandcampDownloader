@@ -145,6 +145,9 @@
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Check no_w</value>
   </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Download update</value>
+  </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Settings</value>
   </data>
@@ -162,6 +165,9 @@
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Cancel</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Could not download changelog from {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Check for _updates at startup</value>
@@ -279,6 +285,9 @@ Uncheck this option to save some time.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Reset settings</value>
   </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
   <data name="labelComments" xml:space="preserve">
     <value>Comm_ents</value>
   </data>
@@ -290,6 +299,9 @@ Uncheck this option to save some time.</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
     <value>Max size (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Current version:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
     <value>Download _max tries</value>
@@ -336,14 +348,11 @@ Uncheck this option to save some time.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(the log file is always verbose)</value>
   </data>
-  <data name="labelVersion_ToolTip_Part" xml:space="preserve">
-    <value>Click to go to official project website:</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Could not check for updates</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>A new version ({0}) is available</value>
+    <value>A new version is available</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album release _year</value>
@@ -481,6 +490,9 @@ Recommended value = 4</value>
 - {album} will be replaced by the album name
 - {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
+  <data name="textBlockGoToWebsite" xml:space="preserve">
+    <value>Go to website</value>
+  </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:
 - {artist} will be replaced by the album artist
@@ -495,5 +507,8 @@ Paste artist pages: http://[artist].bandcamp.com and check "☑ Download artist 
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

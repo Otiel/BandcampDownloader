@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonBrowse" xml:space="preserve">
     <value>...</value>
   </data>
@@ -129,6 +128,9 @@
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Vérifier _maintenant</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Télécharger la mise à jour</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Paramètres</value>
@@ -147,6 +149,9 @@
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Annuler</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Impossible de télécharger les notes de version depuis {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Vérifier les mises à jour au _démarrage</value>
@@ -264,6 +269,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Réinitialiser</value>
   </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Notes de version</value>
+  </data>
   <data name="labelComments" xml:space="preserve">
     <value>C_ommentaires</value>
   </data>
@@ -275,6 +283,9 @@ Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
     <value>Taille maximale (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Version actuelle :</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
     <value>Nombre de téléchargements _maximum</value>
@@ -321,14 +332,11 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(le fichier log est toujours verbeux)</value>
   </data>
-  <data name="labelVersion_ToolTip_Part" xml:space="preserve">
-    <value>Cliquer pour se rendre sur le site web du projet :</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Impossible de vérifier les mises à jour</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Une nouvelle version ({0}) est disponible</value>
+    <value>Une nouvelle version est disponible</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Année _de parution de l'album</value>
@@ -466,6 +474,9 @@ Valeur conseillée = 4</value>
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>
+  <data name="textBlockGoToWebsite" xml:space="preserve">
+    <value>Site web</value>
+  </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
 - {artist} sera remplacé par l'interprète de l'album
@@ -481,5 +492,8 @@ de leurs albums.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Paramètres</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Mise à jour</value>
   </data>
 </root>

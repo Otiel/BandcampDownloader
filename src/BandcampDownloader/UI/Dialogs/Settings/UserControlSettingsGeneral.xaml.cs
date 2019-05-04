@@ -57,9 +57,11 @@ namespace BandcampDownloader {
             Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
-                if (MessageBox.Show(String.Format(Properties.Resources.messageBoxUpdateAvailable, currentVersion, latestVersion), "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Information, MessageBoxResult.Yes) == MessageBoxResult.Yes) {
-                    Process.Start(Constants.ProjectWebsite);
-                }
+                var windowUpdate = new WindowUpdate() {
+                    ShowInTaskbar = true,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                };
+                windowUpdate.Show();
             } else {
                 MessageBox.Show(String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
             }

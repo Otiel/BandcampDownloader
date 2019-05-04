@@ -1,3 +1,19 @@
+# 0.2.9.0
+
+## New features
+
+* Starting next version, the changelog will be displayed when a new version is available.
+* Starting next version, an option will allow to directly download the new version from the application.
+
+## Improvements
+
+* Minor UI improvements.
+
+## Bug fixes
+
+* Fixed playlist creation for tracks with foreign characters. [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
+* Fixed application crash when saving tracks to a path with more than 260 characters.
+
 # 0.2.8.2
 
 ## Bug fixes
@@ -8,7 +24,7 @@
 
 ## Bug fixes
 
-*  Fixed a bug preventing the "Playlist file name format" setting to be saved in the _ini_ file.
+* Fixed a bug preventing the "Playlist file name format" setting to be saved in the _ini_ file.
 
 # 0.2.8.0
 
