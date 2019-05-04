@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Net;
@@ -141,12 +140,12 @@ namespace BandcampDownloader {
         /// Displays a message if a new version is available.
         /// </summary>
         private void CheckForUpdates() {
-            Version latestVersion = null;
+            Version latestVersion;
             try {
                 latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content += " - " + Properties.Resources.labelVersionError;
+                    labelNewVersion.Content = Properties.Resources.labelVersionError;
                 }));
                 return;
             }
@@ -155,7 +154,7 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 Dispatcher.BeginInvoke(new Action(() => {
-                    labelVersion.Content = String.Format(Properties.Resources.labelVersionNewUpdateAvailable, latestVersion);
+                    labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
                 }));
             }
         }
@@ -181,8 +180,13 @@ namespace BandcampDownloader {
             LogManager.Configuration = config;
         }
 
-        private void LabelVersion_MouseDown(object sender, MouseButtonEventArgs e) {
-            Process.Start(Constants.ProjectWebsite);
+        private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e) {
+            var windowUpdate = new WindowUpdate() {
+                Owner = this,
+                ShowInTaskbar = true,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen,
+            };
+            windowUpdate.Show();
         }
 
         /// <summary>

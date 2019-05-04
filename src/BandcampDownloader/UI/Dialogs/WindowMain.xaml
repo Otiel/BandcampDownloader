@@ -124,25 +124,14 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label
-                x:Name="labelVersion"
+                x:Name="labelNewVersion"
                 Grid.Column="0"
                 Margin="0"
                 HorizontalAlignment="Left"
-                Content="{Binding Source={x:Static local:Constants.AppVersion}}"
+                Content=""
                 Cursor="Hand"
                 Foreground="#FF003BFF"
-                MouseDown="LabelVersion_MouseDown"
-                ToolTipService.ShowDuration="60000">
-                <Label.ToolTip>
-                    <TextBlock>
-                        <Run Text="BandcampDownloader version" />
-                        <Run Text="{Binding Source={x:Static local:Constants.AppVersion}, Mode=OneWay}" />
-                        <Run Text="&#xA;&#xA;" />
-                        <Run Text="{lex:Loc labelVersion_ToolTip_Part}" />
-                        <Run Text="&#xA;" />
-                        <Run Text="{Binding Source={x:Static local:Constants.ProjectWebsite}, Mode=OneWay}" />
-                    </TextBlock>
-                </Label.ToolTip>
+                MouseDown="LabelNewVersion_MouseDown">
             </Label>
             <Label
                 x:Name="labelDownloadSpeed"
