@@ -130,6 +130,9 @@
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Controlla _ora</value>
   </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Download update</value>
+  </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Impostazioni</value>
   </data>
@@ -147,6 +150,9 @@
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Annulla</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Could not download changelog from {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>_Cerca aggiornamenti all'avvio</value>
@@ -264,6 +270,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Ripristina impostazioni</value>
   </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
   <data name="labelComments" xml:space="preserve">
     <value>Comm_enti</value>
   </data>
@@ -275,6 +284,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
     <value>Dimensione massima (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Current version:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
     <value>_Massimo numero di tentativi</value>
@@ -321,14 +333,11 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(il file registro è sempre esteso)</value>
   </data>
-  <data name="labelVersion_ToolTip_Part" xml:space="preserve">
-    <value>Fai click qui per andare sul sito ufficiale del progetto:</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Non è possibile trovare aggiornamenti.</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>È disponibile una nuova versione ({0})</value>
+    <value>È disponibile una nuova versione</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Anno _di rilascio album</value>
@@ -465,6 +474,9 @@ Valore consigliato = 4</value>
 - {album} è sostituito col nome dell'album;
 - {year}, {month} e {day} sono sostituiti con la data di rilascio.</value>
   </data>
+  <data name="textBlockGoToWebsite" xml:space="preserve">
+    <value>Go to website</value>
+  </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:
 - {artist} will be replaced by the album artist
@@ -479,5 +491,8 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “�
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Impostazioni</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>

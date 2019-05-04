@@ -161,6 +161,12 @@
     <Compile Include="Model\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
+    <Compile Include="UI\Dialogs\Update\UserControlChangelog.xaml.cs">
+      <DependentUpon>UserControlChangelog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\Update\WindowUpdate.xaml.cs">
+      <DependentUpon>WindowUpdate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Validation\DoubleRule.cs" />
     <Compile Include="UI\Validation\Mp3ExtensionRule.cs" />
     <Compile Include="Helpers\EnumerationExtension.cs" />
@@ -238,6 +244,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Dialogs\Update\UserControlChangelog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\WindowMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -245,6 +255,10 @@
     <Page Include="UI\Dialogs\Settings\WindowSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Dialogs\Update\WindowUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

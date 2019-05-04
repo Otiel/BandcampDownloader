@@ -130,6 +130,9 @@
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>_Jetzt suchen</value>
   </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Download update</value>
+  </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Einstellungen</value>
   </data>
@@ -147,6 +150,9 @@
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Abbrechen</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Could not download changelog from {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Beim start auf _updates prüfen</value>
@@ -264,6 +270,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Zurücksetzen</value>
   </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
   <data name="labelComments" xml:space="preserve">
     <value>Komm_entare</value>
   </data>
@@ -275,6 +284,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
     <value>Maximale Größe (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Current version:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
     <value>_Maximale Downloadversuche</value>
@@ -321,14 +333,11 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(Die Logdatei ist immer ausführlich)</value>
   </data>
-  <data name="labelVersion_ToolTip_Part" xml:space="preserve">
-    <value>Klicken um zur Homepage diese Projektes zu gelangen:</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Konnte nicht auf Updates prüfen</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Eine neue Version ({0}) ist verfügbar</value>
+    <value>Eine neue Version ist verfügbar</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album _Veröffentlichungsjahr</value>
@@ -466,6 +475,9 @@ Empfohlender Wert = 4</value>
 - {album} Wird mit dem albumnamen ersetzt
 - {year}, {month} und {day} werden mit dem Erscheinungsdatum ersetzt</value>
   </data>
+  <data name="textBlockGoToWebsite" xml:space="preserve">
+    <value>Go to website</value>
+  </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:
 - {artist} will be replaced by the album artist
@@ -481,5 +493,8 @@ seine alben herunterzuladen.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Update</value>
   </data>
 </root>
