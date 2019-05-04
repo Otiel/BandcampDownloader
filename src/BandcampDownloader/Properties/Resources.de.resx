@@ -203,7 +203,7 @@
     <value>Wenn ausgewählt wird ein Benachrichtigungston nach erfolgreichem Download abgespielt.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-  <value>Use _extended format (for M3U only)</value>
+    <value>Use _extended format (for M3U only)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists.</value>
