@@ -56,9 +56,9 @@
             <TextBlock Grid.Column="1" VerticalAlignment="Center">
                 <Hyperlink
                     x:Name="hyperlinkReleases"
-                    NavigateUri="{Binding Source={x:Static local:Constants.ReleasesWebsite}}"
+                    NavigateUri="{Binding Source={x:Static local:Constants.UrlReleases}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
-                    ToolTip="{Binding Source={x:Static local:Constants.ReleasesWebsite}}">
+                    ToolTip="{Binding Source={x:Static local:Constants.UrlReleases}}">
                     <TextBlock x:Name="textBlockReleasesWebsite" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>

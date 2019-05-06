@@ -23,7 +23,7 @@ namespace BandcampDownloader {
             String changelog;
             using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                 ProxyHelper.SetProxy(webClient);
-                changelog = await webClient.DownloadStringTaskAsync(Constants.ChangelogUrl);
+                changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
             }
 
             return changelog;
@@ -34,7 +34,7 @@ namespace BandcampDownloader {
             try {
                 changelog = await DownloadChangelogAsync();
             } catch {
-                changelog = String.Format(Properties.Resources.changelogDownloadError, Constants.ChangelogUrl);
+                changelog = String.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
             }
 
             markdownViewer.Markdown = changelog;

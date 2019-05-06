@@ -80,9 +80,9 @@
             VerticalAlignment="Center">
             <Hyperlink
                 x:Name="hyperlinkWebsite"
-                NavigateUri="{Binding Source={x:Static local:Constants.ProjectWebsite}}"
+                NavigateUri="{Binding Source={x:Static local:Constants.UrlWebsite}}"
                 RequestNavigate="Hyperlink_RequestNavigate"
-                ToolTip="{Binding Source={x:Static local:Constants.ProjectWebsite}}">
+                ToolTip="{Binding Source={x:Static local:Constants.UrlWebsite}}">
                 <TextBlock x:Name="textBlockWebsite" Text="github.com/Otiel/BandcampDownloader" />
             </Hyperlink>
         </TextBlock>
@@ -97,9 +97,9 @@
             VerticalAlignment="Center">
             <Hyperlink
                 x:Name="hyperlinkIssuesWebsite"
-                NavigateUri="{Binding Source={x:Static local:Constants.IssuesWebsite}}"
+                NavigateUri="{Binding Source={x:Static local:Constants.UrlIssues}}"
                 RequestNavigate="Hyperlink_RequestNavigate"
-                ToolTip="{Binding Source={x:Static local:Constants.IssuesWebsite}}">
+                ToolTip="{Binding Source={x:Static local:Constants.UrlIssues}}">
                 <TextBlock x:Name="textBlockIssuesWebsite" Text="github.com/Otiel/BandcampDownloader/issues" />
             </Hyperlink>
         </TextBlock>
