@@ -490,8 +490,8 @@ Recommended value = 4</value>
 - {album} will be replaced by the album name
 - {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
-  <data name="textBlockGoToWebsite" xml:space="preserve">
-    <value>Go to website</value>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Releases history</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:

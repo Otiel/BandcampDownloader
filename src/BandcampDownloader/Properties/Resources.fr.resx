@@ -474,8 +474,8 @@ Valeur conseillée = 4</value>
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
   </data>
-  <data name="textBlockGoToWebsite" xml:space="preserve">
-    <value>Site web</value>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Historique des versions</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :

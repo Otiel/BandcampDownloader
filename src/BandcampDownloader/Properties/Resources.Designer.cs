@@ -1002,11 +1002,11 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go to website.
+        ///   Looks up a localized string similar to Releases history.
         /// </summary>
-        internal static string textBlockGoToWebsite {
+        internal static string textBlockReleasesWebsite {
             get {
-                return ResourceManager.GetString("textBlockGoToWebsite", resourceCulture);
+                return ResourceManager.GetString("textBlockReleasesWebsite", resourceCulture);
             }
         }
         

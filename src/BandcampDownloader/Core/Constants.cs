@@ -34,6 +34,10 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String ProjectWebsite = "https://github.com/Otiel/BandcampDownloader";
         /// <summary>
+        /// The URL redirecting to the releases page on GitHub.
+        /// </summary>
+        public static readonly String ReleasesWebsite = "https://github.com/Otiel/BandcampDownloader/releases";
+        /// <summary>
         /// The absolute path to the settings file.
         /// </summary>
         public static readonly String UserSettingsFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.ini";
