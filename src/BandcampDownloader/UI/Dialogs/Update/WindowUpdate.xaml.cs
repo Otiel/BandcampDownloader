@@ -61,6 +61,7 @@ namespace BandcampDownloader {
         private void WindowUpdate_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
             if (e.Key == Key.Escape) {
                 Close();
+                e.Handled = true;
             }
         }
     }
