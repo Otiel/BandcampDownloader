@@ -325,7 +325,7 @@
     <Resource Include="Resources\Cloud.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cloud.png" />
+    <Resource Include="Resources\Cloud.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\ArrowCircle225Left.png" />
