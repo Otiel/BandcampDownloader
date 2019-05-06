@@ -170,6 +170,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _View.
+        /// </summary>
+        internal static string buttonViewChangelog {
+            get {
+                return ResourceManager.GetString("buttonViewChangelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not download changelog from {0}.
         /// </summary>
         internal static string changelogDownloadError {
@@ -559,6 +568,15 @@ namespace BandcampDownloader.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
+        internal static string labelChangelog {
+            get {
+                return ResourceManager.GetString("labelChangelog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changelog.
+        /// </summary>
         internal static string labelChangelogTitle {
             get {
                 return ResourceManager.GetString("labelChangelogTitle", resourceCulture);
@@ -674,6 +692,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report a bug.
+        /// </summary>
+        internal static string labelIssues {
+            get {
+                return ResourceManager.GetString("labelIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Language.
         /// </summary>
         internal static string labelLanguage {
@@ -746,6 +773,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string labelVersion {
+            get {
+                return ResourceManager.GetString("labelVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not check for updates.
         /// </summary>
         internal static string labelVersionError {
@@ -764,11 +800,29 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Website.
+        /// </summary>
+        internal static string labelWebsite {
+            get {
+                return ResourceManager.GetString("labelWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Album release _year.
         /// </summary>
         internal static string labelYear {
             get {
                 return ResourceManager.GetString("labelYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string listBoxItemAbout {
+            get {
+                return ResourceManager.GetString("listBoxItemAbout", resourceCulture);
             }
         }
         
@@ -957,6 +1011,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save as.
+        /// </summary>
+        internal static string saveFileDialogTitle {
+            get {
+                return ResourceManager.GetString("saveFileDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do not modify.
         /// </summary>
         internal static string TagEditAction_DoNotModify {
@@ -980,15 +1043,6 @@ namespace BandcampDownloader.Properties {
         internal static string TagEditAction_Modify {
             get {
                 return ResourceManager.GetString("TagEditAction_Modify", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save as.
-        /// </summary>
-        internal static string saveFileDialogTitle {
-            get {
-                return ResourceManager.GetString("saveFileDialogTitle", resourceCulture);
             }
         }
         

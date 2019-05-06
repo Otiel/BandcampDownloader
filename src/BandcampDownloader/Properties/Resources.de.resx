@@ -150,6 +150,9 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Abbrechen</value>
   </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_View</value>
+  </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>Could not download changelog from {0}</value>
   </data>
@@ -269,6 +272,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Zurücksetzen</value>
   </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
   <data name="labelChangelogTitle" xml:space="preserve">
     <value>Changelog</value>
   </data>
@@ -308,6 +314,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
   </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>S_prache</value>
   </data>
@@ -332,14 +341,23 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(Die Logdatei ist immer ausführlich)</value>
   </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Konnte nicht auf Updates prüfen</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>Eine neue Version ist verfügbar</value>
   </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album _Veröffentlichungsjahr</value>
+  </data>
+  <data name="listBoxItemAbout" xml:space="preserve">
+    <value>About</value>
   </data>
   <data name="listBoxItemAdvanced" xml:space="preserve">
     <value>Erweiterte Einstellungen</value>

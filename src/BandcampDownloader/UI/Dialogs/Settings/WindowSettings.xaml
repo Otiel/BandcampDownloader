@@ -64,6 +64,7 @@
             <ListBoxItem x:Name="listBoxItemDownloads" Content="{lex:Loc}" />
             <ListBoxItem x:Name="listBoxItemNetwork" Content="{lex:Loc}" />
             <ListBoxItem x:Name="listBoxItemAdvanced" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemAbout" Content="{lex:Loc}" />
         </ListBox>
         <local:UserControlSettingsGeneral
             x:Name="userControlSettingsGeneral"
@@ -120,6 +121,13 @@
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <local:UserControlSettingsAbout
+            x:Name="userControlSettingsAbout"
+            Margin="155,31,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            TabIndex="1"
+            Visibility="{Binding IsSelected, ElementName=listBoxItemAbout, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
             x:Name="buttonResetSettings"
             Width="150"

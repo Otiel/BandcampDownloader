@@ -18,6 +18,10 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String HelpTranslateWebsite = "https://github.com/Otiel/BandcampDownloader/blob/master/docs/help-translate.md";
         /// <summary>
+        /// The URL redirecting to the issues page on GitHub.
+        /// </summary>
+        public static readonly String IssuesWebsite = "https://github.com/Otiel/BandcampDownloader/issues";
+        /// <summary>
         /// The URL redirecting to the latest release on GitHub.
         /// </summary>
         public static readonly String LatestReleaseWebsite = "https://github.com/Otiel/BandcampDownloader/releases/latest";

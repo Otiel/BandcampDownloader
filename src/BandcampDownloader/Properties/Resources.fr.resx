@@ -150,6 +150,9 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Annuler</value>
   </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Voir</value>
+  </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>Impossible de télécharger les notes de version depuis {0}</value>
   </data>
@@ -269,6 +272,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Réinitialiser</value>
   </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Notes de version</value>
+  </data>
   <data name="labelChangelogTitle" xml:space="preserve">
     <value>Notes de version</value>
   </data>
@@ -308,6 +314,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
   </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Signaler un bug</value>
+  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Langue</value>
   </data>
@@ -332,14 +341,23 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(le fichier log est toujours verbeux)</value>
   </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Impossible de vérifier les mises à jour</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>Une nouvelle version est disponible</value>
   </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Site web</value>
+  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Année _de parution de l'album</value>
+  </data>
+  <data name="listBoxItemAbout" xml:space="preserve">
+    <value>À propos</value>
   </data>
   <data name="listBoxItemAdvanced" xml:space="preserve">
     <value>Paramètres avancés</value>

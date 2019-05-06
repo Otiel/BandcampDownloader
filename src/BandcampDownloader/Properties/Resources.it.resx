@@ -150,6 +150,9 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Annulla</value>
   </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_View</value>
+  </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>Could not download changelog from {0}</value>
   </data>
@@ -269,6 +272,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Ripristina impostazioni</value>
   </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
   <data name="labelChangelogTitle" xml:space="preserve">
     <value>Changelog</value>
   </data>
@@ -308,6 +314,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Porta</value>
   </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Lingua</value>
   </data>
@@ -332,14 +341,23 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(il file registro è sempre esteso)</value>
   </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Non è possibile trovare aggiornamenti.</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>È disponibile una nuova versione</value>
   </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Anno _di rilascio album</value>
+  </data>
+  <data name="listBoxItemAbout" xml:space="preserve">
+    <value>About</value>
   </data>
   <data name="listBoxItemAdvanced" xml:space="preserve">
     <value>Impostazioni avanzate</value>
