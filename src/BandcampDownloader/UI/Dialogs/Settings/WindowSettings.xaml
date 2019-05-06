@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="windowSettings"
     Title="{lex:Loc}"
-    Width="600"
+    Width="620"
     Height="380"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
@@ -48,34 +48,111 @@
         </DockPanel>
         <ListBox
             x:Name="listBoxSections"
-            Width="150"
+            Width="170"
             Height="269"
             Margin="0,26,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="0">
-            <ListBoxItem
-                x:Name="listBoxItemGeneral"
-                Content="{lex:Loc}"
-                IsSelected="True" />
-            <ListBoxItem x:Name="listBoxItemTags" Content="{lex:Loc}" />
-            <ListBoxItem x:Name="listBoxItemCoverArt" Content="{lex:Loc}" />
-            <ListBoxItem x:Name="listBoxItemPlaylist" Content="{lex:Loc}" />
-            <ListBoxItem x:Name="listBoxItemDownloads" Content="{lex:Loc}" />
-            <ListBoxItem x:Name="listBoxItemNetwork" Content="{lex:Loc}" />
-            <ListBoxItem x:Name="listBoxItemAdvanced" Content="{lex:Loc}" />
-            <ListBoxItem x:Name="listBoxItemAbout" Content="{lex:Loc}" />
+            <ListBoxItem x:Name="listBoxItemGeneral" IsSelected="True">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemGeneral"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/ApplicationBlue.png" />
+                    <Label x:Name="labelListBoxItemGeneral" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemTags">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemTags"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/Tags.png" />
+                    <Label x:Name="labelListBoxItemTags" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemCoverArt">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemCoverArt"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/Picture.png" />
+                    <Label x:Name="labelListBoxItemCoverArt" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemPlaylist">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemPlaylist"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/DocumentMusicPlaylist.png" />
+                    <Label x:Name="labelListBoxItemPlaylist" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemDownloads">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemDownloads"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/DriveDownload.png" />
+                    <Label x:Name="labelListBoxItemDownloads" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemNetwork">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemNetwork"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/GlobeNetwork.png" />
+                    <Label x:Name="labelListBoxItemNetwork" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemAdvanced">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemAdvanced"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/Gear.png" />
+                    <Label x:Name="labelListBoxItemAdvanced" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem x:Name="listBoxItemAbout">
+                <StackPanel Orientation="Horizontal">
+                    <Image
+                        x:Name="imagelistBoxItemAbout"
+                        Width="16"
+                        Height="16"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="pack://application:,,,/Resources/Information.png" />
+                    <Label x:Name="labelListBoxItemAbout" Content="{lex:Loc}" />
+                </StackPanel>
+            </ListBoxItem>
         </ListBox>
         <local:UserControlSettingsGeneral
             x:Name="userControlSettingsGeneral"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemGeneral, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsTags
             x:Name="userControlSettingsTags"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -83,7 +160,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemTags, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsCoverArt
             x:Name="userControlSettingsCoverArt"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -91,7 +168,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemCoverArt, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsPlaylist
             x:Name="userControlSettingsPlaylist"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -99,7 +176,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemPlaylist, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsDownloads
             x:Name="userControlSettingsDownloads"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -107,7 +184,7 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemDownloads, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsNetwork
             x:Name="userControlSettingsNetwork"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, Converter={StaticResource InverseBooleanConverter}, ElementName=windowSettings}"
@@ -115,7 +192,7 @@
             Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=listBoxItemNetwork}" />
         <local:UserControlSettingsAdvanced
             x:Name="userControlSettingsAdvanced"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
@@ -123,14 +200,14 @@
             Visibility="{Binding IsSelected, ElementName=listBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <local:UserControlSettingsAbout
             x:Name="userControlSettingsAbout"
-            Margin="155,31,0,0"
+            Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
             Visibility="{Binding IsSelected, ElementName=listBoxItemAbout, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
             x:Name="buttonResetSettings"
-            Width="150"
+            Width="170"
             Height="24"
             Margin="0,300,0,0"
             HorizontalAlignment="Left"

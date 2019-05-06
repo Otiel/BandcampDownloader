@@ -710,6 +710,78 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string labelListBoxItemAbout {
+            get {
+                return ResourceManager.GetString("labelListBoxItemAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced settings.
+        /// </summary>
+        internal static string labelListBoxItemAdvanced {
+            get {
+                return ResourceManager.GetString("labelListBoxItemAdvanced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cover art.
+        /// </summary>
+        internal static string labelListBoxItemCoverArt {
+            get {
+                return ResourceManager.GetString("labelListBoxItemCoverArt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloads.
+        /// </summary>
+        internal static string labelListBoxItemDownloads {
+            get {
+                return ResourceManager.GetString("labelListBoxItemDownloads", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string labelListBoxItemGeneral {
+            get {
+                return ResourceManager.GetString("labelListBoxItemGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network.
+        /// </summary>
+        internal static string labelListBoxItemNetwork {
+            get {
+                return ResourceManager.GetString("labelListBoxItemNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Playlist.
+        /// </summary>
+        internal static string labelListBoxItemPlaylist {
+            get {
+                return ResourceManager.GetString("labelListBoxItemPlaylist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naming and tags.
+        /// </summary>
+        internal static string labelListBoxItemTags {
+            get {
+                return ResourceManager.GetString("labelListBoxItemTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Lyrics.
         /// </summary>
         internal static string labelLyrics {
@@ -814,78 +886,6 @@ namespace BandcampDownloader.Properties {
         internal static string labelYear {
             get {
                 return ResourceManager.GetString("labelYear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        internal static string listBoxItemAbout {
-            get {
-                return ResourceManager.GetString("listBoxItemAbout", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Advanced settings.
-        /// </summary>
-        internal static string listBoxItemAdvanced {
-            get {
-                return ResourceManager.GetString("listBoxItemAdvanced", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cover art.
-        /// </summary>
-        internal static string listBoxItemCoverArt {
-            get {
-                return ResourceManager.GetString("listBoxItemCoverArt", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Downloads.
-        /// </summary>
-        internal static string listBoxItemDownloads {
-            get {
-                return ResourceManager.GetString("listBoxItemDownloads", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to General.
-        /// </summary>
-        internal static string listBoxItemGeneral {
-            get {
-                return ResourceManager.GetString("listBoxItemGeneral", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Network.
-        /// </summary>
-        internal static string listBoxItemNetwork {
-            get {
-                return ResourceManager.GetString("listBoxItemNetwork", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Playlist.
-        /// </summary>
-        internal static string listBoxItemPlaylist {
-            get {
-                return ResourceManager.GetString("listBoxItemPlaylist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Naming and tags.
-        /// </summary>
-        internal static string listBoxItemTags {
-            get {
-                return ResourceManager.GetString("listBoxItemTags", resourceCulture);
             }
         }
         

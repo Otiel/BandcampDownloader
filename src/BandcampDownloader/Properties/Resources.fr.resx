@@ -356,28 +356,28 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelYear" xml:space="preserve">
     <value>Année _de parution de l'album</value>
   </data>
-  <data name="listBoxItemAbout" xml:space="preserve">
+  <data name="labelListBoxItemAbout" xml:space="preserve">
     <value>À propos</value>
   </data>
-  <data name="listBoxItemAdvanced" xml:space="preserve">
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
     <value>Paramètres avancés</value>
   </data>
-  <data name="listBoxItemCoverArt" xml:space="preserve">
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
     <value>Pochette</value>
   </data>
-  <data name="listBoxItemDownloads" xml:space="preserve">
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
     <value>Téléchargements</value>
   </data>
-  <data name="listBoxItemGeneral" xml:space="preserve">
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
     <value>Général</value>
   </data>
-  <data name="listBoxItemNetwork" xml:space="preserve">
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
     <value>Réseau</value>
   </data>
-  <data name="listBoxItemPlaylist" xml:space="preserve">
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
     <value>Liste de lecture</value>
   </data>
-  <data name="listBoxItemTags" xml:space="preserve">
+  <data name="labelListBoxItemTags" xml:space="preserve">
     <value>Noms et métadonnées</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">

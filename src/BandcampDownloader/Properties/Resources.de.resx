@@ -356,28 +356,28 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelYear" xml:space="preserve">
     <value>Album _Veröffentlichungsjahr</value>
   </data>
-  <data name="listBoxItemAbout" xml:space="preserve">
+  <data name="labelListBoxItemAbout" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="listBoxItemAdvanced" xml:space="preserve">
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
     <value>Erweiterte Einstellungen</value>
   </data>
-  <data name="listBoxItemCoverArt" xml:space="preserve">
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
     <value>Cover</value>
   </data>
-  <data name="listBoxItemDownloads" xml:space="preserve">
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
     <value>Downloads</value>
   </data>
-  <data name="listBoxItemGeneral" xml:space="preserve">
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
     <value>Generell</value>
   </data>
-  <data name="listBoxItemNetwork" xml:space="preserve">
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
     <value>Netzwerk</value>
   </data>
-  <data name="listBoxItemPlaylist" xml:space="preserve">
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
     <value>Playlist</value>
   </data>
-  <data name="listBoxItemTags" xml:space="preserve">
+  <data name="labelListBoxItemTags" xml:space="preserve">
     <value>Benennungen und Tags</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
