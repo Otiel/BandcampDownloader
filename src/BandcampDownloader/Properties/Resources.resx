@@ -421,11 +421,6 @@ Would you like to go to the project website in order to download the latest vers
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>_System proxy</value>
   </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Do not modify</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Empty tag</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Do not modify</value>
@@ -435,6 +430,15 @@ Would you like to go to the project website in order to download the latest vers
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Save in tag</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Do not modify</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Empty tag</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Releases history</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Help translate</value>
@@ -489,9 +493,6 @@ Recommended value = 4</value>
 - {tracknum} will be replaced by the track number
 - {album} will be replaced by the album name
 - {year}, {month} and {day} will be replaced by the album release date</value>
-  </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Releases history</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:

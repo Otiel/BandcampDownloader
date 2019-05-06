@@ -405,11 +405,6 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>S_ystem Proxy</value>
   </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Nicht ändern</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Löschen des Tags</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Nicht ändern</value>
@@ -419,6 +414,15 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Im Tag speichern</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Nicht ändern</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Löschen des Tags</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Releases history</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Hilfe zur Übersetzung</value>
@@ -473,9 +477,6 @@ Empfohlender Wert = 4</value>
 - {tracknum} wird mit der Track-nummer ersetzt
 - {album} Wird mit dem albumnamen ersetzt
 - {year}, {month} und {day} werden mit dem Erscheinungsdatum ersetzt</value>
-  </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Releases history</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:

@@ -405,11 +405,6 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
   </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Ne pas modifier</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Vider les métadonnées</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Ne pas modifier</value>
@@ -419,6 +414,15 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Enregistrer dans les métadonnées</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Ne pas modifier</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Vider les métadonnées</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Historique des versions</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Aider à la traduction</value>
@@ -473,9 +477,6 @@ Valeur conseillée = 4</value>
 - {tracknum} sera remplacé par le numéro de la piste
 - {album} sera remplacé par le nom de l'album
 - {year} (année), {month} (mois) et {day} (jour) seront remplacés par la date de parution de l'album</value>
-  </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Historique des versions</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Vous pouvez utiliser des paramètres de substitution pour personnaliser le nom des fichiers :
