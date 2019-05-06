@@ -320,6 +320,30 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelLanguage" xml:space="preserve">
     <value>S_prache</value>
   </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Erweiterte Einstellungen</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Cover</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Generell</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Netzwerk</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Playlist</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Benennungen und Tags</value>
+  </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Son_gtexte</value>
   </data>
@@ -355,30 +379,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album _Veröffentlichungsjahr</value>
-  </data>
-  <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="labelListBoxItemAdvanced" xml:space="preserve">
-    <value>Erweiterte Einstellungen</value>
-  </data>
-  <data name="labelListBoxItemCoverArt" xml:space="preserve">
-    <value>Cover</value>
-  </data>
-  <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>Downloads</value>
-  </data>
-  <data name="labelListBoxItemGeneral" xml:space="preserve">
-    <value>Generell</value>
-  </data>
-  <data name="labelListBoxItemNetwork" xml:space="preserve">
-    <value>Netzwerk</value>
-  </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
-  <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Benennungen und Tags</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
     <value>&amp;Abbrechen</value>

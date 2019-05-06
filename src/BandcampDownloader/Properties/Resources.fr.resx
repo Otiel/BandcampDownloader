@@ -320,6 +320,30 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Langue</value>
   </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>À propos</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Paramètres avancés</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Pochette</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Téléchargements</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Général</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Réseau</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Liste de lecture</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Noms et métadonnées</value>
+  </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>_Paroles</value>
   </data>
@@ -355,30 +379,6 @@ Décocher cette option permet de gagner du temps.</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Année _de parution de l'album</value>
-  </data>
-  <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>À propos</value>
-  </data>
-  <data name="labelListBoxItemAdvanced" xml:space="preserve">
-    <value>Paramètres avancés</value>
-  </data>
-  <data name="labelListBoxItemCoverArt" xml:space="preserve">
-    <value>Pochette</value>
-  </data>
-  <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>Téléchargements</value>
-  </data>
-  <data name="labelListBoxItemGeneral" xml:space="preserve">
-    <value>Général</value>
-  </data>
-  <data name="labelListBoxItemNetwork" xml:space="preserve">
-    <value>Réseau</value>
-  </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Liste de lecture</value>
-  </data>
-  <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Noms et métadonnées</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
     <value>&amp;Annuler</value>
