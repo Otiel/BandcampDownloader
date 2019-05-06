@@ -10,6 +10,14 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String AppVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
         /// <summary>
+        /// The absolute path to the log file.
+        /// </summary>
+        public static readonly String LogFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.log";
+        /// <summary>
+        /// The log file maximum size in bytes.
+        /// </summary>
+        public static readonly long MaxLogSize = 1024 * 1024;
+        /// <summary>
         /// The URL redirecting to the changelog file on GitHub.
         /// </summary>
         public static readonly String UrlChangelog = "https://raw.githubusercontent.com/Otiel/BandcampDownloader/master/CHANGELOG.md";
@@ -26,28 +34,20 @@ namespace BandcampDownloader {
         /// </summary>
         public static readonly String UrlLatestRelease = "https://github.com/Otiel/BandcampDownloader/releases/latest";
         /// <summary>
-        /// The absolute path to the log file.
+        /// The URL redirecting to the releases page on GitHub.
         /// </summary>
-        public static readonly String LogFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.log";
+        public static readonly String UrlReleases = "https://github.com/Otiel/BandcampDownloader/releases";
         /// <summary>
-        /// The log file maximum size in bytes.
+        /// The URL redirecting to the zip file. Must be formatted with a version.
         /// </summary>
-        public static readonly long MaxLogSize = 1024 * 1024;
+        public static readonly String UrlReleaseZip = "https://github.com/Otiel/BandcampDownloader/releases/download/v{0}/BandcampDownloader.zip";
         /// <summary>
         /// The website URL of BandcampDownloader.
         /// </summary>
         public static readonly String UrlWebsite = "https://github.com/Otiel/BandcampDownloader";
         /// <summary>
-        /// The URL redirecting to the releases page on GitHub.
-        /// </summary>
-        public static readonly String UrlReleases = "https://github.com/Otiel/BandcampDownloader/releases";
-        /// <summary>
         /// The absolute path to the settings file.
         /// </summary>
         public static readonly String UserSettingsFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.ini";
-        /// <summary>
-        /// The URL redirecting to the zip file. Must be formatted with a version.
-        /// </summary>
-        public static readonly String UrlReleaseZip = "https://github.com/Otiel/BandcampDownloader/releases/download/v{0}/BandcampDownloader.zip";
     }
 }
