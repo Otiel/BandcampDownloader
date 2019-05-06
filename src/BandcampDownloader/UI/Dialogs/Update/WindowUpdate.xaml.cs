@@ -23,7 +23,7 @@ namespace BandcampDownloader {
             var dialog = new SaveFileDialog {
                 FileName = defaultFileName,
                 Filter = "Archive|*.zip",
-                Title = "Save as",
+                Title = Properties.Resources.saveFileDialogTitle,
             };
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) {
                 return;

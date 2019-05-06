@@ -984,6 +984,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save as.
+        /// </summary>
+        internal static string saveFileDialogTitle {
+            get {
+                return ResourceManager.GetString("saveFileDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do not modify.
         /// </summary>
         internal static string TagRemoveAction_DoNotModify {

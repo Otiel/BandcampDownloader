@@ -405,6 +405,8 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>S_ystem Proxy</value>
   </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Save as</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Nicht ändern</value>

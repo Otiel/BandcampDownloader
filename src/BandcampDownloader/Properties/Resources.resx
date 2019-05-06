@@ -421,6 +421,8 @@ Would you like to go to the project website in order to download the latest vers
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>_System proxy</value>
   </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Save as</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Do not modify</value>
