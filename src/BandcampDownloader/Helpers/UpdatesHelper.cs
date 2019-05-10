@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace BandcampDownloader {
 
@@ -8,7 +9,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the latest version available.
         /// </summary>
-        public static Version GetLatestVersion() {
+        public static async Task<Version> GetLatestVersionAsync() {
             // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
 
             // Retrieve the redirect page from the GitHub latest release page
@@ -16,8 +17,8 @@ namespace BandcampDownloader {
             request.AllowAutoRedirect = false;
             String redirectPage = "";
             try {
-                using (var response = (HttpWebResponse) request.GetResponse()) {
-                    redirectPage = response.GetResponseHeader("Location");
+                using (WebResponse response = await request.GetResponseAsync()) {
+                    redirectPage = ((HttpWebResponse) response).GetResponseHeader("Location");
                     // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X.X"
                 }
             } catch {

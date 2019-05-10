@@ -51,10 +51,6 @@ namespace BandcampDownloader {
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            // Check for updates
-            if (App.UserSettings.CheckForUpdates) {
-                Task.Factory.StartNew(() => { CheckForUpdates(); });
-            }
 #if DEBUG
             textBoxUrls.Text = ""
                 //+ "https://projectmooncircle.bandcamp.com" /* Lots of albums (124) */ + Environment.NewLine
@@ -139,23 +135,19 @@ namespace BandcampDownloader {
         /// <summary>
         /// Displays a message if a new version is available.
         /// </summary>
-        private void CheckForUpdates() {
+        private async Task CheckForUpdates() {
             Version latestVersion;
             try {
-                latestVersion = UpdatesHelper.GetLatestVersion();
+                latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
-                Dispatcher.BeginInvoke(new Action(() => {
-                    labelNewVersion.Content = Properties.Resources.labelVersionError;
-                }));
+                labelNewVersion.Content = Properties.Resources.labelVersionError;
                 return;
             }
 
             Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
-                Dispatcher.BeginInvoke(new Action(() => {
-                    labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
-                }));
+                labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
             }
         }
 
@@ -369,6 +361,12 @@ namespace BandcampDownloader {
                     // Cancel closing the window
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private async void WindowMain_Loaded(object sender, RoutedEventArgs e) {
+            if (App.UserSettings.CheckForUpdates) {
+                await CheckForUpdates();
             }
         }
     }

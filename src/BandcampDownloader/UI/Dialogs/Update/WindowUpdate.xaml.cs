@@ -43,9 +43,9 @@ namespace BandcampDownloader {
             e.Handled = true;
         }
 
-        private void WindowUpdate_Loaded(object sender, RoutedEventArgs e) {
+        private async void WindowUpdate_Loaded(object sender, RoutedEventArgs e) {
             try {
-                _latestVersion = UpdatesHelper.GetLatestVersion();
+                _latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
                 // Do nothing, the button will stayed disabled
                 return;
