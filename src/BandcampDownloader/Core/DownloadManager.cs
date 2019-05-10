@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using ImageResizer;
 
@@ -24,9 +25,9 @@ namespace BandcampDownloader {
         /// </summary>
         private bool _cancelDownloads;
         /// <summary>
-        /// The list of WebClients currently used to download files. Used when downloads must be cancelled.
+        /// Used when downloads must be cancelled.
         /// </summary>
-        private List<WebClient> _pendingDownloads = new List<WebClient>();
+        private CancellationTokenSource _cancellationTokenSource;
 
         /// <summary>
         /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes and the total bytes to download.
@@ -48,13 +49,8 @@ namespace BandcampDownloader {
         /// </summary>
         public void CancelDownloads() {
             _cancelDownloads = true;
-
-            lock (_pendingDownloads) {
-                // Stop current downloads
-                foreach (WebClient webClient in _pendingDownloads) {
-                    webClient.CancelAsync();
-                }
-            }
+            // Stop current downloads
+            _cancellationTokenSource.Cancel();
         }
 
         /// <summary>
@@ -84,7 +80,7 @@ namespace BandcampDownloader {
                 throw new Exception("Must call FetchUrls before calling StartDownloadsAsync");
             }
 
-            _pendingDownloads = new List<WebClient>();
+            _cancellationTokenSource = new CancellationTokenSource();
 
             // Start downloading albums
             if (App.UserSettings.DownloadOneAlbumAtATime) {
@@ -219,14 +215,12 @@ namespace BandcampDownloader {
                         }
                     };
 
-                    lock (_pendingDownloads) {
-                        if (_cancelDownloads) {
-                            // Abort
-                            return false;
-                        }
-                        // Register current download
-                        _pendingDownloads.Add(webClient);
+                    if (_cancelDownloads) {
+                        // Abort
+                        return false;
                     }
+                    // Register current download
+                    _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
                     // Start download
                     try {
@@ -234,10 +228,6 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         // Do nothing
-                    }
-
-                    lock (_pendingDownloads) {
-                        _pendingDownloads.Remove(webClient);
                     }
                 }
             } while (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries);
@@ -333,14 +323,12 @@ namespace BandcampDownloader {
                         }
                     };
 
-                    lock (_pendingDownloads) {
-                        if (_cancelDownloads) {
-                            // Abort
-                            return null;
-                        }
-                        // Register current download
-                        _pendingDownloads.Add(webClient);
+                    if (_cancelDownloads) {
+                        // Abort
+                        return null;
                     }
+                    // Register current download
+                    _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
                     // Start download
                     try {
@@ -348,10 +336,6 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         // Do nothing
-                    }
-
-                    lock (_pendingDownloads) {
-                        _pendingDownloads.Remove(webClient);
                     }
                 }
             } while (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries);
