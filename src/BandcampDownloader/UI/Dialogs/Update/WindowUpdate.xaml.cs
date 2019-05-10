@@ -47,7 +47,7 @@ namespace BandcampDownloader {
             try {
                 _latestVersion = UpdatesHelper.GetLatestVersion();
             } catch (CouldNotCheckForUpdatesException) {
-                // Do nothing
+                // Do nothing, the button will stayed disabled
                 return;
             }
 
