@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BandcampDownloader {
+﻿namespace BandcampDownloader {
 
     internal class Track {
 
