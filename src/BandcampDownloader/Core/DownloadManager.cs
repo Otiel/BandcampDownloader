@@ -215,10 +215,6 @@ namespace BandcampDownloader {
                         }
                     };
 
-                    if (_cancelDownloads) {
-                        // Abort
-                        return false;
-                    }
                     // Register current download
                     _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
@@ -227,7 +223,7 @@ namespace BandcampDownloader {
                         await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
-                        // Do nothing
+                        return false;
                     }
                 }
             } while (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries);
@@ -323,10 +319,6 @@ namespace BandcampDownloader {
                         }
                     };
 
-                    if (_cancelDownloads) {
-                        // Abort
-                        return null;
-                    }
                     // Register current download
                     _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
@@ -335,7 +327,7 @@ namespace BandcampDownloader {
                         await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
-                        // Do nothing
+                        return null;
                     }
                 }
             } while (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries);
