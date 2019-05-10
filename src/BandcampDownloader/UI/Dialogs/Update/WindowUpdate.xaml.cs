@@ -17,8 +17,8 @@ namespace BandcampDownloader {
         }
 
         private async void ButtonDownloadUpdate_Click(object sender, RoutedEventArgs e) {
-            String[] parts =  Constants.UrlReleaseZip.Split(new char[] { '/' });
-            String defaultFileName = parts[parts.Length - 1];
+            string[] parts =  Constants.UrlReleaseZip.Split(new char[] { '/' });
+            string defaultFileName = parts[parts.Length - 1];
 
             var dialog = new SaveFileDialog {
                 FileName = defaultFileName,
@@ -29,8 +29,8 @@ namespace BandcampDownloader {
                 return;
             }
 
-            String path = dialog.FileName;
-            String zipUrl = String.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
+            string path = dialog.FileName;
+            string zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
 
             using (var webClient = new WebClient()) {
                 ProxyHelper.SetProxy(webClient);

@@ -19,8 +19,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Downloads the changelog file and returns its content.
         /// </summary>
-        private async Task<String> DownloadChangelogAsync() {
-            String changelog;
+        private async Task<string> DownloadChangelogAsync() {
+            string changelog;
             using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                 ProxyHelper.SetProxy(webClient);
                 changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
@@ -30,11 +30,11 @@ namespace BandcampDownloader {
         }
 
         private async void OnLoaded(object sender, RoutedEventArgs e) {
-            String changelog;
+            string changelog;
             try {
                 changelog = await DownloadChangelogAsync();
             } catch {
-                changelog = String.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
+                changelog = string.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
             }
 
             markdownViewer.Markdown = changelog;

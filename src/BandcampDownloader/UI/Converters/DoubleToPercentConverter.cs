@@ -10,11 +10,11 @@ namespace BandcampDownloader {
     internal class DoubleToPercentConverter: IValueConverter {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            return (Double) value * 100; // 0.05 → 5%
+            return (double) value * 100; // 0.05 → 5%
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            return Double.Parse(value.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture) / 100; // 5% → 0.05
+            return double.Parse(value.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture) / 100; // 5% → 0.05
         }
     }
 }

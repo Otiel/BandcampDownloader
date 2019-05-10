@@ -14,7 +14,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// The URLs to download.
         /// </summary>
-        private readonly String _urls;
+        private readonly string _urls;
         /// <summary>
         /// The albums to download.
         /// </summary>
@@ -22,7 +22,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// True if we received the order to cancel downloads; false otherwise.
         /// </summary>
-        private Boolean _cancelDownloads;
+        private bool _cancelDownloads;
         /// <summary>
         /// The list of WebClients currently used to download files. Used when downloads must be cancelled.
         /// </summary>
@@ -39,7 +39,7 @@ namespace BandcampDownloader {
         /// Initializes a new instance of DownloadManager.
         /// </summary>
         /// <param name="urls">The URLs we'll download from.</param>
-        public DownloadManager(String urls) {
+        public DownloadManager(string urls) {
             _urls = urls;
         }
 
@@ -61,7 +61,7 @@ namespace BandcampDownloader {
         /// Fetch albums data from the URLs specified when creating this DownloadManager.
         /// </summary>
         public async Task FetchUrlsAsync() {
-            var urls = _urls.Split(new String[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var urls = _urls.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
             urls = urls.Distinct().ToList();
 
             // Get URLs of albums to download
@@ -94,7 +94,7 @@ namespace BandcampDownloader {
                 }
             } else {
                 // Parallel download
-                Int32[] albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
+                int[] albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
                 await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i])));
             }
         }
@@ -125,8 +125,8 @@ namespace BandcampDownloader {
             }
 
             // Download & tag tracks
-            Boolean[] tracksDownloaded = new Boolean[album.Tracks.Count];
-            Int32[] indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
+            bool[] tracksDownloaded = new bool[album.Tracks.Count];
+            int[] indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
             await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
 
             // Create playlist file
@@ -151,11 +151,11 @@ namespace BandcampDownloader {
         /// <param name="album">The album of the track to download.</param>
         /// <param name="track">The track to download.</param>
         /// <param name="artwork">The cover art.</param>
-        private async Task<Boolean> DownloadAndTagTrackAsync(Album album, Track track, TagLib.Picture artwork) {
+        private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, TagLib.Picture artwork) {
             LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
 
             int tries = 0;
-            Boolean trackDownloaded = false;
+            bool trackDownloaded = false;
             TrackFile currentFile = DownloadingFiles.Where(f => f.Url == track.Mp3Url).First();
 
             if (File.Exists(track.Path)) {
@@ -254,7 +254,7 @@ namespace BandcampDownloader {
             TagLib.Picture artworkInTags = null;
 
             int tries = 0;
-            Boolean artworkDownloaded = false;
+            bool artworkDownloaded = false;
             TrackFile currentFile = DownloadingFiles.Where(f => f.Url == album.ArtworkUrl).First();
 
             do {
@@ -363,14 +363,14 @@ namespace BandcampDownloader {
         /// Returns the albums located at the specified URLs.
         /// </summary>
         /// <param name="urls">The URLs.</param>
-        private async Task<List<Album>> GetAlbumsAsync(List<String> urls) {
+        private async Task<List<Album>> GetAlbumsAsync(List<string> urls) {
             var albums = new List<Album>();
 
-            foreach (String url in urls) {
+            foreach (string url in urls) {
                 LogAdded(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
                 // Retrieve URL HTML source code
-                String htmlCode = "";
+                string htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     ProxyHelper.SetProxy(webClient);
 
@@ -403,20 +403,20 @@ namespace BandcampDownloader {
         /// Returns the artists discography from any URL (artist, album, track).
         /// </summary>
         /// <param name="urls">The URLs.</param>
-        private async Task<List<String>> GetArtistDiscographyAsync(List<String> urls) {
-            var albumsUrls = new List<String>();
+        private async Task<List<string>> GetArtistDiscographyAsync(List<string> urls) {
+            var albumsUrls = new List<string>();
 
-            foreach (String url in urls) {
+            foreach (string url in urls) {
                 LogAdded(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
                 // Retrieve URL HTML source code
-                String htmlCode = "";
+                string htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     ProxyHelper.SetProxy(webClient);
 
                     if (_cancelDownloads) {
                         // Abort
-                        return new List<String>();
+                        return new List<string>();
                     }
 
                     try {
@@ -433,7 +433,7 @@ namespace BandcampDownloader {
                     LogAdded(this, new LogArgs($"No discography could be found on {url}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
                     continue;
                 }
-                String artistMusicPage = regex.Match(htmlCode).Groups["url"].Value + "/music";
+                string artistMusicPage = regex.Match(htmlCode).Groups["url"].Value + "/music";
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
@@ -441,7 +441,7 @@ namespace BandcampDownloader {
 
                     if (_cancelDownloads) {
                         // Abort
-                        return new List<String>();
+                        return new List<string>();
                     }
 
                     try {
@@ -477,12 +477,12 @@ namespace BandcampDownloader {
         /// <param name="url">The URL.</param>
         /// <param name="titleForLog">The title of the file to be displayed in the log.</param>
         /// <param name="fileType">The type of the file.</param>
-        private async Task<long> GetFileSizeAsync(String url, String titleForLog, FileType fileType) {
+        private async Task<long> GetFileSizeAsync(string url, string titleForLog, FileType fileType) {
             long size = 0;
-            Boolean sizeRetrieved;
+            bool sizeRetrieved;
             int tries = 0;
-            String fileTypeForLog;
-            String protocolMethod;
+            string fileTypeForLog;
+            string protocolMethod;
 
             switch (fileType) {
                 case FileType.Artwork:
@@ -548,7 +548,7 @@ namespace BandcampDownloader {
 
                 // Tracks
                 if (App.UserSettings.RetrieveFilesSize) {
-                    Int32[] tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
+                    int[] tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
                     await Task.WhenAll(tracksIndexes.Select(async i => {
                         long size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
                         files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));

@@ -15,7 +15,7 @@ namespace BandcampDownloader {
             // Retrieve the redirect page from the GitHub latest release page
             var request = HttpWebRequest.CreateHttp(Constants.UrlLatestRelease);
             request.AllowAutoRedirect = false;
-            String redirectPage = "";
+            string redirectPage = "";
             try {
                 using (WebResponse response = await request.GetResponseAsync()) {
                     redirectPage = ((HttpWebResponse) response).GetResponseHeader("Location");
@@ -26,7 +26,7 @@ namespace BandcampDownloader {
             }
 
             // Extract the version number from the URL
-            String latestVersionNumber;
+            string latestVersionNumber;
             try {
                 latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X.X
             } catch {

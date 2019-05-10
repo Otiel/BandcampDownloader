@@ -29,7 +29,7 @@ namespace BandcampDownloader {
         /// </summary>
         private void InitializeSettings() {
             App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
-            if (String.IsNullOrEmpty(UserSettings.DownloadsPath)) {
+            if (string.IsNullOrEmpty(UserSettings.DownloadsPath)) {
                 // Its default value cannot be set in settings as it isn't determined by a constant function
                 App.UserSettings.DownloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
             }

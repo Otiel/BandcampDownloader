@@ -8,27 +8,27 @@ namespace BandcampDownloader {
         /// <summary>
         /// The album artist.
         /// </summary>
-        public String Artist { get; set; }
+        public string Artist { get; set; }
 
         /// <summary>
         /// The local path (full path with file name) where the artwork file should be saved.
         /// </summary>
-        public String ArtworkPath { get; private set; }
+        public string ArtworkPath { get; private set; }
 
         /// <summary>
         /// The local path (full path with file name) to the %TEMP% folder where the artwork file should be saved.
         /// </summary>
-        public String ArtworkTempPath { get; private set; }
+        public string ArtworkTempPath { get; private set; }
 
         /// <summary>
         /// The URL where the artwork should be downloaded from.
         /// </summary>
-        public String ArtworkUrl { get; set; }
+        public string ArtworkUrl { get; set; }
 
         /// <summary>
         /// True if the album has an artwork; false otherwise.
         /// </summary>
-        public Boolean HasArtwork {
+        public bool HasArtwork {
             get {
                 return ArtworkUrl != null;
             }
@@ -37,12 +37,12 @@ namespace BandcampDownloader {
         /// <summary>
         /// The local path (full path) to the folder where the album should be saved.
         /// </summary>
-        public String Path { get; private set; }
+        public string Path { get; private set; }
 
         /// <summary>
         /// The local path (full path with file name) where the playlist file should be saved.
         /// </summary>
-        public String PlaylistPath { get; private set; }
+        public string PlaylistPath { get; private set; }
 
         /// <summary>
         /// The release date of the album.
@@ -52,7 +52,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// The album title.
         /// </summary>
-        public String Title { get; set; }
+        public string Title { get; set; }
 
         /// <summary>
         /// The list of tracks contained in the album.
@@ -62,7 +62,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Initializes a new Album.
         /// </summary>
-        public Album(String artist, String artworkUrl, DateTime releaseDate, String title) {
+        public Album(string artist, string artworkUrl, DateTime releaseDate, string title) {
             Artist = artist;
             ArtworkUrl = artworkUrl;
             ReleaseDate = releaseDate;
@@ -77,7 +77,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the file extension to be used for the playlist, depending of the type of playlist defined in UserSettings.
         /// </summary>
-        private static String GetPlaylistFileExtension() {
+        private static string GetPlaylistFileExtension() {
             switch (App.UserSettings.PlaylistFormat) {
                 case PlaylistFormat.m3u:
                     return ".m3u";
@@ -97,8 +97,8 @@ namespace BandcampDownloader {
         /// the UserSettings, by replacing the placeholders strings with their corresponding values.
         /// The returned file name does NOT contain the extension.
         /// </summary>
-        private String ParseCoverArtFileName() {
-            String fileName = App.UserSettings.CoverArtFileNameFormat
+        private string ParseCoverArtFileName() {
+            string fileName = App.UserSettings.CoverArtFileNameFormat
                 .Replace("{year}", ReleaseDate.Year.ToString())
                 .Replace("{month}", ReleaseDate.Month.ToString("00"))
                 .Replace("{day}", ReleaseDate.Day.ToString("00"))
@@ -111,8 +111,8 @@ namespace BandcampDownloader {
         /// Returns the folder path from the specified path format, by replacing the placeholders strings with their
         /// corresponding values. If the path is too long (&gt; 247 characters), it will be stripped.
         /// </summary>
-        private String ParseFolderPath() {
-            String path = App.UserSettings.DownloadsPath;
+        private string ParseFolderPath() {
+            string path = App.UserSettings.DownloadsPath;
             path = path.Replace("{year}", ReleaseDate.Year.ToString().ToAllowedFileName());
             path = path.Replace("{month}", ReleaseDate.Month.ToString("00").ToAllowedFileName());
             path = path.Replace("{day}", ReleaseDate.Day.ToString("00").ToAllowedFileName());
@@ -131,8 +131,8 @@ namespace BandcampDownloader {
         /// Returns the file name to be used for the playlist file of the specified album from the file name format saved
         /// in the UserSettings, by replacing the placeholders strings with their corresponding values.
         /// </summary>
-        private String ParsePlaylistFileName() {
-            String fileName = App.UserSettings.PlaylistFileNameFormat
+        private string ParsePlaylistFileName() {
+            string fileName = App.UserSettings.PlaylistFileNameFormat
                 .Replace("{year}", ReleaseDate.Year.ToString())
                 .Replace("{month}", ReleaseDate.Month.ToString("00"))
                 .Replace("{day}", ReleaseDate.Day.ToString("00"))
@@ -146,11 +146,11 @@ namespace BandcampDownloader {
         /// replacing the placeholders strings with their corresponding values. If the path is too long (&gt; 259
         /// characters), it will be stripped.
         /// </summary>
-        private String ParsePlaylistPath() {
-            String fileExt = GetPlaylistFileExtension();
+        private string ParsePlaylistPath() {
+            string fileExt = GetPlaylistFileExtension();
 
             // Compute paths where to save artwork
-            String filePath = Path + "\\" + ParsePlaylistFileName() + fileExt;
+            string filePath = Path + "\\" + ParsePlaylistFileName() + fileExt;
 
             if (filePath.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
@@ -167,10 +167,10 @@ namespace BandcampDownloader {
         /// </summary>
         private void SetArtworkPaths() {
             if (HasArtwork) {
-                String artworkFileExt = System.IO.Path.GetExtension(ArtworkUrl);
+                string artworkFileExt = System.IO.Path.GetExtension(ArtworkUrl);
 
                 // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread), we'll add a random number to the name of the artwork file saved in Temp directory
-                String randomNumber = App.Random.Next(1, 1000).ToString("00#");
+                string randomNumber = App.Random.Next(1, 1000).ToString("00#");
 
                 // Compute paths where to save artwork
                 ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName() + randomNumber + artworkFileExt;
