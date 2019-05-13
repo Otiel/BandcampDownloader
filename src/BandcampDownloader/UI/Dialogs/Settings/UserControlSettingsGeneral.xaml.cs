@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using WPFLocalizeExtension.Engine;
 
 namespace BandcampDownloader {
 
@@ -59,15 +57,7 @@ namespace BandcampDownloader {
 
         private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             // Apply selected language
-            LocalizeDictionary.Instance.Culture = new CultureInfo(comboBoxLanguage.SelectedValue.ToString());
-
-            // Set system MessageBox buttons
-            MessageBoxManager.Unregister();
-            MessageBoxManager.OK = Properties.Resources.messageBoxButtonOK;
-            MessageBoxManager.Cancel = Properties.Resources.messageBoxButtonCancel;
-            MessageBoxManager.Yes = Properties.Resources.messageBoxButtonYes;
-            MessageBoxManager.No = Properties.Resources.messageBoxButtonNo;
-            MessageBoxManager.Register();
+            LanguageHelper.ApplyLanguage(comboBoxLanguage.SelectedValue.ToString());
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {

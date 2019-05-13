@@ -150,6 +150,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\DownloadManager.cs" />
     <Compile Include="Core\LogArgs.cs" />
+    <Compile Include="Helpers\LanguageHelper.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Helpers\BandcampHelper.cs" />
     <Compile Include="Helpers\MessageBoxManager.cs" />
