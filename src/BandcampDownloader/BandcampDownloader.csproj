@@ -162,6 +162,7 @@
     <Compile Include="Model\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
+    <Compile Include="UI\Dialogs\Settings\IUserControlSettings.cs" />
     <Compile Include="UI\Dialogs\Settings\UserControlSettingsAbout.xaml.cs">
       <DependentUpon>UserControlSettingsAbout.xaml</DependentUpon>
     </Compile>

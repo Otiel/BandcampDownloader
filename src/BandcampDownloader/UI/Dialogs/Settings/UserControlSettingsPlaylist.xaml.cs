@@ -2,12 +2,19 @@
 
 namespace BandcampDownloader {
 
-    public partial class UserControlSettingsPlaylist: UserControl {
+    public partial class UserControlSettingsPlaylist: UserControl, IUserControlSettings {
 
         public UserControlSettingsPlaylist() {
             InitializeComponent();
             // Save data context for bindings
             DataContext = App.UserSettings;
+        }
+
+        /// <summary>
+        /// Cancels the changes already applied.
+        /// </summary>
+        public void CancelChanges() {
+            // Nothing to "unapply"
         }
 
         /// <summary>

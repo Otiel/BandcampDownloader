@@ -6,12 +6,19 @@ using System.Windows.Controls;
 
 namespace BandcampDownloader {
 
-    public partial class UserControlSettingsGeneral: UserControl {
+    public partial class UserControlSettingsGeneral: UserControl, IUserControlSettings {
 
         public UserControlSettingsGeneral() {
             InitializeComponent();
             // Save data context for bindings
             DataContext = App.UserSettings;
+        }
+
+        /// <summary>
+        /// Cancels the changes already applied.
+        /// </summary>
+        public void CancelChanges() {
+            LanguageHelper.ApplyLanguage(App.UserSettings.Language.ToString());
         }
 
         /// <summary>

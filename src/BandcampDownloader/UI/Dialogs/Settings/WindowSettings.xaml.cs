@@ -22,6 +22,7 @@ namespace BandcampDownloader {
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e) {
+            CancelChanges();
             Close();
         }
 
@@ -34,6 +35,19 @@ namespace BandcampDownloader {
         private void ButtonSave_Click(object sender, RoutedEventArgs e) {
             SaveSettings();
             Close();
+        }
+
+        /// <summary>
+        /// Cancels the changes already applied.
+        /// </summary>
+        private void CancelChanges() {
+            userControlSettingsAdvanced.CancelChanges();
+            userControlSettingsCoverArt.CancelChanges();
+            userControlSettingsDownloads.CancelChanges();
+            userControlSettingsGeneral.CancelChanges();
+            userControlSettingsNetwork.CancelChanges();
+            userControlSettingsPlaylist.CancelChanges();
+            userControlSettingsTags.CancelChanges();
         }
 
         /// <summary>
