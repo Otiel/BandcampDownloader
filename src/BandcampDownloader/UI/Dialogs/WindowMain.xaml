@@ -15,6 +15,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     Closing="WindowMain_Closing"
     Icon="pack://application:,,,/Resources/Cloud.ico"
+    Loaded="WindowMain_Loaded"
     WindowStartupLocation="CenterScreen"
     WindowStyle="SingleBorderWindow">
     <Window.TaskbarItemInfo>
@@ -131,8 +132,7 @@
                 Content=""
                 Cursor="Hand"
                 Foreground="#FF003BFF"
-                MouseDown="LabelNewVersion_MouseDown">
-            </Label>
+                MouseDown="LabelNewVersion_MouseDown" />
             <Label
                 x:Name="labelDownloadSpeed"
                 Grid.Column="1"

@@ -1,0 +1,107 @@
+﻿<UserControl
+    x:Class="BandcampDownloader.UserControlSettingsAbout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:local="clr-namespace:BandcampDownloader"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="userControlSettingsAbout"
+    Width="410"
+    Height="200"
+    lex:LocalizeDictionary.DesignCulture="en"
+    lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
+    lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+    KeyboardNavigation.TabNavigation="Local"
+    mc:Ignorable="d">
+    <Grid x:Name="gridMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Image
+                x:Name="imageCloud"
+                Width="32"
+                Height="32"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                Source="pack://application:,,,/Resources/CloudSmall.png"
+                Stretch="Fill" />
+            <Label
+                x:Name="labelAppName"
+                Content="Bandcamp Downloader"
+                FontSize="20" />
+        </StackPanel>
+        <Label
+            x:Name="labelVersion"
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="{lex:Loc}" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            VerticalAlignment="Center">
+            <Run Text="{Binding Source={x:Static local:Constants.AppVersion}, Mode=OneWay}" />
+        </TextBlock>
+        <Label
+            x:Name="labelChangelog"
+            Grid.Row="2"
+            Grid.Column="0"
+            Content="{lex:Loc}" />
+        <Button
+            x:Name="buttonViewChangelog"
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="20"
+            Padding="10,0,10,0"
+            HorizontalAlignment="Left"
+            Click="ButtonViewChangelog_Click"
+            Content="{lex:Loc}"
+            TabIndex="0" />
+        <Label
+            x:Name="labelWebsite"
+            Grid.Row="3"
+            Grid.Column="0"
+            Content="{lex:Loc}" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Center">
+            <Hyperlink
+                x:Name="hyperlinkWebsite"
+                NavigateUri="{Binding Source={x:Static local:Constants.UrlWebsite}}"
+                RequestNavigate="Hyperlink_RequestNavigate"
+                ToolTip="{Binding Source={x:Static local:Constants.UrlWebsite}}">
+                <TextBlock x:Name="textBlockWebsite" Text="github.com/Otiel/BandcampDownloader" />
+            </Hyperlink>
+        </TextBlock>
+        <Label
+            x:Name="labelIssues"
+            Grid.Row="4"
+            Grid.Column="0"
+            Content="{lex:Loc}" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            VerticalAlignment="Center">
+            <Hyperlink
+                x:Name="hyperlinkIssuesWebsite"
+                NavigateUri="{Binding Source={x:Static local:Constants.UrlIssues}}"
+                RequestNavigate="Hyperlink_RequestNavigate"
+                ToolTip="{Binding Source={x:Static local:Constants.UrlIssues}}">
+                <TextBlock x:Name="textBlockIssuesWebsite" Text="github.com/Otiel/BandcampDownloader/issues" />
+            </Hyperlink>
+        </TextBlock>
+    </Grid>
+</UserControl>

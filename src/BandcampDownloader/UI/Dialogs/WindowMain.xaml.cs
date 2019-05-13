@@ -22,7 +22,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
-        private Boolean _activeDownloads = false;
+        private bool _activeDownloads = false;
         /// <summary>
         /// The DownloadManager used to download albums.
         /// </summary>
@@ -38,7 +38,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Used when user clicks on 'Cancel' to manage the cancellation (UI...).
         /// </summary>
-        private Boolean _userCancelled;
+        private bool _userCancelled;
 
         public WindowMain() {
             // Save DataContext for bindings (must be called before initializing UI)
@@ -51,10 +51,6 @@ namespace BandcampDownloader {
             ServicePointManager.DefaultConnectionLimit = 50;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            // Check for updates
-            if (App.UserSettings.CheckForUpdates) {
-                Task.Factory.StartNew(() => { CheckForUpdates(); });
-            }
 #if DEBUG
             textBoxUrls.Text = ""
                 //+ "https://projectmooncircle.bandcamp.com" /* Lots of albums (124) */ + Environment.NewLine
@@ -139,23 +135,19 @@ namespace BandcampDownloader {
         /// <summary>
         /// Displays a message if a new version is available.
         /// </summary>
-        private void CheckForUpdates() {
+        private async Task CheckForUpdates() {
             Version latestVersion;
             try {
-                latestVersion = UpdatesHelper.GetLatestVersion();
+                latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
-                Dispatcher.BeginInvoke(new Action(() => {
-                    labelNewVersion.Content = Properties.Resources.labelVersionError;
-                }));
+                labelNewVersion.Content = Properties.Resources.labelVersionError;
                 return;
             }
 
             Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
-                Dispatcher.BeginInvoke(new Action(() => {
-                    labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
-                }));
+                labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
             }
         }
 
@@ -194,7 +186,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="logType">The log type.</param>
-        private void Log(String message, LogType logType) {
+        private void Log(string message, LogType logType) {
             // Log to file
             Logger logger = LogManager.GetCurrentClassLogger();
             logger.Log(logType.ToNLogLevel(), message);
@@ -275,7 +267,7 @@ namespace BandcampDownloader {
         /// Updates the state of the controls.
         /// </summary>
         /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
-        private void UpdateControlsState(Boolean downloadStarted) {
+        private void UpdateControlsState(bool downloadStarted) {
             if (downloadStarted) {
                 // We just started the download
                 buttonBrowse.IsEnabled = false;
@@ -317,8 +309,8 @@ namespace BandcampDownloader {
             // Compute new progress values
             long totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
 
-            Double bytesPerSecond =
-                ((Double) (totalReceivedBytes - _lastTotalReceivedBytes)) /
+            double bytesPerSecond =
+                ((double) (totalReceivedBytes - _lastTotalReceivedBytes)) /
                 (now - _lastDownloadSpeedUpdate).TotalSeconds;
             _lastTotalReceivedBytes = totalReceivedBytes;
             _lastDownloadSpeedUpdate = now;
@@ -341,8 +333,8 @@ namespace BandcampDownloader {
 
             // Update progress label
             labelProgress.Content =
-                ((Double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-                (App.UserSettings.RetrieveFilesSize ? (" / " + ((Double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
+                ((double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
+                (App.UserSettings.RetrieveFilesSize ? (" / " + ((double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
 
             if (App.UserSettings.RetrieveFilesSize) {
                 // Update progress bar based on bytes received
@@ -350,7 +342,7 @@ namespace BandcampDownloader {
                 // Taskbar progress is between 0 and 1
                 TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
             } else {
-                Double downloadedFilesCount = _downloadManager.DownloadingFiles.Count(f => f.Downloaded);
+                double downloadedFilesCount = _downloadManager.DownloadingFiles.Count(f => f.Downloaded);
                 // Update progress bar based on downloaded files
                 progressBar.Value = downloadedFilesCount;
                 // Taskbar progress is between 0 and count of files to download
@@ -369,6 +361,12 @@ namespace BandcampDownloader {
                     // Cancel closing the window
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private async void WindowMain_Loaded(object sender, RoutedEventArgs e) {
+            if (App.UserSettings.CheckForUpdates) {
+                await CheckForUpdates();
             }
         }
     }

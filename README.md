@@ -20,6 +20,7 @@ BandcampDownloader is a Windows application that helps downloading albums from [
   * Convert it to jpg,
   * Resize it,
   * Save it in tracks tags and in folder.
+* Create playlist file (supported formats are: m3u, pls, wpl, zpl).
 
 <p align="center">
     <img alt="Screenshot" src="docs/images/Screenshot.png">

@@ -8,8 +8,8 @@ namespace BandcampDownloader {
     internal class EnumerationExtension: MarkupExtension {
 
         public class EnumerationMember {
-            public String Description { get; set; }
-            public Object Value { get; set; }
+            public string Description { get; set; }
+            public object Value { get; set; }
         }
 
         private Type _enumType;
@@ -34,10 +34,10 @@ namespace BandcampDownloader {
             EnumType = enumType ?? throw new ArgumentNullException("enumType");
         }
 
-        public override Object ProvideValue(IServiceProvider serviceProvider) {
+        public override object ProvideValue(IServiceProvider serviceProvider) {
             Array enumValues = Enum.GetValues(EnumType);
             EnumerationMember[] enumerationMembers = (
-              from Object enumValue in enumValues
+              from object enumValue in enumValues
               select new EnumerationMember {
                   Value = enumValue,
                   Description = GetDescription(enumValue)
@@ -45,7 +45,7 @@ namespace BandcampDownloader {
             return enumerationMembers;
         }
 
-        private string GetDescription(Object enumValue) {
+        private string GetDescription(object enumValue) {
             return EnumType.GetField(enumValue.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() is DescriptionAttribute descriptionAttribute ? descriptionAttribute.Description : enumValue.ToString();
         }
     }

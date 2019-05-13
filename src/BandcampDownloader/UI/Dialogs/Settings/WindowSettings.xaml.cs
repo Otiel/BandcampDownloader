@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 using Config.Net;
 
@@ -10,13 +9,13 @@ namespace BandcampDownloader {
         /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
-        public Boolean ActiveDownloads { get; set; }
+        public bool ActiveDownloads { get; set; }
 
         /// <summary>
         /// Creates a new instance of SettingsWindow.
         /// </summary>
         /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
-        public WindowSettings(Boolean activeDownloads) {
+        public WindowSettings(bool activeDownloads) {
             ActiveDownloads = activeDownloads; // Must be done before UI initialization
             DataContext = App.UserSettings;
             InitializeComponent();
@@ -42,8 +41,8 @@ namespace BandcampDownloader {
         /// </summary>
         private void ResetSettings() {
             // Save settings we shouldn't reset (as they're not on the Settings window)
-            String downloadsPath = App.UserSettings.DownloadsPath;
-            Boolean downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
+            string downloadsPath = App.UserSettings.DownloadsPath;
+            bool downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
 
             File.Delete(Constants.UserSettingsFilePath);
             App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();

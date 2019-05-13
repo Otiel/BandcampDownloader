@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Config.Net;
 
 namespace BandcampDownloader {
@@ -51,72 +50,72 @@ namespace BandcampDownloader {
     public interface IUserSettings {
 
         [Option(DefaultValue = 0.05)]
-        Double AllowedFileSizeDifference { get; set; }
+        double AllowedFileSizeDifference { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean CheckForUpdates { get; set; }
+        bool CheckForUpdates { get; set; }
 
         [Option(DefaultValue = "{album}")]
-        String CoverArtFileNameFormat { get; set; }
+        string CoverArtFileNameFormat { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean CoverArtInFolderConvertToJpg { get; set; }
+        bool CoverArtInFolderConvertToJpg { get; set; }
 
         [Option(DefaultValue = 1000)]
         int CoverArtInFolderMaxSize { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean CoverArtInFolderResize { get; set; }
+        bool CoverArtInFolderResize { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean CoverArtInTagsConvertToJpg { get; set; }
+        bool CoverArtInTagsConvertToJpg { get; set; }
 
         [Option(DefaultValue = 1000)]
         int CoverArtInTagsMaxSize { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean CoverArtInTagsResize { get; set; }
+        bool CoverArtInTagsResize { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean CreatePlaylist { get; set; }
+        bool CreatePlaylist { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean DownloadArtistDiscography { get; set; }
+        bool DownloadArtistDiscography { get; set; }
 
         [Option(DefaultValue = 7)]
         int DownloadMaxTries { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean DownloadOneAlbumAtATime { get; set; }
+        bool DownloadOneAlbumAtATime { get; set; }
 
         // Time in seconds between retries
         [Option(DefaultValue = 0.2)]
-        Double DownloadRetryCooldown { get; set; }
+        double DownloadRetryCooldown { get; set; }
 
         // Exponential per cooldown - ex. (value of 1.2 would yield cooldowns of x^(1.2^0), x^(1.2^1), x^(1.2^2), ..)
         [Option(DefaultValue = 4.0)]
-        Double DownloadRetryExponent { get; set; }
+        double DownloadRetryExponent { get; set; }
 
         [Option(DefaultValue = "")]
-        String DownloadsPath { get; set; }
+        string DownloadsPath { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean EnableApplicationSounds { get; set; }
+        bool EnableApplicationSounds { get; set; }
 
         [Option(DefaultValue = "{tracknum} {artist} - {title}.mp3")]
-        String FileNameFormat { get; set; }
+        string FileNameFormat { get; set; }
 
         [Option(DefaultValue = Language.en)]
         Language Language { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean M3uExtended { get; set; }
+        bool M3uExtended { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean ModifyTags { get; set; }
+        bool ModifyTags { get; set; }
 
         [Option(DefaultValue = "{album}")]
-        String PlaylistFileNameFormat { get; set; }
+        string PlaylistFileNameFormat { get; set; }
 
         [Option(DefaultValue = PlaylistFormat.m3u)]
         PlaylistFormat PlaylistFormat { get; set; }
@@ -125,22 +124,22 @@ namespace BandcampDownloader {
         ProxyType Proxy { get; set; }
 
         [Option(DefaultValue = "")]
-        String ProxyHttpAddress { get; set; }
+        string ProxyHttpAddress { get; set; }
 
         [Option(DefaultValue = "")]
         int ProxyHttpPort { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean RetrieveFilesSize { get; set; }
+        bool RetrieveFilesSize { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean SaveCoverArtInFolder { get; set; }
+        bool SaveCoverArtInFolder { get; set; }
 
         [Option(DefaultValue = true)]
-        Boolean SaveCoverArtInTags { get; set; }
+        bool SaveCoverArtInTags { get; set; }
 
         [Option(DefaultValue = false)]
-        Boolean ShowVerboseLog { get; set; }
+        bool ShowVerboseLog { get; set; }
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagAlbumArtist { get; set; }

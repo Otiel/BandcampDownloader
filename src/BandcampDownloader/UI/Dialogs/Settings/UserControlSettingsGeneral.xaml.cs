@@ -45,10 +45,10 @@ namespace BandcampDownloader {
             MessageBoxManager.Register();
         }
 
-        private void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
+        private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
             Version latestVersion;
             try {
-                latestVersion = UpdatesHelper.GetLatestVersion();
+                latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
                 MessageBox.Show(Properties.Resources.messageBoxCheckForUpdatesError, "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -63,7 +63,7 @@ namespace BandcampDownloader {
                 };
                 windowUpdate.Show();
             } else {
-                MessageBox.Show(String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(string.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

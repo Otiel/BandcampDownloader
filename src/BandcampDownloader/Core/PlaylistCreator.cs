@@ -24,7 +24,7 @@ namespace BandcampDownloader {
         /// Saves the playlist to a file.
         /// </summary>
         public void SavePlaylistToFile() {
-            String fileContent;
+            string fileContent;
 
             switch (App.UserSettings.PlaylistFormat) {
                 case PlaylistFormat.m3u:
@@ -49,7 +49,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the playlist in m3u format.
         /// </summary>
-        private String CreateM3uPlaylist() {
+        private string CreateM3uPlaylist() {
             var playlist = new M3uPlaylist() {
                 IsExtended = App.UserSettings.M3uExtended,
             };
@@ -70,7 +70,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the playlist in pls format.
         /// </summary>
-        private String CreatePlsPlaylist() {
+        private string CreatePlsPlaylist() {
             var playlist = new PlsPlaylist();
 
             foreach (Track track in _album.Tracks) {
@@ -87,7 +87,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the playlist in wpl format.
         /// </summary>
-        private String CreateWplPlaylist() {
+        private string CreateWplPlaylist() {
             var playlist = new WplPlaylist() {
                 Title = _album.Title,
             };
@@ -109,7 +109,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the playlist in zpl format.
         /// </summary>
-        private String CreateZplPlaylist() {
+        private string CreateZplPlaylist() {
             var playlist = new ZplPlaylist() {
                 Title = _album.Title,
             };

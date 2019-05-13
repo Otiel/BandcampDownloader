@@ -1,3 +1,17 @@
+# 0.2.10.0
+
+## New features
+
+* Added "About" section on Settings window.
+
+## Improvements
+
+* Minor UI improvements.
+
+## Bug fixes
+
+* Fixed a bug preventing the cover art to be saved in the tracks. [#88](https://github.com/Otiel/BandcampDownloader/issues/88)
+
 # 0.2.9.0
 
 ## New features

@@ -17,20 +17,20 @@ namespace BandcampDownloader {
         }
 
         private async void ButtonDownloadUpdate_Click(object sender, RoutedEventArgs e) {
-            String[] parts =  Constants.ZipUrl.Split(new char[] { '/' });
-            String defaultFileName = parts[parts.Length - 1];
+            string[] parts =  Constants.UrlReleaseZip.Split(new char[] { '/' });
+            string defaultFileName = parts[parts.Length - 1];
 
             var dialog = new SaveFileDialog {
                 FileName = defaultFileName,
                 Filter = "Archive|*.zip",
-                Title = "Save as",
+                Title = Properties.Resources.saveFileDialogTitle,
             };
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) {
                 return;
             }
 
-            String path = dialog.FileName;
-            String zipUrl = String.Format(Constants.ZipUrl, _latestVersion.ToString());
+            string path = dialog.FileName;
+            string zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
 
             using (var webClient = new WebClient()) {
                 ProxyHelper.SetProxy(webClient);
@@ -43,11 +43,11 @@ namespace BandcampDownloader {
             e.Handled = true;
         }
 
-        private void WindowUpdate_Loaded(object sender, RoutedEventArgs e) {
+        private async void WindowUpdate_Loaded(object sender, RoutedEventArgs e) {
             try {
-                _latestVersion = UpdatesHelper.GetLatestVersion();
+                _latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
-                // Do nothing
+                // Do nothing, the button will stayed disabled
                 return;
             }
 
@@ -58,12 +58,10 @@ namespace BandcampDownloader {
             }
         }
 
-        private void WindowUpdate_Loaded_1(object sender, RoutedEventArgs e) {
-        }
-
         private void WindowUpdate_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e) {
             if (e.Key == Key.Escape) {
                 Close();
+                e.Handled = true;
             }
         }
     }

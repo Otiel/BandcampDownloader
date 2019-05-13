@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,22 +18,22 @@ namespace BandcampDownloader {
         /// <summary>
         /// Downloads the changelog file and returns its content.
         /// </summary>
-        private async Task<String> DownloadChangelogAsync() {
-            String changelog;
+        private async Task<string> DownloadChangelogAsync() {
+            string changelog;
             using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                 ProxyHelper.SetProxy(webClient);
-                changelog = await webClient.DownloadStringTaskAsync(Constants.ChangelogUrl);
+                changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
             }
 
             return changelog;
         }
 
         private async void OnLoaded(object sender, RoutedEventArgs e) {
-            String changelog;
+            string changelog;
             try {
                 changelog = await DownloadChangelogAsync();
             } catch {
-                changelog = String.Format(Properties.Resources.changelogDownloadError, Constants.ChangelogUrl);
+                changelog = string.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
             }
 
             markdownViewer.Markdown = changelog;

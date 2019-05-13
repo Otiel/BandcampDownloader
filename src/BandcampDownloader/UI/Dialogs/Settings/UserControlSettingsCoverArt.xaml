@@ -116,8 +116,8 @@
                 x:Name="textBoxCoverArtInFolderMaxSize"
                 Grid.Column="1"
                 Width="40"
-                VerticalContentAlignment="Center"
                 Height="20"
+                VerticalContentAlignment="Center"
                 TabIndex="4"
                 Text="{Binding CoverArtInFolderMaxSize, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged">
@@ -181,8 +181,8 @@
                 x:Name="textBoxCoverArtInTagsMaxSize"
                 Grid.Column="1"
                 Width="40"
-                VerticalContentAlignment="Center"
                 Height="20"
+                VerticalContentAlignment="Center"
                 TabIndex="8"
                 Text="{Binding CoverArtInTagsMaxSize, UpdateSourceTrigger=Explicit}"
                 TextChanged="TextBox_TextChanged">

@@ -55,11 +55,11 @@
             </Label>
             <TextBlock Grid.Column="1" VerticalAlignment="Center">
                 <Hyperlink
-                    x:Name="hyperlinkWebsite"
-                    NavigateUri="{Binding Source={x:Static local:Constants.ProjectWebsite}}"
+                    x:Name="hyperlinkReleases"
+                    NavigateUri="{Binding Source={x:Static local:Constants.UrlReleases}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
-                    ToolTip="{Binding Source={x:Static local:Constants.ProjectWebsite}}">
-                    <TextBlock x:Name="textBlockGoToWebsite" Text="{lex:Loc}" />
+                    ToolTip="{Binding Source={x:Static local:Constants.UrlReleases}}">
+                    <TextBlock x:Name="textBlockReleasesWebsite" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>
             <Button
@@ -67,7 +67,7 @@
                 Grid.Column="2"
                 Height="24"
                 MinWidth="100"
-                Margin="5,0,0,0"
+                Margin="10,0,0,0"
                 Padding="10,0,10,0"
                 Click="ButtonDownloadUpdate_Click"
                 Content="{lex:Loc}"

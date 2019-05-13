@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -150,6 +150,9 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Annulla</value>
   </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_View</value>
+  </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>Could not download changelog from {0}</value>
   </data>
@@ -269,6 +272,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Ripristina impostazioni</value>
   </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
   <data name="labelChangelogTitle" xml:space="preserve">
     <value>Changelog</value>
   </data>
@@ -308,8 +314,35 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Porta</value>
   </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Lingua</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Impostazioni avanzate</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Copertina</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Scaricamenti</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Generale</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Rete</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Playlist</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Rinomina e tag</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Testo can_zoni</value>
@@ -332,35 +365,20 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(il file registro è sempre esteso)</value>
   </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Non è possibile trovare aggiornamenti.</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>È disponibile una nuova versione</value>
   </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Anno _di rilascio album</value>
-  </data>
-  <data name="listBoxItemAdvanced" xml:space="preserve">
-    <value>Impostazioni avanzate</value>
-  </data>
-  <data name="listBoxItemCoverArt" xml:space="preserve">
-    <value>Copertina</value>
-  </data>
-  <data name="listBoxItemDownloads" xml:space="preserve">
-    <value>Scaricamenti</value>
-  </data>
-  <data name="listBoxItemGeneral" xml:space="preserve">
-    <value>Generale</value>
-  </data>
-  <data name="listBoxItemNetwork" xml:space="preserve">
-    <value>Rete</value>
-  </data>
-  <data name="listBoxItemPlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
-  <data name="listBoxItemTags" xml:space="preserve">
-    <value>Rinomina e tag</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
     <value>&amp;annulla</value>
@@ -405,11 +423,8 @@ Desideri andare sul sito ufficiale per scaricare l'ultima versione?</value>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _di sistema</value>
   </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Do not modify</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Empty tag</value>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Save as</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Do not modify</value>
@@ -419,6 +434,15 @@ Desideri andare sul sito ufficiale per scaricare l'ultima versione?</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Save in tag</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Do not modify</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Empty tag</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Releases history</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Help translate</value>
@@ -472,9 +496,6 @@ Valore consigliato = 4</value>
 - {tracknum} è sostituito col numero della traccia;
 - {album} è sostituito col nome dell'album;
 - {year}, {month} e {day} sono sostituiti con la data di rilascio.</value>
-  </data>
-  <data name="textBlockGoToWebsite" xml:space="preserve">
-    <value>Go to website</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>You can use placeholders to customize the file name:

@@ -1,27 +1,26 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BandcampDownloader {
 
     internal class JsonTrack {
 
         [JsonProperty("duration")]
-        public Double Duration { get; set; }
+        public double Duration { get; set; }
 
         [JsonProperty("file")]
         public JsonMp3File File { get; set; }
 
         [JsonProperty("lyrics")]
-        public String Lyrics { get; set; }
+        public string Lyrics { get; set; }
 
         [JsonProperty("track_num")]
         public int Number { get; set; }
 
         [JsonProperty("title")]
-        public String Title { get; set; }
+        public string Title { get; set; }
 
         public Track ToTrack(Album album) {
-            String mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url; // "//example.com" Uri lacks protocol
+            string mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url; // "//example.com" Uri lacks protocol
             int number = Number == 0 ? 1 : Number; // For bandcamp track pages, Number will be 0. Set 1 instead
 
             return new Track(album, Duration, Lyrics, mp3Url, number, Title);

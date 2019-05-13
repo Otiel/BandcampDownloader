@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BandcampDownloader {
+﻿namespace BandcampDownloader {
 
     internal static class TagHelper {
 
@@ -10,13 +8,13 @@ namespace BandcampDownloader {
         /// <param name="file">The file to update.</param>
         /// <param name="albumArtist">The value used if TagEditAction = Modify.</param>
         /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-        public static TagLib.File UpdateAlbumArtist(TagLib.File file, String albumArtist, TagEditAction editAction) {
+        public static TagLib.File UpdateAlbumArtist(TagLib.File file, string albumArtist, TagEditAction editAction) {
             switch (editAction) {
                 case TagEditAction.Empty:
-                    file.Tag.AlbumArtists = new String[1] { "" };
+                    file.Tag.AlbumArtists = new string[1] { "" };
                     break;
                 case TagEditAction.Modify:
-                    file.Tag.AlbumArtists = new String[1] { albumArtist };
+                    file.Tag.AlbumArtists = new string[1] { albumArtist };
                     break;
                 case TagEditAction.DoNotModify:
                     break;
@@ -32,7 +30,7 @@ namespace BandcampDownloader {
         /// <param name="file">The file to update.</param>
         /// <param name="albumTitle">The value used if TagEditAction = Modify.</param>
         /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-        public static TagLib.File UpdateAlbumTitle(TagLib.File file, String albumTitle, TagEditAction editAction) {
+        public static TagLib.File UpdateAlbumTitle(TagLib.File file, string albumTitle, TagEditAction editAction) {
             switch (editAction) {
                 case TagEditAction.Empty:
                     file.Tag.Album = "";
@@ -76,13 +74,13 @@ namespace BandcampDownloader {
         /// <param name="file">The file to update.</param>
         /// <param name="artist">The value used if TagEditAction = Modify.</param>
         /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-        public static TagLib.File UpdateArtist(TagLib.File file, String artist, TagEditAction editAction) {
+        public static TagLib.File UpdateArtist(TagLib.File file, string artist, TagEditAction editAction) {
             switch (editAction) {
                 case TagEditAction.Empty:
-                    file.Tag.Performers = new String[1] { "" };
+                    file.Tag.Performers = new string[1] { "" };
                     break;
                 case TagEditAction.Modify:
-                    file.Tag.Performers = new String[1] { artist };
+                    file.Tag.Performers = new string[1] { artist };
                     break;
                 case TagEditAction.DoNotModify:
                     break;
@@ -116,7 +114,7 @@ namespace BandcampDownloader {
         /// <param name="file">The file to update.</param>
         /// <param name="trackLyrics">The value used if TagEditAction = Modify.</param>
         /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-        public static TagLib.File UpdateTrackLyrics(TagLib.File file, String trackLyrics, TagEditAction editAction) {
+        public static TagLib.File UpdateTrackLyrics(TagLib.File file, string trackLyrics, TagEditAction editAction) {
             switch (editAction) {
                 case TagEditAction.Empty:
                     file.Tag.Lyrics = "";
@@ -160,7 +158,7 @@ namespace BandcampDownloader {
         /// <param name="file">The file to update.</param>
         /// <param name="trackTitle">The value used if TagEditAction = Modify.</param>
         /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-        public static TagLib.File UpdateTrackTitle(TagLib.File file, String trackTitle, TagEditAction editAction) {
+        public static TagLib.File UpdateTrackTitle(TagLib.File file, string trackTitle, TagEditAction editAction) {
             switch (editAction) {
                 case TagEditAction.Empty:
                     file.Tag.Title = "";

@@ -10,7 +10,7 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns true if scroll position of the current RichTextBox is at the end; false otherwise.
         /// </summary>
-        public static Boolean IsScrolledToEnd(this RichTextBox richTextBox) {
+        public static bool IsScrolledToEnd(this RichTextBox richTextBox) {
             return richTextBox.VerticalOffset > richTextBox.ExtentHeight - richTextBox.ViewportHeight - 10;
         }
 
@@ -18,7 +18,7 @@ namespace BandcampDownloader {
         /// Replaces the forbidden chars \ / : * ? " &lt; &gt; | from the System.String
         /// object by an underscore _ in order to be used for a Windows file or folder.
         /// </summary>
-        public static String ToAllowedFileName(this String fileName) {
+        public static string ToAllowedFileName(this string fileName) {
             if (fileName == null) {
                 throw new ArgumentNullException("fileName");
             }

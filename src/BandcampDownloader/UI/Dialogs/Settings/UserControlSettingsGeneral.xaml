@@ -41,7 +41,7 @@
                     <TextBlock>
                         <Run Text="{lex:Loc checkBoxCheckForUpdates_ToolTip_Part}" />
                         <Run Text="&#xA;" />
-                        <Run Text="{Binding Source={x:Static local:Constants.LatestReleaseWebsite}, Mode=OneWay}" />
+                        <Run Text="{Binding Source={x:Static local:Constants.UrlLatestRelease}, Mode=OneWay}" />
                     </TextBlock>
                 </CheckBox.ToolTip>
             </CheckBox>
@@ -112,9 +112,9 @@
                 VerticalAlignment="Center">
                 <Hyperlink
                     x:Name="hyperlinkTranslationHelp"
-                    NavigateUri="{Binding Source={x:Static local:Constants.HelpTranslateWebsite}}"
+                    NavigateUri="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
-                    ToolTip="{Binding Source={x:Static local:Constants.HelpTranslateWebsite}}">
+                    ToolTip="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}">
                     <TextBlock x:Name="textBlockTranslationHelp" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>
