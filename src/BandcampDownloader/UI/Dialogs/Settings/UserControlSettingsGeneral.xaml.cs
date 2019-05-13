@@ -18,7 +18,7 @@ namespace BandcampDownloader {
         /// Cancels the changes already applied.
         /// </summary>
         public void CancelChanges() {
-            LanguageHelper.ApplyLanguage(App.UserSettings.Language.ToString());
+            LanguageHelper.ApplyLanguage(App.UserSettings.Language);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace BandcampDownloader {
 
         private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             // Apply selected language
-            LanguageHelper.ApplyLanguage(comboBoxLanguage.SelectedValue.ToString());
+            LanguageHelper.ApplyLanguage((Language) comboBoxLanguage.SelectedValue);
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {

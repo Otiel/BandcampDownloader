@@ -18,7 +18,7 @@ namespace BandcampDownloader {
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
             InitializeSettings();
-            LanguageHelper.ApplyLanguage(UserSettings.Language.ToString());
+            LanguageHelper.ApplyLanguage(UserSettings.Language);
         }
 
         /// <summary>

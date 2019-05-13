@@ -5,9 +5,13 @@ namespace BandcampDownloader {
 
     internal static class LanguageHelper {
 
-        public static void ApplyLanguage(string cultureName) {
+        /// <summary>
+        /// Applies the specified language.
+        /// </summary>
+        /// <param name="language">The language to apply.</param>
+        public static void ApplyLanguage(Language language) {
             // Apply language
-            LocalizeDictionary.Instance.Culture = new CultureInfo(cultureName);
+            LocalizeDictionary.Instance.Culture = new CultureInfo(language.ToString());
 
             // Set system MessageBox buttons
             MessageBoxManager.Unregister();
