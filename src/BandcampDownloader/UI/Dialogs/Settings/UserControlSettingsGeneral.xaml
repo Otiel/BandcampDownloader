@@ -105,6 +105,7 @@
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:Language}}}"
                 SelectedValue="{Binding Language, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
+                SelectionChanged="ComboBoxLanguage_SelectionChanged"
                 TabIndex="4" />
             <TextBlock
                 Grid.Column="2"

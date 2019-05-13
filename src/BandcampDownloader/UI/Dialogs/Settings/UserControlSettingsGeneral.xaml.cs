@@ -33,16 +33,6 @@ namespace BandcampDownloader {
             checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             comboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-
-            // Apply selected language
-            LocalizeDictionary.Instance.Culture = new CultureInfo(comboBoxLanguage.SelectedValue.ToString());
-            // Set system MessageBox buttons
-            MessageBoxManager.Unregister();
-            MessageBoxManager.OK = Properties.Resources.messageBoxButtonOK;
-            MessageBoxManager.Cancel = Properties.Resources.messageBoxButtonCancel;
-            MessageBoxManager.Yes = Properties.Resources.messageBoxButtonYes;
-            MessageBoxManager.No = Properties.Resources.messageBoxButtonNo;
-            MessageBoxManager.Register();
         }
 
         private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
@@ -65,6 +55,19 @@ namespace BandcampDownloader {
             } else {
                 MessageBox.Show(string.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // Apply selected language
+            LocalizeDictionary.Instance.Culture = new CultureInfo(comboBoxLanguage.SelectedValue.ToString());
+
+            // Set system MessageBox buttons
+            MessageBoxManager.Unregister();
+            MessageBoxManager.OK = Properties.Resources.messageBoxButtonOK;
+            MessageBoxManager.Cancel = Properties.Resources.messageBoxButtonCancel;
+            MessageBoxManager.Yes = Properties.Resources.messageBoxButtonYes;
+            MessageBoxManager.No = Properties.Resources.messageBoxButtonNo;
+            MessageBoxManager.Register();
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
