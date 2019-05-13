@@ -14,7 +14,7 @@ namespace BandcampDownloader {
 
             switch (skin) {
                 case Skin.Dark:
-                    Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Themes\\DarkBlendTheme.xaml", UriKind.Relative) });
+                    Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri("Themes\\Dark.xaml", UriKind.Relative) });
                     break;
                 case Skin.Light:
                     // Do nothing
