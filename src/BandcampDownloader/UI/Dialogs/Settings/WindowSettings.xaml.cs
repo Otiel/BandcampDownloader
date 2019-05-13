@@ -76,7 +76,7 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Save all settings.
+        /// Saves all settings.
         /// </summary>
         private void SaveSettings() {
             userControlSettingsAdvanced.SaveSettings();
