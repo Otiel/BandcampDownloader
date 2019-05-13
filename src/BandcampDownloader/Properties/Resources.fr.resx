@@ -356,6 +356,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Certains paramètres ne peuvent pas être modifiés lorsque des téléchargements sont en cours.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Thème</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>N_uméro de la piste</value>
   </data>
@@ -425,6 +428,12 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Save as</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Foncé</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Clair</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Ne pas modifier</value>

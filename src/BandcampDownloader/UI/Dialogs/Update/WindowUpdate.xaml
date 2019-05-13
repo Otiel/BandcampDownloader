@@ -17,6 +17,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     Loaded="WindowUpdate_Loaded"
     PreviewKeyDown="WindowUpdate_PreviewKeyDown"
+    Style="{StaticResource {x:Type Window}}"
     mc:Ignorable="d">
     <Grid x:Name="gridMain" Margin="10,0,10,10">
         <Grid.RowDefinitions>

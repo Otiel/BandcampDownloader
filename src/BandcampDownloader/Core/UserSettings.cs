@@ -31,6 +31,13 @@ namespace BandcampDownloader {
         Manual,
     }
 
+    public enum Skin {
+        [Description("Dark")]
+        Dark,
+        [Description("Light")]
+        Light
+    }
+
     public enum TagEditAction {
         [Description("Empty tag")]
         Empty,
@@ -164,5 +171,8 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagYear { get; set; }
+
+        [Option(DefaultValue = Skin.Light)]
+        Skin Theme { get; set; }
     }
 }

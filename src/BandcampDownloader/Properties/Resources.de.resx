@@ -356,6 +356,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Einige Einstellungen können nicht übernommen werden wärend ein Download stattfindet.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Song N_ummer</value>
   </data>
@@ -425,6 +428,12 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Save as</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Light</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Nicht ändern</value>
