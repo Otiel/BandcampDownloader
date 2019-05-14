@@ -141,6 +141,7 @@ namespace BandcampDownloader {
                 latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
                 labelNewVersion.Content = Properties.Resources.labelVersionError;
+                labelNewVersion.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -148,6 +149,7 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
+                labelNewVersion.Visibility = Visibility.Visible;
             }
         }
 

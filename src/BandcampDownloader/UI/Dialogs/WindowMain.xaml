@@ -132,7 +132,8 @@
                 Content=""
                 Cursor="Hand"
                 Foreground="#FF003BFF"
-                MouseDown="LabelNewVersion_MouseDown" />
+                MouseDown="LabelNewVersion_MouseDown"
+                Visibility="Hidden" />
             <Label
                 x:Name="labelDownloadSpeed"
                 Grid.Column="1"
