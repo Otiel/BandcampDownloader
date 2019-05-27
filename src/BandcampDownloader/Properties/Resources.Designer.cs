@@ -61,16 +61,6 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ArrowCircle225Left {
-            get {
-                object obj = ResourceManager.GetObject("ArrowCircle225Left", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ....
         /// </summary>
         internal static string buttonBrowse {
@@ -463,51 +453,11 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Cloud {
-            get {
-                object obj = ResourceManager.GetObject("Cloud", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon CloudIco {
-            get {
-                object obj = ResourceManager.GetObject("CloudIco", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ExclamationSmall {
-            get {
-                object obj = ResourceManager.GetObject("ExclamationSmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select the folder to save albums.
         /// </summary>
         internal static string folderBrowserDialogDescription {
             get {
                 return ResourceManager.GetString("folderBrowserDialogDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap InformationSmallWhite {
-            get {
-                object obj = ResourceManager.GetObject("InformationSmallWhite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
