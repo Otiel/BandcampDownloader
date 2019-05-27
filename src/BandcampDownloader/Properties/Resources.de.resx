@@ -153,9 +153,6 @@
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_View</value>
   </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>Could not download changelog from {0}</value>
-  </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Beim start auf _updates prüfen</value>
   </data>
@@ -186,12 +183,6 @@
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt wird das Cover auf die angegebene Größe skaliert.</value>
   </data>
-  <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Create _playlist for each album</value>
-  </data>
-  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>If checked, a file containing the album tracks will be created for each downloaded album.</value>
-  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>_Diskografie vom Artisten herunterladen</value>
   </data>
@@ -203,12 +194,6 @@
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt wird ein Benachrichtigungston nach erfolgreichem Download abgespielt.</value>
-  </data>
-  <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Use _extended format (for M3U only)</value>
-  </data>
-  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_ID3 tags editieren</value>
@@ -272,12 +257,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Zurücksetzen</value>
   </data>
-  <data name="labelChangelog" xml:space="preserve">
-    <value>Changelog</value>
-  </data>
-  <data name="labelChangelogTitle" xml:space="preserve">
-    <value>Changelog</value>
-  </data>
   <data name="labelComments" xml:space="preserve">
     <value>Komm_entare</value>
   </data>
@@ -289,9 +268,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
     <value>Maximale Größe (p_x)</value>
-  </data>
-  <data name="labelCurrentVersion" xml:space="preserve">
-    <value>Current version:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
     <value>_Maximale Downloadversuche</value>
@@ -314,14 +290,8 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Port</value>
   </data>
-  <data name="labelIssues" xml:space="preserve">
-    <value>Report a bug</value>
-  </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>S_prache</value>
-  </data>
-  <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>About</value>
   </data>
   <data name="labelListBoxItemAdvanced" xml:space="preserve">
     <value>Erweiterte Einstellungen</value>
@@ -423,9 +393,6 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>S_ystem Proxy</value>
   </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Save as</value>
-  </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Nicht ändern</value>
   </data>
@@ -441,9 +408,6 @@ Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Löschen des Tags</value>
   </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Releases history</value>
-  </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Hilfe zur Übersetzung</value>
   </data>
@@ -453,12 +417,6 @@ größer ist als die angegebene Zahl in prozent. Wenn dem so ist wird die Datei 
 Setzen Sie diesen Wert auf 0, um Songs immer wieder neu herunterzuladen.
 
 Empfohlender Wert = 5</value>
-  </data>
-  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
-    <value>You can use placeholders to customize the file name:
-- {artist} will be replaced by the album artist
-- {album} will be replaced by the album name
-- {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Maximale anzahl wie oft versucht werden soll den Song herunterzuladen.
@@ -497,12 +455,6 @@ Empfohlender Wert = 4</value>
 - {tracknum} wird mit der Track-nummer ersetzt
 - {album} Wird mit dem albumnamen ersetzt
 - {year}, {month} und {day} werden mit dem Erscheinungsdatum ersetzt</value>
-  </data>
-  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
-    <value>You can use placeholders to customize the file name:
-- {artist} will be replaced by the album artist
-- {album} will be replaced by the album name
-- {year}, {month} and {day} will be replaced by the album release date</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Album und Diskografie URL's hier einfügen. Es ist möglich mehrere (Getrennt durch zeilenumbrüche) einzufügen.
