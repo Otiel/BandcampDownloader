@@ -2309,8 +2309,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
-    <!-- Label -->
+    <!--#region Label -->
     <Style TargetType="{x:Type Label}">
         <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
         <Setter Property="Background" Value="Transparent"/>
