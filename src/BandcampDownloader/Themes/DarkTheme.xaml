@@ -21,7 +21,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
+                        SnapsToDevicePixels="True">
                         <ContentPresenter
                             Margin="{TemplateBinding Padding}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -29,19 +29,19 @@
                             RecognizesAccessKey="True" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#515151" />
                             <Setter Property="Foreground" Value="#f0f0f0" />
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
+                        <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Background" Value="#616161" />
                             <Setter Property="Foreground" Value="#f0f0f0" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="#2c2c2c" />
                             <Setter Property="Foreground" Value="Gray" />
                         </Trigger>
-                        <Trigger Property="IsDefault" Value="true">
+                        <Trigger Property="IsDefault" Value="True">
                             <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#0078d7" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -78,8 +78,8 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
-                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false">
+                        SnapsToDevicePixels="True">
+                        <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="False">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </ScrollViewer>
                     </Border>
@@ -98,29 +98,29 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
+                        SnapsToDevicePixels="True">
                         <ContentPresenter
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
+                        <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ListBoxItemBorder" Property="Background" Value="#0078d7" />
                             <Setter TargetName="ListBoxItemBorder" Property="BorderBrush" Value="#008eff" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="true" />
-                                <Condition Property="IsSelected" Value="false" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ListBoxItemBorder" Property="Background" Value="#005aa1" />
                             <Setter TargetName="ListBoxItemBorder" Property="BorderBrush" Value="#0078d7" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="true" />
-                                <Condition Property="Selector.IsSelectionActive" Value="false" />
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="Selector.IsSelectionActive" Value="False" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="ListBoxItemBorder" Property="Background" Value="#595959" />
                             <Setter TargetName="ListBoxItemBorder" Property="BorderBrush" Value="Gray" />
@@ -143,7 +143,7 @@
                 <ControlTemplate>
                     <Rectangle
                         Margin="1"
-                        SnapsToDevicePixels="true"
+                        SnapsToDevicePixels="True"
                         Stroke="#f0f0f0"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
@@ -158,7 +158,7 @@
                 <ControlTemplate>
                     <Rectangle
                         Margin="14,0,0,0"
-                        SnapsToDevicePixels="true"
+                        SnapsToDevicePixels="True"
                         Stroke="#f0f0f0"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
@@ -175,7 +175,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <BulletDecorator Background="Transparent" SnapsToDevicePixels="true">
+                    <BulletDecorator Background="Transparent" SnapsToDevicePixels="True">
                         <BulletDecorator.Bullet>
                             <Border
                                 x:Name="CheckBoxBorder"
@@ -202,11 +202,11 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="HasContent" Value="true">
+                        <Trigger Property="HasContent" Value="True">
                             <Setter Property="FocusVisualStyle" Value="{StaticResource CheckBoxFocusVisual}" />
                             <Setter Property="Padding" Value="5,0,0,0" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <!--<Setter Property="Foreground" Value="Gray" />-->
                             <Setter TargetName="CheckBoxBorder" Property="Background" Value="#515151" />
                             <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="Gray" />
@@ -214,7 +214,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#0078d7" />
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="false">
+                        <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -233,7 +233,7 @@
                 <ControlTemplate>
                     <Rectangle
                         Margin="14,0,0,0"
-                        SnapsToDevicePixels="true"
+                        SnapsToDevicePixels="True"
                         Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
@@ -275,11 +275,11 @@
                             RecognizesAccessKey="True" />
                     </BulletDecorator>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="HasContent" Value="true">
+                        <Trigger Property="HasContent" Value="True">
                             <Setter Property="FocusVisualStyle" Value="{StaticResource RadioButtonFocusVisual}" />
                             <Setter Property="Padding" Value="6,0,0,0" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <!--<Setter Property="Foreground" Value="Gray" />-->
                             <Setter TargetName="RadioButtonBorder" Property="Background" Value="#515151" />
                             <Setter TargetName="RadioButtonBorder" Property="BorderBrush" Value="Gray" />
@@ -287,7 +287,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="RadioButtonBorder" Property="BorderBrush" Value="#0078d7" />
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="false">
+                        <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="RadioMark" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -309,7 +309,7 @@
                 <ControlTemplate>
                     <Rectangle
                         Margin="2,2,21,2"
-                        SnapsToDevicePixels="true"
+                        SnapsToDevicePixels="True"
                         Stroke="#f0f0f0"
                         StrokeDashArray="1 2"
                         StrokeThickness="1" />
@@ -319,9 +319,9 @@
     </Style>
 
     <Style x:Key="ComboBoxReadonlyToggleButton" TargetType="{x:Type ToggleButton}">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Focusable" Value="false" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="ClickMode" Value="Press" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
@@ -332,7 +332,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="#707070"
                         BorderThickness="1"
-                        SnapsToDevicePixels="true">
+                        SnapsToDevicePixels="True">
                         <Border
                             x:Name="PopUpButton"
                             Width="15"
@@ -359,11 +359,11 @@
                         </Border>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PopUpButton" Property="Background" Value="#515151" />
                             <Setter TargetName="ToggleButtonBorder" Property="Background" Value="#515151" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Arrow" Property="Fill" Value="Gray" />
                             <Setter TargetName="PopUpButton" Property="Background" Value="#2c2c2c" />
                         </Trigger>
@@ -387,22 +387,22 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
+                        SnapsToDevicePixels="True">
                         <ContentPresenter
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
+                        <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="ComboBoxItemBorder" Property="Background" Value="#595959" />
                             <Setter TargetName="ComboBoxItemBorder" Property="BorderBrush" Value="Gray" />
                         </Trigger>
-                        <Trigger Property="IsHighlighted" Value="true">
+                        <Trigger Property="IsHighlighted" Value="True">
                             <Setter TargetName="ComboBoxItemBorder" Property="Background" Value="#005aa1" />
                             <Setter TargetName="ComboBoxItemBorder" Property="BorderBrush" Value="#0078d7" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="Gray" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -419,14 +419,14 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="ItemContainerStyle" Value="{DynamicResource ComboBoxItemStyle}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid x:Name="MainGrid" SnapsToDevicePixels="true">
+                    <Grid x:Name="MainGrid" SnapsToDevicePixels="True">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" MinWidth="18" />
@@ -435,7 +435,7 @@
                             x:Name="PART_Popup"
                             Grid.ColumnSpan="2"
                             Margin="1"
-                            AllowsTransparency="true"
+                            AllowsTransparency="True"
                             IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                             Placement="Bottom"
                             PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
@@ -488,15 +488,15 @@
                             ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                             ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            IsHitTestVisible="false"
+                            IsHitTestVisible="False"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
+                        <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="True">
                             <Setter TargetName="Shadow" Property="Margin" Value="0,0,5,5" />
                             <Setter TargetName="Shadow" Property="Background" Value="#71000000" />
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="Gray" />
                             <Setter Property="Background" Value="#2c2c2c" />
                         </Trigger>
@@ -517,7 +517,7 @@
         <Setter Property="Background" Value="#333333" />
         <Setter Property="BorderBrush" Value="#707070" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="AllowDrop" Value="true" />
+        <Setter Property="AllowDrop" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
@@ -529,29 +529,29 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
+                        SnapsToDevicePixels="True">
                         <ScrollViewer
                             x:Name="PART_ContentHost"
                             Padding="{TemplateBinding Padding}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsEnabled" Value="false">
+                        <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="Gray" />
                             <Setter TargetName="PART_ContentHost" Property="Background" Value="#2c2c2c" />
                             <Setter TargetName="Border" Property="Background" Value="#2c2c2c" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="true" />
-                                <Condition Property="IsEnabled" Value="true" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Border" Property="BorderBrush" Value="#0078d7" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsFocused" Value="true" />
-                                <Condition Property="IsEnabled" Value="true" />
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="IsEnabled" Value="True" />
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Border" Property="BorderBrush" Value="#0078d7" />
                         </MultiTrigger>
@@ -694,8 +694,8 @@
     <!--  Control colors.  -->
     <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Focusable" Value="false" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -723,9 +723,9 @@
 
     <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Focusable" Value="false" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
@@ -736,10 +736,10 @@
     </Style>
 
     <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
-        <Setter Property="SnapsToDevicePixels" Value="true" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Focusable" Value="false" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="Background" Value="#505050" />
         <Setter Property="Template">
             <Setter.Value>
@@ -749,10 +749,10 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}" />
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
+                        <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="#707070" />
                         </Trigger>
-                        <Trigger Property="IsDragging" Value="true">
+                        <Trigger Property="IsDragging" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="#808080" />
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -778,7 +778,7 @@
             <Track
                 x:Name="PART_Track"
                 Grid.Row="1"
-                IsDirectionReversed="true">
+                IsDirectionReversed="True">
                 <Track.DecreaseRepeatButton>
                     <RepeatButton Command="ScrollBar.PageUpCommand" Style="{StaticResource ScrollBarPageButton}" />
                 </Track.DecreaseRepeatButton>
@@ -837,7 +837,7 @@
 
     <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Width" Value="Auto" />
