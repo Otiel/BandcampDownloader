@@ -37,8 +37,8 @@
                             <Setter Property="Foreground" Value="#f0f0f0" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="Gray" />
                             <Setter Property="Background" Value="#2c2c2c" />
+                            <Setter Property="Foreground" Value="Gray" />
                         </Trigger>
                         <Trigger Property="IsDefault" Value="true">
                             <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#0078d7" />
