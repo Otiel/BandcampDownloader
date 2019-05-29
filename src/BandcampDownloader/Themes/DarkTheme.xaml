@@ -118,8 +118,8 @@
                                 <Condition Property="IsSelected" Value="true" />
                                 <Condition Property="Selector.IsSelectionActive" Value="false" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="listBoxItemBorder" Property="Background" Value="Gray" />
-                            <Setter TargetName="listBoxItemBorder" Property="BorderBrush" Value="LightGray" />
+                            <Setter TargetName="listBoxItemBorder" Property="Background" Value="#595959" />
+                            <Setter TargetName="listBoxItemBorder" Property="BorderBrush" Value="Gray" />
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
