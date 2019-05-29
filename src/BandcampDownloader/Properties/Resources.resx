@@ -130,7 +130,7 @@
     <value>Check no_w</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Download update</value>
+    <value>_Download new version</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Settings</value>
@@ -139,7 +139,7 @@
     <value>Open settings</value>
   </data>
   <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Resets settings to their default values</value>
+    <value>Reset settings to defaults</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
     <value>_Save</value>
