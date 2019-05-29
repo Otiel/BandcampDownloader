@@ -160,7 +160,7 @@
     <value>Wenn ausgewählt, wird die Anwendung beim Start diese URL abrufen:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Zu _jpg umwandeln</value>
+    <value>Zu _JPG umwandeln</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt, wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Kompromiss zwischen Speicherbedarf und Qualität ist).</value>
@@ -172,7 +172,7 @@
     <value>Wenn ausgewählt, wird das Cover auf die angegebene Größe skaliert.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Cover zu jp_g umwandeln</value>
+    <value>Cover zu JP_G umwandeln</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt, wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Mittelwert zwischen Speicherbedarf und Qualität ist).</value>
