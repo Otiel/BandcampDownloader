@@ -566,7 +566,7 @@
     <!--#endregion-->
 
     <!--#region ToolTip-->
-    
+
     <Style TargetType="ToolTip">
         <Setter Property="Foreground" Value="LightGray" />
         <Setter Property="Template">
@@ -584,6 +584,58 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top" />
                     </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region ProgressBar-->
+
+    <Style TargetType="{x:Type ProgressBar}">
+        <Setter Property="Background" Value="#515151" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Border
+                            x:Name="PART_Track"
+                            BorderBrush="#707070"
+                            BorderThickness="1" />
+                        <Border
+                            x:Name="PART_Indicator"
+                            HorizontalAlignment="Left"
+                            Background="{TemplateBinding Foreground}">
+                            <Grid x:Name="Animation" ClipToBounds="True">
+                                <Border
+                                    Name="PART_GlowRect"
+                                    Width="195"
+                                    Margin="-195,0,0,0"
+                                    HorizontalAlignment="Left"
+                                    Background="{TemplateBinding Foreground}" />
+                            </Grid>
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="PART_Indicator"
+                                            Storyboard.TargetProperty="Background"
+                                            Duration="00:00:00">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <SolidColorBrush>Transparent</SolidColorBrush>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
