@@ -277,7 +277,6 @@ namespace BandcampDownloader {
                 buttonStop.IsEnabled = true;
                 checkBoxDownloadDiscography.IsEnabled = false;
                 labelProgress.Content = "";
-                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                 progressBar.IsIndeterminate = true;
                 progressBar.Value = progressBar.Minimum;
                 richTextBoxLog.Document.Blocks.Clear();
@@ -292,7 +291,6 @@ namespace BandcampDownloader {
                 buttonStop.IsEnabled = false;
                 checkBoxDownloadDiscography.IsEnabled = true;
                 labelDownloadSpeed.Content = "";
-                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                 progressBar.IsIndeterminate = false;
                 progressBar.Value = progressBar.Minimum;
                 TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
