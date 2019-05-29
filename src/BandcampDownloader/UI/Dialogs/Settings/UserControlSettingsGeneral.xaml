@@ -141,7 +141,7 @@
                 PrependType="True"
                 SelectedItem="{Binding Theme, UpdateSourceTrigger=Explicit}"
                 SelectionChanged="ComboBoxTheme_SelectionChanged"
-                TabIndex="5"
+                TabIndex="6"
                 Type="{x:Type local:Skin}" />
         </Grid>
     </Grid>
