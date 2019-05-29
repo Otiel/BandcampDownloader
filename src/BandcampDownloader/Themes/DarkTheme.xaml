@@ -352,10 +352,7 @@
                                 Stretch="Fill">
                                 <Path.RenderTransform>
                                     <TransformGroup>
-                                        <ScaleTransform />
-                                        <SkewTransform />
                                         <RotateTransform Angle="45" />
-                                        <TranslateTransform />
                                     </TransformGroup>
                                 </Path.RenderTransform>
                             </Path>
