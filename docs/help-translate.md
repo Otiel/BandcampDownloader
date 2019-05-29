@@ -28,7 +28,7 @@ In order to modify the translations, you can either edit the files with your fav
 </data>
 ```
 
-Only the `<value>...</value>` tag should be modified. The `name=` attribute should give you some context in addition to the English translation.
+Only the `<value>...</value>` node should be modified. The `name=` attribute should give you some context in addition to the English translation. Missing translations will not appear in the language file, you will have to run a diff between your language file and the source file ([_Resources.resx_](/src/BandcampDownloader/Properties/Resources.resx)) and copy the whole `<data>...</data>` node for the missing translation.
 
 Make sure you keep an access key (also called mnemonic) when there is one: the underscore character `_` should precede the letter used as the access key. Ideally, there shouldn't be any duplicate mnemonics on the same window.
 
