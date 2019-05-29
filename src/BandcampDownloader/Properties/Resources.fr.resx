@@ -357,7 +357,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>Certains paramètres ne peuvent pas être modifiés lorsque des téléchargements sont en cours.</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
-    <value>Thème</value>
+    <value>_Thème</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>N_uméro de la piste</value>

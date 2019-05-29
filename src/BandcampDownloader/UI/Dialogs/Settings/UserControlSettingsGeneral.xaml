@@ -130,7 +130,7 @@
                 x:Name="labelTheme"
                 Grid.Column="0"
                 Content="{lex:Loc}"
-                Target="{Binding ElementName=comboBoxLanguage}" />
+                Target="{Binding ElementName=comboBoxTheme}" />
             <lex:EnumComboBox
                 x:Name="comboBoxTheme"
                 Grid.Row="0"

@@ -818,7 +818,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Theme.
+        ///   Looks up a localized string similar to _Theme.
         /// </summary>
         internal static string labelTheme {
             get {
