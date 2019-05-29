@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonBrowse" xml:space="preserve">
-    <value>...</value>
+    <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
     <value>Parcourir</value>
@@ -130,7 +130,7 @@
     <value>Vérifier _maintenant</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Télécharger la mise à jour</value>
+    <value>_Télécharger la nouvelle version</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Paramètres</value>
