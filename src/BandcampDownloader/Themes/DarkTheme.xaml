@@ -48,6 +48,19 @@
 
     <!--#endregion-->
 
+    <!--#region Hyperlink-->
+
+    <Style TargetType="{x:Type Hyperlink}">
+        <Setter Property="Foreground" Value="DeepSkyBlue" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="DarkOrange" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
     <!--#region ListBox-->
 
     <Style TargetType="{x:Type ListBox}">
