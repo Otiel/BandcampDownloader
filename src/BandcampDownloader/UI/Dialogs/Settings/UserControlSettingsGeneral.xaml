@@ -113,6 +113,7 @@
                 VerticalAlignment="Center">
                 <Hyperlink
                     x:Name="hyperlinkTranslationHelp"
+                    KeyboardNavigation.TabIndex="5"
                     NavigateUri="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
                     ToolTip="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}">
