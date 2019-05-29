@@ -415,7 +415,7 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource ComboBoxFocusVisual}" />
         <Setter Property="Foreground" Value="#f0f0f0" />
         <Setter Property="Background" Value="#3f3f3f" />
-        <Setter Property="Padding" Value="5,3,5,1" />
+        <Setter Property="Padding" Value="6,3,5,1" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
