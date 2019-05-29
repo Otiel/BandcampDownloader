@@ -564,4 +564,30 @@
     </Style>
 
     <!--#endregion-->
+
+    <!--#region ToolTip-->
+    
+    <Style TargetType="ToolTip">
+        <Setter Property="Foreground" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border
+                        Name="Border"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="#3f3f3f"
+                        BorderBrush="#707070"
+                        BorderThickness="1">
+                        <ContentPresenter
+                            Margin="4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
 </ResourceDictionary>
