@@ -222,7 +222,7 @@
     <!--#endregion-->
 
     <!--#region RadioButton-->
-    
+
     <Style x:Key="RadioButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -291,7 +291,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <!--#endregion-->
 
+    <!--#endregion-->
 </ResourceDictionary>
