@@ -203,7 +203,7 @@
                             <Setter Property="Padding" Value="5,0,0,0" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="Gray" />
+                            <!--<Setter Property="Foreground" Value="Gray" />-->
                             <Setter TargetName="checkBoxBorder" Property="Background" Value="#515151" />
                             <Setter TargetName="checkBoxBorder" Property="BorderBrush" Value="Gray" />
                         </Trigger>
