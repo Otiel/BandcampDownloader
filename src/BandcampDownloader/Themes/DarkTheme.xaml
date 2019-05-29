@@ -308,7 +308,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle
-                        Margin="2,2,21,2"
+                        Margin="2,2,2,2"
                         SnapsToDevicePixels="True"
                         Stroke="#f0f0f0"
                         StrokeDashArray="1 2"
