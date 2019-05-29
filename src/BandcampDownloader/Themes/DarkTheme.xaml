@@ -512,4 +512,56 @@
     <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type lex:EnumComboBox}" />
 
     <!--#endregion-->
+
+    <!--#region TextBox-->
+
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="#333333" />
+        <Setter Property="BorderBrush" Value="#707070" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="AllowDrop" Value="true" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border
+                        x:Name="Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        SnapsToDevicePixels="true">
+                        <ScrollViewer
+                            x:Name="PART_ContentHost"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Gray" />
+                            <Setter TargetName="PART_ContentHost" Property="Background" Value="#2c2c2c" />
+                            <Setter TargetName="Border" Property="Background" Value="#2c2c2c" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true" />
+                                <Condition Property="IsEnabled" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#0078d7" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="true" />
+                                <Condition Property="IsEnabled" Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#0078d7" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
 </ResourceDictionary>
