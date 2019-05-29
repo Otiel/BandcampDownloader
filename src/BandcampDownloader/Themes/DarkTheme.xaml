@@ -413,7 +413,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ComboBox}" x:Key="ComboBoxStyle">
+    <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ComboBoxFocusVisual}" />
         <Setter Property="Foreground" Value="#f0f0f0" />
         <Setter Property="Background" Value="#3f3f3f" />
@@ -508,8 +508,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource ComboBoxStyle}" />
-    <Style TargetType="{x:Type lex:EnumComboBox}" BasedOn="{StaticResource ComboBoxStyle}" />
+    <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type ComboBox}" />
+    <Style BasedOn="{StaticResource ComboBoxStyle}" TargetType="{x:Type lex:EnumComboBox}" />
 
     <!--#endregion-->
 </ResourceDictionary>
