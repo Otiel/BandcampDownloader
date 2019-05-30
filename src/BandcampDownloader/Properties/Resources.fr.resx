@@ -426,6 +426,9 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
   </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Sauvegarder en tant que</value>
+  </data>
   <data name="Skin_Dark" xml:space="preserve">
     <value>Sombre</value>
   </data>
@@ -522,8 +525,5 @@ de leurs albums.</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Mise à jour</value>
-  </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Sauvegarder en tant que</value>
   </data>
 </root>

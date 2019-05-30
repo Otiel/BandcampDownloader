@@ -147,6 +147,8 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Abbrechen</value>
   </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Konnte Changelog nicht herunterladen von {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Beim start auf _updates prüfen</value>
@@ -448,8 +450,5 @@ seine alben herunterzuladen.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
-  </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>Konnte Changelog nicht herunterladen von {0}</value>
   </data>
 </root>
