@@ -404,6 +404,10 @@ Uncheck this option to save some time.</value>
   <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
     <value>There are currently active downloads. Are you sure you want to close the application and stop all downloads?</value>
   </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Could not open the following link:
+{0}</value>
+  </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>You already have the latest version available ({0}).</value>
   </data>

@@ -912,6 +912,16 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not open the following link:
+        ///{0}.
+        /// </summary>
+        internal static string messageBoxCouldNotOpenUrlError {
+            get {
+                return ResourceManager.GetString("messageBoxCouldNotOpenUrlError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You already have the latest version available ({0})..
         /// </summary>
         internal static string messageBoxNoUpdateAvailable {
@@ -926,19 +936,6 @@ namespace BandcampDownloader.Properties {
         internal static string messageBoxResetSettings {
             get {
                 return ResourceManager.GetString("messageBoxResetSettings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A new version is available:
-        ///Current version = {0}
-        ///Latest version = {1}
-        ///
-        ///Would you like to go to the project website in order to download the latest version?.
-        /// </summary>
-        internal static string messageBoxUpdateAvailable {
-            get {
-                return ResourceManager.GetString("messageBoxUpdateAvailable", resourceCulture);
             }
         }
         

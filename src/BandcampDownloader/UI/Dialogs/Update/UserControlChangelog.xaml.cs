@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +42,14 @@ namespace BandcampDownloader {
         }
 
         private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e) {
-            Process.Start(e.Parameter.ToString());
+            string url = e.Parameter.ToString();
+
+            try {
+                Process.Start(url);
+            } catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified") {
+                // Probably a relative link like "/docs/help-translate.md"
+                MessageBox.Show(String.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

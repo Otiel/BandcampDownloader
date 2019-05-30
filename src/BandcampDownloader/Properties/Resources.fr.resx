@@ -404,6 +404,10 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
     <value>Des téléchargements sont en cours. Êtes-vous sûr de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
   </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Impossible d'ouvrir le lien suivant :
+{0}</value>
+  </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Vous avez déjà la dernière version disponible ({0}).</value>
   </data>
