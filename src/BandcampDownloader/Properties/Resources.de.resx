@@ -326,6 +326,9 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Einige Einstellungen können nicht übernommen werden wärend ein Download stattfindet.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Song N_ummer</value>
   </data>

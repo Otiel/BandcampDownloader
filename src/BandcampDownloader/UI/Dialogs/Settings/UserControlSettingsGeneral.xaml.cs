@@ -19,6 +19,7 @@ namespace BandcampDownloader {
         /// </summary>
         public void CancelChanges() {
             LanguageHelper.ApplyLanguage(App.UserSettings.Language);
+            ThemeHelper.ApplySkin(App.UserSettings.Theme);
         }
 
         /// <summary>
@@ -38,6 +39,7 @@ namespace BandcampDownloader {
             checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             comboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+            comboBoxTheme.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
         }
 
         private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
@@ -65,6 +67,11 @@ namespace BandcampDownloader {
         private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             // Apply selected language
             LanguageHelper.ApplyLanguage((Language) comboBoxLanguage.SelectedValue);
+        }
+
+        private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // Apply selected theme
+            ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {

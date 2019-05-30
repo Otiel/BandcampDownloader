@@ -326,6 +326,9 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Alcune impostazioni non possono essere modificate durante lo scaricamento.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>_Numero traccia</value>
   </data>

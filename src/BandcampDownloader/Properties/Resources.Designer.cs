@@ -768,6 +768,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Theme.
+        /// </summary>
+        internal static string labelTheme {
+            get {
+                return ResourceManager.GetString("labelTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Track n_umber.
         /// </summary>
         internal static string labelTrackNumber {
@@ -966,6 +975,24 @@ namespace BandcampDownloader.Properties {
         internal static string saveFileDialogTitle {
             get {
                 return ResourceManager.GetString("saveFileDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark.
+        /// </summary>
+        internal static string Skin_Dark {
+            get {
+                return ResourceManager.GetString("Skin_Dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light.
+        /// </summary>
+        internal static string Skin_Light {
+            get {
+                return ResourceManager.GetString("Skin_Light", resourceCulture);
             }
         }
         

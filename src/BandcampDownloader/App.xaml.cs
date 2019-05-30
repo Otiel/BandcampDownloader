@@ -19,6 +19,7 @@ namespace BandcampDownloader {
             base.OnStartup(e);
             InitializeSettings();
             LanguageHelper.ApplyLanguage(UserSettings.Language);
+            ThemeHelper.ApplySkin(UserSettings.Theme);
         }
 
         /// <summary>

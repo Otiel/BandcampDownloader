@@ -356,6 +356,9 @@ Uncheck this option to save some time.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Some settings cannot be changed while tracks are downloading.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Theme</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Track n_umber</value>
   </data>
@@ -425,6 +428,12 @@ Would you like to go to the project website in order to download the latest vers
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Save as</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Light</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Do not modify</value>

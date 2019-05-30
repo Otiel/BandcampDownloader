@@ -151,6 +151,7 @@
     <Compile Include="Core\DownloadManager.cs" />
     <Compile Include="Core\LogArgs.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Helpers\BandcampHelper.cs" />
     <Compile Include="Helpers\MessageBoxManager.cs" />
@@ -221,6 +222,10 @@
     <Compile Include="UI\Dialogs\Settings\WindowSettings.xaml.cs">
       <DependentUpon>WindowSettings.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\Settings\UserControlSettingsAdvanced.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
