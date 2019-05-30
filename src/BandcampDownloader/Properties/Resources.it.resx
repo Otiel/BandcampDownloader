@@ -353,13 +353,6 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Ripristinare i valori predefiniti delle impostazioni?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>È disponibile una nuova versione:
-Versione attuale = {0}
-Ultima versione = {1}
-
-Desideri andare sul sito ufficiale per scaricare l'ultima versione?</value>
-  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Configurazione manuale dei proxy</value>
   </data>

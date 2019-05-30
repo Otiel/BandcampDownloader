@@ -410,13 +410,6 @@ Uncheck this option to save some time.</value>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Reset all settings to their default values?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>A new version is available:
-Current version = {0}
-Latest version = {1}
-
-Would you like to go to the project website in order to download the latest version?</value>
-  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manual proxy configuration</value>
   </data>

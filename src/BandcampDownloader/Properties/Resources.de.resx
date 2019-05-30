@@ -362,13 +362,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Alle Einstellungen zurücksetzen?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Eine neue Version ist verfügbar:
-Aktuelle Version = {0}
-Neueste Version = {1}
-
-Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
-  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manuelle Proxy-einstellungen</value>
   </data>

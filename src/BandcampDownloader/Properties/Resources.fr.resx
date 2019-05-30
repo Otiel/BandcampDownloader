@@ -410,13 +410,6 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Réinitialiser tous les paramètres à leur valeur par défaut ?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Une nouvelle version est disponible :
-Version actuelle = {0}
-Nouvelle version = {1}
-
-Voulez-vous aller sur le site web du projet afin de récupérer la dernière version ?</value>
-  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Proxy _manuel</value>
   </data>
