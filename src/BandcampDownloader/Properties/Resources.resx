@@ -229,7 +229,7 @@ If not, all albums are downloaded concurrently (better provided high bandwidth i
     <value>Retrieve file _size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Retrieves filesize to show precise progress.
+    <value>Retrieves file size to show precise progress.
 If not, some bandwidth/time is saved.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
@@ -371,7 +371,7 @@ If not, some bandwidth/time is saved.</value>
     <value>Could not check for updates</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>A new version is available</value>
+    <value>New version available</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
     <value>Website</value>
