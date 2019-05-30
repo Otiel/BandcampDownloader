@@ -32,7 +32,7 @@ See the [changelog](CHANGELOG.md).
 
 ## Contributing
 
-You can help translating the application by going to the [Weblate project](https://hosted.weblate.org/engage/bandcampdownloader).
+You can help translating the application by going to the [Weblate project](https://hosted.weblate.org/engage/bandcampdownloader). See [here](docs/help-translate.md) for more info.
 
 [![Translation status](https://hosted.weblate.org/widgets/bandcampdownloader/-/287x66-white.png)](https://hosted.weblate.org/engage/bandcampdownloader)
 
