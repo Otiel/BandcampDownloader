@@ -61,7 +61,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ....
+        ///   Looks up a localized string similar to ….
         /// </summary>
         internal static string buttonBrowse {
             get {
@@ -97,7 +97,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Download update.
+        ///   Looks up a localized string similar to _Download new version.
         /// </summary>
         internal static string buttonDownloadUpdate {
             get {
@@ -124,7 +124,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resets settings to their default values.
+        ///   Looks up a localized string similar to Reset settings to defaults.
         /// </summary>
         internal static string buttonResetSettings_ToolTip {
             get {
@@ -196,7 +196,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Convert to _jpg.
+        ///   Looks up a localized string similar to Convert to _JPG.
         /// </summary>
         internal static string checkBoxCoverArtInFolderConvertToJpg {
             get {
@@ -232,7 +232,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Convert to jp_g.
+        ///   Looks up a localized string similar to Convert to JP_G.
         /// </summary>
         internal static string checkBoxCoverArtInTagsConvertToJpg {
             get {
@@ -444,7 +444,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, more information will be shown on the log..
+        ///   Looks up a localized string similar to If checked, more information will be shown in the log..
         /// </summary>
         internal static string checkBoxVerboseLog_ToolTip {
             get {
