@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonBrowse" xml:space="preserve">
-    <value>...</value>
+    <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
     <value>Apri la cartella</value>
@@ -160,7 +160,7 @@
     <value>Se si spunta, l'applicazione cercherà il seguente indirizzo all'avvio:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Converti in _jpg</value>
+    <value>Converti in _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
@@ -172,7 +172,7 @@
     <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Converti in jp_g</value>
+    <value>Converti in JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonBrowse" xml:space="preserve">
-    <value>...</value>
+    <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
     <value>Parcourir</value>
@@ -130,7 +130,7 @@
     <value>Vérifier _maintenant</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Télécharger la mise à jour</value>
+    <value>_Télécharger la nouvelle version</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Paramètres</value>
@@ -163,7 +163,7 @@
     <value>L'application accèdera à l'adresse suivante en démarrant :</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Convertir en _jpg</value>
+    <value>Convertir en _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>La pochette sera convertie en jpg avec une compression jpeg égale à 90 (considéré comme un excellent compromis entre taille et qualité de l'image).</value>
@@ -175,7 +175,7 @@
     <value>La pochette sera redimensionnée pour ne pas être plus grande que la largeur / hauteur définie.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Convertir en jp_g</value>
+    <value>Convertir en JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>La pochette sera convertie en jpg avec une compression jpeg égale à 90 (considéré comme un excellent compromis entre taille et qualité de l'image).</value>

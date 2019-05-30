@@ -1,45 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -58,4 +58,226 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Avbryt</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Sjekk n_å</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Last ned oppdatering</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Innstillinger</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Åpne innstillinger</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Tilbakestill innstillinger til forvalg</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Lagre</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>Start _nedlasting</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Avbryt</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Vis</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Kunne ikke laste ned endringslogg fra {0}</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Konverter til _JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Konverter til JP_G</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Opprett _spilleliste for hvert album</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Spill av _merknadslyder</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Bruk _utvidet format (kun for M3U)</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Rediger sporetiketter (ID3)</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Last ned ett album om gangen</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Lagre i _mappe</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Lagre i _etiketter</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Vis _sirlig loggføring</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Album_navn</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artist</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Tilbakestill innstillinger</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Endringslogg</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Endringslogg</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Komm_entarer</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Fil_navnsformat</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Maksimal størrelse (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Maksimal størrelse (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Nåværende versjon:</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Lagre album _i</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_Filnavnsformat:</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Innrapporter en feil</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Språk</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Avanserte innstillinger</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Omslag</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Nedlastinger</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Generelt</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Nettverk</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Spilleliste</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Navgivning og etiketter</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Sangtekster</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Fil_navnsformat</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Spilleliste_format</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Noen innstillinger kan ikke endres under nedlasting av spor.</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Sporn_ummer</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Tittel</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(loggfilen er alltid sirlig)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versjon</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>En ny versjon er tilgjengelig</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Nettside</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Albumutgivelses_år</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>&amp;Avbryt</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>&amp;Nei</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>&amp;Ja</value>
+  </data>
+  <data name="messageBoxCancelDownloads" xml:space="preserve">
+    <value>Ønsker du å avbryte alle nedlastinger?</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Manuelt mellomtjeneroppsett</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Ingen mellomtjener</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>_Systemmellomtjener</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Lagre som</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Ikke endre</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Tom etikett</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Lagre i etikett</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Ikke endre</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Tom etikett</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Utgivelseshistorikk</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Hjelp til i oversettelsen</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Innstillinger</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Oppdater</value>
+  </data>
 </root>
