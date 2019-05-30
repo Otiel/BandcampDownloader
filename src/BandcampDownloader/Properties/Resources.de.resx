@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonBrowse" xml:space="preserve">
-    <value>...</value>
+    <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
     <value>Order aussuchen</value>
@@ -157,49 +157,49 @@
     <value>Beim start auf _updates prüfen</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Wenn ausgewählt wird die Anwendung beim Start diese URL abrufen:</value>
+    <value>Wenn ausgewählt, wird die Anwendung beim Start diese URL abrufen:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Zu _jpg umwandeln</value>
+    <value>Zu _JPG umwandeln</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Mittelwert zwischen Speicherbedarf und Qualität ist).</value>
+    <value>Wenn ausgewählt, wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Kompromiss zwischen Speicherbedarf und Qualität ist).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>_Maximale Breite/Höhe einschränken</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover auf die angegebene Größe skaliert.</value>
+    <value>Wenn ausgewählt, wird das Cover auf die angegebene Größe skaliert.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Cover zu jp_g umwandeln</value>
+    <value>Cover zu JP_G umwandeln</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Mittelwert zwischen Speicherbedarf und Qualität ist).</value>
+    <value>Wenn ausgewählt, wird das Cover zu jpeg mit einer Kompression von 90 umgewandelt (welche der perfekte Mittelwert zwischen Speicherbedarf und Qualität ist).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Max_imale Breite/Höhe einschränken</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover auf die angegebene Größe skaliert.</value>
+    <value>Wenn ausgewählt, wird das Cover auf die angegebene Größe skaliert.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>_Diskografie vom Artisten herunterladen</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird die gesamte Diskografie vom Artisten heruntergeladen.</value>
+    <value>Wenn ausgewählt, wird die gesamte Diskografie vom Artisten heruntergeladen.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>_Benachrichtigungen lautschalten</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird ein Benachrichtigungston nach erfolgreichem Download abgespielt.</value>
+    <value>Wenn ausgewählt, wird ein Benachrichtigungston nach erfolgreichem Download abgespielt.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_ID3 tags editieren</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt werden die ID3 tags nachträglich, wie unten beschrieben, modifiziert.
+    <value>Wenn ausgewählt, werden die ID3 tags nachträglich, wie unten beschrieben, modifiziert.
 
 Wenn nicht werden sie ignoriert und beim ursprünglichen Zustand beibehalten.
 Entspricht dem setzen von Nicht verändern bei jedem tag.</value>
@@ -208,33 +208,33 @@ Entspricht dem setzen von Nicht verändern bei jedem tag.</value>
     <value>Ein album auf einmal _Herunterladen</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird nur ein Album auf einmal heruntergeladen.
+    <value>Wenn ausgewählt, wird nur ein Album auf einmal heruntergeladen.
 Wenn nicht werden alle auf einmal heruntergeladen (Empfohlen wenn eine hohe bandbreite zur verfügung steht).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>_Dateigrößen vorkalkulieren vor dem Herunterladen</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt werden die Dateigrößen im vornherein abgerufen so dass eine genaue verbleibende Dauer berechnet werden kann.
+    <value>Wenn ausgewählt, werden die Dateigrößen im vornherein abgerufen so dass eine genaue verbleibende Dauer berechnet werden kann.
 Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>In _Ordner speichern</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover in den Album Ordner heruntergeladen.</value>
+    <value>Wenn ausgewählt, wird das Cover in den Album Ordner heruntergeladen.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>In _Tags speichern</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt wird das Cover in den tracks gespeichert.</value>
+    <value>Wenn ausgewählt, wird das Cover in den tracks gespeichert.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>Ausführliches _Log anzeigen</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Wenn ausgewählt werden mehr Informationen ausgegeben.</value>
+    <value>Wenn ausgewählt, werden mehr Informationen ausgegeben.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Ordner auswählen um</value>
@@ -471,5 +471,8 @@ seine alben herunterzuladen.</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Konnte Changelog nicht herunterladen von {0}</value>
   </data>
 </root>
