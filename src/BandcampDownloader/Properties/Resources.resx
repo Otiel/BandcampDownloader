@@ -293,7 +293,7 @@ If not, some bandwidth/time is saved.</value>
     <value>Current version:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Download _max tries</value>
+    <value>_Max download attempts</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>Retry c_ooldown (sec)</value>
@@ -392,10 +392,10 @@ If not, some bandwidth/time is saved.</value>
     <value>&amp;Yes</value>
   </data>
   <data name="messageBoxCancelDownloads" xml:space="preserve">
-    <value>Would you like to cancel all downloads?</value>
+    <value>Cancel all downloads?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>An error occured while checking for updates. Please retry later.</value>
+    <value>An error occurred while checking for updates. Please retry later.</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
     <value>There are currently active downloads. Are you sure you want to close the application and stop all downloads?</value>
