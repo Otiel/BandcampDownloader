@@ -3,6 +3,7 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
+    // List of languages with ISO language name, native name and codes https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
     public enum Language {
         [Description("English")]
         en,
