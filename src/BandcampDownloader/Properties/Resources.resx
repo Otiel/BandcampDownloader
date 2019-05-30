@@ -249,7 +249,7 @@ Uncheck this option to save some time.</value>
     <value>Show _verbose log</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Shows more info in the log.</value>
+    <value>If checked, more information will be shown in the log.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Select the folder to save albums</value>
