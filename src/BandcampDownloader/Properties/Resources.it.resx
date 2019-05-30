@@ -129,9 +129,6 @@
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Controlla _ora</value>
   </data>
-  <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Download update</value>
-  </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Impostazioni</value>
   </data>
@@ -149,9 +146,6 @@
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Annulla</value>
-  </data>
-  <data name="buttonViewChangelog" xml:space="preserve">
-    <value>_View</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>_Cerca aggiornamenti all'avvio</value>
@@ -260,9 +254,6 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelComments" xml:space="preserve">
     <value>Comm_enti</value>
   </data>
-  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
-  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Dimensione massima (_px)</value>
   </data>
@@ -308,26 +299,14 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelListBoxItemNetwork" xml:space="preserve">
     <value>Rete</value>
   </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
     <value>Rinomina e tag</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Testo can_zoni</value>
   </data>
-  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
-  </data>
-  <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>Playlist _format</value>
-  </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Alcune impostazioni non possono essere modificate durante lo scaricamento.</value>
-  </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>Theme</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>_Numero traccia</value>
@@ -338,17 +317,11 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(il file registro è sempre esteso)</value>
   </data>
-  <data name="labelVersion" xml:space="preserve">
-    <value>Version</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Non è possibile trovare aggiornamenti</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>È disponibile una nuova versione</value>
-  </data>
-  <data name="labelWebsite" xml:space="preserve">
-    <value>Website</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Anno _di rilascio album</value>
@@ -448,8 +421,5 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “�
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Impostazioni</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Update</value>
   </data>
 </root>
