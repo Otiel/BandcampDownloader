@@ -50,7 +50,9 @@ namespace BandcampDownloader {
         public void CancelDownloads() {
             _cancelDownloads = true;
             // Stop current downloads
-            _cancellationTokenSource.Cancel();
+            if (_cancellationTokenSource != null) {
+                _cancellationTokenSource.Cancel();
+            }
         }
 
         /// <summary>
