@@ -170,7 +170,7 @@ Değilse, tüm etiketler değişmez, her etiket için "Değiştirmeyin" ayarına
     <value>Başlık</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Yeni bir sürüm mevcut</value>
+    <value>Yeni sürüm mevcut</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>Dosya adını özelleştirmek için yer tutucuları kullanabilirsiniz:
@@ -183,7 +183,7 @@ Değilse, tüm etiketler değişmez, her etiket için "Değiştirmeyin" ayarına
 Bir parçanın indirilmesinin her başarısızlığından sonra, BandcampDownloader tekrar denemeden önce belirli bir süre bekleyebilir
 Bandcamp anti-spam filtresine takılmadan parçayı indirmek için.
 Bir indirme işlemini tekrar denemeden önce beklenecek süreyi hesaplamak için kullanılan formül:
-zaman = bekleme süresi * (üs ^ ^ deneme sayımı)
+zaman = bekleme süresi * (üs ^ ^ deneme sayısı)
 
 Önerilen değer = 0,2</value>
   </data>
@@ -204,7 +204,7 @@ Diskte zaten mevcut olsa bile parçaları her zaman indirmek için bu değeri 0 
     <value>Kapak resmi</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Parça indirmeden önce dosya boyutunu al</value>
+    <value>Parçaları indirmeden önce dosya boyutunu al</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Farklı kaydet</value>
@@ -270,7 +270,7 @@ Diskte zaten mevcut olsa bile parçaları her zaman indirmek için bu değeri 0 
     <value>Şu anda aktif indirme var. Uygulamayı kapatmak ve tüm indirmeleri durdurmak istediğinizden emin misiniz?</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Kesin ilerleme göstermek için dosya boyutunu alır.
+    <value>Kesin ilerlemeyi göstermek için dosya boyutunu alır.
 Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
@@ -286,7 +286,7 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
     <value>Sanatçı</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Genişletilmiş format kullan (yalnızca M3U için)</value>
+    <value>Genişletilmiş format kullan (yalnızca M3U)</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>Görünüm</value>
@@ -313,7 +313,7 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
     <value>Albümleri kaydetmek için klasör seçin</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>Zaten en son sürümü kullandınız ({0}).</value>
+    <value>Zaten en son sürümdesiniz ({0}).</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
     <value>Kaydet</value>
@@ -361,7 +361,7 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
     <value>Güncellemeler kontrol edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Kapak resmini \ "Albümler \" klasörüne yükler.</value>
+    <value>Kapak resmini Albümler klasörüne yükler.</value>
   </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
     <value>Adlandırma ve etiketler</value>
@@ -408,7 +408,7 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
     <value>Maksimum boyut (_px)</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>İndirmeyi başlat</value>
+    <value>İndir</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Bir seferde yalnızca bir albüm indirir.
@@ -419,7 +419,7 @@ Değilse, tüm albümler aynı anda indirilir (daha yüksek bant genişliği olm
 Bir parçanın indirilmesinin her başarısızlığından sonra, BandcampDownloader tekrar denemeden önce belirli bir süre bekleyebilir
 Bandcamp anti-spam filtresine takılmadan parçayı indirmek için.
 Bir indirme işlemini tekrar denemeden önce beklenecek süreyi hesaplamak için kullanılan formül:
-Zaman = bekleme süresi * (üs ^ ^ deneme sayımı)
+Zaman = bekleme süresi * (üs ^ ^ deneme sayısı)
 
 Önerilen değer = 4</value>
   </data>
@@ -433,7 +433,7 @@ Zaman = bekleme süresi * (üs ^ ^ deneme sayımı)
 - {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Boş etiket</value>
+    <value>Etiketi temizle</value>
   </data>
   <data name="labelChangelog" xml:space="preserve">
     <value>Değişiklikler</value>
