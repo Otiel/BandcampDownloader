@@ -232,7 +232,7 @@
             </StackPanel>
         </Button>
         <Grid
-            x:Name="dockPanelButtons"
+            x:Name="gridButtons"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
