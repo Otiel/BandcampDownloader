@@ -236,7 +236,7 @@ If not, some bandwidth/time is saved.</value>
     <value>Save in _folder</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Downloads cover art to the \"Albums\" folder.</value>
+    <value>Downloads cover art to the album folder.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Save in _tags</value>
