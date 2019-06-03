@@ -13,8 +13,6 @@ using System.Windows.Media;
 using System.Windows.Shell;
 using System.Windows.Threading;
 using NLog;
-using NLog.Config;
-using NLog.Targets;
 
 namespace BandcampDownloader {
 
@@ -44,7 +42,6 @@ namespace BandcampDownloader {
             // Save DataContext for bindings (must be called before initializing UI)
             DataContext = App.UserSettings;
 
-            InitializeLogger();
             InitializeComponent();
 
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
@@ -155,23 +152,6 @@ namespace BandcampDownloader {
 
         private void DownloadManager_LogAdded(object sender, LogArgs eventArgs) {
             Log(eventArgs.Message, eventArgs.LogType);
-        }
-
-        /// <summary>
-        /// Initializes the logger component.
-        /// </summary>
-        private void InitializeLogger() {
-            var fileTarget = new FileTarget() {
-                FileName = Constants.LogFilePath,
-                Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${message}",
-                ArchiveAboveSize = Constants.MaxLogSize,
-                MaxArchiveFiles = 1,
-            };
-
-            var config = new LoggingConfiguration();
-            config.AddRule(LogLevel.Trace, LogLevel.Fatal, fileTarget);
-
-            LogManager.Configuration = config;
         }
 
         private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e) {
