@@ -414,6 +414,12 @@ Uncheck this option to save some time.</value>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Reset all settings to their default values?</value>
   </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>An unhandled error occurred. The application will close now.
+
+Please open a new issue with the content of your log file on
+{0}</value>
+  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manual proxy configuration</value>
   </data>

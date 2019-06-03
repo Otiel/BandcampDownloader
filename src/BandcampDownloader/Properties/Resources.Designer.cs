@@ -940,6 +940,18 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unhandled error occurred. The application will close now.
+        ///
+        ///Please open a new issue with the content of your log file on
+        ///{0}.
+        /// </summary>
+        internal static string messageBoxUnhandledException {
+            get {
+                return ResourceManager.GetString("messageBoxUnhandledException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Manual proxy configuration.
         /// </summary>
         internal static string radioButtonManualProxy {

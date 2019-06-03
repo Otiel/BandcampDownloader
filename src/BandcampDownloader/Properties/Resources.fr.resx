@@ -414,6 +414,12 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Réinitialiser tous les paramètres à leur valeur par défaut ?</value>
   </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Une erreur est intervenue. L'application va maintenant se fermer.
+
+Merci d'ouvrir un nouveau problème avec le contenu de votre ficher log sur
+{0}</value>
+  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Proxy _manuel</value>
   </data>
