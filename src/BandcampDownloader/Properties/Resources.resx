@@ -160,99 +160,98 @@
     <value>Check for _updates at startup</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>If checked, the application will query the following address when starting:</value>
+    <value>Queries the following address when starting the app:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>Convert to _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection).</value>
+    <value>Converts cover art to JPG with a compression of 90 (excellent trade-off between size and quality).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>Constrain _maximum width/height</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>If checked, the cover art will be resized with the specified max width/height.</value>
+    <value>Resizes cover art to specified max width/height.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>Convert to JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection).</value>
+    <value>Converts cover art to JPG with a compression of 90 (excellent trade-off between size and quality).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Constrain m_aximum width/height</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>If checked, the cover art will be resized with the specified max width/height.</value>
+    <value>Resizes cover art to specified max width/height.</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
     <value>Create _playlist for each album</value>
   </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>If checked, a file containing the album tracks will be created for each downloaded album.</value>
+    <value>Creates an album track file for each downloaded album.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Download _artist discography</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>If checked, the whole artist discography will be downloaded.</value>
+    <value>Downloads the whole artist discography.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>Play _notifications sounds</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>If checked, a notification sound will be played when downloads are finished.</value>
+    <value>Notification sound for finished downloads.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Use _extended format (for M3U only)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists.</value>
+    <value>M3U playlists in extended format (directives prefaced by the # character).</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modify tracks tags (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>If checked, each tag will be modified as specified below.
+    <value>Modifies each tag as specified below.
 
-If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file.
-This is equivalent to setting "Do not modify" on each tag.</value>
+If not, all tags are unchanged, equivalent to setting "Do not modify" for each tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>_Download one album at a time</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>If checked, only one album at a time will be downloaded.
-If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth).</value>
+    <value>Downloads only one album at a time.
+If not, all albums are downloaded concurrently (better provided high bandwidth is available).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Retrieve files _size before downloading tracks</value>
+    <value>Retrieve file_size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>If checked, files size will be retrieved so that precise download progress can be shown.
-Uncheck this option to save some time.</value>
+    <value>Retrieves filesize to show precise progress.
+If not, some bandwidth/time is saved.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Save in _folder</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>If checked, the cover art will be downloaded in the albums folder.</value>
+    <value>Downloads cover art to the \"Albums\" folder.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Save in _tags</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>If checked, the cover art will be saved in the tracks tags.</value>
+    <value>Saves cover art in the track tags.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>Show _verbose log</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>If checked, more information will be shown in the log.</value>
+    <value>Shows more info in the log.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Select the folder to save albums</value>
+    <value>Select folder to save albums in</value>
   </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Change these settings at your own risk.</value>
@@ -282,7 +281,7 @@ Uncheck this option to save some time.</value>
     <value>Comm_ents</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
+    <value>File_name format</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Max size (_px)</value>
@@ -294,7 +293,7 @@ Uncheck this option to save some time.</value>
     <value>Current version:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Download _max tries</value>
+    <value>_Max download attempts</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>Retry c_ooldown (sec)</value>
@@ -306,7 +305,7 @@ Uncheck this option to save some time.</value>
     <value>Save albums _to</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_File name format:</value>
+    <value>_Filename format:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>_HTTP(S) proxy</value>
@@ -396,10 +395,10 @@ Uncheck this option to save some time.</value>
     <value>&amp;Yes</value>
   </data>
   <data name="messageBoxCancelDownloads" xml:space="preserve">
-    <value>Would you like to cancel all downloads?</value>
+    <value>Cancel all downloads?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>An error occured while checking for updates. Please retry later.</value>
+    <value>An error occurred while checking for updates. Please retry later.</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
     <value>There are currently active downloads. Are you sure you want to close the application and stop all downloads?</value>
