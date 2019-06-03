@@ -145,7 +145,7 @@
     <value>_Save</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>Start _download</value>
+    <value>_Download</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Cancel</value>
@@ -205,7 +205,7 @@
     <value>Notification sound for finished downloads.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Use _extended format (for M3U only)</value>
+    <value>Use _extended format (only for M3U)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>M3U playlists in extended format (directives prefaced by the # character).</value>
@@ -226,10 +226,10 @@ If not, all tags are unchanged, equivalent to setting "Do not modify" for each t
 If not, all albums are downloaded concurrently (better provided high bandwidth is available).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Retrieve file_size before downloading tracks</value>
+    <value>Retrieve file _size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Retrieves filesize to show precise progress.
+    <value>Retrieves file size to show precise progress.
 If not, some bandwidth/time is saved.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
@@ -374,7 +374,7 @@ If not, some bandwidth/time is saved.</value>
     <value>Could not check for updates</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>A new version is available</value>
+    <value>New version available</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
     <value>Website</value>
@@ -408,7 +408,7 @@ If not, some bandwidth/time is saved.</value>
 {0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>You already have the latest version available ({0}).</value>
+    <value>You already have the latest version ({0}).</value>
   </data>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Reset all settings to their default values?</value>
@@ -450,7 +450,7 @@ Please open a new issue with the content of your log file on
     <value>Do not modify</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Empty tag</value>
+    <value>Clear tag</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>Releases history</value>
@@ -482,7 +482,7 @@ Recommended value = 7</value>
 After each failure of a track download, BandcampDownloader can wait for a specific time before trying again
 to download the track in order to avoid tickling the Bandcamp anti-spam filter.
 The formula used to compute the time to wait before trying again a download is the following:
-time = cooldown * (exponent ^ try-count)
+time = cooldown * (exponent ^ attempt-count)
 
 Recommended value = 0.2</value>
   </data>
@@ -491,7 +491,7 @@ Recommended value = 0.2</value>
 After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
 to download the track in order to avoid tickling the Bandcamp anti-spam filter.
 The formula used to compute the time to wait before trying again a download is the following:
-time = cooldown * (exponent ^ try-count)
+time = cooldown * (exponent ^ attempt-count)
 
 Recommended value = 4</value>
   </data>
