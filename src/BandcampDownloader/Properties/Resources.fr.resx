@@ -375,7 +375,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>Impossible de vérifier les mises à jour</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Une nouvelle version est disponible</value>
+    <value>Nouvelle version disponible</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
     <value>Site web</value>
@@ -409,7 +409,7 @@ Décocher cette option permet de gagner du temps.</value>
 {0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>Vous avez déjà la dernière version disponible ({0}).</value>
+    <value>Vous avez déjà la dernière version ({0}).</value>
   </data>
   <data name="messageBoxResetSettings" xml:space="preserve">
     <value>Réinitialiser tous les paramètres à leur valeur par défaut ?</value>
