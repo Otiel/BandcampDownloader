@@ -16,6 +16,7 @@
     Closing="WindowMain_Closing"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     Loaded="WindowMain_Loaded"
+    TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterScreen"
     WindowStyle="SingleBorderWindow">
     <Window.TaskbarItemInfo>

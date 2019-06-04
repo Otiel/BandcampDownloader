@@ -16,6 +16,7 @@
     FocusManager.FocusedElement="{Binding ElementName=listBoxSections}"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
+    TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterOwner"
     WindowStyle="SingleBorderWindow"
     mc:Ignorable="d">

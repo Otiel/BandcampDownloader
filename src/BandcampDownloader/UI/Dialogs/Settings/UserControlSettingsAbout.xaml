@@ -41,7 +41,8 @@
             <Label
                 x:Name="labelAppName"
                 Content="Bandcamp Downloader"
-                FontSize="20" />
+                FontSize="20"
+                TextOptions.TextFormattingMode="Ideal" />
         </StackPanel>
         <Label
             x:Name="labelVersion"
