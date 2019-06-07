@@ -130,7 +130,7 @@
     <value>Controlla _ora</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Download update</value>
+    <value>_Scarica nuova versione</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Impostazioni</value>
@@ -157,78 +157,77 @@
     <value>_Cerca aggiornamenti all'avvio</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Se si spunta, l'applicazione cercherà il seguente indirizzo all'avvio:</value>
+    <value>L'applicazione cercherà il seguente indirizzo all'avvio dell'app:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>Converti in _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
+    <value>La copertina sarà convertita in JPG con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>Limita _larghezza/altezza massime</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
+    <value>La copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>Converti in JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
+    <value>La copertina sarà convertita in JPG con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Limita larg_hezza/altezza massime</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
+    <value>La copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Scarica _discografia</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Se si spunta, sarà scaricata l'intera discografia dell'artista.</value>
+    <value>Scarica l'intera discografia dell'artista.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>_Emetti suoni di notifica</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Se si spunta, partirà una notifica sonora ad ogni scaricamento finito.</value>
+    <value>Notifica sonora ad ogni scaricamento finito.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modifica i tag (ID3) delle tracce</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Se si spunta, ogni tag sarà modificato come specificato sotto.
+    <value>Modifica ogni tag come specificato sotto.
 
-Se non si spunta, tutte le impostazioni sotto saranno ignorate e i tag rimarranno come nel file scaricato.
-Ciò è uguale a scegliere "Non modificare" per ogni tag.</value>
+In caso contrario, i tag rimangono immutati, come se si impostasse “Non modificare” per ogni tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Scarica un album alla _volta</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Se si spunta, il programma scaricherà un album alla volta.
-Se non si spunta, tutti gli album saranno scaricati contemporaneamente (consigliato per connessioni a banda larga).</value>
+    <value>Scarica un album alla volta.
+Altrimenti tutti gli album saranno scaricati contemporaneamente (consigliato per connessioni a banda larga).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Ottieni dimensioni _dei file</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Se si spunta, saranno ottenute le dimensioni dei file cosí da aumentare la precisione della barra di progresso.
-Togli la spunta da quest'impostazione per risparmiare tempo.</value>
+    <value>Ottieni le dimensioni dei file cosí da aumentare la precisione della barra di progresso.
+Disabilitare questa opzione per risparmiare banda/tempo.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Salva nella _cartella</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà scaricata nella cartella dell'album.</value>
+    <value>La copertina sarà scaricata nella cartella dell'album.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Salva nei _tag</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà salvata nei tag della traccia.</value>
+    <value>La copertina sarà salvata nei tag della traccia.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>_Mostra registro informazioni esteso</value>
@@ -261,7 +260,7 @@ Togli la spunta da quest'impostazione per risparmiare tempo.</value>
     <value>Comm_enti</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
+    <value>Formato _nome file</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Dimensione massima (_px)</value>
@@ -448,5 +447,71 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “�
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Lo scaricamento delle versioni da {0} è fallito</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Crea una _playlist per ogni album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Crea un file singolo per ogni album scaricato.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Usa _formato esteso (solo M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Playlist M3U in formato esteso (con direttive precedute da #).</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Versioni</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Versioni</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Versione attuale:</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Segnala un bug</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Informazioni</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Salva con nome</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Non modificare</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Tag vuoto</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Salva nei tag</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Non modificare</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Pulisci tag</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Cronologia discografica</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Aiuto alla traduzione</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Puoi usare i segnaposto per personalizzare il nome dei file:
+- {artist} sarà rimpiazzato con l'artista dell'album
+- {album} sarà rimpiazzato col nome dell'album
+- {year}, {month} e {day} saranno rimpiazzati con la data di rilascio dell'album</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Puoi usare i segnaposto per personalizzare il nome dei file:
+- {artist} sarà rimpiazzato con l'artista dell'album
+- {album} sarà rimpiazzato col nome dell'album
+- {year}, {month} e {day} saranno rimpiazzati con la data di rilascio dell'album</value>
   </data>
 </root>
