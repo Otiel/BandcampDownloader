@@ -68,7 +68,7 @@
     <value>Sjekk n_å</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Last ned oppdatering</value>
+    <value>_Last ned ny versjon</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Innstillinger</value>
@@ -83,7 +83,7 @@
     <value>_Lagre</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>Start _nedlasting</value>
+    <value>_Last ned</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Avbryt</value>
@@ -218,7 +218,7 @@
     <value>Versjon</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>En ny versjon er tilgjengelig</value>
+    <value>Ny versjon er tilgjengelig</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
     <value>Nettside</value>
@@ -239,7 +239,7 @@
     <value>&amp;Ja</value>
   </data>
   <data name="messageBoxCancelDownloads" xml:space="preserve">
-    <value>Ønsker du å avbryte alle nedlastinger?</value>
+    <value>Avbryt alle nedlastinger?</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manuelt mellomtjeneroppsett</value>
@@ -266,7 +266,7 @@
     <value>Ikke endre</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Tom etikett</value>
+    <value>Tøm etikett</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>Utgivelseshistorikk</value>
@@ -279,5 +279,181 @@
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Oppdater</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Velg mappe</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Se etter _ny versjon ved oppstart</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Sender spørring til denne adressen når programmet startes:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Konverterer omslagsbilde til JPG, med sammenpakking på 90 (utmerket kompromiss mellom størrelse og kvalitet).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Begrens _maksimal bredde/høyde</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Endrer størrelse på angitt albumsbilde til angitt maks bredde/høyde.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Konverterer omslagsbilde til JPG, med sammenpakking på 90 (utmerket kompromiss mellom størrelse og kvalitet).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Begrens m_aksimal bredde/høyde</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Reduserer omslagsbilde til angitt maks bredde/høyde.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Oppretter en fil med albumssporene for hvert nedlastede album.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Last ned _artistdiskografi</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Laster ned hele artistdiskografien.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Merknadslyd for fullførte nedlastinger.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>M3U-spillelister i utvidet format (mapper anført av #-tegnet).</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Endrer hver etikett som angitt nedenfor.
+
+Hvis ikke, vil alle etiketter forbli uendret, tilsvarende "Ikke endre" for hver etikett.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Laster ned kun ett album av gangen.
+Hvis ikke, vil alle album lastes ned samtidig (som er bedre, gitt at høy båndbredde forefinnes)</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Hent fil_størrelse før nedlasting av spor</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Henter filstørrelsen for å vise nøyaktig framdrift.
+Uten dette kan man spare litt båndbredde/tid.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Laster ned omslagsbilde til albummappen.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Lagre omslagsbilde i sporetikettene.</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Viser mer info i loggen</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Velg mappen å lagre album i</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Endring av disse innstillingene foregår på egen risiko.</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Albumsart_ist</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Tillat fil_størrelsesforskjell (%)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maks antall nedlastingsforsøk</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Prøv på _ny om (sek)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Gjentagelses_eksponent</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S)-mellomtjener</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Kunne ikke se etter nye oppdateringer</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Feil under oppdateringssjekk. Prøv igjen senere.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+    <value>Det blir lastet ned i øyeblikket, vil du lukke programmet og stoppe alle nedlastinger?</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Du har allerede seneste versjon({0}).</value>
+  </data>
+  <data name="messageBoxResetSettings" xml:space="preserve">
+    <value>Tilbakestill alle verdier til forvalg?</value>
+  </data>
+  <data name="messageBoxUpdateAvailable" xml:space="preserve">
+    <value>En ny versjon er tilgjengelig:
+Nåværende versjon = {0}
+Siste versjon = {1}
+
+Ønsker du å gå til prosjektnettsiden for å laste ned seneste versjon?</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Sjekker om det finnes noe ved samme filnavn under nedlasting.
+Hvis størrelsen på begge filer er prosentvis forskjellig, (i prosent), vil ikke sporet bli lastet ned.
+Verdien 0 laster alltid ned spor, selv om de allerede finnes nedlastet.
+
+Anbefalt verdi = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Du kan bruke plassholdere til å tilpasse filnavnet:
+- {artist} erstattes av albumsartisten
+- {album} erstattes av albumsnavnet
+- {year}, {month} og {day} erstattes av albumsutgivelsesdatoen</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Maksimalt antall forsøk på å laste ned et spor.
+Forsøker dette for hvert spor, til neste spor blir forsøkt.
+
+Anbefalt verdi = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Brukes for å kontrollere eksponensiell avholdenhetsmekanisme:
+Etter hver gang et spor mislykkes, kan BandcampDownloader vente en gitt tid før et nytt forsøk
+på å laste ned sporet, for å unngå å møte Bandcamp sitt anti-spam-filter.
+Formelen brukt for å regne ut ventetiden igjen på nedlasting er som følger:
+tid = ventetid * (eksponent ^ forsøksantall)
+
+Anbefalt verdi = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Brukes for å kontrollere eksponensiell avholdenhetsmekanisme:
+Etter hver gang et spor mislykkes, kan BandcampDownloader vente en gitt tid før et nytt forsøk
+på å laste ned sporet, for å unngå å møte Bandcamp sitt anti-spam-filter.
+Formelen brukt for å regne ut ventetiden igjen på nedlasting er som følger:
+tid = ventetid * (eksponent ^ forsøksantall)
+
+Anbefalt verdi = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Du kan bruke plassholdere for å tilpasse nedlastingsmappen, avhengig av album:
+- {artist} erstattes av albumsartisten
+- {album} erstattes av albumsnavnet
+- {year}, {month} og {day} erstattes av albumsutgivelsesdatoen</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Du kan bruke plassholdere til å tilpasse filnavnet:
+- {artist} erstattes av albumsartisten
+- {title} erstattes av spornavnet
+- {tracknum} erstattes av spornummeret
+- {album} erstattes av albumsnavnet
+- {year}, {month} og {day} erstattes av albumsutgivelsesdatoen</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Du kan bruke plassholdere for å tilpasse filnavnet:
+- {artist} erstattes av albumsartisten
+- {album} erstattes av albumnavn
+- {year}, {month} og {day} erstattes av albumsutgivelsesdatoen</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Lim inn nettadresser for album som skal lastes ned her. Du kan angi flerfoldige nettadresser ved å skrive én per linje.
+
+En Bandcamp-nettadresse ser slik ut: https://[artist].bandcamp.com/album/[album] eller https://[artist].bandcamp.com/track/[track]
+Lim inn artistsider: https://[artist].bandcamp.com og velg "☑ Last ned artistdiskografi" for å laste ned alle albumene deres.</value>
   </data>
 </root>

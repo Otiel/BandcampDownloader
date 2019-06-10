@@ -151,78 +151,77 @@
     <value>_Cerca aggiornamenti all'avvio</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Se si spunta, l'applicazione cercherà il seguente indirizzo all'avvio:</value>
+    <value>L'applicazione cercherà il seguente indirizzo all'avvio dell'app:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>Converti in _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
+    <value>La copertina sarà convertita in JPG con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>Limita _larghezza/altezza massime</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
+    <value>La copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>Converti in JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà convertita in jpg con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
+    <value>La copertina sarà convertita in JPG con una compressione di livello 90 (ottimo compromesso fra dimensione e qualità).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Limita larg_hezza/altezza massime</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
+    <value>La copertina sarà ridimensionata con larghezza/altezza massime specificate.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Scarica _discografia</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Se si spunta, sarà scaricata l'intera discografia dell'artista.</value>
+    <value>Scarica l'intera discografia dell'artista.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>_Emetti suoni di notifica</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Se si spunta, partirà una notifica sonora ad ogni scaricamento finito.</value>
+    <value>Notifica sonora ad ogni scaricamento finito.</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modifica i tag (ID3) delle tracce</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Se si spunta, ogni tag sarà modificato come specificato sotto.
+    <value>Modifica ogni tag come specificato sotto.
 
-Se non si spunta, tutte le impostazioni sotto saranno ignorate e i tag rimarranno come nel file scaricato.
-Ciò è uguale a scegliere "Non modificare" per ogni tag.</value>
+In caso contrario, i tag rimangono immutati, come se si impostasse “Non modificare” per ogni tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Scarica un album alla _volta</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Se si spunta, il programma scaricherà un album alla volta.
-Se non si spunta, tutti gli album saranno scaricati contemporaneamente (consigliato per connessioni a banda larga).</value>
+    <value>Scarica un album alla volta.
+Altrimenti tutti gli album saranno scaricati contemporaneamente (consigliato per connessioni a banda larga).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Ottieni dimensioni _dei file</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Se si spunta, saranno ottenute le dimensioni dei file cosí da aumentare la precisione della barra di progresso.
-Togli la spunta da quest'impostazione per risparmiare tempo.</value>
+    <value>Ottieni le dimensioni dei file cosí da aumentare la precisione della barra di progresso.
+Disabilitare questa opzione per risparmiare banda/tempo.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Salva nella _cartella</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà scaricata nella cartella dell'album.</value>
+    <value>La copertina sarà scaricata nella cartella dell'album.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Salva nei _tag</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Se si spunta, la copertina sarà salvata nei tag della traccia.</value>
+    <value>La copertina sarà salvata nei tag della traccia.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>_Mostra registro informazioni esteso</value>
