@@ -17,6 +17,12 @@ namespace BandcampDownloader {
         nb_NO,
         [Description("Polish (język polski)")]
         pl,
+        [Description("Spanish (Español)")]
+        es,
+        [Description("Turkish (Türkçe)")]
+        tr,
+        [Description("Ukrainian (Українська)")]
+        uk,
     }
 
     public enum PlaylistFormat {

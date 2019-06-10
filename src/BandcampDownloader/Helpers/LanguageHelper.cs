@@ -25,6 +25,8 @@ namespace BandcampDownloader {
                     return new CultureInfo("en");
                 case Language.de:
                     return new CultureInfo("de");
+                case Language.es:
+                    return new CultureInfo("es");
                 case Language.fr:
                     return new CultureInfo("fr");
                 case Language.it:
@@ -33,6 +35,10 @@ namespace BandcampDownloader {
                     return new CultureInfo("nb-NO");
                 case Language.pl:
                     return new CultureInfo("pl");
+                case Language.tr:
+                    return new CultureInfo("tr");
+                case Language.uk:
+                    return new CultureInfo("uk");
                 default:
                     throw new NotImplementedException();
             }
