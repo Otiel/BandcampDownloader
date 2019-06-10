@@ -37,7 +37,7 @@ namespace BandcampDownloader {
                 Title = "Bandcamp Downloader",
             };
 
-            if (WpfMessageBox.Show(ref msgProperties) == MessageBoxResult.OK) {
+            if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK) {
                 ResetSettings();
             }
         }

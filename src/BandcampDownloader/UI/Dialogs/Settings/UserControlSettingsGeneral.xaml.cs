@@ -55,7 +55,7 @@ namespace BandcampDownloader {
                     Text = Properties.Resources.messageBoxCheckForUpdatesError,
                     Title = "Bandcamp Downloader",
                 };
-                WpfMessageBox.Show(ref msgProperties);
+                WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
 
                 return;
             }
@@ -76,7 +76,7 @@ namespace BandcampDownloader {
                     Text = String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion),
                     Title = "Bandcamp Downloader",
                 };
-                WpfMessageBox.Show(ref msgProperties);
+                WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
             }
         }
 

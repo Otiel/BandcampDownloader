@@ -129,7 +129,7 @@ namespace BandcampDownloader {
                 Title = "Bandcamp Downloader",
             };
 
-            if (WpfMessageBox.Show(ref msgProperties) != MessageBoxResult.Yes) {
+            if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes) {
                 return;
             }
 
@@ -356,7 +356,7 @@ namespace BandcampDownloader {
                     Title = "Bandcamp Downloader",
                 };
 
-                if (WpfMessageBox.Show(ref msgProperties) == MessageBoxResult.Cancel) {
+                if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
                 }
