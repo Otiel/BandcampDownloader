@@ -335,13 +335,6 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>¿Restaurar la configuración a sus valores por defecto?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Una nueva versión está disponible:
-Versión actual = {0}
-Última versión = {1}
-
-¿Quieres ir al sitio web del proyecto para descargar la última versión?</value>
-  </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Configuración _manual del proxy</value>
   </data>

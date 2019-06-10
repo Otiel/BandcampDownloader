@@ -386,13 +386,6 @@ Uten dette kan man spare litt båndbredde/tid.</value>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Tilbakestill alle verdier til forvalg?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>En ny versjon er tilgjengelig:
-Nåværende versjon = {0}
-Siste versjon = {1}
-
-Ønsker du å gå til prosjektnettsiden for å laste ned seneste versjon?</value>
-  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Sjekker om det finnes noe ved samme filnavn under nedlasting.
 Hvis størrelsen på begge filer er prosentvis forskjellig, (i prosent), vil ikke sporet bli lastet ned.

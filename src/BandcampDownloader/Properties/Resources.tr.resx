@@ -58,13 +58,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Yeni bir sürüm var:
-Geçerli sürüm = {0}
-En son sürüm = {1}
-
-En son sürümü indirmek için proje web sitesine gitmek ister misiniz?</value>
-  </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
     <value>Kapak resmini parça etiketlerine kaydeder.</value>
   </data>
