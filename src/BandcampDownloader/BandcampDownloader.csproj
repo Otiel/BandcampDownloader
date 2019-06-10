@@ -157,7 +157,6 @@
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Helpers\BandcampHelper.cs" />
-    <Compile Include="Helpers\MessageBoxManager.cs" />
     <Compile Include="Core\PlaylistCreator.cs" />
     <Compile Include="Helpers\ProxyHelper.cs" />
     <Compile Include="Model\Album.cs" />

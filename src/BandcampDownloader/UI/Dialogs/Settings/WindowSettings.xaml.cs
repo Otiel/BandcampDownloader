@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using Config.Net;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -27,7 +28,16 @@ namespace BandcampDownloader {
         }
 
         private void ButtonResetSettings_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show(Properties.Resources.messageBoxResetSettings, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes) {
+            var msgProperties = new WpfMessageBoxProperties() {
+                Button = MessageBoxButton.OKCancel,
+                ButtonOkText = Properties.Resources.messageBoxResetSettingsButtonOk,
+                ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+                Image = MessageBoxImage.Question,
+                Text = Properties.Resources.messageBoxResetSettingsText,
+                Title = "Bandcamp Downloader",
+            };
+
+            if (WpfMessageBox.Show(ref msgProperties) == MessageBoxResult.OK) {
                 ResetSettings();
             }
         }

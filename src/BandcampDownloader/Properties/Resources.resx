@@ -383,24 +383,27 @@ If not, some bandwidth/time is saved.</value>
     <value>Album release _year</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Cancel</value>
+    <value>_Cancel</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;No</value>
+    <value>_No</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Yes</value>
+    <value>_Yes</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Cancel all downloads?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>An error occurred while checking for updates. Please retry later.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Close application</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>There are currently active downloads. Are you sure you want to close the application and stop all downloads?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
@@ -410,7 +413,10 @@ If not, some bandwidth/time is saved.</value>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>You already have the latest version ({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Reset settings</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Reset all settings to their default values?</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">

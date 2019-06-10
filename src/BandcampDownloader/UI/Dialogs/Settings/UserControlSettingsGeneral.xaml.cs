@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -47,7 +48,15 @@ namespace BandcampDownloader {
             try {
                 latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
-                MessageBox.Show(Properties.Resources.messageBoxCheckForUpdatesError, "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OK,
+                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                    Image = MessageBoxImage.Error,
+                    Text = Properties.Resources.messageBoxCheckForUpdatesError,
+                    Title = "Bandcamp Downloader",
+                };
+                WpfMessageBox.Show(ref msgProperties);
+
                 return;
             }
 
@@ -60,7 +69,14 @@ namespace BandcampDownloader {
                 };
                 windowUpdate.Show();
             } else {
-                MessageBox.Show(string.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OK,
+                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                    Image = MessageBoxImage.Information,
+                    Text = String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion),
+                    Title = "Bandcamp Downloader",
+                };
+                WpfMessageBox.Show(ref msgProperties);
             }
         }
 

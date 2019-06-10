@@ -336,30 +336,30 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Album _Veröffentlichungsjahr</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Abbrechen</value>
+    <value>_Abbrechen</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;Nein</value>
+    <value>_Nein</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Ja</value>
+    <value>_Ja</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Alle downloads abbrechen?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Während nach updates gesucht wurde ist ein Fehler aufgetreten, versuchen sie es später erneut.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Zurzeit sind Downloads aktiv. Wollen sie die Anwendung wirklich schließen und diese abbrechen?</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Das Programm ist auf dem neusten stand ({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Alle Einstellungen zurücksetzen?</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">

@@ -848,7 +848,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Cancel.
+        ///   Looks up a localized string similar to _Cancel.
         /// </summary>
         internal static string messageBoxButtonCancel {
             get {
@@ -857,7 +857,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;No.
+        ///   Looks up a localized string similar to _No.
         /// </summary>
         internal static string messageBoxButtonNo {
             get {
@@ -866,7 +866,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;OK.
+        ///   Looks up a localized string similar to _OK.
         /// </summary>
         internal static string messageBoxButtonOK {
             get {
@@ -875,7 +875,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Yes.
+        ///   Looks up a localized string similar to _Yes.
         /// </summary>
         internal static string messageBoxButtonYes {
             get {
@@ -886,9 +886,9 @@ namespace BandcampDownloader.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cancel all downloads?.
         /// </summary>
-        internal static string messageBoxCancelDownloads {
+        internal static string messageBoxCancelDownloadsText {
             get {
-                return ResourceManager.GetString("messageBoxCancelDownloads", resourceCulture);
+                return ResourceManager.GetString("messageBoxCancelDownloadsText", resourceCulture);
             }
         }
         
@@ -902,11 +902,20 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Close application.
+        /// </summary>
+        internal static string messageBoxCloseWindowWhenDownloadingButtonOk {
+            get {
+                return ResourceManager.GetString("messageBoxCloseWindowWhenDownloadingButtonOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are currently active downloads. Are you sure you want to close the application and stop all downloads?.
         /// </summary>
-        internal static string messageBoxCloseWindowWhenDownloading {
+        internal static string messageBoxCloseWindowWhenDownloadingText {
             get {
-                return ResourceManager.GetString("messageBoxCloseWindowWhenDownloading", resourceCulture);
+                return ResourceManager.GetString("messageBoxCloseWindowWhenDownloadingText", resourceCulture);
             }
         }
         
@@ -930,11 +939,20 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Reset settings.
+        /// </summary>
+        internal static string messageBoxResetSettingsButtonOk {
+            get {
+                return ResourceManager.GetString("messageBoxResetSettingsButtonOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset all settings to their default values?.
         /// </summary>
-        internal static string messageBoxResetSettings {
+        internal static string messageBoxResetSettingsText {
             get {
-                return ResourceManager.GetString("messageBoxResetSettings", resourceCulture);
+                return ResourceManager.GetString("messageBoxResetSettingsText", resourceCulture);
             }
         }
         

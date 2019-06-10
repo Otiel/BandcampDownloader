@@ -263,10 +263,10 @@ Diskte zaten mevcut olsa bile parçaları her zaman indirmek için bu değeri 0 
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
     <value>Maksimum boyut (p_x)</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Tüm indirmeler iptal edilsin mi?</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Şu anda aktif indirme var. Uygulamayı kapatmak ve tüm indirmeleri durdurmak istediğinizden emin misiniz?</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
@@ -294,7 +294,7 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(günlük dosyası her zaman ayrıntılıdır)</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Tüm ayarlar varsayılan değerlerine sıfırlansın mı?</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">

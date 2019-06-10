@@ -13,14 +13,6 @@ namespace BandcampDownloader {
         public static void ApplyLanguage(Language language) {
             // Apply language
             LocalizeDictionary.Instance.Culture = GetCultureInfo(language);
-
-            // Set system MessageBox buttons
-            MessageBoxManager.Unregister();
-            MessageBoxManager.OK = Properties.Resources.messageBoxButtonOK;
-            MessageBoxManager.Cancel = Properties.Resources.messageBoxButtonCancel;
-            MessageBoxManager.Yes = Properties.Resources.messageBoxButtonYes;
-            MessageBoxManager.No = Properties.Resources.messageBoxButtonNo;
-            MessageBoxManager.Register();
         }
 
         /// <summary>

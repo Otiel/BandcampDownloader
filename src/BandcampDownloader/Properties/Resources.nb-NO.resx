@@ -227,18 +227,18 @@
     <value>Albumutgivelses_år</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Avbryt</value>
+    <value>_Avbryt</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;Nei</value>
+    <value>_Nei</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Ja</value>
+    <value>_Ja</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Avbryt alle nedlastinger?</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
@@ -377,13 +377,13 @@ Uten dette kan man spare litt båndbredde/tid.</value>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Feil under oppdateringssjekk. Prøv igjen senere.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Det blir lastet ned i øyeblikket, vil du lukke programmet og stoppe alle nedlastinger?</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Du har allerede seneste versjon({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Tilbakestill alle verdier til forvalg?</value>
   </data>
   <data name="messageBoxUpdateAvailable" xml:space="preserve">

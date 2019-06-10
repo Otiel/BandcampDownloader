@@ -4,6 +4,7 @@ using Config.Net;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -33,7 +34,15 @@ namespace BandcampDownloader {
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
             LogExceptionToFile((Exception) e.ExceptionObject);
 
-            MessageBox.Show(string.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            var msgProperties = new WpfMessageBoxProperties() {
+                Button = MessageBoxButton.OK,
+                ButtonOkText = BandcampDownloader.Properties.Resources.messageBoxButtonOK,
+                Image = MessageBoxImage.Error,
+                Text = String.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues),
+                Title = "Bandcamp Downloader",
+            };
+            WpfMessageBox.Show(ref msgProperties);
         }
 
         /// <summary>

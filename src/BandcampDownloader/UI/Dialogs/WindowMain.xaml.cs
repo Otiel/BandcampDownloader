@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Shell;
 using System.Windows.Threading;
 using NLog;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -119,7 +120,16 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+            var msgProperties = new WpfMessageBoxProperties() {
+                Button = MessageBoxButton.YesNo,
+                ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+                ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                Image = MessageBoxImage.Question,
+                Text = Properties.Resources.messageBoxCancelDownloadsText,
+                Title = "Bandcamp Downloader",
+            };
+
+            if (WpfMessageBox.Show(ref msgProperties) != MessageBoxResult.Yes) {
                 return;
             }
 
@@ -337,7 +347,16 @@ namespace BandcampDownloader {
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
             if (_activeDownloads) {
                 // There are active downloads, ask for confirmation
-                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OKCancel,
+                    ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+                    ButtonOkText = Properties.Resources.messageBoxCloseWindowWhenDownloadingButtonOk,
+                    Image = MessageBoxImage.Warning,
+                    Text = Properties.Resources.messageBoxCloseWindowWhenDownloadingText,
+                    Title = "Bandcamp Downloader",
+                };
+
+                if (WpfMessageBox.Show(ref msgProperties) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
                 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -48,7 +49,14 @@ namespace BandcampDownloader {
                 Process.Start(url);
             } catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified") {
                 // Probably a relative link like "/docs/help-translate.md"
-                MessageBox.Show(String.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OK,
+                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                    Image = MessageBoxImage.Error,
+                    Text = String.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
+                    Title = "Bandcamp Downloader",
+                };
+                WpfMessageBox.Show(ref msgProperties);
             }
         }
     }
