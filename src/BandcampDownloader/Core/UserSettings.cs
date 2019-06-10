@@ -16,7 +16,7 @@ namespace BandcampDownloader {
         [Description("Norsk Bokmål (Norwegian Bokmål)")]
         nb_NO,
         [Description("język polski (Polish)")]
-        pl
+        pl,
     }
 
     public enum PlaylistFormat {
@@ -27,7 +27,7 @@ namespace BandcampDownloader {
         [Description("WPL (Windows Media Player)")]
         wpl,
         [Description("ZPL (Zune Media Player)")]
-        zpl
+        zpl,
     }
 
     public enum ProxyType {
@@ -40,7 +40,7 @@ namespace BandcampDownloader {
         [Description("Dark")]
         Dark,
         [Description("Light")]
-        Light
+        Light,
     }
 
     public enum TagEditAction {
@@ -49,14 +49,14 @@ namespace BandcampDownloader {
         [Description("Save in tag")]
         Modify,
         [Description("Do not modify")]
-        DoNotModify
+        DoNotModify,
     }
 
     public enum TagRemoveAction {
         [Description("Empty tag")]
         Empty,
         [Description("Do not modify")]
-        DoNotModify
+        DoNotModify,
     }
 
     public interface IUserSettings {
