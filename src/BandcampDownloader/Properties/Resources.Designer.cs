@@ -142,7 +142,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start _download.
+        ///   Looks up a localized string similar to _Download.
         /// </summary>
         internal static string buttonStart {
             get {
@@ -187,7 +187,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the application will query the following address when starting:.
+        ///   Looks up a localized string similar to Queries the following address when starting the app:.
         /// </summary>
         internal static string checkBoxCheckForUpdates_ToolTip_Part {
             get {
@@ -205,7 +205,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)..
+        ///   Looks up a localized string similar to Converts cover art to JPG with a compression of 90 (excellent trade-off between size and quality)..
         /// </summary>
         internal static string checkBoxCoverArtInFolderConvertToJpg_ToolTip {
             get {
@@ -223,7 +223,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the cover art will be resized with the specified max width/height..
+        ///   Looks up a localized string similar to Resizes cover art to specified max width/height..
         /// </summary>
         internal static string checkBoxCoverArtInFolderResize_ToolTip {
             get {
@@ -241,7 +241,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the cover art will be converted to jpg with a jpeg compression of 90 (which is an excellent tradeoff between size and perfection)..
+        ///   Looks up a localized string similar to Converts cover art to JPG with a compression of 90 (excellent trade-off between size and quality)..
         /// </summary>
         internal static string checkBoxCoverArtInTagsConvertToJpg_ToolTip {
             get {
@@ -259,7 +259,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the cover art will be resized with the specified max width/height..
+        ///   Looks up a localized string similar to Resizes cover art to specified max width/height..
         /// </summary>
         internal static string checkBoxCoverArtInTagsResize_ToolTip {
             get {
@@ -277,7 +277,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, a file containing the album tracks will be created for each downloaded album..
+        ///   Looks up a localized string similar to Creates an album track file for each downloaded album..
         /// </summary>
         internal static string checkBoxCreatePlaylist_ToolTip {
             get {
@@ -295,7 +295,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the whole artist discography will be downloaded..
+        ///   Looks up a localized string similar to Downloads the whole artist discography..
         /// </summary>
         internal static string checkBoxDownloadDiscography_ToolTip {
             get {
@@ -313,7 +313,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, a notification sound will be played when downloads are finished..
+        ///   Looks up a localized string similar to Notification sound for finished downloads..
         /// </summary>
         internal static string checkBoxEnableApplicationSounds_ToolTip {
             get {
@@ -322,7 +322,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use _extended format (for M3U only).
+        ///   Looks up a localized string similar to Use _extended format (only for M3U).
         /// </summary>
         internal static string checkBoxM3uExtended {
             get {
@@ -331,7 +331,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the extended format (directives prefaced by the # character) will be used when creating M3U playlists..
+        ///   Looks up a localized string similar to M3U playlists in extended format (directives prefaced by the # character)..
         /// </summary>
         internal static string checkBoxM3uExtended_ToolTip {
             get {
@@ -349,10 +349,9 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, each tag will be modified as specified below.
+        ///   Looks up a localized string similar to Modifies each tag as specified below.
         ///
-        ///If unchecked, all settings below will be ignored and the tags will be left as they are in the original downloaded file.
-        ///This is equivalent to setting &quot;Do not modify&quot; on each tag..
+        ///If not, all tags are unchanged, equivalent to setting &quot;Do not modify&quot; for each tag..
         /// </summary>
         internal static string checkBoxModifyTags_ToolTip {
             get {
@@ -370,8 +369,8 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, only one album at a time will be downloaded.
-        ///If unchecked, all albums will be downloaded at the same time (preferred if you have a high bandwidth)..
+        ///   Looks up a localized string similar to Downloads only one album at a time.
+        ///If not, all albums are downloaded concurrently (better provided high bandwidth is available)..
         /// </summary>
         internal static string checkBoxOneAlbumAtATime_ToolTip {
             get {
@@ -380,7 +379,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieve files _size before downloading tracks.
+        ///   Looks up a localized string similar to Retrieve file _size before downloading tracks.
         /// </summary>
         internal static string checkBoxRetrieveFilesSize {
             get {
@@ -389,8 +388,8 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, files size will be retrieved so that precise download progress can be shown.
-        ///Uncheck this option to save some time..
+        ///   Looks up a localized string similar to Retrieves file size to show precise progress.
+        ///If not, some bandwidth/time is saved..
         /// </summary>
         internal static string checkBoxRetrieveFilesSize_ToolTip {
             get {
@@ -408,7 +407,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the cover art will be downloaded in the albums folder..
+        ///   Looks up a localized string similar to Downloads cover art to the album folder..
         /// </summary>
         internal static string checkBoxSaveCoverArtInFolder_ToolTip {
             get {
@@ -426,7 +425,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, the cover art will be saved in the tracks tags..
+        ///   Looks up a localized string similar to Saves cover art in the track tags..
         /// </summary>
         internal static string checkBoxSaveCoverArtInTags_ToolTip {
             get {
@@ -444,7 +443,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If checked, more information will be shown in the log..
+        ///   Looks up a localized string similar to Shows more info in the log..
         /// </summary>
         internal static string checkBoxVerboseLog_ToolTip {
             get {
@@ -453,7 +452,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the folder to save albums.
+        ///   Looks up a localized string similar to Select folder to save albums in.
         /// </summary>
         internal static string folderBrowserDialogDescription {
             get {
@@ -543,7 +542,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File _name format.
+        ///   Looks up a localized string similar to File_name format.
         /// </summary>
         internal static string labelCoverArtFileNameFormat {
             get {
@@ -579,7 +578,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download _max tries.
+        ///   Looks up a localized string similar to _Max download attempts.
         /// </summary>
         internal static string labelDownloadMaxTries {
             get {
@@ -615,7 +614,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _File name format:.
+        ///   Looks up a localized string similar to _Filename format:.
         /// </summary>
         internal static string labelFileNameFormat {
             get {
@@ -822,7 +821,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new version is available.
+        ///   Looks up a localized string similar to New version available.
         /// </summary>
         internal static string labelVersionNewUpdateAvailable {
             get {
@@ -885,7 +884,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Would you like to cancel all downloads?.
+        ///   Looks up a localized string similar to Cancel all downloads?.
         /// </summary>
         internal static string messageBoxCancelDownloads {
             get {
@@ -894,7 +893,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An error occured while checking for updates. Please retry later..
+        ///   Looks up a localized string similar to An error occurred while checking for updates. Please retry later..
         /// </summary>
         internal static string messageBoxCheckForUpdatesError {
             get {
@@ -922,7 +921,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You already have the latest version available ({0})..
+        ///   Looks up a localized string similar to You already have the latest version ({0})..
         /// </summary>
         internal static string messageBoxNoUpdateAvailable {
             get {
@@ -1042,7 +1041,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Empty tag.
+        ///   Looks up a localized string similar to Clear tag.
         /// </summary>
         internal static string TagRemoveAction_Empty {
             get {
@@ -1110,7 +1109,7 @@ namespace BandcampDownloader.Properties {
         ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again
         ///to download the track in order to avoid tickling the Bandcamp anti-spam filter.
         ///The formula used to compute the time to wait before trying again a download is the following:
-        ///time = cooldown * (exponent ^ try-count)
+        ///time = cooldown * (exponent ^ attempt-count)
         ///
         ///Recommended value = 0.2.
         /// </summary>
@@ -1125,7 +1124,7 @@ namespace BandcampDownloader.Properties {
         ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
         ///to download the track in order to avoid tickling the Bandcamp anti-spam filter.
         ///The formula used to compute the time to wait before trying again a download is the following:
-        ///time = cooldown * (exponent ^ try-count)
+        ///time = cooldown * (exponent ^ attempt-count)
         ///
         ///Recommended value = 4.
         /// </summary>
