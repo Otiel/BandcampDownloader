@@ -45,10 +45,6 @@ namespace BandcampDownloader {
 
             InitializeComponent();
 
-            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
-            ServicePointManager.DefaultConnectionLimit = 50;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
 #if DEBUG
             textBoxUrls.Text = ""
                 //+ "https://projectmooncircle.bandcamp.com" /* Lots of albums (124) */ + Environment.NewLine
