@@ -226,6 +226,9 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return false;
+                    } catch (WebException) {
+                        // Connection closed probably because no response from Bandcamp
+                        // Do nothing because DownloadFileCompleted is still called thus the error is managed in the event
                     }
                 }
             } while (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries);
@@ -326,6 +329,9 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return null;
+                    } catch (WebException) {
+                        // Connection closed probably because no response from Bandcamp
+                        // Do nothing because DownloadFileCompleted is still called thus the error is managed in the event
                     }
                 }
             } while (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries);
