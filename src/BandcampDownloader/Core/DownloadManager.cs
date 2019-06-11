@@ -13,6 +13,10 @@ namespace BandcampDownloader {
 
     internal class DownloadManager {
         /// <summary>
+        /// Object used to lock on to prevent cancellation race condition.
+        /// </summary>
+        private readonly object _cancellationLock = new object();
+        /// <summary>
         /// The URLs to download.
         /// </summary>
         private readonly string _urls;
@@ -52,10 +56,12 @@ namespace BandcampDownloader {
         /// Cancels all downloads.
         /// </summary>
         public void CancelDownloads() {
-            _cancelDownloads = true;
-            // Stop current downloads
-            if (_cancellationTokenSource != null) {
-                _cancellationTokenSource.Cancel();
+            lock (_cancellationLock) {
+                _cancelDownloads = true;
+                // Stop current downloads
+                if (_cancellationTokenSource != null) {
+                    _cancellationTokenSource.Cancel();
+                }
             }
         }
 
@@ -86,7 +92,12 @@ namespace BandcampDownloader {
                 throw new Exception("Must call FetchUrls before calling StartDownloadsAsync");
             }
 
-            _cancellationTokenSource = new CancellationTokenSource();
+            lock (_cancellationLock) {
+                if (_cancelDownloads) {
+                    return;
+                }
+                _cancellationTokenSource = new CancellationTokenSource();
+            }
 
             // Start downloading albums
             if (App.UserSettings.DownloadOneAlbumAtATime) {
