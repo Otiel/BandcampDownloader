@@ -170,6 +170,11 @@ namespace BandcampDownloader {
             }
 
             do {
+                if (_cancelDownloads) {
+                    // Abort
+                    return false;
+                }
+
                 using (var webClient = new WebClient()) {
                     ProxyHelper.SetProxy(webClient);
 
@@ -247,6 +252,11 @@ namespace BandcampDownloader {
             TrackFile currentFile = DownloadingFiles.Where(f => f.Url == album.ArtworkUrl).First();
 
             do {
+                if (_cancelDownloads) {
+                    // Abort
+                    return null;
+                }
+
                 using (var webClient = new WebClient()) {
                     ProxyHelper.SetProxy(webClient);
 
