@@ -106,6 +106,7 @@ namespace BandcampDownloader {
             _activeDownloads = false;
             _lastTotalReceivedBytes = 0;
             UpdateControlsState(false);
+            Mouse.OverrideCursor = null;
 
             if (App.UserSettings.EnableApplicationSounds) {
                 // Play a sound
@@ -126,10 +127,12 @@ namespace BandcampDownloader {
                 Title = "Bandcamp Downloader",
             };
 
-            if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes) {
+            if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes || !_activeDownloads) {
+                // If user cancelled the cancellation or if downloads finished while he choosed to cancel
                 return;
             }
 
+            Mouse.OverrideCursor = Cursors.Wait;
             _userCancelled = true;
             buttonStop.IsEnabled = false;
 
