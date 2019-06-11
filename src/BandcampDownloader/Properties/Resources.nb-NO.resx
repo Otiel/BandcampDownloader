@@ -65,7 +65,7 @@
     <value>_Avbryt</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Sjekk n_å</value>
+    <value>Sjekk _nå</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
     <value>_Last ned ny versjon</value>
@@ -113,7 +113,7 @@
     <value>_Rediger sporetiketter (ID3)</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Last ned ett album om gangen</value>
+    <value>Last _ned ett album om gangen</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Lagre i _mappe</value>
@@ -122,13 +122,13 @@
     <value>Lagre i _etiketter</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Vis _sirlig loggføring</value>
+    <value>Vis sirlig _loggføring</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
     <value>Album_navn</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
-    <value>_Artist</value>
+    <value>Art_ist</value>
   </data>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Tilbakestill innstillinger</value>
@@ -155,7 +155,7 @@
     <value>Nåværende versjon:</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Lagre album _i</value>
+    <value>La_gre album i</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
     <value>_Filnavnsformat:</value>
@@ -209,7 +209,7 @@
     <value>Sporn_ummer</value>
   </data>
   <data name="labelTrackTitle" xml:space="preserve">
-    <value>_Tittel</value>
+    <value>Titte_l</value>
   </data>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(loggfilen er alltid sirlig)</value>
@@ -224,7 +224,7 @@
     <value>Nettside</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>Albumutgivelses_år</value>
+    <value>Albumut_givelsesår</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
     <value>_Avbryt</value>
@@ -284,7 +284,7 @@
     <value>Velg mappe</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Se etter _ny versjon ved oppstart</value>
+    <value>Se etter ny _versjon ved oppstart</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>Sender spørring til denne adressen når programmet startes:</value>
@@ -293,7 +293,7 @@
     <value>Konverterer omslagsbilde til JPG, med sammenpakking på 90 (utmerket kompromiss mellom størrelse og kvalitet).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>Begrens _maksimal bredde/høyde</value>
+    <value>Begrens ma_ksimal bredde/høyde</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
     <value>Endrer størrelse på angitt albumsbilde til angitt maks bredde/høyde.</value>
@@ -302,7 +302,7 @@
     <value>Konverterer omslagsbilde til JPG, med sammenpakking på 90 (utmerket kompromiss mellom størrelse og kvalitet).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Begrens m_aksimal bredde/høyde</value>
+    <value>Begrens mak_simal bredde/høyde</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Reduserer omslagsbilde til angitt maks bredde/høyde.</value>
@@ -311,7 +311,7 @@
     <value>Oppretter en fil med albumssporene for hvert nedlastede album.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Last ned _artistdiskografi</value>
+    <value>Last ned artist_diskografi</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
     <value>Laster ned hele artistdiskografien.</value>
@@ -354,7 +354,7 @@ Uten dette kan man spare litt båndbredde/tid.</value>
     <value>Endring av disse innstillingene foregår på egen risiko.</value>
   </data>
   <data name="labelAlbumArtist" xml:space="preserve">
-    <value>Albumsart_ist</value>
+    <value>Albu_msartist</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
     <value>Tillat fil_størrelsesforskjell (%)</value>

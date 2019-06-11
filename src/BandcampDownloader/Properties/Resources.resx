@@ -226,7 +226,7 @@ If not, all tags are unchanged, equivalent to setting "Do not modify" for each t
 If not, all albums are downloaded concurrently (better provided high bandwidth is available).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Retrieve file _size before downloading tracks</value>
+    <value>Retrieve _file size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>Retrieves file size to show precise progress.
@@ -263,7 +263,7 @@ If not, some bandwidth/time is saved.</value>
     <value>Album _name</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Allowed file _size difference (%)</value>
+    <value>Allowed file size _difference (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>_Artist</value>
@@ -347,7 +347,7 @@ If not, some bandwidth/time is saved.</value>
     <value>_Lyrics</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
+    <value>File_name format</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>Playlist _format</value>
@@ -432,7 +432,7 @@ Please open a new issue with the content of your log file on
     <value>_No proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_System proxy</value>
+    <value>S_ystem proxy</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Save as</value>

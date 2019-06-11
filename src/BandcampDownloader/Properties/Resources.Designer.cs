@@ -379,7 +379,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Retrieve file _size before downloading tracks.
+        ///   Looks up a localized string similar to Retrieve _file size before downloading tracks.
         /// </summary>
         internal static string checkBoxRetrieveFilesSize {
             get {
@@ -488,7 +488,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allowed file _size difference (%).
+        ///   Looks up a localized string similar to Allowed file size _difference (%).
         /// </summary>
         internal static string labelAllowedFileSizeDifference {
             get {
@@ -740,7 +740,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File _name format.
+        ///   Looks up a localized string similar to File_name format.
         /// </summary>
         internal static string labelPlaylistFileNameFormat {
             get {
@@ -987,7 +987,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _System proxy.
+        ///   Looks up a localized string similar to S_ystem proxy.
         /// </summary>
         internal static string radioButtonSystemProxy {
             get {
