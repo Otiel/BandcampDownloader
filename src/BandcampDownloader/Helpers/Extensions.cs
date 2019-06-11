@@ -23,6 +23,9 @@ namespace BandcampDownloader {
                 throw new ArgumentNullException(nameof(fileName));
             }
 
+            // Rules are defined here: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+
+            // Replace reserved characters by '_'
             fileName = fileName.Replace("\\", "_");
             fileName = fileName.Replace("/", "_");
             fileName = fileName.Replace(":", "_");
@@ -32,7 +35,11 @@ namespace BandcampDownloader {
             fileName = fileName.Replace("<", "_");
             fileName = fileName.Replace(">", "_");
             fileName = fileName.Replace("|", "_");
+
+            // Replace newline by '_'
             fileName = fileName.Replace(Environment.NewLine, "_");
+
+            // Replace whitespace(s) by ' '
             fileName = Regex.Replace(fileName, @"\s+", " ");
 
             return fileName;
