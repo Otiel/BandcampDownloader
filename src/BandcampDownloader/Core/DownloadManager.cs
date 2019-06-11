@@ -178,61 +178,55 @@ namespace BandcampDownloader {
                         currentFile.BytesReceived = e.BytesReceived;
                     };
 
-                    // Warn & tag when downloaded
-                    webClient.DownloadFileCompleted += async (s, e) => {
-                        if (!e.Cancelled && e.Error == null) {
-                            trackDownloaded = true;
-
-                            if (App.UserSettings.ModifyTags) {
-                                // Tag (ID3) the file when downloaded
-                                var tagFile = TagLib.File.Create(track.Path);
-                                tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
-                                tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
-                                tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbumTitle);
-                                tagFile = TagHelper.UpdateAlbumYear(tagFile, (uint) album.ReleaseDate.Year, App.UserSettings.TagYear);
-                                tagFile = TagHelper.UpdateTrackNumber(tagFile, (uint) track.Number, App.UserSettings.TagTrackNumber);
-                                tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, App.UserSettings.TagTrackTitle);
-                                tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
-                                tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
-                                tagFile.Save();
-                            }
-
-                            if (App.UserSettings.SaveCoverArtInTags && artwork != null) {
-                                // Save cover in tags when downloaded
-                                var tagFile = TagLib.File.Create(track.Path);
-                                tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
-                                tagFile.Save();
-                            }
-
-                            // Note the file as downloaded
-                            currentFile.Downloaded = true;
-                            LogAdded(this, new LogArgs($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess));
-                        } else if (!e.Cancelled && e.Error != null) {
-                            if (tries + 1 < App.UserSettings.DownloadMaxTries) {
-                                LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
-                            } else {
-                                LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
-                            }
-                        } // Else the download has been cancelled (by the user)
-
-                        tries++;
-                        if (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries) {
-                            await WaitForCooldownAsync(tries);
-                        }
-                    };
-
                     // Register current download
                     _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
                     // Start download
                     try {
                         await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
+                        trackDownloaded = true;
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return false;
                     } catch (WebException) {
                         // Connection closed probably because no response from Bandcamp
-                        // Do nothing because DownloadFileCompleted is still called thus the error is managed in the event
+                        if (tries + 1 < App.UserSettings.DownloadMaxTries) {
+                            LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                        } else {
+                            LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
+                        }
+                    }
+
+                    if (trackDownloaded) {
+                        if (App.UserSettings.ModifyTags) {
+                            // Tag (ID3) the file when downloaded
+                            var tagFile = TagLib.File.Create(track.Path);
+                            tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
+                            tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
+                            tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbumTitle);
+                            tagFile = TagHelper.UpdateAlbumYear(tagFile, (uint) album.ReleaseDate.Year, App.UserSettings.TagYear);
+                            tagFile = TagHelper.UpdateTrackNumber(tagFile, (uint) track.Number, App.UserSettings.TagTrackNumber);
+                            tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, App.UserSettings.TagTrackTitle);
+                            tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
+                            tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
+                            tagFile.Save();
+                        }
+
+                        if (App.UserSettings.SaveCoverArtInTags && artwork != null) {
+                            // Save cover in tags when downloaded
+                            var tagFile = TagLib.File.Create(track.Path);
+                            tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
+                            tagFile.Save();
+                        }
+
+                        // Note the file as downloaded
+                        currentFile.Downloaded = true;
+                        LogAdded(this, new LogArgs($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess));
+                    }
+
+                    tries++;
+                    if (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries) {
+                        await WaitForCooldownAsync(tries);
                     }
                 }
             } while (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries);
@@ -261,81 +255,75 @@ namespace BandcampDownloader {
                         currentFile.BytesReceived = e.BytesReceived;
                     };
 
-                    // Warn when downloaded
-                    webClient.DownloadFileCompleted += async (s, e) => {
-                        if (!e.Cancelled && e.Error == null) {
-                            artworkDownloaded = true;
-
-                            // Convert/resize artwork to be saved in album folder
-                            if (App.UserSettings.SaveCoverArtInFolder && (App.UserSettings.CoverArtInFolderConvertToJpg || App.UserSettings.CoverArtInFolderResize)) {
-                                var settings = new ResizeSettings();
-                                if (App.UserSettings.CoverArtInFolderConvertToJpg) {
-                                    settings.Format = "jpg";
-                                    settings.Quality = 90;
-                                }
-                                if (App.UserSettings.CoverArtInFolderResize) {
-                                    settings.MaxHeight = App.UserSettings.CoverArtInFolderMaxSize;
-                                    settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
-                                }
-
-                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
-                            } else if (App.UserSettings.SaveCoverArtInFolder) {
-                                File.Copy(album.ArtworkTempPath, album.ArtworkPath, true);
-                            }
-
-                            // Convert/resize artwork to be saved in tags
-                            if (App.UserSettings.SaveCoverArtInTags && (App.UserSettings.CoverArtInTagsConvertToJpg || App.UserSettings.CoverArtInTagsResize)) {
-                                var settings = new ResizeSettings();
-                                if (App.UserSettings.CoverArtInTagsConvertToJpg) {
-                                    settings.Format = "jpg";
-                                    settings.Quality = 90;
-                                }
-                                if (App.UserSettings.CoverArtInTagsResize) {
-                                    settings.MaxHeight = App.UserSettings.CoverArtInTagsMaxSize;
-                                    settings.MaxWidth = App.UserSettings.CoverArtInTagsMaxSize;
-                                }
-
-                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
-                            }
-                            artworkInTags = new TagLib.Picture(album.ArtworkTempPath) {
-                                Description = "Picture"
-                            };
-
-                            try {
-                                File.Delete(album.ArtworkTempPath);
-                            } catch {
-                                // Could not delete the file. Nevermind, it's in %Temp% folder...
-                            }
-
-                            // Note the file as downloaded
-                            currentFile.Downloaded = true;
-                            LogAdded(this, new LogArgs($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess));
-                        } else if (!e.Cancelled && e.Error != null) {
-                            if (tries < App.UserSettings.DownloadMaxTries) {
-                                LogAdded(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
-                            } else {
-                                LogAdded(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
-                            }
-                        } // Else the download has been cancelled (by the user)
-
-                        tries++;
-                        if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
-                            await WaitForCooldownAsync(tries);
-                        }
-                    };
-
                     // Register current download
                     _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
                     // Start download
                     try {
                         await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
+                        artworkDownloaded = true;
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return null;
                     } catch (WebException) {
                         // Connection closed probably because no response from Bandcamp
-                        // Do nothing because DownloadFileCompleted is still called thus the error is managed in the event
+                        if (tries < App.UserSettings.DownloadMaxTries) {
+                            LogAdded(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                        } else {
+                            LogAdded(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
+                        }
+                    }
+
+                    if (artworkDownloaded) {
+                        // Convert/resize artwork to be saved in album folder
+                        if (App.UserSettings.SaveCoverArtInFolder && (App.UserSettings.CoverArtInFolderConvertToJpg || App.UserSettings.CoverArtInFolderResize)) {
+                            var settings = new ResizeSettings();
+                            if (App.UserSettings.CoverArtInFolderConvertToJpg) {
+                                settings.Format = "jpg";
+                                settings.Quality = 90;
+                            }
+                            if (App.UserSettings.CoverArtInFolderResize) {
+                                settings.MaxHeight = App.UserSettings.CoverArtInFolderMaxSize;
+                                settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
+                            }
+
+                            ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
+                        } else if (App.UserSettings.SaveCoverArtInFolder) {
+                            File.Copy(album.ArtworkTempPath, album.ArtworkPath, true);
+                        }
+
+                        // Convert/resize artwork to be saved in tags
+                        if (App.UserSettings.SaveCoverArtInTags && (App.UserSettings.CoverArtInTagsConvertToJpg || App.UserSettings.CoverArtInTagsResize)) {
+                            var settings = new ResizeSettings();
+                            if (App.UserSettings.CoverArtInTagsConvertToJpg) {
+                                settings.Format = "jpg";
+                                settings.Quality = 90;
+                            }
+                            if (App.UserSettings.CoverArtInTagsResize) {
+                                settings.MaxHeight = App.UserSettings.CoverArtInTagsMaxSize;
+                                settings.MaxWidth = App.UserSettings.CoverArtInTagsMaxSize;
+                            }
+
+                            ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
+                        }
+                        artworkInTags = new TagLib.Picture(album.ArtworkTempPath) {
+                            Description = "Picture"
+                        };
+
+                        try {
+                            File.Delete(album.ArtworkTempPath);
+                        } catch {
+                            // Could not delete the file. Nevermind, it's in %Temp% folder...
+                        }
+
+                        // Note the file as downloaded
+                        currentFile.Downloaded = true;
+                        LogAdded(this, new LogArgs($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess));
+                    }
+
+                    tries++;
+                    if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries) {
+                        await WaitForCooldownAsync(tries);
                     }
                 }
             } while (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries);
