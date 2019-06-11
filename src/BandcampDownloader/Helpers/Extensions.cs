@@ -45,6 +45,9 @@ namespace BandcampDownloader {
             // Remove trailing whitespace(s)
             fileName = Regex.Replace(fileName, @"\s+$", "");
 
+            // Remove trailing dot(s)
+            fileName = Regex.Replace(fileName, @"\.+$", "");
+
             return fileName;
         }
 
