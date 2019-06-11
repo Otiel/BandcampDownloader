@@ -20,7 +20,7 @@ namespace BandcampDownloader {
         /// </summary>
         public static string ToAllowedFileName(this string fileName) {
             if (fileName == null) {
-                throw new ArgumentNullException("fileName");
+                throw new ArgumentNullException(nameof(fileName));
             }
 
             fileName = fileName.Replace("\\", "_");
