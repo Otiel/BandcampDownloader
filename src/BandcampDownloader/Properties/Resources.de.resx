@@ -534,4 +534,7 @@ Bitte erstelle eine neue Fehlermeldung mit dem Inhalt Ihrer Protokolldatei unter
   <data name="Skin_Light" xml:space="preserve">
     <value>Hell</value>
   </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Benutze _erweitertes Format  (nur für M3U)</value>
+  </data>
 </root>
