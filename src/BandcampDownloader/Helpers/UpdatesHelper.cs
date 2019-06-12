@@ -19,7 +19,7 @@ namespace BandcampDownloader {
             try {
                 using (WebResponse response = await request.GetResponseAsync()) {
                     redirectPage = ((HttpWebResponse) response).GetResponseHeader("Location");
-                    // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X.X"
+                    // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X"
                 }
             } catch {
                 throw new CouldNotCheckForUpdatesException();
@@ -28,7 +28,7 @@ namespace BandcampDownloader {
             // Extract the version number from the URL
             string latestVersionNumber;
             try {
-                latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X.X
+                latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X
             } catch {
                 throw new CouldNotCheckForUpdatesException();
             }
