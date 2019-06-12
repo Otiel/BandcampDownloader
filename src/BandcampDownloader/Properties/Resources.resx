@@ -447,7 +447,7 @@ Please open a new issue with the content of your log file on
     <value>Do not modify</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Empty tag</value>
+    <value>Clear tag</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Save in tag</value>
