@@ -32,8 +32,7 @@ namespace BandcampDownloader {
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
-            LogExceptionToFile((Exception) e.ExceptionObject);
-
+            LogExceptionAndInnerExceptionsToFile((Exception) e.ExceptionObject);
 
             var msgProperties = new WpfMessageBoxProperties() {
                 Button = MessageBoxButton.OK,
@@ -71,6 +70,18 @@ namespace BandcampDownloader {
             if (string.IsNullOrEmpty(UserSettings.DownloadsPath)) {
                 // Its default value cannot be set in settings as it isn't determined by a constant function
                 App.UserSettings.DownloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified Exception and all its InnerException to the application log file.
+        /// </summary>
+        /// <param name="exception">The Exception to log.</param>
+        private void LogExceptionAndInnerExceptionsToFile(Exception exception) {
+            LogExceptionToFile(exception);
+
+            if (exception.InnerException != null) {
+                LogExceptionAndInnerExceptionsToFile(exception.InnerException);
             }
         }
 
