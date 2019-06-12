@@ -209,7 +209,7 @@ Entspricht dem setzen von Nicht verändern bei jedem tag.</value>
 Wenn nicht werden alle auf einmal heruntergeladen (Empfohlen wenn eine hohe bandbreite zur verfügung steht).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>_Dateigrößen vorkalkulieren vor dem Herunterladen</value>
+    <value>_Abrufen vorkalkulieren vor dem Herunterladen</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>Wenn ausgewählt, werden die Dateigrößen im vornherein abgerufen so dass eine genaue verbleibende Dauer berechnet werden kann.
@@ -536,5 +536,8 @@ Bitte erstelle eine neue Fehlermeldung mit dem Inhalt Ihrer Protokolldatei unter
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Benutze _erweitertes Format  (nur für M3U)</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Download der neuen Version</value>
   </data>
 </root>
