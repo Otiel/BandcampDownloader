@@ -1,3 +1,24 @@
+# 1.0.0
+
+## New features
+
+* Added dark theme.
+* Added / updated the following languages (some incomplete) thanks to contributors: English, German, Italian, Norwegian Bokmål, Polish, Spanish, Turkish, Ukrainian.
+
+## Improvements
+
+* Moved to [semver](https://semver.org) for versioning.
+* Save crash data to the log file.
+* Minor UI improvements.
+
+## Bug fixes
+
+* Fixed the crash occurring when an album name ends with a dot. [#102](https://github.com/Otiel/BandcampDownloader/issues/102)
+* Fixed the crash occurring when the Bandcamp anti-spam mechanism was triggered. [#104](https://github.com/Otiel/BandcampDownloader/issues/104)
+* Fixed the crash occurring when the user hit Cancel right after starting downloads.
+* Fixed the crash occurring when clicking on a relative hyperlink on the changelog.
+* Fixed a bug preventing downloads from being cancelled in some conditions.
+
 # 0.2.10.0
 
 ## New features
