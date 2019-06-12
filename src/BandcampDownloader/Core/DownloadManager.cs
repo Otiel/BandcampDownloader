@@ -382,7 +382,13 @@ namespace BandcampDownloader {
 
                 // Get info on album
                 try {
-                    albums.Add(BandcampHelper.GetAlbum(htmlCode));
+                    var album = BandcampHelper.GetAlbum(htmlCode);
+
+                    if (album.Tracks.Count > 0) {
+                        albums.Add(album);
+                    } else {
+                        LogAdded(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Info));
+                    }
                 } catch {
                     LogAdded(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
                     continue;
