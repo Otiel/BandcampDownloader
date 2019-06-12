@@ -444,4 +444,94 @@ seine alben herunterzuladen.</value>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Ansehen</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Erstelle _playlist für jedes Album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Erstellt eine Albumtiteldatei für jedes heruntergeladene Album.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>M3U-Wiedergabelisten im erweiterten Format (Anweisungen, denen das Zeichen # vorangestellt ist).</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Änderungsprotokoll</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Änderungsprotokoll</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Aktuelle Version:</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Bug melden</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Playlist</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Playlist _format</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Webseite</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Speichern als</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Versionsgeschichte</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Sie können Platzhalter verwenden, um den Dateinamen anzupassen:
+
+- {artist} wird durch den Albuminterpreten ersetzt
+
+- {album} wird durch den Albumnamen ersetzt
+
+- {Jahr}, {Monat} und {Tag} werden durch das Veröffentlichungsdatum des Albums ersetzt</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Sie können Platzhalter verwenden, um den Dateinamen anzupassen:
+
+- {artist} wird durch den Albuminterpreten ersetzt
+
+- {album} wird durch den Albumnamen ersetzt
+
+- {Jahr}, {Monat} und {Tag} werden durch das Veröffentlichungsdatum des Albums ersetzt</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Aktualisierung</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Aussehen</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Anwendung schließen</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Konnte folgenden LInk nicht öffnen: {0}</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Einstellungen zurücksetzen</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Ein nicht behandelter Fehler ist aufgetreten. Die Anwendung wird jetzt geschlossen.
+
+Bitte erstelle eine neue Fehlermeldung mit dem Inhalt Ihrer Protokolldatei unter
+{0}</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
 </root>
