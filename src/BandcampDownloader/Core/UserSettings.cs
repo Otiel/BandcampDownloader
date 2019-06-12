@@ -3,15 +3,26 @@ using Config.Net;
 
 namespace BandcampDownloader {
 
+    // List of languages with ISO language name, native name and codes https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
     public enum Language {
         [Description("English")]
         en,
-        [Description("Deutsch (German)")]
-        de,
-        [Description("Français (French)")]
+        [Description("French (Français)")]
         fr,
-        [Description("Italiano (Italian)")]
-        it
+        [Description("German (Deutsch)")]
+        de,
+        [Description("Italian (Italiano)")]
+        it,
+        [Description("Norwegian Bokmål (Norsk Bokmål)")]
+        nb_NO,
+        [Description("Polish (język polski)")]
+        pl,
+        [Description("Spanish (Español)")]
+        es,
+        [Description("Turkish (Türkçe)")]
+        tr,
+        [Description("Ukrainian (Українська)")]
+        uk,
     }
 
     public enum PlaylistFormat {
@@ -22,7 +33,7 @@ namespace BandcampDownloader {
         [Description("WPL (Windows Media Player)")]
         wpl,
         [Description("ZPL (Zune Media Player)")]
-        zpl
+        zpl,
     }
 
     public enum ProxyType {
@@ -31,20 +42,27 @@ namespace BandcampDownloader {
         Manual,
     }
 
+    public enum Skin {
+        [Description("Dark")]
+        Dark,
+        [Description("Light")]
+        Light,
+    }
+
     public enum TagEditAction {
         [Description("Empty tag")]
         Empty,
         [Description("Save in tag")]
         Modify,
         [Description("Do not modify")]
-        DoNotModify
+        DoNotModify,
     }
 
     public enum TagRemoveAction {
         [Description("Empty tag")]
         Empty,
         [Description("Do not modify")]
-        DoNotModify
+        DoNotModify,
     }
 
     public interface IUserSettings {
@@ -164,5 +182,8 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = TagEditAction.Modify)]
         TagEditAction TagYear { get; set; }
+
+        [Option(DefaultValue = Skin.Light)]
+        Skin Theme { get; set; }
     }
 }

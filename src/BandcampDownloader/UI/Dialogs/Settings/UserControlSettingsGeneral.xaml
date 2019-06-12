@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControlSettingsGeneral"
     Width="410"
-    Height="120"
+    Height="150"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -16,6 +16,7 @@
     mc:Ignorable="d">
     <Grid x:Name="gridMain">
         <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
@@ -105,6 +106,7 @@
                 ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:Language}}}"
                 SelectedValue="{Binding Language, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
+                SelectionChanged="ComboBoxLanguage_SelectionChanged"
                 TabIndex="4" />
             <TextBlock
                 Grid.Column="2"
@@ -112,12 +114,36 @@
                 VerticalAlignment="Center">
                 <Hyperlink
                     x:Name="hyperlinkTranslationHelp"
+                    KeyboardNavigation.TabIndex="5"
                     NavigateUri="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
                     ToolTip="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}">
                     <TextBlock x:Name="textBlockTranslationHelp" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>
+        </Grid>
+        <Grid x:Name="gridTheme" Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label
+                x:Name="labelTheme"
+                Grid.Column="0"
+                Content="{lex:Loc}"
+                Target="{Binding ElementName=comboBoxTheme}" />
+            <lex:EnumComboBox
+                x:Name="comboBoxTheme"
+                Grid.Row="0"
+                Grid.Column="1"
+                Width="150"
+                Height="22"
+                HorizontalAlignment="Left"
+                PrependType="True"
+                SelectedItem="{Binding Theme, UpdateSourceTrigger=Explicit}"
+                SelectionChanged="ComboBoxTheme_SelectionChanged"
+                TabIndex="6"
+                Type="{x:Type local:Skin}" />
         </Grid>
     </Grid>
 </UserControl>

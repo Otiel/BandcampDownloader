@@ -129,9 +129,6 @@
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>_Jetzt suchen</value>
   </data>
-  <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Download update</value>
-  </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Einstellungen</value>
   </data>
@@ -150,8 +147,8 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Abbrechen</value>
   </data>
-  <data name="buttonViewChangelog" xml:space="preserve">
-    <value>_View</value>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Konnte Changelog nicht herunterladen von {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Beim start auf _updates prüfen</value>
@@ -308,9 +305,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelListBoxItemNetwork" xml:space="preserve">
     <value>Netzwerk</value>
   </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
     <value>Benennungen und Tags</value>
   </data>
@@ -319,9 +313,6 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
     <value>_Dateiname format</value>
-  </data>
-  <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>Playlist _format</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Einige Einstellungen können nicht übernommen werden wärend ein Download stattfindet.</value>
@@ -335,54 +326,41 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(Die Logdatei ist immer ausführlich)</value>
   </data>
-  <data name="labelVersion" xml:space="preserve">
-    <value>Version</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Konnte nicht auf Updates prüfen</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>Eine neue Version ist verfügbar</value>
   </data>
-  <data name="labelWebsite" xml:space="preserve">
-    <value>Website</value>
-  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album _Veröffentlichungsjahr</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Abbrechen</value>
+    <value>_Abbrechen</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;Nein</value>
+    <value>_Nein</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Ja</value>
+    <value>_Ja</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Alle downloads abbrechen?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Während nach updates gesucht wurde ist ein Fehler aufgetreten, versuchen sie es später erneut.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Zurzeit sind Downloads aktiv. Wollen sie die Anwendung wirklich schließen und diese abbrechen?</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Das Programm ist auf dem neusten stand ({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Alle Einstellungen zurücksetzen?</value>
-  </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Eine neue Version ist verfügbar:
-Aktuelle Version = {0}
-Neueste Version = {1}
-
-Wollen sie zur Homepage gehen um die neuste version herunterzuladen?</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manuelle Proxy-einstellungen</value>
@@ -465,11 +443,5 @@ seine alben herunterzuladen.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>Konnte Changelog nicht herunterladen von {0}</value>
   </data>
 </root>

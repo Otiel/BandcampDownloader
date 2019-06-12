@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using WPFLocalizeExtension.Engine;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
-    public partial class UserControlSettingsGeneral: UserControl {
+    public partial class UserControlSettingsGeneral: UserControl, IUserControlSettings {
 
         public UserControlSettingsGeneral() {
             InitializeComponent();
             // Save data context for bindings
             DataContext = App.UserSettings;
+        }
+
+        /// <summary>
+        /// Cancels the changes already applied.
+        /// </summary>
+        public void CancelChanges() {
+            LanguageHelper.ApplyLanguage(App.UserSettings.Language);
+            ThemeHelper.ApplySkin(App.UserSettings.Theme);
         }
 
         /// <summary>
@@ -33,16 +40,7 @@ namespace BandcampDownloader {
             checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             comboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-
-            // Apply selected language
-            LocalizeDictionary.Instance.Culture = new CultureInfo(comboBoxLanguage.SelectedValue.ToString());
-            // Set system MessageBox buttons
-            MessageBoxManager.Unregister();
-            MessageBoxManager.OK = Properties.Resources.messageBoxButtonOK;
-            MessageBoxManager.Cancel = Properties.Resources.messageBoxButtonCancel;
-            MessageBoxManager.Yes = Properties.Resources.messageBoxButtonYes;
-            MessageBoxManager.No = Properties.Resources.messageBoxButtonNo;
-            MessageBoxManager.Register();
+            comboBoxTheme.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
         }
 
         private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
@@ -50,7 +48,15 @@ namespace BandcampDownloader {
             try {
                 latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
-                MessageBox.Show(Properties.Resources.messageBoxCheckForUpdatesError, "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OK,
+                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                    Image = MessageBoxImage.Error,
+                    Text = Properties.Resources.messageBoxCheckForUpdatesError,
+                    Title = "Bandcamp Downloader",
+                };
+                WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
+
                 return;
             }
 
@@ -63,8 +69,25 @@ namespace BandcampDownloader {
                 };
                 windowUpdate.Show();
             } else {
-                MessageBox.Show(string.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Information);
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OK,
+                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                    Image = MessageBoxImage.Information,
+                    Text = String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion),
+                    Title = "Bandcamp Downloader",
+                };
+                WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
             }
+        }
+
+        private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // Apply selected language
+            LanguageHelper.ApplyLanguage((Language) comboBoxLanguage.SelectedValue);
+        }
+
+        private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            // Apply selected theme
+            ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {

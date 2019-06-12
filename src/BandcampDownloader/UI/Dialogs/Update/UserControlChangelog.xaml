@@ -11,6 +11,6 @@
         <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
     </FrameworkElement.CommandBindings>
     <Grid>
-        <markdig:MarkdownViewer x:Name="markdownViewer" />
+        <markdig:MarkdownViewer x:Name="markdownViewer" TextOptions.TextFormattingMode="Ideal" />
     </Grid>
 </UserControl>

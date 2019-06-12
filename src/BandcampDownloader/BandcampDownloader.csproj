@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Resource.Embedder.2.0.0\build\Resource.Embedder.props" Condition="Exists('..\packages\Resource.Embedder.2.0.0\build\Resource.Embedder.props')" />
+  <Import Project="..\packages\Resource.Embedder.2.0.1\build\Resource.Embedder.props" Condition="Exists('..\packages\Resource.Embedder.2.0.1\build\Resource.Embedder.props')" />
   <Import Project="..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -88,8 +88,8 @@
     <Reference Include="Costura, Version=3.3.2.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.3.3.2\lib\net40\Costura.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.11.4.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.11.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.7.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.7\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ImageResizer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageResizer.4.2.5\lib\net45\ImageResizer.dll</HintPath>
@@ -107,7 +107,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.6.3\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.6.4\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PlaylistsNET, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PlaylistsNET.1.0.4\lib\net45\PlaylistsNET.dll</HintPath>
@@ -139,6 +139,9 @@
     <Reference Include="WPFLocalizeExtension, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFLocalizeExtension.3.3.1\lib\net452\WPFLocalizeExtension.dll</HintPath>
     </Reference>
+    <Reference Include="WpfMessageBox, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMessageBox.1.1.1\lib\net40-client\WpfMessageBox.dll</HintPath>
+    </Reference>
     <Reference Include="XAMLMarkupExtensions, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XAMLMarkupExtensions.1.5.1\lib\net452\XAMLMarkupExtensions.dll</HintPath>
     </Reference>
@@ -150,9 +153,10 @@
     </ApplicationDefinition>
     <Compile Include="Core\DownloadManager.cs" />
     <Compile Include="Core\LogArgs.cs" />
+    <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Model\FileType.cs" />
     <Compile Include="Helpers\BandcampHelper.cs" />
-    <Compile Include="Helpers\MessageBoxManager.cs" />
     <Compile Include="Core\PlaylistCreator.cs" />
     <Compile Include="Helpers\ProxyHelper.cs" />
     <Compile Include="Model\Album.cs" />
@@ -161,6 +165,7 @@
     <Compile Include="Model\JSON\JsonTrack.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\UpdatesHelper.cs" />
+    <Compile Include="UI\Dialogs\Settings\IUserControlSettings.cs" />
     <Compile Include="UI\Dialogs\Settings\UserControlSettingsAbout.xaml.cs">
       <DependentUpon>UserControlSettingsAbout.xaml</DependentUpon>
     </Compile>
@@ -219,6 +224,10 @@
     <Compile Include="UI\Dialogs\Settings\WindowSettings.xaml.cs">
       <DependentUpon>WindowSettings.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes\DarkTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Dialogs\Settings\UserControlSettingsAdvanced.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -282,20 +291,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.de.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.fr.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.it.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.de.resx" />
+    <EmbeddedResource Include="Properties\Resources.es.resx" />
+    <EmbeddedResource Include="Properties\Resources.fr.resx" />
+    <EmbeddedResource Include="Properties\Resources.it.resx" />
+    <EmbeddedResource Include="Properties\Resources.nb-NO.resx" />
+    <EmbeddedResource Include="Properties\Resources.pl.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.tr.resx" />
+    <EmbeddedResource Include="Properties\Resources.uk.resx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -367,7 +375,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Fody.3.3.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.3.3.5\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props'))" />
-    <Error Condition="!Exists('..\packages\Resource.Embedder.2.0.0\build\Resource.Embedder.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Resource.Embedder.2.0.0\build\Resource.Embedder.props'))" />
+    <Error Condition="!Exists('..\packages\Resource.Embedder.2.0.1\build\Resource.Embedder.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Resource.Embedder.2.0.1\build\Resource.Embedder.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

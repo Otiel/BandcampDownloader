@@ -15,14 +15,17 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Replaces the forbidden chars \ / : * ? " &lt; &gt; | from the System.String
+        /// Replaces the forbidden characters \ / : * ? " &lt; &gt; | from the System.String
         /// object by an underscore _ in order to be used for a Windows file or folder.
         /// </summary>
         public static string ToAllowedFileName(this string fileName) {
             if (fileName == null) {
-                throw new ArgumentNullException("fileName");
+                throw new ArgumentNullException(nameof(fileName));
             }
 
+            // Rules are defined here: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+
+            // Replace reserved characters by '_'
             fileName = fileName.Replace("\\", "_");
             fileName = fileName.Replace("/", "_");
             fileName = fileName.Replace(":", "_");
@@ -32,8 +35,18 @@ namespace BandcampDownloader {
             fileName = fileName.Replace("<", "_");
             fileName = fileName.Replace(">", "_");
             fileName = fileName.Replace("|", "_");
+
+            // Replace newline by '_'
             fileName = fileName.Replace(Environment.NewLine, "_");
+
+            // Replace whitespace(s) by ' '
             fileName = Regex.Replace(fileName, @"\s+", " ");
+
+            // Remove trailing whitespace(s)
+            fileName = Regex.Replace(fileName, @"\s+$", "");
+
+            // Remove trailing dot(s)
+            fileName = Regex.Replace(fileName, @"\.+$", "");
 
             return fileName;
         }

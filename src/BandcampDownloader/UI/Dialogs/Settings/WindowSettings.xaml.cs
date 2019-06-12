@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using Config.Net;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -22,11 +23,21 @@ namespace BandcampDownloader {
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e) {
+            CancelChanges();
             Close();
         }
 
         private void ButtonResetSettings_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show(Properties.Resources.messageBoxResetSettings, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes) {
+            var msgProperties = new WpfMessageBoxProperties() {
+                Button = MessageBoxButton.OKCancel,
+                ButtonOkText = Properties.Resources.messageBoxResetSettingsButtonOk,
+                ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+                Image = MessageBoxImage.Question,
+                Text = Properties.Resources.messageBoxResetSettingsText,
+                Title = "Bandcamp Downloader",
+            };
+
+            if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK) {
                 ResetSettings();
             }
         }
@@ -34,6 +45,19 @@ namespace BandcampDownloader {
         private void ButtonSave_Click(object sender, RoutedEventArgs e) {
             SaveSettings();
             Close();
+        }
+
+        /// <summary>
+        /// Cancels the changes already applied.
+        /// </summary>
+        private void CancelChanges() {
+            userControlSettingsAdvanced.CancelChanges();
+            userControlSettingsCoverArt.CancelChanges();
+            userControlSettingsDownloads.CancelChanges();
+            userControlSettingsGeneral.CancelChanges();
+            userControlSettingsNetwork.CancelChanges();
+            userControlSettingsPlaylist.CancelChanges();
+            userControlSettingsTags.CancelChanges();
         }
 
         /// <summary>
@@ -62,7 +86,7 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Save all settings.
+        /// Saves all settings.
         /// </summary>
         private void SaveSettings() {
             userControlSettingsAdvanced.SaveSettings();

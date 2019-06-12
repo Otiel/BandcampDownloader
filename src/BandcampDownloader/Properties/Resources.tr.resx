@@ -58,125 +58,346 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Yeni bir sürüm var:
-Geçerli sürüm = {0}
-En son sürüm = {1}
-
-En son sürümü indirmek için proje web sitesine gitmek ister misiniz?</value>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
   </data>
-  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Kapak resmini parça etiketlerine kaydeder.</value>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Klasöre göz at</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>İ_ptal</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Ş_imdi kontrol et</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Yeni sürümü indir</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Ayarlar</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Ayarları aç</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Ayarları varsayılanlara sıfırla</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Kaydet</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>İ_ndir</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>İ_ptal</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Görünüm</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Değişiklik günlüğü {0}'den indirilemedi</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>_Başlangıçta güncellemeleri kontrol et</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Uygulamayı başlatırken aşağıdaki adresi sorgular:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>_JPG olarak dönüştür</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Kapak resmini 90 oranında JPG'ye dönüştürür (boyut ve kalite arasında mükemmel denge).</value>
   </data>
-  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>JPG olarak dönüştür</value>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>A_zami genişlik / yükseklik sınırlaması yap</value>
   </data>
-  <data name="labelIssues" xml:space="preserve">
-    <value>Hata bildir</value>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Kapak resmini belirtilen maksimum genişlik / yüksekliğe yeniden boyutlandırır.</value>
   </data>
-  <data name="buttonOpenSettingsWindow" xml:space="preserve">
-    <value>Ayarlar</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Güncelleştirme</value>
-  </data>
-  <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Başlangıçta güncellemeleri kontrol et</value>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>JP_G olarak dönüştür</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Kapak resmini 90 olarak JPG'ye dönüştürür (boyut ve kalite arasında mükemmel denge).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>_Maksimum genişlik / yükseklik sınırla</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Kapak resmini belirtilen maksimum genişlik / yüksekliğe yeniden boyutlandırır.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>_Her albüm için çalma listesi oluştur</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>İndirilen her albüm için bir albüm parçası dosyası oluşturur.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>_Sanatçı / Grup diskografisini indir</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Tüm sanatçı diskografisini indir.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Bildirim _seslerini çal</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Biten indirmeler için bildirim sesi kullan.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>_Genişletilmiş format kullan (yalnızca M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>M3U genişletilmiş formatta çalma listeleri (# karakterinin önündeki yönergeler).</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>Parça _etiketlerini değiştirme (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Her etiketi aşağıda belirtildiği şekilde değiştirir.
 
 Değilse, tüm etiketler değişmez, her etiket için "Değiştirmeyin" ayarına eşdeğerdir.</value>
   </data>
-  <data name="buttonCancel" xml:space="preserve">
-    <value>İptal</value>
-  </data>
-  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>M3U genişletilmiş formatta çalma listeleri (# karakterinin önündeki yönergeler).</value>
-  </data>
-  <data name="labelHttpPort" xml:space="preserve">
-    <value>Port</value>
-  </data>
-  <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Çeviriye yardım edin</value>
-  </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Her seferde bir albüm indir</value>
+    <value>_Her seferde bir albüm indir</value>
   </data>
-  <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>Hakkında</value>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Bir seferde yalnızca bir albüm indirir.
+Değilse, tüm albümler aynı anda indirilir (daha yüksek bant genişliği olması kaydıyla).</value>
   </data>
-  <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>Tamam</value>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Parçaları _indirmeden önce dosya boyutunu al</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Kesin ilerlemeyi göstermek için dosya boyutunu alır.
+Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>K_lasöre kaydet</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Kapak resmini Albümler klasörüne yükler.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>_Etiketleri kaydet</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Kapak resmini parça etiketlerine kaydeder.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>_Ayrıntılı günlüğü göster</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Günlükte daha fazla bilgi gösterir.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Albümleri kaydetmek için klasör seçin</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Bu ayarları değiştirmek kendi sorumluluğunuzdadır.</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Albü_m sanatçısı</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Albüm _ismi</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>İ_zin verilen dosya boyutu farkı (%)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Sanatçı</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Ayarları Sıfırla</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Değişiklikler</value>
   </data>
   <data name="labelChangelogTitle" xml:space="preserve">
     <value>Değişiklikler</value>
   </data>
-  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Tüm sanatçı diskografisini indir.</value>
+  <data name="labelComments" xml:space="preserve">
+    <value>Yorumla_r</value>
   </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Sürüm geçmişi</value>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>_Dosya adı formatı</value>
   </data>
-  <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Albümleri şuraya kaydet</value>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Maksimum boyut (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Maksimum boyut (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Kullanılan sürüm:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maksimum indirme denemesi</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Yeniden bekleme süresi (sn)</value>
+    <value>Yeniden _bekleme süresi (sn)</value>
   </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Değiştirmeyin</value>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Yeniden _deneme sayısı</value>
   </data>
-  <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>Proxy yok</value>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Albümleri şuraya _kaydet</value>
   </data>
-  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>İndirilen her albüm için bir albüm parçası dosyası oluşturur.</value>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_Dosya adı formatı:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) proxy'si</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Hata bildir</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Dil</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Gelişmiş Ayarlar</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Kapak resmi</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>İndirmeler</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Ağ</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Oynatma Listesi</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Adlandırma ve etiketler</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>Şarkı Sö_zleri</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>_Dosya adı formatı</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>_Oynatma listesi formatı</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Parça indirilirken bazı ayarlar değiştirilemez.</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Şarkı _numarası</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Başlık</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(günlük dosyası her zaman ayrıntılıdır)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Sürüm</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Güncellemeler kontrol edilemedi</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Yeni sürüm mevcut</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
     <value>Site</value>
   </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Albüm çıkış _yılı</value>
+  </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>İptal</value>
+    <value>İ_ptal</value>
   </data>
-  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Kapak resmini belirtilen maksimum genişlik / yüksekliğe yeniden boyutlandırır.</value>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>Numara</value>
   </data>
-  <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Her albüm için çalma listesi oluştur</value>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>Tamam</value>
   </data>
-  <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>Parça etiketlerini değiştirme (ID3)</value>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>Evet</value>
   </data>
-  <data name="buttonStop" xml:space="preserve">
-    <value>İptal</value>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Tüm indirmeler iptal edilsin mi?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Güncellemeler kontrol edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Şu anda aktif indirme var. Uygulamayı kapatmak ve tüm indirmeleri durdurmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Zaten en son sürümdesiniz ({0}).</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Tüm ayarlar varsayılan değerlerine sıfırlansın mı?</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Manuel proxy yapılandırması</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>Proxy _yok</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Sistemin kullandığı proxy</value>
+    <value>_Sistemin kullandığı proxy</value>
   </data>
-  <data name="labelYear" xml:space="preserve">
-    <value>Albüm çıkış yılı</value>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Farklı kaydet</value>
   </data>
-  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Kapak resmini belirtilen maksimum genişlik / yüksekliğe yeniden boyutlandırır.</value>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Değiştirmeyin</value>
   </data>
-  <data name="labelTrackTitle" xml:space="preserve">
-    <value>Başlık</value>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Boş etiket</value>
   </data>
-  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Yeni sürüm mevcut</value>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Etikette kaydet</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Değiştirmeyin</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Etiketi temizle</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Sürüm geçmişi</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Çeviriye yardım edin</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Bir parça indirilirken, aynı dosya (ad) zaten varsa, indirilecek parçaya karşı kontrol edilir.
+Her iki dosyanın boyutu bu değerden küçükse (yüzde olarak), parça indirme işlemi atlanır.
+Diskte zaten mevcut olsa bile parçaları her zaman indirmek için bu değeri 0 olarak ayarlayın.
+
+Önerilen değer = 5</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>Dosya adını özelleştirmek için yer tutucuları kullanabilirsiniz:
 - {artist} albüm sanatçısı tarafından değiştirilecek
 - {album} albüm adı ile değiştirilecek
 - {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Bir parçanın başarısız olması durumunda indirmek için gerçekleştirilen maksimum deneme sayısı.
+Bu numaraya ulaşıldıktan sonra (her parça için), parça indirme işlemi atlanacaktır.
+
+Önerilen değer = 7</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>Üstel geri çekilme mekanizmasını kontrol etmek için kullanılır.
@@ -187,233 +408,6 @@ zaman = bekleme süresi * (üs ^ ^ deneme sayısı)
 
 Önerilen değer = 0,2</value>
   </data>
-  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Dosya adı formatı</value>
-  </data>
-  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Bir parça indirilirken, aynı dosya (ad) zaten varsa, indirilecek parçaya karşı kontrol edilir.
-Her iki dosyanın boyutu bu değerden küçükse (yüzde olarak), parça indirme işlemi atlanır.
-Diskte zaten mevcut olsa bile parçaları her zaman indirmek için bu değeri 0 olarak ayarlayın.
-
-Önerilen değer = 5</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>JPG olarak dönüştür</value>
-  </data>
-  <data name="labelListBoxItemCoverArt" xml:space="preserve">
-    <value>Kapak resmi</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Parçaları indirmeden önce dosya boyutunu al</value>
-  </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Farklı kaydet</value>
-  </data>
-  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Uygulamayı başlatırken aşağıdaki adresi sorgular:</value>
-  </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Oynatma Listesi</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>Klasöre kaydet</value>
-  </data>
-  <data name="labelHttp" xml:space="preserve">
-    <value>HTTP(S) proxy'si</value>
-  </data>
-  <data name="labelComments" xml:space="preserve">
-    <value>Yorumlar</value>
-  </data>
-  <data name="labelLyrics" xml:space="preserve">
-    <value>Şarkı Sözleri</value>
-  </data>
-  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>Bildirim seslerini çal</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Bu ayarları değiştirmek kendi sorumluluğunuzdadır.</value>
-  </data>
-  <data name="labelVersion" xml:space="preserve">
-    <value>Sürüm</value>
-  </data>
-  <data name="labelButtonResetSettings" xml:space="preserve">
-    <value>Ayarları Sıfırla</value>
-  </data>
-  <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>Numara</value>
-  </data>
-  <data name="labelTrackNumber" xml:space="preserve">
-    <value>Şarkı numarası</value>
-  </data>
-  <data name="labelListBoxItemAdvanced" xml:space="preserve">
-    <value>Gelişmiş Ayarlar</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Maksimum genişlik / yükseklik sınırla</value>
-  </data>
-  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Biten indirmeler için bildirim sesi kullan.</value>
-  </data>
-  <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Şimdi kontrol et</value>
-  </data>
-  <data name="TagEditAction_DoNotModify" xml:space="preserve">
-    <value>Değiştirmeyin</value>
-  </data>
-  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Maksimum boyut (p_x)</value>
-  </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
-    <value>Tüm indirmeler iptal edilsin mi?</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
-    <value>Şu anda aktif indirme var. Uygulamayı kapatmak ve tüm indirmeleri durdurmak istediğinizden emin misiniz?</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Kesin ilerlemeyi göstermek için dosya boyutunu alır.
-Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Etiketleri kaydet</value>
-  </data>
-  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Dosya adı formatı</value>
-  </data>
-  <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Manuel proxy yapılandırması</value>
-  </data>
-  <data name="labelArtist" xml:space="preserve">
-    <value>Sanatçı</value>
-  </data>
-  <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Genişletilmiş format kullan (yalnızca M3U)</value>
-  </data>
-  <data name="buttonViewChangelog" xml:space="preserve">
-    <value>Görünüm</value>
-  </data>
-  <data name="labelVerboseLogInfo" xml:space="preserve">
-    <value>(günlük dosyası her zaman ayrıntılıdır)</value>
-  </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
-    <value>Tüm ayarlar varsayılan değerlerine sıfırlansın mı?</value>
-  </data>
-  <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Klasöre göz at</value>
-  </data>
-  <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Maksimum indirme denemesi</value>
-  </data>
-  <data name="labelDownloadRetryExponent" xml:space="preserve">
-    <value>Yeniden deneme sayısı</value>
-  </data>
-  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>İzin verilen dosya boyutu farkı (%)</value>
-  </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Albümleri kaydetmek için klasör seçin</value>
-  </data>
-  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>Zaten en son sürümdesiniz ({0}).</value>
-  </data>
-  <data name="buttonSave" xml:space="preserve">
-    <value>Kaydet</value>
-  </data>
-  <data name="labelCurrentVersion" xml:space="preserve">
-    <value>Kullanılan sürüm:</value>
-  </data>
-  <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Etikette kaydet</value>
-  </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>Değişiklik günlüğü {0}'den indirilemedi</value>
-  </data>
-  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>İndirmek için albümlerin URL'lerini buraya yapıştırın. Her satıra bir URL yazarak birden fazla URL belirleyebilirsiniz.
-
-Bir Bandcamp URL'si şuna benzer: http://[sanatçı].bandcamp.com/album/[albüm] veya http://[sanatçı].bandcamp.com/track/[track]
-Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm albümlerini indirmek için "Sanatçı diskografisini indir"i işaretleyin.</value>
-  </data>
-  <data name="labelLanguage" xml:space="preserve">
-    <value>Dil</value>
-  </data>
-  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Dosya adını özelleştirmek için yer tutucuları kullanabilirsiniz:
-- {artist} albüm sanatçısı tarafından değiştirilecek
-- {album} albüm adı ile değiştirilecek
-- {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
-  </data>
-  <data name="labelAlbumArtist" xml:space="preserve">
-    <value>Albüm sanatçısı</value>
-  </data>
-  <data name="labelVersionError" xml:space="preserve">
-    <value>Güncellemeler kontrol edilemedi</value>
-  </data>
-  <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>İndirmeler</value>
-  </data>
-  <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Sanatçı / Grup diskografisini indir</value>
-  </data>
-  <data name="labelSettingsInfo" xml:space="preserve">
-    <value>Parça indirilirken bazı ayarlar değiştirilemez.</value>
-  </data>
-  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>Güncellemeler kontrol edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Kapak resmini Albümler klasörüne yükler.</value>
-  </data>
-  <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Adlandırma ve etiketler</value>
-  </data>
-  <data name="labelFileNameFormat" xml:space="preserve">
-    <value>Dosya adı formatı:</value>
-  </data>
-  <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Boş etiket</value>
-  </data>
-  <data name="labelListBoxItemGeneral" xml:space="preserve">
-    <value>Genel</value>
-  </data>
-  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Dosya adını özelleştirmek için yer tutucuları kullanabilirsiniz:
-- {artist} albüm sanatçısı tarafından değiştirilecek
-- {title} parça ismi ile değiştirilecek
-- {tracknum} parça numarasıyla değiştirilecek
-- {album} albüm adı ile değiştirilecek
-- {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
-  </data>
-  <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>Yeni sürümü indir</value>
-  </data>
-  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Günlükte daha fazla bilgi gösterir.</value>
-  </data>
-  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
-    <value>Ayarları aç</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>Azami genişlik / yükseklik sınırlaması yap</value>
-  </data>
-  <data name="buttonBrowse" xml:space="preserve">
-    <value>…</value>
-  </data>
-  <data name="labelAlbumTitle" xml:space="preserve">
-    <value>Albüm ismi</value>
-  </data>
-  <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>Evet</value>
-  </data>
-  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
-    <value>Maksimum boyut (_px)</value>
-  </data>
-  <data name="buttonStart" xml:space="preserve">
-    <value>İndir</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Bir seferde yalnızca bir albüm indirir.
-Değilse, tüm albümler aynı anda indirilir (daha yüksek bant genişliği olması kaydıyla).</value>
-  </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
     <value>Üstel geri çekilme mekanizmasını kontrol etmek için kullanılır.
 Bir parçanın indirilmesinin her başarısızlığından sonra, BandcampDownloader tekrar denemeden önce belirli bir süre bekleyebilir
@@ -423,37 +417,36 @@ Zaman = bekleme süresi * (üs ^ ^ deneme sayısı)
 
 Önerilen değer = 4</value>
   </data>
-  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Ayarları varsayılanlara sıfırla</value>
-  </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>İndirme klasörünü albüme bağlı olarak özelleştirmek için yer tutucuları kullanabilirsiniz:
 - {artist} albüm sanatçısı tarafından değiştirilecek
 - {album} albüm adı ile değiştirilecek
 - {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
   </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Etiketi temizle</value>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Dosya adını özelleştirmek için yer tutucuları kullanabilirsiniz:
+- {artist} albüm sanatçısı tarafından değiştirilecek
+- {title} parça ismi ile değiştirilecek
+- {tracknum} parça numarasıyla değiştirilecek
+- {album} albüm adı ile değiştirilecek
+- {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
   </data>
-  <data name="labelChangelog" xml:space="preserve">
-    <value>Değişiklikler</value>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Dosya adını özelleştirmek için yer tutucuları kullanabilirsiniz:
+- {artist} albüm sanatçısı tarafından değiştirilecek
+- {album} albüm adı ile değiştirilecek
+- {year}, {month} ve {day} albümün yayınlanma tarihi ile değiştirilecek</value>
   </data>
-  <data name="labelListBoxItemNetwork" xml:space="preserve">
-    <value>Ağ</value>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>İndirmek için albümlerin URL'lerini buraya yapıştırın. Her satıra bir URL yazarak birden fazla URL belirleyebilirsiniz.
+
+Bir Bandcamp URL'si şuna benzer: http://[sanatçı].bandcamp.com/album/[albüm] veya http://[sanatçı].bandcamp.com/track/[track]
+Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm albümlerini indirmek için "Sanatçı diskografisini indir"i işaretleyin.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Ayarlar</value>
   </data>
-  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Bir parçanın başarısız olması durumunda indirmek için gerçekleştirilen maksimum deneme sayısı.
-Bu numaraya ulaşıldıktan sonra (her parça için), parça indirme işlemi atlanacaktır.
-
-Önerilen değer = 7</value>
-  </data>
-  <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>Oynatma listesi formatı</value>
-  </data>
-  <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Ayrıntılı günlüğü göster</value>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Güncelleştirme</value>
   </data>
 </root>

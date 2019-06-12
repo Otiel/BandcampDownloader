@@ -356,6 +356,9 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Certains paramètres ne peuvent pas être modifiés lorsque des téléchargements sont en cours.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Thème</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>N_uméro de la piste</value>
   </data>
@@ -381,38 +384,47 @@ Décocher cette option permet de gagner du temps.</value>
     <value>Année _de parution de l'album</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Annuler</value>
+    <value>_Annuler</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;Non</value>
+    <value>_Non</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Oui</value>
+    <value>_Oui</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir arrêter les téléchargements ?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Une erreur est intervenue lors de la vérification de mises à jour. Veuillez réessayer plus tard.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Fermer l'application</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Des téléchargements sont en cours. Êtes-vous sûr de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Impossible d'ouvrir le lien suivant :
+{0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Vous avez déjà la dernière version ({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Réinitialiser les paramètres</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Réinitialiser tous les paramètres à leur valeur par défaut ?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Une nouvelle version est disponible :
-Version actuelle = {0}
-Nouvelle version = {1}
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Une erreur est intervenue. L'application va maintenant se fermer.
 
-Voulez-vous aller sur le site web du projet afin de récupérer la dernière version ?</value>
+Merci d'ouvrir un nouveau problème avec le contenu de votre ficher log sur
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Proxy _manuel</value>
@@ -422,6 +434,15 @@ Voulez-vous aller sur le site web du projet afin de récupérer la dernière ver
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy _système</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Sauvegarder en tant que</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Sombre</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Clair</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Ne pas modifier</value>
@@ -513,8 +534,5 @@ de leurs albums.</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Mise à jour</value>
-  </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Sauvegarder en tant que</value>
   </data>
 </root>

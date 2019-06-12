@@ -1,10 +1,13 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -40,7 +43,21 @@ namespace BandcampDownloader {
         }
 
         private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e) {
-            Process.Start(e.Parameter.ToString());
+            string url = e.Parameter.ToString();
+
+            try {
+                Process.Start(url);
+            } catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified") {
+                // Probably a relative link like "/docs/help-translate.md"
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OK,
+                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                    Image = MessageBoxImage.Error,
+                    Text = String.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
+                    Title = "Bandcamp Downloader",
+                };
+                WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
+            }
         }
     }
 }

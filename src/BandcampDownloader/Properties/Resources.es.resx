@@ -113,7 +113,7 @@
     <value>Redimensiona la portada a las dimensiones especificadas.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Convertir a JP_G</value>
+    <value>Con_vertir a JPG</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Convierte la portada a JPG con una compresión de 90 (excelente balance entre tamaño y calidad).</value>
@@ -168,7 +168,7 @@ Si no, todos los álbumes son descargados simultáneamente (se proveerá mayor a
 Si no, se guarda algo de ancho de banda y tiempo.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>Guardar en _carpeta</value>
+    <value>Guardar en c_arpeta</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
     <value>Descarga la portada a la carpeta del álbum.</value>
@@ -210,7 +210,7 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>Com_entarios</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Formato de archivo</value>
+    <value>_Formato de archivo</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Tamaño máximo (_px)</value>
@@ -231,10 +231,10 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>_Exponente de reintentos</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Guardar álbumes _a</value>
+    <value>_Guardar álbumes a</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>Formato de _archivo:</value>
+    <value>_Formato de archivo:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>Proxy _HTTP(S)</value>
@@ -285,7 +285,7 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>Algunas opciones no pueden ser cambiadas mientras hay canciones siendo descargadas.</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
-    <value>N_úmero de canción</value>
+    <value>Númer_o de canción</value>
   </data>
   <data name="labelTrackTitle" xml:space="preserve">
     <value>_Título</value>
@@ -306,47 +306,40 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>Sitio web</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>_Año de lanzamiento del álbum</value>
+    <value>Año de lan_zamiento del álbum</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Cancelar</value>
+    <value>_Cancelar</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;No</value>
+    <value>_No</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Sí</value>
+    <value>_Sí</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>¿Cancelar todas las descargas?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Ocurrió un error buscando actualizaciones. Por favor, vuelva a intentarlo más tarde.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Existen descargas activas. ¿Está seguro de cerrar la aplicación y cancelar todas las descargas?</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Ya tienes la última versión ({0})</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>¿Restaurar la configuración a sus valores por defecto?</value>
-  </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>Una nueva versión está disponible:
-Versión actual = {0}
-Última versión = {1}
-
-¿Quieres ir al sitio web del proyecto para descargar la última versión?</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Configuración _manual del proxy</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Sin proxy</value>
+    <value>S_in proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy del _sistema</value>

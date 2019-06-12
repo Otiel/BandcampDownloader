@@ -1,8 +1,10 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows;
 using Config.Net;
-using WPFLocalizeExtension.Engine;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -19,8 +21,45 @@ namespace BandcampDownloader {
 
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
+            InitializeLogger();
+
+            // Manage unhandled exceptions
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             InitializeSettings();
-            LoadLanguage();
+            LanguageHelper.ApplyLanguage(UserSettings.Language);
+            ThemeHelper.ApplySkin(UserSettings.Theme);
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
+            LogExceptionToFile((Exception) e.ExceptionObject);
+
+
+            var msgProperties = new WpfMessageBoxProperties() {
+                Button = MessageBoxButton.OK,
+                ButtonOkText = BandcampDownloader.Properties.Resources.messageBoxButtonOK,
+                Image = MessageBoxImage.Error,
+                Text = String.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues),
+                Title = "Bandcamp Downloader",
+            };
+            WpfMessageBox.Show(ref msgProperties);
+        }
+
+        /// <summary>
+        /// Initializes the logger component.
+        /// </summary>
+        private void InitializeLogger() {
+            var fileTarget = new FileTarget() {
+                FileName = Constants.LogFilePath,
+                Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${message}",
+                ArchiveAboveSize = Constants.MaxLogSize,
+                MaxArchiveFiles = 1,
+            };
+
+            var config = new LoggingConfiguration();
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, fileTarget);
+
+            LogManager.Configuration = config;
         }
 
         /// <summary>
@@ -36,18 +75,13 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Load settings for localization
+        /// Writes the specified Exception to the application log file.
         /// </summary>
-        private void LoadLanguage() {
-            // Sets the CultureInfo according to the language saved in settings.
-            LocalizeDictionary.Instance.Culture = new CultureInfo(UserSettings.Language.ToString());
-
-            // Set system MessageBox buttons
-            MessageBoxManager.OK = BandcampDownloader.Properties.Resources.messageBoxButtonOK;
-            MessageBoxManager.Cancel = BandcampDownloader.Properties.Resources.messageBoxButtonCancel;
-            MessageBoxManager.Yes = BandcampDownloader.Properties.Resources.messageBoxButtonYes;
-            MessageBoxManager.No = BandcampDownloader.Properties.Resources.messageBoxButtonNo;
-            MessageBoxManager.Register();
+        /// <param name="exception">The Exception to log.</param>
+        private void LogExceptionToFile(Exception exception) {
+            Logger logger = LogManager.GetCurrentClassLogger();
+            logger.Log(LogLevel.Fatal, String.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
+            logger.Log(LogLevel.Fatal, exception.StackTrace);
         }
     }
 }

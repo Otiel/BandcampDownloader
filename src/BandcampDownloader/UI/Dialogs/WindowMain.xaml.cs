@@ -13,8 +13,7 @@ using System.Windows.Media;
 using System.Windows.Shell;
 using System.Windows.Threading;
 using NLog;
-using NLog.Config;
-using NLog.Targets;
+using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -44,12 +43,7 @@ namespace BandcampDownloader {
             // Save DataContext for bindings (must be called before initializing UI)
             DataContext = App.UserSettings;
 
-            InitializeLogger();
             InitializeComponent();
-
-            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
-            ServicePointManager.DefaultConnectionLimit = 50;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 #if DEBUG
             textBoxUrls.Text = ""
@@ -64,6 +58,7 @@ namespace BandcampDownloader {
                 //+ "https://afterdarkrecordings.bandcamp.com/album/adr-unreleased-tracks" /* #69 Album without cover */ + Environment.NewLine
                 //+ "https://liluglymane.bandcamp.com/album/study-of-the-hypothesized-removable-and-or-expandable-nature-of-human-capability-and-limitations-primarily-regarding-introductory-experiences-with-new-and-exciting-technologies-by-way-of-motivati-2" /* #54 Long path */ + Environment.NewLine
                 //+ "https://brzoskamarciniakmarkiewicz.bandcamp.com/album/wp-aw" /* #82 Tracks with diacritics */ + Environment.NewLine
+                //+ "https://empyrium.bandcamp.com/album/der-wie-ein-blitz-vom-himmel-fiel" /* #102 Album ending with '...' */ + Environment.NewLine
                 ;
 #endif
         }
@@ -111,6 +106,7 @@ namespace BandcampDownloader {
             _activeDownloads = false;
             _lastTotalReceivedBytes = 0;
             UpdateControlsState(false);
+            Mouse.OverrideCursor = null;
 
             if (App.UserSettings.EnableApplicationSounds) {
                 // Play a sound
@@ -122,10 +118,21 @@ namespace BandcampDownloader {
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            if (MessageBox.Show(Properties.Resources.messageBoxCancelDownloads, "Bandcamp Downloader", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) != MessageBoxResult.Yes) {
+            var msgProperties = new WpfMessageBoxProperties() {
+                Button = MessageBoxButton.YesNo,
+                ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+                ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                Image = MessageBoxImage.Question,
+                Text = Properties.Resources.messageBoxCancelDownloadsText,
+                Title = "Bandcamp Downloader",
+            };
+
+            if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes || !_activeDownloads) {
+                // If user cancelled the cancellation or if downloads finished while he choosed to cancel
                 return;
             }
 
+            Mouse.OverrideCursor = Cursors.Wait;
             _userCancelled = true;
             buttonStop.IsEnabled = false;
 
@@ -141,6 +148,7 @@ namespace BandcampDownloader {
                 latestVersion = await UpdatesHelper.GetLatestVersionAsync();
             } catch (CouldNotCheckForUpdatesException) {
                 labelNewVersion.Content = Properties.Resources.labelVersionError;
+                labelNewVersion.Visibility = Visibility.Visible;
                 return;
             }
 
@@ -148,28 +156,12 @@ namespace BandcampDownloader {
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
+                labelNewVersion.Visibility = Visibility.Visible;
             }
         }
 
         private void DownloadManager_LogAdded(object sender, LogArgs eventArgs) {
             Log(eventArgs.Message, eventArgs.LogType);
-        }
-
-        /// <summary>
-        /// Initializes the logger component.
-        /// </summary>
-        private void InitializeLogger() {
-            var fileTarget = new FileTarget() {
-                FileName = Constants.LogFilePath,
-                Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${message}",
-                ArchiveAboveSize = Constants.MaxLogSize,
-                MaxArchiveFiles = 1,
-            };
-
-            var config = new LoggingConfiguration();
-            config.AddRule(LogLevel.Trace, LogLevel.Fatal, fileTarget);
-
-            LogManager.Configuration = config;
         }
 
         private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -275,7 +267,6 @@ namespace BandcampDownloader {
                 buttonStop.IsEnabled = true;
                 checkBoxDownloadDiscography.IsEnabled = false;
                 labelProgress.Content = "";
-                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                 progressBar.IsIndeterminate = true;
                 progressBar.Value = progressBar.Minimum;
                 richTextBoxLog.Document.Blocks.Clear();
@@ -290,7 +281,6 @@ namespace BandcampDownloader {
                 buttonStop.IsEnabled = false;
                 checkBoxDownloadDiscography.IsEnabled = true;
                 labelDownloadSpeed.Content = "";
-                progressBar.Foreground = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#FF01D328")); // Green
                 progressBar.IsIndeterminate = false;
                 progressBar.Value = progressBar.Minimum;
                 TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
@@ -357,7 +347,16 @@ namespace BandcampDownloader {
         private void WindowMain_Closing(object sender, CancelEventArgs e) {
             if (_activeDownloads) {
                 // There are active downloads, ask for confirmation
-                if (MessageBox.Show(Properties.Resources.messageBoxCloseWindowWhenDownloading, "Bandcamp Downloader", MessageBoxButton.OKCancel, MessageBoxImage.Warning, MessageBoxResult.Cancel) == MessageBoxResult.Cancel) {
+                var msgProperties = new WpfMessageBoxProperties() {
+                    Button = MessageBoxButton.OKCancel,
+                    ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+                    ButtonOkText = Properties.Resources.messageBoxCloseWindowWhenDownloadingButtonOk,
+                    Image = MessageBoxImage.Warning,
+                    Text = Properties.Resources.messageBoxCloseWindowWhenDownloadingText,
+                    Title = "Bandcamp Downloader",
+                };
+
+                if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.Cancel) {
                     // Cancel closing the window
                     e.Cancel = true;
                 }

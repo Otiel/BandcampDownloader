@@ -226,7 +226,7 @@ If not, all tags are unchanged, equivalent to setting "Do not modify" for each t
 If not, all albums are downloaded concurrently (better provided high bandwidth is available).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Retrieve file _size before downloading tracks</value>
+    <value>Retrieve _file size before downloading tracks</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>Retrieves file size to show precise progress.
@@ -263,7 +263,7 @@ If not, some bandwidth/time is saved.</value>
     <value>Album _name</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Allowed file _size difference (%)</value>
+    <value>Allowed file size _difference (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>_Artist</value>
@@ -347,13 +347,16 @@ If not, some bandwidth/time is saved.</value>
     <value>_Lyrics</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
+    <value>File_name format</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>Playlist _format</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Some settings cannot be changed while tracks are downloading.</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Theme</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Track n_umber</value>
@@ -380,38 +383,47 @@ If not, some bandwidth/time is saved.</value>
     <value>Album release _year</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;Cancel</value>
+    <value>_Cancel</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;No</value>
+    <value>_No</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Yes</value>
+    <value>_Yes</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Cancel all downloads?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>An error occurred while checking for updates. Please retry later.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Close application</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>There are currently active downloads. Are you sure you want to close the application and stop all downloads?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Could not open the following link:
+{0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>You already have the latest version ({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Reset settings</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Reset all settings to their default values?</value>
   </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>A new version is available:
-Current version = {0}
-Latest version = {1}
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>An unhandled error occurred. The application will close now.
 
-Would you like to go to the project website in order to download the latest version?</value>
+Please open a new issue with the content of your log file on
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manual proxy configuration</value>
@@ -420,10 +432,16 @@ Would you like to go to the project website in order to download the latest vers
     <value>_No proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_System proxy</value>
+    <value>S_ystem proxy</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Save as</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Light</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Do not modify</value>

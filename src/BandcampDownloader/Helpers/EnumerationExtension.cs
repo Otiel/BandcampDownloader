@@ -31,7 +31,7 @@ namespace BandcampDownloader {
         }
 
         public EnumerationExtension(Type enumType) {
-            EnumType = enumType ?? throw new ArgumentNullException("enumType");
+            EnumType = enumType ?? throw new ArgumentNullException(nameof(enumType));
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider) {

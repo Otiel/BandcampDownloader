@@ -16,6 +16,7 @@
     Closing="WindowMain_Closing"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     Loaded="WindowMain_Loaded"
+    TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterScreen"
     WindowStyle="SingleBorderWindow">
     <Window.TaskbarItemInfo>
@@ -131,8 +132,21 @@
                 HorizontalAlignment="Left"
                 Content=""
                 Cursor="Hand"
-                Foreground="#FF003BFF"
-                MouseDown="LabelNewVersion_MouseDown" />
+                MouseDown="LabelNewVersion_MouseDown"
+                Visibility="Hidden">
+                <Label.Style>
+                    <Style TargetType="Label">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static local:Skin.Light}">
+                                <Setter Property="Foreground" Value="Red" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static local:Skin.Dark}">
+                                <Setter Property="Foreground" Value="Orange" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
             <Label
                 x:Name="labelDownloadSpeed"
                 Grid.Column="1"

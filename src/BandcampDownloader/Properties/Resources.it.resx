@@ -129,9 +129,6 @@
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Controlla _ora</value>
   </data>
-  <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Scarica nuova versione</value>
-  </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Impostazioni</value>
   </data>
@@ -149,9 +146,6 @@
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Annulla</value>
-  </data>
-  <data name="buttonViewChangelog" xml:space="preserve">
-    <value>_View</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>_Cerca aggiornamenti all'avvio</value>
@@ -259,9 +253,6 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   <data name="labelComments" xml:space="preserve">
     <value>Comm_enti</value>
   </data>
-  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Formato _nome file</value>
-  </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Dimensione massima (_px)</value>
   </data>
@@ -307,20 +298,11 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   <data name="labelListBoxItemNetwork" xml:space="preserve">
     <value>Rete</value>
   </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Playlist</value>
-  </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
     <value>Rinomina e tag</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Testo can_zoni</value>
-  </data>
-  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>File _name format</value>
-  </data>
-  <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>Playlist _format</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Alcune impostazioni non possono essere modificate durante lo scaricamento.</value>
@@ -334,54 +316,41 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(il file registro è sempre esteso)</value>
   </data>
-  <data name="labelVersion" xml:space="preserve">
-    <value>Version</value>
-  </data>
   <data name="labelVersionError" xml:space="preserve">
     <value>Non è possibile trovare aggiornamenti</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>È disponibile una nuova versione</value>
   </data>
-  <data name="labelWebsite" xml:space="preserve">
-    <value>Website</value>
-  </data>
   <data name="labelYear" xml:space="preserve">
     <value>Anno _di rilascio album</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>&amp;annulla</value>
+    <value>_Annulla</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>&amp;No</value>
+    <value>_No</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>&amp;Sí</value>
+    <value>_Sí</value>
   </data>
-  <data name="messageBoxCancelDownloads" xml:space="preserve">
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Annullare tutti gli scaricamenti?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Si è verificato un errore durante la ricerca di aggiornamenti. Per favore, riprova piú tardi.</value>
   </data>
-  <data name="messageBoxCloseWindowWhenDownloading" xml:space="preserve">
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Ci sono scaricamenti in corso. Sei sicuro di voler chiudere l'applicazione e fermarli?</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Disponi già della versione piú recente ({0}).</value>
   </data>
-  <data name="messageBoxResetSettings" xml:space="preserve">
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Ripristinare i valori predefiniti delle impostazioni?</value>
-  </data>
-  <data name="messageBoxUpdateAvailable" xml:space="preserve">
-    <value>È disponibile una nuova versione:
-Versione attuale = {0}
-Ultima versione = {1}
-
-Desideri andare sul sito ufficiale per scaricare l'ultima versione?</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Configurazione manuale dei proxy</value>
@@ -444,74 +413,5 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “�
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Impostazioni</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>Lo scaricamento delle versioni da {0} è fallito</value>
-  </data>
-  <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Crea una _playlist per ogni album</value>
-  </data>
-  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>Crea un file singolo per ogni album scaricato.</value>
-  </data>
-  <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Usa _formato esteso (solo M3U)</value>
-  </data>
-  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>Playlist M3U in formato esteso (con direttive precedute da #).</value>
-  </data>
-  <data name="labelChangelog" xml:space="preserve">
-    <value>Versioni</value>
-  </data>
-  <data name="labelChangelogTitle" xml:space="preserve">
-    <value>Versioni</value>
-  </data>
-  <data name="labelCurrentVersion" xml:space="preserve">
-    <value>Versione attuale:</value>
-  </data>
-  <data name="labelIssues" xml:space="preserve">
-    <value>Segnala un bug</value>
-  </data>
-  <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>Informazioni</value>
-  </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Salva con nome</value>
-  </data>
-  <data name="TagEditAction_DoNotModify" xml:space="preserve">
-    <value>Non modificare</value>
-  </data>
-  <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Tag vuoto</value>
-  </data>
-  <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Salva nei tag</value>
-  </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Non modificare</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Pulisci tag</value>
-  </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Cronologia discografica</value>
-  </data>
-  <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Aiuto alla traduzione</value>
-  </data>
-  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Puoi usare i segnaposto per personalizzare il nome dei file:
-- {artist} sarà rimpiazzato con l'artista dell'album
-- {album} sarà rimpiazzato col nome dell'album
-- {year}, {month} e {day} saranno rimpiazzati con la data di rilascio dell'album</value>
-  </data>
-  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Puoi usare i segnaposto per personalizzare il nome dei file:
-- {artist} sarà rimpiazzato con l'artista dell'album
-- {album} sarà rimpiazzato col nome dell'album
-- {year}, {month} e {day} saranno rimpiazzati con la data di rilascio dell'album</value>
   </data>
 </root>

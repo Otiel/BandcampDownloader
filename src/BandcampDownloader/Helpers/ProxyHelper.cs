@@ -3,7 +3,7 @@ using System.Net;
 
 namespace BandcampDownloader {
 
-    internal class ProxyHelper {
+    internal static class ProxyHelper {
 
         /// <summary>
         /// Sets the proxy of the specified WebClient according to the UserSettings.

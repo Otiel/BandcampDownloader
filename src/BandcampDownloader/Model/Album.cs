@@ -94,8 +94,8 @@ namespace BandcampDownloader {
 
         /// <summary>
         /// Returns the file name to be used for the cover art of the specified album from the file name format saved in
-        /// the UserSettings, by replacing the placeholders strings with their corresponding values.
-        /// The returned file name does NOT contain the extension.
+        /// the UserSettings, by replacing the placeholders strings with their corresponding values. The returned file
+        /// name does NOT contain the extension.
         /// </summary>
         private string ParseCoverArtFileName() {
             string fileName = App.UserSettings.CoverArtFileNameFormat
@@ -153,8 +153,9 @@ namespace BandcampDownloader {
             string filePath = Path + "\\" + ParsePlaylistFileName() + fileExt;
 
             if (filePath.Length >= 260) {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11 character max for "filename.ext"
+                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters) Path has
+                // been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11
+                // character max for "filename.ext"
                 int fileNameMaxLength = 11 - fileExt.Length;
                 filePath = Path + "\\" + ParsePlaylistFileName().Substring(0, fileNameMaxLength) + fileExt;
             }
@@ -169,7 +170,8 @@ namespace BandcampDownloader {
             if (HasArtwork) {
                 string artworkFileExt = System.IO.Path.GetExtension(ArtworkUrl);
 
-                // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread), we'll add a random number to the name of the artwork file saved in Temp directory
+                // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread), we'll
+                // add a random number to the name of the artwork file saved in Temp directory
                 string randomNumber = App.Random.Next(1, 1000).ToString("00#");
 
                 // Compute paths where to save artwork
@@ -177,9 +179,10 @@ namespace BandcampDownloader {
                 ArtworkPath = Path + "\\" + ParseCoverArtFileName() + artworkFileExt;
 
                 if (ArtworkTempPath.Length >= 260 || ArtworkPath.Length >= 260) {
-                    // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
-                    // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11 character max for "filename.ext"
-                    // There may be only one path needed to shorten, but it's better to use the same file name in both places
+                    // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters) Path
+                    // has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext",
+                    // so 11 character max for "filename.ext" There may be only one path needed to shorten, but it's
+                    // better to use the same file name in both places
                     int fileNameInTempMaxLength = 11 - randomNumber.Length - artworkFileExt.Length;
                     int fileNameInFolderMaxLength = 11 - artworkFileExt.Length;
                     ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
