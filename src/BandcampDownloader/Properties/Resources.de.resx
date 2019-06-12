@@ -279,7 +279,7 @@ Das Herunterladen geht schneller wenn diese Option ausgeschaltet ist.</value>
     <value>Alben speicher _in</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Dateiname format:</value>
+    <value>_Dateinamenformat:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>_HTTP(S) proxy</value>
