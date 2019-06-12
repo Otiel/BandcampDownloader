@@ -382,7 +382,7 @@ namespace BandcampDownloader {
 
                 // Get info on album
                 try {
-                    var album = BandcampHelper.GetAlbum(htmlCode);
+                    Album album = BandcampHelper.GetAlbum(htmlCode);
 
                     if (album.Tracks.Count > 0) {
                         albums.Add(album);
