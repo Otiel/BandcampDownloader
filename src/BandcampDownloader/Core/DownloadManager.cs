@@ -387,7 +387,7 @@ namespace BandcampDownloader {
                     if (album.Tracks.Count > 0) {
                         albums.Add(album);
                     } else {
-                        LogAdded(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Info));
+                        LogAdded(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
                     }
                 } catch {
                     LogAdded(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
