@@ -1032,7 +1032,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Empty tag.
+        ///   Looks up a localized string similar to Clear tag.
         /// </summary>
         internal static string TagEditAction_Empty {
             get {
