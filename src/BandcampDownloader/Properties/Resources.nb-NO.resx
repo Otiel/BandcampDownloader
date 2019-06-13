@@ -449,4 +449,29 @@ Lim inn artistsider: https://[artist].bandcamp.com og velg "☑ Last ned artistd
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Oppdater</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Drakt</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Lukk program</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Kunne ikke åpne denne lenken:
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Tilbakestill innstillinger</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Uhåndtert feil. Programmet vil lukkes nå.
+
+Innrapporter feilen sammen med innholdet i loggfilen din på:
+{0}</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Mørk</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Lys</value>
+  </data>
 </root>
