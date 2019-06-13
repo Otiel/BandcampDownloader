@@ -58,8 +58,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Initializes data context for bindings between settings values and settings controls.
-        /// This must be called before initializing UI forms.
+        /// Initializes data context for bindings between settings values and settings controls. This must be called
+        /// before initializing UI forms.
         /// </summary>
         private void InitializeSettings() {
             App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
