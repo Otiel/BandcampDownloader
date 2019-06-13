@@ -73,7 +73,7 @@ namespace BandcampDownloader {
                     Button = MessageBoxButton.OK,
                     ButtonOkText = Properties.Resources.messageBoxButtonOK,
                     Image = MessageBoxImage.Information,
-                    Text = String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion),
+                    Text = String.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion.ToString(3)),
                     Title = "Bandcamp Downloader",
                 };
                 WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);

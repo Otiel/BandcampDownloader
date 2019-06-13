@@ -185,6 +185,12 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Muestra más información en el registro.</value>
   </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Seleccionar carpeta para guardar álbumes</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Cambie estas configuraciones bajo su propia responsabilidad.</value>
+  </data>
   <data name="labelAlbumArtist" xml:space="preserve">
     <value>Art_ista del álbum</value>
   </data>
@@ -344,6 +350,9 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
   <data name="radioButtonSystemProxy" xml:space="preserve">
     <value>Proxy del _sistema</value>
   </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Guardar como</value>
+  </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>No modificar</value>
   </data>
@@ -364,27 +373,6 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Ayudar a traducir</value>
-  </data>
-  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Pega los enlaces de los álbumes a descargar aquí. Puedes especificar varios URLs escribiendo uno por línea.
-
-Un URL de Bandcamp se ve como: http://[artista].bandcamp.com/album/[álbum] o http://[artista].bandcamp.com/track/[canción]
-Pegar páginas de artista: http://[artista].bandcamp.com y chequea "☑ Descargar discografía del artista" para descargar todos su(s) álbumes.</value>
-  </data>
-  <data name="windowSettings_Title" xml:space="preserve">
-    <value>Configuración</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Actualizar</value>
-  </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Seleccionar carpeta para guardar álbumes</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Cambie estas configuraciones bajo su propia responsabilidad.</value>
-  </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Guardar como</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Cuando se descarga una canción, si el mismo archivo (nombre) ya existe, será comparada con la canción a descargar.
@@ -424,5 +412,17 @@ Valor recomendado= 7</value>
 - {artista} será reemplazado por el artista del álbum
 - {álbum} será reemplazado por el nombre del álbum
 - {año}, {mes} y {día} serán reemplazados por la fecha de publicación del álbum</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Pega los enlaces de los álbumes a descargar aquí. Puedes especificar varios URLs escribiendo uno por línea.
+
+Un URL de Bandcamp se ve como: http://[artista].bandcamp.com/album/[álbum] o http://[artista].bandcamp.com/track/[canción]
+Pegar páginas de artista: http://[artista].bandcamp.com y chequea "☑ Descargar discografía del artista" para descargar todos su(s) álbumes.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Actualizar</value>
   </data>
 </root>

@@ -294,6 +294,9 @@ Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Pewne ustawienia nie mogą zostać zmienione podczas pobierania.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Motyw</value>
+  </data>
   <data name="labelTrackTitle" xml:space="preserve">
     <value>_Tytuł</value>
   </data>
@@ -324,11 +327,36 @@ Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
   <data name="messageBoxButtonYes" xml:space="preserve">
     <value>_Tak</value>
   </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Przerwać pobieranie?</value>
+  </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Wystąpił błąd podczas sprawdzania aktualizacji. Spróbuj ponownie później.</value>
   </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Zamknij aplikację</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Aplikacja jest w trakcie pobierania. Czy na pewno chcesz ją zamknąć i je zakończyć?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Nie można otworzyć poniższego linku:
+{0}</value>
+  </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Już posiadasz najnowszą wersję ({0}).</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Przywróć ustawienia domyślne</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Przywrócić wszystkie ustawienia do domyślnych wartości?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Wystąpił nieznany błąd. Aplikacja zostanie zamknięta.
+
+Proszę otworzyć nowy problem na GitHubie z plikiem logów.
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Ręczna konfiguracja serwera proxy</value>
@@ -341,6 +369,12 @@ Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Zapisz jako</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Ciemny</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Jasny</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Nie zmieniaj</value>
@@ -387,39 +421,5 @@ Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i za
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualizacja</value>
-  </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>_Motyw</value>
-  </data>
-  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Przerwać pobieranie?</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>_Zamknij aplikację</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Aplikacja jest w trakcie pobierania. Czy na pewno chcesz ją zamknąć i je zakończyć?</value>
-  </data>
-  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Nie można otworzyć poniższego linku:
-{0}</value>
-  </data>
-  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Przywróć ustawienia domyślne</value>
-  </data>
-  <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Przywrócić wszystkie ustawienia do domyślnych wartości?</value>
-  </data>
-  <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Wystąpił nieznany błąd. Aplikacja zostanie zamknięta.
-
-Proszę otworzyć nowy problem na GitHubie z plikiem logów.
-{0}</value>
-  </data>
-  <data name="Skin_Dark" xml:space="preserve">
-    <value>Ciemny</value>
-  </data>
-  <data name="Skin_Light" xml:space="preserve">
-    <value>Jasny</value>
   </data>
 </root>

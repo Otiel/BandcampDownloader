@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+using NLog;
 
 namespace BandcampDownloader {
 
@@ -36,6 +37,28 @@ namespace BandcampDownloader {
             }
 
             return color;
+        }
+
+        /// <summary>
+        /// Writes the specified Exception and all its InnerException to the application log file.
+        /// </summary>
+        /// <param name="exception">The Exception to log.</param>
+        public static void LogExceptionAndInnerExceptionsToFile(Exception exception) {
+            LogExceptionToFile(exception);
+
+            if (exception.InnerException != null) {
+                LogExceptionAndInnerExceptionsToFile(exception.InnerException);
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified Exception to the application log file.
+        /// </summary>
+        /// <param name="exception">The Exception to log.</param>
+        public static void LogExceptionToFile(Exception exception) {
+            Logger logger = LogManager.GetCurrentClassLogger();
+            logger.Log(LogLevel.Fatal, String.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
+            logger.Log(LogLevel.Fatal, exception.StackTrace);
         }
     }
 }

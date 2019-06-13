@@ -49,7 +49,6 @@ namespace BandcampDownloader {
 
             // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
 
         /// <summary>
@@ -382,7 +381,13 @@ namespace BandcampDownloader {
 
                 // Get info on album
                 try {
-                    albums.Add(BandcampHelper.GetAlbum(htmlCode));
+                    Album album = BandcampHelper.GetAlbum(htmlCode);
+
+                    if (album.Tracks.Count > 0) {
+                        albums.Add(album);
+                    } else {
+                        LogAdded(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
+                    }
                 } catch {
                     LogAdded(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
                     continue;

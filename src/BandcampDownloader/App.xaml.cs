@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Windows;
 using Config.Net;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
-using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader {
 
@@ -26,23 +26,18 @@ namespace BandcampDownloader {
             // Manage unhandled exceptions
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
+            // Define the default security protocol to use for connection as TLS (#109)
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             InitializeSettings();
             LanguageHelper.ApplyLanguage(UserSettings.Language);
             ThemeHelper.ApplySkin(UserSettings.Theme);
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
-            LogExceptionToFile((Exception) e.ExceptionObject);
+            LogUnhandledExceptionToFile((Exception) e.ExceptionObject);
 
-
-            var msgProperties = new WpfMessageBoxProperties() {
-                Button = MessageBoxButton.OK,
-                ButtonOkText = BandcampDownloader.Properties.Resources.messageBoxButtonOK,
-                Image = MessageBoxImage.Error,
-                Text = String.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues),
-                Title = "Bandcamp Downloader",
-            };
-            WpfMessageBox.Show(ref msgProperties);
+            MessageBox.Show(String.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         /// <summary>
@@ -63,8 +58,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Initializes data context for bindings between settings values and settings controls.
-        /// This must be called before initializing UI forms.
+        /// Initializes data context for bindings between settings values and settings controls. This must be called
+        /// before initializing UI forms.
         /// </summary>
         private void InitializeSettings() {
             App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
@@ -75,13 +70,13 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Writes the specified Exception to the application log file.
+        /// Writes the specified Exception to the application log file, along with the .NET version.
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
-        private void LogExceptionToFile(Exception exception) {
+        private void LogUnhandledExceptionToFile(Exception exception) {
             Logger logger = LogManager.GetCurrentClassLogger();
-            logger.Log(LogLevel.Fatal, String.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
-            logger.Log(LogLevel.Fatal, exception.StackTrace);
+            logger.Log(LogLevel.Fatal, $".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
+            LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
         }
     }
 }
