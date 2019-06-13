@@ -35,7 +35,7 @@ namespace BandcampDownloader {
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
-            LogExceptionAndInnerExceptionsToFile((Exception) e.ExceptionObject);
+            LogUnhandledExceptionToFile((Exception) e.ExceptionObject);
 
             MessageBox.Show(String.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
         }
@@ -70,25 +70,11 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Writes the specified Exception and all its InnerException to the application log file.
-        /// </summary>
-        /// <param name="exception">The Exception to log.</param>
-        private void LogExceptionAndInnerExceptionsToFile(Exception exception) {
-            LogExceptionToFile(exception);
-
-            if (exception.InnerException != null) {
-                LogExceptionAndInnerExceptionsToFile(exception.InnerException);
-            }
-        }
-
-        /// <summary>
         /// Writes the specified Exception to the application log file.
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
-        private void LogExceptionToFile(Exception exception) {
-            Logger logger = LogManager.GetCurrentClassLogger();
-            logger.Log(LogLevel.Fatal, String.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
-            logger.Log(LogLevel.Fatal, exception.StackTrace);
+        private void LogUnhandledExceptionToFile(Exception exception) {
+            LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
         }
     }
 }
