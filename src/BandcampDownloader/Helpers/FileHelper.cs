@@ -1,10 +1,28 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace BandcampDownloader {
 
     internal static class FileHelper {
+
+        /// <summary>
+        /// Asynchronously copies an existing file to a new file.
+        /// </summary>
+        /// <param name="sourceFile">The file to copy.</param>
+        /// <param name="destinationFile">The name of the destination file.</param>
+        public static async Task CopyFileAsync(string sourceFile, string destinationFile) {
+            // https://stackoverflow.com/a/35467471/825024
+            const FileOptions fileOptions = FileOptions.Asynchronous | FileOptions.SequentialScan;
+            const int bufferSize = 4096;
+
+            using (var sourceStream = new FileStream(sourceFile, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize, fileOptions)) {
+                using (var destinationStream = new FileStream(destinationFile, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize, fileOptions)) {
+                    await sourceStream.CopyToAsync(destinationStream);
+                }
+            }
+        }
 
         /// <summary>
         /// Returns the size of the file located at the provided URL.
