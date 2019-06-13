@@ -4,6 +4,8 @@
     <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="docs/images/DownloadButton.png"></a>
 </p>
 
+[![build:master status](https://img.shields.io/appveyor/ci/Otiel/BandcampDownloader/master.svg?label=build:master&logo=appveyor)](https://ci.appveyor.com/project/Otiel/bandcampdownloader) [![build:develop status](https://img.shields.io/appveyor/ci/Otiel/BandcampDownloader/develop.svg?label=build:develop&logo=appveyor)](https://ci.appveyor.com/project/Otiel/bandcampdownloader)
+
 ## Description
 
 BandcampDownloader is a Windows application that helps downloading albums from [bandcamp.com](https://bandcamp.com) by retrieving the 128 kbps MP3 files streamed on the website. It aims to ease the life of those who prefer to listen to music on their favorite player rather than on their web browser, but offers only what is already freely available on Bandcamp.
