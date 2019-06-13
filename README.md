@@ -4,7 +4,7 @@
     <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="docs/images/DownloadButton.png"></a>
 </p>
 
-[![build:master status](https://img.shields.io/appveyor/ci/Otiel/BandcampDownloader/master.svg?label=build:master&logo=appveyor)](https://ci.appveyor.com/project/Otiel/bandcampdownloader) [![build:develop status](https://img.shields.io/appveyor/ci/Otiel/BandcampDownloader/develop.svg?label=build:develop&logo=appveyor)](https://ci.appveyor.com/project/Otiel/bandcampdownloader)
+[![build:master status](https://img.shields.io/appveyor/ci/Otiel/BandcampDownloader/master.svg?label=build:master&logo=appveyor)](https://ci.appveyor.com/project/Otiel/bandcampdownloader/branch/master) [![build:develop status](https://img.shields.io/appveyor/ci/Otiel/BandcampDownloader/develop.svg?label=build:develop&logo=appveyor)](https://ci.appveyor.com/project/Otiel/bandcampdownloader/branch/develop)
 
 ## Description
 
