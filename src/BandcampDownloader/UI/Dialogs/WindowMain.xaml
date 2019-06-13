@@ -164,6 +164,7 @@
                 Grid.Column="3"
                 Height="24"
                 MinWidth="100"
+                Padding="10,0"
                 Click="ButtonStart_Click"
                 Content="{lex:Loc}"
                 TabIndex="4" />
@@ -173,6 +174,7 @@
                 Height="24"
                 MinWidth="100"
                 Margin="5,0,0,0"
+                Padding="10,0"
                 Click="ButtonStop_Click"
                 Content="{lex:Loc}"
                 IsEnabled="False"
@@ -183,6 +185,7 @@
                 Height="24"
                 MinWidth="100"
                 Margin="5,0,0,0"
+                Padding="10,0"
                 Click="ButtonOpenSettingsWindow_Click"
                 Content="{lex:Loc}"
                 TabIndex="6"
