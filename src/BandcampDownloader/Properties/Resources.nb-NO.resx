@@ -296,6 +296,9 @@ Uten dette kan man spare litt båndbredde/tid.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Noen innstillinger kan ikke endres under nedlasting av spor.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Drakt</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Sporn_ummer</value>
   </data>
@@ -338,14 +341,30 @@ Uten dette kan man spare litt båndbredde/tid.</value>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Feil under oppdateringssjekk. Prøv igjen senere.</value>
   </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Lukk program</value>
+  </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Det blir lastet ned i øyeblikket, vil du lukke programmet og stoppe alle nedlastinger?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Kunne ikke åpne denne lenken:
+{0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Du har allerede seneste versjon({0}).</value>
   </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Tilbakestill innstillinger</value>
+  </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Tilbakestill alle verdier til forvalg?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Uhåndtert feil. Programmet vil lukkes nå.
+
+Innrapporter feilen sammen med innholdet i loggfilen din på:
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manuelt mellomtjeneroppsett</value>
@@ -358,6 +377,12 @@ Uten dette kan man spare litt båndbredde/tid.</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Lagre som</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Mørk</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Lys</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Ikke endre</value>
@@ -448,30 +473,5 @@ Lim inn artistsider: https://[artist].bandcamp.com og velg "☑ Last ned artistd
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Oppdater</value>
-  </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>_Drakt</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>_Lukk program</value>
-  </data>
-  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Kunne ikke åpne denne lenken:
-{0}</value>
-  </data>
-  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Tilbakestill innstillinger</value>
-  </data>
-  <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Uhåndtert feil. Programmet vil lukkes nå.
-
-Innrapporter feilen sammen med innholdet i loggfilen din på:
-{0}</value>
-  </data>
-  <data name="Skin_Dark" xml:space="preserve">
-    <value>Mørk</value>
-  </data>
-  <data name="Skin_Light" xml:space="preserve">
-    <value>Lys</value>
   </data>
 </root>
