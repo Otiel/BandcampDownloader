@@ -70,10 +70,12 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Writes the specified Exception to the application log file.
+        /// Writes the specified Exception to the application log file, along with the .NET version.
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
         private void LogUnhandledExceptionToFile(Exception exception) {
+            Logger logger = LogManager.GetCurrentClassLogger();
+            logger.Log(LogLevel.Fatal, $".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
             LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
         }
     }
