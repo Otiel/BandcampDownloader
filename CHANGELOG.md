@@ -1,3 +1,16 @@
+# 1.1.0
+
+## Improvements
+
+* Updated the following languages thanks to contributors: German, Norwegian Bokmål, Polish, Spanish.
+* More data will be logged when a crash occurs.
+* Minor UI improvements.
+
+## Bug fixes
+
+* Fixed a bug causing albums with no tracks to be downloaded. Thanks **@wilbishardis**! [#106](https://github.com/Otiel/BandcampDownloader/issues/106)
+* Fixed a bug preventing the app from getting updates info on Windows 7. [#109](https://github.com/Otiel/BandcampDownloader/issues/109)
+
 # 1.0.0
 
 ## New features
