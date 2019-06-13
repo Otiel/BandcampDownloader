@@ -27,8 +27,8 @@ namespace BandcampDownloader {
             // Manage unhandled exceptions
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-            // Define the default security protocol to use for connection as TLS 1.2 (#109)
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            // Define the default security protocol to use for connection as TLS (#109)
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             InitializeSettings();
             LanguageHelper.ApplyLanguage(UserSettings.Language);
