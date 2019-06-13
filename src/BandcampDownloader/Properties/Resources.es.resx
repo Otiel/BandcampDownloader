@@ -198,7 +198,7 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>_Nombre del álbum</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Diferencia de _tamaño de archivo permitida (%)</value>
+    <value>_Diferencia de tamaño de archivo permitida (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>_Artista</value>
@@ -282,7 +282,7 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>_Letra</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Formato del _archivo</value>
+    <value>For_mato del archivo</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>_Formato de la playlist</value>
@@ -348,7 +348,7 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>S_in proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy del _sistema</value>
+    <value>Proxy del s_istema</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Guardar como</value>
@@ -357,7 +357,7 @@ Si no, se guarda algo de ancho de banda y tiempo.</value>
     <value>No modificar</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Tag vacío</value>
+    <value>Etiqueta limpia</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Guardar en tag</value>
@@ -424,5 +424,54 @@ Pegar páginas de artista: http://[artista].bandcamp.com y chequea "☑ Descarga
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Actualizar</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Revisar _ahora</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Recuperar el tamaño de los _archivos antes de descargar los temas</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Se utiliza para controlar el mecanismo de retroceso exponencial.
+Cada vez que hay un error al descargar un tema, BandcampDownloader puede esperar un tiempo específico
+al intentar descargar de nuevo para evitar molestar el filtro anti-spam de Bandcamp.
+Esta formula es usada para calcular el tiempo de espera antes de intentarlo de nuevo:
+tiempo = tiempo de espera * (exponente ^ intentos)
+
+Valor recomendado = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Se utiliza para controlar el mecanismo de retroceso exponencial.
+Cada vez que hay un error al descargar un tema, BandcampDownloader puede esperar un tiempo específico
+al intentar descargar de nuevo para evitar molestar el filtro anti-spam de Bandcamp
+Esta formula es usada para calcular el tiempo de espera antes de intentarlo de nuevo:
+tiempo = tiempo de espera * (exponente ^ intentos)
+
+Valor recomendado = 4</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Temática</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>Cerrar aplicación</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>No se puede abrir el siguiente link:
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Reiniciar ajustes</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Ocurrió un error no previsto. La aplicación se cerrará.
+
+Por favor, cree un nuevo informe del problema con el contenido del registro en:
+{0}</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Claro</value>
   </data>
 </root>
