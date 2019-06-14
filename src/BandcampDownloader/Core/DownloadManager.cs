@@ -203,6 +203,9 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return false;
+                    } catch (TaskCanceledException) {
+                        // Downloads cancelled by the user
+                        return false;
                     } catch (WebException) {
                         // Connection closed probably because no response from Bandcamp
                         if (tries + 1 < App.UserSettings.DownloadMaxTries) {
@@ -283,6 +286,9 @@ namespace BandcampDownloader {
                         await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
                         artworkDownloaded = true;
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
+                        // Downloads cancelled by the user
+                        return null;
+                    } catch (TaskCanceledException) {
                         // Downloads cancelled by the user
                         return null;
                     } catch (WebException) {
