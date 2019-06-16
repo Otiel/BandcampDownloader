@@ -70,14 +70,14 @@ namespace BandcampDownloader {
             // Replace newline by '_'
             fileName = fileName.Replace(Environment.NewLine, "_");
 
+            // Remove trailing dot(s)
+            fileName = Regex.Replace(fileName, @"\.+$", "");
+
             // Replace whitespace(s) by ' '
             fileName = Regex.Replace(fileName, @"\s+", " ");
 
-            // Remove trailing whitespace(s)
+            // Remove trailing whitespace(s) /!\ Must be last
             fileName = Regex.Replace(fileName, @"\s+$", "");
-
-            // Remove trailing dot(s)
-            fileName = Regex.Replace(fileName, @"\.+$", "");
 
             return fileName;
         }
