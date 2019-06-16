@@ -154,6 +154,7 @@
     <Compile Include="Core\DownloadManager.cs" />
     <Compile Include="Core\LogArgs.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\RichTextBoxHelper.cs" />
     <Compile Include="Helpers\SystemVersionHelper.cs" />
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Model\FileType.cs" />
@@ -216,7 +217,6 @@
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\LogType.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Core\UserSettings.cs" />
     <Compile Include="UI\Dialogs\WindowMain.xaml.cs">
