@@ -156,6 +156,7 @@
             <Label
                 x:Name="labelProgress"
                 Grid.Column="2"
+                Margin="10,0,0,0"
                 HorizontalAlignment="Right"
                 HorizontalContentAlignment="Right"
                 Content="" />

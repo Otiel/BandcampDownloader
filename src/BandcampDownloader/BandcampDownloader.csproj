@@ -107,7 +107,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.6.4\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.6.5\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PlaylistsNET, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PlaylistsNET.1.0.4\lib\net45\PlaylistsNET.dll</HintPath>
@@ -139,8 +139,8 @@
     <Reference Include="WPFLocalizeExtension, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFLocalizeExtension.3.3.1\lib\net452\WPFLocalizeExtension.dll</HintPath>
     </Reference>
-    <Reference Include="WpfMessageBox, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfMessageBox.1.1.1\lib\net40-client\WpfMessageBox.dll</HintPath>
+    <Reference Include="WpfMessageBox, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfMessageBox.1.2.0\lib\net40-client\WpfMessageBox.dll</HintPath>
     </Reference>
     <Reference Include="XAMLMarkupExtensions, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XAMLMarkupExtensions.1.5.1\lib\net452\XAMLMarkupExtensions.dll</HintPath>
@@ -154,6 +154,7 @@
     <Compile Include="Core\DownloadManager.cs" />
     <Compile Include="Core\LogArgs.cs" />
     <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\RichTextBoxHelper.cs" />
     <Compile Include="Helpers\SystemVersionHelper.cs" />
     <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Model\FileType.cs" />
@@ -216,7 +217,6 @@
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\LogType.cs" />
-    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Core\UserSettings.cs" />
     <Compile Include="UI\Dialogs\WindowMain.xaml.cs">

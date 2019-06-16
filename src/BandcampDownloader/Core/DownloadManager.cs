@@ -203,6 +203,9 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return false;
+                    } catch (TaskCanceledException) {
+                        // Downloads cancelled by the user
+                        return false;
                     } catch (WebException) {
                         // Connection closed probably because no response from Bandcamp
                         if (tries + 1 < App.UserSettings.DownloadMaxTries) {
@@ -285,6 +288,9 @@ namespace BandcampDownloader {
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return null;
+                    } catch (TaskCanceledException) {
+                        // Downloads cancelled by the user
+                        return null;
                     } catch (WebException) {
                         // Connection closed probably because no response from Bandcamp
                         if (tries < App.UserSettings.DownloadMaxTries) {
@@ -307,9 +313,11 @@ namespace BandcampDownloader {
                                 settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
                             }
 
-                            ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
+                            await Task.Run(() => {
+                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
+                            });
                         } else if (App.UserSettings.SaveCoverArtInFolder) {
-                            File.Copy(album.ArtworkTempPath, album.ArtworkPath, true);
+                            await FileHelper.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
                         }
 
                         // Convert/resize artwork to be saved in tags
@@ -324,7 +332,9 @@ namespace BandcampDownloader {
                                 settings.MaxWidth = App.UserSettings.CoverArtInTagsMaxSize;
                             }
 
-                            ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
+                            await Task.Run(() => {
+                                ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
+                            });
                         }
                         artworkInTags = new TagLib.Picture(album.ArtworkTempPath) {
                             Description = "Picture"

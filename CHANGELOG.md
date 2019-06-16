@@ -1,3 +1,16 @@
+# 1.2.0
+
+## Improvements
+
+* Minor UI improvements.
+* Reduced exe file size by 1 MB.
+
+## Bug fixes
+
+* Fixed a regression that caused a crash when an album ends with a space followed by dot(s). [#111](https://github.com/Otiel/BandcampDownloader/issues/111)
+* Fixed a bug (another one) preventing downloads from being cancelled in some conditions.
+* Fixed some UI freeze when downloading big artwork files.
+
 # 1.1.0
 
 ## Improvements

@@ -60,5 +60,27 @@ namespace BandcampDownloader {
             logger.Log(LogLevel.Fatal, String.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
             logger.Log(LogLevel.Fatal, exception.StackTrace);
         }
+
+        /// <summary>
+        /// Returns the NLog.LogLevel associated to the specified LogType.
+        /// </summary>
+        public static LogLevel ToNLogLevel(this LogType logType) {
+            switch (logType) {
+                case LogType.VerboseInfo:
+                    return LogLevel.Debug;
+                case LogType.Info:
+                    return LogLevel.Info;
+                case LogType.IntermediateSuccess:
+                    return LogLevel.Info;
+                case LogType.Success:
+                    return LogLevel.Info;
+                case LogType.Warning:
+                    return LogLevel.Warn;
+                case LogType.Error:
+                    return LogLevel.Error;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
     }
 }
