@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -484,22 +484,22 @@ Nachdem diese Anzahl erreicht ist (für jeden Titel), wird das Herunterladen des
 Empfohlener Wert = 7</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
-    <value>Kontrolliert den expotentiellen Wiederholversuch von downloads.
-Jedes mal, nachdem ein Download fehlschlägt, wartet Bandcamp Downloader eine gewisse zeit
-um die aktiviertung des Bandcamp anti-spam-filter zu verhindern.
-Um diese zeit zu berechnen wird folgende Formel verwendet:
-Zeit = Wartezeit * (Exponent ^ Wiederholungsversuche)
+    <value>Wird verwendet, um den unkontrollieren Wiederholmechanismus zu steuern.
+Nach jedem Ausfall eines Titeldownload kann der BandcampDownloader eine bestimmte Zeit warten,
+um die Aktivierung des Bandcamp Anti-Spam-Filters zu vermeiden.
+Die Formel zur Berechnung der Wartezeit bis zum erneuten Versuch eines Downloads lautet wie folgt:
+Zeit = Abklingzeit * (Exponent ^ Wiederholungsversuche)
 
-Empfohlender Wert = 0.2</value>
+Empfohlener Wert = 0,2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Kontrolliert den expotentiellen Wiederholversuch von downloads.
-Jedes mal, nachdem ein Download fehlschlägt, wartet Bandcamp Downloader eine gewisse zeit
-um die aktiviertung des Bandcamp anti-spam-filter zu verhindern.
-Um diese zeit zu berechnen wird folgende Formel verwendet:
-Zeit = Wartezeit * (Exponent ^ Wiederholungsversuche)
+    <value>Wird verwendet, um den unkontrollierten Wiederholversuch zu steuern.
+Nach jedem Ausfall eines Titel-Downloadswartet der BandcampDownloader eine bestimmte Zeit,
+um die Aktivierung des Bandcamp-Anti-Spam-Filters zu vermeiden.
+Die Formel zur Berechnung der Wartezeit bis zum erneuten Versuch eines Downloads lautet wie folgt:
+Zeit = Abklingzeit * (Exponent ^ Wiederholungsversuche)
 
-Empfohlender Wert = 4</value>
+Empfohlener Wert = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>Sie können Platzhalter verwenden, um den Download-Ordner abhängig vom Album anzupassen:
