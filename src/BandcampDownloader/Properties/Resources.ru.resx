@@ -151,4 +151,7 @@
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Очистить данные</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Создать плейлист для каждого альбома</value>
+  </data>
 </root>
