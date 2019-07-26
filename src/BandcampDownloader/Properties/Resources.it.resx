@@ -427,7 +427,7 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta â€œâ˜
     <value>Crea una _playlist per ogni album</value>
   </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>Crea una traccia con tutto l'album per ogni album</value>
+    <value>Crea una traccia con tutto l'album per ogni album.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Usa _formato esteso (solo M3U)</value>
@@ -488,5 +488,17 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta â€œâ˜
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aggiorna</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Playlist M3U in formato esteso (direttive precedute dal carattere #).</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Salva come</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Scuro</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Chiaro</value>
   </data>
 </root>
