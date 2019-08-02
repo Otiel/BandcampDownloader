@@ -1,45 +1,45 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -71,7 +71,7 @@
     <value>Sprawdź aktualizację</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>Pobierz aktualizację</value>
+    <value>Pobierz nową wersję</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Ustawienia</value>
@@ -101,55 +101,55 @@
     <value>Sprawdź uaktualnienia podczas startu</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Jeśli ta opcja jest zaznaczona, aplikacja uruchomi następujący adres podczas uruchamiania:</value>
+    <value>Aplikacja uruchomi następujący adres podczas uruchamiania:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>Zapisz jako _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, okładka zostanie przekonwertowana na jpg z kompresją 'jpeg 90' (co jest dobrym kompromisem między rozmiarem a jakością).</value>
+    <value>Konwertuje okładkę na jpg z kompresją 'jpeg 90' (co jest dobrym kompromisem między rozmiarem a jakością).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>Maksymalna szerokość / wysokość</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Jeśli jest zaznaczone, okładka zostanie zmniejszona do podanej maksymalnej szerokości / wysokości.</value>
+    <value>Zmniejsza okładkę do podanej maksymalnej szerokości / wysokości.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>Konwertuj na JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, okładka zostanie przekonwertowana na jpg z kompresją 'jpeg 90' (co jest dobrym kompromisem między rozmiarem a jakością).</value>
+    <value>Konwertuje okładkę na jpg z kompresją 'jpeg 90' (co jest dobrym kompromisem między rozmiarem a jakością).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Maksymalna szerokość / wysokość</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Jeśli jest zaznaczone, okładka zostanie zmniejszona do podanej maksymalnej szerokości / wysokości.</value>
+    <value>Zmniejsza okładkę do podanej maksymalnej szerokości / wysokości.</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
     <value>Utwórz _playlistę dla każdego albumu</value>
   </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, dla każdego pobranego albumu zostanie utworzona playlista.</value>
+    <value>Tworzy playlistę dla każdego pobranego albumu.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Pobierz _dyskografię</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, cała dyskografia artysty / wydawcy zostanie pobrana.</value>
+    <value>Pobiera całą dyskografię artysty / wydawcy.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>Odtwarzaj _dźwięki powiadomień</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, dźwięk powiadomienia będzie odtwarzany po zakończeniu pobierania.</value>
+    <value>Odtwarza dźwięk powiadomienia po zakończeniu pobierania.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Użyj formatu rozszerzonego [#EXTM3U] (tylko w przypadku M3U)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, przy tworzeniu listy odtwarzania M3U zostanie użyty rozszerzony format (#EXTM3U).</value>
+    <value>Przy tworzeniu listy odtwarzania M3U zostanie użyty rozszerzony format (#EXTM3U).</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modyfikuj tagi utworów (ID3)</value>
@@ -164,33 +164,33 @@ Jest to równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
     <value>_Pobierz jeden album na raz</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone albumy będa pobierane po kolei.
-Jeśli nie zaznaczone, albumy będą pobierane równocześnie (preferowane, jeśli masz wysoką przepustowość).</value>
+    <value>Pobieranie albumów po kolei.
+W przeciwnym wypadku albumy są pobierane równocześnie (preferowane, jeśli masz wysoką przepustowość).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Pobierz _wielkość plików przed pobraniem utworów</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, rozmiar plików zostaną sprawdzone i dokładny postęp pobierania będzie mógł być wyświetlany.
-Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
+    <value>Pobiera rozmiar pliku przed pobieraniem, pozwala to na pokazanie postępu pobierania.
+Wydłuża pobieranie i zużywa więcej transferu (nieznacznie).</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Zapisz w _katalogu</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, okładka zostanie pobrana do folderu albumów.</value>
+    <value>Pobiera okładkę do folderu albumów.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Zapisz w _tagach</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, okładka zostanie zapisana w tagach utworów.</value>
+    <value>Zapisuje okładkę w tagach utworu.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>Pokaż szczegółowy log</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, więcej informacji pojawi się w logu.</value>
+    <value>Pokazuje rozszerzony log.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Wybierz folder, w którym chcesz zapisywać albumy</value>
@@ -223,7 +223,7 @@ Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
     <value>Komentarze</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Nazwa_pliku format</value>
+    <value>Format nazwy pliku</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Maksymalny rozmiar (_px)</value>
@@ -244,7 +244,7 @@ Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
     <value>Zapisz albumy _w</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Nazwa pliku format:</value>
+    <value>_Typ playlisty:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>_HTTPS(S) proxy</value>
@@ -286,7 +286,7 @@ Odznacz tę opcję, aby zaoszczędzić trochę czasu.</value>
     <value>_Tekst</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Nazwa_pliku format</value>
+    <value>Format nazwy playlisty</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>Format_playlisty</value>
@@ -421,5 +421,37 @@ Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i za
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualizacja</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Numer utworu</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Data wydania albumu</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Historia aktualizacji</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Pomóż w tłumaczeniu</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Możesz użyć tagów aby dostosować folder pobierania albumu:
+-{artist} zostanie zastąpiony wykonawcą
+-{album} zostanie zastąpiony nazwą albumu
+-{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Możesz użyć tagów aby dostosować nazwę pliku:
+-{artist} zostanie zastąpiony wykonawcą
+-{title} zostanie zastąpiony tytułem utworu
+-{tracknum} zostanie zastąpiony numerem utworu
+-{album} zostanie zastąpiony nazwą albumu
+-{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Możesz użyć tagów aby dostosować nazwę pliku:
+-{artist} zostanie zastąpiony wykonawcą
+-{album} zostanie zastąpiony nazwą albumu
+-{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
   </data>
 </root>
