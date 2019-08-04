@@ -118,4 +118,10 @@
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Tag di bersihkan</value>
   </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>cek nomor_w</value>
+  </data>
 </root>
