@@ -112,7 +112,9 @@ namespace BandcampDownloader {
             if (App.UserSettings.EnableApplicationSounds) {
                 // Play a sound
                 try {
-                    new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav").Play();
+                    using (var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")) {
+                        soundPlayer.Play();
+                    }
                 } catch {
                 }
             }
