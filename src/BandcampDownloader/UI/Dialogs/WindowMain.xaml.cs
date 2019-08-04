@@ -64,13 +64,14 @@ namespace BandcampDownloader {
         }
 
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog {
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog {
                 Description = Properties.Resources.folderBrowserDialogDescription
-            };
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
-                // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
-                textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            }) {
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                    textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
+                    // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
+                    textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
             }
         }
 
