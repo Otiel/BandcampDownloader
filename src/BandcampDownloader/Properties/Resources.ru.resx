@@ -103,6 +103,9 @@
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>Конвертировать в JPG</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Создать плейлист для каждого альбома</value>
+  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Скачать всю дискографию артиста</value>
   </data>
@@ -150,8 +153,5 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Очистить данные</value>
-  </data>
-  <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Создать плейлист для каждого альбома</value>
   </data>
 </root>

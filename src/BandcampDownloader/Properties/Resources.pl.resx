@@ -297,6 +297,9 @@ Wydłuża pobieranie i zużywa więcej transferu (nieznacznie).</value>
   <data name="labelTheme" xml:space="preserve">
     <value>_Motyw</value>
   </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Numer utworu</value>
+  </data>
   <data name="labelTrackTitle" xml:space="preserve">
     <value>_Tytuł</value>
   </data>
@@ -314,6 +317,9 @@ Wydłuża pobieranie i zużywa więcej transferu (nieznacznie).</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
     <value>Strona internetowa</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Data wydania albumu</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
     <value>_Anuluj</value>
@@ -391,6 +397,12 @@ Proszę otworzyć nowy problem na GitHubie z plikiem logów.
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Wyczyść tag</value>
   </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Historia aktualizacji</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Pomóż w tłumaczeniu</value>
+  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Podczas pobierania utworu, jeśli dany plik (lub o takiej samej nazwie) już istnieje, zostanie sprawdzony przed pobieraniem.
 Jeśli rozmiar obu plików różni się o wartość mniejszą niż podano (w %) pobieranie zostanie pominięte.
@@ -409,30 +421,6 @@ Zalecana wartość = 5</value>
 Po tym jak ta liczba zostanie osiągnięta (dla każdego utworu osobno) pobieranie zostanie pominięte.
 
 Zalecana wartość = 7</value>
-  </data>
-  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Wklej tu linki albumów do pobrania. Możesz podać linki do wielu albumów jednocześnie, każdy w kolejnej linii.
-
-Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub http://[wykonawca].bandcamp.com/track/[utwór]
-Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy wykonawcy.</value>
-  </data>
-  <data name="windowSettings_Title" xml:space="preserve">
-    <value>Ustawienia</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Aktualizacja</value>
-  </data>
-  <data name="labelTrackNumber" xml:space="preserve">
-    <value>Numer utworu</value>
-  </data>
-  <data name="labelYear" xml:space="preserve">
-    <value>Data wydania albumu</value>
-  </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Historia aktualizacji</value>
-  </data>
-  <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Pomóż w tłumaczeniu</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>Możesz użyć tagów aby dostosować folder pobierania albumu:
@@ -453,5 +441,17 @@ Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i za
 -{artist} zostanie zastąpiony wykonawcą
 -{album} zostanie zastąpiony nazwą albumu
 -{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Wklej tu linki albumów do pobrania. Możesz podać linki do wielu albumów jednocześnie, każdy w kolejnej linii.
+
+Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub http://[wykonawca].bandcamp.com/track/[utwór]
+Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy wykonawcy.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Aktualizacja</value>
   </data>
 </root>

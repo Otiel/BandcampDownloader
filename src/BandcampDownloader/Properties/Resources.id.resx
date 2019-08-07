@@ -58,11 +58,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
     <value>Jelajah folder</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
     <value>_Batal</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>cek nomor_w</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
     <value>_Unduh versi terbaru</value>
@@ -117,11 +123,5 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Tag di bersihkan</value>
-  </data>
-  <data name="buttonBrowse" xml:space="preserve">
-    <value>…</value>
-  </data>
-  <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>cek nomor_w</value>
   </data>
 </root>

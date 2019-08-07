@@ -126,6 +126,9 @@
   <data name="buttonCancel" xml:space="preserve">
     <value>_Cancelar</value>
   </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Revisar _ahora</value>
+  </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
     <value>_Descargar versión nueva</value>
   </data>
@@ -221,6 +224,9 @@ Si no, todas las etiquetas permanecen sin cambiar, equivalente a seleccionar «N
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Descarga solo un álbum a la vez.
 Si no, todos los álbumes se descargan simultáneamente (se proveerá mayor ancho de banda en caso de ser posible).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Recuperar el tamaño de los _archivos antes de descargar los temas</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>Muestra el tamaño del archivo para mostrar precisamente el progreso.
@@ -349,6 +355,9 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Algunas opciones no pueden cambiarse mientras se estén descargando pistas.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Númer_o de canción</value>
   </data>
@@ -391,14 +400,30 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Ocurrió un error al buscar actualizaciones. Vuelva a intentarlo más tarde.</value>
   </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>Cerrar aplicación</value>
+  </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Existen descargas activas. ¿Está seguro de cerrar la aplicación y cancelar todas las descargas?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>No se puede abrir el siguiente link:
+{0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Ya tiene la versión más reciente ({0}).</value>
   </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Reiniciar ajustes</value>
+  </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>¿Restaurar la configuración a sus valores por defecto?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Ocurrió un error no previsto. La aplicación se cerrará.
+
+Cree un nuevo informe del problema con el contenido del registro en:
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>Configuración _manual del proxy</value>
@@ -411,6 +436,12 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Guardar como</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Claro</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>No modificar</value>
@@ -452,6 +483,24 @@ Cuando ese número es alcanzado (para cada canción), la descarga será omitida.
 
 Valor recomendado= 7</value>
   </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Se utiliza para controlar el mecanismo de retroceso exponencial.
+Cada vez que hay un error al descargar un tema, BandcampDownloader puede esperar un tiempo específico
+al intentar descargar de nuevo para evitar molestar el filtro anti-spam de Bandcamp.
+Esta formula es usada para calcular el tiempo de espera antes de intentarlo de nuevo:
+tiempo = tiempo de espera * (exponente ^ intentos)
+
+Valor recomendado = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Se utiliza para controlar el mecanismo de retroceso exponencial.
+Cada vez que hay un error al descargar un tema, BandcampDownloader puede esperar un tiempo específico
+al intentar descargar de nuevo para evitar molestar el filtro anti-spam de Bandcamp
+Esta formula es usada para calcular el tiempo de espera antes de intentarlo de nuevo:
+tiempo = tiempo de espera * (exponente ^ intentos)
+
+Valor recomendado = 4</value>
+  </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>Puedes usar marcadores para personalizar la carpeta de descarga dependiendo en el álbum:
 - {artista} será reemplazado por el artista del álbum
@@ -483,54 +532,5 @@ Pegar páginas de artista: http://[artista].bandcamp.com y chequea "☑ Descarga
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Actualizar</value>
-  </data>
-  <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Revisar _ahora</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Recuperar el tamaño de los _archivos antes de descargar los temas</value>
-  </data>
-  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
-    <value>Se utiliza para controlar el mecanismo de retroceso exponencial.
-Cada vez que hay un error al descargar un tema, BandcampDownloader puede esperar un tiempo específico
-al intentar descargar de nuevo para evitar molestar el filtro anti-spam de Bandcamp.
-Esta formula es usada para calcular el tiempo de espera antes de intentarlo de nuevo:
-tiempo = tiempo de espera * (exponente ^ intentos)
-
-Valor recomendado = 0.2</value>
-  </data>
-  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Se utiliza para controlar el mecanismo de retroceso exponencial.
-Cada vez que hay un error al descargar un tema, BandcampDownloader puede esperar un tiempo específico
-al intentar descargar de nuevo para evitar molestar el filtro anti-spam de Bandcamp
-Esta formula es usada para calcular el tiempo de espera antes de intentarlo de nuevo:
-tiempo = tiempo de espera * (exponente ^ intentos)
-
-Valor recomendado = 4</value>
-  </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>_Tema</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>Cerrar aplicación</value>
-  </data>
-  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>No se puede abrir el siguiente link:
-{0}</value>
-  </data>
-  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Reiniciar ajustes</value>
-  </data>
-  <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Ocurrió un error no previsto. La aplicación se cerrará.
-
-Cree un nuevo informe del problema con el contenido del registro en:
-{0}</value>
-  </data>
-  <data name="Skin_Dark" xml:space="preserve">
-    <value>Oscuro</value>
-  </data>
-  <data name="Skin_Light" xml:space="preserve">
-    <value>Claro</value>
   </data>
 </root>

@@ -296,6 +296,9 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Parça indirilirken bazı ayarlar değiştirilemez.</value>
   </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Şarkı _numarası</value>
   </data>
@@ -338,14 +341,30 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Güncellemeler kontrol edilirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</value>
   </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>Uygulamayı kapat</value>
+  </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Şu anda aktif indirme var. Uygulamayı kapatmak ve tüm indirmeleri durdurmak istediğinizden emin misiniz?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Şu bağlantı açılamadı:
+{0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Zaten en son sürümdesiniz ({0}).</value>
   </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>Ayarları Sıfırla</value>
+  </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Tüm ayarlar varsayılan değerlerine sıfırlansın mı?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>İşlenmeyen bir hata oluştu. Uygulama şimdi kapanacak.
+
+Lütfen günlük dosyanızın içeriğinde yeni bir sorun açın.
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Manuel proxy yapılandırması</value>
@@ -358,6 +377,12 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Farklı kaydet</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Karanlık</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Aydınlık</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
     <value>Değiştirmeyin</value>
@@ -448,30 +473,5 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Güncelleştirme</value>
-  </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>Tema</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>Uygulamayı kapat</value>
-  </data>
-  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Şu bağlantı açılamadı:
-{0}</value>
-  </data>
-  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>Ayarları Sıfırla</value>
-  </data>
-  <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>İşlenmeyen bir hata oluştu. Uygulama şimdi kapanacak.
-
-Lütfen günlük dosyanızın içeriğinde yeni bir sorun açın.
-{0}</value>
-  </data>
-  <data name="Skin_Dark" xml:space="preserve">
-    <value>Karanlık</value>
-  </data>
-  <data name="Skin_Light" xml:space="preserve">
-    <value>Aydınlık</value>
   </data>
 </root>
