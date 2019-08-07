@@ -34,7 +34,8 @@ namespace BandcampDownloader {
         private CancellationTokenSource _cancellationTokenSource;
 
         /// <summary>
-        /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes and the total bytes to download.
+        /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
+        /// and the total bytes to download.
         /// </summary>
         public List<TrackFile> DownloadingFiles { get; set; }
 
@@ -47,7 +48,8 @@ namespace BandcampDownloader {
         public DownloadManager(string urls) {
             _urls = urls;
 
-            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
+            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
+            // value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
         }
 
@@ -253,8 +255,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Downloads and returns the cover art of the specified album.
-        /// Depending on UserSettings, save the cover art in the album folder.
+        /// Downloads and returns the cover art of the specified album. Depending on UserSettings, save the cover art in
+        /// the album folder.
         /// </summary>
         /// <param name="album">The album.</param>
         private async Task<TagLib.Picture> DownloadCoverArtAsync(Album album) {
@@ -499,8 +501,9 @@ namespace BandcampDownloader {
                     break;
                 case FileType.Track:
                     fileTypeForLog = "MP3 file for the track";
-                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
-                    // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve the mp3 sizes
+                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed) Surprisingly,
+                    // using the GET method does not seem to download the whole file, so we will use it to retrieve the
+                    // mp3 sizes
                     protocolMethod = "GET";
                     break;
                 default:
