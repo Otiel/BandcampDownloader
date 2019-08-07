@@ -87,10 +87,12 @@ namespace BandcampDownloader {
         }
 
         private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if ((Language) comboBoxLanguage.SelectedValue != App.UserSettings.Language) {
-                // Apply selected language
-                LanguageHelper.ApplyLanguage((Language) comboBoxLanguage.SelectedValue);
+            if (!comboBoxLanguage.IsLoaded) {
+                return;
             }
+
+            // Apply selected language
+            LanguageHelper.ApplyLanguage((Language) comboBoxLanguage.SelectedValue);
         }
 
         private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e) {
