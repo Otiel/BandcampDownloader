@@ -202,6 +202,7 @@ namespace BandcampDownloader {
                     try {
                         await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
                         trackDownloaded = true;
+                        LogAdded(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return false;
@@ -230,6 +231,7 @@ namespace BandcampDownloader {
                             tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
                             tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
                             tagFile.Save();
+                            LogAdded(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                         }
 
                         if (App.UserSettings.SaveCoverArtInTags && artwork != null) {
@@ -237,6 +239,7 @@ namespace BandcampDownloader {
                             var tagFile = TagLib.File.Create(track.Path);
                             tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
                             tagFile.Save();
+                            LogAdded(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                         }
 
                         // Note the file as downloaded
