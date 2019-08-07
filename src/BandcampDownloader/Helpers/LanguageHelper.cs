@@ -21,10 +21,10 @@ namespace BandcampDownloader {
         /// <param name="language">The Language.</param>
         private static CultureInfo GetCultureInfo(Language language) {
             switch (language) {
-                case Language.en:
-                    return new CultureInfo("en");
                 case Language.de:
                     return new CultureInfo("de");
+                case Language.en:
+                    return new CultureInfo("en");
                 case Language.es:
                     return new CultureInfo("es");
                 case Language.fr:
