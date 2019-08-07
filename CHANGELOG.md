@@ -1,3 +1,15 @@
+# 1.3.0
+
+## Improvements
+
+* Added the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/113): Chinese.
+* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/113): German, Italian, Spanish, Turkish.
+* Removed the Ukrainian language as not complete.
+
+## Bug fixes
+
+* Fixed the log position reset when opening the Settings window. [#112](https://github.com/Otiel/BandcampDownloader/issues/112)
+
 # 1.2.0
 
 ## Improvements
