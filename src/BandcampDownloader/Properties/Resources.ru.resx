@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Выбрать папку</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Проверить сейчас</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>Скачать новую версию</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Открыть настройки</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Вернуть настройки по умолчанию</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>Посмотреть</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Проверять на наличие обновлений при запуске</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Конвертировать в JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Конвертировать в JPG</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Скачать всю дискографию артиста</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Сохранить в папку</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Исполнитель альбома</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Альбом</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>Исполнитель</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Не изменять</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Очистить данные</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Сохранить данные</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Не изменять</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Очистить данные</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Создать плейлист для каждого альбома</value>
+  </data>
+</root>
