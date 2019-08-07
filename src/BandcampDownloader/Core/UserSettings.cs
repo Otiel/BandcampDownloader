@@ -13,24 +13,24 @@ namespace BandcampDownloader {
         fr,
         [Description("German (Deutsch)")]
         de,
-        [Description("Indonesian (Bahasa Indonesia)")]
-        id,
+        //[Description("Indonesian (Bahasa Indonesia)")]
+        //id,
         [Description("Italian (Italiano)")]
         it,
-        [Description("Korean (한국어)")]
-        ko,
+        //[Description("Korean (한국어)")]
+        //ko,
         [Description("Norwegian Bokmål (Norsk Bokmål)")]
         nb_NO,
         [Description("Polish (język polski)")]
         pl,
-        [Description("Russian (русский)")]
-        ru,
+        //[Description("Russian (русский)")]
+        //ru,
         [Description("Spanish (Español)")]
         es,
         [Description("Turkish (Türkçe)")]
         tr,
-        [Description("Ukrainian (Українська)")]
-        uk,
+        //[Description("Ukrainian (Українська)")]
+        //uk,
     }
 
     public enum PlaylistFormat {
