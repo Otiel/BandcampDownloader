@@ -20,6 +20,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="language">The Language.</param>
         private static CultureInfo GetCultureInfo(Language language) {
+            // Existing cultures: https://dotnetfiddle.net/e1BX7M
             switch (language) {
                 case Language.de:
                     return new CultureInfo("de");
