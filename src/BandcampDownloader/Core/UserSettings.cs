@@ -15,6 +15,8 @@ namespace BandcampDownloader {
         id,
         [Description("Italian (Italiano)")]
         it,
+        [Description("Korean (한국어)")]
+        ko,
         [Description("Norwegian Bokmål (Norsk Bokmål)")]
         nb_NO,
         [Description("Polish (język polski)")]
