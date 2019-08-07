@@ -23,7 +23,7 @@ namespace BandcampDownloader {
             if ((Language) comboBoxLanguage.SelectedValue != App.UserSettings.Language) {
                 LanguageHelper.ApplyLanguage(App.UserSettings.Language);
             }
-            // Revert the skin only if it has been changed
+            // Revert the theme only if it has been changed
             if ((Skin) comboBoxTheme.SelectedItem != App.UserSettings.Theme) {
                 ThemeHelper.ApplySkin(App.UserSettings.Theme);
             }
