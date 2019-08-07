@@ -45,6 +45,8 @@ namespace BandcampDownloader {
                     return new CultureInfo("tr");
                 case Language.uk:
                     return new CultureInfo("uk");
+                case Language.zh:
+                    return new CultureInfo("zh");
                 default:
                     throw new NotImplementedException();
             }
