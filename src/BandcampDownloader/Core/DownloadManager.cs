@@ -34,7 +34,8 @@ namespace BandcampDownloader {
         private CancellationTokenSource _cancellationTokenSource;
 
         /// <summary>
-        /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes and the total bytes to download.
+        /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
+        /// and the total bytes to download.
         /// </summary>
         public List<TrackFile> DownloadingFiles { get; set; }
 
@@ -47,7 +48,8 @@ namespace BandcampDownloader {
         public DownloadManager(string urls) {
             _urls = urls;
 
-            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default value) files at the same time
+            // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
+            // value) files at the same time
             ServicePointManager.DefaultConnectionLimit = 50;
         }
 
@@ -200,6 +202,7 @@ namespace BandcampDownloader {
                     try {
                         await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
                         trackDownloaded = true;
+                        LogAdded(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
                     } catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled) {
                         // Downloads cancelled by the user
                         return false;
@@ -228,6 +231,7 @@ namespace BandcampDownloader {
                             tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
                             tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
                             tagFile.Save();
+                            LogAdded(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                         }
 
                         if (App.UserSettings.SaveCoverArtInTags && artwork != null) {
@@ -235,6 +239,7 @@ namespace BandcampDownloader {
                             var tagFile = TagLib.File.Create(track.Path);
                             tagFile.Tag.Pictures = new TagLib.IPicture[1] { artwork };
                             tagFile.Save();
+                            LogAdded(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                         }
 
                         // Note the file as downloaded
@@ -253,8 +258,8 @@ namespace BandcampDownloader {
         }
 
         /// <summary>
-        /// Downloads and returns the cover art of the specified album.
-        /// Depending on UserSettings, save the cover art in the album folder.
+        /// Downloads and returns the cover art of the specified album. Depending on UserSettings, save the cover art in
+        /// the album folder.
         /// </summary>
         /// <param name="album">The album.</param>
         private async Task<TagLib.Picture> DownloadCoverArtAsync(Album album) {
@@ -499,8 +504,9 @@ namespace BandcampDownloader {
                     break;
                 case FileType.Track:
                     fileTypeForLog = "MP3 file for the track";
-                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed)
-                    // Surprisingly, using the GET method does not seem to download the whole file, so we will use it to retrieve the mp3 sizes
+                    // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed) Surprisingly,
+                    // using the GET method does not seem to download the whole file, so we will use it to retrieve the
+                    // mp3 sizes
                     protocolMethod = "GET";
                     break;
                 default:

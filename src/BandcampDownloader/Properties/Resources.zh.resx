@@ -62,396 +62,416 @@
     <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Przeglądaj foldery</value>
+    <value>选择文件夹</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
-    <value>_Anuluj</value>
+    <value>取消</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Sprawdź aktualizację</value>
+    <value>现在检查</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>Pobierz nową wersję</value>
+    <value>下载新版本</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
-    <value>_Ustawienia</value>
+    <value>设置</value>
   </data>
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
-    <value>Otwórz ustawienia</value>
+    <value>打开设置</value>
   </data>
   <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Resetuj do ustawień domyślnych</value>
+    <value>恢复初始设置</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
-    <value>_Zapisz</value>
+    <value>保存</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>_Zacznij pobieranie</value>
+    <value>下载</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
-    <value>_Anuluj</value>
+    <value>取消</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
-    <value>_Zobacz zmiany</value>
+    <value>查看</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Nie można pobrać  pliku zmian</value>
+    <value>无法从{0}上加载更新日志</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Sprawdź uaktualnienia podczas startu</value>
+    <value>启动时检查更新</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Aplikacja uruchomi następujący adres podczas uruchamiania:</value>
+    <value>程序启动时将会在如下网址中检查更新：</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Zapisz jako _JPG</value>
+    <value>转换为JPG格式</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Konwertuje okładkę na jpg z kompresją 'jpeg 90' (co jest dobrym kompromisem między rozmiarem a jakością).</value>
+    <value>将封面转换为JPG格式，压缩率为90%（既能减小文件大小，又能保证质量）。</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>Maksymalna szerokość / wysokość</value>
+    <value>限制最大宽度和高度</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Zmniejsza okładkę do podanej maksymalnej szerokości / wysokości.</value>
+    <value>将封面调整为指定的最大宽度和高度。</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Konwertuj na JP_G</value>
+    <value>转换为JPG格式</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Konwertuje okładkę na jpg z kompresją 'jpeg 90' (co jest dobrym kompromisem między rozmiarem a jakością).</value>
+    <value>将封面转换为JPG格式，压缩率为90%（既能减小文件大小，又能保证质量）。</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Maksymalna szerokość / wysokość</value>
+    <value>限制最大高度和宽度</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Zmniejsza okładkę do podanej maksymalnej szerokości / wysokości.</value>
+    <value>将封面调整为指定的最大宽度高度。</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Utwórz _playlistę dla każdego albumu</value>
+    <value>为每个专辑创建播放列表</value>
   </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>Tworzy playlistę dla każdego pobranego albumu.</value>
+    <value>为每个下载的专辑创建单独的播放列表。</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Pobierz _dyskografię</value>
+    <value>下载作家的专辑</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Pobiera całą dyskografię artysty / wydawcy.</value>
+    <value>下载作家的所有专辑。</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>Odtwarzaj _dźwięki powiadomień</value>
+    <value>播放提示音</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Odtwarza dźwięk powiadomienia po zakończeniu pobierania.</value>
+    <value>下载完成播放通知声音。</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Użyj formatu rozszerzonego [#EXTM3U] (tylko w przypadku M3U)</value>
+    <value>使用扩展格式（仅限M3U）</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>Przy tworzeniu listy odtwarzania M3U zostanie użyty rozszerzony format (#EXTM3U).</value>
+    <value>在M3U播放列表中使用扩展格式（以＃字符开头的指令）。</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>_Modyfikuj tagi utworów (ID3)</value>
+    <value>自动填写专辑信息（ID3格式）</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, każdy tag zostanie zmodyfikowany w sposób określony poniżej.
+    <value>按照指定的方式修改标记。
 
-Jeśli opcja ta nie jest zaznaczona, wszystkie poniższe ustawienia zostaną zignorowane, w pliku pozostaną oryginalne tagi.
-Jest to równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
+如果不勾选，则文件中的标记都保持原样。</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Pobierz jeden album na raz</value>
+    <value>不同时下载多部专辑</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Pobieranie albumów po kolei.
-W przeciwnym wypadku albumy są pobierane równocześnie (preferowane, jeśli masz wysoką przepustowość).</value>
+    <value>不同时下载多部专辑。
+如果不勾选，则同时下载所有专辑（需要有较快的网速）。</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Pobierz _wielkość plików przed pobraniem utworów</value>
+    <value>在下载前确定文件大小</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Pobiera rozmiar pliku przed pobieraniem, pozwala to na pokazanie postępu pobierania.
-Wydłuża pobieranie i zużywa więcej transferu (nieznacznie).</value>
+    <value>确定文件大小以便能显示精确进度。
+如果不勾选，则能节省一些带宽或时间。</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>Zapisz w _katalogu</value>
+    <value>保存到文件夹</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Pobiera okładkę do folderu albumów.</value>
+    <value>将封面下载到专辑文件夹中。</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Zapisz w _tagach</value>
+    <value>保存到文件中</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Zapisuje okładkę w tagach utworu.</value>
+    <value>将封面保存到文件中。</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Pokaż szczegółowy log</value>
+    <value>显示详细日志</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Pokazuje rozszerzony log.</value>
+    <value>在日志框中显示更多信息。</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Wybierz folder, w którym chcesz zapisywać albumy</value>
+    <value>选择要保存专辑的文件夹</value>
   </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Zmień te ustawienia na własne ryzyko.</value>
+    <value>请慎重更改这些设置。</value>
   </data>
   <data name="labelAlbumArtist" xml:space="preserve">
-    <value>Album art_ist</value>
+    <value>专辑作家</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
-    <value>Nazwa_albumu</value>
+    <value>专辑名称</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Dozwolona _różnica rozmiaru pliku (%)</value>
+    <value>允许的文件大小差异(%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
-    <value>_Wykonawca</value>
+    <value>作家</value>
   </data>
   <data name="labelButtonResetSettings" xml:space="preserve">
-    <value>_Przywróć domyślne ustawienia</value>
+    <value>恢复初始设置</value>
   </data>
   <data name="labelChangelog" xml:space="preserve">
-    <value>Lista zmian</value>
+    <value>更新日志</value>
   </data>
   <data name="labelChangelogTitle" xml:space="preserve">
-    <value>Lista zmian</value>
+    <value>更新日志</value>
   </data>
   <data name="labelComments" xml:space="preserve">
-    <value>Komentarze</value>
+    <value>注释</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Format nazwy pliku</value>
+    <value>文件名格式</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
-    <value>Maksymalny rozmiar (_px)</value>
+    <value>最大尺寸（像素）</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Maksymalny rozmiar (p_x)</value>
+    <value>最大尺寸（像素）</value>
   </data>
   <data name="labelCurrentVersion" xml:space="preserve">
-    <value>Używana wersja:</value>
+    <value>当前版本：</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>_Maksymalna ilość prób pobrania</value>
+    <value>尝试下载次数</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Odstęp pomiędzy ponowieniem próby (sek)</value>
+    <value>重试等待时间（秒）</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>重试指数</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Zapisz albumy _w</value>
+    <value>将专辑保存到</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Typ playlisty:</value>
+    <value>文件名格式：</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
-    <value>_HTTPS(S) proxy</value>
+    <value>HTTP(S)代理</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
-    <value>_Port</value>
+    <value>端口</value>
   </data>
   <data name="labelIssues" xml:space="preserve">
-    <value>Zgłoś błąd</value>
+    <value>报告错误</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
-    <value>_Język</value>
+    <value>语言</value>
   </data>
   <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>O programie</value>
+    <value>关于</value>
   </data>
   <data name="labelListBoxItemAdvanced" xml:space="preserve">
-    <value>Zaawansowane ustawienia</value>
+    <value>高级设置</value>
   </data>
   <data name="labelListBoxItemCoverArt" xml:space="preserve">
-    <value>Grafika albumu</value>
+    <value>封面</value>
   </data>
   <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>Pobrane</value>
+    <value>下载</value>
   </data>
   <data name="labelListBoxItemGeneral" xml:space="preserve">
-    <value>Podstawowe</value>
+    <value>通用</value>
   </data>
   <data name="labelListBoxItemNetwork" xml:space="preserve">
-    <value>Sieć</value>
+    <value>网络</value>
   </data>
   <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Playlista</value>
+    <value>播放列表</value>
   </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Nazewnictwo i tagi</value>
+    <value>文件名和标签</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
-    <value>_Tekst</value>
+    <value>歌词</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Format nazwy playlisty</value>
+    <value>文件名格式</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>Format_playlisty</value>
+    <value>播放列表格式</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
-    <value>Pewne ustawienia nie mogą zostać zmienione podczas pobierania.</value>
+    <value>下载时无法更改某些设置。</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
-    <value>_Motyw</value>
+    <value>主题</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
-    <value>Numer utworu</value>
+    <value>曲目编号</value>
   </data>
   <data name="labelTrackTitle" xml:space="preserve">
-    <value>_Tytuł</value>
+    <value>标题</value>
   </data>
   <data name="labelVerboseLogInfo" xml:space="preserve">
-    <value>(plik logów jest zawsze rozszerzony)</value>
+    <value>（日志文件中有详细信息）</value>
   </data>
   <data name="labelVersion" xml:space="preserve">
-    <value>Wersja</value>
+    <value>版本</value>
   </data>
   <data name="labelVersionError" xml:space="preserve">
-    <value>Nie można sprawdzić aktualizacji</value>
+    <value>无法检查更新</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Nowa wersja jest dostępna</value>
+    <value>有新版本可用</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
-    <value>Strona internetowa</value>
+    <value>网站</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>Data wydania albumu</value>
+    <value>专辑发布年份</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>_Anuluj</value>
+    <value>取消</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>_Nie</value>
+    <value>否</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>_OK</value>
+    <value>好的</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>_Tak</value>
+    <value>是</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Przerwać pobieranie?</value>
+    <value>要取消下载吗？</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>Wystąpił błąd podczas sprawdzania aktualizacji. Spróbuj ponownie później.</value>
+    <value>检查更新时出了点小问题。请稍后重试。</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>_Zamknij aplikację</value>
+    <value>关闭程序</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Aplikacja jest w trakcie pobierania. Czy na pewno chcesz ją zamknąć i je zakończyć?</value>
+    <value>下载还未完成！确定要取消下载并退出吗？</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Nie można otworzyć poniższego linku:
+    <value>无法打开以下链接：
 {0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>Już posiadasz najnowszą wersję ({0}).</value>
+    <value>你已经在使用最新版本 ({0})。</value>
   </data>
   <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Przywróć ustawienia domyślne</value>
+    <value>恢复初始设置</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Przywrócić wszystkie ustawienia do domyślnych wartości?</value>
+    <value>确认要恢复初始设置吗？</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Wystąpił nieznany błąd. Aplikacja zostanie zamknięta.
+    <value>发生了无法处理的错误。程序将会关闭。
 
-Proszę otworzyć nowy problem na GitHubie z plikiem logów.
+请在我们的GitHub网站上新建一个Issue，并附上在该位置的日志：
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ręczna konfiguracja serwera proxy</value>
+    <value>手动设置代理</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Bez serwera proxy</value>
+    <value>不使用代理</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Systemowy serwer proxy</value>
+    <value>使用系统设置的代理</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Zapisz jako</value>
+    <value>另存为</value>
   </data>
   <data name="Skin_Dark" xml:space="preserve">
-    <value>Ciemny</value>
+    <value>深色</value>
   </data>
   <data name="Skin_Light" xml:space="preserve">
-    <value>Jasny</value>
+    <value>浅色</value>
   </data>
   <data name="TagEditAction_DoNotModify" xml:space="preserve">
-    <value>Nie zmieniaj</value>
+    <value>保持原样</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Wyczyść tag</value>
+    <value>清除标记</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Zapisz w tagu</value>
+    <value>保存到标记中</value>
   </data>
   <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Nie zmieniaj</value>
+    <value>保持原样</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Wyczyść tag</value>
+    <value>清除标记</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Historia aktualizacji</value>
+    <value>更新历史</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Pomóż w tłumaczeniu</value>
+    <value>帮助翻译</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Podczas pobierania utworu, jeśli dany plik (lub o takiej samej nazwie) już istnieje, zostanie sprawdzony przed pobieraniem.
-Jeśli rozmiar obu plików różni się o wartość mniejszą niż podano (w %) pobieranie zostanie pominięte.
-Ustaw tą wartość na 0 aby zawsze nadpisywać pliki, nawet jeśli już są na dysku.
+    <value>下载时，如果已存在同名的文件，则该文件将会与要下载的文件进行比对。
+如果两个文件的大小差异的百分比小于此值，则不会再下载该文件。
+如果此值设置为0，那么文件始终会被下载，即使磁盘上已存在相同的文件。
 
-Zalecana wartość = 5</value>
+建议设为5（5%的差异）</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Możesz użyć tagów aby dostosować nazwę pliku:
--{artist} zostanie zastąpiony wykonawcą
--{album} zostanie zastąpiony nazwą albumu
--{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+    <value>您可以使用如下占位符来自定义文件名：
+ -  {artist}：专辑艺术家
+ -  {album}：专辑
+ -  {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Maksymalna liczba prób pobrania utworu jeśli występuje problem.
-Po tym jak ta liczba zostanie osiągnięta (dla każdego utworu osobno) pobieranie zostanie pominięte.
+    <value>下载失败后最多重试的次数。
+达到该次数后，将跳过该文件的下载。
 
-Zalecana wartość = 7</value>
+推荐设为7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>用于控制“指数退避机制”。
+在每次下载失败后，BandcampDownloader可以等待特定时间再重试
+下载该文件，从而避免触发Bandcamp反刷屏过滤器。
+用于计算再次尝试下载之前等待的时间的公式如下：
+等待时间 = 冷却时间 * (该数字 ^ 已尝试的次数)
+
+推荐设为0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>用于控制“指数退避机制”。
+在每次下载失败后，BandcampDownloader可以等待特定时间再重试
+下载该文件，从而避免触发Bandcamp反刷屏过滤器。
+用于计算再次尝试下载之前等待的时间的公式如下：
+等待时间 = 该数字 * (重试指数 ^ 已尝试的次数)
+
+推荐设为4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>Możesz użyć tagów aby dostosować folder pobierania albumu:
--{artist} zostanie zastąpiony wykonawcą
--{album} zostanie zastąpiony nazwą albumu
--{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+    <value>您可以使用如下占位符来自定义下载文件夹名：
+ -  {artist}：专辑艺术家
+ -  {album}：专辑
+ -  {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Możesz użyć tagów aby dostosować nazwę pliku:
--{artist} zostanie zastąpiony wykonawcą
--{title} zostanie zastąpiony tytułem utworu
--{tracknum} zostanie zastąpiony numerem utworu
--{album} zostanie zastąpiony nazwą albumu
--{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+    <value>您可以使用如下占位符来自定义文件名：
+ -  {artist}：专辑艺术家
+ -  {title}：曲目名称
+ -  {tracknum}：曲目编号
+ -  {album}：专辑
+ -  {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Możesz użyć tagów aby dostosować nazwę pliku:
--{artist} zostanie zastąpiony wykonawcą
--{album} zostanie zastąpiony nazwą albumu
--{year}, {month} i {day} zostaną zastąpione odpowiednio rokiem, miesiącem i dniem wydania albumu</value>
+    <value>您可以使用如下占位符来自定义文件名：
+ -  {artist}：专辑艺术家
+ -  {album}：专辑
+ -  {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Wklej tu linki albumów do pobrania. Możesz podać linki do wielu albumów jednocześnie, każdy w kolejnej linii.
+    <value>将专辑的链接粘贴在此处。一行只能粘贴一个链接。
 
-Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub http://[wykonawca].bandcamp.com/track/[utwór]
-Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy wykonawcy.</value>
+Bandcamp的链接如下所示：http://[艺术家名称].bandcamp.com/album/[album]或http://[艺术家名称].bandcamp.com/track/[曲目名称]
+您也可以粘贴作家主页：http://[艺术家名称].bandcamp.com并勾选“☑下载作家专辑”来下载作家的所有专辑。</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
-    <value>Ustawienia</value>
+    <value>设置</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Aktualizacja</value>
+    <value>更新</value>
   </data>
 </root>

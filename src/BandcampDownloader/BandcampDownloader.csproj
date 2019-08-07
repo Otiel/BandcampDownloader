@@ -295,7 +295,9 @@
     <EmbeddedResource Include="Properties\Resources.de.resx" />
     <EmbeddedResource Include="Properties\Resources.es.resx" />
     <EmbeddedResource Include="Properties\Resources.fr.resx" />
+    <EmbeddedResource Include="Properties\Resources.id.resx" />
     <EmbeddedResource Include="Properties\Resources.it.resx" />
+    <EmbeddedResource Include="Properties\Resources.ko.resx" />
     <EmbeddedResource Include="Properties\Resources.nb-NO.resx" />
     <EmbeddedResource Include="Properties\Resources.pl.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -303,8 +305,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ru.resx" />
     <EmbeddedResource Include="Properties\Resources.tr.resx" />
     <EmbeddedResource Include="Properties\Resources.uk.resx" />
+    <EmbeddedResource Include="Properties\Resources.zh.resx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
