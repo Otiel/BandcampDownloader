@@ -19,10 +19,13 @@ namespace BandcampDownloader {
         /// Cancels the changes already applied.
         /// </summary>
         public void CancelChanges() {
-            ThemeHelper.ApplySkin(App.UserSettings.Theme);
             // Revert the language only if it has been changed
             if ((Language) comboBoxLanguage.SelectedValue != App.UserSettings.Language) {
                 LanguageHelper.ApplyLanguage(App.UserSettings.Language);
+            }
+            // Revert the skin only if it has been changed
+            if ((Skin) comboBoxTheme.SelectedItem != App.UserSettings.Theme) {
+                ThemeHelper.ApplySkin(App.UserSettings.Theme);
             }
         }
 
@@ -91,8 +94,10 @@ namespace BandcampDownloader {
         }
 
         private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            // Apply selected theme
-            ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
+            if ((Skin) comboBoxTheme.SelectedItem != App.UserSettings.Theme) {
+                // Apply selected theme
+                ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
+            }
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
