@@ -363,7 +363,7 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
     <value>Değiştirmeyin</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Boş etiket</value>
+    <value>Boş Etiket</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Etikette kaydet</value>
@@ -448,5 +448,30 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Güncelleştirme</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>Uygulamayı kapat</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Şu bağlantı açılamadı:
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>Ayarları Sıfırla</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>İşlenmeyen bir hata oluştu. Uygulama şimdi kapanacak.
+
+Lütfen günlük dosyanızın içeriğinde yeni bir sorun açın.
+{0}</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Karanlık</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Aydınlık</value>
   </data>
 </root>
