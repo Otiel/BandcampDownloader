@@ -96,10 +96,12 @@ namespace BandcampDownloader {
         }
 
         private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if ((Skin) comboBoxTheme.SelectedItem != App.UserSettings.Theme) {
-                // Apply selected theme
-                ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
+            if (!comboBoxTheme.IsLoaded) {
+                return;
             }
+
+            // Apply selected theme
+            ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
