@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,420 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Procurar pasta</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Cancelar</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Verificar _agora</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Baixar nova versão</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Configurações</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Abrir configurações</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Redefinir as configurações para os padrões</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Salvar</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Baixar</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Cancelar</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Ver</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Não foi possível baixar o registro de alterações de {0}</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Verificar por _atualizações na inicialização</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Consulta o seguinte endereço ao iniciar o aplicativo:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Converter para _JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Converte a arte de capa para JPG com uma compressão de 90 (excelente relação entre tamanho e qualidade).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Restringir largura/altura _máxima</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Redimensiona a arte de capa para a largura/altura máxima especificada.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Converter para _JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Converte a arte de capa para JPG com uma compressão de 90 (excelente relação entre tamanho e qualidade).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Restringir largura/altura _máxima</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Redimensiona a arte de capa para a largura/altura máxima especificada.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Criar uma _lista de reprodução para cada álbum</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Cria um arquivo de faixa do álbum para cada álbum baixado.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Baixar discografia do _artista</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Baixa toda a discografia do artista.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Tocar sons de notificação</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Som de notificação para transferências concluídas.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Usar formato _estendido (somente para M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Listas de reprodução M3U em formato estendido (diretivas precedidas pelo caractere #).</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Modificar tags das faixas (ID3)</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Modifica cada rótulo como especificado abaixo.
+
+Caso contrário, todos as tags não serão alteradas, equivalente a definir "Não modificar" para cada tag.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Baixar um álbum de cada vez</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Baixa apenas um álbum de cada vez.
+Caso contrário, todos os álbuns serão baixados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Recuperar o tamanho do _arquivo antes de baixar as faixas</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Recupera o tamanho do arquivo para mostrar um progresso preciso.
+Se não, alguma largura de banda/hora é salva.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Salvar na _pasta</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Baixa a arte de capa para a pasta do álbum.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Salvar nas _tags</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Salva a arte de capa nas tags da faixa.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Mostrar registro _detalhado</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Mostra mais informações no registro.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Selecione a pasta para salvar os álbuns</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Altere estas configurações por sua conta e risco.</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Álbum do _artista</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>_Nome do álbum</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>_Diferença de tamanho de arquivo permitida (%)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artista</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Redefinir configurações</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Registro de alterações</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Registro de alterações</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>_Comentários</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Formato do _nome de arquivo</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Tamanho máximo (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Tamanho máximo (_px)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Versão atual:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>Tentativas máximas de transferência</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>_Tempo de espera das repetições (seg)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Repetir _expoente</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Salvar álbuns _para</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>Formato do _nome de arquivo:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>Proxy _HTTP(S)</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Porta</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Reportar um erro</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Idioma</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Configurações avançadas</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Arte de capa</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Transferências</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Geral</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Lista de reprodução</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Nomeação e tags</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Letra da música</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Formato do _nome de arquivo</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>_Formato da lista de reprodução</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Algumas configurações não podem ser alteradas enquanto as faixas estão baixando.</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>_Número da faixa</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Título</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(o arquivo de registro sempre é detalhado)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Não foi possível verificar por atualizações</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Nova versão disponível</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>_Ano de lançamento do álbum</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Cancelar</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Não</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Sim</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Cancelar todas as transferências?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Ocorreu um erro durante a verificação por atualizações. Por favor, tente mais tarde.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Fechar aplicação</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Existem transferências atualmente ativas. Tem certeza que deseja fechar o aplicativo e interromper todas elas?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Não foi possível abrir o seguinte link:
+{0}</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Você já tem a versão mais recente ({0}).</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Redefinir configurações</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Redefinir todas as configurações para seus valores padrão?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Ocorreu um erro não processado. O aplicativo será fechado agora.
+
+Por favor, abra uma nova emissão com o conteúdo do seu arquivo de registro em
+{0}</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>Configuração _manual de proxy</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Sem proxy</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>Proxy do _sistema</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Salvar como</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Não modificar</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Limpar tag</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Salvar na tag</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Não modificar</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Limpar tag</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Histórico de lançamentos</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Ajudar a traduzir</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Quando baixar uma faixa, se o mesmo arquivo (de mesmo nome) já existir, ele será verificado em relação à faixa a ser baixada.
+Se o tamanho de ambos os arquivos for diferente para menos que esse valor (em porcentagem), a transferência da faixa será ignorada.
+Defina este valor para 0 para sempre baixar as faixas, mesmo que já existam no disco.
+
+Valor recomendado = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Você pode usar espaços reservados para personalizar o nome do arquivo:
+- {artista} será substituído pelo artista do álbum
+- {álbum} será substituído pelo nome do álbum
+- {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Número máximo de tentativas realizadas para baixar uma faixa se ela falhar.
+Após esse número ser atingido (para cada faixa), a transferência será ignorada.
+
+Valor recomendado = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Usado para controlar o mecanismo de recuo exponencial.
+Após cada falha de um download de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
+baixar a faixa novamente a fim de evitar o filtro anti-spam do Bandcamp.
+A fórmula usada para calcular o tempo de espera antes de tentar baixar novamente é o seguinte:
+tempo = tempo de espera * (expoente ^ contagem de tentativas)
+
+Valor recomendado = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Usado para controlar o mecanismo de recuo exponencial.
+Após cada falha de um download de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
+baixar a faixa novamente a fim de evitar o filtro anti-spam do Bandcamp.
+A fórmula usada para calcular o tempo de espera antes de tentar baixar novamente é o seguinte:
+tempo = tempo de espera * (expoente ^ contagem de tentativas)
+
+Valor recomendado = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Você pode usar espaços reservados para personalizar a pasta de transferências, dependendo do álbum:
+- {artista} será substituído pelo artista do álbum
+- {álbum} será substituído pelo nome do álbum
+- {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Você pode usar espaços reservados para personalizar o nome do arquivo:
+- {artista} será substituído pelo artista do álbum
+- {título} será substituído pelo nome da faixa
+- {número_da_faixa} será substituído pelo número da faixa
+- {álbum} será substituído pelo nome do álbum
+- {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Você pode usar espaços reservados para personalizar o nome do arquivo:
+- {artista} será substituído pelo artista do álbum
+- {álbum} será substituído pelo nome do álbum
+- {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Cole as URLs dos álbuns para baixar, aqui. Você pode especificar várias URLs escrevendo uma URL por linha.
+
+Uma URL do Bandcamp se parece com: "http://[artista].bandcamp.com/album/[álbum]" ou "http://[artista].bandcamp.com/track/[faixa]"
+Cole as páginas do artista: "http://[artista].bandcamp.com" e cheque "☑ Baixar a discografia do artista" para baixar todos os seus álbuns.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
 </root>
