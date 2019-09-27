@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Annuleren</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>_Nu controleren</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>Nieuwe versie _downloaden</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>In_stellingen</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>Op_slaan</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Downloaden</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Annuleren</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Bekijken</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Automatisch controleren op _updates</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Converteren naar _JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>_Maximale hoogte/breedte beperken</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Converteren naar JP_G</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>M_aximale hoogte/breedte beperken</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Afs_peellijsten maken voor elk album</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Discografie van _artiest downloaden</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Meldi_ngsgeluiden afspelen</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Uitg_ebreid formaat gebruiken (alleen M3U)</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Tags aanpassen (ID3)</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>Eén album tegelijk _downloaden</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Annuleren</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Nee</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_Oké</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Ja</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Niet aanpassen</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Tag wissen</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Opslaan in tag</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Niet aanpassen</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Tag wissen</value>
+  </data>
 </root>
