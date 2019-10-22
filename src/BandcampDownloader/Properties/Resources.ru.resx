@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -116,7 +116,7 @@
     <value>Исполнитель альбома</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
-    <value>Альбом</value>
+    <value>Название альбома</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>Исполнитель</value>
@@ -153,5 +153,323 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Очистить данные</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Не удалось загрузить журнал изменений из {0}</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Запрашивает следующий адрес при запуске приложения:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Преобразует обложку в JPG со сжатием 90 (отличный компромисс между размером и качеством).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Ограничить максимальную ширину / высоту</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Изменяет размер обложки до указанной максимальной ширины / высоты.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Преобразует обложку в JPG со сжатием 90 (отличный компромисс между размером и качеством).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Ограничить максимальную ширину / высоту</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Изменяет размер обложки до указанной максимальной ширины / высоты.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Создает файл дорожки альбома для каждого загруженного альбома.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Загружает всю дискографию артиста.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Воспроизвести звуковое уведомление</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Звуковое уведомление для завершенных загрузок.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Используйте расширенный формат (только для M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Списки воспроизведения M3U в расширенном формате (directives prefaced by the # character).</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>Изменить теги треков (ID3)</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Изменяет каждый тег, как указано ниже.
+
+Если нет, все теги остаются неизменными, что эквивалентно настройке «Не изменять» для каждого тега.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>Скачать один альбом за раз</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Загружает только один альбом за раз.
+Если нет, все альбомы загружаются одновременно (лучше при условии высокой пропускной способности).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Получить размер файла перед загрузкой треков</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Получает размер файла, чтобы показать точный прогресс.
+If not, some bandwidth/time is saved.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Загружает обложку в папку альбома.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Сохранить в тегах</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Сохраняет обложку в тегах трека.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Показать подробный лог</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Показывает больше информации в журнале.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Выберите папку для сохранения альбомов в</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Измените эти настройки на свой страх и риск.</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Допустимая разница в размере файла (%)</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>Сбросить настройки</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Журнал изменений</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Журнал изменений</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Комментарии</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Формат имени файла</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Максимальный размер (px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Максимальный размер (px)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Текущая версия:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>Максимум попыток загрузки</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Повторная перезарядка (сек)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Повторная попытка</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Сохранить альбомы в</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>Формат имени файла:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>HTTP(S) прокси</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>Порт</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Сообщить об ошибке</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Расширенные настройки</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Обложка</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Загрузки</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Общая</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Сеть</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Плейлист</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Название и теги</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>Текст песни</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Формат имени файла</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Формат плейлиста</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Некоторые настройки нельзя изменить во время загрузки треков.</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Номер дорожки</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(файл журнала всегда подробный)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Не удалось проверить наличие обновлений</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Доступна новая версия</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Веб-сайт</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Год выпуска альбома</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Отменить все загрузки?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Произошла ошибка при проверке обновлений. Пожалуйста, попробуйте позже.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>Закрыть приложение</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Есть в настоящее время активные загрузки. Вы уверены, что хотите закрыть приложение и остановить все загрузки?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Не удалось открыть следующую ссылку:
+{0}</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>У вас уже есть последняя версия.</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>Сбросить настройки</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Сбросить все настройки до значений по умолчанию?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Произошла необработанная ошибка. Приложение закроется сейчас.
+
+Пожалуйста, откройте новую проблему с содержанием вашего файла журнала на</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>Ручная настройка прокси</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>Нет прокси</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>Системный прокси</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Сохранить как</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>История релизов</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Помогите перевести</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>При загрузке дорожки, если такой же файл (имя) уже существует, он будет сверен с дорожкой для загрузки.
+Если размер обоих файлов отличается от этого значения (в процентах), загрузка дорожки будет пропущена.
+Установите это значение в 0, чтобы всегда загружать треки, даже если они уже существуют на диске.
+
+Рекомендуемое значение = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Вы можете использовать заполнители для настройки имени файла:
+- {Artist} будет заменен исполнителем альбома
+- {album} будет заменен на название альбома
+- {year}, {month} и {day} будут заменены датой выпуска альбома</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Максимальное количество попыток загрузки трека в случае сбоя.
+После достижения этого номера (для каждой дорожки) загрузка дорожки будет пропущена.
+
+Рекомендуемое значение = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Используется для управления экспоненциальным механизмом отката.
+После каждого сбоя загрузки трека BandcampDownloader может подождать определенное время, прежде чем снова попытаться загрузить трек, чтобы избежать лимит фильтра спама Bandcamp.
+Формула, используемая для вычисления времени ожидания перед повторной попыткой загрузки, выглядит следующим образом:
+время = время перезарядки * (экспонента ^ количество попыток)
+
+Рекомендуемое значение = 0,2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Используется для управления экспоненциальным механизмом отката.
+После каждой неудачной загрузки трека BandcampDownloader может подождать определенное время, прежде чем пытаться снова
+скачать трек, чтобы не лимита фильтр спама Bandcamp.
+Формула, используемая для вычисления времени ожидания перед повторной попыткой загрузки, выглядит следующим образом:
+время = время перезарядки * (экспонента ^ количество попыток)
+
+Рекомендуемое значение = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Вы можете использовать заполнители для настройки имени файла:
+- {Artist} будет заменен исполнителем альбома
+- {album} будет заменен на название альбома
+- {year}, {month} и {day} будут заменены датой выпуска альбома</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Вы можете использовать заполнители для настройки имени файла:
+- {Artist} будет заменен исполнителем альбома
+- {title} будет заменен на название трека
+- {tracknum} будет заменен номером трека
+- {album} будет заменен на название альбома
+- {year}, {month} и {day} будут заменены датой выпуска альбома</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Вы можете использовать заполнители для настройки имени файла:
+- {Artist} будет заменен исполнителем альбома
+- {album} будет заменен на название альбома
+- {year}, {month} и {day} будут заменены датой выпуска альбома</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Вставьте здесь URL-адреса альбомов, чтобы загрузить. Вы можете указать несколько URL-адресов, написав один URL-адрес в строке.
+
+URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] or http://[artist].bandcamp.com/track/[track]
+Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок «☑ Скачать дискографию исполнителя ", чтобы скачать все их альбомы.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Обновить</value>
   </data>
 </root>
