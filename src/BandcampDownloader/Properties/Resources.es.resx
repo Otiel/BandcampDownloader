@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -272,7 +272,7 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>_Restaurar configuración</value>
   </data>
   <data name="labelChangelog" xml:space="preserve">
-    <value>Informe de novedades</value>
+    <value>Registro de cambios</value>
   </data>
   <data name="labelChangelogTitle" xml:space="preserve">
     <value>Registro de cambios</value>
@@ -314,7 +314,7 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>_Puerto</value>
   </data>
   <data name="labelIssues" xml:space="preserve">
-    <value>Informar de error</value>
+    <value>Reportar error</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
     <value>_Idioma</value>
