@@ -465,7 +465,7 @@ namespace BandcampDownloader {
                     }
                 }
 
-                var count = albumsUrls.Count;
+                int count = albumsUrls.Count;
                 try {
                     // We are on a real "music" page if we 
                     albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
