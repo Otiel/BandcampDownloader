@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -525,7 +525,8 @@ Empfohlener Wert = 4</value>
     <value>Fügen Sie URLs von Alben ein, die Sie hier herunterladen können. Sie können mehrere URLs angeben, indem Sie eine URL pro Zeile eingeben.
 
 Eine Bandcamp-URL sieht so aus: http://[artist].bandcamp.com/album/[album] oder http://[artist].bandcamp.com/track/[track].
-Seite von Interpreten einfügen: http://[artist].bandcamp.com und klicke auf „☑ Diskographie des Interpreten herunterladen”, um alle deren Alben herunterzuladen.</value>
+Seite von Interpreten einfügen: http://[artist].bandcamp.com und klicke auf „☑ Diskographie des Interpreten herunterladen”, um alle deren Alben 
+herunterzuladen.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
