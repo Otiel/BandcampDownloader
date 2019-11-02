@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -294,7 +294,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>Version actuelle :</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Nombre de téléchargements _maximum</value>
+    <value>Tentatives de téléchargements _maximum</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>_Temps d'attente avant nouvel essai (sec)</value>
