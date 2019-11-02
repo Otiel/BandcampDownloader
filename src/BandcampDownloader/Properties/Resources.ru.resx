@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -463,8 +463,10 @@ If not, some bandwidth/time is saved.</value>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Вставьте здесь URL-адреса альбомов, чтобы загрузить. Вы можете указать несколько URL-адресов, написав один URL-адрес в строке.
 
-URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] or http://[artist].bandcamp.com/track/[track]
-Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок «☑ Скачать дискографию исполнителя ", чтобы скачать все их альбомы.</value>
+URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] or 
+http://[artist].bandcamp.com/track/[track]
+Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок «☑ Скачать дискографию исполнителя ", чтобы 
+скачать все их альбомы.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Настройки</value>
