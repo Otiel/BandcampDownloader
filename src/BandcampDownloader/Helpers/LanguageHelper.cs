@@ -40,8 +40,12 @@ namespace BandcampDownloader {
                     return new CultureInfo("pl");
                 //case Language.ko:
                 //    return new CultureInfo("ko");
-                //case Language.ru:
-                //    return new CultureInfo("ru");
+                //case Language.nl:
+                //    return new CultureInfo("nl");
+                case Language.pt:
+                    return new CultureInfo("pt");
+                case Language.ru:
+                    return new CultureInfo("ru");
                 case Language.tr:
                     return new CultureInfo("tr");
                 //case Language.uk:
