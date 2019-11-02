@@ -471,8 +471,8 @@ namespace BandcampDownloader {
                 } catch (NoAlbumFoundException) {
                     LogAdded(this, new LogArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
                 }
-                // This seem to be a one-album artist with no "music" page => URL redirects to the unique album URL
                 if(albumsUrls.Count - count == 0) {
+                    // This seem to be a one-album artist with no "music" page => URL redirects to the unique album URL
                     albumsUrls.Add(url);
                 }
             }
