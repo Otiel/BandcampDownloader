@@ -27,6 +27,8 @@ namespace BandcampDownloader {
         pl,
         //[Description("Russian (русский)")]
         //ru,
+        [Description("Portuguese (Português)")]
+        pt,
         [Description("Spanish (Español)")]
         es,
         [Description("Turkish (Türkçe)")]
