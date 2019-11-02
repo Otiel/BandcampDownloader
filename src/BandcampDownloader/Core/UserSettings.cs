@@ -25,10 +25,10 @@ namespace BandcampDownloader {
         nb_NO,
         [Description("Polish (język polski)")]
         pl,
-        //[Description("Russian (русский)")]
-        //ru,
         [Description("Portuguese (Português)")]
         pt,
+        [Description("Russian (русский)")]
+        ru,
         [Description("Spanish (Español)")]
         es,
         [Description("Turkish (Türkçe)")]
