@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -94,71 +94,17 @@
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_Посмотреть</value>
   </data>
-  <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Проверять на наличие _обновлений при запуске</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Конвертировать в _JPG</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Конвертировать в JP_G</value>
-  </data>
-  <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Создать _плейлист для каждого альбома</value>
-  </data>
-  <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Загрузить всю дискографию _артиста</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>Сохранить в _папку</value>
-  </data>
-  <data name="labelAlbumArtist" xml:space="preserve">
-    <value>_Исполнитель альбома</value>
-  </data>
-  <data name="labelAlbumTitle" xml:space="preserve">
-    <value>_Название альбома</value>
-  </data>
-  <data name="labelArtist" xml:space="preserve">
-    <value>_Исполнитель</value>
-  </data>
-  <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>_Отменить</value>
-  </data>
-  <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>_Нет</value>
-  </data>
-  <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>_OK</value>
-  </data>
-  <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>_Да</value>
-  </data>
-  <data name="Skin_Dark" xml:space="preserve">
-    <value>Тёмная</value>
-  </data>
-  <data name="Skin_Light" xml:space="preserve">
-    <value>Светлая</value>
-  </data>
-  <data name="TagEditAction_DoNotModify" xml:space="preserve">
-    <value>Не изменять</value>
-  </data>
-  <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Очистить данные</value>
-  </data>
-  <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Сохранить в теге</value>
-  </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Не изменять</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Очистить тег</value>
-  </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>Не удалось загрузить журнал изменений из {0}</value>
   </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Проверять на наличие _обновлений при запуске</value>
+  </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>Запрашивает следующий адрес при запуске приложения:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Конвертировать в _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Преобразовать обложку в JPG со сжатием 90 (отличный компромисс между размером и качеством).</value>
@@ -169,6 +115,9 @@
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
     <value>Изменяет размер обложки до указанной максимальной ширины/высоты.</value>
   </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Конвертировать в JP_G</value>
+  </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Преобразовать обложку в JPG со сжатием 90 (отличный компромисс между размером и качеством).</value>
   </data>
@@ -178,8 +127,14 @@
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Изменить размер обложки до указанной максимальной ширины/высоты.</value>
   </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Создать _плейлист для каждого альбома</value>
+  </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
     <value>Создает файл дорожки альбома для каждого загруженного альбома.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Загрузить всю дискографию _артиста</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
     <value>Загрузить всю дискографию артиста.</value>
@@ -218,6 +173,9 @@
     <value>Получает размер файла, чтобы показать точный прогресс.
 If not, some bandwidth/time is saved.</value>
   </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Сохранить в _папку</value>
+  </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
     <value>Загружает обложку в папку альбома.</value>
   </data>
@@ -239,8 +197,17 @@ If not, some bandwidth/time is saved.</value>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Измените эти настройки на свой страх и риск.</value>
   </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>_Исполнитель альбома</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>_Название альбома</value>
+  </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
     <value>Допустимая _разница в размере файла (%)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Исполнитель</value>
   </data>
   <data name="labelButtonResetSettings" xml:space="preserve">
     <value>_Сбросить настройки</value>
@@ -356,6 +323,18 @@ If not, some bandwidth/time is saved.</value>
   <data name="labelYear" xml:space="preserve">
     <value>_Год выпуска альбома</value>
   </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Отменить</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Нет</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Да</value>
+  </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Отменить все загрузки?</value>
   </data>
@@ -397,6 +376,27 @@ If not, some bandwidth/time is saved.</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Сохранить как</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Не изменять</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Очистить данные</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Сохранить в теге</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Не изменять</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Очистить тег</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>История релизов</value>
