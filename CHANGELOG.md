@@ -1,3 +1,14 @@
+# 1.3.1
+
+## Improvements
+
+* Added the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/117): French, Portuguese.
+* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/117): Spanish.
+
+## Bug fixes
+
+* Fixed a bug preventing the app from downloading discography for some artists. Thanks **@yuyoyuppe**! [#118](https://github.com/Otiel/BandcampDownloader/pull/118)
+
 # 1.3.0
 
 ## Improvements
