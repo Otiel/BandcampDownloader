@@ -467,7 +467,6 @@ namespace BandcampDownloader {
 
                 int count = albumsUrls.Count;
                 try {
-                    // We are on a real "music" page if we 
                     albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
                 } catch (NoAlbumFoundException) {
                     LogAdded(this, new LogArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
