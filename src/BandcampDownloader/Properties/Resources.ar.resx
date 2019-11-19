@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_الغاء</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>_بحث عن اصدار جديد</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_تحميل النسخة الجديدة</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_الاعدادات</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_حفظ</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_تحميل</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_الغاء</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_معاينة</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>بحث عن تحديثات عند تشغيل البرنامج</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>تحويل الصيغة الى JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>تحديد اعلى ارتفاع وعرض</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>تحويل الصيغة الى JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>تحديد اعلى ارتفاع وعرض</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>صنع قائمة تشغيل لكل البوم</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>تحميل البومات الفنان كلها</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_الغاء</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_لا</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_اوك</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_نعم</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>لا تقم بتعديل النص</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>امسح التاگ</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>حفظ من ضمن التاگات</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>لا تقم بتعديل النص</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>امسح التاگ</value>
+  </data>
 </root>
