@@ -146,16 +146,16 @@
     <value>Tag wissen</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Blader naar de map</value>
+    <value>Bladeren naar map</value>
   </data>
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
-    <value>Open instellingen</value>
+    <value>Instellingen openen</value>
   </data>
   <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Instellingen terugzetten op standaardinstellingen</value>
+    <value>Standaardwaarden herstellen</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Kon changelog niet downloaden van {0}</value>
+    <value>Kan wijzigingslog niet ophalen van {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>Vraagt het volgende adres bij het starten van de app:</value>
