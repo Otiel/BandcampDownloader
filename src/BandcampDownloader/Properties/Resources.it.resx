@@ -504,13 +504,13 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “�
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
 - {artista} sarà sostituito dall'artista dell'album
--  {album} sarà sostituito dal nome dell'album
+- {album} sarà sostituito dal nome dell'album
 - {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
 - {artista} sarà sostituito dall'artista dell'album
--  {album} sarà sostituito dal nome dell'album
+- {album} sarà sostituito dal nome dell'album
 - {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
