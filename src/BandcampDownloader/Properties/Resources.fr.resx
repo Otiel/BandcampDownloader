@@ -525,7 +525,7 @@ Valeur conseillée = 4</value>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Copiez les URL d'albums à télécharger ici. Vous pouvez spécifier plusieurs URL en ayant un URL par ligne.
 
-Un URL de Bandcamp est de la forme suivante : http://[artiste].bandcamp.com/album/[album] or http://[artiste].bandcamp.com/track/[chanson]
+Un URL de Bandcamp est de la forme suivante : http://[artiste].bandcamp.com/album/[album] ou http://[artiste].bandcamp.com/track/[chanson]
 Copiez des URL d'interprètes : http://[artiste].bandcamp.com et cocher « ☑ Télécharger la discographie de l'artiste » pour télécharger l'ensemble
 de leurs albums.</value>
   </data>
