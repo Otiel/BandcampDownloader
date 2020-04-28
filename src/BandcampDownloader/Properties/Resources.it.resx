@@ -389,7 +389,7 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
     <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>_Sí</value>
+    <value>_Sì</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Annullare tutti gli scaricamenti?</value>
