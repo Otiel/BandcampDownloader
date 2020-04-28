@@ -525,7 +525,7 @@ Empfohlener Wert = 4</value>
     <value>Fügen Sie URLs von Alben ein, die Sie hier herunterladen können. Sie können mehrere URLs angeben, indem Sie eine URL pro Zeile eingeben.
 
 Eine Bandcamp-URL sieht so aus: http://[artist].bandcamp.com/album/[album] oder http://[artist].bandcamp.com/track/[track].
-Seite von Interpreten einfügen: http://[artist].bandcamp.com und klicke auf „☑ Diskographie des Interpreten herunterladen”, um alle deren Alben 
+Seite von Interpreten einfügen: http://[artist].bandcamp.com und klicke auf „☑ Diskographie des Interpreten herunterladen“, um alle deren Alben 
 herunterzuladen.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
