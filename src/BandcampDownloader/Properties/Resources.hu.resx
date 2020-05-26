@@ -85,4 +85,41 @@
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
     <value>Mappavalasztas</value>
   </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Az alabbi link nem nyithato meg:
+{0}</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>A legfrissebb kiadast hasznalod ({0}).</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Aktiv letoltesek futnak a hatterben. Biztos vagy benne, hogy bezarod az alkalmazast es leallitod az osszes letoltest?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>A frissitesek ellenorzese kozben hiba lepett fel. Kerjuk probalja ujra.</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Osszes letoltes visszavonasa?</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Album kiadasanak eve</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Megjelenes/Tema</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Uj kiadas erheto el</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Uj kiadas ellenorzese sikertelen</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Kiadas</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Visszavonas</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Visszavonas</value>
+  </data>
 </root>
