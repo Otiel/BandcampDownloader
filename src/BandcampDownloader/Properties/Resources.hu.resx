@@ -122,4 +122,10 @@
   <data name="buttonStop" xml:space="preserve">
     <value>_Visszavonas</value>
   </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Beallitasok visszaallitasa alapertelmezett allapotba?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Beallitasok visszaallitasa</value>
+  </data>
 </root>
