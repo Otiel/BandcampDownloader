@@ -65,7 +65,7 @@
     <value>Выбрать папку</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
-    <value>_Отменить</value>
+    <value>_Отмена</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Проверить _сейчас</value>
@@ -89,7 +89,7 @@
     <value>_Загрузить</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
-    <value>_Отменить</value>
+    <value>_Отмена</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_Посмотреть</value>
@@ -324,7 +324,7 @@ If not, some bandwidth/time is saved.</value>
     <value>_Год выпуска альбома</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>_Отменить</value>
+    <value>_Отмена</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
     <value>_Нет</value>
