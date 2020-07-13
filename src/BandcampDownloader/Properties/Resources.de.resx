@@ -121,7 +121,7 @@
     <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Order wählen</value>
+    <value>Nach Ordner suchen</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
     <value>_Abbrechen</value>
@@ -205,7 +205,7 @@
     <value>Benachrichtigungssignal für abgeschlossene Downloads.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>_Erweitertes Format  (nur für M3U) verwenden</value>
+    <value>_Erweitertes Format (nur für M3U) verwenden</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>M3U-Wiedergabelisten im erweiterten Format (Anweisungen, denen das Zeichen # vorangestellt ist).</value>
@@ -239,7 +239,7 @@ Wenn nicht, wird etwas Bandbreite/Zeit eingespart.</value>
     <value>Lädt Grafiken von Covern in den Albumordner herunter.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Als  _Schlagwort speichern</value>
+    <value>Als _Schlagwort speichern</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
     <value>Speichert Cover in den Titel-Schlagwörter.</value>
