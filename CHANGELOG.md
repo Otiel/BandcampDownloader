@@ -1,3 +1,14 @@
+# 1.3.2
+
+## Improvements
+
+* Added the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/119): Dutch.
+* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/119): French, German, Italian, Polish, Russian.
+
+## Bug fixes
+
+* Fixed a bug that caused the release date for tracks to be set to '1'. Thanks **@Nebula-Mechanica**! [#144](https://github.com/Otiel/BandcampDownloader/issues/144) [#145](https://github.com/Otiel/BandcampDownloader/pull/145)
+
 # 1.3.1
 
 ## Improvements

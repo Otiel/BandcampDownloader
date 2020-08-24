@@ -7,10 +7,12 @@ namespace BandcampDownloader {
     public enum Language {
         [Description("English")]
         en,
+        //[Description("Arabic (العربية)")]
+        //ar,
         [Description("Chinese (Simplified) (汉语)")]
         zh,
-        //[Description("Dutch (Nederlands)")]
-        //nl,
+        [Description("Dutch (Nederlands)")]
+        nl,
         [Description("French (Français)")]
         fr,
         [Description("German (Deutsch)")]

@@ -216,8 +216,7 @@
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Chaque métadonnée sera modifiée selon les règles définies ci-dessous.
 
-Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé.
-Cela revient à régler "Ne pas modifier" pour chaque métadonnée.</value>
+Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. Cela revient à régler "Ne pas modifier" pour chaque métadonnée.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Télécharger un album à la _fois</value>
@@ -525,8 +524,8 @@ Valeur conseillée = 4</value>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Copiez les URL d'albums à télécharger ici. Vous pouvez spécifier plusieurs URL en ayant un URL par ligne.
 
-Un URL de Bandcamp est de la forme suivante : http://[artiste].bandcamp.com/album/[album] or http://[artiste].bandcamp.com/track/[chanson]
-Copiez des URL d'interprètes : http://[artiste].bandcamp.com et cocher "☑ Télécharger la discographie de l'artiste" pour télécharger l'ensemble
+Un URL de Bandcamp est de la forme suivante : http://[artiste].bandcamp.com/album/[album] ou http://[artiste].bandcamp.com/track/[chanson]
+Copiez des URL d'interprètes : http://[artiste].bandcamp.com et cocher « ☑ Télécharger la discographie de l'artiste » pour télécharger l'ensemble
 de leurs albums.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">

@@ -28,6 +28,11 @@ namespace BandcampDownloader {
             // Some albums do not have a cover art
             string artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
 
+            // Singles might not have a release date  #144
+            if (ReleaseDate == new DateTime()) {
+                ReleaseDate = AlbumData.ReleaseDate;
+            }
+
             var album = new Album(Artist, artworkUrl, ReleaseDate, AlbumData.AlbumTitle);
 
             // Some tracks do not have their URL filled on some albums (pre-release...)
