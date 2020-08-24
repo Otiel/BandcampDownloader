@@ -22,6 +22,8 @@ namespace BandcampDownloader {
         private static CultureInfo GetCultureInfo(Language language) {
             // Existing cultures: https://dotnetfiddle.net/e1BX7M
             switch (language) {
+                //case Language.ar:
+                //    return new CultureInfo("ar");
                 case Language.de:
                     return new CultureInfo("de");
                 case Language.en:
