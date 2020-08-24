@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -445,8 +445,10 @@ Zalecana wartość = 7</value>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Wklej tu linki albumów do pobrania. Możesz podać linki do wielu albumów jednocześnie, każdy w kolejnej linii.
 
-Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub http://[wykonawca].bandcamp.com/track/[utwór]
-Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy wykonawcy.</value>
+Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub 
+http://[wykonawca].bandcamp.com/track/[utwór]
+Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy 
+wykonawcy.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Ustawienia</value>

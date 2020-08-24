@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -389,7 +389,7 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
     <value>_OK</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>_Sí</value>
+    <value>_Sì</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>Annullare tutti gli scaricamenti?</value>
@@ -500,5 +500,36 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “�
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aggiorna</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
+- {artista} sarà sostituito dall'artista dell'album
+- {album} sarà sostituito dal nome dell'album
+- {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
+- {artista} sarà sostituito dall'artista dell'album
+- {album} sarà sostituito dal nome dell'album
+- {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Chiudi applicazione</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Non posso aprire il seguente link:
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Ripristina impostazioni</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Si è verificato un errore non gestito. L'applicazione si chiuderà ora.
+
+Si prega di aprire un nuovo problema con il contenuto del file di log su
+{0}</value>
   </data>
 </root>

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -121,7 +121,7 @@
     <value>…</value>
   </data>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Order wählen</value>
+    <value>Nach Ordner suchen</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
     <value>_Abbrechen</value>
@@ -205,7 +205,7 @@
     <value>Benachrichtigungssignal für abgeschlossene Downloads.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>_Erweitertes Format  (nur für M3U) verwenden</value>
+    <value>_Erweitertes Format (nur für M3U) verwenden</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>M3U-Wiedergabelisten im erweiterten Format (Anweisungen, denen das Zeichen # vorangestellt ist).</value>
@@ -239,7 +239,7 @@ Wenn nicht, wird etwas Bandbreite/Zeit eingespart.</value>
     <value>Lädt Grafiken von Covern in den Albumordner herunter.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Als  _Schlagwort speichern</value>
+    <value>Als _Schlagwort speichern</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
     <value>Speichert Cover in den Titel-Schlagwörter.</value>
@@ -525,7 +525,8 @@ Empfohlener Wert = 4</value>
     <value>Fügen Sie URLs von Alben ein, die Sie hier herunterladen können. Sie können mehrere URLs angeben, indem Sie eine URL pro Zeile eingeben.
 
 Eine Bandcamp-URL sieht so aus: http://[artist].bandcamp.com/album/[album] oder http://[artist].bandcamp.com/track/[track].
-Seite von Interpreten einfügen: http://[artist].bandcamp.com und klicke auf „☑ Diskographie des Interpreten herunterladen”, um alle deren Alben herunterzuladen.</value>
+Seite von Interpreten einfügen: http://[artist].bandcamp.com und klicke auf „☑ Diskographie des Interpreten herunterladen“, um alle deren Alben 
+herunterzuladen.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Einstellungen</value>
