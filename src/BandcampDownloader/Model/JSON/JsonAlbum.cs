@@ -9,8 +9,8 @@ namespace BandcampDownloader {
         private readonly string _urlEnd = "_0.jpg";
         private readonly string _urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
-        [JsonProperty("current")]
-        public JsonAlbumData AlbumData { get; set; }
+        [JsonProperty("packages")]
+        public List<JsonAlbumData> AlbumData { get; set; }
 
         [JsonProperty("art_id")]
         public string ArtId { get; set; }
@@ -30,10 +30,10 @@ namespace BandcampDownloader {
 
             // Singles might not have a release date  #144
             if (ReleaseDate == new DateTime()) {
-                ReleaseDate = AlbumData.ReleaseDate;
+                ReleaseDate = AlbumData.FirstOrDefault().ReleaseDate;
             }
 
-            var album = new Album(Artist, artworkUrl, ReleaseDate, AlbumData.AlbumTitle);
+            var album = new Album(Artist, artworkUrl, ReleaseDate, AlbumData.FirstOrDefault().AlbumTitle);
 
             // Some tracks do not have their URL filled on some albums (pre-release...)
             // Forget those tracks here
