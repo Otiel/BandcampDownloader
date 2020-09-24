@@ -93,16 +93,19 @@ namespace BandcampDownloader {
         }
 
         private static string GetAlbumData(string htmlCode) {
-            string startString = "var TralbumData = {";
-            string stopString = "};";
+            string startString = "data-tralbum=\"{";
+            string stopString = "}\"";
 
             if (htmlCode.IndexOf(startString) == -1) {
                 // Could not find startString
-                throw new Exception("Could not find the following string in HTML code: var TralbumData = {");
+                throw new Exception($"Could not find the following string in HTML code: {startString}");
             }
 
             string albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) + startString.Length - 1);
             string albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString) + 1);
+
+            // Replace &quot; by "
+            albumData = albumData.Replace("&quot;", "\"");
 
             return albumData;
         }
