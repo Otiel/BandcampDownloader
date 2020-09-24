@@ -1,3 +1,9 @@
+# 1.3.3
+
+## Bug fixes
+
+* Fixed the reading of Bandcamp metadata since their changes. [#153](https://github.com/Otiel/BandcampDownloader/issues/153)
+
 # 1.3.2
 
 ## Improvements
