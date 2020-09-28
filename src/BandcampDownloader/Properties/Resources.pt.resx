@@ -101,7 +101,7 @@
     <value>Verificar por _atualizações na inicialização</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Consulta o seguinte endereço ao iniciar o aplicativo:</value>
+    <value>Consulta o seguinte endereço ao iniciar a app:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>Converter para _JPG</value>
@@ -345,7 +345,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Fechar aplicação</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Existem transferências atualmente ativas. Tem certeza que deseja fechar o aplicativo e interromper todas elas?</value>
+    <value>Existem transferências atualmente ativas. Tem certeza que deseja fechar a app e interromper todas?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
     <value>Não foi possível abrir o seguinte link:
@@ -361,9 +361,9 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Redefinir todas as configurações para seus valores padrão?</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Ocorreu um erro não processado. O aplicativo será fechado agora.
+    <value>Ocorreu um erro não processado. A app será fechado agora.
 
-Por favor, abra uma nova emissão com o conteúdo do seu arquivo de registro em
+Por favor, abra uma nova emissão com o conteúdo do seu arquivo de registo em
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
