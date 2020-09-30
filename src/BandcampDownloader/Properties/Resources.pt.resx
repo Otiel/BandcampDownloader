@@ -131,7 +131,7 @@
     <value>Criar uma _lista de reprodução para cada álbum</value>
   </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>Cria um arquivo de faixa do álbum para cada álbum baixado.</value>
+    <value>Cria um ficheiro de faixa do álbum para cada álbum descarregado.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>Baixar discografia do _artista</value>
@@ -167,10 +167,10 @@ Caso contrário, todos as tags não serão alteradas, equivalente a definir "Nã
 Caso contrário, todos os álbuns serão baixados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Recuperar o tamanho do _arquivo antes de baixar as faixas</value>
+    <value>Recuperar o tamanho do _ficheiro antes de descarregar faixas</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Recupera o tamanho do arquivo para mostrar um progresso preciso.
+    <value>Recupera o tamanho do ficheiro para mostrar um progresso preciso.
 Se não, alguma largura de banda/hora é salva.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
@@ -204,7 +204,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Nome do álbum</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>_Diferença de tamanho de arquivo permitida (%)</value>
+    <value>_Diferença de tamanho de ficheiros permitido (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>_Artista</value>
@@ -222,7 +222,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Comentários</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Formato do _nome de arquivo</value>
+    <value>Formato do _nome de ficheiro</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
     <value>Tamanho máximo (_px)</value>
@@ -246,7 +246,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Salvar álbuns _para</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>Formato do _nome de arquivo:</value>
+    <value>Formato do _nome de ficheiro:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
     <value>Proxy _HTTP(S)</value>
@@ -288,7 +288,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Letra da música</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Formato do _nome de arquivo</value>
+    <value>Formato do _nome de ficheiro</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>_Formato da lista de reprodução</value>
@@ -306,7 +306,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Título</value>
   </data>
   <data name="labelVerboseLogInfo" xml:space="preserve">
-    <value>(o arquivo de registro sempre é detalhado)</value>
+    <value>(o ficheiro de registo sempre é detalhado)</value>
   </data>
   <data name="labelVersion" xml:space="preserve">
     <value>Versão</value>
@@ -361,9 +361,9 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Redefinir todas as configurações para seus valores padrão?</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Ocorreu um erro não processado. A app será fechado agora.
+    <value>Ocorreu um erro não processado. A aplicação será fechada agora.
 
-Por favor, abra uma nova emissão com o conteúdo do seu arquivo de registo em
+Por favor, abra uma nova emissão com o conteúdo do seu ficheiro de registo em
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
@@ -406,14 +406,14 @@ Por favor, abra uma nova emissão com o conteúdo do seu arquivo de registo em
     <value>Ajudar a traduzir</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Quando baixar uma faixa, se o mesmo arquivo (de mesmo nome) já existir, ele será verificado em relação à faixa a ser baixada.
-Se o tamanho de ambos os arquivos for diferente para menos que esse valor (em porcentagem), a transferência da faixa será ignorada.
-Defina este valor para 0 para sempre baixar as faixas, mesmo que já existam no disco.
+    <value>Quando descarregar uma faixa, se o mesmo ficheiro (com o mesmo nome) já existir, ele será verificado em relação à faixa a ser descarregada.
+Se o tamanho de ambos os ficheiros forem diferentes para menos que esse valor (em parcentagem), a transferência da faixa será ignorada.
+Defina este valor para 0 para sempre descarregar as faixas, mesmo que já existam no disco.
 
 Valor recomendado = 5</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Você pode usar espaços reservados para personalizar o nome do arquivo:
+    <value>Pode usar espaços reservados para personalizar o nome do ficheiro:
 - {artista} será substituído pelo artista do álbum
 - {álbum} será substituído pelo nome do álbum
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
@@ -449,7 +449,7 @@ Valor recomendado = 4</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Você pode usar espaços reservados para personalizar o nome do arquivo:
+    <value>Pode usar espaços reservados para personalizar o nome do arquivo:
 - {artista} será substituído pelo artista do álbum
 - {título} será substituído pelo nome da faixa
 - {número_da_faixa} será substituído pelo número da faixa
@@ -457,7 +457,7 @@ Valor recomendado = 4</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Você pode usar espaços reservados para personalizar o nome do arquivo:
+    <value>Pode usar espaços reservados para personalizar o nome do ficheiro:
 - {artista} será substituído pelo artista do álbum
 - {álbum} será substituído pelo nome do álbum
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
