@@ -95,7 +95,7 @@
     <value>_Ver</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Não foi possível baixar o registro de alterações de {0}</value>
+    <value>Não foi possível baixar o registo de alterações de {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Verificar por _atualizações na inicialização</value>
@@ -186,10 +186,10 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Salva a arte de capa nas tags da faixa.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Mostrar registro _detalhado</value>
+    <value>Mostrar registo _detalhado</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Mostra mais informações no registro.</value>
+    <value>Mostra mais informações no registo.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
     <value>Selecione a pasta para salvar os álbuns</value>
@@ -213,10 +213,10 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Redefinir configurações</value>
   </data>
   <data name="labelChangelog" xml:space="preserve">
-    <value>Registro de alterações</value>
+    <value>Registo de alterações</value>
   </data>
   <data name="labelChangelogTitle" xml:space="preserve">
-    <value>Registro de alterações</value>
+    <value>Registo de alterações</value>
   </data>
   <data name="labelComments" xml:space="preserve">
     <value>_Comentários</value>
@@ -449,7 +449,7 @@ Valor recomendado = 4</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Pode usar espaços reservados para personalizar o nome do arquivo:
+    <value>Pode usar espaços reservados para personalizar o nome do ficheiro:
 - {artista} será substituído pelo artista do álbum
 - {título} será substituído pelo nome da faixa
 - {número_da_faixa} será substituído pelo número da faixa
