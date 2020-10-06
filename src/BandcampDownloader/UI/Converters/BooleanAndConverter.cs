@@ -11,7 +11,7 @@ namespace BandcampDownloader {
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
             foreach (object value in values) {
-                if ((value is bool) && (bool) value == false) {
+                if ((value is bool boolean) && boolean == false) {
                     return false;
                 }
             }
