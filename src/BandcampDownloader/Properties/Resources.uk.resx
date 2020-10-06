@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -133,13 +133,13 @@
     <value>Відкрити налаштування</value>
   </data>
   <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Скинути налаштування</value>
+    <value>Скинути налаштування до початкових</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
     <value>_Зберегти</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>Почати_завантаження</value>
+    <value>_Завантажити</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Скасувати</value>
@@ -157,7 +157,7 @@
     <value>Конвертувати у JP_G</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Створити _плейлиста до кожного з альбомів</value>
+    <value>Створити _плейлист до кожного з альбомів</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
     <value>_Порт</value>
@@ -193,7 +193,7 @@
     <value>_Тексти пісень</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Файл _назва формат</value>
+    <value>Формат _імені файлу</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>Плейлист _формат</value>
@@ -206,5 +206,331 @@
   </data>
   <data name="labelVersion" xml:space="preserve">
     <value>Версія</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Завантажує обкладинку в теку альбому.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Змінити розмір обкладинки до заданої максимальної ширини/висоти.</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Не вдалося перевірити наявність оновлень</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(файл журналу завжди докладний)</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Деякі налаштування не можна змінити під час завантаження композицій.</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Загальні</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) проксі</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>Формат _імені файлу:</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Зберегти альбоми _в</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Повторна _спроба</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Повторна _перезаряда (сек)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Максимальна кількість спроб завантаження</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Поточна версія:</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Максимальний розмір (p_x)</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Максимальний розмір (_px)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Формат _імені файлу</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>_Коментарі</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Журнал змін</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Журнал змін</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Скинути налаштування</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Виконавець</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Допустима _різниця у розмірі файлу (%)</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Ви можете використовувати заповнювачі для налаштування імені файлу:
+- {artist} буде замінено виконавцем альбому
+- {album} буде замінено на назву альбому
+- {year}, {month} та {day} будуть замінені датою виходу альбому</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Ви можете використовувати заповнювачі для налаштування імені файлу:
+- {artist} буде замінено виконавцем альбому
+- {title} буде замінено на назву треку
+- {tracknum} буде замінено номером доріжки
+- {album} буде замінено на назву альбому
+- {year}, {month} та {day} будуть замінені датою виходу альбому</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Ви можете використовувати заповнювачі для налаштування папки для завантаження залежно від альбому:
+- {artist} буде замінено виконавцем альбому
+- {album} буде замінено на назву альбому
+- {year}, {month} та {day} будуть замінені датою виходу альбому</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Використовується для управління експоненціальним механізмом відступу.
+Після кожного збою завантаження доріжки BandcampDownloader може почекати певний час, перш ніж повторити спробу
+завантажити трек, щоб уникнути антиспамового фільтру Bandcamp.
+Формула, яка використовується для обчислення часу очікування перед повторною спробою завантаження, така:
+час = перезарядка * (експонента ^ кількість спроб)
+
+Рекомендоване значення = 4</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Використовується для управління експоненціальним механізмом відступу.
+Після кожного збою завантаження доріжки BandcampDownloader може почекати певний час, перш ніж повторити спробу
+завантажити трек, щоб уникнути антиспамового фільтру Bandcamp.
+Формула, яка використовується для обчислення часу очікування перед повторною спробою завантаження, така:
+час = перезарядка * (експонента ^ кількість спроб)
+
+Рекомендоване значення = 0,2</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Очистити тег</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Не змінювати</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Зберегти в тезі</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Очистити тег</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Не змінювати</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Так</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_ОК</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Ні</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Скасувати</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Оновлення</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Вставте сюди URL-адреси альбомів для завантаження. Ви можете вказати кілька URL-адрес, написавши одну URL-адресу в рядок.
+
+URL-адреса Bandcamp виглядає так: http: // [artist] .bandcamp.com / album / [album] або http: // [artist] .bandcamp.com / track / [track]
+Вставте сторінки виконавця: http: // [artist] .bandcamp.com і поставте прапорець біля пункту "☑ Завантажити дискографію виконавця", щоб завантажити всі їх альбоми.</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Допоможіть перекласти</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Історія релізів</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>_Системний проксі</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Немає проксі</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Ручна конфігурація проксі</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Ви вже маєте останню версію ({0}).</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Під час перевірки оновлень сталася помилка. Будь ласка, повторіть спробу пізніше.</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>_Рік випуску альбому</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Веб-сайт</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Доступна нова версія</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Максимальна кількість спроб завантажити доріжку в випадку невдачі.
+Після досягнення цього числа (для кожної доріжки) завантаження доріжки буде пропущено.
+
+Рекомендоване значення = 7</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Ви можете використовувати заповнювачі для налаштування імені файлу:
+- {artist} буде замінено виконавцем альбому
+- {album} буде замінено на назву альбому
+- {year}, {month} та {day} будуть замінені датою виходу альбому</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Під час завантаження доріжки, якщо той самий файл (ім'я) вже існує, його буде звірено з доріжкою для завантаження.
+Якщо розмір обох файлів відрізняється від цього значення (у відсотках), завантаження композиції буде пропущено.
+Встановіть це значення в 0, щоб завжди завантажувати композиції, навіть якщо вони вже є на диску.
+
+Рекомендоване значення = 5</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Світла</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Темна</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Зберегти як</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Виникла необроблена помилка. Додаток буде зараз закрито.
+
+Будь ласка, відкрийте нове видання із вмістом вашого журналу на
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Скинути всі налаштування до значень за замовчуванням?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Скинути налаштування</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Не вдалося відкрити наступне посилання:
+{0}</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>В даний час є активні завантаження. Ви впевнені, що хочете закрити застосунок та зупинити всі завантаження?</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_ Закрити застосунок</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Скасувати всі завантаження?</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Тема</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Змініть ці налаштування на свій страх і ризик.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Оберіть теку для збереження альбомів у</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Показує більше інформації в журналі.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Зберігає обкладинку в тегах доріжки.</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Отримує розмір файлу, щоб показати точний прогрес.
+Якщо ні, деяку пропускну здатність/час зберігається.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Завантажує лише один альбом за раз.
+Якщо ні, всі альбоми завантажуються одночасно (краще, якщо доступна висока пропускна здатність).</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Змінює кожен тег, як зазначено нижче.
+
+Якщо ні, всі теги залишаються незмінними, що еквівалентно налаштуванню "Не змінювати" для кожного тегу.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Списки відтворення M3U у розширеному форматі (директиви перед символом #).</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Звукове сповіщення про закінчені завантаження.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Завантажити всю дискографію виконавця.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Створює файл доріжки альбому для кожного завантаженого альбому.</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>_Назва альбому</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>_Виконавець альбому</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Показати _докладний журнал</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Зберегти в _тегах</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Зберегти в _теку</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Отримайте розмір_файлу перед завантаженням композицій</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Завантажити один альбом за раз</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Змінити теги доріжок (ID3)</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Використовувати_розширений формат (лише для M3U)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Відтворити звукове_сповіщення</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Завантажити всю дискографію_виконавця</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Обмежувати _максимальну ширину/висоту</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Обмежувати _максимальну ширину/висоту</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Перетворити обкладинку в JPG із стисненням 90 (чудовий компроміс між розміром та якістю).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Змінює розмір обкладинки до заданої максимальної ширини/висоти.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Перетворити обкладинку в JPG із стисненням 90 (чудовий компроміс між розміром та якістю).</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Під час запуску програми запитує таку адресу:</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Не вдалося завантажити журнал змін із {0}</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Обрати теку</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Перевірити оновлення</value>
   </data>
 </root>
