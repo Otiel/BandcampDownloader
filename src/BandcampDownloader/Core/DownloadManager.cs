@@ -441,12 +441,10 @@ namespace BandcampDownloader {
                 }
 
                 // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
-                var regex = new Regex("band_url = \"(?<url>.*)\"");
-                if (!regex.IsMatch(htmlCode)) {
-                    LogAdded(this, new LogArgs($"No discography could be found on {url}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
-                    continue;
-                }
-                string artistMusicPage = regex.Match(htmlCode).Groups["url"].Value + "/music";
+
+                var regex = new Regex("https?://[^/]*");
+                string artistPage = regex.Match(url).ToString();
+                string artistMusicPage = artistPage + "/music";
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
@@ -467,7 +465,7 @@ namespace BandcampDownloader {
 
                 int count = albumsUrls.Count;
                 try {
-                    albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode));
+                    albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
                 } catch (NoAlbumFoundException) {
                     LogAdded(this, new LogArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
                 }

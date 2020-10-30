@@ -35,8 +35,8 @@ namespace BandcampDownloader {
         es,
         [Description("Turkish (Türkçe)")]
         tr,
-        //[Description("Ukrainian (Українська)")]
-        //uk,
+        [Description("Ukrainian (Українська)")]
+        uk,
     }
 
     public enum PlaylistFormat {

@@ -147,4 +147,16 @@
   <data name="changelogDownloadError" xml:space="preserve">
     <value>{0}에서 변경 로그를 다운로드할 수 없습니다</value>
   </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>아래에 지정된대로 각 태그를 수정합니다.
+
+그외 모든 태그는 변경되지 않으며 각 태그에 대해 "수정 안 함"을 설정한 것과 같습니다.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>한 번에 하나의 앨범만 다운로드합니다.
+아니면 모든 앨범이 동시에 다운로드됩니다(높은 대역폭을 사용할 수 있으면 좋음).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>트랙 다운로드 전에 _file 크기 검색하기</value>
+  </data>
 </root>
