@@ -56,16 +56,10 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
         /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
-        public static List<string> GetAlbumsUrl(string htmlCode) {
-            // Get artist bandcamp page
-            var regex = new Regex("band_url = \"(?<url>.*)\"");
-            if (!regex.IsMatch(htmlCode)) {
-                throw new NoAlbumFoundException();
-            }
-            string artistPage = regex.Match(htmlCode).Groups["url"].Value;
+        public static List<string> GetAlbumsUrl(string htmlCode, string artistPage) {
 
             // Get albums ("real" albums or track-only pages) relative urls
-            regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
+            var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
             if (!regex.IsMatch(htmlCode)) {
                 throw new NoAlbumFoundException();
             }
