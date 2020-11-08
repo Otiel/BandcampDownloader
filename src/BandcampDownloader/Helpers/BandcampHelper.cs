@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
@@ -98,8 +99,7 @@ namespace BandcampDownloader {
             string albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) + startString.Length - 1);
             string albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString) + 1);
 
-            // Replace &quot; by "
-            albumData = albumData.Replace("&quot;", "\"");
+            albumData = WebUtility.HtmlDecode(albumData);
 
             return albumData;
         }
