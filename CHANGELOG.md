@@ -6,7 +6,7 @@
 
 ## Improvements
 
-* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/160): Italian.
+* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/166): Italian.
 
 # 1.3.4
 
