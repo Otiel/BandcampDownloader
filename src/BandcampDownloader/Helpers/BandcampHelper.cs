@@ -58,7 +58,6 @@ namespace BandcampDownloader {
         /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
         /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
         public static List<string> GetAlbumsUrl(string htmlCode, string artistPage) {
-
             // Get albums ("real" albums or track-only pages) relative urls
             var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
             if (!regex.IsMatch(htmlCode)) {
@@ -79,7 +78,7 @@ namespace BandcampDownloader {
             // Some JSON is not correctly formatted in bandcamp pages, so it needs to be fixed before we can deserialize it
 
             // In trackinfo property, we have for instance:
-            //     url: "http://verbalclick.bandcamp.com" + "/album/404"
+            // url: "http://verbalclick.bandcamp.com" + "/album/404"
             // -> Remove the " + "
             var regex = new Regex("(?<root>url: \".+)\" \\+ \"(?<album>.+\",)");
             string fixedData = regex.Replace(albumData, "${root}${album}");
