@@ -448,6 +448,7 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Scaricando una traccia, se esiste già un file con lo stesso nome, si comparerà alla traccia da scaricare.
 Se la dimensione dei file differisce meno di questo valore (in percentuale), la traccia non sarà scaricata.
+Imposta questo valore a 0 per scaricare sempre le tracce, anche se sono già presenti sul disco.
 
 Valore consigliato = 5</value>
   </data>
