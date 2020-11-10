@@ -5,7 +5,7 @@ namespace BandcampDownloader {
 
     internal class JsonAlbumData {
 
-        [JsonProperty("title")]
+        [JsonProperty("album_title")]
         public string AlbumTitle { get; set; }
 
         [JsonProperty("release_date")]
