@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -123,5 +123,23 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Tag di bersihkan</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Mengubah ukuran cover art menjadi lebar/tinggi maksimal yang ditentukan.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Mengonversi cover art ke JPG dengan kompresi 90 (trade-off yang sangat baik antara ukuran dan kualitas).</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Kueri alamat berikut saat memulai aplikasi:</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Tidak dapat mengunduh log perubahan dari {0}</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Setel ulang pengaturan ke default</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Buka pengaturan</value>
   </data>
 </root>
