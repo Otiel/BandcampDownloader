@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -178,7 +178,7 @@
     <value>Konverter til JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Konverterer omslagsbilde til JPG, med sammenpakking på 90 (utmerket kompromiss mellom størrelse og kvalitet).</value>
+    <value>Konverterer omslagsbilde til JPG, med filkompresjon på 90 (utmerket kompromiss mellom størrelse og kvalitet).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Begrens mak_simal bredde/høyde</value>
@@ -263,7 +263,7 @@ Uten dette kan man spare litt båndbredde/tid.</value>
     <value>Album_navn</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Tillat fil_størrelsesforskjell (%)</value>
+    <value>Tillatt filstørrelsesforskjell (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>Art_ist</value>
@@ -365,7 +365,7 @@ Uten dette kan man spare litt båndbredde/tid.</value>
     <value>Titte_l</value>
   </data>
   <data name="labelVerboseLogInfo" xml:space="preserve">
-    <value>(loggfilen er alltid sirlig)</value>
+    <value>(loggfilen er alltid ordrik)</value>
   </data>
   <data name="labelVersion" xml:space="preserve">
     <value>Versjon</value>
@@ -432,7 +432,7 @@ Innrapporter feilen sammen med innholdet i loggfilen din på:
     <value>_Ingen mellomtjener</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Systemmellomtjener</value>
+    <value>S_ystemmellomtjener</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Lagre som</value>
@@ -447,7 +447,7 @@ Innrapporter feilen sammen med innholdet i loggfilen din på:
     <value>Ikke endre</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Tom etikett</value>
+    <value>Fjern etikett</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Lagre i etikett</value>
@@ -456,7 +456,7 @@ Innrapporter feilen sammen med innholdet i loggfilen din på:
     <value>Ikke endre</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Tøm etikett</value>
+    <value>Fjern etikett</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>Utgivelseshistorikk</value>
