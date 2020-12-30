@@ -223,7 +223,7 @@ Hvis ikke, vil alle etiketter forbli uendret, tilsvarende "Ikke endre" for hver 
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Laster ned kun ett album av gangen.
-Hvis ikke, vil alle album lastes ned samtidig (som er bedre, gitt at høy båndbredde forefinnes).</value>
+Hvis ikke, vil alle album lastes ned samtidig (som er å foretrekke gitt at høy båndbredde forefinnes).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Hent fil_størrelse før nedlasting av spor</value>
