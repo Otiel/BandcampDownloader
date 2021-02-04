@@ -142,4 +142,32 @@
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
     <value>Buka pengaturan</value>
   </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Tidak dapat membuka link berikut:
+{0}</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Ada unduhan yang sedang berjalan. Apakah anda yang ingin menutup aplikasi dan menghentikan semua unduhan?</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Tutup aplikasi</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Batalkan semua unduhan?</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Lihat lebih banyak info di log.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Unduh cover art ke berkas album.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Suara notifikasi untuk unduhan yang selesai.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Unduh semua diskografi artis.</value>
+  </data>
 </root>
