@@ -125,7 +125,7 @@
     <value>Tag di bersihkan</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Mengubah ukuran cover art menjadi lebar/tinggi maksimal yang ditentukan.</value>
+    <value>Mengubah ukuran spesifik lebar/tinggi maksimal cover art.</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Mengubah cover art ke JPG dengan kompresi 90 (trade-off yang sangat baik antara ukuran dan kualitas).</value>
@@ -240,5 +240,120 @@ Jika tidak, semua album diunduh secara bersamaan (idealnya tersedia bandwidth ti
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Mengonversi cover art menjadi JPG dengan kompresi 90 (pertukaran yang sangat baik antara ukuran dan kualitas).</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Terjadi kesalahan saat memeriksa pembaruan. Silakan coba lagi nanti.</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Situs web</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Versi baru tersedia</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Tidak dapat memeriksa pembaruan</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versi</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(berkas log selalu verbose)</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Judul</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Beberapa setelan tak bisa diubah ketika trek sedang diunduh.</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Format nama_file</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Lirik</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Penamaan dan tag</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Anda sudah memiliki versi terbaru ({0}).</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Nama _album</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Album art_is</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Tampilkan log _verbose</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Simpan dalam _tags</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Simpan dalam _folder</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Ambil _file sebelum mengunduh trek</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Unduh satu album sekaligus</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Ubah tag trek (ID3)</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Gunakan _extended format (hanya untuk M3U)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Putar suara _notifications</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Unduh diskografi _artist</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Buat _playlist untuk setiap album</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Batasi lebar/tinggi m_aksimum</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Batasi _maksimum lebar / tinggi</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Anda bisa menggunakan tempat penampung untuk mengkustomisasi nama file:
+- [artis} akan digantikan oleh artis album
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Anda bisa menggunakan tempat penampung untuk mengkustomisasi nama file:
+- [artis} akan digantikan oleh artis album
+- {title} akan digantikan oleh nama trek
+- {tracknum} akan digantikan oleh nomor trek
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Anda dapat menggunakan tempat penampung untuk mengkustomisasi folder unduhan tergantung pada album:
+- [artis} akan digantikan oleh artis album
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Jumlah maksimum percobaan mengunduh trek jika gagal.
+Setelah nomor tersebut tercapai (untuk setiap trek), unduhan trek akan dilewati.
+
+Nilai yang disarankan = 7</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Anda bisa menggunakan tempat penampung untuk mengkustomisasi nama file:
+- [artis} akan digantikan oleh artis album
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Mengubah setiap tag seperti yang ditentukan di bawah ini.
+
+Jika tidak, semua tag tidak diubah, setara dengan setelan "Jangan ubah" untuk setiap tag.</value>
   </data>
 </root>
