@@ -356,4 +356,122 @@ Nilai yang disarankan = 7</value>
 
 Jika tidak, semua tag tidak diubah, setara dengan setelan "Jangan ubah" untuk setiap tag.</value>
   </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Digunakan untuk mengontrol mekanisme back-off eksponensial.
+Setiap kali pengunduhan gagal, BandcampDownloader dapat menunggu sebelum mencoba lagi 
+untuk mengunduh trek agar tidak menggelitik filter anti-spam Bandcamp.
+Rumus yang digunakan untuk menghitung waktu untuk tunggu sebelum mencoba lagi unduhan adalah sebagai berikut:
+waktu = cooldown * (eksponen ^ percobaan-hitung)
+
+Nilai yang disarankan = 4</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Tempel URL album untuk diunduh di sini. Anda dapat memuat beberapa URL per baris.
+
+URL Bandcamp terlihat seperti: http://[artist].bandcamp.com/album/[album] atau http://[artist].bandcamp.com/track/[track]
+Tempel halaman artis: http://[artis].bandcamp.com dan centang "☑ Unduh diskografi artis" untuk mengunduh semua album mereka.</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Rilis album _tahun</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>n_omor trek</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Daftar _format</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Daftar putar</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Jaringan</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Unduhan</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Sampul album</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Pengaturan lanjutan</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Bahasa</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Laporkan bug</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) proxy</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_namaberkas format:</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Simpan album _ke</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Coba lagi _exponent</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Mencoba kembali c_ooldown (dtk)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maks upaya pengunduhan</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Versi sekarang:</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Ukuran maksimum (p_x)</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Ukuran maks (_px)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Format nama_file</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Kome_tar</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Rilis perubahan</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Rilis perubahan</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Setel ulang pengaturan</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artis</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Ukuran file yang diizinkan _perbedaan (%)</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Digunakan untuk mengontrol mekanisme back-off eksponensial.
+Setelah setiap kegagalan pengunduhan trek, BandcampDownloader dapat menunggu sebelum mencoba lagi
+untuk mengunduh trek agar tidak menggelitik filter anti-spam Bandcamp.
+Rumus yang digunakan untuk menghitung waktu tunggu sebelum mencoba lagi unduhan adalah sebagai berikut:
+waktu = cooldown * (eksponen ^ percobaan-hitung)
+
+Nilai yang disarankan = 0,2</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Saat mengunduh trek, jika file (nama) yang sama sudah ada, ia akan diperiksa terhadap trek untuk diunduh.
+Jika ukuran kedua file berbeda dari nilai ini (dalam persen), unduhan trek akan dilewati.
+Atur nilai ini ke 0 untuk selalu mengunduh trek, meskipun sudah ada di disk.
+
+Nilai yang disarankan = 5</value>
+  </data>
 </root>
