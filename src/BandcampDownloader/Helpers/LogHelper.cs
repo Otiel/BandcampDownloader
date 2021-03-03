@@ -56,8 +56,8 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
         public static void LogExceptionToFile(Exception exception) {
-            Logger logger = LogManager.GetCurrentClassLogger();
-            logger.Log(LogLevel.Fatal, String.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
+            var logger = LogManager.GetCurrentClassLogger();
+            logger.Log(LogLevel.Fatal, string.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
             logger.Log(LogLevel.Fatal, exception.StackTrace);
         }
 

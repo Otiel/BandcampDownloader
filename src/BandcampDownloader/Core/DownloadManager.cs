@@ -103,12 +103,12 @@ namespace BandcampDownloader {
             // Start downloading albums
             if (App.UserSettings.DownloadOneAlbumAtATime) {
                 // Download one album at a time
-                foreach (Album album in _albums) {
+                foreach (var album in _albums) {
                     await DownloadAlbumAsync(album);
                 }
             } else {
                 // Parallel download
-                int[] albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
+                var albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
                 await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i])));
             }
         }
@@ -139,8 +139,8 @@ namespace BandcampDownloader {
             }
 
             // Download & tag tracks
-            bool[] tracksDownloaded = new bool[album.Tracks.Count];
-            int[] indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
+            var tracksDownloaded = new bool[album.Tracks.Count];
+            var indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
             await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
 
             // Create playlist file
@@ -168,12 +168,12 @@ namespace BandcampDownloader {
         private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, TagLib.Picture artwork) {
             LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
 
-            int tries = 0;
-            bool trackDownloaded = false;
-            TrackFile currentFile = DownloadingFiles.Where(f => f.Url == track.Mp3Url).First();
+            var tries = 0;
+            var trackDownloaded = false;
+            var currentFile = DownloadingFiles.Where(f => f.Url == track.Mp3Url).First();
 
             if (File.Exists(track.Path)) {
-                long length = new FileInfo(track.Path).Length;
+                var length = new FileInfo(track.Path).Length;
                 if (currentFile.Size > length - (currentFile.Size * App.UserSettings.AllowedFileSizeDifference) &&
                     currentFile.Size < length + (currentFile.Size * App.UserSettings.AllowedFileSizeDifference)) {
                     LogAdded(this, new LogArgs($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess));
@@ -265,9 +265,9 @@ namespace BandcampDownloader {
         private async Task<TagLib.Picture> DownloadCoverArtAsync(Album album) {
             TagLib.Picture artworkInTags = null;
 
-            int tries = 0;
-            bool artworkDownloaded = false;
-            TrackFile currentFile = DownloadingFiles.Where(f => f.Url == album.ArtworkUrl).First();
+            var tries = 0;
+            var artworkDownloaded = false;
+            var currentFile = DownloadingFiles.Where(f => f.Url == album.ArtworkUrl).First();
 
             do {
                 if (_cancelDownloads) {
@@ -373,11 +373,11 @@ namespace BandcampDownloader {
         private async Task<List<Album>> GetAlbumsAsync(List<string> urls) {
             var albums = new List<Album>();
 
-            foreach (string url in urls) {
+            foreach (var url in urls) {
                 LogAdded(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
                 // Retrieve URL HTML source code
-                string htmlCode = "";
+                var htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     ProxyHelper.SetProxy(webClient);
 
@@ -396,7 +396,7 @@ namespace BandcampDownloader {
 
                 // Get info on album
                 try {
-                    Album album = BandcampHelper.GetAlbum(htmlCode);
+                    var album = BandcampHelper.GetAlbum(htmlCode);
 
                     if (album.Tracks.Count > 0) {
                         albums.Add(album);
@@ -419,11 +419,11 @@ namespace BandcampDownloader {
         private async Task<List<string>> GetArtistDiscographyAsync(List<string> urls) {
             var albumsUrls = new List<string>();
 
-            foreach (string url in urls) {
+            foreach (var url in urls) {
                 LogAdded(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
                 // Retrieve URL HTML source code
-                string htmlCode = "";
+                var htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
                     ProxyHelper.SetProxy(webClient);
 
@@ -443,8 +443,8 @@ namespace BandcampDownloader {
                 // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
 
                 var regex = new Regex("https?://[^/]*");
-                string artistPage = regex.Match(url).ToString();
-                string artistMusicPage = artistPage + "/music";
+                var artistPage = regex.Match(url).ToString();
+                var artistMusicPage = artistPage + "/music";
 
                 // Retrieve artist "music" page HTML source code
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 }) {
@@ -463,7 +463,7 @@ namespace BandcampDownloader {
                     }
                 }
 
-                int count = albumsUrls.Count;
+                var count = albumsUrls.Count;
                 try {
                     albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
                 } catch (NoAlbumFoundException) {
@@ -487,7 +487,7 @@ namespace BandcampDownloader {
         private async Task<long> GetFileSizeAsync(string url, string titleForLog, FileType fileType) {
             long size = 0;
             bool sizeRetrieved;
-            int tries = 0;
+            var tries = 0;
             string fileTypeForLog;
             string protocolMethod;
 
@@ -541,13 +541,13 @@ namespace BandcampDownloader {
         /// <param name="albums">The albums.</param>
         private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums) {
             var files = new List<TrackFile>();
-            foreach (Album album in albums) {
+            foreach (var album in albums) {
                 LogAdded(this, new LogArgs($"Computing size for album \"{album.Title}\"...", LogType.Info));
 
                 // Artwork
                 if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork) {
                     if (App.UserSettings.RetrieveFilesSize) {
-                        long size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
+                        var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
                         files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                     } else {
                         files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
@@ -556,13 +556,13 @@ namespace BandcampDownloader {
 
                 // Tracks
                 if (App.UserSettings.RetrieveFilesSize) {
-                    int[] tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
+                    var tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
                     await Task.WhenAll(tracksIndexes.Select(async i => {
-                        long size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
+                        var size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
                         files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));
                     }));
                 } else {
-                    foreach (Track track in album.Tracks) {
+                    foreach (var track in album.Tracks) {
                         files.Add(new TrackFile(track.Mp3Url, 0, 0));
                     }
                 }

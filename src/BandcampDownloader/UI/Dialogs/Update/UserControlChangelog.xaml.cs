@@ -43,7 +43,7 @@ namespace BandcampDownloader {
         }
 
         private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e) {
-            string url = e.Parameter.ToString();
+            var url = e.Parameter.ToString();
 
             try {
                 Process.Start(url);

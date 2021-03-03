@@ -155,7 +155,7 @@ namespace BandcampDownloader {
                 return;
             }
 
-            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
             if (currentVersion.CompareTo(latestVersion) < 0) {
                 // The latest version is newer than the current one
                 labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
@@ -183,7 +183,7 @@ namespace BandcampDownloader {
         /// <param name="logType">The log type.</param>
         private void Log(string message, LogType logType) {
             // Log to file
-            Logger logger = LogManager.GetCurrentClassLogger();
+            var logger = LogManager.GetCurrentClassLogger();
             logger.Log(logType.ToNLogLevel(), message);
 
             // Log to window
@@ -297,12 +297,12 @@ namespace BandcampDownloader {
         /// Updates the download speed on UI.
         /// </summary>
         private void UpdateDownloadSpeed() {
-            DateTime now = DateTime.Now;
+            var now = DateTime.Now;
 
             // Compute new progress values
-            long totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
+            var totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
 
-            double bytesPerSecond =
+            var bytesPerSecond =
                 ((double) (totalReceivedBytes - _lastTotalReceivedBytes)) /
                 (now - _lastDownloadSpeedUpdate).TotalSeconds;
             _lastTotalReceivedBytes = totalReceivedBytes;
@@ -321,8 +321,8 @@ namespace BandcampDownloader {
         /// </summary>
         private void UpdateProgress() {
             // Compute new progress values
-            long totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
-            long bytesToDownload = _downloadManager.DownloadingFiles.Sum(f => f.Size);
+            var totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
+            var bytesToDownload = _downloadManager.DownloadingFiles.Sum(f => f.Size);
 
             // Update progress label
             labelProgress.Content =

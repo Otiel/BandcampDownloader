@@ -54,7 +54,7 @@ namespace BandcampDownloader {
                 IsExtended = App.UserSettings.M3uExtended,
             };
 
-            foreach (Track track in _album.Tracks) {
+            foreach (var track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new M3uPlaylistEntry() {
                     Album = _album.Title,
                     AlbumArtist = _album.Artist,
@@ -73,7 +73,7 @@ namespace BandcampDownloader {
         private string CreatePlsPlaylist() {
             var playlist = new PlsPlaylist();
 
-            foreach (Track track in _album.Tracks) {
+            foreach (var track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new PlsPlaylistEntry() {
                     Length = TimeSpan.FromSeconds(track.Duration),
                     Path = Path.GetFileName(track.Path),
@@ -92,7 +92,7 @@ namespace BandcampDownloader {
                 Title = _album.Title,
             };
 
-            foreach (Track track in _album.Tracks) {
+            foreach (var track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new WplPlaylistEntry() {
                     AlbumArtist = _album.Artist,
                     AlbumTitle = _album.Title,
@@ -114,7 +114,7 @@ namespace BandcampDownloader {
                 Title = _album.Title,
             };
 
-            foreach (Track track in _album.Tracks) {
+            foreach (var track in _album.Tracks) {
                 playlist.PlaylistEntries.Add(new ZplPlaylistEntry() {
                     AlbumArtist = _album.Artist,
                     AlbumTitle = _album.Title,

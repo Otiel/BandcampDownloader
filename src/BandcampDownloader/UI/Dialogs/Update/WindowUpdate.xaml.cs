@@ -17,8 +17,8 @@ namespace BandcampDownloader {
         }
 
         private async void ButtonDownloadUpdate_Click(object sender, RoutedEventArgs e) {
-            string[] parts =  Constants.UrlReleaseZip.Split(new char[] { '/' });
-            string defaultFileName = parts[parts.Length - 1];
+            var parts =  Constants.UrlReleaseZip.Split(new char[] { '/' });
+            var defaultFileName = parts[parts.Length - 1];
 
             var dialog = new SaveFileDialog {
                 FileName = defaultFileName,
@@ -29,8 +29,8 @@ namespace BandcampDownloader {
                 return;
             }
 
-            string path = dialog.FileName;
-            string zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
+            var path = dialog.FileName;
+            var zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
 
             using (var webClient = new WebClient()) {
                 ProxyHelper.SetProxy(webClient);
@@ -51,7 +51,7 @@ namespace BandcampDownloader {
                 return;
             }
 
-            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
             if (currentVersion.CompareTo(_latestVersion) < 0) {
                 // The latest version is newer than the current one
                 buttonDownloadUpdate.IsEnabled = true;

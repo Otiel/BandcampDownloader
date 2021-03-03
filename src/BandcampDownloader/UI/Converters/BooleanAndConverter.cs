@@ -10,7 +10,7 @@ namespace BandcampDownloader {
     internal class BooleanAndConverter: IMultiValueConverter {
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
-            foreach (object value in values) {
+            foreach (var value in values) {
                 if ((value is bool boolean) && boolean == false) {
                     return false;
                 }

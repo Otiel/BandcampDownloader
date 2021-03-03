@@ -26,7 +26,7 @@ namespace BandcampDownloader {
 
         public Album ToAlbum() {
             // Some albums do not have a cover art
-            string artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
+            var artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
 
             // Singles might not have a release date  #144
             if (ReleaseDate == new DateTime()) {

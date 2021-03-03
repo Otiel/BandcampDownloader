@@ -42,8 +42,8 @@ namespace BandcampDownloader {
             // Extract lyrics from album page
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(htmlCode);
-            foreach (Track track in album.Tracks) {
-                HtmlNode lyricsElement = htmlDoc.GetElementbyId("_lyrics_" + track.Number);
+            foreach (var track in album.Tracks) {
+                var lyricsElement = htmlDoc.GetElementbyId("_lyrics_" + track.Number);
                 if (lyricsElement != null) {
                     track.Lyrics = lyricsElement.InnerText.Trim();
                 }
@@ -81,22 +81,22 @@ namespace BandcampDownloader {
             // url: "http://verbalclick.bandcamp.com" + "/album/404"
             // -> Remove the " + "
             var regex = new Regex("(?<root>url: \".+)\" \\+ \"(?<album>.+\",)");
-            string fixedData = regex.Replace(albumData, "${root}${album}");
+            var fixedData = regex.Replace(albumData, "${root}${album}");
 
             return fixedData;
         }
 
         private static string GetAlbumData(string htmlCode) {
-            string startString = "data-tralbum=\"{";
-            string stopString = "}\"";
+            var startString = "data-tralbum=\"{";
+            var stopString = "}\"";
 
             if (htmlCode.IndexOf(startString) == -1) {
                 // Could not find startString
                 throw new Exception($"Could not find the following string in HTML code: {startString}");
             }
 
-            string albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) + startString.Length - 1);
-            string albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString) + 1);
+            var albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) + startString.Length - 1);
+            var albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString) + 1);
 
             albumData = WebUtility.HtmlDecode(albumData);
 

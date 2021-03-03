@@ -15,9 +15,9 @@ namespace BandcampDownloader {
             // Retrieve the redirect page from the GitHub latest release page
             var request = HttpWebRequest.CreateHttp(Constants.UrlLatestRelease);
             request.AllowAutoRedirect = false;
-            string redirectPage = "";
+            var redirectPage = "";
             try {
-                using (WebResponse response = await request.GetResponseAsync()) {
+                using (var response = await request.GetResponseAsync()) {
                     redirectPage = ((HttpWebResponse) response).GetResponseHeader("Location");
                     // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X"
                 }
@@ -33,7 +33,7 @@ namespace BandcampDownloader {
                 throw new CouldNotCheckForUpdatesException();
             }
 
-            if (Version.TryParse(latestVersionNumber, out Version latestVersion)) {
+            if (Version.TryParse(latestVersionNumber, out var latestVersion)) {
                 return latestVersion;
             } else {
                 throw new CouldNotCheckForUpdatesException();

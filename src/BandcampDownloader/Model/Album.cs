@@ -98,7 +98,7 @@ namespace BandcampDownloader {
         /// name does NOT contain the extension.
         /// </summary>
         private string ParseCoverArtFileName() {
-            string fileName = App.UserSettings.CoverArtFileNameFormat
+            var fileName = App.UserSettings.CoverArtFileNameFormat
                 .Replace("{year}", ReleaseDate.Year.ToString())
                 .Replace("{month}", ReleaseDate.Month.ToString("00"))
                 .Replace("{day}", ReleaseDate.Day.ToString("00"))
@@ -112,7 +112,7 @@ namespace BandcampDownloader {
         /// corresponding values. If the path is too long (&gt; 247 characters), it will be stripped.
         /// </summary>
         private string ParseFolderPath() {
-            string path = App.UserSettings.DownloadsPath;
+            var path = App.UserSettings.DownloadsPath;
             path = path.Replace("{year}", ReleaseDate.Year.ToString().ToAllowedFileName());
             path = path.Replace("{month}", ReleaseDate.Month.ToString("00").ToAllowedFileName());
             path = path.Replace("{day}", ReleaseDate.Day.ToString("00").ToAllowedFileName());
@@ -132,7 +132,7 @@ namespace BandcampDownloader {
         /// in the UserSettings, by replacing the placeholders strings with their corresponding values.
         /// </summary>
         private string ParsePlaylistFileName() {
-            string fileName = App.UserSettings.PlaylistFileNameFormat
+            var fileName = App.UserSettings.PlaylistFileNameFormat
                 .Replace("{year}", ReleaseDate.Year.ToString())
                 .Replace("{month}", ReleaseDate.Month.ToString("00"))
                 .Replace("{day}", ReleaseDate.Day.ToString("00"))
@@ -147,16 +147,16 @@ namespace BandcampDownloader {
         /// characters), it will be stripped.
         /// </summary>
         private string ParsePlaylistPath() {
-            string fileExt = GetPlaylistFileExtension();
+            var fileExt = GetPlaylistFileExtension();
 
             // Compute paths where to save artwork
-            string filePath = Path + "\\" + ParsePlaylistFileName() + fileExt;
+            var filePath = Path + "\\" + ParsePlaylistFileName() + fileExt;
 
             if (filePath.Length >= 260) {
                 // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters) Path has
                 // been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11
                 // character max for "filename.ext"
-                int fileNameMaxLength = 11 - fileExt.Length;
+                var fileNameMaxLength = 11 - fileExt.Length;
                 filePath = Path + "\\" + ParsePlaylistFileName().Substring(0, fileNameMaxLength) + fileExt;
             }
 
@@ -168,11 +168,11 @@ namespace BandcampDownloader {
         /// </summary>
         private void SetArtworkPaths() {
             if (HasArtwork) {
-                string artworkFileExt = System.IO.Path.GetExtension(ArtworkUrl);
+                var artworkFileExt = System.IO.Path.GetExtension(ArtworkUrl);
 
                 // In order to prevent #54 (artworkTempPath used at the same time by another downloading thread), we'll
                 // add a random number to the name of the artwork file saved in Temp directory
-                string randomNumber = App.Random.Next(1, 1000).ToString("00#");
+                var randomNumber = App.Random.Next(1, 1000).ToString("00#");
 
                 // Compute paths where to save artwork
                 ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName() + randomNumber + artworkFileExt;
@@ -183,8 +183,8 @@ namespace BandcampDownloader {
                     // has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext",
                     // so 11 character max for "filename.ext" There may be only one path needed to shorten, but it's
                     // better to use the same file name in both places
-                    int fileNameInTempMaxLength = 11 - randomNumber.Length - artworkFileExt.Length;
-                    int fileNameInFolderMaxLength = 11 - artworkFileExt.Length;
+                    var fileNameInTempMaxLength = 11 - randomNumber.Length - artworkFileExt.Length;
+                    var fileNameInFolderMaxLength = 11 - artworkFileExt.Length;
                     ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
                     ArtworkPath = Path + "\\" + ParseCoverArtFileName().Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
                 }

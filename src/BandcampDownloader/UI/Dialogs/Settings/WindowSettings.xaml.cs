@@ -65,8 +65,8 @@ namespace BandcampDownloader {
         /// </summary>
         private void ResetSettings() {
             // Save settings we shouldn't reset (as they're not on the Settings window)
-            string downloadsPath = App.UserSettings.DownloadsPath;
-            bool downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
+            var downloadsPath = App.UserSettings.DownloadsPath;
+            var downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
 
             File.Delete(Constants.UserSettingsFilePath);
             App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();

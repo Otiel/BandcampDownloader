@@ -10,7 +10,7 @@ namespace BandcampDownloader {
         public static string GetDotNetFrameworkVersion() {
             const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
 
-            using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey)) {
+            using (var ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey)) {
                 if (ndpKey != null && ndpKey.GetValue("Release") != null) {
                     return GetDotNetFrameworkVersion((int) ndpKey.GetValue("Release"));
                 } else {

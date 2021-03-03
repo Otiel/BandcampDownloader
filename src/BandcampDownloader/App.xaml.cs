@@ -74,7 +74,7 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
         private void LogUnhandledExceptionToFile(Exception exception) {
-            Logger logger = LogManager.GetCurrentClassLogger();
+            var logger = LogManager.GetCurrentClassLogger();
             logger.Log(LogLevel.Fatal, $".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
             LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
         }
