@@ -37,7 +37,7 @@ namespace BandcampDownloader {
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
             LogUnhandledExceptionToFile((Exception) e.ExceptionObject);
 
-            MessageBox.Show(String.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(string.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         /// <summary>

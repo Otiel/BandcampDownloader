@@ -53,7 +53,7 @@ namespace BandcampDownloader {
                     Button = MessageBoxButton.OK,
                     ButtonOkText = Properties.Resources.messageBoxButtonOK,
                     Image = MessageBoxImage.Error,
-                    Text = String.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
+                    Text = string.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
                     Title = "Bandcamp Downloader",
                 };
                 WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
