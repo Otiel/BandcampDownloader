@@ -216,7 +216,7 @@
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Chaque métadonnée sera modifiée selon les règles définies ci-dessous.
 
-Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. Cela revient à régler "Ne pas modifier" pour chaque métadonnée.</value>
+Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. Ceci revient à régler « Ne pas modifier » pour chaque métadonnée.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Télécharger un album à la _fois</value>
