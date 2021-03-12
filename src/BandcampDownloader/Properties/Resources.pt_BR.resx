@@ -178,7 +178,7 @@ Se não, álbuns são baixados simultaneamente (preferível fornecer alta largur
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Modifica cada tag como especificado abaixo.
 
-Se não , todas as tags permanecerão inalteradas, equivalente a definir "Não modificar" para cada tag.</value>
+Se não , todas as tags permanecerão inalteradas, equivalente a definir “Não modificar” para cada tag.</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>Playlists M3U no formato estendido (diretivas precedidas do caractere #).</value>
@@ -229,7 +229,7 @@ Se não , todas as tags permanecerão inalteradas, equivalente a definir "Não m
     <value>Cole aqui URLs de álbuns para baixar. Você pode especificar várias URLs ao adicionar uma URL por linha.
 
 Uma URL do Bandcamp parece com: http://[artista].bandcamp.com/album/[álbum] ou http://[artista].bandcamp.com/track/[faixa]
-Colar páginas de artistas: http://[artista]/.bandcamp.com e marque "☑ Baixar discografia do artista" para baixar todos os seus álbuns.</value>
+Colar páginas de artistas: http://[artista]/.bandcamp.com e marque “☑ Baixar discografia do artista” para baixar todos os seus álbuns.</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Ajude a traduzir</value>
