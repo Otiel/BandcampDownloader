@@ -160,7 +160,7 @@
     <value>Beim Start auf _Aktualisierungen prüfen</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Folgenden Adresse beim Start der App abfragen:</value>
+    <value>Folgenden Adresse beim Start der Anwendung abfragen:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>In _JPG umwandeln</value>
@@ -216,7 +216,7 @@
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Ändert jedes Schlagwort wie unten angegeben.
 
-Wenn nicht, sind alle Schlagworte unverändert, was der Einstellung „Nicht ändern” für jedes Schlagwort entspricht.</value>
+Wenn nicht, sind alle Schlagworte unverändert, was der Einstellung „Nicht ändern“ für jedes Schlagwort entspricht.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Nur ein Album gleichzeitig _herunterladen</value>
