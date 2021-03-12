@@ -157,7 +157,7 @@
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Modifica cada rótulo como especificado abaixo.
 
-Caso contrário, todos as tags não serão alteradas, equivalente a definir "Não modificar" para cada tag.</value>
+Caso contrário, todos as tags não serão alteradas, equivalente a definir «Não modificar» para cada tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>_Baixar um álbum de cada vez</value>
@@ -465,8 +465,8 @@ Valor recomendado = 4</value>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Cole as URLs dos álbuns para baixar, aqui. Você pode especificar várias URLs escrevendo uma URL por linha.
 
-Uma URL do Bandcamp se parece com: "http://[artista].bandcamp.com/album/[álbum]" ou "http://[artista].bandcamp.com/track/[faixa]"
-Cole as páginas do artista: "http://[artista].bandcamp.com" e cheque "☑ Baixar a discografia do artista" para baixar todos os seus álbuns.</value>
+Uma URL do Bandcamp se parece com: http://[artista].bandcamp.com/album/[álbum] ou http://[artista].bandcamp.com/track/[faixa]
+Cole as páginas do artista: http://[artista].bandcamp.com e cheque «☑ Baixar a discografia do artista» para baixar todos os seus álbuns.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Configurações</value>
