@@ -525,7 +525,7 @@ Valor recomendado = 4</value>
     <value>Pega los enlaces de los álbumes a descargar aquí. Puedes especificar varios URLs escribiendo uno por línea.
 
 Un URL de Bandcamp se ve como: http://[artista].bandcamp.com/album/[álbum] o http://[artista].bandcamp.com/track/[canción]
-Pegar páginas de artista: http://[artista].bandcamp.com y chequea "☑ Descargar discografía del artista" para descargar todos su(s) álbumes.</value>
+Pegar páginas de artista: http://[artista].bandcamp.com y chequea «☑ Descargar discografía del artista» para descargar todos su(s) álbumes.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Configuración</value>
