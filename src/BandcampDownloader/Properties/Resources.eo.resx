@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,103 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Hela</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Malhela</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Konservi kiel</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Fermi aplikaĵon</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Ĉu nuliĝi ĉiujn dosierojn?</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Etoso</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Malfermi agordojn</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Agordoj</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Helpi traduki</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Retejo</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versio</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Ludlisto</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Reto</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Elŝutoj</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Pri</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Lingvo</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Haveno</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Ŝanĝprotokolo</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Konservi en _etikedoj</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Konservi en dosier_ujo</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Ne modifiki</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Ne modifiki</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Jes</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_Bone</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Ne</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Nuligi</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Rezigni</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Elŝuti</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Konservi</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Agordoj</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Elŝuti novan version</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Nuligi</value>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
 </root>
