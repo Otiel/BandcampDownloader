@@ -395,7 +395,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Oui</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Êtes-vous sûr de vouloir arrêter les téléchargements ?</value>
+    <value>Annuler tous les téléchargements ?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Une erreur est intervenue lors de la vérification de mises à jour. Veuillez réessayer plus tard.</value>
@@ -404,7 +404,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Fermer l'application</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Des téléchargements sont en cours. Êtes-vous sûr de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
+    <value>Des téléchargements sont en cours. Êtes-vous sûr·e de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
     <value>Impossible d'ouvrir le lien suivant :
