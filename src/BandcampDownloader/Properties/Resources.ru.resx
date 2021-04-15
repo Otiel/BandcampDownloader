@@ -358,7 +358,7 @@ If not, some bandwidth/time is saved.</value>
     <value>_Сбросить настройки</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Сбросить все настройки по умолчанию?</value>
+    <value>Сбросить все настройки на их значения по умолчанию?</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Произошла неизвестная ошибка. Приложение будет закрыто.
@@ -462,11 +462,11 @@ If not, some bandwidth/time is saved.</value>
 - {year}, {month} и {day} будут заменены датой выпуска альбома</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Вставьте здесь URL-адреса альбомов, чтобы загрузить. Вы можете указать несколько URL-адресов, написав один URL-адрес в строке.
+    <value>Вставьте здесь URL-адреса альбомов, чтобы загрузить. Вы можете указать несколько URL-адресов, написав по одному URL-адресу на строку.
 
-URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] or 
+URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] или 
 http://[artist].bandcamp.com/track/[track]
-Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок «☑ Скачать дискографию исполнителя ", чтобы скачать все их альбомы.</value>
+Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок "☑ Скачать дискографию исполнителя", чтобы скачать все их альбомы.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Настройки</value>
