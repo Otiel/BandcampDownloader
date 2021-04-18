@@ -5,11 +5,12 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader {
-
-    public partial class UserControlSettingsGeneral: UserControl, IUserControlSettings {
-
-        public UserControlSettingsGeneral() {
+namespace BandcampDownloader
+{
+    public partial class UserControlSettingsGeneral : UserControl, IUserControlSettings
+    {
+        public UserControlSettingsGeneral()
+        {
             InitializeComponent();
             // Save data context for bindings
             DataContext = App.UserSettings;
@@ -18,13 +19,16 @@ namespace BandcampDownloader {
         /// <summary>
         /// Cancels the changes already applied.
         /// </summary>
-        public void CancelChanges() {
+        public void CancelChanges()
+        {
             // Revert the language only if it has been changed
-            if ((Language) comboBoxLanguage.SelectedValue != App.UserSettings.Language) {
+            if ((Language) comboBoxLanguage.SelectedValue != App.UserSettings.Language)
+            {
                 LanguageHelper.ApplyLanguage(App.UserSettings.Language);
             }
             // Revert the theme only if it has been changed
-            if ((Skin) comboBoxTheme.SelectedItem != App.UserSettings.Theme) {
+            if ((Skin) comboBoxTheme.SelectedItem != App.UserSettings.Theme)
+            {
                 ThemeHelper.ApplySkin(App.UserSettings.Theme);
             }
         }
@@ -32,7 +36,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Loads settings from App.UserSettings.
         /// </summary>
-        public void LoadSettings() {
+        public void LoadSettings()
+        {
             // Reload DataContext in case settings have changed
             DataContext = App.UserSettings;
             // No need to call UpdateTarget, it is done automatically
@@ -41,7 +46,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Saves settings to App.UserSettings.
         /// </summary>
-        public void SaveSettings() {
+        public void SaveSettings()
+        {
             checkBoxCheckForUpdates.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
@@ -49,12 +55,17 @@ namespace BandcampDownloader {
             comboBoxTheme.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
         }
 
-        private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e) {
+        private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e)
+        {
             Version latestVersion;
-            try {
+            try
+            {
                 latestVersion = await UpdatesHelper.GetLatestVersionAsync();
-            } catch (CouldNotCheckForUpdatesException) {
-                var msgProperties = new WpfMessageBoxProperties() {
+            }
+            catch (CouldNotCheckForUpdatesException)
+            {
+                var msgProperties = new WpfMessageBoxProperties()
+                {
                     Button = MessageBoxButton.OK,
                     ButtonOkText = Properties.Resources.messageBoxButtonOK,
                     Image = MessageBoxImage.Error,
@@ -67,15 +78,20 @@ namespace BandcampDownloader {
             }
 
             var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            if (currentVersion.CompareTo(latestVersion) < 0) {
+            if (currentVersion.CompareTo(latestVersion) < 0)
+            {
                 // The latest version is newer than the current one
-                var windowUpdate = new WindowUpdate() {
+                var windowUpdate = new WindowUpdate()
+                {
                     ShowInTaskbar = true,
                     WindowStartupLocation = WindowStartupLocation.CenterScreen,
                 };
                 windowUpdate.Show();
-            } else {
-                var msgProperties = new WpfMessageBoxProperties() {
+            }
+            else
+            {
+                var msgProperties = new WpfMessageBoxProperties()
+                {
                     Button = MessageBoxButton.OK,
                     ButtonOkText = Properties.Resources.messageBoxButtonOK,
                     Image = MessageBoxImage.Information,
@@ -86,8 +102,10 @@ namespace BandcampDownloader {
             }
         }
 
-        private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (!comboBoxLanguage.IsLoaded) {
+        private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!comboBoxLanguage.IsLoaded)
+            {
                 return;
             }
 
@@ -95,8 +113,10 @@ namespace BandcampDownloader {
             LanguageHelper.ApplyLanguage((Language) comboBoxLanguage.SelectedValue);
         }
 
-        private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (!comboBoxTheme.IsLoaded) {
+        private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!comboBoxTheme.IsLoaded)
+            {
                 return;
             }
 
@@ -104,7 +124,8 @@ namespace BandcampDownloader {
             ThemeHelper.ApplySkin((Skin) comboBoxTheme.SelectedItem);
         }
 
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e) {
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }

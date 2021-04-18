@@ -6,21 +6,25 @@ using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader {
-
-    internal static class BandcampHelper {
-
+namespace BandcampDownloader
+{
+    internal static class BandcampHelper
+    {
         /// <summary>
         /// Retrieves the data on the album of the specified Bandcamp page.
         /// </summary>
         /// <param name="htmlCode">The HTML source code of a Bandcamp album page.</param>
         /// <returns>The data on the album of the specified Bandcamp page.</returns>
-        public static Album GetAlbum(string htmlCode) {
+        public static Album GetAlbum(string htmlCode)
+        {
             // Keep the interesting part of htmlCode only
             string albumData;
-            try {
+            try
+            {
                 albumData = GetAlbumData(htmlCode);
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 throw new Exception("Could not retrieve album data in HTML code.", e);
             }
 
@@ -29,22 +33,28 @@ namespace BandcampDownloader {
 
             // Deserialize JSON
             Album album;
-            try {
-                var settings = new JsonSerializerSettings {
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
                     NullValueHandling = NullValueHandling.Ignore,
                     MissingMemberHandling = MissingMemberHandling.Ignore
                 };
                 album = JsonConvert.DeserializeObject<JsonAlbum>(albumData, settings).ToAlbum();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 throw new Exception("Could not deserialize JSON data.", e);
             }
 
             // Extract lyrics from album page
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(htmlCode);
-            foreach (var track in album.Tracks) {
+            foreach (var track in album.Tracks)
+            {
                 var lyricsElement = htmlDoc.GetElementbyId("_lyrics_" + track.Number);
-                if (lyricsElement != null) {
+                if (lyricsElement != null)
+                {
                     track.Lyrics = lyricsElement.InnerText.Trim();
                 }
             }
@@ -57,15 +67,18 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
         /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
-        public static List<string> GetAlbumsUrl(string htmlCode, string artistPage) {
+        public static List<string> GetAlbumsUrl(string htmlCode, string artistPage)
+        {
             // Get albums ("real" albums or track-only pages) relative urls
             var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
-            if (!regex.IsMatch(htmlCode)) {
+            if (!regex.IsMatch(htmlCode))
+            {
                 throw new NoAlbumFoundException();
             }
 
             var albumsUrl = new List<string>();
-            foreach (Match m in regex.Matches(htmlCode)) {
+            foreach (Match m in regex.Matches(htmlCode))
+            {
                 albumsUrl.Add(artistPage + m.Groups["url"].Value);
             }
 
@@ -74,7 +87,8 @@ namespace BandcampDownloader {
             return albumsUrl;
         }
 
-        private static string FixJson(string albumData) {
+        private static string FixJson(string albumData)
+        {
             // Some JSON is not correctly formatted in bandcamp pages, so it needs to be fixed before we can deserialize it
 
             // In trackinfo property, we have for instance:
@@ -86,11 +100,13 @@ namespace BandcampDownloader {
             return fixedData;
         }
 
-        private static string GetAlbumData(string htmlCode) {
+        private static string GetAlbumData(string htmlCode)
+        {
             var startString = "data-tralbum=\"{";
             var stopString = "}\"";
 
-            if (htmlCode.IndexOf(startString) == -1) {
+            if (htmlCode.IndexOf(startString) == -1)
+            {
                 // Could not find startString
                 throw new Exception($"Could not find the following string in HTML code: {startString}");
             }

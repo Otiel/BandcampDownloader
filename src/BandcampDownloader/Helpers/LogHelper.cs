@@ -2,18 +2,20 @@
 using System.Windows.Media;
 using NLog;
 
-namespace BandcampDownloader {
-
-    internal static class LogHelper {
-
+namespace BandcampDownloader
+{
+    internal static class LogHelper
+    {
         /// <summary>
         /// Returns the color associated to the specified log type.
         /// </summary>
         /// <param name="logType">The type of the log.</param>
-        public static SolidColorBrush GetColor(LogType logType) {
+        public static SolidColorBrush GetColor(LogType logType)
+        {
             SolidColorBrush color;
 
-            switch (logType) {
+            switch (logType)
+            {
                 case LogType.Info:
                     color = App.UserSettings.Theme == Skin.Dark ? new SolidColorBrush((Color) ColorConverter.ConvertFromString("#f0f0f0")) : Brushes.Black;
                     break;
@@ -43,10 +45,12 @@ namespace BandcampDownloader {
         /// Writes the specified Exception and all its InnerException to the application log file.
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
-        public static void LogExceptionAndInnerExceptionsToFile(Exception exception) {
+        public static void LogExceptionAndInnerExceptionsToFile(Exception exception)
+        {
             LogExceptionToFile(exception);
 
-            if (exception.InnerException != null) {
+            if (exception.InnerException != null)
+            {
                 LogExceptionAndInnerExceptionsToFile(exception.InnerException);
             }
         }
@@ -55,7 +59,8 @@ namespace BandcampDownloader {
         /// Writes the specified Exception to the application log file.
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
-        public static void LogExceptionToFile(Exception exception) {
+        public static void LogExceptionToFile(Exception exception)
+        {
             var logger = LogManager.GetCurrentClassLogger();
             logger.Log(LogLevel.Fatal, string.Format("{0} {1}", exception.GetType().ToString(), exception.Message));
             logger.Log(LogLevel.Fatal, exception.StackTrace);
@@ -64,8 +69,10 @@ namespace BandcampDownloader {
         /// <summary>
         /// Returns the NLog.LogLevel associated to the specified LogType.
         /// </summary>
-        public static LogLevel ToNLogLevel(this LogType logType) {
-            switch (logType) {
+        public static LogLevel ToNLogLevel(this LogType logType)
+        {
+            switch (logType)
+            {
                 case LogType.VerboseInfo:
                     return LogLevel.Debug;
                 case LogType.Info:

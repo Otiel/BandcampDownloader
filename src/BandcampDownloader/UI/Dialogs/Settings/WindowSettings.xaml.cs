@@ -3,10 +3,10 @@ using System.Windows;
 using Config.Net;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader {
-
-    public partial class WindowSettings: Window {
-
+namespace BandcampDownloader
+{
+    public partial class WindowSettings : Window
+    {
         /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
@@ -16,19 +16,23 @@ namespace BandcampDownloader {
         /// Creates a new instance of SettingsWindow.
         /// </summary>
         /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
-        public WindowSettings(bool activeDownloads) {
+        public WindowSettings(bool activeDownloads)
+        {
             ActiveDownloads = activeDownloads; // Must be done before UI initialization
             DataContext = App.UserSettings;
             InitializeComponent();
         }
 
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e) {
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
             CancelChanges();
             Close();
         }
 
-        private void ButtonResetSettings_Click(object sender, RoutedEventArgs e) {
-            var msgProperties = new WpfMessageBoxProperties() {
+        private void ButtonResetSettings_Click(object sender, RoutedEventArgs e)
+        {
+            var msgProperties = new WpfMessageBoxProperties()
+            {
                 Button = MessageBoxButton.OKCancel,
                 ButtonOkText = Properties.Resources.messageBoxResetSettingsButtonOk,
                 ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
@@ -37,12 +41,14 @@ namespace BandcampDownloader {
                 Title = "Bandcamp Downloader",
             };
 
-            if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK) {
+            if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK)
+            {
                 ResetSettings();
             }
         }
 
-        private void ButtonSave_Click(object sender, RoutedEventArgs e) {
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
             SaveSettings();
             Close();
         }
@@ -50,7 +56,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Cancels the changes already applied.
         /// </summary>
-        private void CancelChanges() {
+        private void CancelChanges()
+        {
             userControlSettingsAdvanced.CancelChanges();
             userControlSettingsCoverArt.CancelChanges();
             userControlSettingsDownloads.CancelChanges();
@@ -63,7 +70,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Resets settings to their default values.
         /// </summary>
-        private void ResetSettings() {
+        private void ResetSettings()
+        {
             // Save settings we shouldn't reset (as they're not on the Settings window)
             var downloadsPath = App.UserSettings.DownloadsPath;
             var downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
@@ -88,7 +96,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Saves all settings.
         /// </summary>
-        private void SaveSettings() {
+        private void SaveSettings()
+        {
             userControlSettingsAdvanced.SaveSettings();
             userControlSettingsCoverArt.SaveSettings();
             userControlSettingsDownloads.SaveSettings();

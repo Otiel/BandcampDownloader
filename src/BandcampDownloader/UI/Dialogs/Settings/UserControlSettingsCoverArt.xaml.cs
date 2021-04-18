@@ -1,10 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace BandcampDownloader {
-
-    public partial class UserControlSettingsCoverArt: UserControl, IUserControlSettings {
-
-        public UserControlSettingsCoverArt() {
+namespace BandcampDownloader
+{
+    public partial class UserControlSettingsCoverArt : UserControl, IUserControlSettings
+    {
+        public UserControlSettingsCoverArt()
+        {
             InitializeComponent();
             // Save data context for bindings
             DataContext = App.UserSettings;
@@ -13,14 +14,16 @@ namespace BandcampDownloader {
         /// <summary>
         /// Cancels the changes already applied.
         /// </summary>
-        public void CancelChanges() {
+        public void CancelChanges()
+        {
             // Nothing to "unapply"
         }
 
         /// <summary>
         /// Loads settings from App.UserSettings.
         /// </summary>
-        public void LoadSettings() {
+        public void LoadSettings()
+        {
             // Reload DataContext in case settings have changed
             DataContext = App.UserSettings;
             // No need to call UpdateTarget, it is done automatically
@@ -29,7 +32,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Saves settings to App.UserSettings.
         /// </summary>
-        public void SaveSettings() {
+        public void SaveSettings()
+        {
             checkBoxSaveCoverArtInFolder.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             textBoxCoverArtFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             checkBoxCoverArtInFolderConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
@@ -41,7 +45,8 @@ namespace BandcampDownloader {
             textBoxCoverArtInTagsMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
             ((TextBox) sender).GetBindingExpression(TextBox.TextProperty).ValidateWithoutUpdate();
         }
     }

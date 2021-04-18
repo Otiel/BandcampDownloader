@@ -2,15 +2,16 @@
 using System.Globalization;
 using WPFLocalizeExtension.Engine;
 
-namespace BandcampDownloader {
-
-    internal static class LanguageHelper {
-
+namespace BandcampDownloader
+{
+    internal static class LanguageHelper
+    {
         /// <summary>
         /// Applies the specified language.
         /// </summary>
         /// <param name="language">The language to apply.</param>
-        public static void ApplyLanguage(Language language) {
+        public static void ApplyLanguage(Language language)
+        {
             // Apply language
             LocalizeDictionary.Instance.Culture = GetCultureInfo(language);
         }
@@ -19,9 +20,11 @@ namespace BandcampDownloader {
         /// Returns the CultureInfo corresponding to the specified Language.
         /// </summary>
         /// <param name="language">The Language.</param>
-        private static CultureInfo GetCultureInfo(Language language) {
+        private static CultureInfo GetCultureInfo(Language language)
+        {
             // Existing cultures: https://dotnetfiddle.net/e1BX7M
-            switch (language) {
+            switch (language)
+            {
                 //case Language.ar:
                 //    return new CultureInfo("ar");
                 case Language.de:

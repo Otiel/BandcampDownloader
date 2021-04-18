@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace BandcampDownloader {
-
-    internal static class Constants {
+namespace BandcampDownloader
+{
+    internal static class Constants
+    {
         /// <summary>
         /// The version number of BandcampDownloader.
         /// </summary>

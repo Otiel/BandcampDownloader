@@ -14,9 +14,10 @@ using System.Windows.Threading;
 using NLog;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader {
-
-    public partial class WindowMain: Window {
+namespace BandcampDownloader
+{
+    public partial class WindowMain : Window
+    {
         /// <summary>
         /// True if there are active downloads; false otherwise.
         /// </summary>
@@ -38,7 +39,8 @@ namespace BandcampDownloader {
         /// </summary>
         private bool _userCancelled;
 
-        public WindowMain() {
+        public WindowMain()
+        {
             // Save DataContext for bindings (must be called before initializing UI)
             DataContext = App.UserSettings;
 
@@ -63,11 +65,15 @@ namespace BandcampDownloader {
 #endif
         }
 
-        private void ButtonBrowse_Click(object sender, RoutedEventArgs e) {
-            using (var dialog = new System.Windows.Forms.FolderBrowserDialog {
+        private void ButtonBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog
+            {
                 Description = Properties.Resources.folderBrowserDialogDescription
-            }) {
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+            })
+            {
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
                     textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
                     // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
                     textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
@@ -75,16 +81,20 @@ namespace BandcampDownloader {
             }
         }
 
-        private void ButtonOpenSettingsWindow_Click(object sender, RoutedEventArgs e) {
-            var windowSettings = new WindowSettings(_activeDownloads) {
+        private void ButtonOpenSettingsWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var windowSettings = new WindowSettings(_activeDownloads)
+            {
                 Owner = this,
                 ShowInTaskbar = false,
             };
             windowSettings.ShowDialog();
         }
 
-        private async void ButtonStart_Click(object sender, RoutedEventArgs e) {
-            if (textBoxUrls.Text == "") {
+        private async void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBoxUrls.Text == "")
+            {
                 // No URL to look
                 Log("Paste some albums URLs to be downloaded", LogType.Error);
                 return;
@@ -98,7 +108,8 @@ namespace BandcampDownloader {
 
             await StartDownloadAsync();
 
-            if (_userCancelled) {
+            if (_userCancelled)
+            {
                 // Display message if user cancelled
                 Log("Downloads cancelled by user", LogType.Info);
             }
@@ -109,19 +120,26 @@ namespace BandcampDownloader {
             UpdateControlsState(false);
             Mouse.OverrideCursor = null;
 
-            if (App.UserSettings.EnableApplicationSounds) {
+            if (App.UserSettings.EnableApplicationSounds)
+            {
                 // Play a sound
-                try {
-                    using (var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav")) {
+                try
+                {
+                    using (var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav"))
+                    {
                         soundPlayer.Play();
                     }
-                } catch {
+                }
+                catch
+                {
                 }
             }
         }
 
-        private void ButtonStop_Click(object sender, RoutedEventArgs e) {
-            var msgProperties = new WpfMessageBoxProperties() {
+        private void ButtonStop_Click(object sender, RoutedEventArgs e)
+        {
+            var msgProperties = new WpfMessageBoxProperties()
+            {
                 Button = MessageBoxButton.YesNo,
                 ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
@@ -130,7 +148,8 @@ namespace BandcampDownloader {
                 Title = "Bandcamp Downloader",
             };
 
-            if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes || !_activeDownloads) {
+            if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes || !_activeDownloads)
+            {
                 // If user cancelled the cancellation or if downloads finished while he choosed to cancel
                 return;
             }
@@ -145,30 +164,38 @@ namespace BandcampDownloader {
         /// <summary>
         /// Displays a message if a new version is available.
         /// </summary>
-        private async Task CheckForUpdates() {
+        private async Task CheckForUpdates()
+        {
             Version latestVersion;
-            try {
+            try
+            {
                 latestVersion = await UpdatesHelper.GetLatestVersionAsync();
-            } catch (CouldNotCheckForUpdatesException) {
+            }
+            catch (CouldNotCheckForUpdatesException)
+            {
                 labelNewVersion.Content = Properties.Resources.labelVersionError;
                 labelNewVersion.Visibility = Visibility.Visible;
                 return;
             }
 
             var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            if (currentVersion.CompareTo(latestVersion) < 0) {
+            if (currentVersion.CompareTo(latestVersion) < 0)
+            {
                 // The latest version is newer than the current one
                 labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
                 labelNewVersion.Visibility = Visibility.Visible;
             }
         }
 
-        private void DownloadManager_LogAdded(object sender, LogArgs eventArgs) {
+        private void DownloadManager_LogAdded(object sender, LogArgs eventArgs)
+        {
             Log(eventArgs.Message, eventArgs.LogType);
         }
 
-        private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e) {
-            var windowUpdate = new WindowUpdate() {
+        private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var windowUpdate = new WindowUpdate()
+            {
                 Owner = this,
                 ShowInTaskbar = true,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
@@ -181,27 +208,32 @@ namespace BandcampDownloader {
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="logType">The log type.</param>
-        private void Log(string message, LogType logType) {
+        private void Log(string message, LogType logType)
+        {
             // Log to file
             var logger = LogManager.GetCurrentClassLogger();
             logger.Log(logType.ToNLogLevel(), message);
 
             // Log to window
-            if (App.UserSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success) {
+            if (App.UserSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success)
+            {
                 // Time
-                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
+                var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd)
+                {
                     Text = DateTime.Now.ToString("HH:mm:ss") + " "
                 };
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
                 // Message
-                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd) {
+                textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd)
+                {
                     Text = message
                 };
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
                 // Line break
                 richTextBoxLog.AppendText(Environment.NewLine);
 
-                if (richTextBoxLog.IsScrolledToEnd()) {
+                if (richTextBoxLog.IsScrolledToEnd())
+                {
                     richTextBoxLog.ScrollToEnd();
                 }
             }
@@ -210,7 +242,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Starts downloads.
         /// </summary>
-        private async Task StartDownloadAsync() {
+        private async Task StartDownloadAsync()
+        {
             _userCancelled = false;
 
             // Initializes the DownloadManager
@@ -222,26 +255,32 @@ namespace BandcampDownloader {
 
             // Set progressBar max value
             long maxProgressBarValue;
-            if (App.UserSettings.RetrieveFilesSize) {
+            if (App.UserSettings.RetrieveFilesSize)
+            {
                 maxProgressBarValue = _downloadManager.DownloadingFiles.Sum(f => f.Size); // Bytes to download
-            } else {
+            }
+            else
+            {
                 maxProgressBarValue = _downloadManager.DownloadingFiles.Count; // Number of files to download
             }
-            if (maxProgressBarValue > 0) {
+            if (maxProgressBarValue > 0)
+            {
                 progressBar.IsIndeterminate = false;
                 progressBar.Maximum = maxProgressBarValue;
                 TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
             }
 
             // Start timer to update progress on UI
-            var updateProgressTimer = new DispatcherTimer() {
+            var updateProgressTimer = new DispatcherTimer()
+            {
                 Interval = TimeSpan.FromMilliseconds(100)
             };
             updateProgressTimer.Tick += UpdateProgressTimer_Tick;
             updateProgressTimer.Start();
 
             // Start timer to update download speed on UI
-            var updateDownloadSpeedTimer = new DispatcherTimer() {
+            var updateDownloadSpeedTimer = new DispatcherTimer()
+            {
                 Interval = TimeSpan.FromMilliseconds(1000)
             };
             updateDownloadSpeedTimer.Tick += UpdateDownloadSpeedTimer_Tick;
@@ -262,8 +301,10 @@ namespace BandcampDownloader {
         /// Updates the state of the controls.
         /// </summary>
         /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
-        private void UpdateControlsState(bool downloadStarted) {
-            if (downloadStarted) {
+        private void UpdateControlsState(bool downloadStarted)
+        {
+            if (downloadStarted)
+            {
                 // We just started the download
                 buttonBrowse.IsEnabled = false;
                 buttonStart.IsEnabled = false;
@@ -277,7 +318,9 @@ namespace BandcampDownloader {
                 TaskbarItemInfo.ProgressValue = 0;
                 textBoxDownloadsPath.IsReadOnly = true;
                 textBoxUrls.IsReadOnly = true;
-            } else {
+            }
+            else
+            {
                 // We just finished the download (or user has cancelled)
                 buttonBrowse.IsEnabled = true;
                 buttonStart.IsEnabled = true;
@@ -296,7 +339,8 @@ namespace BandcampDownloader {
         /// <summary>
         /// Updates the download speed on UI.
         /// </summary>
-        private void UpdateDownloadSpeed() {
+        private void UpdateDownloadSpeed()
+        {
             var now = DateTime.Now;
 
             // Compute new progress values
@@ -312,14 +356,16 @@ namespace BandcampDownloader {
             labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
         }
 
-        private void UpdateDownloadSpeedTimer_Tick(object sender, EventArgs e) {
+        private void UpdateDownloadSpeedTimer_Tick(object sender, EventArgs e)
+        {
             UpdateDownloadSpeed();
         }
 
         /// <summary>
         /// Updates the progress label on UI.
         /// </summary>
-        private void UpdateProgress() {
+        private void UpdateProgress()
+        {
             // Compute new progress values
             var totalReceivedBytes = _downloadManager.DownloadingFiles.Sum(f => f.BytesReceived);
             var bytesToDownload = _downloadManager.DownloadingFiles.Sum(f => f.Size);
@@ -329,12 +375,15 @@ namespace BandcampDownloader {
                 ((double) totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
                 (App.UserSettings.RetrieveFilesSize ? (" / " + ((double) bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB") : "");
 
-            if (App.UserSettings.RetrieveFilesSize) {
+            if (App.UserSettings.RetrieveFilesSize)
+            {
                 // Update progress bar based on bytes received
                 progressBar.Value = totalReceivedBytes;
                 // Taskbar progress is between 0 and 1
                 TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
-            } else {
+            }
+            else
+            {
                 double downloadedFilesCount = _downloadManager.DownloadingFiles.Count(f => f.Downloaded);
                 // Update progress bar based on downloaded files
                 progressBar.Value = downloadedFilesCount;
@@ -343,14 +392,18 @@ namespace BandcampDownloader {
             }
         }
 
-        private void UpdateProgressTimer_Tick(object sender, EventArgs e) {
+        private void UpdateProgressTimer_Tick(object sender, EventArgs e)
+        {
             UpdateProgress();
         }
 
-        private void WindowMain_Closing(object sender, CancelEventArgs e) {
-            if (_activeDownloads) {
+        private void WindowMain_Closing(object sender, CancelEventArgs e)
+        {
+            if (_activeDownloads)
+            {
                 // There are active downloads, ask for confirmation
-                var msgProperties = new WpfMessageBoxProperties() {
+                var msgProperties = new WpfMessageBoxProperties()
+                {
                     Button = MessageBoxButton.OKCancel,
                     ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
                     ButtonOkText = Properties.Resources.messageBoxCloseWindowWhenDownloadingButtonOk,
@@ -359,15 +412,18 @@ namespace BandcampDownloader {
                     Title = "Bandcamp Downloader",
                 };
 
-                if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.Cancel) {
+                if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.Cancel)
+                {
                     // Cancel closing the window
                     e.Cancel = true;
                 }
             }
         }
 
-        private async void WindowMain_Loaded(object sender, RoutedEventArgs e) {
-            if (App.UserSettings.CheckForUpdates) {
+        private async void WindowMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (App.UserSettings.CheckForUpdates)
+            {
                 await CheckForUpdates();
             }
         }
