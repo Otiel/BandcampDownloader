@@ -14,6 +14,7 @@ namespace BandcampDownloader
         /// Random class used to create random numbers.
         /// </summary>
         public static readonly Random Random = new Random();
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// The settings chosen by the user.
@@ -27,6 +28,8 @@ namespace BandcampDownloader
 
             // Manage unhandled exceptions
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            LogAppProperties();
 
             // Define the default security protocol to use for connection as TLS (#109)
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
@@ -76,14 +79,18 @@ namespace BandcampDownloader
             }
         }
 
+        private void LogAppProperties()
+        {
+            _logger.Info($"BandcampDownloader version: {Constants.AppVersion}");
+            _logger.Log(LogLevel.Info, $".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
+        }
+
         /// <summary>
         /// Writes the specified Exception to the application log file, along with the .NET version.
         /// </summary>
         /// <param name="exception">The Exception to log.</param>
         private void LogUnhandledExceptionToFile(Exception exception)
         {
-            var logger = LogManager.GetCurrentClassLogger();
-            logger.Log(LogLevel.Fatal, $".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
             LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
         }
     }
