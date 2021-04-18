@@ -1,19 +1,24 @@
 ﻿using Microsoft.Win32;
 
-namespace BandcampDownloader {
-
-    internal static class SystemVersionHelper {
-
+namespace BandcampDownloader
+{
+    internal static class SystemVersionHelper
+    {
         /// <summary>
         /// Returns the .NET Framework version installed by querying the registry.
         /// </summary>
-        public static string GetDotNetFrameworkVersion() {
+        public static string GetDotNetFrameworkVersion()
+        {
             const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
 
-            using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey)) {
-                if (ndpKey != null && ndpKey.GetValue("Release") != null) {
+            using (var ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey))
+            {
+                if (ndpKey != null && ndpKey.GetValue("Release") != null)
+                {
                     return GetDotNetFrameworkVersion((int) ndpKey.GetValue("Release"));
-                } else {
+                }
+                else
+                {
                     return "Version 4.5 or later is not detected.";
                 }
             }
@@ -24,36 +29,47 @@ namespace BandcampDownloader {
         /// defined on https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
         /// </summary>
         /// <param name="releaseKey">The value of the "Release" DWORD.</param>
-        private static string GetDotNetFrameworkVersion(int releaseKey) {
+        private static string GetDotNetFrameworkVersion(int releaseKey)
+        {
             // Checking the version using >= enables forward compatibility.
-            if (releaseKey >= 528040) {
+            if (releaseKey >= 528040)
+            {
                 return "4.8 or later";
             }
-            if (releaseKey >= 461808) {
+            if (releaseKey >= 461808)
+            {
                 return "4.7.2";
             }
-            if (releaseKey >= 461308) {
+            if (releaseKey >= 461308)
+            {
                 return "4.7.1";
             }
-            if (releaseKey >= 460798) {
+            if (releaseKey >= 460798)
+            {
                 return "4.7";
             }
-            if (releaseKey >= 394802) {
+            if (releaseKey >= 394802)
+            {
                 return "4.6.2";
             }
-            if (releaseKey >= 394254) {
+            if (releaseKey >= 394254)
+            {
                 return "4.6.1";
             }
-            if (releaseKey >= 393295) {
+            if (releaseKey >= 393295)
+            {
                 return "4.6";
             }
-            if (releaseKey >= 379893) {
+            if (releaseKey >= 379893)
+            {
                 return "4.5.2";
             }
-            if (releaseKey >= 378675) {
+            if (releaseKey >= 378675)
+            {
                 return "4.5.1";
             }
-            if (releaseKey >= 378389) {
+            if (releaseKey >= 378389)
+            {
                 return "4.5";
             }
 
