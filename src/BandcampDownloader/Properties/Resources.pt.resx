@@ -426,18 +426,18 @@ Valor recomendado = 7</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>Usado para controlar o mecanismo de recuo exponencial.
-Após cada falha de um download de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
-baixar a faixa novamente a fim de evitar o filtro anti-spam do Bandcamp.
-A fórmula usada para calcular o tempo de espera antes de tentar baixar novamente é o seguinte:
+Após cada falha de uma descarrega de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
+descarregar a faixa novamente de modo a evitar o filtro anti-spam do Bandcamp.
+A fórmula usada para calcular o tempo de espera antes de tentar descarregar novamente é o seguinte:
 tempo = tempo de espera * (expoente ^ contagem de tentativas)
 
 Valor recomendado = 0.2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
     <value>Usado para controlar o mecanismo de recuo exponencial.
-Após cada falha de um download de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
-baixar a faixa novamente a fim de evitar o filtro anti-spam do Bandcamp.
-A fórmula usada para calcular o tempo de espera antes de tentar baixar novamente é o seguinte:
+Após cada falha de uma descarrega de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
+descarregar a faixa novamente de modo a evitar o filtro anti-spam do Bandcamp.
+A fórmula usada para calcular o tempo de espera antes de tentar a descarrega novamente é o seguinte:
 tempo = tempo de espera * (expoente ^ contagem de tentativas)
 
 Valor recomendado = 4</value>
