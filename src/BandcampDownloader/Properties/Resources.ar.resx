@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -61,6 +61,9 @@
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
   </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>تصفح بحثًا عن الملف</value>
+  </data>
   <data name="buttonCancel" xml:space="preserve">
     <value>_الغاء</value>
   </data>
@@ -72,6 +75,12 @@
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_الاعدادات</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>أفتح الإعدادات</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>إعادة ضبط الإعدادات الافتراضية</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
     <value>_حفظ</value>
@@ -85,26 +94,93 @@
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_معاينة</value>
   </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>تعذر تنزيل سجل التغيير من {0}</value>
+  </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>بحث عن تحديثات عند تشغيل البرنامج</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>يستعلم عن العنوان التالي عند بدء تشغيل التطبيق:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
     <value>تحويل الصيغة الى JPG</value>
   </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>يحول صورة الغلاف إلى JPG بضغط 90 (مقايضة ممتازة بين الحجم والجودة).</value>
+  </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
     <value>تحديد اعلى ارتفاع وعرض</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>يغير حجم صورة الغلاف إلى أقصى عرض / ارتفاع محدد.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
     <value>تحويل الصيغة الى JPG</value>
   </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>يحول صورة الغلاف إلى JPG بضغط 90 (مقايضة ممتازة بين الحجم والجودة).</value>
+  </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>تحديد اعلى ارتفاع وعرض</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>يغير حجم صورة الغلاف إلى أقصى عرض / ارتفاع محدد.</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
     <value>صنع قائمة تشغيل لكل البوم</value>
   </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>ينشئ ملف مسار الألبوم لكل ألبوم تم تنزيله.</value>
+  </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
     <value>تحميل البومات الفنان كلها</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>تحميل جميع ألبومات الفنان.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>تشغيل أصوات الإخطارات</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>تفعيل صوت إخطار حين الانتهاء من التحميل.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>استخدام التنسيق الموسع (فقط لملفات M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>قوائم تشغيل ملفات M3U بالشكل الموسع (التوجيهات مسبوقة بالحرف #).</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>تعديل علامات الأغاني (ID3)</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>يعدل كل علامة بالشكل المحدد أدناه.
+
+إذا لم يكن الأمر كذلك ، فستظل جميع العلامات بدون تغيير ، أي ما يعادل إعداد "عدم التعديل" لكل علامة.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>قم بتنزيل ألبوم واحد في كل مرة</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>يقوم بتنزيل ألبوم واحد فقط في كل مرة.
+إذا لم يكن الأمر كذلك ، فسيتم تنزيل جميع الألبومات بشكل متزامن (يتوفر أفضل عرض نطاق ترددي عالٍ).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>استرجع حجم الملف قبل تنزيل الأغاني</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>يسترجع حجم الملف لإظهار تقدم دقيق.
+إذا لم يكن كذلك ، فسيتم حفظ بعض النطاق الترددي / الوقت.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>احفظ في الملف</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>تحميل صورة الغلاف إلى مجلد الألبوم.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>يحفظ غلاف الألبوم في علامات الأغاني.</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
     <value>_الغاء</value>
@@ -132,81 +208,5 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>امسح التاگ</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>يحفظ غلاف الألبوم في علامات الأغاني.</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>تحميل صورة الغلاف إلى مجلد الألبوم.</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>يسترجع حجم الملف لإظهار تقدم دقيق.
-إذا لم يكن كذلك ، فسيتم حفظ بعض النطاق الترددي / الوقت.</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>احفظ في الملف</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>استرجع حجم الملف قبل تنزيل الأغاني</value>
-  </data>
-  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>يعدل كل علامة بالشكل المحدد أدناه.
-
-إذا لم يكن الأمر كذلك ، فستظل جميع العلامات بدون تغيير ، أي ما يعادل إعداد "عدم التعديل" لكل علامة.</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>قم بتنزيل ألبوم واحد في كل مرة</value>
-  </data>
-  <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>تعديل علامات الأغاني (ID3)</value>
-  </data>
-  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>قوائم تشغيل ملفات M3U بالشكل الموسع (التوجيهات مسبوقة بالحرف #).</value>
-  </data>
-  <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>استخدام التنسيق الموسع (فقط لملفات M3U)</value>
-  </data>
-  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>تفعيل صوت إخطار حين الانتهاء من التحميل.</value>
-  </data>
-  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>تشغيل أصوات الإخطارات</value>
-  </data>
-  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>تحميل جميع ألبومات الفنان.</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>يقوم بتنزيل ألبوم واحد فقط في كل مرة.
-إذا لم يكن الأمر كذلك ، فسيتم تنزيل جميع الألبومات بشكل متزامن (يتوفر أفضل عرض نطاق ترددي عالٍ).</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>يحول صورة الغلاف إلى JPG بضغط 90 (مقايضة ممتازة بين الحجم والجودة).</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>يحول صورة الغلاف إلى JPG بضغط 90 (مقايضة ممتازة بين الحجم والجودة).</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>يغير حجم صورة الغلاف إلى أقصى عرض / ارتفاع محدد.</value>
-  </data>
-  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>يستعلم عن العنوان التالي عند بدء تشغيل التطبيق:</value>
-  </data>
-  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>إعادة ضبط الإعدادات الافتراضية</value>
-  </data>
-  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
-    <value>أفتح الإعدادات</value>
-  </data>
-  <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>تصفح بحثًا عن الملف</value>
-  </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>تعذر تنزيل سجل التغيير من {0}</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>يغير حجم صورة الغلاف إلى أقصى عرض / ارتفاع محدد.</value>
-  </data>
-  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>ينشئ ملف مسار الألبوم لكل ألبوم تم تنزيله.</value>
   </data>
 </root>

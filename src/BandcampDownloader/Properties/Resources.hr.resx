@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -58,20 +58,392 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Ovdje umetni URL adrese albuma za preuzimanje. Možeš odrediti više URL adresa zapisivanjem URL adresa po retku.
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Traži mapu</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Odustani</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Pro_vjeri sada</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Preuzmi novu verziju</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>Po_stavke</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Otvori postavke</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Obnovi standardne postavke</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Spremi</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Preuzmi</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Odustani</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Pogled</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Neuspjelo preuzimanje protokola promjena od {0}</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Traži no_ve verzije prilikom pokretanja</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Šalje upit na sljedeću adresu prilikom pokretanja programa:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Pretvori u _JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Pretvara omot u JPG s kompresijom od 90 (izvrstan kompromis između veličine i kvalitete).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Ograniči _maksimalnu širinu i visinu</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Mijenja veličinu omota na zadanu maksimalnu širinu i visinu.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Pretvori u JP_G</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Pretvara omot u JPG s kompresijom od 90 (izvrstan kompromis između veličine i kvalitete).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Ograniči m_aksimalnu širinu i visinu</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Mijenja veličinu omota na zadanu maksimalnu širinu i visinu.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Stvori _popis pjesama za svaki album</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Stvara datoteku s popisom pjesama albuma za svaki preuzeti album.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Preuzmi diskogr_afiju izvođača</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Preuzima cijelu diskografiju izvođača.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Sviraj zvukove upozore_nja</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Zvuk upozorenja za gotova preuzimanja.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Koristi prošir_eni format (samo za M3U)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>M3U popisi pjesama u proširenom formatu (direktive s predznakom #).</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Promijeni oznake pjesama (ID3)</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Mijenja svaku oznaku kako je niže dolje određeno.
 
-URL adresa Bandcampa izgleda ovako: http://[artist].bandcamp.com/album/[album] ili http://[artist].bandcamp.com/track/[track]
-Umetni stranice izvođača: http://[artist].bandcamp.com i označi „☑ Preuzmi diskografiju izvođača” za preuzimanje svih albuma tog izvođača.</value>
+Ako ne, sve oznake ostaju nepromijenjene, što odgovara postavci „Ne mijenjaj” za svaku oznaku.</value>
   </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Aktualiziraj</value>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Preuzmi albume pojedinačno</value>
   </data>
-  <data name="windowSettings_Title" xml:space="preserve">
-    <value>Postavke</value>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Preuzima samo jedan album odjednom.
+Ako ne, svi se albumi preuzimaju istodobno (zahtijeva veliku protočnost).</value>
   </data>
-  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Pronađi ve_ličinu datoteke prije preuzimanja pjesama</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Pronalazi veličinu datoteke za prikaz točnog stanja napretka.
+Ako ne, štedi se neka protočnost/vrijeme.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Spremi u _mapu</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Preuzima omot u mapu albuma.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Spremi u _oznake</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Sprema omot u oznaku pjesme.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Prikaži _opširan protokol</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Prikazuje više informacija u protokolu.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Odaberi mapu za spremanje albuma</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Promijeni ove postavke na vlastitu odgovornost.</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>_Izvođač albuma</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>_Naslov albuma</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Dozvoljena razlika veličine _datoteke (%)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Izvođač</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Obnovi postavke</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Protokol promjena</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Protokol promjena</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Kom_entari</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Format ime_na datoteke</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Maks. veličina (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Maks. veličina (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Trenutačna verzija:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maks. broj pokušaja preuzimanja</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Interval mirovanja (s)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Pot_enciranje ponovnih pokušaja</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Spremi albume _u</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_Format imena datoteke:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) poslužitelj</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Priključak</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Prijavi grešku</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Jezik</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Informacije</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Napredne postavke</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Omot</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Preuzimanja</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Opće</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Mreža</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Popis pjesama</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Nazivi i oznake</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Tekstovi pjesama</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Format ime_na datoteke</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>_Format popisa pjesama</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Neke se postavke ne mogu mijenjati dok se pjesme preuzimaju.</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>B_roj pjesme</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Naslov</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(protokol je uvijek opširan)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Verzija</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Neuspjelo traženje novih verzija</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Postoji nova verzija</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Web-stranica</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>_Godina izdanja albuma</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Odustani</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Ne</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_U redu</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Da</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Prekinuti sva preuzimanja?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Dogodila se greška prilikom traženja novih verzija. Pokušaj kasnije ponovo.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Zatvori program</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Trenutačno postoje aktivna preuzimanja. Stvarno želiš zatvoriti program i prekinuti sva preuzimanja?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Neuspjelo otvaranje poveznice:
+{0}</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Već imaš najnoviju verziju ({0}).</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Obnovi postavke</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Obnoviti sve postavke na standardne vrijednosti?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Dogodila se neobradiva greška. Program će se sada zatvoriti.
+
+Otvori novi problem sa sadržajem tvoje datoteke protokola
+{0}</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Ručno postavljanje poslužitelja</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Bez poslužitelja</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>_Sustavski poslužitelj</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Spremi kao</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Tamna</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Svijetla</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Ne mijenjaj</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Ukloni oznaku</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Spremi u oznaku</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Ne mijenjaj</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Ukloni oznaku</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Povijest izdanja</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Pomogni prevesti</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Prilikom preuzimanja pjesme, ako ista datoteka (ime datoteke) već postoji, usporedit će se s datotekom koja se preuzima.
+Ako je razlika između veličina datoteka manja od ove vrijednosti (u postocima), preuzimanje pjesme se preskače.
+Postavi ovu vrijednost na 0, kako bi se pjesme uvijek preuzele, čak i ako već postoje na disku.
+
+Preporučena vrijednost = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>Ime datoteke možeš prilagoditi pomoću rezerviranih mjesta:
+- {artist} će se zamijeniti s izvođačem albuma
+- {album} će se zamijeniti s naslovom albuma
+- {year}, {month} i {day} će se zamijeniti s datumom izdanja albuma</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Maksimalan broj pokušaja preuzimanja pjesme, ako ne uspije.
+Nakon tog broja (za svaku pjesmu), preuzimanje pjesme se preskače.
+
+Preporučena vrijednost = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Koristi se za upravljanje eksponencijalnim mehanizmom ponovnih pokušaja.
+Nakon svakog neuspjelog preuzimanja pjesme, BandcampDownloader može pričekati određeno vrijeme prije ponovnog pokušaja
+preuzimanja pjesme, kako bi se izbjeglo golicanje Bandcampovog filtra protiv neželjene pošte.
+Formula koja se koristi za izračunavanje vremena prije ponovnog pokušaja preuzimanja je sljedeća:
+vrijeme = mirovanje * (potencija ^ broj pokušaja)
+
+Preporučena vrijednost = 0,2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Koristi se za upravljanje eksponencijalnim mehanizmom ponovnih pokušaja.
+Nakon svakog neuspjelog preuzimanja pjesme, BandcampDownloader može pričekati određeno vrijeme prije ponovnog pokušaja
+preuzimanja pjesme, kako bi se izbjeglo golicanje Bandcampovog filtra protiv neželjene pošte.
+Formula koja se koristi za izračunavanje vremena prije ponovnog pokušaja preuzimanja je sljedeća:
+vrijeme = mirovanje * (potencija ^ broj pokušaja)
+
+Preporučena vrijednost = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Mapu preuzimanja možeš prilagoditi pomoću rezerviranih mjesta, ovisno o albumu:
 - {artist} će se zamijeniti s izvođačem albuma
 - {album} će se zamijeniti s naslovom albuma
 - {year}, {month} i {day} će se zamijeniti s datumom izdanja albuma</value>
@@ -84,394 +456,22 @@ Umetni stranice izvođača: http://[artist].bandcamp.com i označi „☑ Preuzm
 - {album} će se zamijeniti s naslovom albuma
 - {year}, {month} i {day} će se zamijeniti s datumom izdanja albuma</value>
   </data>
-  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>Mapu preuzimanja možeš prilagoditi pomoću rezerviranih mjesta, ovisno o albumu:
-- {artist} će se zamijeniti s izvođačem albuma
-- {album} će se zamijeniti s naslovom albuma
-- {year}, {month} i {day} će se zamijeniti s datumom izdanja albuma</value>
-  </data>
-  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Koristi se za upravljanje eksponencijalnim mehanizmom ponovnih pokušaja.
-Nakon svakog neuspjelog preuzimanja pjesme, BandcampDownloader može pričekati određeno vrijeme prije ponovnog pokušaja
-preuzimanja pjesme, kako bi se izbjeglo golicanje Bandcampovog filtra protiv neželjene pošte.
-Formula koja se koristi za izračunavanje vremena prije ponovnog pokušaja preuzimanja je sljedeća:
-vrijeme = mirovanje * (potencija ^ broj pokušaja)
-
-Preporučena vrijednost = 4</value>
-  </data>
-  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
-    <value>Koristi se za upravljanje eksponencijalnim mehanizmom ponovnih pokušaja.
-Nakon svakog neuspjelog preuzimanja pjesme, BandcampDownloader može pričekati određeno vrijeme prije ponovnog pokušaja
-preuzimanja pjesme, kako bi se izbjeglo golicanje Bandcampovog filtra protiv neželjene pošte.
-Formula koja se koristi za izračunavanje vremena prije ponovnog pokušaja preuzimanja je sljedeća:
-vrijeme = mirovanje * (potencija ^ broj pokušaja)
-
-Preporučena vrijednost = 0,2</value>
-  </data>
-  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Maksimalan broj pokušaja preuzimanja pjesme, ako ne uspije.
-Nakon tog broja (za svaku pjesmu), preuzimanje pjesme se preskače.
-
-Preporučena vrijednost = 7</value>
-  </data>
-  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Ime datoteke možeš prilagoditi pomoću rezerviranih mjesta:
 - {artist} će se zamijeniti s izvođačem albuma
 - {album} će se zamijeniti s naslovom albuma
 - {year}, {month} i {day} će se zamijeniti s datumom izdanja albuma</value>
   </data>
-  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Prilikom preuzimanja pjesme, ako ista datoteka (ime datoteke) već postoji, usporedit će se s datotekom koja se preuzima.
-Ako je razlika između veličina datoteka manja od ove vrijednosti (u postocima), preuzimanje pjesme se preskače.
-Postavi ovu vrijednost na 0, kako bi se pjesme uvijek preuzele, čak i ako već postoje na disku.
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Ovdje umetni URL adrese albuma za preuzimanje. Možeš odrediti više URL adresa zapisivanjem URL adresa po retku.
 
-Preporučena vrijednost = 5</value>
+URL adresa Bandcampa izgleda ovako: http://[artist].bandcamp.com/album/[album] ili http://[artist].bandcamp.com/track/[track]
+Umetni stranice izvođača: http://[artist].bandcamp.com i označi „☑ Preuzmi diskografiju izvođača” za preuzimanje svih albuma tog izvođača.</value>
   </data>
-  <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Pomogni prevesti</value>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Postavke</value>
   </data>
-  <data name="textBlockReleasesWebsite" xml:space="preserve">
-    <value>Povijest izdanja</value>
-  </data>
-  <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Ukloni oznaku</value>
-  </data>
-  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
-    <value>Ne mijenjaj</value>
-  </data>
-  <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Spremi u oznaku</value>
-  </data>
-  <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Ukloni oznaku</value>
-  </data>
-  <data name="TagEditAction_DoNotModify" xml:space="preserve">
-    <value>Ne mijenjaj</value>
-  </data>
-  <data name="Skin_Light" xml:space="preserve">
-    <value>Svijetla</value>
-  </data>
-  <data name="Skin_Dark" xml:space="preserve">
-    <value>Tamna</value>
-  </data>
-  <data name="saveFileDialogTitle" xml:space="preserve">
-    <value>Spremi kao</value>
-  </data>
-  <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Sustavski poslužitelj</value>
-  </data>
-  <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Bez poslužitelja</value>
-  </data>
-  <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ručno postavljanje poslužitelja</value>
-  </data>
-  <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Dogodila se neobradiva greška. Program će se sada zatvoriti.
-
-Otvori novi problem sa sadržajem tvoje datoteke protokola
-{0}</value>
-  </data>
-  <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Obnoviti sve postavke na standardne vrijednosti?</value>
-  </data>
-  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Obnovi postavke</value>
-  </data>
-  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>Već imaš najnoviju verziju ({0}).</value>
-  </data>
-  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Neuspjelo otvaranje poveznice:
-{0}</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Trenutačno postoje aktivna preuzimanja. Stvarno želiš zatvoriti program i prekinuti sva preuzimanja?</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>_Zatvori program</value>
-  </data>
-  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>Dogodila se greška prilikom traženja novih verzija. Pokušaj kasnije ponovo.</value>
-  </data>
-  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Prekinuti sva preuzimanja?</value>
-  </data>
-  <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>_Da</value>
-  </data>
-  <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>_U redu</value>
-  </data>
-  <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>_Ne</value>
-  </data>
-  <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>_Odustani</value>
-  </data>
-  <data name="labelYear" xml:space="preserve">
-    <value>_Godina izdanja albuma</value>
-  </data>
-  <data name="labelWebsite" xml:space="preserve">
-    <value>Web-stranica</value>
-  </data>
-  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Postoji nova verzija</value>
-  </data>
-  <data name="labelVersionError" xml:space="preserve">
-    <value>Neuspjelo traženje novih verzija</value>
-  </data>
-  <data name="labelVersion" xml:space="preserve">
-    <value>Verzija</value>
-  </data>
-  <data name="labelVerboseLogInfo" xml:space="preserve">
-    <value>(protokol je uvijek opširan)</value>
-  </data>
-  <data name="labelTrackTitle" xml:space="preserve">
-    <value>_Naslov</value>
-  </data>
-  <data name="labelTrackNumber" xml:space="preserve">
-    <value>B_roj pjesme</value>
-  </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>_Tema</value>
-  </data>
-  <data name="labelSettingsInfo" xml:space="preserve">
-    <value>Neke se postavke ne mogu mijenjati dok se pjesme preuzimaju.</value>
-  </data>
-  <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>_Format popisa pjesama</value>
-  </data>
-  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Format ime_na datoteke</value>
-  </data>
-  <data name="labelLyrics" xml:space="preserve">
-    <value>_Tekstovi pjesama</value>
-  </data>
-  <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Nazivi i oznake</value>
-  </data>
-  <data name="labelListBoxItemPlaylist" xml:space="preserve">
-    <value>Popis pjesama</value>
-  </data>
-  <data name="labelListBoxItemNetwork" xml:space="preserve">
-    <value>Mreža</value>
-  </data>
-  <data name="labelListBoxItemGeneral" xml:space="preserve">
-    <value>Opće</value>
-  </data>
-  <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>Preuzimanja</value>
-  </data>
-  <data name="labelListBoxItemCoverArt" xml:space="preserve">
-    <value>Omot</value>
-  </data>
-  <data name="labelListBoxItemAdvanced" xml:space="preserve">
-    <value>Napredne postavke</value>
-  </data>
-  <data name="labelListBoxItemAbout" xml:space="preserve">
-    <value>Informacije</value>
-  </data>
-  <data name="labelLanguage" xml:space="preserve">
-    <value>_Jezik</value>
-  </data>
-  <data name="labelIssues" xml:space="preserve">
-    <value>Prijavi grešku</value>
-  </data>
-  <data name="labelHttpPort" xml:space="preserve">
-    <value>_Priključak</value>
-  </data>
-  <data name="labelHttp" xml:space="preserve">
-    <value>_HTTP(S) poslužitelj</value>
-  </data>
-  <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Format imena datoteke:</value>
-  </data>
-  <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Spremi albume _u</value>
-  </data>
-  <data name="labelDownloadRetryExponent" xml:space="preserve">
-    <value>Pot_enciranje ponovnih pokušaja</value>
-  </data>
-  <data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Interval mirovanja (s)</value>
-  </data>
-  <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>_Maks. broj pokušaja preuzimanja</value>
-  </data>
-  <data name="labelCurrentVersion" xml:space="preserve">
-    <value>Trenutačna verzija:</value>
-  </data>
-  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Maks. veličina (p_x)</value>
-  </data>
-  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
-    <value>Maks. veličina (_px)</value>
-  </data>
-  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Format ime_na datoteke</value>
-  </data>
-  <data name="labelComments" xml:space="preserve">
-    <value>Kom_entari</value>
-  </data>
-  <data name="labelChangelogTitle" xml:space="preserve">
-    <value>Protokol promjena</value>
-  </data>
-  <data name="labelChangelog" xml:space="preserve">
-    <value>Protokol promjena</value>
-  </data>
-  <data name="labelButtonResetSettings" xml:space="preserve">
-    <value>_Obnovi postavke</value>
-  </data>
-  <data name="labelArtist" xml:space="preserve">
-    <value>_Izvođač</value>
-  </data>
-  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>Dozvoljena razlika veličine _datoteke (%)</value>
-  </data>
-  <data name="labelAlbumTitle" xml:space="preserve">
-    <value>_Naslov albuma</value>
-  </data>
-  <data name="labelAlbumArtist" xml:space="preserve">
-    <value>_Izvođač albuma</value>
-  </data>
-  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Promijeni ove postavke na vlastitu odgovornost.</value>
-  </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Odaberi mapu za spremanje albuma</value>
-  </data>
-  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
-    <value>Prikazuje više informacija u protokolu.</value>
-  </data>
-  <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Prikaži _opširan protokol</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Sprema omot u oznaku pjesme.</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Spremi u _oznake</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Preuzima omot u mapu albuma.</value>
-  </data>
-  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>Spremi u _mapu</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
-    <value>Pronalazi veličinu datoteke za prikaz točnog stanja napretka.
-Ako ne, štedi se neka protočnost/vrijeme.</value>
-  </data>
-  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Pronađi ve_ličinu datoteke prije preuzimanja pjesama</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Preuzima samo jedan album odjednom.
-Ako ne, svi se albumi preuzimaju istodobno (zahtijeva veliku protočnost).</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Preuzmi albume pojedinačno</value>
-  </data>
-  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Mijenja svaku oznaku kako je niže dolje određeno.
-
-Ako ne, sve oznake ostaju nepromijenjene, što odgovara postavci „Ne mijenjaj” za svaku oznaku.</value>
-  </data>
-  <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>_Promijeni oznake pjesama (ID3)</value>
-  </data>
-  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>M3U popisi pjesama u proširenom formatu (direktive s predznakom #).</value>
-  </data>
-  <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Koristi prošir_eni format (samo za M3U)</value>
-  </data>
-  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Zvuk upozorenja za gotova preuzimanja.</value>
-  </data>
-  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>Sviraj zvukove upozore_nja</value>
-  </data>
-  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Preuzima cijelu diskografiju izvođača.</value>
-  </data>
-  <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Preuzmi diskogr_afiju izvođača</value>
-  </data>
-  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
-    <value>Stvara datoteku s popisom pjesama albuma za svaki preuzeti album.</value>
-  </data>
-  <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Stvori _popis pjesama za svaki album</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Mijenja veličinu omota na zadanu maksimalnu širinu i visinu.</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Ograniči m_aksimalnu širinu i visinu</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Pretvara omot u JPG s kompresijom od 90 (izvrstan kompromis između veličine i kvalitete).</value>
-  </data>
-  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Pretvori u JP_G</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Mijenja veličinu omota na zadanu maksimalnu širinu i visinu.</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>Ograniči _maksimalnu širinu i visinu</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Pretvara omot u JPG s kompresijom od 90 (izvrstan kompromis između veličine i kvalitete).</value>
-  </data>
-  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Pretvori u _JPG</value>
-  </data>
-  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
-    <value>Šalje upit na sljedeću adresu prilikom pokretanja programa:</value>
-  </data>
-  <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Traži no_ve verzije prilikom pokretanja</value>
-  </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>Neuspjelo preuzimanje protokola promjena od {0}</value>
-  </data>
-  <data name="buttonViewChangelog" xml:space="preserve">
-    <value>_Pogled</value>
-  </data>
-  <data name="buttonStop" xml:space="preserve">
-    <value>_Odustani</value>
-  </data>
-  <data name="buttonStart" xml:space="preserve">
-    <value>_Preuzmi</value>
-  </data>
-  <data name="buttonSave" xml:space="preserve">
-    <value>_Spremi</value>
-  </data>
-  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Obnovi standardne postavke</value>
-  </data>
-  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
-    <value>Otvori postavke</value>
-  </data>
-  <data name="buttonOpenSettingsWindow" xml:space="preserve">
-    <value>Po_stavke</value>
-  </data>
-  <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Preuzmi novu verziju</value>
-  </data>
-  <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Pro_vjeri sada</value>
-  </data>
-  <data name="buttonCancel" xml:space="preserve">
-    <value>_Odustani</value>
-  </data>
-  <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Traži mapu</value>
-  </data>
-  <data name="buttonBrowse" xml:space="preserve">
-    <value>…</value>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Aktualiziraj</value>
   </data>
 </root>
