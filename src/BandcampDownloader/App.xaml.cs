@@ -14,7 +14,7 @@ namespace BandcampDownloader
         /// Random class used to create random numbers.
         /// </summary>
         public static readonly Random Random = new Random();
-        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// The settings chosen by the user.
@@ -82,7 +82,7 @@ namespace BandcampDownloader
         private void LogAppProperties()
         {
             _logger.Info($"BandcampDownloader version: {Constants.AppVersion}");
-            _logger.Log(LogLevel.Info, $".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
+            _logger.Info($".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
         }
 
         /// <summary>
