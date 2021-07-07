@@ -52,7 +52,7 @@ namespace BandcampDownloader
             htmlDoc.LoadHtml(htmlCode);
             foreach (var track in album.Tracks)
             {
-                var lyricsElement = htmlDoc.GetElementbyId("_lyrics_" + track.Number);
+                var lyricsElement = htmlDoc.GetElementbyId("lyrics_row_" + track.Number);
                 if (lyricsElement != null)
                 {
                     track.Lyrics = lyricsElement.InnerText.Trim();
