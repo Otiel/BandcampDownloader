@@ -352,18 +352,19 @@ If not, some bandwidth/time is saved.</value>
 {0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>У вас уже есть последняя версия  ({0}).</value>
+    <value>У вас уже есть последняя версия ({0}).</value>
   </data>
   <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
     <value>_Сбросить настройки</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Сбросить все настройки по умолчанию?</value>
+    <value>Сбросить все настройки на их значения по умолчанию?</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Произошла неизвестная ошибка. Приложение будет закрыто.
 
-Пожалуйста, откройте новую проблему с содержанием вашего файла журнала на</value>
+Пожалуйста, откройте новую проблему с содержанием вашего файла журнала на
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Ручная настройка прокси</value>
@@ -425,7 +426,7 @@ If not, some bandwidth/time is saved.</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>Используется для управления экспоненциальным механизмом отката.
-После каждого сбоя загрузки трека BandcampDownloader может подождать определенное время, прежде чем снова попытаться загрузить трек, чтобы избежать лимит фильтра спама Bandcamp.
+После каждого сбоя загрузки трека BandcampDownloader может подождать определенное время, прежде чем снова попытается загрузить трек, чтобы избежать лимит фильтра спама Bandcamp.
 Формула, используемая для вычисления времени ожидания перед повторной попыткой загрузки, выглядит следующим образом:
 время = время перезарядки * (экспонента ^ количество попыток)
 
@@ -461,12 +462,11 @@ If not, some bandwidth/time is saved.</value>
 - {year}, {month} и {day} будут заменены датой выпуска альбома</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Вставьте здесь URL-адреса альбомов, чтобы загрузить. Вы можете указать несколько URL-адресов, написав один URL-адрес в строке.
+    <value>Вставьте здесь URL-адреса альбомов, чтобы загрузить. Вы можете указать несколько URL-адресов, написав по одному URL-адресу на строку.
 
-URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] or 
+URL-адрес Bandcamp выглядит следующим образом: http://[artist].bandcamp.com/album/[album] или 
 http://[artist].bandcamp.com/track/[track]
-Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок «☑ Скачать дискографию исполнителя ", чтобы 
-скачать все их альбомы.</value>
+Вставьте страницы исполнителя: http://[artist].bandcamp.com и установите флажок "☑ Скачать дискографию исполнителя", чтобы скачать все их альбомы.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Настройки</value>

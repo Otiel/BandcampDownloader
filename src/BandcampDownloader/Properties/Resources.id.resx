@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -123,5 +123,355 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>Tag di bersihkan</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Mengubah ukuran spesifik lebar/tinggi maksimal cover art.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Mengubah cover art ke JPG dengan kompresi 90 (trade-off yang sangat baik antara ukuran dan kualitas).</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Kueri alamat berikut saat memulai aplikasi:</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Tidak dapat mengunduh log perubahan dari {0}</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Setel ulang pengaturan ke default</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Buka pengaturan</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Tidak dapat membuka link berikut:
+{0}</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Ada unduhan yang sedang berjalan. Apakah anda yang ingin menutup aplikasi dan menghentikan semua unduhan?</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Tutup aplikasi</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Batalkan semua unduhan?</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Lihat lebih banyak info di log.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Unduh cover art ke berkas album.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Suara notifikasi untuk unduhan yang selesai.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Unduh semua diskografi artis.</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Bantu terjemahkan</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Sejarah rilis</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>S_istem proksi</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Tidak ada proksi</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Pengaturan proksi manual</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Terang</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Gelap</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Simpan sebagai</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Terjadi kesalahan yang tidak tertangani. Aplikasi akan ditutup sekarang.
+
+Harap laporkan masalah baru dengan konten file log Anda di
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Setel ulang semua pengaturan ke default?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Setel ulang pengaturan</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Ubah pengaturan ini dengan risiko ditanggung sendiri.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Pilih folder untuk menyimpan album</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Menyimpan cover art di tag trek.</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Mengambil ukuran file untuk menunjukkan progress.
+Jika tidak, beberapa bandwidth / waktu disimpan.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Hanya mengunduh satu album sekaligus
+Jika tidak, semua album diunduh secara bersamaan (idealnya tersedia bandwidth tinggi).</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Daftar putar M3U dalam format diperpanjang ( diawali dengan karakter #).</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Membuat file trek album untuk setiap album yang diunduh.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Mengubah ukuran cover art menjadi lebar / tinggi maks yang ditentukan.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Mengonversi cover art menjadi JPG dengan kompresi 90 (pertukaran yang sangat baik antara ukuran dan kualitas).</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Terjadi kesalahan saat memeriksa pembaruan. Silakan coba lagi nanti.</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Situs web</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Versi baru tersedia</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Tidak dapat memeriksa pembaruan</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versi</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(berkas log selalu verbose)</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Judul</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Beberapa setelan tak bisa diubah ketika trek sedang diunduh.</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Format nama_file</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Lirik</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Penamaan dan tag</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Anda sudah memiliki versi terbaru ({0}).</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Nama _album</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Album art_is</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Tampilkan log _verbose</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Simpan dalam _tags</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Simpan dalam _folder</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Ambil _file sebelum mengunduh trek</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Unduh satu album sekaligus</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Ubah tag trek (ID3)</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Gunakan _extended format (hanya untuk M3U)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Putar suara _notifications</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Unduh diskografi _artist</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Buat _playlist untuk setiap album</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Batasi lebar/tinggi m_aksimum</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Batasi _maksimum lebar / tinggi</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Anda bisa menggunakan tempat penampung untuk mengkustomisasi nama file:
+- [artis} akan digantikan oleh artis album
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Anda bisa menggunakan tempat penampung untuk mengkustomisasi nama file:
+- [artis} akan digantikan oleh artis album
+- {title} akan digantikan oleh nama trek
+- {tracknum} akan digantikan oleh nomor trek
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Anda dapat menggunakan tempat penampung untuk mengkustomisasi folder unduhan tergantung pada album:
+- [artis} akan digantikan oleh artis album
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Jumlah maksimum percobaan mengunduh trek jika gagal.
+Setelah nomor tersebut tercapai (untuk setiap trek), unduhan trek akan dilewati.
+
+Nilai yang disarankan = 7</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Anda bisa menggunakan tempat penampung untuk mengkustomisasi nama file:
+- [artis} akan digantikan oleh artis album
+- {album} akan digantikan oleh nama album
+- {year}, {month} dan {day} akan digantikan oleh tanggal rilis album</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Mengubah setiap tag seperti yang ditentukan di bawah ini.
+
+Jika tidak, semua tag tidak diubah, setara dengan setelan "Jangan ubah" untuk setiap tag.</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Digunakan untuk mengontrol mekanisme back-off eksponensial.
+Setiap kali pengunduhan gagal, BandcampDownloader dapat menunggu sebelum mencoba lagi 
+untuk mengunduh trek agar tidak menggelitik filter anti-spam Bandcamp.
+Rumus yang digunakan untuk menghitung waktu untuk tunggu sebelum mencoba lagi unduhan adalah sebagai berikut:
+waktu = cooldown * (eksponen ^ percobaan-hitung)
+
+Nilai yang disarankan = 4</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Tempel URL album untuk diunduh di sini. Anda dapat memuat beberapa URL per baris.
+
+URL Bandcamp terlihat seperti: http://[artist].bandcamp.com/album/[album] atau http://[artist].bandcamp.com/track/[track]
+Tempel halaman artis: http://[artis].bandcamp.com dan centang "☑ Unduh diskografi artis" untuk mengunduh semua album mereka.</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Rilis album _tahun</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>n_omor trek</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Daftar _format</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Daftar putar</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Jaringan</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Unduhan</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Sampul album</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Pengaturan lanjutan</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Bahasa</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Laporkan bug</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) proxy</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_namaberkas format:</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Simpan album _ke</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Coba lagi _exponent</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Mencoba kembali c_ooldown (dtk)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maks upaya pengunduhan</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Versi sekarang:</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Ukuran maksimum (p_x)</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Ukuran maks (_px)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Format nama_file</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Kome_tar</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Rilis perubahan</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Rilis perubahan</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Setel ulang pengaturan</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artis</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Ukuran file yang diizinkan _perbedaan (%)</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Digunakan untuk mengontrol mekanisme back-off eksponensial.
+Setelah setiap kegagalan pengunduhan trek, BandcampDownloader dapat menunggu sebelum mencoba lagi
+untuk mengunduh trek agar tidak menggelitik filter anti-spam Bandcamp.
+Rumus yang digunakan untuk menghitung waktu tunggu sebelum mencoba lagi unduhan adalah sebagai berikut:
+waktu = cooldown * (eksponen ^ percobaan-hitung)
+
+Nilai yang disarankan = 0,2</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Saat mengunduh trek, jika file (nama) yang sama sudah ada, ia akan diperiksa terhadap trek untuk diunduh.
+Jika ukuran kedua file berbeda dari nilai ini (dalam persen), unduhan trek akan dilewati.
+Atur nilai ini ke 0 untuk selalu mengunduh trek, meskipun sudah ada di disk.
+
+Nilai yang disarankan = 5</value>
   </data>
 </root>

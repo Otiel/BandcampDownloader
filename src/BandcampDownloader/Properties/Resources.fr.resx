@@ -216,7 +216,7 @@
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Chaque métadonnée sera modifiée selon les règles définies ci-dessous.
 
-Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. Cela revient à régler "Ne pas modifier" pour chaque métadonnée.</value>
+Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. Ceci revient à régler « Ne pas modifier » pour chaque métadonnée.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Télécharger un album à la _fois</value>
@@ -395,7 +395,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Oui</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Êtes-vous sûr de vouloir arrêter les téléchargements ?</value>
+    <value>Annuler tous les téléchargements ?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Une erreur est intervenue lors de la vérification de mises à jour. Veuillez réessayer plus tard.</value>
@@ -404,7 +404,7 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Fermer l'application</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Des téléchargements sont en cours. Êtes-vous sûr de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
+    <value>Des téléchargements sont en cours. Êtes-vous sûr·e de vouloir fermer l'application et arrêter tous les téléchargements ?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
     <value>Impossible d'ouvrir le lien suivant :
