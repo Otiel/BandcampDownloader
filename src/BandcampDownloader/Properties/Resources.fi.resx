@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,422 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Voit käyttää paikkamerkkejä räätälöidäksesi tiedostonimen:
+- {artist} korvataan albumin artistilla
+- {album} korvataan albumin nimellä
+- {year}, {month} ja {day} korvataan albumin julkaisupäivämäärällä</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Voit käyttää paikkamerkkejä räätälöidäksesi tiedostonimen:
+- {artist} korvataan albumin artistilla
+- {title} korvataan kappaleen nimellä
+- {tracknum} korvataan kappaleen järjestysnumerolla
+- {album} korvataan albumin nimellä
+- {year}, {month} ja {day} korvataan albumin julkaisupäivämäärällä</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Voit käyttää paikkamerkkejä räätälöidäksesi tiedostonimen:
+- {artist} korvataan albumin artistilla
+- {album} korvataan albumin nimellä
+- {year}, {month} ja {day} korvataan albumin julkaisupäivämäärällä</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Voit käyttää paikkamerkkejä räätälöidäksesi latauskansion albumista riippuen:
+- {artist} korvataan albumin artistilla
+- {album} korvataan albumin nimellä
+- {year}, {month} ja {day} korvataan albumin julkaisupäivämäärällä</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Käytetään rajoittamaan eksponentiaalista peruutusmekanismia.
+Jokaisen epäonnistuneen latauksen jälkeen BandcampDownloader voi odottaa tietyn ajanjakson ennen seuraavaa yritystä
+ladata kappale, jotta vältetään joutumasta Bandcampin roskapostisuodattimeen.
+Käytetty kaava odotusajan laskemiseen on seuraava:
+
+aika = cooldown * (exponent ^ yritysten lukumäärä)
+
+Suositeltu arvo = 4</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Käytetään rajoittamaan eksponentiaalista peruutusmekanismia.
+Jokaisen epäonnistuneen latauksen jälkeen BandcampDownloader voi odottaa tietyn ajanjakson ennen seuraavaa yritystä
+ladata kappale, jotta vältetään joutumasta Bandcampin roskapostisuodattimeen.
+Käytetty kaava odotusajan laskemiseen on seuraava:
+
+aika = cooldown * (exponent ^ yritysten lukumäärä)
+
+Suositeltu arvo = 0.2</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Maksimimäärä latausyrityksiä, jos se epäonnistuu.
+Kun maksimiluku on saavutettu (joka kappaletta kohden), kappaleen lataus ohitetaan).
+
+Suositeltu arvo = 7</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Kun kappaletta tallennetaan, jos saman niminen kappale on jo olemassa, se tullaan tarkastamaan.
+Jos kappaleiden koot poikkeavat vähemmän kuin tämän arvon (prosenteissa) kappaleen lataus ohitetaan.
+Aseta arvoksi 0, jotta kappaleet tallennetaan aina, vaikka levyllä olisi jo sama kappale.
+
+Suositeltu arvo = 5</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Vaalea</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Tumma</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Tallenna nimellä</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Ennalta-arvaamaton virhe tapahtui. Sovellus sulkeutuu nyt.
+
+Tee tästä uusi ilmoitus ja sisällytä siihen lokitiedoston tiedot: 
+{0}</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Palautetaanko oletusasetukset?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Palauta oletusasetukset</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Ei voitu avata linkkiä: 
+{0}</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Tällä hetkellä on meneillään olevia latauksia. Haluatko varmasti sulkea sovelluksen ja pysäyttää kaikki lataukset?</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Sulje sovellus</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Peruuta kaikki lataukset?</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Teema</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Valitse nämä asetukset omalla vastuulla.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Valitse kansio, johon albumit tallennetaan</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Näyttää enemmän tietoa lokista.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Tallentaa albumitaiteen kappeleen tageihin.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Lataa kansitaiteen albumikansioon.</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Selvittää tiedostokoon näyttääkseen latauksen edistymisen.
+Jos ei, säästetään hieman dataa/aikaa.</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Lataa yhden albumin kerrallaan.
+Jos ei, kaikki albumit ladataan yhtäaikaisesti (toimii paremmin hyvällä verkkoyhteydellä).</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Muuntaa jokaisen tagin alla määritellyllä tavalla.
+
+Jos ei, kaikki tagit ovat muuttamattomia, mikä vastaa asetusta "Älä muokkaa" jokaisessa tagissa.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>M3U-soittolistat laajennetussa muodossa (direktiivejä edeltää #-merkki).</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Ilmoitusten äänet valmille latauksille.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Tallentaa artistin diskografian kokonaan.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Luo albumin kappaletiedoston jokaiselle ladatulle albumille.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Venyttää kansitaiteen määriteltyyn maksimileveyteen/-korkeuteen.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Muuntaa kansitaiteen JPG-muotoon kompressiotasolla 90 (erinomainen kompromissi koon ja laadun välillä).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Venyttää kansitaiteen määriteltyyn maksimileveyteen-/korkeuteen.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Muuntaa kansitaiteen JPG-muotoon kompressiotasolla 90 (erinomainen kompromissi koon ja laadun suhteen).</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Tiedustelee seuraavista osoitteista sovelluksen käynnistyessä:</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Ei voitu ladata muutoslokia sijainnista {0}</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Palauta oletusasetukset</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Avaa asetukset</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Selaa kansiota</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Päivitä</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Asetukset</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Liitä albumien osoitteet tähän lataamista varten. Voit syöttää useampia osoitteita kirjoittamalla jokaisen osoitteen uudelle riville.
+
+Bandcamp-osoite näyttää tältä: http://[artisti].bandcamp.com/album/[albumi] or http://[artisti].bandcamp.com/track/[kappale]
+Liitä artistin sivut: http://[artisti].bandcamp.com ja valitse "☑ Tallenna artistin diskografia" ladataksesi kaikki albumit.</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Auta kääntämisessä</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Julkaisuhistoria</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>J_ärjestelmän välityspalvelin</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Ei välityspalvelinta</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Manuaalinen välityspalvelimen määrittely</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Sinulla on jo uusin versio ({0}).</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Virhe päivistysten tarkistuksessa. Yritä myöhemmin uudelleen.</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Albumin julkaisu_vuosi</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Verkkosivu</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Uusi versio saatavilla</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Ei voitu ladata päivityksiä</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versio</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(lokitiedosto on aina runsassanainen)</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Otsikko</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Kappaleen n_umero</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Joitain asetuksia ei voida muuttaa kesken kappaleiden latauksen.</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Soittolistan _muoto</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Tiedosto_nimen muoto</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Sanat</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Nimeäminen ja tagit</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Soittolista</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Verkko</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Yleinen</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Lataukset</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Kansikuva</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Lisäasetukset</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Tietoa</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Kieli</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Ilmoita bugista</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Portti</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) välityspalvelin</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_Tiedostonimen formaatti:</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Tallenna albumit _kohteeseen</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Yritä uudelleen _exponent</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Yritä uudelleen c_ooldown (sekuntia)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maksimimäärä latausyrityksiä</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Nykyinen versio:</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Maksimikoko (p_x)</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Maksimikoko (_px)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Tiedosto_nimen formaatti</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Komm_entit</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Muutosloki</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Muutosloki</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Palauta oletusasetukset</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artisti</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Sallittu tiedostokoon _eroavaisuus (%)</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Albumin _nimi</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Albumin art_isti</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Näytä _runsassanainen loki</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Tallenna _tageihin</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Tallenna _kansioon</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Muunna _JPG -muotoon</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Tarkista _päivitykset käynnistyessä</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Tyhjennä tagi</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Älä muokkaa</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Tallenna tagiin</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Selvitä _tiedostokoko ennen kappaleiden lataamista</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Tallenna yksi albumi kerrallaan</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Muokkaa kappaleiden tageja (ID3)</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Käytä _laajennettua formaattia (koskee vain M3U:ta)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Toista _ilmoitusten äänet</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Tallenna _artistin diskografia</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Luo _soittolista joka albumille</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Rajoita m_aksimileveyttä/-korkeutta</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Muunna muotoon JP_G</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Rajoita _maksimileveyttä/-korkeutta</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Tyhjennä tagi</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Älä muokkaa</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Kyllä</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_OK</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Ei</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Peruuta</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Näytä</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Peruuta</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Tallenna</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Tallenna</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Asetukset</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Lataa uusin versio</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Tarkista päivitykset</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Peruuta</value>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
 </root>
