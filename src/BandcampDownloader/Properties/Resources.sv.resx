@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,284 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(logg-filen är alltid detaljerad)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Fil_namnsformat</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Ta emot _filstorlek före spåren nerladdas</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Ljus</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Mörk</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Spara som</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Återställ alla inställningar till deras standardvärden?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Återställ inställningar</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Kunde inte öppna den följande länken:
+{0}</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Stäng ner applikation</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Avbryt alla nerladdningar?</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Ändra dessa inställningar på din egen risk.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Välj en mapp att spara album i</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Visar mer information i loggen.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Spara omslagsbild i spårtaggarna.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Ladda ner omslagsbild till albumets mapp.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Aviseringsljud för avslutade nerladdningar.</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Kunde inte ladda ner ändringslogg från {0}</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Återställ till standard-inställningarna</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Öppna inställningar</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Bläddra efter mapp</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Uppdatering</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Hjälp till att översätta</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>S_ystemproxy</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Ingen proxy</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Manuell konfigurering av proxy</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Du har redan den senaste versionen ({0}).</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Hemsida</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Ny version tillgänglig</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Kunde inte söka efter uppdateringar</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Titel</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Spårn_ummer</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Några inställningar kan inte ändras medans spåren laddas ner.</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Spelistformat</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Fil_namnsformat</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Texter</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Namngivning och taggar</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Spellista</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Nätverk</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Generellt</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Nerladdningar</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Omslagsbild</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Avancerade inställningar</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Om</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Språk</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Rapportera en bugg</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) proxy</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_Filnamnsformat:</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Spara album _till</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maximalt antal nerladdningsförsök</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Nuvarande version:</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Maximal storlek (p_x)</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Maximal storlek (_px)</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Komm_entarer</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Ändringslogg</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Ändringslogg</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Återställ inställningar</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Artist</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Namn på album</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Albumart_ist</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Visa _utförlig logg</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Spara i _taggar</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Spara i _mapp</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Ladda ner ett album i taget</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Modifiera spårtaggar (ID3)</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Använd _förlängt format (endast för M3U)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Spela upp_aviseringsljud</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Skapa _spellista för varje album</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Konvertera till JP_G</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Konvertera till _JPG</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Sök efter _uppdateringar vid uppstart</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Rensa tagg</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Modifiera inte</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Spara i tagg</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Rensa tagg</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Modifiera inte</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Ja</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_OK</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Nej</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Avbryt</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Visa</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Avbryt</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Ladda ner</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Spara</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Inställningar</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Ladda ner ny version</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Kontrollera n_u</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Avbryt</value>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
 </root>
