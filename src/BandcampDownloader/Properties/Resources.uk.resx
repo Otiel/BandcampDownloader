@@ -375,7 +375,7 @@ URL-адреса Bandcamp виглядає так: http: // [artist] .bandcamp.c
     <value>_Рік випуску альбому</value>
   </data>
   <data name="labelWebsite" xml:space="preserve">
-    <value>Веб-сайт</value>
+    <value>Вебсайт</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>Доступна нова версія</value>
