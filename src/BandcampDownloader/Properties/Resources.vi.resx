@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,202 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Giới hạn độ cao/rộng _tối đa</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Lưu ở _thư mục</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Thay đổi</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Tên và tag</value>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Đặt lại cài đặt</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Cài đặt nâng cao</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_Hủy</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Tìm thư mục</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Đặt lại cài đặt mặc định</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Không thể tải thay đổi từ {0}</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Chuyển đổi sang _JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Chuyển đổi sang JP_G</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Giới hạn độ cao/rộng t_ối đa</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Tạ0 _danh sách phát cho mỗi album</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Tải về lai lịch _nghệ sĩ</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Chơi âm thanh _thông báo</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Chỉnh sửa tag nhạc (ID3)</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Lấy kích thước _tệp trước khi tải nhạc về</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Hiện ghi chú _văn xuối</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Ng_hệ sĩ album</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>_Tên album</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>_Độ chênh lệch kích thước tệp cho phép (%)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Định dạng t_ệp</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Kích thước tối đa (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Kích thước tối đa (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Phiên bản hiện tại:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>Số lần tải về _tối đa</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Thời gian trước khi thử lại (giây)</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Lưu album _tới</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>Định dạng _tệp:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>Proxy _HTTP(S)</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Cổng</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Báo lỗi</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Ngôn ngữ</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Lời nhạc</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Định dạng t_ệp</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>_Định dạng danh sách phát</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Một số cài đặt không thể thay đổi khi nhạc đang được tải về.</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Bản nhạc s_ố</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Tựa đề</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(ghi chú luôn là văn xuôi)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Phiên bản</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>Không thể tìm bản cập nhật</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Có phiên bản mới</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Trang web</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>_Năm phát hành album</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>Cấu hình proxy _bằng tay</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Không proxy</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>Proxy h_ệ thống</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Lịch sử phát hành</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Mở cài đặt</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Dùng định dạng _mở rộng (chỉ dành cho M3U)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Nghệ sĩ</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Về phần mềm</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Tải về</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Chung</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Danh sách phát</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Bạn đã có phiên bản mới nhất ({0}).</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Lưu với _tag</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Mạng</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Thay đổi</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Chú th_ích</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Ảnh bìa</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Xuất hiện lỗi trong khi tìm bản cập nhật. Thử lại sau.</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Giúp phiên dịch</value>
+  </data>
 </root>
