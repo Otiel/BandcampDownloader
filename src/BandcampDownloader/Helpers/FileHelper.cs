@@ -36,6 +36,8 @@ namespace BandcampDownloader
         /// <returns>The size of the file located at the provided URL.</returns>
         public static async Task<long> GetFileSizeAsync(string url, string protocolMethod)
         {
+            //Workaround of URL spoofing for this program.
+            url = url.Replace("https", "http");
             var webRequest = HttpWebRequest.Create(url);
             webRequest.Method = protocolMethod;
             long fileSize;

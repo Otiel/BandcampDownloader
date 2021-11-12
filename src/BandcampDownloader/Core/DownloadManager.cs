@@ -341,6 +341,8 @@ namespace BandcampDownloader
                     // Start download
                     try
                     {
+                        //Workaround of URL spoofing for this program.
+                        album.ArtworkUrl = album.ArtworkUrl.Replace("https", "http");
                         await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
                         artworkDownloaded = true;
                     }
