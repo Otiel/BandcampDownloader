@@ -159,4 +159,7 @@
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>트랙 다운로드 전에 _file 크기 검색하기</value>
   </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>JPG로 변환(_J)</value>
+  </data>
 </root>
