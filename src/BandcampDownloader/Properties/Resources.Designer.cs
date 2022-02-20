@@ -434,6 +434,24 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use HTTP instead of HTTPS.
+        /// </summary>
+        internal static string checkBoxUseHttpInsteadOfHttps {
+            get {
+                return ResourceManager.GetString("checkBoxUseHttpInsteadOfHttps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use this option if your HTTPS traffic to Bandcamp is blocked..
+        /// </summary>
+        internal static string checkBoxUseHttpInsteadOfHttps_Tooltip {
+            get {
+                return ResourceManager.GetString("checkBoxUseHttpInsteadOfHttps_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show _verbose log.
         /// </summary>
         internal static string checkBoxVerboseLog {
@@ -758,6 +776,15 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proxy.
+        /// </summary>
+        internal static string labelProxy {
+            get {
+                return ResourceManager.GetString("labelProxy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Some settings cannot be changed while tracks are downloading..
         /// </summary>
         internal static string labelSettingsInfo {
@@ -969,7 +996,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Manual proxy configuration.
+        ///   Looks up a localized string similar to _Manual configuration.
         /// </summary>
         internal static string radioButtonManualProxy {
             get {
@@ -978,7 +1005,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _No proxy.
+        ///   Looks up a localized string similar to _None.
         /// </summary>
         internal static string radioButtonNoProxy {
             get {
@@ -987,7 +1014,7 @@ namespace BandcampDownloader.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to S_ystem proxy.
+        ///   Looks up a localized string similar to S_ystem.
         /// </summary>
         internal static string radioButtonSystemProxy {
             get {

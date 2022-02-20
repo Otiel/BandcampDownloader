@@ -193,7 +193,8 @@ namespace BandcampDownloader
         /// <param name="artwork">The cover art.</param>
         private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, TagLib.Picture artwork)
         {
-            LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
+            var trackMp3Url = UrlHelper.GetHttpUrlIfNeeded(track.Mp3Url);
+            LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
 
             var tries = 0;
             var trackDownloaded = false;
@@ -234,9 +235,10 @@ namespace BandcampDownloader
                     // Start download
                     try
                     {
-                        await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
+                        LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+                        await webClient.DownloadFileTaskAsync(trackMp3Url, track.Path);
                         trackDownloaded = true;
-                        LogAdded(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
+                        LogAdded(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
                     }
                     catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
                     {
@@ -339,9 +341,11 @@ namespace BandcampDownloader
                     _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
                     // Start download
+                    var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
                     try
                     {
-                        await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
+                        LogAdded(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
+                        await webClient.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
                         artworkDownloaded = true;
                     }
                     catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
@@ -452,7 +456,7 @@ namespace BandcampDownloader
         {
             var albums = new List<Album>();
 
-            foreach (var url in urls)
+            foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
             {
                 LogAdded(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
@@ -470,6 +474,7 @@ namespace BandcampDownloader
 
                     try
                     {
+                        LogAdded(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                         htmlCode = await webClient.DownloadStringTaskAsync(url);
                     }
                     catch
@@ -511,11 +516,16 @@ namespace BandcampDownloader
         {
             var albumsUrls = new List<string>();
 
-            foreach (var url in urls)
+            foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
             {
                 LogAdded(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
-                // Retrieve URL HTML source code
+                // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
+                var regex = new Regex("https?://[^/]*");
+                var artistPage = regex.Match(url).ToString();
+                var artistMusicPage = UrlHelper.GetHttpUrlIfNeeded(artistPage + "/music");
+
+                // Retrieve artist "music" page HTML source code
                 var htmlCode = "";
                 using (var webClient = new WebClient() { Encoding = Encoding.UTF8 })
                 {
@@ -529,34 +539,7 @@ namespace BandcampDownloader
 
                     try
                     {
-                        htmlCode = await webClient.DownloadStringTaskAsync(url);
-                    }
-                    catch
-                    {
-                        LogAdded(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
-                        continue;
-                    }
-                }
-
-                // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
-
-                var regex = new Regex("https?://[^/]*");
-                var artistPage = regex.Match(url).ToString();
-                var artistMusicPage = artistPage + "/music";
-
-                // Retrieve artist "music" page HTML source code
-                using (var webClient = new WebClient() { Encoding = Encoding.UTF8 })
-                {
-                    ProxyHelper.SetProxy(webClient);
-
-                    if (_cancelDownloads)
-                    {
-                        // Abort
-                        return new List<string>();
-                    }
-
-                    try
-                    {
+                        LogAdded(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                         htmlCode = await webClient.DownloadStringTaskAsync(artistMusicPage);
                     }
                     catch
