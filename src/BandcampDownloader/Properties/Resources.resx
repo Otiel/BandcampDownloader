@@ -533,4 +533,10 @@ Paste artist pages: http://[artist].bandcamp.com and check "☑ Download artist 
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Use HTTP instead of HTTPS</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Use this option if your HTTPS traffic to Bandcamp is blocked.</value>
+  </data>
 </root>
