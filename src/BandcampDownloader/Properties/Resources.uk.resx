@@ -464,6 +464,30 @@
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Допоможіть перекласти</value>
   </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>_Системний проксі</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Немає проксі</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Ручна конфігурація проксі</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Ви вже маєте останню версію ({0}).</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Під час перевірки оновлень сталася помилка. Будь ласка, повторіть спробу пізніше.</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>_Рік випуску альбому</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Вебсайт</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Доступна нова версія</value>
+  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Під час завантаження доріжки, якщо той самий файл (ім'я) вже існує, його буде звірено з доріжкою для завантаження.
 Якщо розмір обох файлів відрізняється від цього значення (у відсотках), завантаження композиції буде пропущено.
