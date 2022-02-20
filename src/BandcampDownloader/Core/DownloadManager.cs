@@ -235,6 +235,7 @@ namespace BandcampDownloader
                     // Start download
                     try
                     {
+                        LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
                         await webClient.DownloadFileTaskAsync(trackMp3Url, track.Path);
                         trackDownloaded = true;
                         LogAdded(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
@@ -343,6 +344,7 @@ namespace BandcampDownloader
                     var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
                     try
                     {
+                        LogAdded(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
                         await webClient.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
                         artworkDownloaded = true;
                     }
@@ -472,6 +474,7 @@ namespace BandcampDownloader
 
                     try
                     {
+                        LogAdded(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                         htmlCode = await webClient.DownloadStringTaskAsync(url);
                     }
                     catch
@@ -536,6 +539,7 @@ namespace BandcampDownloader
 
                     try
                     {
+                        LogAdded(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                         htmlCode = await webClient.DownloadStringTaskAsync(artistMusicPage);
                     }
                     catch
