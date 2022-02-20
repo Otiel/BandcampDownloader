@@ -39,6 +39,7 @@ namespace BandcampDownloader
             radioButtonSystemProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
             textBoxHttpAddress.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             textBoxHttpPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            checkBoxUseHttpInsteadOfHttps.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

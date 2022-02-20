@@ -426,13 +426,13 @@ Please open a new issue with the content of your log file on
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Manual proxy configuration</value>
+    <value>_Manual configuration</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_No proxy</value>
+    <value>_None</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>S_ystem proxy</value>
+    <value>S_ystem</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Save as</value>
@@ -532,5 +532,14 @@ Paste artist pages: http://[artist].bandcamp.com and check "☑ Download artist 
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Use HTTP instead of HTTPS</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Use this option if your HTTPS traffic to Bandcamp is blocked.</value>
   </data>
 </root>
