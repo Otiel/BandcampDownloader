@@ -18,6 +18,8 @@ namespace BandcampDownloader
         nl,
         //[Description("Esperanto")]
         //eo,
+        [Description("Finnish (Suomi)")]
+        fi,
         [Description("French (Français)")]
         fr,
         [Description("German (Deutsch)")]
