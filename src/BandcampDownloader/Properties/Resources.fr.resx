@@ -426,13 +426,13 @@ Merci d'ouvrir un nouveau problème avec le contenu de votre ficher log sur
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Proxy _manuel</value>
+    <value>_Manuel</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>A_ucun proxy</value>
+    <value>A_ucun</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy _système</value>
+    <value>_Système</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Sauvegarder en tant que</value>
@@ -536,6 +536,9 @@ de leurs albums.</value>
   </data>
   <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
     <value>Utiliser HTTP au lieu de HTTPS</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
   </data>
   <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
     <value>Utilisez cette option si vos flux HTTPS vers Bandcamp sont filtrés.</value>
