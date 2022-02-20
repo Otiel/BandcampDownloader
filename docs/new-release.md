@@ -11,17 +11,17 @@ This repository follows [git flow](https://nvie.com/posts/a-successful-git-branc
 
 ## Create a new release branch
 
-1. Create a new branch named `release-X.Y.Z` from `develop` and switch to this new branch.
+1. Create a new branch named `release/X.Y.Z` from `develop` and switch to this new branch.
 2. Bump the version number:
     * Commit the changes on `CHANGELOG.md`.
     * Update the assembly number on `AssemblyInfo.cs` and commit.
 
 ## Finish the release branch
 
-1. Merge `release-X.Y.Z` into `master`.
+1. Merge `release/X.Y.Z` into `master`.
 2. Create a new tag called `vX.Y.Z`.
-3. Merge `release-X.Y.Z` into `develop`.
-4. Delete the `release-X.Y.Z` branch.
+3. Merge `release/X.Y.Z` into `develop`.
+4. Delete the `release/X.Y.Z` branch.
 5. Push `master`, `develop` and the new tag.
 
 ## Create the GitHub release
