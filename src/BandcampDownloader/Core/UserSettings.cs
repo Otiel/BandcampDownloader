@@ -48,6 +48,8 @@ namespace BandcampDownloader
         tr,
         [Description("Ukrainian (Українська)")]
         uk,
+        [Description("Vietnamese (Tiếng Việt)")]
+        vi,
     }
 
     public enum PlaylistFormat
