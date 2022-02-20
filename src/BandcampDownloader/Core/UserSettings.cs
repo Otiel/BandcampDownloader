@@ -34,6 +34,8 @@ namespace BandcampDownloader
         pl,
         [Description("Portuguese (Português)")]
         pt,
+        [Description("Portuguese Brazil (Português Brasil)")]
+        pt_BR,
         [Description("Russian (русский)")]
         ru,
         [Description("Spanish (Español)")]
