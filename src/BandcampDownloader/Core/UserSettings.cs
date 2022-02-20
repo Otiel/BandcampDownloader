@@ -42,6 +42,8 @@ namespace BandcampDownloader
         ru,
         [Description("Spanish (Español)")]
         es,
+        [Description("Swedish (Svenska)")]
+        sv,
         [Description("Turkish (Türkçe)")]
         tr,
         [Description("Ukrainian (Українська)")]
