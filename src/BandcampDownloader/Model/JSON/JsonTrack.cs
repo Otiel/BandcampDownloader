@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 
-namespace BandcampDownloader {
-
-    internal class JsonTrack {
-
+namespace BandcampDownloader
+{
+    internal class JsonTrack
+    {
         [JsonProperty("duration")]
         public double Duration { get; set; }
 
@@ -19,9 +19,10 @@ namespace BandcampDownloader {
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        public Track ToTrack(Album album) {
-            string mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url; // "//example.com" Uri lacks protocol
-            int number = Number == 0 ? 1 : Number; // For bandcamp track pages, Number will be 0. Set 1 instead
+        public Track ToTrack(Album album)
+        {
+            var mp3Url = (File.Url.StartsWith("//") ? "http:" : "") + File.Url; // "//example.com" Uri lacks protocol
+            var number = Number == 0 ? 1 : Number; // For bandcamp track pages, Number will be 0. Set 1 instead
 
             return new Track(album, Duration, Lyrics, mp3Url, number, Title);
         }

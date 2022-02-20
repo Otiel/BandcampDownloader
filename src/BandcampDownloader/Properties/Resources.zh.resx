@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -414,9 +414,9 @@
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>您可以使用如下占位符来自定义文件名：
- -  {artist}：专辑艺术家
- -  {album}：专辑
- -  {year}，{month}和{day}：专辑发布日期</value>
+- {artist}：专辑艺术家
+- {album}：专辑
+- {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>下载失败后最多重试的次数。
@@ -444,23 +444,23 @@
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>您可以使用如下占位符来自定义下载文件夹名：
- -  {artist}：专辑艺术家
- -  {album}：专辑
- -  {year}，{month}和{day}：专辑发布日期</value>
+- {artist}：专辑艺术家
+- {album}：专辑
+- {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
     <value>您可以使用如下占位符来自定义文件名：
- -  {artist}：专辑艺术家
- -  {title}：曲目名称
- -  {tracknum}：曲目编号
- -  {album}：专辑
- -  {year}，{month}和{day}：专辑发布日期</value>
+- {artist}：专辑艺术家
+- {title}：曲目名称
+- {tracknum}：曲目编号
+- {album}：专辑
+- {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>您可以使用如下占位符来自定义文件名：
- -  {artist}：专辑艺术家
- -  {album}：专辑
- -  {year}，{month}和{day}：专辑发布日期</value>
+- {artist}：专辑艺术家
+- {album}：专辑
+- {year}，{month}和{day}：专辑发布日期</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>将专辑的链接粘贴在此处。一行只能粘贴一个链接。

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,35 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="buttonStop" xml:space="preserve">
-    <value>취소(_C)</value>
-  </data>
-  <data name="buttonStart" xml:space="preserve">
-    <value>다운로드(_D)</value>
-  </data>
-  <data name="buttonSave" xml:space="preserve">
-    <value>저장(_S)</value>
-  </data>
-  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>설정을 기본값으로 재설정</value>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>폴더 찾아보기</value>
   </data>
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
     <value>설정 열기</value>
   </data>
-  <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>폴더 찾아보기</value>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>설정을 기본값으로 재설정</value>
   </data>
-  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>표지 아트의 크기를 지정된 최대 너비/높이로 조정합니다.</value>
+  <data name="buttonSave" xml:space="preserve">
+    <value>저장(_S)</value>
   </data>
-  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
-    <value>압축률 90(크기와 화질 간의 절충)으로 표지 아트를 JPG로 변환합니다.</value>
+  <data name="buttonStart" xml:space="preserve">
+    <value>다운로드(_D)</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>취소(_C)</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>{0}에서 변경 로그를 다운로드할 수 없습니다</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>앱을 시작할 때 다음 주소를 쿼리합니다:</value>
   </data>
-  <data name="changelogDownloadError" xml:space="preserve">
-    <value>{0}에서 변경 로그를 다운로드할 수 없습니다</value>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>압축률 90(크기와 화질 간의 절충)으로 표지 아트를 JPG로 변환합니다.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>표지 아트의 크기를 지정된 최대 너비/높이로 조정합니다.</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>아래에 지정된대로 각 태그를 수정합니다.
@@ -158,5 +158,8 @@
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>트랙 다운로드 전에 _file 크기 검색하기</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>JPG로 변환(_J)</value>
   </data>
 </root>

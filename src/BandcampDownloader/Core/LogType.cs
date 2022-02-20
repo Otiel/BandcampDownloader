@@ -1,6 +1,7 @@
-﻿namespace BandcampDownloader {
-
-    internal enum LogType {
+﻿namespace BandcampDownloader
+{
+    internal enum LogType
+    {
         VerboseInfo,
         Info,
         IntermediateSuccess,

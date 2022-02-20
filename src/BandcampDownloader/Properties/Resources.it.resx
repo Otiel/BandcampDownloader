@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -211,12 +211,12 @@
     <value>Playlist M3U in formato esteso (direttive precedute dal carattere #).</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>_Modifica i tag (ID3) delle tracce</value>
+    <value>_Modifica le etichette (ID3) delle tracce</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Modifica ogni tag come specificato sotto.
+    <value>Modifica ogni etichetta come specificato sotto.
 
-In caso contrario, i tag rimangono immutati, come se si impostasse “Non modificare” per ogni tag.</value>
+In caso contrario, i tag rimangono immutati, come se si impostasse «Non modificare» per ogni etichetta.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Scarica un album alla _volta</value>
@@ -239,10 +239,10 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
     <value>La copertina sarà scaricata nella cartella dell'album.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Salva nei _tag</value>
+    <value>Salva nelle _etichette</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>La copertina sarà salvata nei tag della traccia.</value>
+    <value>La copertina sarà salvata nelle etichette della traccia.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>_Mostra registro informazioni esteso</value>
@@ -341,7 +341,7 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
     <value>Playlist</value>
   </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Rinomina e tag</value>
+    <value>Rinomina e etichette</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Testo can_zoni</value>
@@ -354,6 +354,9 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Alcune impostazioni non possono essere modificate durante lo scaricamento.</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Tema</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>_Numero traccia</value>
@@ -397,14 +400,30 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Si è verificato un errore durante la ricerca di aggiornamenti. Per favore, riprova piú tardi.</value>
   </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Chiudi applicazione</value>
+  </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Ci sono scaricamenti in corso. Sei sicuro di voler chiudere l'applicazione e fermarli?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Non posso aprire il seguente link:
+{0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Disponi già della versione piú recente ({0}).</value>
   </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Ripristina impostazioni</value>
+  </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>Ripristinare i valori predefiniti delle impostazioni?</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Si è verificato un errore non gestito. L'applicazione si chiuderà ora.
+
+Si prega di aprire un nuovo problema con il contenuto del file di log su
+{0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
     <value>_Configurazione manuale dei proxy</value>
@@ -428,16 +447,16 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
     <value>Non modificare</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Pulisci tag</value>
+    <value>Pulisci etichette</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Salva nei tag</value>
+    <value>Salva nelle etichette</value>
   </data>
   <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
     <value>Non modificare</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Pulisci tag</value>
+    <value>Pulisci etichette</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>Storico versioni</value>
@@ -451,6 +470,12 @@ Se la dimensione dei file differisce meno di questo valore (in percentuale), la 
 Imposta questo valore a 0 per scaricare sempre le tracce, anche se sono già presenti sul disco.
 
 Valore consigliato = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
+- {artista} sarà sostituito dall'artista dell'album
+- {album} sarà sostituito dal nome dell'album
+- {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Numero massimo di tentativi per scaricare una traccia se fallisce lo scaricamento.
@@ -490,47 +515,22 @@ Valore consigliato = 4</value>
 - {album} è sostituito col nome dell'album
 - {year}, {month} e {day} sono sostituiti con la data di rilascio</value>
   </data>
-  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Incolla qui gli URL degli album da scaricare. Puoi scaricare piú URL in una volta mettendo un link per riga.
-
-Un URL di Bandcamp è della forma http://[artista].bandcamp.com/album/[album] oppure http://[artista].bandcamp.com/track/[traccia]
-Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta “☑ Scarica discografia” per scaricare tutti i suoi album.</value>
-  </data>
-  <data name="windowSettings_Title" xml:space="preserve">
-    <value>Impostazioni</value>
-  </data>
-  <data name="windowUpdate_Title" xml:space="preserve">
-    <value>Aggiorna</value>
-  </data>
-  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
-    <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
-- {artista} sarà sostituito dall'artista dell'album
-- {album} sarà sostituito dal nome dell'album
-- {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
-  </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>È possibile utilizzare i segnaposto per personalizzare il nome del file:
 - {artista} sarà sostituito dall'artista dell'album
 - {album} sarà sostituito dal nome dell'album
 - {anno}, {mese} e {giorno} saranno sostituiti dalla data di uscita dell'album</value>
   </data>
-  <data name="labelTheme" xml:space="preserve">
-    <value>_Tema</value>
-  </data>
-  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
-    <value>_Chiudi applicazione</value>
-  </data>
-  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Non posso aprire il seguente link:
-{0}</value>
-  </data>
-  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Ripristina impostazioni</value>
-  </data>
-  <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Si è verificato un errore non gestito. L'applicazione si chiuderà ora.
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Incolla qui gli URL degli album da scaricare. Puoi scaricare piú URL in una volta mettendo un link per riga.
 
-Si prega di aprire un nuovo problema con il contenuto del file di log su
-{0}</value>
+Un URL di Bandcamp è della forma http://[artista].bandcamp.com/album/[album] oppure http://[artista].bandcamp.com/track/[traccia]
+Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta «☑ Scarica discografia» per scaricare tutti i suoi album.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Aggiorna</value>
   </data>
 </root>

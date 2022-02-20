@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader {
-
-    internal class JsonAlbum {
+namespace BandcampDownloader
+{
+    internal class JsonAlbum
+    {
         private readonly string _urlEnd = "_0.jpg";
         private readonly string _urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
@@ -24,12 +25,14 @@ namespace BandcampDownloader {
         [JsonProperty("trackinfo")]
         public List<JsonTrack> Tracks { get; set; }
 
-        public Album ToAlbum() {
+        public Album ToAlbum()
+        {
             // Some albums do not have a cover art
-            string artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
+            var artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
 
             // Singles might not have a release date  #144
-            if (ReleaseDate == new DateTime()) {
+            if (ReleaseDate == new DateTime())
+            {
                 ReleaseDate = AlbumData.ReleaseDate;
             }
 

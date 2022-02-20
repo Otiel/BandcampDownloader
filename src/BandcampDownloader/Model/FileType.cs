@@ -1,6 +1,7 @@
-﻿namespace BandcampDownloader {
-
-    internal enum FileType {
+﻿namespace BandcampDownloader
+{
+    internal enum FileType
+    {
         Artwork,
         Track
     }

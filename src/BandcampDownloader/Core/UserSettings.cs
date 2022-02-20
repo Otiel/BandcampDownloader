@@ -1,24 +1,35 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Config.Net;
 
-namespace BandcampDownloader {
-
+namespace BandcampDownloader
+{
     // List of languages with ISO language name, native name and codes https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-    public enum Language {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    public enum Language
+    {
         [Description("English")]
         en,
         //[Description("Arabic (العربية)")]
         //ar,
         [Description("Chinese (Simplified) (汉语)")]
         zh,
+        [Description("Croatian (hrvatski jezik)")]
+        hr,
         [Description("Dutch (Nederlands)")]
         nl,
+        //[Description("Esperanto")]
+        //eo,
+        [Description("Finnish (Suomi)")]
+        fi,
         [Description("French (Français)")]
         fr,
         [Description("German (Deutsch)")]
         de,
-        //[Description("Indonesian (Bahasa Indonesia)")]
-        //id,
+        // [Description("Hungarian (Magyar)")]
+        // hu,
+        [Description("Indonesian (Bahasa Indonesia)")]
+        id,
         [Description("Italian (Italiano)")]
         it,
         //[Description("Korean (한국어)")]
@@ -29,17 +40,25 @@ namespace BandcampDownloader {
         pl,
         [Description("Portuguese (Português)")]
         pt,
+        [Description("Portuguese Brazil (Português Brasil)")]
+        pt_BR,
         [Description("Russian (русский)")]
         ru,
         [Description("Spanish (Español)")]
         es,
+        [Description("Swedish (Svenska)")]
+        sv,
         [Description("Turkish (Türkçe)")]
         tr,
         [Description("Ukrainian (Українська)")]
         uk,
+        [Description("Vietnamese (Tiếng Việt)")]
+        vi,
     }
 
-    public enum PlaylistFormat {
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    public enum PlaylistFormat
+    {
         [Description("M3U")]
         m3u,
         [Description("PLS")]
@@ -50,20 +69,23 @@ namespace BandcampDownloader {
         zpl,
     }
 
-    public enum ProxyType {
+    public enum ProxyType
+    {
         None,
         System,
         Manual,
     }
 
-    public enum Skin {
+    public enum Skin
+    {
         [Description("Dark")]
         Dark,
         [Description("Light")]
         Light,
     }
 
-    public enum TagEditAction {
+    public enum TagEditAction
+    {
         [Description("Empty tag")]
         Empty,
         [Description("Save in tag")]
@@ -72,15 +94,16 @@ namespace BandcampDownloader {
         DoNotModify,
     }
 
-    public enum TagRemoveAction {
+    public enum TagRemoveAction
+    {
         [Description("Empty tag")]
         Empty,
         [Description("Do not modify")]
         DoNotModify,
     }
 
-    public interface IUserSettings {
-
+    public interface IUserSettings
+    {
         [Option(DefaultValue = 0.05)]
         double AllowedFileSizeDifference { get; set; }
 
@@ -199,5 +222,8 @@ namespace BandcampDownloader {
 
         [Option(DefaultValue = Skin.Light)]
         Skin Theme { get; set; }
+
+        [Option(DefaultValue = false)]
+        bool UseHttpInsteadOfHttps { get; set; }
     }
 }

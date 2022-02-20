@@ -1,3 +1,17 @@
+# 1.4.0
+
+## New features
+
+* Added an option to download tracks and cover arts using HTTP instead of HTTPS. You can use this option if your HTTPS traffic to Bandcamp is blocked. Thanks **@LedAlex**! [#185](https://github.com/Otiel/BandcampDownloader/issues/185) [#193](https://github.com/Otiel/BandcampDownloader/pull/193)
+
+## Improvements
+
+* Added / updated translations thanks to contributors. [#170](https://github.com/Otiel/BandcampDownloader/pull/170) [#184](https://github.com/Otiel/BandcampDownloader/pull/184) [#190](https://github.com/Otiel/BandcampDownloader/pull/190)
+
+## Bug fixes
+
+* Fixed lyrics not saved. Thanks **@roonel**! [#176](https://github.com/Otiel/BandcampDownloader/issues/176) [#182](https://github.com/Otiel/BandcampDownloader/pull/182)
+
 # 1.3.5
 
 ## Bug fixes
@@ -6,7 +20,7 @@
 
 ## Improvements
 
-* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/160): Italian.
+* Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/166): Italian.
 
 # 1.3.4
 
