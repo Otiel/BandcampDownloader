@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -59,73 +59,350 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="buttonBrowse_ToolTip" xml:space="preserve">
-    <value>Mappavalasztas</value>
+    <value>Mappaválasztás</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
-    <value>_Visszavonas</value>
+    <value>_Mégse</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Frissites</value>
+    <value>Frissítés</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Uj verzio letoltese</value>
+    <value>_Új verzió letöltése</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
-    <value>_Beallitasok</value>
+    <value>_Beállítások</value>
   </data>
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
-    <value>Beallitasok megnyitasa</value>
+    <value>Beállítások megnyitása</value>
   </data>
   <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Alapertelmezett beallitasok alkalmazasa</value>
+    <value>Alapértelmezett beállítások alkalmazása</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
-    <value>_Mentes</value>
+    <value>_Mentés</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>_Letoltes</value>
+    <value>_Letöltés</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
-    <value>_Visszavonas</value>
+    <value>_Mégse</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
-    <value>_Megjelenes/Tema</value>
+    <value>_Megjelenés</value>
   </data>
   <data name="labelVersion" xml:space="preserve">
-    <value>Kiadas</value>
+    <value>Verzió</value>
   </data>
   <data name="labelVersionError" xml:space="preserve">
-    <value>Uj kiadas ellenorzese sikertelen</value>
+    <value>Nem sikerült az új verzió ellenőrzése.</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Uj kiadas erheto el</value>
+    <value>Új verzió érhető el.</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>Album kiadasanak eve</value>
+    <value>Album kiadásának éve</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>_Visszavonas</value>
+    <value>_Mégse</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Osszes letoltes visszavonasa?</value>
+    <value>Visszavonja az összes letöltést?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
-    <value>A frissitesek ellenorzese kozben hiba lepett fel. Kerjuk probalja ujra.</value>
+    <value>A frissítések ellenőrzése közben hiba lépett fel. Kérjük, próbálja újra később.</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Aktiv letoltesek futnak a hatterben. Biztos vagy benne, hogy bezarod az alkalmazast es leallitod az osszes letoltest?</value>
+    <value>Aktív letöltések futnak a háttérben. Biztosan bezárja a programot és leállítja az összes letöltést?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Az alabbi link nem nyithato meg:
+    <value>A következő link nem nyitható meg:
 {0}</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
-    <value>A legfrissebb kiadast hasznalod ({0}).</value>
+    <value>Már legfrissebb verziót használja ({0}).</value>
   </data>
   <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Beallitasok visszaallitasa</value>
+    <value>_Beállítások visszaállítása</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Beallitasok visszaallitasa alapertelmezett allapotba?</value>
+    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékükre?</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Megtekint</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Elnevezés és címkék</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_Beállítások visszaállítása</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Albumok mentése ide:</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Szoftverhiba bejelentése</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Névjegy</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Letöltések</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Segítsen a fordításban! (Help translate.)</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_Nyelv (Language)</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Haladó beállítások</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(a jelentési fájl mindig részletes)</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_Kézi beállítás</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>_Nincs</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Használja ezt az opciót, ha blokkolt a HTTPS forgalma a Bandcamp felé.</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>Nem sikerült a changelog letöltése a következő webcímről: {0}</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Illessze be ebbe a szövegdobozba a letölteni kívánt albumok URL-jét (webcímét). Több sorban több URL-t is megadhat.
+
+Egy Bandcamp-URL a következőképp néz ki: http://[előadó].bandcamp.com/album/[album] vagy http://[előadó].bandcamp.com/track/[zeneszám]
+
+Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be a „☑ Előadó diszkográfiájának letöltése" jelölőnégyzetet, hogy az előadó összes albuma letöltésre kerüljön.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Készítsen lejátszási listát albumonként</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Nem</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Címke törlése</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Sötét</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Világos</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Program bezárása</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>Rendszerbeállítás használata</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>HTTP használata HTTPS helyett</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Verziótörténet</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Mentés címkébe</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Ne módosítsa</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Ne módosítsa</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Címke törlése</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Mentés másként</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Igen</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Weboldal</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Sorszám</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_Cím</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_Dalszöveg</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Fájlnév formátuma:</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Lejátszási lista _formátuma:</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Néhány beállítás nem módosítható, míg a háttérben letöltés zajlik.</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Hálózat</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Lejátszási lista</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>Általános</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Borítókép</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>Fájlnév formátuma:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>_HTTP(S) proxy</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_Port</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Újrapróbálkozási idő (másodperc)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Újrapróbálkozási képviselő</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Maximum méret (pixel)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Jelenlegi verzió:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_Maximális letöltési próbálkozások száma</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Megjegyzések</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Maximum méret (pixel)</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Fájlnév formátuma:</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_Előadó</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Changelog</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Album _címe</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Albumelőadó</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Megengedett _különbség a fájlméretben (%)</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Ezeket a beállításokat csak saját felelősségére módosítsa!</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Jelölje ki az albumok mentési mappáját!</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>_Részletes állapotjelentés mutatása</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Több információ mutatása a jelentésben.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Borítókép mentése a címkékbe.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Mentés mappába</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Mentés _címkékbe</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Borítókép letöltése az album mappájába.</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>_Fájlméret meghatározása a zeneszámok letöltése előtt</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Egyszerre csak egy album letöltése</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>_Zeneszámok címkéjének módosítása (ID3)</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Bővített formátum használata (csak M3U esetében)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Értesítési hangok lejátszása</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Az előadó teljes diszkográfiájának letöltése.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Értesítési hang lejátszása, ha elkészül egy letöltés.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Előadó diszkográfiájának letöltése</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Minden letöltött albumhoz készít egy lejátszási lista-fájlt.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>A borítóképet a meghatározott maximális szélességre/magasságra méretezi át.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Korlátozza a maximum szélességet/magasságot</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>A borítóképet JPG-formátumba konvertálja 90-es tömörítési szinten (tökéletes egyensúly a fájlméret és minőség között).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Konvertálás JPG-be</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>A borítóképet a meghatározott maximális szélességre/magasságra méretezi át.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Korlátozza a maximum szélességet/magasságot</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>A borítóképet JPG-formátumba konvertálja 90-es tömörítési szinten (tökéletes egyensúly a fájlméret és minőség között).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Konvertálás JPG-be</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>A program indításakor felkeresi a következő webcímet:</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Frissítések ellenőrzése indításkor</value>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
   </data>
 </root>
