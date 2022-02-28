@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -367,13 +367,13 @@ Abra um novo problema (issue) com o conteúdo do seu arquivo de log em
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Configuração _manual de proxy</value>
+    <value>Configuração _manual</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Sem proxy</value>
+    <value>_Nenhum</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy do s_istema</value>
+    <value>S_istema</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Salvar como</value>
@@ -473,5 +473,14 @@ Colar páginas de artistas: http://[artista]/.bandcamp.com e marque “☑ Baixa
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Atualizar</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Use esta opção se o tráfego HTTPS para o Bandcamp estiver bloqueado.</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Usar HTTP em vez de HTTPS</value>
   </data>
 </root>

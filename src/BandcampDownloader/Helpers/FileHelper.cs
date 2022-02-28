@@ -53,10 +53,6 @@ namespace BandcampDownloader
             return fileSize;
         }
 
-        /// <summary>
-        /// Replaces the forbidden characters \ / : * ? " &lt; &gt; | from the System.String object by an underscore _ in
-        /// order to be used for a Windows file or folder.
-        /// </summary>
         public static string ToAllowedFileName(this string fileName)
         {
             if (fileName == null)
@@ -64,21 +60,7 @@ namespace BandcampDownloader
                 throw new ArgumentNullException(nameof(fileName));
             }
 
-            // Rules are defined here: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
-
-            // Replace reserved characters by '_'
-            fileName = fileName.Replace("\\", "_");
-            fileName = fileName.Replace("/", "_");
-            fileName = fileName.Replace(":", "_");
-            fileName = fileName.Replace("*", "_");
-            fileName = fileName.Replace("?", "_");
-            fileName = fileName.Replace("\"", "_");
-            fileName = fileName.Replace("<", "_");
-            fileName = fileName.Replace(">", "_");
-            fileName = fileName.Replace("|", "_");
-
-            // Replace newline by '_'
-            fileName = fileName.Replace(Environment.NewLine, "_");
+            fileName = fileName.ReplaceInvalidPathCharacters('_');
 
             // Remove trailing dot(s)
             fileName = Regex.Replace(fileName, @"\.+$", "");
@@ -90,6 +72,21 @@ namespace BandcampDownloader
             fileName = Regex.Replace(fileName, @"\s+$", "");
 
             return fileName;
+        }
+
+        private static string ReplaceInvalidPathCharacters(this string path, char replaceBy)
+        {
+            foreach (var invalidCharacter in Path.GetInvalidPathChars())
+            {
+                path = path.Replace(invalidCharacter, replaceBy);
+            }
+
+            foreach (var invalidCharacter in Path.GetInvalidFileNameChars())
+            {
+                path = path.Replace(invalidCharacter, replaceBy);
+            }
+
+            return path;
         }
     }
 }

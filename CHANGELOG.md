@@ -1,3 +1,13 @@
+# 1.4.1
+
+## Improvements
+
+* Added / updated translations thanks to contributors. [#203](https://github.com/Otiel/BandcampDownloader/pull/203) [#205](https://github.com/Otiel/BandcampDownloader/pull/205)
+
+## Bug fixes
+
+* Fixed an issue when trying to download tracks containing special characters in their title. [#189](https://github.com/Otiel/BandcampDownloader/issues/189)
+
 # 1.4.0
 
 ## New features

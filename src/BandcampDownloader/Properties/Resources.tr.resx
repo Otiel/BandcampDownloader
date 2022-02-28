@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -367,13 +367,13 @@ Lütfen günlük dosyanızın içeriğinde yeni bir sorun açın.
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Manuel proxy yapılandırması</value>
+    <value>_Manuel yapılandırma</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>Proxy _yok</value>
+    <value>Yok</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Sistemin kullandığı proxy</value>
+    <value>_Sistem</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Farklı kaydet</value>
@@ -473,5 +473,14 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Güncelleştirme</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>HTTPS yerine HTTP kullanın</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Vekil Sunucu</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Bandcamp'e giden HTTPS trafiğiniz engellenmişse bu seçeneği kullanın.</value>
   </data>
 </root>
