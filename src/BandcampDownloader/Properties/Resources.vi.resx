@@ -200,13 +200,13 @@
     <value>_Năm phát hành album</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Cấu hình proxy _bằng tay</value>
+    <value>_Cấu hình thủ công</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Không proxy</value>
+    <value>_Không có</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy h_ệ thống</value>
+    <value>H_ệ thống</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>Lịch sử phát hành</value>
@@ -255,5 +255,173 @@
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
     <value>Giúp phiên dịch</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Xoá thẻ</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Lưu như</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Hiện đang có các bản tải xuống đang hoạt động. Bạn có chắc chắn muốn đóng ứng dụng và dừng tất cả tải xuống không?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>Không thể mở đường liên kết sau:
+{0}</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_Đóng ứng dụng</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Xoá thẻ</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>Không được sửa đổi</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Đã xảy ra lỗi chưa được khắc phục. Ứng dụng sẽ đóng ngay bây giờ.
+
+Vui lòng báo lại và kèm theo tệp chứa nội dung nguyên nhân lỗi của bạn trên
+{0}</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>Không được sửa đổi</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Lưu trong thẻ</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Thay đổi kích thước ảnh bìa thành chiều rộng/chiều cao tối đa được chỉ định.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Thay đổi kích thước ảnh bìa thành chiều rộng/chiều cao tối đa được chỉ định.</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Dán URL của các album để tải xuống tại đây. Bạn có thể chỉ định nhiều URL bằng cách viết một URL trên mỗi dòng.
+
+URL của Bandcamp có dạng như sau: http://[artist].bandcamp.com/album/[album] hoặc http://[artist].bandcamp.com/track /[track]
+Dán các trang nghệ sĩ: http://[artist].bandcamp.com và chọn "☑ Tải xuống đĩa hát của nghệ sĩ" để tải xuống tất cả các album của họ.</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Sửa đổi từng thẻ như được chỉ định bên dưới.
+
+Nếu không, tất cả các thẻ đều không thay đổi, tương đương với việc đặt "Không được sửa đổi" cho mỗi thẻ.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Chuyển đổi ảnh bìa sang dạng JPG với độ nén 90 (sự cân bằng tuyệt vời giữa kích thước và chất lượng).</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Tạo tệp theo dõi album cho mỗi album đã tải xuống.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>Âm thanh thông báo khi tải xong.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Danh sách phát M3U ở định dạng mở rộng (các lệnh bắt đầu bằng ký tự #).</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Chỉ tải xuống một album tại một thời điểm.
+Nếu không, tất cả các album được tải xuống đồng thời (tốt hơn là có sẵn băng thông cao).</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Khi tải xuống một bản nhạc, nếu cùng một tệp (tên) đã tồn tại, nó sẽ được đối chiếu với bản nhạc để tải xuống.
+Nếu kích thước của cả hai tệp khác nhau nhỏ hơn giá trị này (tính bằng phần trăm), thì quá trình tải xuống bản nhạc sẽ bị bỏ qua.
+Đặt giá trị này thành 0 để luôn tải xuống các bản nhạc, ngay cả khi đã tồn tại trên đĩa.
+
+Giá trị đề xuất = 5</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Chuyển đổi ảnh bìa sang dạng JPG với độ nén 90 (sự cân bằng tuyệt vời giữa kích thước và chất lượng).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Truy xuất kích thước tệp để hiển thị tiến trình chính xác.
+Nếu không, một số băng thông/thời gian sẽ được tiết kiệm.</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_Xem thay đổi</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_Lưu</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_Tải xuống</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_Huỷ</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_Tải xuống phiên bản mới nhất</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_Cài đặt</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Kiểm tra _cập nhật lúc khởi động</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Kiểm tra ng_ay bây giờ</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>_Tải xuống từng album một</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Truy vấn địa chỉ sau khi khởi động ứng dụng:</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Tải xuống toàn bộ đĩa hát của nghệ sĩ.</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_Huỷ</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_Không</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_OK</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_Có</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_Chủ đề</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Thử lại _số mũ</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Tải ảnh bìa xuống thư mục của album.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Lưu ảnh bìa vào trong thẻ bài hát.</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Hiển thị thêm thông tin trong nhật ký.</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Chọn thư mục để lưu các album vào</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Tự chịu rủi ro khi thay đổi các cài đặt này.</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Huỷ bỏ tất cả tải xuống?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_Đặt lại cài đặt</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Đặt lại các cài đặt về giá trị mặc định của chúng?</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Cập nhật</value>
   </data>
 </root>
