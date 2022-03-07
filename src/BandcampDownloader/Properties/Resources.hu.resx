@@ -126,7 +126,7 @@
     <value>_Beállítások visszaállítása</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékükre?</value>
+    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékre?</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_Megtekint</value>
@@ -404,5 +404,28 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
   </data>
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Kritikus hiba történt. A program most bezár.
+
+Kérjük, a log fájl tartalmával jelezze ezt részünkre a következő linken („New issue” – csak angol nyelven elérhető):
+{0}</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>A pontos előrehaladás jelzése érdekében a fájlméret meghatározása letöltés előtt.
+Ha nincs bekapcsolva, csekély mennyiségű sávszélesség/idő megtakarítható.</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Az alább megadható beállítások szerint módosítja a címkéket.
+
+Ha nincs bejelölve, minden címke változatlan marad; ugyanezt éri el azzal is, ha a "Ne módosítsa" beállításokat adja meg.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Bővített formátumú M3U-lejátszási listák használata (az irányelveket a # [kettőskereszt] karakter előzi meg).</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Egyszerre csak egy albumot tölt le.
+
+Ha nincs bejelölve, minden album egyszerre kerül letöltésre (nagyobb sávszélesség esetén célszerű kikapcsolva hagyni).</value>
   </data>
 </root>
