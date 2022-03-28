@@ -155,10 +155,9 @@
     <value>_Modyfikuj tagi utworów (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, każdy tag zostanie zmodyfikowany w sposób określony poniżej.
+    <value>Modyfikuje każdy tag w sposób określony poniżej.
 
-Jeśli opcja ta nie jest zaznaczona, wszystkie poniższe ustawienia zostaną zignorowane, w pliku pozostaną oryginalne tagi.
-Jest to równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
+W przeciwnym wypadku, wszystkie tagi pozostają niezmienione, co jest równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>_Pobierz jeden album na raz</value>
@@ -365,13 +364,13 @@ Proszę otworzyć nowy problem na GitHubie z plikiem logów.
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ręczna konfiguracja serwera proxy</value>
+    <value>_Ręczna konfiguracja</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Bez serwera proxy</value>
+    <value>_Brak</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Systemowy serwer proxy</value>
+    <value>_Systemowa</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Zapisz jako</value>
