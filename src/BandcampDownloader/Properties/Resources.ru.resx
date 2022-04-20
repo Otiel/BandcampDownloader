@@ -367,13 +367,13 @@ If not, some bandwidth/time is saved.</value>
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ручная настройка прокси</value>
+    <value>_Ручная настройка</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Нет прокси</value>
+    <value>_Нет</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Системный прокси</value>
+    <value>_Системный</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Сохранить как</value>
@@ -473,5 +473,14 @@ http://[artist].bandcamp.com/track/[track]
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Обновить</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Использовать HTTP вместо HTTPS</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Прокси</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Используйте эту опцию, если ваш HTTPS-трафик к Bandcamp заблокирован.</value>
   </data>
 </root>
