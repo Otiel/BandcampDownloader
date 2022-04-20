@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -465,13 +465,13 @@
     <value>Допоможіть перекласти</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Системний проксі</value>
+    <value>_Системний</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Немає проксі</value>
+    <value>_Немає</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ручна конфігурація проксі</value>
+    <value>_Ручна конфігурація</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Ви вже маєте останню версію ({0}).</value>
@@ -556,5 +556,14 @@ URL-адреса Bandcamp виглядає так: http: // [artist] .bandcamp.c
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Оновлення</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Використовувати HTTP замість HTTPS</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Проксі</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Використовуйте цю опцію, якщо ваш HTTPS-трафік до Bandcamp заблоковано.</value>
   </data>
 </root>
