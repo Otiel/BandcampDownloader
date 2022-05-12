@@ -250,7 +250,7 @@ namespace BandcampDownloader
                         // Downloads cancelled by the user
                         return false;
                     }
-                    catch (WebException)
+                    catch (WebException e)
                     {
                         // Connection closed probably because no response from Bandcamp
                         if (tries + 1 < App.UserSettings.DownloadMaxTries)
@@ -261,6 +261,8 @@ namespace BandcampDownloader
                         {
                             LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
                         }
+
+                        LogAdded(this, new LogArgs(e.ToString(), LogType.VerboseInfo));
                     }
 
                     if (trackDownloaded)
