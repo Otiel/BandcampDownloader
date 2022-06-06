@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using NLog;
 
 namespace BandcampDownloader
 {
@@ -12,10 +13,21 @@ namespace BandcampDownloader
         public static async Task<Version> GetLatestVersionAsync()
         {
             // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
+            var logger = LogManager.GetCurrentClassLogger();
 
             // Retrieve the redirect page from the GitHub latest release page
-            var request = WebRequest.CreateHttp(Constants.UrlLatestRelease);
-            request.AllowAutoRedirect = false;
+            HttpWebRequest request;
+            try
+            {
+                request = WebRequest.CreateHttp(Constants.UrlLatestRelease);
+                request.AllowAutoRedirect = false;
+            }
+            catch (Exception e)
+            {
+                logger.Log(LogLevel.Error, e);
+                throw new CouldNotCheckForUpdatesException();
+            }
+
             var redirectPage = "";
             try
             {
@@ -25,8 +37,9 @@ namespace BandcampDownloader
                     // redirectPage should be like "https://github.com/Otiel/BandcampDownloader/releases/tag/vX.X.X"
                 }
             }
-            catch
+            catch (Exception e)
             {
+                logger.Log(LogLevel.Error, e);
                 throw new CouldNotCheckForUpdatesException();
             }
 
@@ -36,8 +49,9 @@ namespace BandcampDownloader
             {
                 latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X
             }
-            catch
+            catch (Exception e)
             {
+                logger.Log(LogLevel.Error, e);
                 throw new CouldNotCheckForUpdatesException();
             }
 
