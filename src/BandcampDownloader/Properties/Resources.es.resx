@@ -124,16 +124,16 @@
     <value>Buscar carpeta</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
-    <value>_Cancelar</value>
+    <value>Cancelar</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Revisar _ahora</value>
+    <value>Revisar ahora</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Descargar versión nueva</value>
+    <value>Descargar versión nueva</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
-    <value>_Configuración</value>
+    <value>Configuración</value>
   </data>
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
     <value>Abrir configuración</value>
@@ -142,16 +142,16 @@
     <value>Restaurar configuración por defecto</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
-    <value>_Guardar</value>
+    <value>Guardar</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>_Descargar</value>
+    <value>Descargar</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
-    <value>_Cancelar</value>
+    <value>Cancelar</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
-    <value>_Ver</value>
+    <value>Ver</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>No se pudo descargar el informe de novedades de {0}</value>
@@ -266,10 +266,10 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Diferencia de tamaño de archivo permitida (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
-    <value>_Artista</value>
+    <value>Artista</value>
   </data>
   <data name="labelButtonResetSettings" xml:space="preserve">
-    <value>_Restaurar configuración</value>
+    <value>Restaurar configuración</value>
   </data>
   <data name="labelChangelog" xml:space="preserve">
     <value>Registro de cambios</value>
@@ -278,46 +278,46 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Registro de cambios</value>
   </data>
   <data name="labelComments" xml:space="preserve">
-    <value>Com_entarios</value>
+    <value>Comentarios</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>_Formato de archivo</value>
+    <value>Formato de archivo</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
-    <value>Tamaño máximo (_px)</value>
+    <value>Tamaño máximo (px)</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Tamaño máximo (p_x)</value>
+    <value>Tamaño máximo (px)</value>
   </data>
   <data name="labelCurrentVersion" xml:space="preserve">
     <value>Versión actual:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Número _máximo de reintentos de descarga</value>
+    <value>Número máximo de intentos de descarga</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>E_nfriamiento de reintentos (segs)</value>
+    <value>Enfriamiento entre intentos (seg)</value>
   </data>
   <data name="labelDownloadRetryExponent" xml:space="preserve">
-    <value>_Exponente de reintentos</value>
+    <value>Exponente de reintentos</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
-    <value>_Guardar álbumes a</value>
+    <value>Guardar álbumes a</value>
   </data>
   <data name="labelFileNameFormat" xml:space="preserve">
-    <value>_Formato de archivo:</value>
+    <value>Formato de archivo:</value>
   </data>
   <data name="labelHttp" xml:space="preserve">
-    <value>Proxy _HTTP(S)</value>
+    <value>Proxy HTTP(S)</value>
   </data>
   <data name="labelHttpPort" xml:space="preserve">
-    <value>_Puerto</value>
+    <value>Puerto</value>
   </data>
   <data name="labelIssues" xml:space="preserve">
     <value>Reportar error</value>
   </data>
   <data name="labelLanguage" xml:space="preserve">
-    <value>_Idioma</value>
+    <value>Idioma</value>
   </data>
   <data name="labelListBoxItemAbout" xml:space="preserve">
     <value>Acerca de</value>
@@ -326,7 +326,7 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Opciones avanzadas</value>
   </data>
   <data name="labelListBoxItemCoverArt" xml:space="preserve">
-    <value>Carátula</value>
+    <value>Portada</value>
   </data>
   <data name="labelListBoxItemDownloads" xml:space="preserve">
     <value>Descargas</value>
@@ -344,25 +344,25 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Nombramiento y etiquetas</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
-    <value>_Letra</value>
+    <value>Letra</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
     <value>Formato del archivo</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>_Formato de la lista</value>
+    <value>Formato de lista</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
-    <value>Algunas opciones no pueden cambiarse mientras se estén descargando pistas.</value>
+    <value>Algunas opciones no pueden cambiarse mientras se estén descargando canciones.</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
     <value>Tema</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
-    <value>Númer_o de canción</value>
+    <value>Número de canción</value>
   </data>
   <data name="labelTrackTitle" xml:space="preserve">
-    <value>_Título</value>
+    <value>Título</value>
   </data>
   <data name="labelVerboseLogInfo" xml:space="preserve">
     <value>(el archivo de registro siempre es detallado)</value>
@@ -380,19 +380,19 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Sitio web</value>
   </data>
   <data name="labelYear" xml:space="preserve">
-    <value>Año de lan_zamiento del álbum</value>
+    <value>Año de lanzamiento del álbum</value>
   </data>
   <data name="messageBoxButtonCancel" xml:space="preserve">
-    <value>_Cancelar</value>
+    <value>Cancelar</value>
   </data>
   <data name="messageBoxButtonNo" xml:space="preserve">
-    <value>_No</value>
+    <value>No</value>
   </data>
   <data name="messageBoxButtonOK" xml:space="preserve">
-    <value>_Aceptar</value>
+    <value>Aceptar</value>
   </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
-    <value>_Sí</value>
+    <value>Sí</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
     <value>¿Cancelar todas las descargas?</value>
@@ -462,7 +462,7 @@ Cree un nuevo informe del problema con el contenido del registro en:
     <value>Historial de lanzamientos</value>
   </data>
   <data name="textBlockTranslationHelp" xml:space="preserve">
-    <value>Ayudar a traducir</value>
+    <value>Ayude a traducir</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Cuando se descarga una canción, si el mismo archivo (nombre) ya existe, será comparada con la canción a descargar.
@@ -522,10 +522,10 @@ Valor recomendado = 4</value>
 - {año}, {mes} y {día} serán reemplazados por la fecha de publicación del álbum</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Pega los enlaces de los álbumes a descargar aquí. Puedes especificar varios URLs escribiendo uno por línea.
+    <value>Pega los enlaces de los álbumes a descargar aquí. Puedes especificar varias URLs escribiendo una por línea.
 
-Un URL de Bandcamp se ve como: http://[artista].bandcamp.com/album/[álbum] o http://[artista].bandcamp.com/track/[canción]
-Pegar páginas de artista: http://[artista].bandcamp.com y chequea «☑ Descargar discografía del artista» para descargar todos su(s) álbumes.</value>
+Una URL de Bandcamp se ve como: http://[artista].bandcamp.com/album/[álbum] o http://[artista].bandcamp.com/track/[canción]
+Pegue páginas de artista: http://[artista].bandcamp.com y cheque «☑ Descargar discografía del artista» para descargar todos su(s) álbumes.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Configuración</value>
