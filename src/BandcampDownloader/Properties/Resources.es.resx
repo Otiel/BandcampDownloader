@@ -139,7 +139,7 @@
     <value>Abrir configuración</value>
   </data>
   <data name="buttonResetSettings_ToolTip" xml:space="preserve">
-    <value>Restaurar configuración</value>
+    <value>Restaurar configuración por defecto</value>
   </data>
   <data name="buttonSave" xml:space="preserve">
     <value>_Guardar</value>
@@ -157,13 +157,13 @@
     <value>No se pudo descargar el informe de novedades de {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
-    <value>Buscar _actualizaciones al inicio</value>
+    <value>Buscar actualizaciones al inicio</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>Consulta la siguiente dirección al iniciar la aplicación:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Convertir a _JPG</value>
+    <value>Convertir a JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Convierte la portada a JPG con una compresión de 90 (balance excelente entre tamaño y calidad).</value>
@@ -172,46 +172,46 @@
     <value>Cuadrar _dimensiones máximas</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
-    <value>Redimensiona la carátula a las dimensiones especificadas.</value>
+    <value>Redimensiona la portada a las dimensiones especificadas.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Con_vertir a JPG</value>
+    <value>Convertir a JPG</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
-    <value>Convierte la carátula en JPG con una compresión de 90 (excelente equilibrio entre tamaño y calidad).</value>
+    <value>Convierte la portada en JPG con una compresión de 90 (excelente equilibrio entre tamaño y calidad).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
     <value>Cuadrar d_imensiones máximas</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
-    <value>Redimensiona la carátula a las dimensiones especificadas.</value>
+    <value>Redimensiona la portada a las dimensiones especificadas.</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
-    <value>Crear lista de re_producción para cada álbum</value>
+    <value>Crear lista de reproducción para cada álbum</value>
   </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
     <value>Crea un archivo de audio para cada álbum descargado.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Descargar discografía del _artista</value>
+    <value>Descargar discografía del artista</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Descarga la discografía del artista.</value>
+    <value>Descarga la discografía completa del artista.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
-    <value>Reproducir sonidos de _notificaciones</value>
+    <value>Reproducir sonidos de notificaciones</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
     <value>Sonido de notificación para las descargas finalizadas.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
-    <value>Usar formato _extendido (solo para M3U)</value>
+    <value>Usar formato extendido (solo para M3U)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>Playlists en formato M3U en formato extendido (directivas precedidas por el carácter #).</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
-    <value>_Modificar etiquetas de canciones (ID3)</value>
+    <value>Modificar etiquetas de canciones (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Modifica cada etiqueta como se especifique abajo.
@@ -219,51 +219,51 @@
 Si no, todas las etiquetas permanecen sin cambiar, equivalente a seleccionar «No modificar» en cada etiqueta.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Descargar un álbum a la vez</value>
+    <value>Descargar un álbum a la vez</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Descarga solo un álbum a la vez.
 Si no, todos los álbumes se descargan simultáneamente (se proveerá mayor ancho de banda en caso de ser posible).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
-    <value>Recuperar el tamaño de los _archivos antes de descargar los temas</value>
+    <value>Recuperar el tamaño de los archivos antes de descargar las canciones</value>
   </data>
   <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
     <value>Muestra el tamaño del archivo para mostrar precisamente el progreso.
 Si no, se ahorra algo de ancho de banda y tiempo.</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
-    <value>Guardar en c_arpeta</value>
+    <value>Guardar en carpeta</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Descarga la carátula en la carpeta del álbum.</value>
+    <value>Descarga la portada en la carpeta del álbum.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Guardar en _tags</value>
+    <value>Guardar en las etiquetas</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Guarda la carátula en las etiquetas de las canciones.</value>
+    <value>Guarda la portada en las etiquetas de las canciones.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
-    <value>Mostrar registro _detallado</value>
+    <value>Mostrar registro detallado</value>
   </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Muestra más información en el registro.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Seleccionar carpeta para guardar álbumes</value>
+    <value>Seleccione una carpeta para guardar los álbumes</value>
   </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Cambie estas configuraciones bajo su propia responsabilidad.</value>
   </data>
   <data name="labelAlbumArtist" xml:space="preserve">
-    <value>Art_ista del álbum</value>
+    <value>Artista del álbum</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
-    <value>_Nombre del álbum</value>
+    <value>Nombre del álbum</value>
   </data>
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
-    <value>_Diferencia de tamaño de archivo permitida (%)</value>
+    <value>Diferencia de tamaño de archivo permitida (%)</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>_Artista</value>
@@ -347,7 +347,7 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>_Letra</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>For_mato del archivo</value>
+    <value>Formato del archivo</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
     <value>_Formato de la lista</value>
@@ -356,7 +356,7 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Algunas opciones no pueden cambiarse mientras se estén descargando pistas.</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
-    <value>_Tema</value>
+    <value>Tema</value>
   </data>
   <data name="labelTrackNumber" xml:space="preserve">
     <value>Númer_o de canción</value>
@@ -414,25 +414,25 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Ya tiene la versión más reciente ({0}).</value>
   </data>
   <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
-    <value>_Reiniciar ajustes</value>
+    <value>Reiniciar configuración</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
     <value>¿Restaurar la configuración a sus valores por defecto?</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
-    <value>Ocurrió un error no previsto. La aplicación se cerrará.
+    <value>Ocurrió un error imprevisto. La aplicación se cerrará.
 
 Cree un nuevo informe del problema con el contenido del registro en:
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Configuración _manual del proxy</value>
+    <value>Configuración manual del proxy</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>S_in proxy</value>
+    <value>Sin proxy</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy del s_istema</value>
+    <value>Proxy del sistema</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Guardar como</value>
@@ -466,16 +466,16 @@ Cree un nuevo informe del problema con el contenido del registro en:
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Cuando se descarga una canción, si el mismo archivo (nombre) ya existe, será comparada con la canción a descargar.
-Si el tamaño de ambos archivos difiere por menos que este valor (en porciento), la descarga de la canción será omitida.
-Establecer este valor en 0 para descargar siempre las canciones, aún cuando ya existe en el almacenamiento.
+Si el tamaño de ambos archivos difiere por menos que este valor (en porcentaje), la descarga de la canción será omitida.
+Establezca este valor en 0 para descargar siempre las canciones, aún cuando ya existan en el almacenamiento.
 
 Valor recomendado= 5</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
-    <value>Puedes usar marcadores para personalizar el nombre del archivo:
-- {artista} será reemplazado por el artista del álbum
-- {álbum} será reemplazado por el nombre del álbum
-- {año}, {mes} y {día} serán reemplazados por la fecha de publicación del álbum</value>
+    <value>Puede usar marcadores para personalizar el nombre del archivo:
+- {artist} será reemplazado por el artista del álbum
+- {album} será reemplazado por el nombre del álbum
+- {year}, {month} y {day} serán reemplazados por la fecha de publicación del álbum</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Máximo número de intentos para descargar una canción si falla.
@@ -503,17 +503,17 @@ Valor recomendado = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>Puedes usar marcadores para personalizar la carpeta de descarga dependiendo en el álbum:
-- {artista} será reemplazado por el artista del álbum
-- {álbum} será reemplazado por el nombre del álbum
-- {año}, {mes} y {día} serán reemplazados por la fecha de publicación del álbum</value>
+- {artist} será reemplazado por el artista del álbum
+- {album} será reemplazado por el nombre del álbum
+- {year}, {month} y {day} serán reemplazados por la fecha de publicación del álbum</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
     <value>Puedes usar marcadores para personalizar el nombre del archivo:
-- {artista} será reemplazado por el artista del álbum
-- {título} será reemplazado por el nombre del archivo
-- {número de canción} será reemplazado por el número de cancion
-- {álbum} será reemplazado por el nombre del álbum
-- {año}, {mes} y {día} serán reemplazado por la fecha de publicación del álbum</value>
+- {artist} será reemplazado por el artista del álbum
+- {title} será reemplazado por el nombre del archivo
+- {tracknum} será reemplazado por el número de canción
+- {album} será reemplazado por el nombre del álbum
+- {year}, {month} y {day} serán reemplazado por la fecha de publicación del álbum</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Puedes usar marcadores para personalizar el nombre del archivo:
@@ -532,5 +532,14 @@ Pegar páginas de artista: http://[artista].bandcamp.com y chequea «☑ Descarg
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Actualizar</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Usar HTTP en vez de HTTPS</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Use esta opción si su conexión HTTPS a Bandcamp se encuentra bloqueada.</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
   </data>
 </root>
