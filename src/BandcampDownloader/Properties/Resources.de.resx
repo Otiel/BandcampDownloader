@@ -426,13 +426,13 @@ Bitte öffnen Sie eine neue Anfrage mit dem Inhalt Ihrer Protokolldatei unter
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Manuelle Proxy-Einstellungen</value>
+    <value>_Manuelle Konfiguration</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Kein Proxy</value>
+    <value>_Kein</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy des S_ystems verwenden</value>
+    <value>S_ystem</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Speichern als</value>
