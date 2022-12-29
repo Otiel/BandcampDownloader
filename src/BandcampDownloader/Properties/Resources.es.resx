@@ -447,7 +447,7 @@ Cree un nuevo informe del problema con el contenido del registro en:
     <value>No modificar</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Vaciar etiqueta</value>
+    <value>Ocurrió un error al buscar actualizaciones. Por favor vuelva a intentarlo más tarde.</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Guardar en etiqueta</value>
