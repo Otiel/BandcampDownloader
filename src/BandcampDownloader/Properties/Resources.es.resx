@@ -127,7 +127,7 @@
     <value>Cancelar</value>
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
-    <value>Revisar ahora</value>
+    <value>Revisar _ahora</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
     <value>Descargar versión nueva</value>
@@ -447,7 +447,7 @@ Cree un nuevo informe del problema con el contenido del registro en:
     <value>No modificar</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Ocurrió un error al buscar actualizaciones. Por favor vuelva a intentarlo más tarde.</value>
+    <value>Borrar la etiqueta</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
     <value>Guardar en etiqueta</value>
