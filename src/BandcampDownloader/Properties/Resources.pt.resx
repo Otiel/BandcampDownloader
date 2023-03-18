@@ -95,7 +95,7 @@
     <value>_Ver</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Não foi possível baixar o registo de alterações de {0}</value>
+    <value>Não foi possível descarregar o registo de alterações de {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Verificar por _atualizações na inicialização</value>
@@ -345,7 +345,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Fechar aplicação</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Existem transferências atualmente ativas. Tem certeza que deseja fechar a app e interromper todas?</value>
+    <value>Existem descargas atualmente ativas. Tem certeza que deseja fechar a app e interromper todas?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
     <value>Não foi possível abrir o seguinte link:
