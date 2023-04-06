@@ -367,13 +367,13 @@ Por favor, abra uma nova emissão com o conteúdo do seu ficheiro de registo em
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Configuração _manual de proxy</value>
+    <value>Configuração _manual</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Sem proxy</value>
+    <value>_Nenhum</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy do _sistema</value>
+    <value>S_istema</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Salvar como</value>
