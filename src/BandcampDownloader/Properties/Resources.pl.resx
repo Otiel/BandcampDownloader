@@ -455,4 +455,31 @@ wykonawcy.</value>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualizacja</value>
   </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Używany do kontrolowania wykładniczego mechanizmu back-off.
+Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą 
+pobrania utworu, aby uniknąć drażnienia filtra antyspamowego Bandcamp.
+Formuła używana do obliczania czasu oczekiwania przed ponowną próbą pobrania jest następująca:
+czas = czas oczekiwania * (wykładnik ^ liczba-prób)
+
+Zalecana wartość = 4</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Serwer pośredniczący</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Użyj protokołu HTTP zamiast HTTPS</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Użyj tej opcji, jeśli Twój ruch HTTPS do Bandcamp jest zablokowany.</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Używany do kontrolowania wykładniczego mechanizmu back-off.
+Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą
+pobrania utworu, aby uniknąć drażnienia filtra antyspamowego Bandcamp.
+Formuła używana do obliczania czasu oczekiwania przed ponowną próbą pobrania jest następująca:
+czas = czas oczekiwania * (wykładnik ^ liczba-prób)
+
+Zalecana wartość = 0.2</value>
+  </data>
 </root>
