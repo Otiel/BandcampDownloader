@@ -149,7 +149,7 @@
     <value>Użyj formatu rozszerzonego [#EXTM3U] (tylko w przypadku M3U)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>Przy tworzeniu listy odtwarzania M3U zostanie użyty rozszerzony format (#EXTM3U).</value>
+    <value>Playlisty M3U w rozszerzonymi formacie (odnosi się do nich znak #EXTM3U).</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modyfikuj tagi utworów (ID3)</value>
