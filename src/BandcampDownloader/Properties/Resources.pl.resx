@@ -482,4 +482,7 @@ czas = czas oczekiwania * (wykładnik ^ liczba-prób)
 
 Zalecana wartość = 0.2</value>
   </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Spróbuj ponownie _exponent</value>
+  </data>
 </root>
