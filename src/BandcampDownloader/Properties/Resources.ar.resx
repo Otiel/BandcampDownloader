@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -104,13 +104,13 @@
     <value>يستعلم عن العنوان التالي عند بدء تشغيل التطبيق:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>تحويل الصيغة الى JPG</value>
+    <value>تحويل الصيغة إلى JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>يحول صورة الغلاف إلى JPG بضغط 90 (مقايضة ممتازة بين الحجم والجودة).</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>تحديد اعلى ارتفاع وعرض</value>
+    <value>تحديد أعلى ارتفاع وعرض</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
     <value>يغير حجم صورة الغلاف إلى أقصى عرض / ارتفاع محدد.</value>
@@ -208,5 +208,279 @@
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
     <value>امسح التاگ</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>الإبلاغ عن خطأ</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>منفذ</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>ساعد في الترجمة</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>عن</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>إعادة تعيين جميع الإعدادات إلى قيمها الافتراضية؟</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>سجل التغيير</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>تاريخ الإصدارات</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>حفظ الألبومات في</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>إعادة محاولة التهدئة (ثانية)</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>استخدم HTTP بدلاً من HTTPS</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>لا شيء</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>موقع إلكتروني</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>النظام</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>هل تريد إلغاء جميع التنزيلات؟</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>سنة إصدار الألبوم</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>عدم استطاعة فتح الرابط التالي:
+{0}</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>استخدم هذا الخيار إذا تم حظر حركة مرور HTTPS إلى Bandcamp.</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>الإصدار الجديد متاح</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>اعادة الضبط</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>يمكنك استخدام العناصر النائبة لتخصيص اسم الملف:
+- سيتم استبدال {artist} بفنان الألبوم
+- سيتم استبدال {album} باسم الألبوم
+- سيتم استبدال {year} و{month} و{day} بتاريخ إصدار الألبوم</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>يستخدم للتحكم في آلية التراجع التقدمي.
+بعد كل فشل في تنزيل الأغنية، يمكن لبرنامج BandcampDownloader الانتظار لفترة محددة قبل المحاولة مرة أخرى
+لتنزيل الأغنية لتجنب تفعيل مرشح Bandcamp لمكافحة البريد العشوائي.
+الصيغة المستخدمة لحساب وقت الانتظار قبل محاولة التنزيل مرة أخرى هي كما يلي:
+الوقت = فترة التهدئة * (الأس ^ عدد المحاولات)
+
+القيمة الموصى بها = 0.2</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>تنسيق اسم الملف</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>عند تنزيل أغنية، إذا كان نفس الملف (الاسم) موجودًا بالفعل، فسيتم فحصه مقابل الأغنية المراد تنزيلها.
+إذا كان حجم كلا الملفين يختلف عن هذه القيمة (بالنسبة المئوية)، فسيتم تخطي تنزيل الأغنية.
+اضبط هذه القيمة على 0 لتنزيل الأغاني دائمًا، حتى لو كانت موجودة بالفعل على القرص.
+
+القيمة الموصى بها = 5</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>الغلاف</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>حفظ باسم</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>قائمة التشغيل</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>وكيل HTTP(S)</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>التعليقات</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>الكلمات</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>قم بتغيير هذه الإعدادات على مسؤوليتك الخاصة.</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>النسخة</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>اعادة الضبط</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>رقم الاغنية</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>إعدادات متقدمة</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>الوكيل</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>سمة</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>الحجم الأقصى (بكسل)</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>احفظ في العلامات</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>تنسيق إسم الملف</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>التعديل اليدوي</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>الفنان</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(ملف السجل مطول دائمًا)</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>الحد الأقصى لمحاولات التنزيل</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>ساطع</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>إعادة المحاولة</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>حجم الملف المسموح به_نسبة الاختلاف(%)</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>حدد الملف لحفظ الألبومات فيه</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>لديك بالفعل أحدث إصدار ({0}).</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>النسخة الحالية:</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>حدث خطأ غير معالج. سيتم إغلاق التطبيق الآن.
+
+الرجاء فتح مشكلة جديدة مع محتوى ملف السجل الخاص بك
+{0}</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>الصق عناوين URL للألبومات لتنزيلها هنا. يمكنك تحديد عناوين URL متعددة عن طريق كتابة عنوان URL واحد في كل سطر.
+
+يبدو عنوان URL الخاص بـ Bandcamp على النحو التالي: http://[artist].bandcamp.com/album/[album] أو http://[artist].bandcamp.com/track/[track]
+الصق صفحات الفنانين: http://[artist].bandcamp.com وحدد "☑ تنزيل ديسكغرافيا الفنان" لتنزيل جميع ألبوماتهم.</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>يمكنك استخدام العناصر النائبة لتخصيص اسم الملف:
+- سيتم استبدال {artist} بفنان الألبوم
+- سيتم استبدال {album} باسم الألبوم
+- سيتم استبدال {year} و{month} و{day} بتاريخ إصدار الألبوم</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>غلاف الالبوم</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>لا يمكن التحقق من وجود تحديثات</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>التحميلات</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>لا يمكن تغيير بعض الإعدادات أثناء تنزيل الاغاني.</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>حدث خطأ أثناء التحقق من وجود تحديثات. يرجى إعادة المحاولة لاحقًا.</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>التسمية والعلامات</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>تنسيق اسم الملف:</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>عام</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>يمكنك استخدام العناصر النائبة لتخصيص اسم الملف:
+- سيتم استبدال {artist} بفنان الألبوم
+- سيتم استبدال {title} باسم المسار
+- سيتم استبدال {tracknum} برقم الأغنية
+- سيتم استبدال {album} باسم الألبوم
+- سيتم استبدال {year} و{month} و{day} بتاريخ إصدار الألبوم</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>يظهر المزيد من المعلومات في السجل.</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>اسم الالبوم</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>هناك حاليا تنزيلات نشطة. هل أنت متأكد أنك تريد إغلاق التطبيق وإيقاف جميع التنزيلات؟</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>الحجم الأقصى (بكسل)</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>يستخدم للتحكم في آلية التراجع التقدمي.
+بعد كل فشل في تنزيل الأغنية، يمكن لبرنامج BandcampDownloader الانتظار لفترة محددة قبل المحاولة مرة أخرى
+لتنزيل الأغنية لتجنب تفعيل مرشح Bandcamp لمكافحة البريد العشوائي.
+الصيغة المستخدمة لحساب وقت الانتظار قبل محاولة التنزيل مرة أخرى هي كما يلي:
+الوقت = فترة التهدئة * (الأس ^ عدد المحاولات)
+
+القيمة الموصى بها = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>يمكنك استخدام العناصر النائبة لتخصيص ملف التنزيل وفقًا للألبوم:
+- سيتم استبدال {artist} بفنان الألبوم
+- سيتم استبدال {album} باسم الألبوم
+- سيتم استبدال {year} و{month} و{day} بتاريخ إصدار الألبوم</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>سجل التغيير</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>الشبكة</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>إعدادات</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>الحد الأقصى لعدد المحاولات التي يتم إجراؤها لتنزيل أغنية في حالة الفشل.
+بعد الوصول إلى هذا الرقم (لكل أغنية)، سيتم تخطي تنزيل الأغنية.
+
+القيمة الموصى بها = 7</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>مظلم</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>تنسيق قائمة التشغيل</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>اظهر السجل المطول</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>أغلق التطبيق</value>
   </data>
 </root>
