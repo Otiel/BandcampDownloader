@@ -135,13 +135,13 @@
     <value>Hjälp till att översätta</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>S_ystemproxy</value>
+    <value>S_ystem</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Ingen proxy</value>
+    <value>_Ingen</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Manuell konfigurering av proxy</value>
+    <value>_Manuell konfiguration</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Du har redan den senaste versionen ({0}).</value>
@@ -337,5 +337,150 @@
   </data>
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Konverterar omslagsbild till JPG med en komprimering på 90 (utmärkt avvägning mellan storlek och kvalitet).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Konverterar omslagsbild till JPG med en komprimering på 90 (utmärkt avvägning mellan storlek och kvalitet).</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Modifierar varje tagg enligt nedan.
+
+Om inte, är alla taggar oförändrade, vilket motsvarar inställningen "Ändra inte" för varje tagg.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>M3U-spellistor i utökat format (direktiv föregås av tecknet #).</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Laddar ner hela artistens diskografi.</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Släpp historik</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Försök igen c_ooldown (sek)</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Använd HTTP istället för HTTPS</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Skapar en albumspårfil för varje nedladdat album.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Ändrar omslagsbilden till angiven maxbredd/höjd.</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Albumsläpp _år</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Ändrar omslagsbilden till angiven maxbredd/höjd.</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Använd det här alternativet om din HTTPS-trafik till Bandcamp är blockerad.</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Du kan använda platshållare för att anpassa filnamnet:
+- {artist} kommer att ersättas av albumartisten
+- {album} kommer att ersättas av albumnamnet
+- {year}, {month} och {day} kommer att ersättas av albumets releasedatum</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Används för att styra den exponentiella back-off-mekanismen.
+Efter varje misslyckande med en låtnedladdning kan BandcampDownloader vänta en viss tid innan du försöker igen
+för att ladda ner spåret för att undvika att kittla Bandcamp anti-spam-filtret.
+Formeln som används för att beräkna tiden att vänta innan du försöker igen en nedladdning är följande:
+tid = cooldown * (exponent ^ försöksantal)
+
+Rekommenderat värde = 0,2</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>När du laddar ner ett spår, om samma fil (namn) redan finns, kommer den att kontrolleras mot spåret som ska laddas ner.
+Om storleken på båda filerna skiljer sig från mindre än detta värde (i procent), kommer spårnedladdningen att hoppas över.
+Sätt detta värde till 0 för att alltid ladda ner spår, även om de redan finns på disken.
+
+Rekommenderat värde = 5</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Frågar följande adress när du startar programmet:</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Begränsa m_aximal bredd/höjd</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Hämtar filstorlek för att visa exakta framsteg.
+Om inte sparas viss bandbredd/tid.</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Försök igen _exponent</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Tillåten filstorlek _skillnad (%)</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Ett ohanterat fel inträffade. Programmet kommer att stängas nu.
+
+Vänligen öppna ett nytt problem med innehållet i din loggfil på
+{0}</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Klistra in webbadresser till album att ladda ner här. Du kan ange flera webbadresser genom att skriva en URL per rad.
+
+En Bandcamp-URL ser ut så här: http://[artist].bandcamp.com/album/[album] eller http://[artist].bandcamp.com/track/[track]
+Klistra in artistsidor: http://[artist].bandcamp.com och markera "☑ Ladda ner artistdiskografi" för att ladda ner alla deras album.</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Du kan använda platshållare för att anpassa filnamnet:
+- {artist} kommer att ersättas av albumartisten
+- {album} kommer att ersättas av albumnamnet
+- {year}, {month} och {day} kommer att ersättas av albumets releasedatum</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Ladda ner _artist diskografi</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>Ett fel uppstod vid sökning efter uppdateringar. Försök igen senare.</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Du kan använda platshållare för att anpassa filnamnet:
+- {artist} kommer att ersättas av albumartisten
+- {title} kommer att ersättas av spårnamnet
+- {tracknum} kommer att ersättas av spårnumret
+- {album} kommer att ersättas av albumnamnet
+- {year}, {month} och {day} kommer att ersättas av albumets releasedatum</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Begränsa _maximal bredd/höjd</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Det finns för närvarande aktiva nedladdningar. Är du säker på att du vill stänga programmet och stoppa alla nedladdningar?</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Laddar bara ned ett album åt gången.
+Om inte, laddas alla album ner samtidigt (bättre förutsatt att hög bandbredd är tillgänglig).</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Används för att styra den exponentiella back-off-mekanismen.
+Efter varje misslyckande med en låtnedladdning kan BandcampDownloader vänta en viss tid innan du försöker igen
+för att ladda ner spåret för att undvika att kittla Bandcamp anti-spam-filtret.
+Formeln som används för att beräkna tiden att vänta innan du försöker igen en nedladdning är följande:
+tid = cooldown * (exponent ^ försöksantal)
+
+Rekommenderat värde = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Du kan använda platshållare för att anpassa nedladdningsmappen beroende på albumet:
+- {artist} kommer att ersättas av albumartisten
+- {album} kommer att ersättas av albumnamnet
+- {year}, {month} och {day} kommer att ersättas av albumets releasedatum</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Maximalt antal försök att ladda ner ett spår om det misslyckas.
+När det numret har nåtts (för varje spår), kommer spårnedladdningen att hoppas över.
+
+Rekommenderat värde = 7</value>
   </data>
 </root>
