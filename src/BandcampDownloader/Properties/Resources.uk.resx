@@ -181,7 +181,7 @@
     <value>Перетворити обкладинку в JPG із стисненням 90 (чудовий компроміс між розміром та якістю).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Обмежувати _максимальну ширину/висоту</value>
+    <value>Обмежувати м_аксимальну ширину/висоту</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Змінити розмір обкладинки до заданої максимальної ширини/висоти.</value>
