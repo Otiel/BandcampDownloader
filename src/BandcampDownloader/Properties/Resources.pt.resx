@@ -143,7 +143,7 @@
     <value>Tocar sons de notificação</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Som de notificação para transferências concluídas.</value>
+    <value>Som de notificação para descargas concluídas.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Usar formato _estendido (somente para M3U)</value>
@@ -234,7 +234,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Versão atual:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Tentativas máximas de transferência</value>
+    <value>Tentativas máximas de descargas</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>_Tempo de espera das repetições (seg)</value>
@@ -270,7 +270,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Arte de capa</value>
   </data>
   <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>Transferências</value>
+    <value>Descargas</value>
   </data>
   <data name="labelListBoxItemGeneral" xml:space="preserve">
     <value>Geral</value>
@@ -336,7 +336,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Sim</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Cancelar todas as transferências?</value>
+    <value>Cancelar todas as descargas?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Ocorreu um erro durante a verificação por atualizações. Por favor, tente mais tarde.</value>
@@ -406,8 +406,8 @@ Por favor, abra uma nova emissão com o conteúdo do seu ficheiro de registo em
     <value>Ajudar a traduzir</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Quando descarregar uma faixa, se o mesmo ficheiro (com o mesmo nome) já existir, ele será verificado em relação à faixa a ser descarregada.
-Se o tamanho de ambos os ficheiros forem diferentes para menos que esse valor (em parcentagem), a transferência da faixa será ignorada.
+    <value>Quando descarregar uma faixa, se o mesmo ficheiro (com o mesmo nome) já existir, ele será verificado relativamente à faixa a ser descarregada.
+Se o tamanho de ambos os ficheiros forem diferentes para menos que esse valor (em percentagem), a descarga da faixa será ignorada.
 Defina este valor para 0 para sempre descarregar as faixas, mesmo que já existam no disco.
 
 Valor recomendado = 5</value>
@@ -419,8 +419,8 @@ Valor recomendado = 5</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Número máximo de tentativas realizadas para baixar uma faixa se ela falhar.
-Após esse número ser atingido (para cada faixa), a transferência será ignorada.
+    <value>Número máximo de tentativas realizadas para descarregar uma faixa se ela falhar.
+Após esse número ser atingido (para cada faixa), a descarga será ignorada.
 
 Valor recomendado = 7</value>
   </data>
@@ -443,7 +443,7 @@ tempo = tempo de espera * (expoente ^ contagem de tentativas)
 Valor recomendado = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>Você pode usar espaços reservados para personalizar a pasta de transferências, dependendo do álbum:
+    <value>Pode usar espaços reservados para personalizar a pasta de descargas, dependendo do álbum:
 - {artista} será substituído pelo artista do álbum
 - {álbum} será substituído pelo nome do álbum
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
