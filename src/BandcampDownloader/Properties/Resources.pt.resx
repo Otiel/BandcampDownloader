@@ -71,7 +71,7 @@
     <value>Verificar _agora</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Baixar nova versão</value>
+    <value>_Descarregar nova versão</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Configurações</value>
@@ -86,7 +86,7 @@
     <value>_Salvar</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>_Baixar</value>
+    <value>_Descarregar</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Cancelar</value>
@@ -134,10 +134,10 @@
     <value>Cria um ficheiro de faixa do álbum para cada álbum descarregado.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Baixar discografia do _artista</value>
+    <value>Descarregar discografia do _artista</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Baixa toda a discografia do artista.</value>
+    <value>Descarrega toda a discografia do artista.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>Tocar sons de notificação</value>
@@ -160,11 +160,11 @@
 Caso contrário, todos as tags não serão alteradas, equivalente a definir «Não modificar» para cada tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Baixar um álbum de cada vez</value>
+    <value>_Descarregar um álbum de cada vez</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Baixa apenas um álbum de cada vez.
-Caso contrário, todos os álbuns serão baixados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
+    <value>Descarrega apenas um álbum de cada vez.
+Caso contrário, todos os álbuns serão descarregados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Recuperar o tamanho do _ficheiro antes de descarregar faixas</value>
@@ -177,7 +177,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Salvar na _pasta</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Baixa a arte de capa para a pasta do álbum.</value>
+    <value>Descarrega a arte de capa para a pasta do álbum.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Salvar nas _tags</value>
@@ -294,7 +294,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Formato da lista de reprodução</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
-    <value>Algumas configurações não podem ser alteradas enquanto as faixas estão baixando.</value>
+    <value>Algumas configurações não podem ser alteradas enquanto as faixas estão a descarregar.</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
     <value>_Tema</value>
@@ -463,10 +463,10 @@ Valor recomendado = 4</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Cole as URLs dos álbuns para baixar, aqui. Você pode especificar várias URLs escrevendo uma URL por linha.
+    <value>Cole aqui as URLs dos álbuns a descarregar. Pode especificar várias URLs escrevendo uma URL por linha.
 
-Uma URL do Bandcamp se parece com: http://[artista].bandcamp.com/album/[álbum] ou http://[artista].bandcamp.com/track/[faixa]
-Cole as páginas do artista: http://[artista].bandcamp.com e cheque «☑ Baixar a discografia do artista» para baixar todos os seus álbuns.</value>
+Uma URL do Bandcamp parece-se com: http://[artista].bandcamp.com/album/[álbum] ou http://[artista].bandcamp.com/track/[faixa]
+Cole as páginas do artista: http://[artista].bandcamp.com e ative «☑ Baixar a discografia do artista» para descarregar todos os seus álbuns.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Configurações</value>
