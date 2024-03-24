@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
@@ -367,13 +367,13 @@ Otvori novi problem sa sadržajem tvoje datoteke protokola
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ručno postavljanje poslužitelja</value>
+    <value>_Ručna konfiguracija</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Bez poslužitelja</value>
+    <value>_Ništa</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Sustavski poslužitelj</value>
+    <value>_Sustav</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Spremi kao</value>
@@ -473,5 +473,14 @@ Umetni stranice izvođača: http://[artist].bandcamp.com i označi „☑ Preuzm
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualiziraj</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Koristi HTTP umjesto HTTPS-a</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Posrednički poslužitelj</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Koristi ovu opciju ako je tvoj HTTPS promet na Bandcamp blokiran.</value>
   </data>
 </root>

@@ -71,7 +71,7 @@
     <value>Verificar _agora</value>
   </data>
   <data name="buttonDownloadUpdate" xml:space="preserve">
-    <value>_Baixar nova versão</value>
+    <value>_Descarregar nova versão</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
     <value>_Configurações</value>
@@ -86,7 +86,7 @@
     <value>_Salvar</value>
   </data>
   <data name="buttonStart" xml:space="preserve">
-    <value>_Baixar</value>
+    <value>_Descarregar</value>
   </data>
   <data name="buttonStop" xml:space="preserve">
     <value>_Cancelar</value>
@@ -95,7 +95,7 @@
     <value>_Ver</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Não foi possível baixar o registo de alterações de {0}</value>
+    <value>Não foi possível descarregar o registo de alterações de {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Verificar por _atualizações na inicialização</value>
@@ -134,16 +134,16 @@
     <value>Cria um ficheiro de faixa do álbum para cada álbum descarregado.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Baixar discografia do _artista</value>
+    <value>Descarregar discografia do _artista</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Baixa toda a discografia do artista.</value>
+    <value>Descarrega toda a discografia do artista.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>Tocar sons de notificação</value>
   </data>
   <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
-    <value>Som de notificação para transferências concluídas.</value>
+    <value>Som de notificação para descargas concluídas.</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Usar formato _estendido (somente para M3U)</value>
@@ -160,11 +160,11 @@
 Caso contrário, todos as tags não serão alteradas, equivalente a definir «Não modificar» para cada tag.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Baixar um álbum de cada vez</value>
+    <value>_Descarregar um álbum de cada vez</value>
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Baixa apenas um álbum de cada vez.
-Caso contrário, todos os álbuns serão baixados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
+    <value>Descarrega apenas um álbum de cada vez.
+Caso contrário, todos os álbuns serão descarregados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Recuperar o tamanho do _ficheiro antes de descarregar faixas</value>
@@ -177,7 +177,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Salvar na _pasta</value>
   </data>
   <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
-    <value>Baixa a arte de capa para a pasta do álbum.</value>
+    <value>Descarrega a arte de capa para a pasta do álbum.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
     <value>Salvar nas _tags</value>
@@ -234,7 +234,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Versão atual:</value>
   </data>
   <data name="labelDownloadMaxTries" xml:space="preserve">
-    <value>Tentativas máximas de transferência</value>
+    <value>Tentativas máximas de descargas</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>_Tempo de espera das repetições (seg)</value>
@@ -270,7 +270,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Arte de capa</value>
   </data>
   <data name="labelListBoxItemDownloads" xml:space="preserve">
-    <value>Transferências</value>
+    <value>Descargas</value>
   </data>
   <data name="labelListBoxItemGeneral" xml:space="preserve">
     <value>Geral</value>
@@ -294,7 +294,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Formato da lista de reprodução</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
-    <value>Algumas configurações não podem ser alteradas enquanto as faixas estão baixando.</value>
+    <value>Algumas configurações não podem ser alteradas enquanto as faixas estão a descarregar.</value>
   </data>
   <data name="labelTheme" xml:space="preserve">
     <value>_Tema</value>
@@ -336,7 +336,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Sim</value>
   </data>
   <data name="messageBoxCancelDownloadsText" xml:space="preserve">
-    <value>Cancelar todas as transferências?</value>
+    <value>Cancelar todas as descargas?</value>
   </data>
   <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
     <value>Ocorreu um erro durante a verificação por atualizações. Por favor, tente mais tarde.</value>
@@ -345,7 +345,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Fechar aplicação</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
-    <value>Existem transferências atualmente ativas. Tem certeza que deseja fechar a app e interromper todas?</value>
+    <value>Existem descargas atualmente ativas. Tem certeza que deseja fechar a app e interromper todas?</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
     <value>Não foi possível abrir o seguinte link:
@@ -367,13 +367,13 @@ Por favor, abra uma nova emissão com o conteúdo do seu ficheiro de registo em
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>Configuração _manual de proxy</value>
+    <value>Configuração _manual</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Sem proxy</value>
+    <value>_Nenhum</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy do _sistema</value>
+    <value>S_istema</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Salvar como</value>
@@ -406,8 +406,8 @@ Por favor, abra uma nova emissão com o conteúdo do seu ficheiro de registo em
     <value>Ajudar a traduzir</value>
   </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
-    <value>Quando descarregar uma faixa, se o mesmo ficheiro (com o mesmo nome) já existir, ele será verificado em relação à faixa a ser descarregada.
-Se o tamanho de ambos os ficheiros forem diferentes para menos que esse valor (em parcentagem), a transferência da faixa será ignorada.
+    <value>Quando descarregar uma faixa, se o mesmo ficheiro (com o mesmo nome) já existir, ele será verificado relativamente à faixa a ser descarregada.
+Se o tamanho de ambos os ficheiros forem diferentes para menos que esse valor (em percentagem), a descarga da faixa será ignorada.
 Defina este valor para 0 para sempre descarregar as faixas, mesmo que já existam no disco.
 
 Valor recomendado = 5</value>
@@ -419,8 +419,8 @@ Valor recomendado = 5</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
-    <value>Número máximo de tentativas realizadas para baixar uma faixa se ela falhar.
-Após esse número ser atingido (para cada faixa), a transferência será ignorada.
+    <value>Número máximo de tentativas realizadas para descarregar uma faixa se ela falhar.
+Após esse número ser atingido (para cada faixa), a descarga será ignorada.
 
 Valor recomendado = 7</value>
   </data>
@@ -443,7 +443,7 @@ tempo = tempo de espera * (expoente ^ contagem de tentativas)
 Valor recomendado = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>Você pode usar espaços reservados para personalizar a pasta de transferências, dependendo do álbum:
+    <value>Pode usar espaços reservados para personalizar a pasta de descargas, dependendo do álbum:
 - {artista} será substituído pelo artista do álbum
 - {álbum} será substituído pelo nome do álbum
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
@@ -463,15 +463,24 @@ Valor recomendado = 4</value>
 - {ano}, {mês} e {dia} serão substituídos pela data de lançamento do álbum</value>
   </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
-    <value>Cole as URLs dos álbuns para baixar, aqui. Você pode especificar várias URLs escrevendo uma URL por linha.
+    <value>Cole aqui as URLs dos álbuns a descarregar. Pode especificar várias URLs escrevendo uma URL por linha.
 
-Uma URL do Bandcamp se parece com: http://[artista].bandcamp.com/album/[álbum] ou http://[artista].bandcamp.com/track/[faixa]
-Cole as páginas do artista: http://[artista].bandcamp.com e cheque «☑ Baixar a discografia do artista» para baixar todos os seus álbuns.</value>
+Uma URL do Bandcamp parece-se com: http://[artista].bandcamp.com/album/[álbum] ou http://[artista].bandcamp.com/track/[faixa]
+Cole as páginas do artista: http://[artista].bandcamp.com e ative «☑ Baixar a discografia do artista» para descarregar todos os seus álbuns.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Configurações</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Atualizar</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Usar HTTP em vez de HTTPS</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Utilize esta opção se o seu tráfego HTTPS para Bandcamp estiver bloqueado.</value>
   </data>
 </root>
