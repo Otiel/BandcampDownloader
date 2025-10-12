@@ -95,10 +95,10 @@
     <value>Verzió</value>
   </data>
   <data name="labelVersionError" xml:space="preserve">
-    <value>Nem sikerült az új verzió ellenőrzése.</value>
+    <value>Nem sikerült az új verzió ellenőrzése</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
-    <value>Új verzió érhető el.</value>
+    <value>Új verzió érhető el</value>
   </data>
   <data name="labelYear" xml:space="preserve">
     <value>Album kiadásának éve</value>
@@ -138,7 +138,7 @@
     <value>_Beállítások visszaállítása</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
-    <value>Albumok mentése ide:</value>
+    <value>Albumok mentése ide</value>
   </data>
   <data name="labelIssues" xml:space="preserve">
     <value>Szoftverhiba bejelentése</value>
@@ -177,7 +177,6 @@
     <value>Illessze be ebbe a szövegdobozba a letölteni kívánt albumok URL-jét (webcímét). Több sorban több URL-t is megadhat.
 
 Egy Bandcamp-URL a következőképp néz ki: http://[előadó].bandcamp.com/album/[album] vagy http://[előadó].bandcamp.com/track/[zeneszám]
-
 Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be a „☑ Előadó diszkográfiájának letöltése" jelölőnégyzetet, hogy az előadó összes albuma letöltésre kerüljön.</value>
   </data>
   <data name="checkBoxCreatePlaylist" xml:space="preserve">
@@ -250,10 +249,10 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>_Dalszöveg</value>
   </data>
   <data name="labelPlaylistFileNameFormat" xml:space="preserve">
-    <value>Fájlnév formátuma:</value>
+    <value>Fájlnév formátuma</value>
   </data>
   <data name="labelPlaylistFormat" xml:space="preserve">
-    <value>Lejátszási lista _formátuma:</value>
+    <value>Lejátszási lista _formátuma</value>
   </data>
   <data name="labelSettingsInfo" xml:space="preserve">
     <value>Néhány beállítás nem módosítható, míg a háttérben letöltés zajlik.</value>
@@ -301,16 +300,16 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>Maximum méret (pixel)</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
-    <value>Fájlnév formátuma:</value>
+    <value>Fájlnév formátuma</value>
   </data>
   <data name="labelArtist" xml:space="preserve">
     <value>_Előadó</value>
   </data>
   <data name="labelChangelog" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Változásnapló</value>
   </data>
   <data name="labelChangelogTitle" xml:space="preserve">
-    <value>Changelog</value>
+    <value>Változásnapló</value>
   </data>
   <data name="labelAlbumTitle" xml:space="preserve">
     <value>Album _címe</value>
@@ -322,10 +321,10 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>Megengedett _különbség a fájlméretben (%)</value>
   </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
-    <value>Ezeket a beállításokat csak saját felelősségére módosítsa!</value>
+    <value>Ezeket a beállításokat csak saját felelősségére módosítsa.</value>
   </data>
   <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Jelölje ki az albumok mentési mappáját!</value>
+    <value>Jelölje ki az albumok mentési mappáját</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>_Részletes állapotjelentés mutatása</value>
@@ -382,7 +381,7 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>A borítóképet JPG-formátumba konvertálja 90-es tömörítési szinten (tökéletes egyensúly a fájlméret és minőség között).</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Konvertálás JPG-be</value>
+    <value>Konvertálás JP_G-be</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
     <value>A borítóképet a meghatározott maximális szélességre/magasságra méretezi át.</value>
@@ -394,7 +393,7 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>A borítóképet JPG-formátumba konvertálja 90-es tömörítési szinten (tökéletes egyensúly a fájlméret és minőség között).</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Konvertálás JPG-be</value>
+    <value>Konvertálás _JPG-be</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>A program indításakor felkeresi a következő webcímet:</value>
@@ -425,22 +424,21 @@ Ha nincs bejelölve, minden címke változatlan marad; ugyanezt éri el azzal is
   </data>
   <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
     <value>Egyszerre csak egy albumot tölt le.
-
 Ha nincs bejelölve, minden album egyszerre kerül letöltésre (nagyobb sávszélesség esetén célszerű kikapcsolva hagyni).</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
     <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
-– az {artist} helyére az album előadójának a neve kerül;
-– a {title} helyére a zeneszám címe kerül;
-– a {tracknum} helyére a zeneszám sorszáma kerül;
-– az {album} helyére az album neve kerül;
-– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+– az {artist} helyére az album előadójának a neve kerül
+– a {title} helyére a zeneszám címe kerül
+– a {tracknum} helyére a zeneszám sorszáma kerül
+– az {album} helyére az album neve kerül
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
     <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
-– az {artist} helyére az album előadójának a neve kerül;
-– az {album} helyére az album neve kerül;
-– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+– az {artist} helyére az album előadójának a neve kerül
+– az {album} helyére az album neve kerül
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül</value>
   </data>
   <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
     <value>Sikertelen letöltés esetén az újrapróbálkozások maximális száma.
@@ -457,9 +455,9 @@ Ajánlott érték = 5</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
-– az {artist} helyére az album előadójának a neve kerül;
-– az {album} helyére az album neve kerül;
-– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+– az {artist} helyére az album előadójának a neve kerül
+– az {album} helyére az album neve kerül
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>Ezzel testre szabható az exponenciális újrapróbálkozási szerkezet.
@@ -481,8 +479,8 @@ Ajánlott érték = 4</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
-– az {artist} helyére az album előadójának a neve kerül;
-– az {album} helyére az album neve kerül;
-– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+– az {artist} helyére az album előadójának a neve kerül
+– az {album} helyére az album neve kerül
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül</value>
   </data>
 </root>
