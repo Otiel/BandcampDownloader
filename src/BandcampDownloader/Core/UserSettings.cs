@@ -10,8 +10,8 @@ namespace BandcampDownloader
     {
         [Description("English")]
         en,
-        //[Description("Arabic (العربية)")]
-        //ar,
+        [Description("Arabic (العربية)")]
+        ar,
         [Description("Catalan (Català)")]
         ca,
         [Description("Chinese (Simplified) (汉语)")]
