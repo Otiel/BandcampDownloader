@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Baixa només un àlbum alhora.
+Si no, tots els àlbums es descarreguen simultàniament (millor sempre que hi hagi una amplada de banda alta disponible).</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>Enganxeu els URL dels àlbums per baixar-los aquí. Podeu especificar diversos URL escrivint un URL per línia.
+
+Un URL de Bandcamp sembla: http://[artist].bandcamp.com/album/[album] o http://[artist].bandcamp.com/track/[track]
+Enganxeu les pàgines d'artista: http://[artist].bandcamp.com i marqueu "☑ Baixa discografia de l'artista" per baixar tots els seus àlbums.</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>Actualitzar</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>Restableix la configuració als valors predeterminats</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Converteix la portada a JPG amb una compressió de 90 (excel·lent compensació entre mida i qualitat).</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>Canvia la mida de la portada a l'amplada/alçada màxima especificada.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>Obrir la configuració</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>Consulta l'adreça següent en iniciar l'aplicació:</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>Baixar la caràtula a la carpeta de l'àlbum.</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Modifica cada etiqueta tal com s'especifica a continuació.
+
+Si no, totes les etiquetes no canvien, equivalent a la configuració de "No modificar" per a cada etiqueta.</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>Podeu utilitzar marcadors de posició per personalitzar la carpeta de baixada en funció de l'àlbum:
+- {artist} serà substituït per l'artista de l'àlbum
+- {album} se substituirà pel nom de l'àlbum
+- {year}, {month} i {day} se substituiran per la data de llançament de l'àlbum</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>Desar la portada a les etiquetes de la pista.</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>Mostrar més informació al registre.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>Actualment hi ha descàrregues actives. Esteu segur que voleu tancar l'aplicació i aturar totes les descàrregues?</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>Restableix la configuració</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>Voleu restablir tota la configuració als seus valors predeterminats?</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Podeu utilitzar marcadors de posició per personalitzar el nom del fitxer:
+- {artist} serà substituït per l'artista de l'àlbum
+- {album} se substituirà pel nom de l'àlbum
+- {year}, {month} i {day} se substituiran per la data de llançament de l'àlbum</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Quan es baixa una pista, si el mateix fitxer (nom) ja existeix, es contrastarà amb la pista per descarregar.
+Si la mida dels dos fitxers és inferior a aquest valor (en percentatge), la descàrrega de la pista es saltarà.
+Establiu aquest valor a 0 per tal de baixar sempre pistes, encara que ja existeixin al disc.
+
+Valor recomanat = 5</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Nombre màxim d'intents realitzats per descarregar una pista si falla.
+Després d'arribar a aquest número (per a cada pista), la descàrrega de la pista es saltarà.
+
+Valor recomanat = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>S'utilitza per controlar el mecanisme de retrocés exponencial.
+Després de cada error de descàrrega d'una pista, BandcampDownloader pot esperar un temps específic abans de tornar-ho a provar
+per descarregar la pista per evitar pessigolles al filtre anti-spam de Bandcamp.
+La fórmula utilitzada per calcular el temps d'espera abans de tornar a provar una baixada és la següent:
+temps = temps de reutilització * (exponent ^ recompte d'intents)
+
+Valor recomanat = 0,2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>S'utilitza per controlar el mecanisme de retrocés exponencial.
+Després de cada error de descàrrega d'una pista, BandcampDownloader pot esperar un temps específic abans de tornar-ho a provar
+per descarregar la pista per evitar pessigolles al filtre anti-spam de Bandcamp.
+La fórmula utilitzada per calcular el temps d'espera abans de tornar a provar una baixada és la següent:
+temps = temps de reutilització * (exponent ^ recompte d'intents)
+
+Valor recomanat = 4</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Podeu utilitzar marcadors de posició per personalitzar el nom del fitxer:
+- {artist} serà substituït per l'artista de l'àlbum
+- {title} se substituirà pel nom de la pista
+- {tracknum} es substituirà pel número de pista
+- {album} se substituirà pel nom de l'àlbum
+- {year}, {month} i {day} se substituiran per la data de llançament de l'àlbum</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>Podeu utilitzar marcadors de posició per personalitzar el nom del fitxer:
+- {artist} serà substituït per l'artista de l'àlbum
+- {album} se substituirà pel nom de l'àlbum
+- {year}, {month} i {day} se substituiran per la data de llançament de l'àlbum</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Utilitzeu aquesta opció si el vostre trànsit HTTPS a Bandcamp està bloquejat.</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>Format de nom de fitxer</value>
+  </data>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>Cerca noves actualitzacions</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>Configuració</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>Explora la carpeta</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>Desar</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>Cancel·lar</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>Veure registre de canvis</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>Comprovar actualitzacions a l'inici</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>Convertir a JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>Convertir a JPG</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>Converteix la portada a JPG amb una compressió de 90 (excel·lent compensació entre mida i qualitat).</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>Canvia la mida de la portada a l'amplada/alçada màxima especificada.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>Descarregar la discografia de l'artista</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>Crea un fitxer de pista d'àlbum per a cada àlbum descarregat.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>Descarregar tota la discografia de l'artista.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>Utilitzar el format estès (només per a M3U)</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
+    <value>Descarregar un àlbum alhora</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>Indicar el tamany del fitxer abans de descarregar pistes</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Llistes de reproducció M3U en format estès (directives precedides pel caràcter #).</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>Recupera la mida del fitxer per mostrar el progrés precís.
+Si no, s'estalvia una mica d'amplada de banda/temps.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>Mostrar registres detallats</value>
+  </data>
+  <data name="folderBrowserDialogDescription" xml:space="preserve">
+    <value>Selecciona la carpeta per desar els àlbums</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>Canvieu aquests paràmetres sota el vostre propi risc.</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>Nom de l'àlbum</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>Artista</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>Restableix la configuració</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>Registre de canvis</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>Registre de canvis</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>Comentaris</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>Mida màxima (px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>Mida màxima (px)</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>Temps d'espera per reintentar-ho</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Exponent per reintentar-ho</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>Xarxa</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>Llista de reproducció</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>Nomenclatura i etiquetes</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>Lletra</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>Format de nom de fitxer</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>Format de Llista de reproducció</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>Nova versió disponible</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>Lloc web</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>Any de llançament de l'àlbum</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>Cancel·lar totes les baixades?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>No s'ha pogut obrir l'enllaç següent:
+{0}</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>Configuració manual</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>Cap</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>S'ha produït un error no gestionat. L'aplicació es tancarà ara.
+
+Obriu un problema nou amb el contingut del vostre fitxer de registre activat a
+{0}</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>Desar com</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>No modificar</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>No modificar</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>Esborrar etiquetes</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>Historial de llançaments</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>Ajuda a traduir</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>Fosc</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>Clar</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Emprar HTTP en comptes d'HTTPS</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>Descarrega la darrera versió</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>Cancel·lar</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>Esborrar etiquetes</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>Desar etiquetes</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>Descarregar</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>Informar d'un error</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>Limitar amplada/alçada màxima</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>Crea una llista de reproducció per a cada àlbum</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>Desa a la carpeta</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>Limitar amplada/alçada màxima</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>Reproduir sons de notificacions</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>Modificar les etiquetes de les pistes (ID3)</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>Artista de l'àlbum</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>Desar en etiquetes</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>Diferència de mida de fitxer permesa (%)</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>So de notificació per a les baixades acabades.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>Tancar aplicació</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>Desar els àlbums a</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>Art de la portada</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>Versió actual:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>Màxim d'intents de baixada</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>Llenguatge</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>Format de nom de fitxer:</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>Descàrregues</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>HTTP(S) proxy</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>Versió</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>No s'ha pogut baixar el registre de canvis de {0}</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>Configuració avançada</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>Alguns paràmetres no es poden canviar mentre es baixen pistes.</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>Número de pista</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>Títol</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(el fitxer de registre sempre és detallat)</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>No s'han pogut comprovar si hi ha actualitzacions</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>S'ha produït un error en comprovar si hi ha actualitzacions. Si us plau, torna-ho a provar més tard.</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>Ja tens la darrera versió ({0}).</value>
+  </data>
+</root>

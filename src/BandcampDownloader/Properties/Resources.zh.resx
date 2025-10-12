@@ -367,13 +367,13 @@
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>手动设置代理</value>
+    <value>手动设置 (M)</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>不使用代理</value>
+    <value>不使用 (N)</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>使用系统设置的代理</value>
+    <value>使用系统设置的代理 (S)</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>另存为</value>
@@ -473,5 +473,14 @@ Bandcamp的链接如下所示：http://[艺术家名称].bandcamp.com/album/[alb
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>更新</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>用HTTP，不用HTTPS</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>代理</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>如果连接Bandcamp的HTTPS流量阻塞了，请启用本选项。</value>
   </data>
 </root>

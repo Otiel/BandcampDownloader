@@ -214,9 +214,9 @@
     <value>_ID3-Tags bearbeiten</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Ändert jedes Schlagwort wie unten angegeben.
+    <value>Ändert jeden Tag wie unten angegeben.
 
-Wenn nicht, sind alle Schlagworte unverändert, was der Einstellung „Nicht ändern“ für jedes Schlagwort entspricht.</value>
+Wenn nicht, bleiben alle Tags unverändert, was der Einstellung „Nicht ändern“ für jeden Tag entspricht.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>Nur ein Album gleichzeitig _herunterladen</value>
@@ -239,10 +239,10 @@ Wenn nicht, wird etwas Bandbreite/Zeit eingespart.</value>
     <value>Lädt Grafiken von Covern in den Albumordner herunter.</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
-    <value>Als _Schlagwort speichern</value>
+    <value>In _Tags speichern</value>
   </data>
   <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
-    <value>Speichert Cover in den Titel-Schlagwörter.</value>
+    <value>Speichert Coverbild in den Tags.</value>
   </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>Ausführliches _Protokoll anzeigen</value>
@@ -341,7 +341,7 @@ Wenn nicht, wird etwas Bandbreite/Zeit eingespart.</value>
     <value>Wiedergabeliste</value>
   </data>
   <data name="labelListBoxItemTags" xml:space="preserve">
-    <value>Benennung und Schlagwörter</value>
+    <value>Benennung und Tags</value>
   </data>
   <data name="labelLyrics" xml:space="preserve">
     <value>Son_gtexte</value>
@@ -426,13 +426,13 @@ Bitte öffnen Sie eine neue Anfrage mit dem Inhalt Ihrer Protokolldatei unter
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Manuelle Proxy-Einstellungen</value>
+    <value>_Manuelle Konfiguration</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Kein Proxy</value>
+    <value>_Kein</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>Proxy des S_ystems verwenden</value>
+    <value>S_ystem</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Speichern als</value>
@@ -447,16 +447,16 @@ Bitte öffnen Sie eine neue Anfrage mit dem Inhalt Ihrer Protokolldatei unter
     <value>Nicht ändern</value>
   </data>
   <data name="TagEditAction_Empty" xml:space="preserve">
-    <value>Schlagwort entfernen</value>
+    <value>Tag leeren</value>
   </data>
   <data name="TagEditAction_Modify" xml:space="preserve">
-    <value>Im Schlagwort speichern</value>
+    <value>Im Tag speichern</value>
   </data>
   <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
     <value>Nicht ändern</value>
   </data>
   <data name="TagRemoveAction_Empty" xml:space="preserve">
-    <value>Schlagwort entfernen</value>
+    <value>Tag leeren</value>
   </data>
   <data name="textBlockReleasesWebsite" xml:space="preserve">
     <value>Versionsverlauf</value>
@@ -533,5 +533,14 @@ herunterzuladen.</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualisierung</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>HTTP statt HTTPS verwenden</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Verwenden Sie diese Option, falls Ihre HTTPS-Verbindung zu Bandcamp blockiert wird.</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Proxy</value>
   </data>
 </root>

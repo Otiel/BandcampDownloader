@@ -240,13 +240,13 @@ Liitä artistin sivut: http://[artisti].bandcamp.com ja valitse "☑ Tallenna ar
     <value>Julkaisuhistoria</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>J_ärjestelmän välityspalvelin</value>
+    <value>_Järjestelmä</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Ei välityspalvelinta</value>
+    <value>_ Ei yhtään</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Manuaalinen välityspalvelimen määrittely</value>
+    <value>_Manuaalinen määrittely</value>
   </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>Sinulla on jo uusin versio ({0}).</value>
@@ -475,5 +475,14 @@ Liitä artistin sivut: http://[artisti].bandcamp.com ja valitse "☑ Tallenna ar
   </data>
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Käytä tätä vaihtoehtoa, jos HTTPS-liikenne Bandcampille on estetty.</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Käytä HTTP:tä HTTPS:n sijaan</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Välityspalvelin</value>
   </data>
 </root>

@@ -149,16 +149,15 @@
     <value>Użyj formatu rozszerzonego [#EXTM3U] (tylko w przypadku M3U)</value>
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
-    <value>Przy tworzeniu listy odtwarzania M3U zostanie użyty rozszerzony format (#EXTM3U).</value>
+    <value>Playlisty M3U w rozszerzonymi formacie (odnosi się do nich znak #EXTM3U).</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modyfikuj tagi utworów (ID3)</value>
   </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
-    <value>Jeśli zaznaczone, każdy tag zostanie zmodyfikowany w sposób określony poniżej.
+    <value>Modyfikuje każdy tag w sposób określony poniżej.
 
-Jeśli opcja ta nie jest zaznaczona, wszystkie poniższe ustawienia zostaną zignorowane, w pliku pozostaną oryginalne tagi.
-Jest to równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
+W przeciwnym wypadku, wszystkie tagi pozostają niezmienione, co jest równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
   </data>
   <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
     <value>_Pobierz jeden album na raz</value>
@@ -365,13 +364,13 @@ Proszę otworzyć nowy problem na GitHubie z plikiem logów.
 {0}</value>
   </data>
   <data name="radioButtonManualProxy" xml:space="preserve">
-    <value>_Ręczna konfiguracja serwera proxy</value>
+    <value>_Ręczna konfiguracja</value>
   </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
-    <value>_Bez serwera proxy</value>
+    <value>_Brak</value>
   </data>
   <data name="radioButtonSystemProxy" xml:space="preserve">
-    <value>_Systemowy serwer proxy</value>
+    <value>_Systemowa</value>
   </data>
   <data name="saveFileDialogTitle" xml:space="preserve">
     <value>Zapisz jako</value>
@@ -455,5 +454,35 @@ wykonawcy.</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualizacja</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Używany do kontrolowania wykładniczego mechanizmu back-off.
+Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą 
+pobrania utworu, aby uniknąć drażnienia filtra antyspamowego Bandcamp.
+Formuła używana do obliczania czasu oczekiwania przed ponowną próbą pobrania jest następująca:
+czas = czas oczekiwania * (wykładnik ^ liczba-prób)
+
+Zalecana wartość = 4</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>Serwer pośredniczący</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
+    <value>Użyj protokołu HTTP zamiast HTTPS</value>
+  </data>
+  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
+    <value>Użyj tej opcji, jeśli Twój ruch HTTPS do Bandcamp jest zablokowany.</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Używany do kontrolowania wykładniczego mechanizmu back-off.
+Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą
+pobrania utworu, aby uniknąć drażnienia filtra antyspamowego Bandcamp.
+Formuła używana do obliczania czasu oczekiwania przed ponowną próbą pobrania jest następująca:
+czas = czas oczekiwania * (wykładnik ^ liczba-prób)
+
+Zalecana wartość = 0.2</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>Spróbuj ponownie _exponent</value>
   </data>
 </root>
