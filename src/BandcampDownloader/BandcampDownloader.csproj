@@ -304,6 +304,7 @@
     <EmbeddedResource Include="Properties\Resources.hu.resx" />
     <EmbeddedResource Include="Properties\Resources.id.resx" />
     <EmbeddedResource Include="Properties\Resources.it.resx" />
+    <EmbeddedResource Include="Properties\Resources.ja.resx" />
     <EmbeddedResource Include="Properties\Resources.ko.resx" />
     <EmbeddedResource Include="Properties\Resources.nb-NO.resx" />
     <EmbeddedResource Include="Properties\Resources.nl.resx" />
