@@ -25,8 +25,8 @@ namespace BandcampDownloader
             // Existing cultures: https://dotnetfiddle.net/e1BX7M
             switch (language)
             {
-                //case Language.ar:
-                //    return new CultureInfo("ar");
+                case Language.ar:
+                    return new CultureInfo("ar");
                 case Language.ca:
                     return new CultureInfo("ca");
                 case Language.de:
@@ -43,8 +43,8 @@ namespace BandcampDownloader
                     return new CultureInfo("fr");
                 case Language.hr:
                     return new CultureInfo("hr");
-                // case Language.hu:
-                //     return new CultureInfo("hu");
+                case Language.hu:
+                    return new CultureInfo("hu");
                 case Language.id:
                     return new CultureInfo("id");
                 case Language.it:
