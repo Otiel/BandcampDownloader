@@ -51,12 +51,12 @@ namespace BandcampDownloader
                     return new CultureInfo("it");
                 // case Language.ja:
                 //     return new CultureInfo("ja");
+                //case Language.ko:
+                //    return new CultureInfo("ko");
                 case Language.nb_NO:
                     return new CultureInfo("nb-NO");
                 case Language.pl:
                     return new CultureInfo("pl");
-                //case Language.ko:
-                //    return new CultureInfo("ko");
                 case Language.nl:
                     return new CultureInfo("nl");
                 case Language.pt:
