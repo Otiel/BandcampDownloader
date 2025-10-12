@@ -12,6 +12,8 @@ namespace BandcampDownloader
         en,
         //[Description("Arabic (العربية)")]
         //ar,
+        [Description("Catalan (Català)")]
+        ca,
         [Description("Chinese (Simplified) (汉语)")]
         zh,
         [Description("Croatian (hrvatski jezik)")]
