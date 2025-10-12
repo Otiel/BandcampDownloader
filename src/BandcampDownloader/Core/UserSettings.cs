@@ -12,6 +12,8 @@ namespace BandcampDownloader
         en,
         //[Description("Arabic (العربية)")]
         //ar,
+        [Description("Catalan (Català)")]
+        ca,
         [Description("Chinese (Simplified) (汉语)")]
         zh,
         [Description("Croatian (hrvatski jezik)")]
@@ -32,6 +34,8 @@ namespace BandcampDownloader
         id,
         [Description("Italian (Italiano)")]
         it,
+        // [Description("Japanese (日本語)")]
+        // ja,
         //[Description("Korean (한국어)")]
         //ko,
         [Description("Norwegian Bokmål (Norsk Bokmål)")]
