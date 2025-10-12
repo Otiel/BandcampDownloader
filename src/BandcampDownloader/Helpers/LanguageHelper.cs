@@ -43,8 +43,8 @@ namespace BandcampDownloader
                     return new CultureInfo("fr");
                 case Language.hr:
                     return new CultureInfo("hr");
-                // case Language.hu:
-                //     return new CultureInfo("hu");
+                case Language.hu:
+                    return new CultureInfo("hu");
                 case Language.id:
                     return new CultureInfo("id");
                 case Language.it:
