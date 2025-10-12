@@ -126,7 +126,7 @@
     <value>_Beállítások visszaállítása</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékükre?</value>
+    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékre?</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_Megtekint</value>
@@ -404,5 +404,85 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
   </data>
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>Kritikus hiba történt. A program most bezár.
+
+Kérjük, a log fájl tartalmával jelezze ezt részünkre a következő linken („New issue” – csak angol nyelven elérhető):
+{0}</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>A pontos előrehaladás jelzése érdekében a fájlméret meghatározása letöltés előtt.
+Ha nincs bekapcsolva, csekély mennyiségű sávszélesség/idő megtakarítható.</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>Az alább megadható beállítások szerint módosítja a címkéket.
+
+Ha nincs bejelölve, minden címke változatlan marad; ugyanezt éri el azzal is, ha a "Ne módosítsa" beállításokat adja meg.</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>Bővített formátumú M3U-lejátszási listák használata (az irányelveket a # [kettőskereszt] karakter előzi meg).</value>
+  </data>
+  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
+    <value>Egyszerre csak egy albumot tölt le.
+
+Ha nincs bejelölve, minden album egyszerre kerül letöltésre (nagyobb sávszélesség esetén célszerű kikapcsolva hagyni).</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
+– az {artist} helyére az album előadójának a neve kerül;
+– a {title} helyére a zeneszám címe kerül;
+– a {tracknum} helyére a zeneszám sorszáma kerül;
+– az {album} helyére az album neve kerül;
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
+– az {artist} helyére az album előadójának a neve kerül;
+– az {album} helyére az album neve kerül;
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>Sikertelen letöltés esetén az újrapróbálkozások maximális száma.
+Ha ezt a számot eléri a program (zeneszámonként), az adott zeneszám nem kerül letöltésre.
+
+Ajánlott érték = 7</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>Egy zeneszám letöltése előtt a célmappa azonos nevű fájlja (ha létezik ilyen) összehasonlításra kerül a letöltendő fájllal.
+Ha a két fájl mérete kevesebb. mint ez a (százalékos) érték, a zeneszám nem kerül letöltésre.
+Állítsa ezt az értéket 0-ra, ha minden esetben szeretné letölteni a zeneszámokat; még akkor is, ha már léteznek a célmappában.
+
+Ajánlott érték = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
+– az {artist} helyére az album előadójának a neve kerül;
+– az {album} helyére az album neve kerül;
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>Ezzel testre szabható az exponenciális újrapróbálkozási szerkezet.
+Minden egyes sikertelen zeneszámletöltés után a program képes bizonyos ideig várakozni, mielőtt újrapróbálkozna;
+ezzel elkerülhető a Bandcamp anti-spam filter figyelmének felkeltése.
+A következő képlet alapján kerül kiszámításra a várakozási idő:
+idő = újrapróbálkozási idő * (exponens ^ próbálkozások száma)
+
+Ajánlott érték = 0.2 (Figyelem: A tizedesvessző helyett pontot [.] használjon!)</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>Ezzel testre szabható az exponenciális újrapróbálkozási szerkezet.
+Minden egyes sikertelen zeneszámletöltés után a program képes bizonyos ideig várakozni, mielőtt újrapróbálkozna;
+ezzel elkerülhető a Bandcamp anti-spam filter figyelmének felkeltése.
+A következő képlet alapján kerül kiszámításra a várakozási idő:
+idő = újrapróbálkozási idő * (exponens ^ próbálkozások száma)
+
+Ajánlott érték = 4</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
+– az {artist} helyére az album előadójának a neve kerül;
+– az {album} helyére az album neve kerül;
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül.</value>
   </data>
 </root>
