@@ -95,7 +95,7 @@
     <value>_Zobacz zmiany</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Nie można pobrać  pliku zmian</value>
+    <value>Nie można pobrać pliku zmian</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Sprawdź uaktualnienia podczas startu</value>
@@ -444,10 +444,8 @@ Zalecana wartość = 7</value>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Wklej tu linki albumów do pobrania. Możesz podać linki do wielu albumów jednocześnie, każdy w kolejnej linii.
 
-Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub 
-http://[wykonawca].bandcamp.com/track/[utwór]
-Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy 
-wykonawcy.</value>
+Link strony z Bandcampa wygląda następująco: http://[wykonawca].bandcamp.com/album/[album] lub http://[wykonawca].bandcamp.com/track/[utwór]
+Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i zaznacz "☑ Pobierz całą dyskografię" aby pobrać wszystkie albumy wykonawcy.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Ustawienia</value>
