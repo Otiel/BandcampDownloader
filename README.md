@@ -37,7 +37,7 @@ See the [changelog](CHANGELOG.md).
 
 You can help translating the application by going to the [Weblate project](https://hosted.weblate.org/engage/bandcampdownloader). See the [documentation](docs/help-translate.md) for more info.
 
-[![Translation status](https://hosted.weblate.org/widgets/bandcampdownloader/-/287x66-white.png)](https://hosted.weblate.org/engage/bandcampdownloader)
+[![Translation status](https://hosted.weblate.org/widget/bandcampdownloader/bandcampdownloader/multi-auto.svg)](https://hosted.weblate.org/engage/bandcampdownloader/)
 
 ## License
 
