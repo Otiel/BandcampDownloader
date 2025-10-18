@@ -10,5 +10,5 @@ BandcampDownloader relies on a number of open-source libraries, all listed below
 * [`NLog`](https://github.com/NLog/NLog): used to log events.
 * [`PlaylistsNET`](https://github.com/tmk907/PlaylistsNET): used to create playlists.
 * [`TagLib#`](https://github.com/mono/taglib-sharp): used to save ID3 tags in MP3 files.
-* [`WPFLocalizationExtension`](https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension): used to manage the localization.
+* [`WPFLocalizeExtension`](https://github.com/XAMLMarkupExtensions/WPFLocalizeExtension): used to manage the localization.
 * [`WpfMessageBox`](https://github.com/Otiel/WpfMessageBox): used to display message boxes.
