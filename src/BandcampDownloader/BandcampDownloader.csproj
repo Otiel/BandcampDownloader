@@ -1,331 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F6E97E00-B958-4745-974E-14C6A72E5D03}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BandcampDownloader</RootNamespace>
-    <AssemblyName>BandcampDownloader</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>false</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup>
+    <AppendPlatformToOutputPath>false</AppendPlatformToOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ApplicationIcon>Resources\Cloud.ico</ApplicationIcon>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="Core\DownloadManager.cs" />
-    <Compile Include="Core\LogArgs.cs" />
-    <Compile Include="Helpers\LanguageHelper.cs" />
-    <Compile Include="Helpers\RichTextBoxHelper.cs" />
-    <Compile Include="Helpers\UrlHelper.cs" />
-    <Compile Include="Helpers\SystemVersionHelper.cs" />
-    <Compile Include="Helpers\ThemeHelper.cs" />
-    <Compile Include="Model\FileType.cs" />
-    <Compile Include="Helpers\BandcampHelper.cs" />
-    <Compile Include="Core\PlaylistCreator.cs" />
-    <Compile Include="Helpers\ProxyHelper.cs" />
-    <Compile Include="Model\Album.cs" />
-    <Compile Include="Model\TrackFile.cs" />
-    <Compile Include="Model\JSON\JsonAlbumData.cs" />
-    <Compile Include="Model\JSON\JsonTrack.cs" />
-    <Compile Include="Helpers\TagHelper.cs" />
-    <Compile Include="Helpers\UpdatesHelper.cs" />
-    <Compile Include="UI\Dialogs\Settings\IUserControlSettings.cs" />
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsAbout.xaml.cs">
-      <DependentUpon>UserControlSettingsAbout.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Update\UserControlChangelog.xaml.cs">
-      <DependentUpon>UserControlChangelog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Update\WindowUpdate.xaml.cs">
-      <DependentUpon>WindowUpdate.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Validation\DoubleRule.cs" />
-    <Compile Include="UI\Validation\Mp3ExtensionRule.cs" />
-    <Compile Include="Helpers\EnumerationExtension.cs" />
-    <Compile Include="Helpers\Exceptions.cs" />
-    <Compile Include="UI\Converters\ComparisonConverter.cs" />
-    <Compile Include="UI\Converters\DoubleToPercentConverter.cs" />
-    <Compile Include="UI\Converters\BooleanAndConverter.cs" />
-    <Compile Include="UI\Converters\InverseBooleanConverter.cs" />
-    <Compile Include="UI\Converters\InverseBooleanToVisibilityConverter.cs" />
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsAdvanced.xaml.cs">
-      <DependentUpon>UserControlSettingsAdvanced.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsCoverArt.xaml.cs">
-      <DependentUpon>UserControlSettingsCoverArt.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsDownloads.xaml.cs">
-      <DependentUpon>UserControlSettingsDownloads.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsGeneral.xaml.cs">
-      <DependentUpon>UserControlSettingsGeneral.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsPlaylist.xaml.cs">
-      <DependentUpon>UserControlSettingsPlaylist.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsNetwork.xaml.cs">
-      <DependentUpon>UserControlSettingsNetwork.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\UserControlSettingsTags.xaml.cs">
-      <DependentUpon>UserControlSettingsTags.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model\JSON\JsonAlbum.cs" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\JSON\JsonMp3File.cs" />
-    <Compile Include="Model\Track.cs" />
-    <Compile Include="Helpers\LogHelper.cs" />
-    <Compile Include="Core\Constants.cs" />
-    <Compile Include="Core\LogType.cs" />
-    <Compile Include="Helpers\FileHelper.cs" />
-    <Compile Include="Core\UserSettings.cs" />
-    <Compile Include="UI\Dialogs\WindowMain.xaml.cs">
-      <DependentUpon>WindowMain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Dialogs\Settings\WindowSettings.xaml.cs">
-      <DependentUpon>WindowSettings.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Themes\DarkTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsAdvanced.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsCoverArt.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsDownloads.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsAbout.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsGeneral.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsPlaylist.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsNetwork.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\UserControlSettingsTags.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Dialogs\Update\UserControlChangelog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Dialogs\WindowMain.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Settings\WindowSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Dialogs\Update\WindowUpdate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.ar.resx" />
-    <EmbeddedResource Include="Properties\Resources.ca.resx" />
-    <EmbeddedResource Include="Properties\Resources.de.resx" />
-    <EmbeddedResource Include="Properties\Resources.eo.resx" />
-    <EmbeddedResource Include="Properties\Resources.es.resx" />
-    <EmbeddedResource Include="Properties\Resources.fi.resx" />
-    <EmbeddedResource Include="Properties\Resources.fr.resx" />
-    <EmbeddedResource Include="Properties\Resources.hr.resx" />
-    <EmbeddedResource Include="Properties\Resources.hu.resx" />
-    <EmbeddedResource Include="Properties\Resources.id.resx" />
-    <EmbeddedResource Include="Properties\Resources.it.resx" />
-    <EmbeddedResource Include="Properties\Resources.ja.resx" />
-    <EmbeddedResource Include="Properties\Resources.ko.resx" />
-    <EmbeddedResource Include="Properties\Resources.nb-NO.resx" />
-    <EmbeddedResource Include="Properties\Resources.nl.resx" />
-    <EmbeddedResource Include="Properties\Resources.pl.resx" />
-    <EmbeddedResource Include="Properties\Resources.pt.resx" />
-    <EmbeddedResource Include="Properties\Resources.pt-BR.resx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.ru.resx" />
-    <EmbeddedResource Include="Properties\Resources.sv.resx" />
-    <EmbeddedResource Include="Properties\Resources.tr.resx" />
-    <EmbeddedResource Include="Properties\Resources.uk.resx" />
-    <EmbeddedResource Include="Properties\Resources.vi.resx" />
-    <EmbeddedResource Include="Properties\Resources.zh.resx" />
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Cloud.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Cloud.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ArrowCircle225Left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\InformationSmallWhite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ExclamationSmall.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\CloudSmall.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ApplicationBlue.png" />
-    <Resource Include="Resources\DocumentMusicPlaylist.png" />
-    <Resource Include="Resources\DriveDownload.png" />
-    <Resource Include="Resources\Gear.png" />
-    <Resource Include="Resources\GlobeNetwork.png" />
-    <Resource Include="Resources\Information.png" />
-    <Resource Include="Resources\Picture.png" />
-    <Resource Include="Resources\Tags.png" />
-  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="4.4.0" />
     <PackageReference Include="Config.Net" Version="4.13.7" />
-    <PackageReference Include="Costura.Fody" Version="3.3.2" />
-    <PackageReference Include="Fody" Version="3.3.5">
+    <PackageReference Include="Costura.Fody" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Fody" Version="6.9.3">
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.7" />
     <PackageReference Include="ImageResizer" Version="4.2.5" />
@@ -340,12 +37,11 @@
     <PackageReference Include="WpfMessageBox" Version="1.2.0" />
     <PackageReference Include="XAMLMarkupExtensions" Version="1.5.1" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <Content Include="Resources\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
