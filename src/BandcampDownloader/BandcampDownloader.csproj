@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="Config.Net" Version="4.13.7" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.7" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
     <PackageReference Include="ImageResizer" Version="4.2.8" />
     <PackageReference Include="Markdig.Wpf" Version="0.2.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
