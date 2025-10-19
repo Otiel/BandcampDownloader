@@ -191,9 +191,6 @@ If not, some bandwidth/time is saved.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Показывает больше информации в журнале.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Выберите папку для сохранения альбомов в</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Измените эти настройки на свой страх и риск.</value>
   </data>

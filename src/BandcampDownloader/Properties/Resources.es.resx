@@ -250,9 +250,6 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Muestra más información en el registro.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Seleccione una carpeta para guardar los álbumes</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Cambie estas configuraciones bajo su propia responsabilidad.</value>
   </data>

@@ -23,10 +23,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Config.Net" Version="4.19.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
     <PackageReference Include="ImageResizer" Version="4.2.8" />

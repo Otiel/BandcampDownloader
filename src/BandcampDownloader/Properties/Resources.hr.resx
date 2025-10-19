@@ -191,9 +191,6 @@ Ako ne, štedi se neka protočnost/vrijeme.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Prikazuje više informacija u protokolu.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Odaberi mapu za spremanje albuma</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Promijeni ove postavke na vlastitu odgovornost.</value>
   </data>

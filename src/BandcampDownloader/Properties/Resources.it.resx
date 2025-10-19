@@ -250,9 +250,6 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Se si spunta, il registro sarà piú preciso.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Scegli la cartella in cui salvare gli album</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Cambia queste impostazioni a tuo rischio e pericolo.</value>
   </data>

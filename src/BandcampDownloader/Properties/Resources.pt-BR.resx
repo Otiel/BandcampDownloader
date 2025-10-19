@@ -191,9 +191,6 @@ Se não, um pouco de uso de rede/tempo é poupado.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Mostra mais informações no log.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Selecione a pasta onde salvar os álbuns</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Altere essas configurações por sua própria conta e risco.</value>
   </data>

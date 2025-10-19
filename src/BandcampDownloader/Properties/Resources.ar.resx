@@ -367,9 +367,6 @@
   <data name="labelAllowedFileSizeDifference" xml:space="preserve">
     <value>حجم الملف المسموح به_نسبة الاختلاف(%)</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>حدد الملف لحفظ الألبومات فيه</value>
-  </data>
   <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
     <value>لديك بالفعل أحدث إصدار ({0}).</value>
   </data>

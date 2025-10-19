@@ -250,9 +250,6 @@ Uten dette kan man spare litt båndbredde/tid.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Viser mer info i loggen.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Velg mappen å lagre album i</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Endring av disse innstillingene foregår på egen risiko.</value>
   </data>

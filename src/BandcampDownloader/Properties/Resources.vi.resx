@@ -397,9 +397,6 @@ Nếu không, một số băng thông/thời gian sẽ được tiết kiệm.</
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Hiển thị thêm thông tin trong nhật ký.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Chọn thư mục để lưu các album vào</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Tự chịu rủi ro khi thay đổi các cài đặt này.</value>
   </data>

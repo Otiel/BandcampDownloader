@@ -191,9 +191,6 @@ Wydłuża pobieranie i zużywa więcej transferu (nieznacznie).</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Pokazuje rozszerzony log.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Wybierz folder, w którym chcesz zapisywać albumy</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Zmień te ustawienia na własne ryzyko.</value>
   </data>
