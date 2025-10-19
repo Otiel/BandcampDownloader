@@ -12,7 +12,7 @@
     <ApplicationIcon>Resources\Cloud.ico</ApplicationIcon>
     <PlatformTarget>x64</PlatformTarget>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     
     <VersionPrefix>1.4.1</VersionPrefix>
@@ -21,10 +21,6 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <VersionSuffix>pre$([System.DateTime]::Now.ToString("yyyyMMdd-HHmmss"))</VersionSuffix>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Config.Net" Version="4.19.0" />

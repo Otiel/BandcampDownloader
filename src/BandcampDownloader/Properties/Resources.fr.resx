@@ -250,9 +250,6 @@ Décocher cette option permet de gagner du temps.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Toutes les informations seront affichées sur le log.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Sélectionner le dossier dans lequel télécharger les albums</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Modifiez ces paramètres à vos risques et périls.</value>
   </data>

@@ -157,9 +157,6 @@ Tee tästä uusi ilmoitus ja sisällytä siihen lokitiedoston tiedot:
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Valitse nämä asetukset omalla vastuulla.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Valitse kansio, johon albumit tallennetaan</value>
-  </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Näyttää enemmän tietoa lokista.</value>
   </data>

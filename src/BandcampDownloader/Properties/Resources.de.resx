@@ -250,9 +250,6 @@ Wenn nicht, wird etwas Bandbreite/Zeit eingespart.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Zeigt weitere Informationen im Protokoll an.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Ordner auswählen, in dem Alben gespeichert werden sollen</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Änderungen folgender Einstellungen auf eigener Gefahr.</value>
   </data>

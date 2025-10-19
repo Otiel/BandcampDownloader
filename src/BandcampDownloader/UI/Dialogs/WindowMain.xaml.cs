@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shell;
 using System.Windows.Threading;
+using Microsoft.Win32;
 using NLog;
 using WpfMessageBoxLibrary;
 
@@ -67,17 +68,13 @@ namespace BandcampDownloader
 
         private void ButtonBrowse_Click(object sender, RoutedEventArgs e)
         {
-            using (var dialog = new System.Windows.Forms.FolderBrowserDialog
+            var dialog = new OpenFolderDialog();
+            var dialogResult = dialog.ShowDialog();
+            if (dialogResult is true)
             {
-                Description = Properties.Resources.folderBrowserDialogDescription
-            })
-            {
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    textBoxDownloadsPath.Text = dialog.SelectedPath + "\\{artist}\\{album}";
-                    // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
-                    textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                }
+                textBoxDownloadsPath.Text = dialog.FolderName + "\\{artist}\\{album}";
+                // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
+                textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             }
         }
 

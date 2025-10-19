@@ -191,9 +191,6 @@
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>在日志框中显示更多信息。</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>选择要保存专辑的文件夹</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>请慎重更改这些设置。</value>
   </data>

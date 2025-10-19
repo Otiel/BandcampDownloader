@@ -242,9 +242,6 @@ Si no, s'estalvia una mica d'amplada de banda/temps.</value>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>Mostrar registres detallats</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Selecciona la carpeta per desar els àlbums</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Canvieu aquests paràmetres sota el vostre propi risc.</value>
   </data>

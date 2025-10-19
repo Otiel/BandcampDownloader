@@ -98,9 +98,6 @@
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Ändra dessa inställningar på din egen risk.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Välj en mapp att spara album i</value>
-  </data>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Visar mer information i loggen.</value>
   </data>

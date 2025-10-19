@@ -191,9 +191,6 @@ Se não, alguma largura de banda/hora é salva.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Mostra mais informações no registo.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Selecione a pasta para salvar os álbuns</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Altere estas configurações por sua conta e risco.</value>
   </data>

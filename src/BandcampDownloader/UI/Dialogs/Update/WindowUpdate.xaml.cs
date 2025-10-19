@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Net;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Microsoft.Win32;
 
 namespace BandcampDownloader
 {
@@ -29,7 +29,8 @@ namespace BandcampDownloader
                 Filter = "Archive|*.zip",
                 Title = Properties.Resources.saveFileDialogTitle,
             };
-            if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            var dialogResult = dialog.ShowDialog();
+            if (dialogResult is false)
             {
                 return;
             }

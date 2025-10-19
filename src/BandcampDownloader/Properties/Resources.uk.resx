@@ -250,9 +250,6 @@
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Показує більше інформації в журналі.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Оберіть теку для збереження альбомів у</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Змініть ці налаштування на свій страх і ризик.</value>
   </data>

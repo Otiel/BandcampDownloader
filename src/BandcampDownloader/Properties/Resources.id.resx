@@ -191,9 +191,6 @@ Jika tidak, beberapa bandwidth / waktu disimpan.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Lihat lebih banyak info di log.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Pilih folder untuk menyimpan album</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Ubah pengaturan ini dengan risiko ditanggung sendiri.</value>
   </data>

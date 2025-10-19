@@ -191,9 +191,6 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Günlükte daha fazla bilgi gösterir.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Albümleri kaydetmek için klasör seçin</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Bu ayarları değiştirmek kendi sorumluluğunuzdadır.</value>
   </data>

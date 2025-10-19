@@ -250,9 +250,6 @@ If not, some bandwidth/time is saved.</value>
   <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
     <value>Shows more info in the log.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Select folder to save albums in</value>
-  </data>
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Change these settings at your own risk.</value>
   </data>

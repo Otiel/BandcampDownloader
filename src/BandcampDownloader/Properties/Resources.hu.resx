@@ -323,9 +323,6 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
   <data name="labelAdvancedSettingsWarning" xml:space="preserve">
     <value>Ezeket a beállításokat csak saját felelősségére módosítsa.</value>
   </data>
-  <data name="folderBrowserDialogDescription" xml:space="preserve">
-    <value>Jelölje ki az albumok mentési mappáját</value>
-  </data>
   <data name="checkBoxVerboseLog" xml:space="preserve">
     <value>_Részletes állapotjelentés mutatása</value>
   </data>
