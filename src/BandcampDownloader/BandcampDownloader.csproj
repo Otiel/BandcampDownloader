@@ -28,7 +28,7 @@
     <PackageReference Include="ImageResizer" Version="4.2.8" />
     <PackageReference Include="Markdig.Wpf" Version="0.5.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="NLog" Version="4.6.5" />
+    <PackageReference Include="NLog" Version="6.0.5" />
     <PackageReference Include="PlaylistsNET" Version="1.4.1" />
     <PackageReference Include="taglib" Version="2.1.0" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
