@@ -27,19 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Castle.Core" Version="4.4.0" />
-    <PackageReference Include="Config.Net" Version="4.13.7" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.7" />
-    <PackageReference Include="ImageResizer" Version="4.2.5" />
-    <PackageReference Include="Markdig" Version="0.16.0" />
-    <PackageReference Include="Markdig.Wpf" Version="0.2.8" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Config.Net" Version="4.19.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+    <PackageReference Include="ImageResizer" Version="4.2.8" />
+    <PackageReference Include="Markdig.Wpf" Version="0.5.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="NLog" Version="4.6.5" />
-    <PackageReference Include="PlaylistsNET" Version="1.0.4" />
+    <PackageReference Include="PlaylistsNET" Version="1.4.1" />
     <PackageReference Include="taglib" Version="2.1.0" />
-    <PackageReference Include="WPFLocalizeExtension" Version="3.3.1" />
+    <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
     <PackageReference Include="WpfMessageBox" Version="1.2.0" />
-    <PackageReference Include="XAMLMarkupExtensions" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>
