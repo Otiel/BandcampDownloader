@@ -17,7 +17,7 @@ internal static class UpdatesHelper
         // Retrieve the redirect page from the GitHub latest release page
         var request = HttpWebRequest.CreateHttp(Constants.UrlLatestRelease);
         request.AllowAutoRedirect = false;
-        var redirectPage = "";
+        string redirectPage;
         try
         {
             using (var response = await request.GetResponseAsync())

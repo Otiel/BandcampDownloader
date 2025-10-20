@@ -472,7 +472,7 @@ internal sealed class DownloadManager
             LogAdded?.Invoke(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
             // Retrieve URL HTML source code
-            var htmlCode = "";
+            string htmlCode;
             using (var webClient = new WebClient())
             {
                 webClient.Encoding = Encoding.UTF8;
@@ -537,7 +537,7 @@ internal sealed class DownloadManager
             var artistMusicPage = UrlHelper.GetHttpUrlIfNeeded(artistPage + "/music");
 
             // Retrieve artist "music" page HTML source code
-            var htmlCode = "";
+            string htmlCode;
             using (var webClient = new WebClient())
             {
                 webClient.Encoding = Encoding.UTF8;
