@@ -715,7 +715,7 @@
                 </Track.IncreaseRepeatButton>
             </Track>
             <RepeatButton
-                Grid.Row="3"
+                Grid.Row="2"
                 Height="16"
                 Command="ScrollBar.LineDownCommand"
                 Content="M 0 0 L 4 4 L 8 0"
@@ -752,7 +752,7 @@
                 </Track.IncreaseRepeatButton>
             </Track>
             <RepeatButton
-                Grid.Column="3"
+                Grid.Column="2"
                 Width="16"
                 Command="ScrollBar.LineRightCommand"
                 Content="M 0 0 L 4 4 L 0 8"
