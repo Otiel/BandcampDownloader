@@ -82,7 +82,7 @@ internal sealed partial class WindowMain
         {
             textBoxDownloadsPath.Text = dialog.FolderName + "\\{artist}\\{album}";
             // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
-            textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
         }
     }
 
@@ -184,7 +184,7 @@ internal sealed partial class WindowMain
         }
 
         var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion.CompareTo(latestVersion) < 0)
+        if (currentVersion!.CompareTo(latestVersion) < 0)
         {
             // The latest version is newer than the current one
             labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;

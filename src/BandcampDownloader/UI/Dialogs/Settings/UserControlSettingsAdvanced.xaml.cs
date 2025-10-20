@@ -42,6 +42,6 @@ internal sealed partial class UserControlSettingsAdvanced : IUserControlSettings
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        ((TextBox)sender).GetBindingExpression(TextBox.TextProperty).ValidateWithoutUpdate();
+        ((TextBox)sender).GetBindingExpression(TextBox.TextProperty)?.ValidateWithoutUpdate();
     }
 }

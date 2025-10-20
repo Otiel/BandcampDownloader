@@ -66,7 +66,7 @@ internal sealed partial class WindowUpdate
         }
 
         var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion.CompareTo(_latestVersion) < 0)
+        if (currentVersion!.CompareTo(_latestVersion) < 0)
         {
             // The latest version is newer than the current one
             buttonDownloadUpdate.IsEnabled = true;

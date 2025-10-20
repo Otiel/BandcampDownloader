@@ -7,7 +7,7 @@ internal sealed class DoubleRule : ValidationRule
 {
     public override ValidationResult Validate(object value, CultureInfo cultureInfo)
     {
-        if (double.TryParse(value.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out _))
+        if (double.TryParse(value?.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out _))
         {
             return new ValidationResult(true, null);
         }

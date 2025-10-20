@@ -156,7 +156,7 @@ internal sealed class DownloadManager
         }
         catch
         {
-            LogAdded(this, new LogArgs("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose", LogType.Error));
+            LogAdded?.Invoke(this, new LogArgs("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose", LogType.Error));
             return;
         }
 
@@ -177,7 +177,7 @@ internal sealed class DownloadManager
         if (App.UserSettings.CreatePlaylist && !_cancelDownloads)
         {
             new PlaylistCreator(album).SavePlaylistToFile();
-            LogAdded(this, new LogArgs($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess));
+            LogAdded?.Invoke(this, new LogArgs($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess));
         }
 
         if (!_cancelDownloads)
@@ -185,11 +185,11 @@ internal sealed class DownloadManager
             // Tasks have not been aborted
             if (tracksDownloaded.All(x => x))
             {
-                LogAdded(this, new LogArgs($"Successfully downloaded album \"{album.Title}\"", LogType.Success));
+                LogAdded?.Invoke(this, new LogArgs($"Successfully downloaded album \"{album.Title}\"", LogType.Success));
             }
             else
             {
-                LogAdded(this, new LogArgs($"Finished downloading album \"{album.Title}\". Some tracks were not downloaded", LogType.Success));
+                LogAdded?.Invoke(this, new LogArgs($"Finished downloading album \"{album.Title}\". Some tracks were not downloaded", LogType.Success));
             }
         }
     }
@@ -203,7 +203,7 @@ internal sealed class DownloadManager
     private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Picture artwork)
     {
         var trackMp3Url = UrlHelper.GetHttpUrlIfNeeded(track.Mp3Url);
-        LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+        LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
 
         var tries = 0;
         var trackDownloaded = false;
@@ -215,7 +215,7 @@ internal sealed class DownloadManager
             if (currentFile.Size > length - currentFile.Size * App.UserSettings.AllowedFileSizeDifference &&
                 currentFile.Size < length + currentFile.Size * App.UserSettings.AllowedFileSizeDifference)
             {
-                LogAdded(this, new LogArgs($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess));
+                LogAdded?.Invoke(this, new LogArgs($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess));
                 return false;
             }
         }
@@ -241,10 +241,15 @@ internal sealed class DownloadManager
                 // Start download
                 try
                 {
-                    LogAdded(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+                    if (track.Path == null)
+                    {
+                        throw new InvalidOperationException("Track path is null");
+                    }
+
+                    LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
                     await webClient.DownloadFileTaskAsync(trackMp3Url, track.Path);
                     trackDownloaded = true;
-                    LogAdded(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
                 }
                 catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
                 {
@@ -261,11 +266,11 @@ internal sealed class DownloadManager
                     // Connection closed probably because no response from Bandcamp
                     if (tries + 1 < App.UserSettings.DownloadMaxTries)
                     {
-                        LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
                     }
                     else
                     {
-                        LogAdded(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
                     }
                 }
 
@@ -284,7 +289,7 @@ internal sealed class DownloadManager
                         tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
                         tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
                         tagFile.Save();
-                        LogAdded(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
+                        LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                     }
 
                     if (App.UserSettings.SaveCoverArtInTags && artwork != null)
@@ -293,12 +298,12 @@ internal sealed class DownloadManager
                         var tagFile = TagLib.File.Create(track.Path);
                         tagFile.Tag.Pictures = new IPicture[1] { artwork };
                         tagFile.Save();
-                        LogAdded(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
+                        LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                     }
 
                     // Note the file as downloaded
                     currentFile.Downloaded = true;
-                    LogAdded(this, new LogArgs($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess));
                 }
 
                 tries++;
@@ -347,7 +352,7 @@ internal sealed class DownloadManager
                 var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
                 try
                 {
-                    LogAdded(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
                     await webClient.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
                     artworkDownloaded = true;
                 }
@@ -366,11 +371,11 @@ internal sealed class DownloadManager
                     // Connection closed probably because no response from Bandcamp
                     if (tries < App.UserSettings.DownloadMaxTries)
                     {
-                        LogAdded(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
                     }
                     else
                     {
-                        LogAdded(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
                     }
                 }
 
@@ -440,7 +445,7 @@ internal sealed class DownloadManager
 
                     // Note the file as downloaded
                     currentFile.Downloaded = true;
-                    LogAdded(this, new LogArgs($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess));
                 }
 
                 tries++;
@@ -464,7 +469,7 @@ internal sealed class DownloadManager
 
         foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
         {
-            LogAdded(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
+            LogAdded?.Invoke(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
             // Retrieve URL HTML source code
             var htmlCode = "";
@@ -480,12 +485,12 @@ internal sealed class DownloadManager
 
                 try
                 {
-                    LogAdded(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                     htmlCode = await webClient.DownloadStringTaskAsync(url);
                 }
                 catch
                 {
-                    LogAdded(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
+                    LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
                     continue;
                 }
             }
@@ -501,12 +506,12 @@ internal sealed class DownloadManager
                 }
                 else
                 {
-                    LogAdded(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
+                    LogAdded?.Invoke(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
                 }
             }
             catch
             {
-                LogAdded(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
+                LogAdded?.Invoke(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
             }
         }
 
@@ -523,7 +528,7 @@ internal sealed class DownloadManager
 
         foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
         {
-            LogAdded(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
+            LogAdded?.Invoke(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
             // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
             var regex = new Regex("https?://[^/]*");
@@ -544,12 +549,12 @@ internal sealed class DownloadManager
 
                 try
                 {
-                    LogAdded(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                     htmlCode = await webClient.DownloadStringTaskAsync(artistMusicPage);
                 }
                 catch
                 {
-                    LogAdded(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
+                    LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
                     continue;
                 }
             }
@@ -561,7 +566,7 @@ internal sealed class DownloadManager
             }
             catch (NoAlbumFoundException)
             {
-                LogAdded(this, new LogArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
+                LogAdded?.Invoke(this, new LogArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", LogType.Error));
             }
 
             if (albumsUrls.Count - count == 0)
@@ -617,18 +622,18 @@ internal sealed class DownloadManager
             {
                 size = await FileHelper.GetFileSizeAsync(url, protocolMethod);
                 sizeRetrieved = true;
-                LogAdded(this, new LogArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo));
+                LogAdded?.Invoke(this, new LogArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo));
             }
             catch
             {
                 sizeRetrieved = false;
                 if (tries + 1 < App.UserSettings.DownloadMaxTries)
                 {
-                    LogAdded(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                    LogAdded?.Invoke(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
                 }
                 else
                 {
-                    LogAdded(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error));
+                    LogAdded?.Invoke(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error));
                 }
             }
 
@@ -651,7 +656,7 @@ internal sealed class DownloadManager
         var files = new List<TrackFile>();
         foreach (var album in albums)
         {
-            LogAdded(this, new LogArgs($"Computing size for album \"{album.Title}\"...", LogType.Info));
+            LogAdded?.Invoke(this, new LogArgs($"Computing size for album \"{album.Title}\"...", LogType.Info));
 
             // Artwork
             if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork)

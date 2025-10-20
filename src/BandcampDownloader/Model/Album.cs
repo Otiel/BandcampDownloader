@@ -187,8 +187,8 @@ internal sealed class Album
                 // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext",
                 // so 11 character max for "filename.ext"
                 // There may be only one path needed to shorten, but it's better to use the same file name in both places
-                var fileNameInTempMaxLength = 11 - randomNumber.Length - artworkFileExt.Length;
-                var fileNameInFolderMaxLength = 11 - artworkFileExt.Length;
+                var fileNameInTempMaxLength = 11 - randomNumber.Length - (artworkFileExt?.Length ?? 0);
+                var fileNameInFolderMaxLength = 11 - (artworkFileExt?.Length ?? 0);
                 ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
                 ArtworkPath = Path + "\\" + ParseCoverArtFileName().Substring(0, fileNameInFolderMaxLength) + artworkFileExt;
             }

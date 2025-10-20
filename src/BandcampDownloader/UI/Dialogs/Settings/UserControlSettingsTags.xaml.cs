@@ -34,7 +34,7 @@ internal sealed partial class UserControlSettingsTags : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
         checkBoxModifyTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
         comboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
         comboBoxAlbumTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
@@ -48,6 +48,6 @@ internal sealed partial class UserControlSettingsTags : IUserControlSettings
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
-        ((TextBox)sender).GetBindingExpression(TextBox.TextProperty).ValidateWithoutUpdate();
+        ((TextBox)sender).GetBindingExpression(TextBox.TextProperty)?.ValidateWithoutUpdate();
     }
 }

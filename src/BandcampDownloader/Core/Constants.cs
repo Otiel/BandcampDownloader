@@ -8,7 +8,7 @@ internal static class Constants
     /// <summary>
     /// The version number of BandcampDownloader.
     /// </summary>
-    public static readonly string AppVersion = Assembly.GetEntryAssembly().GetName().Version.ToString(3);
+    public static readonly string AppVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3);
 
     /// <summary>
     /// The absolute path to the log file.

@@ -7,14 +7,19 @@ using System.Windows;
 using System.Windows.Input;
 using BandcampDownloader.Core;
 using BandcampDownloader.Helpers;
+using NLog;
 using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Update;
 
 internal sealed partial class UserControlChangelog
 {
+    private readonly Logger _logger;
+
     public UserControlChangelog()
     {
+        _logger = LogManager.GetCurrentClassLogger();
+
         InitializeComponent();
         Loaded += OnLoaded;
     }
@@ -52,6 +57,11 @@ internal sealed partial class UserControlChangelog
     private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
     {
         var url = e.Parameter.ToString();
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            _logger.Log(LogLevel.Error, $"url is invalid: {url}");
+            return;
+        }
 
         try
         {

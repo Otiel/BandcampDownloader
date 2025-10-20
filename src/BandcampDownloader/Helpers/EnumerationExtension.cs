@@ -55,6 +55,20 @@ internal sealed class EnumerationExtension : MarkupExtension
 
     private string GetDescription(object enumValue)
     {
-        return EnumType.GetField(enumValue.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() is DescriptionAttribute descriptionAttribute ? descriptionAttribute.Description : enumValue.ToString();
+        ArgumentNullException.ThrowIfNull(enumValue);
+
+        var enumValueString = enumValue.ToString();
+        if (enumValueString == null)
+        {
+            throw new InvalidOperationException($"{enumValue}.ToString() is null");
+        }
+
+        var fieldInfo = EnumType.GetField(enumValueString);
+        if (fieldInfo == null)
+        {
+            throw new InvalidOperationException($"EnumType.GetField({enumValueString}) is null");
+        }
+
+        return fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() is DescriptionAttribute descriptionAttribute ? descriptionAttribute.Description : enumValue.ToString();
     }
 }
