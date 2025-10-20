@@ -1,11 +1,10 @@
-﻿namespace BandcampDownloader
+﻿namespace BandcampDownloader;
+
+internal interface IUserControlSettings
 {
-    internal interface IUserControlSettings
-    {
-        void CancelChanges();
+    void CancelChanges();
 
-        void LoadSettings();
+    void LoadSettings();
 
-        void SaveSettings();
-    }
+    void SaveSettings();
 }

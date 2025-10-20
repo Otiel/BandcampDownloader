@@ -22,9 +22,7 @@
     mc:Ignorable="d">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <local:DoubleToPercentConverter x:Key="DoubleToPercentConverter" />
         <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
-        <local:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
     </Window.Resources>
     <Grid x:Name="gridMain" Margin="10,0,10,10">
         <DockPanel

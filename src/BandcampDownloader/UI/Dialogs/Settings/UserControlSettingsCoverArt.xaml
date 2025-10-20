@@ -18,9 +18,6 @@
         <local:BooleanAndConverter x:Key="BooleanAndConverter" />
     </UserControl.Resources>
     <Grid x:Name="gridMain" VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />

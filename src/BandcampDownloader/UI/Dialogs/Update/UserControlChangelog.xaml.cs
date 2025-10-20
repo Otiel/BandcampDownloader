@@ -8,67 +8,66 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader
+namespace BandcampDownloader;
+
+public partial class UserControlChangelog : UserControl
 {
-    public partial class UserControlChangelog : UserControl
+    public UserControlChangelog()
     {
-        public UserControlChangelog()
+        InitializeComponent();
+        Loaded += OnLoaded;
+    }
+
+    /// <summary>
+    /// Downloads the changelog file and returns its content.
+    /// </summary>
+    private async Task<string> DownloadChangelogAsync()
+    {
+        string changelog;
+        using (var webClient = new WebClient { Encoding = Encoding.UTF8 })
         {
-            InitializeComponent();
-            Loaded += OnLoaded;
+            ProxyHelper.SetProxy(webClient);
+            changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
         }
 
-        /// <summary>
-        /// Downloads the changelog file and returns its content.
-        /// </summary>
-        private async Task<string> DownloadChangelogAsync()
-        {
-            string changelog;
-            using (var webClient = new WebClient() { Encoding = Encoding.UTF8 })
-            {
-                ProxyHelper.SetProxy(webClient);
-                changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
-            }
+        return changelog;
+    }
 
-            return changelog;
+    private async void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        string changelog;
+        try
+        {
+            changelog = await DownloadChangelogAsync();
+        }
+        catch
+        {
+            changelog = string.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
         }
 
-        private async void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            string changelog;
-            try
-            {
-                changelog = await DownloadChangelogAsync();
-            }
-            catch
-            {
-                changelog = string.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
-            }
+        markdownViewer.Markdown = changelog;
+    }
 
-            markdownViewer.Markdown = changelog;
+    private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
+    {
+        var url = e.Parameter.ToString();
+
+        try
+        {
+            Process.Start(url);
         }
-
-        private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
+        catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified")
         {
-            var url = e.Parameter.ToString();
-
-            try
+            // Probably a relative link like "/docs/help-translate.md"
+            var msgProperties = new WpfMessageBoxProperties
             {
-                Process.Start(url);
-            }
-            catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified")
-            {
-                // Probably a relative link like "/docs/help-translate.md"
-                var msgProperties = new WpfMessageBoxProperties()
-                {
-                    Button = MessageBoxButton.OK,
-                    ButtonOkText = Properties.Resources.messageBoxButtonOK,
-                    Image = MessageBoxImage.Error,
-                    Text = string.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
-                    Title = "Bandcamp Downloader",
-                };
-                WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
-            }
+                Button = MessageBoxButton.OK,
+                ButtonOkText = Properties.Resources.messageBoxButtonOK,
+                Image = MessageBoxImage.Error,
+                Text = string.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
+                Title = "Bandcamp Downloader",
+            };
+            WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
         }
     }
 }

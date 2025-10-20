@@ -53,10 +53,14 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089
+    </value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089
+    </value>
   </resheader>
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
@@ -452,7 +456,7 @@ Możesz także pobrać całą dyskografię: http://[wykonawca].bandcamp.com i za
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
     <value>Używany do kontrolowania wykładniczego mechanizmu back-off.
-Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą 
+Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą
 pobrania utworu, aby uniknąć drażnienia filtra antyspamowego Bandcamp.
 Formuła używana do obliczania czasu oczekiwania przed ponowną próbą pobrania jest następująca:
 czas = czas oczekiwania * (wykładnik ^ liczba-prób)

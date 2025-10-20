@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace BandcampDownloader
-{
-    internal class CouldNotCheckForUpdatesException : Exception
-    {
-    }
+namespace BandcampDownloader;
 
-    internal class NoAlbumFoundException : Exception
-    {
-    }
+internal class CouldNotCheckForUpdatesException : Exception
+{
+}
+
+internal class NoAlbumFoundException : Exception
+{
 }

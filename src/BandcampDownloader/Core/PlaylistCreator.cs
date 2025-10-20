@@ -4,147 +4,146 @@ using System.Text;
 using PlaylistsNET.Content;
 using PlaylistsNET.Models;
 
-namespace BandcampDownloader
+namespace BandcampDownloader;
+
+internal class PlaylistCreator
 {
-    internal class PlaylistCreator
+    /// <summary>
+    /// The album.
+    /// </summary>
+    private readonly Album _album;
+
+    /// <summary>
+    /// Initializes a new instance of PlaylistCreator.
+    /// </summary>
+    /// <param name="album"></param>
+    public PlaylistCreator(Album album)
     {
-        /// <summary>
-        /// The album.
-        /// </summary>
-        private readonly Album _album;
+        _album = album;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of PlaylistCreator.
-        /// </summary>
-        /// <param name="album"></param>
-        public PlaylistCreator(Album album)
+    /// <summary>
+    /// Saves the playlist to a file.
+    /// </summary>
+    public void SavePlaylistToFile()
+    {
+        string fileContent;
+
+        switch (App.UserSettings.PlaylistFormat)
         {
-            _album = album;
+            case PlaylistFormat.m3u:
+                fileContent = CreateM3uPlaylist();
+                break;
+            case PlaylistFormat.pls:
+                fileContent = CreatePlsPlaylist();
+                break;
+            case PlaylistFormat.wpl:
+                fileContent = CreateWplPlaylist();
+                break;
+            case PlaylistFormat.zpl:
+                fileContent = CreateZplPlaylist();
+                break;
+            default:
+                throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Saves the playlist to a file.
-        /// </summary>
-        public void SavePlaylistToFile()
+        File.WriteAllText(_album.PlaylistPath, fileContent, Encoding.UTF8);
+    }
+
+    /// <summary>
+    /// Returns the playlist in m3u format.
+    /// </summary>
+    private string CreateM3uPlaylist()
+    {
+        var playlist = new M3uPlaylist
         {
-            string fileContent;
+            IsExtended = App.UserSettings.M3uExtended,
+        };
 
-            switch (App.UserSettings.PlaylistFormat)
+        foreach (var track in _album.Tracks)
+        {
+            playlist.PlaylistEntries.Add(new M3uPlaylistEntry
             {
-                case PlaylistFormat.m3u:
-                    fileContent = CreateM3uPlaylist();
-                    break;
-                case PlaylistFormat.pls:
-                    fileContent = CreatePlsPlaylist();
-                    break;
-                case PlaylistFormat.wpl:
-                    fileContent = CreateWplPlaylist();
-                    break;
-                case PlaylistFormat.zpl:
-                    fileContent = CreateZplPlaylist();
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-
-            File.WriteAllText(_album.PlaylistPath, fileContent, Encoding.UTF8);
+                Album = _album.Title,
+                AlbumArtist = _album.Artist,
+                Duration = TimeSpan.FromSeconds(track.Duration),
+                Path = Path.GetFileName(track.Path),
+                Title = track.Title,
+            });
         }
 
-        /// <summary>
-        /// Returns the playlist in m3u format.
-        /// </summary>
-        private string CreateM3uPlaylist()
+        return new M3uContent().ToText(playlist);
+    }
+
+    /// <summary>
+    /// Returns the playlist in pls format.
+    /// </summary>
+    private string CreatePlsPlaylist()
+    {
+        var playlist = new PlsPlaylist();
+
+        foreach (var track in _album.Tracks)
         {
-            var playlist = new M3uPlaylist()
+            playlist.PlaylistEntries.Add(new PlsPlaylistEntry
             {
-                IsExtended = App.UserSettings.M3uExtended,
-            };
-
-            foreach (var track in _album.Tracks)
-            {
-                playlist.PlaylistEntries.Add(new M3uPlaylistEntry()
-                {
-                    Album = _album.Title,
-                    AlbumArtist = _album.Artist,
-                    Duration = TimeSpan.FromSeconds(track.Duration),
-                    Path = Path.GetFileName(track.Path),
-                    Title = track.Title,
-                });
-            }
-
-            return new M3uContent().ToText(playlist);
+                Length = TimeSpan.FromSeconds(track.Duration),
+                Path = Path.GetFileName(track.Path),
+                Title = track.Title,
+            });
         }
 
-        /// <summary>
-        /// Returns the playlist in pls format.
-        /// </summary>
-        private string CreatePlsPlaylist()
+        return new PlsContent().ToText(playlist);
+    }
+
+    /// <summary>
+    /// Returns the playlist in wpl format.
+    /// </summary>
+    private string CreateWplPlaylist()
+    {
+        var playlist = new WplPlaylist
         {
-            var playlist = new PlsPlaylist();
+            Title = _album.Title,
+        };
 
-            foreach (var track in _album.Tracks)
+        foreach (var track in _album.Tracks)
+        {
+            playlist.PlaylistEntries.Add(new WplPlaylistEntry
             {
-                playlist.PlaylistEntries.Add(new PlsPlaylistEntry()
-                {
-                    Length = TimeSpan.FromSeconds(track.Duration),
-                    Path = Path.GetFileName(track.Path),
-                    Title = track.Title,
-                });
-            }
-
-            return new PlsContent().ToText(playlist);
+                AlbumArtist = _album.Artist,
+                AlbumTitle = _album.Title,
+                Duration = TimeSpan.FromSeconds(track.Duration),
+                Path = Path.GetFileName(track.Path),
+                TrackArtist = _album.Artist,
+                TrackTitle = track.Title,
+            });
         }
 
-        /// <summary>
-        /// Returns the playlist in wpl format.
-        /// </summary>
-        private string CreateWplPlaylist()
+        return new WplContent().ToText(playlist);
+    }
+
+    /// <summary>
+    /// Returns the playlist in zpl format.
+    /// </summary>
+    private string CreateZplPlaylist()
+    {
+        var playlist = new ZplPlaylist
         {
-            var playlist = new WplPlaylist()
-            {
-                Title = _album.Title,
-            };
+            Title = _album.Title,
+        };
 
-            foreach (var track in _album.Tracks)
+        foreach (var track in _album.Tracks)
+        {
+            playlist.PlaylistEntries.Add(new ZplPlaylistEntry
             {
-                playlist.PlaylistEntries.Add(new WplPlaylistEntry()
-                {
-                    AlbumArtist = _album.Artist,
-                    AlbumTitle = _album.Title,
-                    Duration = TimeSpan.FromSeconds(track.Duration),
-                    Path = Path.GetFileName(track.Path),
-                    TrackArtist = _album.Artist,
-                    TrackTitle = track.Title,
-                });
-            }
-
-            return new WplContent().ToText(playlist);
+                AlbumArtist = _album.Artist,
+                AlbumTitle = _album.Title,
+                Duration = TimeSpan.FromSeconds(track.Duration),
+                Path = Path.GetFileName(track.Path),
+                TrackArtist = _album.Artist,
+                TrackTitle = track.Title,
+            });
         }
 
-        /// <summary>
-        /// Returns the playlist in zpl format.
-        /// </summary>
-        private string CreateZplPlaylist()
-        {
-            var playlist = new ZplPlaylist()
-            {
-                Title = _album.Title,
-            };
-
-            foreach (var track in _album.Tracks)
-            {
-                playlist.PlaylistEntries.Add(new ZplPlaylistEntry()
-                {
-                    AlbumArtist = _album.Artist,
-                    AlbumTitle = _album.Title,
-                    Duration = TimeSpan.FromSeconds(track.Duration),
-                    Path = Path.GetFileName(track.Path),
-                    TrackArtist = _album.Artist,
-                    TrackTitle = track.Title,
-                });
-            }
-
-            return new ZplContent().ToText(playlist);
-        }
+        return new ZplContent().ToText(playlist);
     }
 }
