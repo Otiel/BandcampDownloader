@@ -20,7 +20,7 @@ internal static class LogHelper
             LogType.IntermediateSuccess => App.UserSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
             LogType.Success => App.UserSettings.Theme == Skin.Dark ? Brushes.Lime : Brushes.Green,
             LogType.Warning => App.UserSettings.Theme == Skin.Dark ? Brushes.Orange : Brushes.OrangeRed,
-            LogType.Error => App.UserSettings.Theme == Skin.Dark ? Brushes.Red : Brushes.Red,
+            LogType.Error => Brushes.Red,
             _ => throw new NotImplementedException(),
         };
 
