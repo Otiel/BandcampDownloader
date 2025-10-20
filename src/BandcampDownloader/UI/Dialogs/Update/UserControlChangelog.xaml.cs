@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs.Update;
 
 public partial class UserControlChangelog : UserControl
 {

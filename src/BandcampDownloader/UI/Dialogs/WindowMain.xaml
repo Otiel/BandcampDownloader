@@ -1,9 +1,10 @@
 <Window
-    x:Class="BandcampDownloader.WindowMain"
+    x:Class="BandcampDownloader.UI.Dialogs.WindowMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
+    xmlns:core="clr-namespace:BandcampDownloader.Core"
     Name="windowMain"
     Title="Bandcamp Downloader"
     Width="815"
@@ -137,10 +138,10 @@
                 <Label.Style>
                     <Style TargetType="Label">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static local:Skin.Light}">
+                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static core:Skin.Light}">
                                 <Setter Property="Foreground" Value="Red" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static local:Skin.Dark}">
+                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static core:Skin.Dark}">
                                 <Setter Property="Foreground" Value="Orange" />
                             </DataTrigger>
                         </Style.Triggers>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class SystemVersionHelper
 {

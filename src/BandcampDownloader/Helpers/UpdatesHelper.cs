@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using BandcampDownloader.Core;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class UpdatesHelper
 {

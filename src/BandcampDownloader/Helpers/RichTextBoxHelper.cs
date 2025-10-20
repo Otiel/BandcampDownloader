@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class RichTextBoxHelper
 {

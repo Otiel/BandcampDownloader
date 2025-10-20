@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Model;
 
 internal class Album
 {

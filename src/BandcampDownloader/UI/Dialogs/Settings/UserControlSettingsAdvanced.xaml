@@ -1,11 +1,13 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsAdvanced"
+    x:Class="BandcampDownloader.UI.Dialogs.Settings.UserControlSettingsAdvanced"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
+    xmlns:validation="clr-namespace:BandcampDownloader.UI.Validation"
     x:Name="userControlSettingsAdvanced"
     Width="410"
     Height="140"
@@ -15,7 +17,7 @@
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <local:DoubleToPercentConverter x:Key="DoubleToPercentConverter" />
+        <converters:DoubleToPercentConverter x:Key="DoubleToPercentConverter" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
     <Grid x:Name="gridMain" VerticalAlignment="Top">
@@ -72,7 +74,7 @@
                 Path="AllowedFileSizeDifference"
                 UpdateSourceTrigger="Explicit">
                 <Binding.ValidationRules>
-                    <local:DoubleRule />
+                    <validation:DoubleRule />
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>

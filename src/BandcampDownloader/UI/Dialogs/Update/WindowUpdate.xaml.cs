@@ -5,9 +5,11 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
 using Microsoft.Win32;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs.Update;
 
 public partial class WindowUpdate : Window
 {

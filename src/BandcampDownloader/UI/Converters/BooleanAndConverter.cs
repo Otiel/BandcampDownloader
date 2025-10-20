@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Converters;
 
 /// <summary>
 /// Converts Boolean values to their logical AND operation result.

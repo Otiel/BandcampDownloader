@@ -1,11 +1,12 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsCoverArt"
+    x:Class="BandcampDownloader.UI.Dialogs.Settings.UserControlSettingsCoverArt"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
     x:Name="userControlSettingsCoverArt"
     Width="410"
     Height="240"
@@ -15,7 +16,7 @@
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <local:BooleanAndConverter x:Key="BooleanAndConverter" />
+        <converters:BooleanAndConverter x:Key="BooleanAndConverter" />
     </UserControl.Resources>
     <Grid x:Name="gridMain" VerticalAlignment="Top">
         <Grid.RowDefinitions>

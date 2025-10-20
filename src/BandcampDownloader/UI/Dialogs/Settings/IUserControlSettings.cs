@@ -1,4 +1,4 @@
-﻿namespace BandcampDownloader;
+﻿namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal interface IUserControlSettings
 {

@@ -1,4 +1,4 @@
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 public static class UrlHelper
 {

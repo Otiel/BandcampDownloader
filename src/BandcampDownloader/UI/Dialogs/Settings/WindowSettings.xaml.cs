@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using System.Windows;
+using BandcampDownloader.Core;
 using Config.Net;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs.Settings;
 
 public partial class WindowSettings : Window
 {

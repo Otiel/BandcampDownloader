@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Model.JSON;
 
 internal class JsonAlbumData
 {

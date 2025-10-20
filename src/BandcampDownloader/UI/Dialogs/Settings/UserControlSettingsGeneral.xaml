@@ -1,11 +1,13 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsGeneral"
+    x:Class="BandcampDownloader.UI.Dialogs.Settings.UserControlSettingsGeneral"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:core="clr-namespace:BandcampDownloader.Core"
+    xmlns:helpers="clr-namespace:BandcampDownloader.Helpers"
     x:Name="userControlSettingsGeneral"
     Width="410"
     Height="150"
@@ -42,7 +44,7 @@
                     <TextBlock>
                         <Run Text="{lex:Loc checkBoxCheckForUpdates_ToolTip_Part}" />
                         <Run Text="&#xA;" />
-                        <Run Text="{Binding Source={x:Static local:Constants.UrlLatestRelease}, Mode=OneWay}" />
+                        <Run Text="{Binding Source={x:Static core:Constants.UrlLatestRelease}, Mode=OneWay}" />
                     </TextBlock>
                 </CheckBox.ToolTip>
             </CheckBox>
@@ -103,7 +105,7 @@
                 Width="150"
                 Height="22"
                 DisplayMemberPath="Description"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:Language}}}"
+                ItemsSource="{Binding Source={helpers:EnumerationExtension {x:Type core:Language}}}"
                 SelectedValue="{Binding Language, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
                 SelectionChanged="ComboBoxLanguage_SelectionChanged"
@@ -115,9 +117,9 @@
                 <Hyperlink
                     x:Name="hyperlinkTranslationHelp"
                     KeyboardNavigation.TabIndex="5"
-                    NavigateUri="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}"
+                    NavigateUri="{Binding Source={x:Static core:Constants.UrlHelpTranslate}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
-                    ToolTip="{Binding Source={x:Static local:Constants.UrlHelpTranslate}}">
+                    ToolTip="{Binding Source={x:Static core:Constants.UrlHelpTranslate}}">
                     <TextBlock x:Name="textBlockTranslationHelp" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>
@@ -143,7 +145,7 @@
                 SelectedItem="{Binding Theme, UpdateSourceTrigger=Explicit}"
                 SelectionChanged="ComboBoxTheme_SelectionChanged"
                 TabIndex="6"
-                Type="{x:Type local:Skin}" />
+                Type="{x:Type core:Skin}" />
         </Grid>
     </Grid>
 </UserControl>

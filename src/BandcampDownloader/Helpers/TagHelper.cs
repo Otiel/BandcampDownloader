@@ -1,6 +1,7 @@
-﻿using TagLib;
+﻿using BandcampDownloader.Core;
+using TagLib;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class TagHelper
 {

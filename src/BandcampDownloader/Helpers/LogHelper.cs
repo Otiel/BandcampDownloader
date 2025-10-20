@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Media;
+using BandcampDownloader.Core;
 using NLog;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class LogHelper
 {

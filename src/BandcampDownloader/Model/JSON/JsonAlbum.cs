@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Model.JSON;
 
 internal class JsonAlbum
 {

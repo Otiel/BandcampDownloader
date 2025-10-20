@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using BandcampDownloader.Model;
 using PlaylistsNET.Content;
 using PlaylistsNET.Models;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Core;
 
 internal class PlaylistCreator
 {

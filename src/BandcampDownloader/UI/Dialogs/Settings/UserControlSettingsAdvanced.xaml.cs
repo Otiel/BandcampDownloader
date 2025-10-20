@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs.Settings;
 
 public partial class UserControlSettingsAdvanced : UserControl, IUserControlSettings
 {

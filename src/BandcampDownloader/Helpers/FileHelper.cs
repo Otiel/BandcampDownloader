@@ -4,7 +4,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class FileHelper
 {

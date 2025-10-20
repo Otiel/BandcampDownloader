@@ -11,11 +11,15 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shell;
 using System.Windows.Threading;
+using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
+using BandcampDownloader.UI.Dialogs.Settings;
+using BandcampDownloader.UI.Dialogs.Update;
 using Microsoft.Win32;
 using NLog;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs;
 
 public partial class WindowMain : Window
 {

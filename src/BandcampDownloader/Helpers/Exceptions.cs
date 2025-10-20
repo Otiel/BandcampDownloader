@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal class CouldNotCheckForUpdatesException : Exception
 {

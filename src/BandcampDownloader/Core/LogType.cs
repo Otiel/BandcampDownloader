@@ -1,4 +1,4 @@
-﻿namespace BandcampDownloader;
+﻿namespace BandcampDownloader.Core;
 
 internal enum LogType
 {

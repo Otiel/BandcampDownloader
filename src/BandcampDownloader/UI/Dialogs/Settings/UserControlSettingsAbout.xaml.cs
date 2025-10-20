@@ -2,8 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using BandcampDownloader.UI.Dialogs.Update;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs.Settings;
 
 public partial class UserControlSettingsAbout : UserControl
 {

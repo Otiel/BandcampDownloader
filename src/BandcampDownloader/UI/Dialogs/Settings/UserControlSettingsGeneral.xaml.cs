@@ -4,9 +4,12 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
+using BandcampDownloader.UI.Dialogs.Update;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Dialogs.Settings;
 
 public partial class UserControlSettingsGeneral : UserControl, IUserControlSettings
 {

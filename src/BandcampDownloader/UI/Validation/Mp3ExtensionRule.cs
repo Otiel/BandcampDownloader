@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.UI.Validation;
 
 internal class Mp3ExtensionRule : ValidationRule
 {

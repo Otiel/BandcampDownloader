@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
 using Config.Net;
 using NLog;
 using NLog.Config;

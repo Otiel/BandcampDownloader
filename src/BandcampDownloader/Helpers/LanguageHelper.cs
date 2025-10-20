@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Globalization;
+using BandcampDownloader.Core;
 using WPFLocalizeExtension.Engine;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class LanguageHelper
 {

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Markup;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal class EnumerationExtension : MarkupExtension
 {

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using BandcampDownloader.Model;
+using BandcampDownloader.Model.JSON;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class BandcampHelper
 {

@@ -1,11 +1,13 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsPlaylist"
+    x:Class="BandcampDownloader.UI.Dialogs.Settings.UserControlSettingsPlaylist"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="clr-namespace:BandcampDownloader.Helpers"
+    xmlns:core="clr-namespace:BandcampDownloader.Core"
     x:Name="userControlSettingsPlaylist"
     Width="410"
     Height="110"
@@ -52,7 +54,7 @@
                 Height="22"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=checkBoxCreatePlaylist, Path=IsChecked}"
-                ItemsSource="{Binding Source={local:EnumerationExtension {x:Type local:PlaylistFormat}}}"
+                ItemsSource="{Binding Source={helpers:EnumerationExtension {x:Type core:PlaylistFormat}}}"
                 SelectedValue="{Binding PlaylistFormat, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
                 TabIndex="1" />

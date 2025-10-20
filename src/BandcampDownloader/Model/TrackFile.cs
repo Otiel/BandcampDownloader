@@ -1,4 +1,4 @@
-﻿namespace BandcampDownloader;
+﻿namespace BandcampDownloader.Model;
 
 internal class TrackFile
 {

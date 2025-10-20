@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows;
+using BandcampDownloader.Core;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Helpers;
 
 internal static class ThemeHelper
 {

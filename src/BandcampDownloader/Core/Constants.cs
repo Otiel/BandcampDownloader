@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace BandcampDownloader;
+namespace BandcampDownloader.Core;
 
 internal static class Constants
 {
