@@ -34,16 +34,16 @@ internal sealed partial class UserControlSettingsTags : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        textBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
-        checkBoxModifyTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        comboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxAlbumTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxComments.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxLyrics.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxTrackNumber.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxTrackTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        comboBoxYear.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        TextBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        CheckBoxModifyTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        ComboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxAlbumTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxComments.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxLyrics.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxTrackNumber.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxTrackTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        ComboBoxYear.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -20,34 +20,34 @@
     PreviewKeyDown="WindowUpdate_PreviewKeyDown"
     TextOptions.TextFormattingMode="Display"
     mc:Ignorable="d">
-    <Grid x:Name="gridMain" Margin="10,0,10,10">
+    <Grid x:Name="GridMain" Margin="10,0,10,10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label
-            x:Name="labelChangelogTitle"
+            x:Name="LabelChangelogTitle"
             Grid.Row="0"
             HorizontalAlignment="Center"
             Content="{lex:Loc}"
             FontSize="20"
             TextOptions.TextFormattingMode="Ideal" />
         <update:UserControlChangelog
-            x:Name="userControlChangelog"
+            x:Name="UserControlChangelog"
             Grid.Row="1"
             Margin="0,0,0,10"
             BorderBrush="Gray"
             BorderThickness="0,0.5,0,0.5"
             KeyboardNavigation.TabNavigation="None" />
-        <Grid x:Name="gridActionBar" Grid.Row="2">
+        <Grid x:Name="GridActionBar" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label
-                x:Name="labelCurrentVersion"
+                x:Name="LabelCurrentVersion"
                 Grid.Column="0"
                 Margin="0"
                 HorizontalAlignment="Left">
@@ -58,15 +58,15 @@
             </Label>
             <TextBlock Grid.Column="1" VerticalAlignment="Center">
                 <Hyperlink
-                    x:Name="hyperlinkReleases"
+                    x:Name="HyperlinkReleases"
                     NavigateUri="{Binding Source={x:Static core:Constants.UrlReleases}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
                     ToolTip="{Binding Source={x:Static core:Constants.UrlReleases}}">
-                    <TextBlock x:Name="textBlockReleasesWebsite" Text="{lex:Loc}" />
+                    <TextBlock x:Name="TextBlockReleasesWebsite" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>
             <Button
-                x:Name="buttonDownloadUpdate"
+                x:Name="ButtonDownloadUpdate"
                 Grid.Column="2"
                 Height="24"
                 MinWidth="100"

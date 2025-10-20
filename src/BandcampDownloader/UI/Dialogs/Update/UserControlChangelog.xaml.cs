@@ -52,7 +52,7 @@ internal sealed partial class UserControlChangelog
             changelog = string.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
         }
 
-        markdownViewer.Markdown = changelog;
+        MarkdownViewer.Markdown = changelog;
     }
 
     private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)

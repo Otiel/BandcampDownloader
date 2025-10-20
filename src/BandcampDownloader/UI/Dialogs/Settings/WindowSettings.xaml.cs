@@ -59,13 +59,13 @@ internal sealed partial class WindowSettings
     /// </summary>
     private void CancelChanges()
     {
-        userControlSettingsAdvanced.CancelChanges();
-        userControlSettingsCoverArt.CancelChanges();
-        userControlSettingsDownloads.CancelChanges();
-        userControlSettingsGeneral.CancelChanges();
-        userControlSettingsNetwork.CancelChanges();
-        userControlSettingsPlaylist.CancelChanges();
-        userControlSettingsTags.CancelChanges();
+        UserControlSettingsAdvanced.CancelChanges();
+        UserControlSettingsCoverArt.CancelChanges();
+        UserControlSettingsDownloads.CancelChanges();
+        UserControlSettingsGeneral.CancelChanges();
+        UserControlSettingsNetwork.CancelChanges();
+        UserControlSettingsPlaylist.CancelChanges();
+        UserControlSettingsTags.CancelChanges();
     }
 
     /// <summary>
@@ -85,13 +85,13 @@ internal sealed partial class WindowSettings
         App.UserSettings.DownloadArtistDiscography = downloadArtistDiscography;
 
         // Re-load settings on UI
-        userControlSettingsAdvanced.LoadSettings();
-        userControlSettingsCoverArt.LoadSettings();
-        userControlSettingsDownloads.LoadSettings();
-        userControlSettingsGeneral.LoadSettings();
-        userControlSettingsNetwork.LoadSettings();
-        userControlSettingsPlaylist.LoadSettings();
-        userControlSettingsTags.LoadSettings();
+        UserControlSettingsAdvanced.LoadSettings();
+        UserControlSettingsCoverArt.LoadSettings();
+        UserControlSettingsDownloads.LoadSettings();
+        UserControlSettingsGeneral.LoadSettings();
+        UserControlSettingsNetwork.LoadSettings();
+        UserControlSettingsPlaylist.LoadSettings();
+        UserControlSettingsTags.LoadSettings();
     }
 
     /// <summary>
@@ -99,12 +99,12 @@ internal sealed partial class WindowSettings
     /// </summary>
     private void SaveSettings()
     {
-        userControlSettingsAdvanced.SaveSettings();
-        userControlSettingsCoverArt.SaveSettings();
-        userControlSettingsDownloads.SaveSettings();
-        userControlSettingsGeneral.SaveSettings();
-        userControlSettingsNetwork.SaveSettings();
-        userControlSettingsPlaylist.SaveSettings();
-        userControlSettingsTags.SaveSettings();
+        UserControlSettingsAdvanced.SaveSettings();
+        UserControlSettingsCoverArt.SaveSettings();
+        UserControlSettingsDownloads.SaveSettings();
+        UserControlSettingsGeneral.SaveSettings();
+        UserControlSettingsNetwork.SaveSettings();
+        UserControlSettingsPlaylist.SaveSettings();
+        UserControlSettingsTags.SaveSettings();
     }
 }

@@ -15,7 +15,7 @@
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
-    FocusManager.FocusedElement="{Binding ElementName=listBoxSections}"
+    FocusManager.FocusedElement="{Binding ElementName=ListBoxSections}"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     ResizeMode="NoResize"
     TextOptions.TextFormattingMode="Display"
@@ -26,15 +26,15 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
     </Window.Resources>
-    <Grid x:Name="gridMain" Margin="10,0,10,10">
+    <Grid x:Name="GridMain" Margin="10,0,10,10">
         <DockPanel
-            x:Name="dockPanelInfo"
+            x:Name="DockPanelInfo"
             Height="26"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Visibility="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Image
-                x:Name="imageInfo"
+                x:Name="ImageInfo"
                 Width="16"
                 Height="16"
                 Margin="5,0,0,0"
@@ -42,172 +42,172 @@
                 Source="pack://application:,,,/Resources/InformationSmallWhite.png"
                 Stretch="None" />
             <Label
-                x:Name="labelSettingsInfo"
+                x:Name="LabelSettingsInfo"
                 Margin="0,0,0,0"
                 Content="{lex:Loc}"
                 Foreground="#FF858585" />
         </DockPanel>
         <ListBox
-            x:Name="listBoxSections"
+            x:Name="ListBoxSections"
             Width="170"
             Height="269"
             Margin="0,26,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="0">
-            <ListBoxItem x:Name="listBoxItemGeneral" IsSelected="True">
+            <ListBoxItem x:Name="ListBoxItemGeneral" IsSelected="True">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemGeneral"
+                        x:Name="ImagelistBoxItemGeneral"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/ApplicationBlue.png" />
-                    <Label x:Name="labelListBoxItemGeneral" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemGeneral" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemTags">
+            <ListBoxItem x:Name="ListBoxItemTags">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemTags"
+                        x:Name="ImagelistBoxItemTags"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/Tags.png" />
-                    <Label x:Name="labelListBoxItemTags" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemTags" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemCoverArt">
+            <ListBoxItem x:Name="ListBoxItemCoverArt">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemCoverArt"
+                        x:Name="ImagelistBoxItemCoverArt"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/Picture.png" />
-                    <Label x:Name="labelListBoxItemCoverArt" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemCoverArt" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemPlaylist">
+            <ListBoxItem x:Name="ListBoxItemPlaylist">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemPlaylist"
+                        x:Name="ImagelistBoxItemPlaylist"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/DocumentMusicPlaylist.png" />
-                    <Label x:Name="labelListBoxItemPlaylist" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemPlaylist" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemDownloads">
+            <ListBoxItem x:Name="ListBoxItemDownloads">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemDownloads"
+                        x:Name="ImagelistBoxItemDownloads"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/DriveDownload.png" />
-                    <Label x:Name="labelListBoxItemDownloads" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemDownloads" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemNetwork">
+            <ListBoxItem x:Name="ListBoxItemNetwork">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemNetwork"
+                        x:Name="ImagelistBoxItemNetwork"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/GlobeNetwork.png" />
-                    <Label x:Name="labelListBoxItemNetwork" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemNetwork" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemAdvanced">
+            <ListBoxItem x:Name="ListBoxItemAdvanced">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemAdvanced"
+                        x:Name="ImagelistBoxItemAdvanced"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/Gear.png" />
-                    <Label x:Name="labelListBoxItemAdvanced" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemAdvanced" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
-            <ListBoxItem x:Name="listBoxItemAbout">
+            <ListBoxItem x:Name="ListBoxItemAbout">
                 <StackPanel Orientation="Horizontal">
                     <Image
-                        x:Name="imagelistBoxItemAbout"
+                        x:Name="ImagelistBoxItemAbout"
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="pack://application:,,,/Resources/Information.png" />
-                    <Label x:Name="labelListBoxItemAbout" Content="{lex:Loc}" />
+                    <Label x:Name="LabelListBoxItemAbout" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
         </ListBox>
         <settings:UserControlSettingsGeneral
-            x:Name="userControlSettingsGeneral"
+            x:Name="UserControlSettingsGeneral"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemGeneral, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemGeneral, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <settings:UserControlSettingsTags
-            x:Name="userControlSettingsTags"
+            x:Name="UserControlSettingsTags"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemTags, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemTags, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <settings:UserControlSettingsCoverArt
-            x:Name="userControlSettingsCoverArt"
+            x:Name="UserControlSettingsCoverArt"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemCoverArt, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemCoverArt, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <settings:UserControlSettingsPlaylist
-            x:Name="userControlSettingsPlaylist"
+            x:Name="UserControlSettingsPlaylist"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemPlaylist, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemPlaylist, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <settings:UserControlSettingsDownloads
-            x:Name="userControlSettingsDownloads"
+            x:Name="UserControlSettingsDownloads"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemDownloads, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemDownloads, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <settings:UserControlSettingsNetwork
-            x:Name="userControlSettingsNetwork"
+            x:Name="UserControlSettingsNetwork"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, Converter={StaticResource InverseBooleanConverter}, ElementName=windowSettings}"
             TabIndex="1"
-            Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=listBoxItemNetwork}" />
+            Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=ListBoxItemNetwork}" />
         <settings:UserControlSettingsAdvanced
-            x:Name="userControlSettingsAdvanced"
+            x:Name="UserControlSettingsAdvanced"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             IsEnabled="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource InverseBooleanConverter}}"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemAdvanced, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <settings:UserControlSettingsAbout
-            x:Name="userControlSettingsAbout"
+            x:Name="UserControlSettingsAbout"
             Margin="175,31,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             TabIndex="1"
-            Visibility="{Binding IsSelected, ElementName=listBoxItemAbout, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            Visibility="{Binding IsSelected, ElementName=ListBoxItemAbout, Converter={StaticResource BooleanToVisibilityConverter}}" />
         <Button
-            x:Name="buttonResetSettings"
+            x:Name="ButtonResetSettings"
             Width="170"
             Height="24"
             Margin="0,300,0,0"
@@ -219,21 +219,21 @@
             ToolTip="{lex:Loc}">
             <StackPanel Orientation="Horizontal">
                 <Image
-                    x:Name="imageArrowCircle225Left"
+                    x:Name="ImageArrowCircle225Left"
                     Width="16"
                     Height="16"
                     RenderOptions.BitmapScalingMode="NearestNeighbor"
                     Source="pack://application:,,,/Resources/ArrowCircle225Left.png"
                     Stretch="None" />
                 <Label
-                    x:Name="labelButtonResetSettings"
+                    x:Name="LabelButtonResetSettings"
                     Margin="7,0,0,0"
                     Padding="0"
                     Content="{lex:Loc}" />
             </StackPanel>
         </Button>
         <Grid
-            x:Name="gridButtons"
+            x:Name="GridButtons"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
@@ -241,7 +241,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button
-                x:Name="buttonSave"
+                x:Name="ButtonSave"
                 Grid.Column="0"
                 Height="24"
                 MinWidth="90"
@@ -250,7 +250,7 @@
                 IsDefault="True"
                 TabIndex="3" />
             <Button
-                x:Name="buttonCancel"
+                x:Name="ButtonCancel"
                 Grid.Column="1"
                 Height="24"
                 MinWidth="90"

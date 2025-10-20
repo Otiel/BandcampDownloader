@@ -56,7 +56,7 @@ internal sealed partial class WindowMain
         InitializeComponent();
 
 #if DEBUG
-        textBoxUrls.Text = ""
+        TextBoxUrls.Text = ""
                            //+ "https://projectmooncircle.bandcamp.com" /* Lots of albums (124) */ + Environment.NewLine
                            //+ "https://goataholicskjald.bandcamp.com/album/dogma" /* #65 Downloaded size ≠ predicted */ + Environment.NewLine
                            //+ "https://mstrvlk.bandcamp.com/album/-" /* #64 Album with big cover */ + Environment.NewLine
@@ -80,9 +80,9 @@ internal sealed partial class WindowMain
         var dialogResult = dialog.ShowDialog();
         if (dialogResult is true)
         {
-            textBoxDownloadsPath.Text = dialog.FolderName + "\\{artist}\\{album}";
+            TextBoxDownloadsPath.Text = dialog.FolderName + "\\{artist}\\{album}";
             // Force update of the settings file (it's not done unless the user gives then loses focus on the textbox)
-            textBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+            TextBoxDownloadsPath.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
         }
     }
 
@@ -98,7 +98,7 @@ internal sealed partial class WindowMain
 
     private async void ButtonStart_Click(object sender, RoutedEventArgs e)
     {
-        if (textBoxUrls.Text == "")
+        if (TextBoxUrls.Text == "")
         {
             // No URL to look
             Log("Paste some albums URLs to be downloaded", LogType.Error);
@@ -163,7 +163,7 @@ internal sealed partial class WindowMain
 
         Mouse.OverrideCursor = Cursors.Wait;
         _userCancelled = true;
-        buttonStop.IsEnabled = false;
+        ButtonStop.IsEnabled = false;
 
         _downloadManager.CancelDownloads();
     }
@@ -180,8 +180,8 @@ internal sealed partial class WindowMain
         }
         catch (CouldNotCheckForUpdatesException)
         {
-            labelNewVersion.Content = Properties.Resources.labelVersionError;
-            labelNewVersion.Visibility = Visibility.Visible;
+            LabelNewVersion.Content = Properties.Resources.labelVersionError;
+            LabelNewVersion.Visibility = Visibility.Visible;
             return;
         }
 
@@ -189,8 +189,8 @@ internal sealed partial class WindowMain
         if (currentVersion!.CompareTo(latestVersion) < 0)
         {
             // The latest version is newer than the current one
-            labelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
-            labelNewVersion.Visibility = Visibility.Visible;
+            LabelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
+            LabelNewVersion.Visibility = Visibility.Visible;
         }
     }
 
@@ -225,23 +225,23 @@ internal sealed partial class WindowMain
         if (App.UserSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success)
         {
             // Time
-            var textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd)
+            var textRange = new TextRange(RichTextBoxLog.Document.ContentEnd, RichTextBoxLog.Document.ContentEnd)
             {
                 Text = DateTime.Now.ToString("HH:mm:ss") + " ",
             };
             textRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
             // Message
-            textRange = new TextRange(richTextBoxLog.Document.ContentEnd, richTextBoxLog.Document.ContentEnd)
+            textRange = new TextRange(RichTextBoxLog.Document.ContentEnd, RichTextBoxLog.Document.ContentEnd)
             {
                 Text = message,
             };
             textRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
             // Line break
-            richTextBoxLog.AppendText(Environment.NewLine);
+            RichTextBoxLog.AppendText(Environment.NewLine);
 
-            if (richTextBoxLog.IsScrolledToEnd())
+            if (RichTextBoxLog.IsScrolledToEnd())
             {
-                richTextBoxLog.ScrollToEnd();
+                RichTextBoxLog.ScrollToEnd();
             }
         }
     }
@@ -254,7 +254,7 @@ internal sealed partial class WindowMain
         _userCancelled = false;
 
         // Initializes the DownloadManager
-        _downloadManager = new DownloadManager(textBoxUrls.Text);
+        _downloadManager = new DownloadManager(TextBoxUrls.Text);
         _downloadManager.LogAdded += DownloadManager_LogAdded;
 
         // Fetch URL to get the files size
@@ -273,8 +273,8 @@ internal sealed partial class WindowMain
 
         if (maxProgressBarValue > 0)
         {
-            progressBar.IsIndeterminate = false;
-            progressBar.Maximum = maxProgressBarValue;
+            ProgressBar.IsIndeterminate = false;
+            ProgressBar.Maximum = maxProgressBarValue;
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
         }
 
@@ -314,33 +314,33 @@ internal sealed partial class WindowMain
         if (downloadStarted)
         {
             // We just started the download
-            buttonBrowse.IsEnabled = false;
-            buttonStart.IsEnabled = false;
-            buttonStop.IsEnabled = true;
-            checkBoxDownloadDiscography.IsEnabled = false;
-            labelProgress.Content = "";
-            progressBar.IsIndeterminate = true;
-            progressBar.Value = progressBar.Minimum;
-            richTextBoxLog.Document.Blocks.Clear();
+            ButtonBrowse.IsEnabled = false;
+            ButtonStart.IsEnabled = false;
+            ButtonStop.IsEnabled = true;
+            CheckBoxDownloadDiscography.IsEnabled = false;
+            LabelProgress.Content = "";
+            ProgressBar.IsIndeterminate = true;
+            ProgressBar.Value = ProgressBar.Minimum;
+            RichTextBoxLog.Document.Blocks.Clear();
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
             TaskbarItemInfo.ProgressValue = 0;
-            textBoxDownloadsPath.IsReadOnly = true;
-            textBoxUrls.IsReadOnly = true;
+            TextBoxDownloadsPath.IsReadOnly = true;
+            TextBoxUrls.IsReadOnly = true;
         }
         else
         {
             // We just finished the download (or user has cancelled)
-            buttonBrowse.IsEnabled = true;
-            buttonStart.IsEnabled = true;
-            buttonStop.IsEnabled = false;
-            checkBoxDownloadDiscography.IsEnabled = true;
-            labelDownloadSpeed.Content = "";
-            progressBar.IsIndeterminate = false;
-            progressBar.Value = progressBar.Minimum;
+            ButtonBrowse.IsEnabled = true;
+            ButtonStart.IsEnabled = true;
+            ButtonStop.IsEnabled = false;
+            CheckBoxDownloadDiscography.IsEnabled = true;
+            LabelDownloadSpeed.Content = "";
+            ProgressBar.IsIndeterminate = false;
+            ProgressBar.Value = ProgressBar.Minimum;
             TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
             TaskbarItemInfo.ProgressValue = 0;
-            textBoxDownloadsPath.IsReadOnly = false;
-            textBoxUrls.IsReadOnly = false;
+            TextBoxDownloadsPath.IsReadOnly = false;
+            TextBoxUrls.IsReadOnly = false;
         }
     }
 
@@ -361,7 +361,7 @@ internal sealed partial class WindowMain
         _lastDownloadSpeedUpdate = now;
 
         // Update download speed on UI
-        labelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
+        LabelDownloadSpeed.Content = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
     }
 
     private void UpdateDownloadSpeedTimer_Tick(object sender, EventArgs e)
@@ -379,24 +379,24 @@ internal sealed partial class WindowMain
         var bytesToDownload = _downloadManager.DownloadingFiles.Sum(f => f.Size);
 
         // Update progress label
-        labelProgress.Content =
+        LabelProgress.Content =
             ((double)totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
             (App.UserSettings.RetrieveFilesSize ? " / " + ((double)bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB" : "");
 
         if (App.UserSettings.RetrieveFilesSize)
         {
             // Update progress bar based on bytes received
-            progressBar.Value = totalReceivedBytes;
+            ProgressBar.Value = totalReceivedBytes;
             // Taskbar progress is between 0 and 1
-            TaskbarItemInfo.ProgressValue = totalReceivedBytes / progressBar.Maximum;
+            TaskbarItemInfo.ProgressValue = totalReceivedBytes / ProgressBar.Maximum;
         }
         else
         {
             double downloadedFilesCount = _downloadManager.DownloadingFiles.Count(f => f.Downloaded);
             // Update progress bar based on downloaded files
-            progressBar.Value = downloadedFilesCount;
+            ProgressBar.Value = downloadedFilesCount;
             // Taskbar progress is between 0 and count of files to download
-            TaskbarItemInfo.ProgressValue = downloadedFilesCount / progressBar.Maximum;
+            TaskbarItemInfo.ProgressValue = downloadedFilesCount / ProgressBar.Maximum;
         }
     }
 

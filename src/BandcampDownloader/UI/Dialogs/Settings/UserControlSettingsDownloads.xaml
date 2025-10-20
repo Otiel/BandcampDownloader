@@ -13,13 +13,13 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
-    <Grid x:Name="gridMain" VerticalAlignment="Top">
+    <Grid x:Name="GridMain" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
         <CheckBox
-            x:Name="checkBoxOneAlbumAtATime"
+            x:Name="CheckBoxOneAlbumAtATime"
             Grid.Row="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -30,7 +30,7 @@
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
-            x:Name="checkBoxRetrieveFilesSize"
+            x:Name="CheckBoxRetrieveFilesSize"
             Grid.Row="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"

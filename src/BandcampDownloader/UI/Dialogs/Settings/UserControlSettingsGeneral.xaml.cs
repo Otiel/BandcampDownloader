@@ -26,13 +26,13 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     public void CancelChanges()
     {
         // Revert the language only if it has been changed
-        if ((Language)comboBoxLanguage.SelectedValue != App.UserSettings.Language)
+        if ((Language)ComboBoxLanguage.SelectedValue != App.UserSettings.Language)
         {
             LanguageHelper.ApplyLanguage(App.UserSettings.Language);
         }
 
         // Revert the theme only if it has been changed
-        if ((Skin)comboBoxTheme.SelectedItem != App.UserSettings.Theme)
+        if ((Skin)ComboBoxTheme.SelectedItem != App.UserSettings.Theme)
         {
             ThemeHelper.ApplySkin(App.UserSettings.Theme);
         }
@@ -53,11 +53,11 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        checkBoxCheckForUpdates.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        checkBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        checkBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        comboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-        comboBoxTheme.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        CheckBoxCheckForUpdates.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        CheckBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        CheckBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        ComboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+        ComboBoxTheme.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
     }
 
     private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e)
@@ -109,24 +109,24 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 
     private void ComboBoxLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (!comboBoxLanguage.IsLoaded)
+        if (!ComboBoxLanguage.IsLoaded)
         {
             return;
         }
 
         // Apply selected language
-        LanguageHelper.ApplyLanguage((Language)comboBoxLanguage.SelectedValue);
+        LanguageHelper.ApplyLanguage((Language)ComboBoxLanguage.SelectedValue);
     }
 
     private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (!comboBoxTheme.IsLoaded)
+        if (!ComboBoxTheme.IsLoaded)
         {
             return;
         }
 
         // Apply selected theme
-        ThemeHelper.ApplySkin((Skin)comboBoxTheme.SelectedItem);
+        ThemeHelper.ApplySkin((Skin)ComboBoxTheme.SelectedItem);
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

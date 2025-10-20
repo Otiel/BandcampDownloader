@@ -15,7 +15,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
-    <Grid x:Name="gridMain">
+    <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
@@ -24,7 +24,7 @@
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
         <Grid
-            x:Name="gridCheckForUpdates"
+            x:Name="GridCheckForUpdates"
             Grid.Row="0"
             HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
@@ -32,7 +32,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <CheckBox
-                x:Name="checkBoxCheckForUpdates"
+                x:Name="CheckBoxCheckForUpdates"
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 Content="{lex:Loc}"
@@ -48,7 +48,7 @@
                 </CheckBox.ToolTip>
             </CheckBox>
             <Button
-                x:Name="buttonCheckForUpdates"
+                x:Name="ButtonCheckForUpdates"
                 Grid.Column="1"
                 Height="20"
                 Margin="10,0,0,0"
@@ -57,13 +57,13 @@
                 Content="{lex:Loc}"
                 TabIndex="1" />
         </Grid>
-        <Grid x:Name="gridVerboseLog" Grid.Row="1">
+        <Grid x:Name="GridVerboseLog" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <CheckBox
-                x:Name="checkBoxVerboseLog"
+                x:Name="CheckBoxVerboseLog"
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 Content="{lex:Loc}"
@@ -72,13 +72,13 @@
                 ToolTip="{lex:Loc}"
                 ToolTipService.ShowDuration="60000" />
             <Label
-                x:Name="labelVerboseLogInfo"
+                x:Name="LabelVerboseLogInfo"
                 Grid.Column="1"
                 Content="{lex:Loc}"
                 Foreground="#FF858585" />
         </Grid>
         <CheckBox
-            x:Name="checkBoxEnableApplicationSounds"
+            x:Name="CheckBoxEnableApplicationSounds"
             Grid.Row="2"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -87,19 +87,19 @@
             TabIndex="3"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
-        <Grid x:Name="gridLanguage" Grid.Row="3">
+        <Grid x:Name="GridLanguage" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label
-                x:Name="labelLanguage"
+                x:Name="LabelLanguage"
                 Grid.Column="0"
                 Content="{lex:Loc}"
-                Target="{Binding ElementName=comboBoxLanguage}" />
+                Target="{Binding ElementName=ComboBoxLanguage}" />
             <ComboBox
-                x:Name="comboBoxLanguage"
+                x:Name="ComboBoxLanguage"
                 Grid.Column="1"
                 Width="150"
                 Height="22"
@@ -114,27 +114,27 @@
                 Margin="10,0,0,0"
                 VerticalAlignment="Center">
                 <Hyperlink
-                    x:Name="hyperlinkTranslationHelp"
+                    x:Name="HyperlinkTranslationHelp"
                     KeyboardNavigation.TabIndex="5"
                     NavigateUri="{Binding Source={x:Static core:Constants.UrlHelpTranslate}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
                     ToolTip="{Binding Source={x:Static core:Constants.UrlHelpTranslate}}">
-                    <TextBlock x:Name="textBlockTranslationHelp" Text="{lex:Loc}" />
+                    <TextBlock x:Name="TextBlockTranslationHelp" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>
         </Grid>
-        <Grid x:Name="gridTheme" Grid.Row="4">
+        <Grid x:Name="GridTheme" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Label
-                x:Name="labelTheme"
+                x:Name="LabelTheme"
                 Grid.Column="0"
                 Content="{lex:Loc}"
-                Target="{Binding ElementName=comboBoxTheme}" />
+                Target="{Binding ElementName=ComboBoxTheme}" />
             <lex:EnumComboBox
-                x:Name="comboBoxTheme"
+                x:Name="ComboBoxTheme"
                 Grid.Row="0"
                 Grid.Column="1"
                 Width="150"

@@ -34,10 +34,10 @@ internal sealed partial class UserControlSettingsAdvanced : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        textBoxAllowedFileSizeDifference.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        textBoxDownloadMaxTries.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        textBoxDownloadRetryCooldown.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        textBoxDownloadRetryExponent.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        TextBoxAllowedFileSizeDifference.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        TextBoxDownloadMaxTries.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        TextBoxDownloadRetryCooldown.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        TextBoxDownloadRetryExponent.GetBindingExpression(TextBox.TextProperty).UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

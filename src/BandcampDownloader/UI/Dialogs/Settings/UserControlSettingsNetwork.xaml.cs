@@ -34,12 +34,12 @@ internal sealed partial class UserControlSettingsNetwork : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        radioButtonManualProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
-        radioButtonNoProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
-        radioButtonSystemProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
-        textBoxHttpAddress.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        textBoxHttpPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        checkBoxUseHttpInsteadOfHttps.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        RadioButtonManualProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
+        RadioButtonNoProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
+        RadioButtonSystemProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
+        TextBoxHttpAddress.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        TextBoxHttpPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        CheckBoxUseHttpInsteadOfHttps.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

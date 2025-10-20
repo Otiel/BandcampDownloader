@@ -34,9 +34,9 @@ internal sealed partial class UserControlSettingsPlaylist : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        checkBoxCreatePlaylist.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        checkBoxM3uExtended.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        comboBoxPlaylistFormat.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-        textBoxPlaylistFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        CheckBoxCreatePlaylist.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        CheckBoxM3UExtended.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        ComboBoxPlaylistFormat.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
+        TextBoxPlaylistFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
     }
 }

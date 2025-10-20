@@ -69,7 +69,7 @@ internal sealed partial class WindowUpdate
         if (currentVersion!.CompareTo(_latestVersion) < 0)
         {
             // The latest version is newer than the current one
-            buttonDownloadUpdate.IsEnabled = true;
+            ButtonDownloadUpdate.IsEnabled = true;
         }
     }
 

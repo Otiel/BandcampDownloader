@@ -14,7 +14,7 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
-    <Grid x:Name="gridMain">
+    <Grid x:Name="GridMain">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
@@ -32,20 +32,20 @@
             HorizontalAlignment="Center"
             Orientation="Horizontal">
             <Image
-                x:Name="imageCloud"
+                x:Name="ImageCloud"
                 Width="32"
                 Height="32"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"
                 Source="pack://application:,,,/Resources/CloudSmall.png"
                 Stretch="Fill" />
             <Label
-                x:Name="labelAppName"
+                x:Name="LabelAppName"
                 Content="Bandcamp Downloader"
                 FontSize="20"
                 TextOptions.TextFormattingMode="Ideal" />
         </StackPanel>
         <Label
-            x:Name="labelVersion"
+            x:Name="LabelVersion"
             Grid.Row="1"
             Grid.Column="0"
             Content="{lex:Loc}" />
@@ -56,12 +56,12 @@
             <Run Text="{Binding Source={x:Static core:Constants.AppVersion}, Mode=OneWay}" />
         </TextBlock>
         <Label
-            x:Name="labelChangelog"
+            x:Name="LabelChangelog"
             Grid.Row="2"
             Grid.Column="0"
             Content="{lex:Loc}" />
         <Button
-            x:Name="buttonViewChangelog"
+            x:Name="ButtonViewChangelog"
             Grid.Row="2"
             Grid.Column="1"
             Height="20"
@@ -71,7 +71,7 @@
             Content="{lex:Loc}"
             TabIndex="0" />
         <Label
-            x:Name="labelWebsite"
+            x:Name="LabelWebsite"
             Grid.Row="3"
             Grid.Column="0"
             Content="{lex:Loc}" />
@@ -80,15 +80,15 @@
             Grid.Column="1"
             VerticalAlignment="Center">
             <Hyperlink
-                x:Name="hyperlinkWebsite"
+                x:Name="HyperlinkWebsite"
                 NavigateUri="{Binding Source={x:Static core:Constants.UrlWebsite}}"
                 RequestNavigate="Hyperlink_RequestNavigate"
                 ToolTip="{Binding Source={x:Static core:Constants.UrlWebsite}}">
-                <TextBlock x:Name="textBlockWebsite" Text="github.com/Otiel/BandcampDownloader" />
+                <TextBlock x:Name="TextBlockWebsite" Text="github.com/Otiel/BandcampDownloader" />
             </Hyperlink>
         </TextBlock>
         <Label
-            x:Name="labelIssues"
+            x:Name="LabelIssues"
             Grid.Row="4"
             Grid.Column="0"
             Content="{lex:Loc}" />
@@ -97,11 +97,11 @@
             Grid.Column="1"
             VerticalAlignment="Center">
             <Hyperlink
-                x:Name="hyperlinkIssuesWebsite"
+                x:Name="HyperlinkIssuesWebsite"
                 NavigateUri="{Binding Source={x:Static core:Constants.UrlIssues}}"
                 RequestNavigate="Hyperlink_RequestNavigate"
                 ToolTip="{Binding Source={x:Static core:Constants.UrlIssues}}">
-                <TextBlock x:Name="textBlockIssuesWebsite" Text="github.com/Otiel/BandcampDownloader/issues" />
+                <TextBlock x:Name="TextBlockIssuesWebsite" Text="github.com/Otiel/BandcampDownloader/issues" />
             </Hyperlink>
         </TextBlock>
     </Grid>

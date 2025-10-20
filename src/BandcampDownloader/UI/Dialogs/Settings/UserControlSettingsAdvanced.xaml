@@ -19,7 +19,7 @@
         <converters:DoubleToPercentConverter x:Key="DoubleToPercentConverter" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Grid x:Name="gridMain" VerticalAlignment="Top">
+    <Grid x:Name="GridMain" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
@@ -32,13 +32,13 @@
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
         <DockPanel
-            x:Name="dockPanelInfo"
+            x:Name="DockPanelInfo"
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Visibility="{Binding ActiveDownloads, ElementName=windowSettings, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Image
-                x:Name="imageInfo"
+                x:Name="ImageInfo"
                 Width="16"
                 Height="16"
                 Margin="5,0,0,0"
@@ -46,18 +46,18 @@
                 Source="pack://application:,,,/Resources/ExclamationSmall.png"
                 Stretch="None" />
             <Label
-                x:Name="labelAdvancedSettingsWarning"
+                x:Name="LabelAdvancedSettingsWarning"
                 Content="{lex:Loc}"
                 Foreground="#FF858585" />
         </DockPanel>
         <Label
-            x:Name="labelAllowedFileSizeDifference"
+            x:Name="LabelAllowedFileSizeDifference"
             Grid.Row="1"
             Grid.Column="0"
             Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxAllowedFileSizeDifference}" />
+            Target="{Binding ElementName=TextBoxAllowedFileSizeDifference}" />
         <TextBox
-            x:Name="textBoxAllowedFileSizeDifference"
+            x:Name="TextBoxAllowedFileSizeDifference"
             Grid.Row="1"
             Grid.Column="1"
             Width="40"
@@ -78,13 +78,13 @@
             </Binding>
         </TextBox>
         <Label
-            x:Name="labelDownloadMaxTries"
+            x:Name="LabelDownloadMaxTries"
             Grid.Row="2"
             Grid.Column="0"
             Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxDownloadMaxTries}" />
+            Target="{Binding ElementName=TextBoxDownloadMaxTries}" />
         <TextBox
-            x:Name="textBoxDownloadMaxTries"
+            x:Name="TextBoxDownloadMaxTries"
             Grid.Row="2"
             Grid.Column="1"
             Width="40"
@@ -97,13 +97,13 @@
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
-            x:Name="labelDownloadRetryCooldown"
+            x:Name="LabelDownloadRetryCooldown"
             Grid.Row="3"
             Grid.Column="0"
             Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxDownloadRetryCooldown}" />
+            Target="{Binding ElementName=TextBoxDownloadRetryCooldown}" />
         <TextBox
-            x:Name="textBoxDownloadRetryCooldown"
+            x:Name="TextBoxDownloadRetryCooldown"
             Grid.Row="3"
             Grid.Column="1"
             Width="40"
@@ -116,13 +116,13 @@
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <Label
-            x:Name="labelDownloadRetryExponent"
+            x:Name="LabelDownloadRetryExponent"
             Grid.Row="4"
             Grid.Column="0"
             Content="{lex:Loc}"
-            Target="{Binding ElementName=textBoxDownloadRetryExponent}" />
+            Target="{Binding ElementName=TextBoxDownloadRetryExponent}" />
         <TextBox
-            x:Name="textBoxDownloadRetryExponent"
+            x:Name="TextBoxDownloadRetryExponent"
             Grid.Row="4"
             Grid.Column="1"
             Width="40"

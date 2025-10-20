@@ -34,7 +34,7 @@ internal sealed partial class UserControlSettingsDownloads : IUserControlSetting
     /// </summary>
     public void SaveSettings()
     {
-        checkBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        checkBoxRetrieveFilesSize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        CheckBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        CheckBoxRetrieveFilesSize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
     }
 }
