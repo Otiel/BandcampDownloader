@@ -135,8 +135,10 @@ internal sealed partial class WindowMain
                     soundPlayer.Play();
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Log("Could not play 'finished' sound",  LogType.Error);
+                Log(ex.ToString(),  LogType.VerboseInfo);
             }
         }
     }
