@@ -143,8 +143,7 @@ internal sealed class Album
 
     /// <summary>
     /// Returns the path to be used for the playlist file from the file name format saved in the UserSettings, by
-    /// replacing the placeholders strings with their corresponding values. If the path is too long (&gt; 259
-    /// characters), it will be stripped.
+    /// replacing the placeholders strings with their corresponding values. If the path is too long (&gt; 259 characters), it will be stripped.
     /// </summary>
     private string ParsePlaylistPath()
     {
@@ -155,9 +154,9 @@ internal sealed class Album
 
         if (filePath.Length >= 260)
         {
-            // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters) Path has
-            // been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext", so 11
-            // character max for "filename.ext"
+            // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
+            // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext",
+            // so 11 character max for "filename.ext"
             var fileNameMaxLength = 11 - fileExt.Length;
             filePath = Path + "\\" + ParsePlaylistFileName().Substring(0, fileNameMaxLength) + fileExt;
         }
@@ -184,10 +183,10 @@ internal sealed class Album
 
             if (ArtworkTempPath.Length >= 260 || ArtworkPath.Length >= 260)
             {
-                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters) Path
-                // has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext",
-                // so 11 character max for "filename.ext" There may be only one path needed to shorten, but it's
-                // better to use the same file name in both places
+                // Windows doesn't do well with path + filename >= 260 characters (and path >= 248 characters)
+                // Path has been shorten to 247 characters before, so we have 12 characters max left for "\filename.ext",
+                // so 11 character max for "filename.ext"
+                // There may be only one path needed to shorten, but it's better to use the same file name in both places
                 var fileNameInTempMaxLength = 11 - randomNumber.Length - artworkFileExt.Length;
                 var fileNameInFolderMaxLength = 11 - artworkFileExt.Length;
                 ArtworkTempPath = System.IO.Path.GetTempPath() + "\\" + ParseCoverArtFileName().Substring(0, fileNameInTempMaxLength) + randomNumber + artworkFileExt;
