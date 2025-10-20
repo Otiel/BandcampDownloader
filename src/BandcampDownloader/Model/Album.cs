@@ -28,10 +28,7 @@ internal class Album
     /// <summary>
     /// True if the album has an artwork; false otherwise.
     /// </summary>
-    public bool HasArtwork
-    {
-        get { return ArtworkUrl != null; }
-    }
+    public bool HasArtwork => ArtworkUrl != null;
 
     /// <summary>
     /// The local path (full path) to the folder where the album should be saved.
