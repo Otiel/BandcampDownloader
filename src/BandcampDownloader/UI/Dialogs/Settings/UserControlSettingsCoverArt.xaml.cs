@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
@@ -34,15 +35,15 @@ internal sealed partial class UserControlSettingsCoverArt : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        CheckBoxSaveCoverArtInFolder.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        TextBoxCoverArtFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        CheckBoxCoverArtInFolderConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxCoverArtInFolderResize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        TextBoxCoverArtInFolderMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        CheckBoxSaveCoverArtInTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxCoverArtInTagsConvertToJpg.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxCoverArtInTagsResize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        TextBoxCoverArtInTagsMaxSize.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        CheckBoxSaveCoverArtInFolder.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        TextBoxCoverArtFileNameFormat.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        CheckBoxCoverArtInFolderConvertToJpg.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxCoverArtInFolderResize.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        TextBoxCoverArtInFolderMaxSize.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        CheckBoxSaveCoverArtInTags.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxCoverArtInTagsConvertToJpg.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxCoverArtInTagsResize.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        TextBoxCoverArtInTagsMaxSize.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

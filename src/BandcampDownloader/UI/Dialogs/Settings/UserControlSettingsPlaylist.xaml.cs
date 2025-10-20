@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
@@ -34,9 +35,9 @@ internal sealed partial class UserControlSettingsPlaylist : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        CheckBoxCreatePlaylist.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxM3UExtended.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        ComboBoxPlaylistFormat.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-        TextBoxPlaylistFileNameFormat.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+        CheckBoxCreatePlaylist.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxM3UExtended.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        ComboBoxPlaylistFormat.GetBindingExpression(Selector.SelectedValueProperty)?.UpdateSource();
+        TextBoxPlaylistFileNameFormat.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
     }
 }

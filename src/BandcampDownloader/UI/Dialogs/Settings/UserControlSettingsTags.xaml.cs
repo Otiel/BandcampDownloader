@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
@@ -35,15 +36,15 @@ internal sealed partial class UserControlSettingsTags : IUserControlSettings
     public void SaveSettings()
     {
         TextBoxFileNameFormat.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
-        CheckBoxModifyTags.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        ComboBoxAlbumArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxAlbumTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxArtist.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxComments.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxLyrics.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxTrackNumber.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxTrackTitle.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
-        ComboBoxYear.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        CheckBoxModifyTags.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        ComboBoxAlbumArtist.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxAlbumTitle.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxArtist.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxComments.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxLyrics.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxTrackNumber.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxTrackTitle.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
+        ComboBoxYear.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -1,4 +1,4 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows.Controls.Primitives;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
@@ -34,7 +34,7 @@ internal sealed partial class UserControlSettingsDownloads : IUserControlSetting
     /// </summary>
     public void SaveSettings()
     {
-        CheckBoxOneAlbumAtATime.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxRetrieveFilesSize.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        CheckBoxOneAlbumAtATime.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxRetrieveFilesSize.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
     }
 }

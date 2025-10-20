@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
@@ -34,12 +35,12 @@ internal sealed partial class UserControlSettingsNetwork : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        RadioButtonManualProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
-        RadioButtonNoProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
-        RadioButtonSystemProxy.GetBindingExpression(RadioButton.IsCheckedProperty).UpdateSource();
-        TextBoxHttpAddress.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        TextBoxHttpPort.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-        CheckBoxUseHttpInsteadOfHttps.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+        RadioButtonManualProxy.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        RadioButtonNoProxy.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        RadioButtonSystemProxy.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        TextBoxHttpAddress.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        TextBoxHttpPort.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        CheckBoxUseHttpInsteadOfHttps.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

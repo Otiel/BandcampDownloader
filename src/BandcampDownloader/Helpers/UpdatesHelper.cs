@@ -15,7 +15,7 @@ internal static class UpdatesHelper
         // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
 
         // Retrieve the redirect page from the GitHub latest release page
-        var request = HttpWebRequest.CreateHttp(Constants.UrlLatestRelease);
+        var request = WebRequest.CreateHttp(Constants.UrlLatestRelease);
         request.AllowAutoRedirect = false;
         string redirectPage;
         try

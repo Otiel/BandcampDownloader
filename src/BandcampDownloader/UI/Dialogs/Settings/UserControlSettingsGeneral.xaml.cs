@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using BandcampDownloader.Core;
 using BandcampDownloader.Helpers;
@@ -53,11 +54,11 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     /// </summary>
     public void SaveSettings()
     {
-        CheckBoxCheckForUpdates.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxEnableApplicationSounds.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        CheckBoxVerboseLog.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-        ComboBoxLanguage.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource();
-        ComboBoxTheme.GetBindingExpression(ComboBox.SelectedItemProperty).UpdateSource();
+        CheckBoxCheckForUpdates.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxEnableApplicationSounds.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        CheckBoxVerboseLog.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        ComboBoxLanguage.GetBindingExpression(Selector.SelectedValueProperty)?.UpdateSource();
+        ComboBoxTheme.GetBindingExpression(Selector.SelectedItemProperty)?.UpdateSource();
     }
 
     private async void ButtonCheckForUpdates_Click(object sender, RoutedEventArgs e)
