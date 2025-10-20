@@ -7,7 +7,6 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:core="clr-namespace:BandcampDownloader.Core"
-    x:Name="userControlSettingsAbout"
     Width="410"
     Height="200"
     lex:LocalizeDictionary.DesignCulture="en"

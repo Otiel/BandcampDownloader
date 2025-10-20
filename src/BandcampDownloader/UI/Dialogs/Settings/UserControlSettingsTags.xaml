@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:validation="clr-namespace:BandcampDownloader.UI.Validation"
     xmlns:core="clr-namespace:BandcampDownloader.Core"
-    x:Name="userControlSettingsTags"
     Width="410"
     Height="280"
     lex:LocalizeDictionary.DesignCulture="en"
