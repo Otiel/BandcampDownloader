@@ -42,7 +42,7 @@ internal sealed partial class App
         ThemeHelper.ApplySkin(UserSettings.Theme);
     }
 
-    private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+    private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         LogUnhandledExceptionToFile((Exception)e.ExceptionObject);
 
@@ -52,7 +52,7 @@ internal sealed partial class App
     /// <summary>
     /// Initializes the logger component.
     /// </summary>
-    private void InitializeLogger()
+    private static void InitializeLogger()
     {
         var fileTarget = new FileTarget
         {
@@ -72,7 +72,7 @@ internal sealed partial class App
     /// Initializes data context for bindings between settings values and settings controls. This must be called
     /// before initializing UI forms.
     /// </summary>
-    private void InitializeSettings()
+    private static void InitializeSettings()
     {
         UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
         if (string.IsNullOrEmpty(UserSettings.DownloadsPath))
@@ -82,7 +82,7 @@ internal sealed partial class App
         }
     }
 
-    private void LogAppProperties()
+    private static void LogAppProperties()
     {
         _logger.Info($"BandcampDownloader version: {Constants.AppVersion}");
         _logger.Info($".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
@@ -92,7 +92,7 @@ internal sealed partial class App
     /// Writes the specified Exception to the application log file, along with the .NET version.
     /// </summary>
     /// <param name="exception">The Exception to log.</param>
-    private void LogUnhandledExceptionToFile(Exception exception)
+    private static void LogUnhandledExceptionToFile(Exception exception)
     {
         LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
     }

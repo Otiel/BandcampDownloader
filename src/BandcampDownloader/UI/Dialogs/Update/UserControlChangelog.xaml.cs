@@ -27,7 +27,7 @@ internal sealed partial class UserControlChangelog
     /// <summary>
     /// Downloads the changelog file and returns its content.
     /// </summary>
-    private async Task<string> DownloadChangelogAsync()
+    private static async Task<string> DownloadChangelogAsync()
     {
         string changelog;
         using (var webClient = new WebClient())

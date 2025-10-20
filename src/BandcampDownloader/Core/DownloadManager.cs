@@ -701,7 +701,7 @@ internal sealed class DownloadManager
     /// </summary>
     /// <param name="triesNumber">The times count we tried to download the same file.</param>
     /// <returns></returns>
-    private async Task WaitForCooldownAsync(int triesNumber)
+    private static async Task WaitForCooldownAsync(int triesNumber)
     {
         if (App.UserSettings.DownloadRetryCooldown != 0)
         {
