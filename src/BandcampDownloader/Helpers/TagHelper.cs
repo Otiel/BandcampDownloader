@@ -16,10 +16,10 @@ internal static class TagHelper
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.AlbumArtists = new string[] { "" };
+                file.Tag.AlbumArtists = [""];
                 break;
             case TagEditAction.Modify:
-                file.Tag.AlbumArtists = new string[] { albumArtist };
+                file.Tag.AlbumArtists = [albumArtist];
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -85,10 +85,10 @@ internal static class TagHelper
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Performers = new string[] { "" };
+                file.Tag.Performers = [""];
                 break;
             case TagEditAction.Modify:
-                file.Tag.Performers = new string[] { artist };
+                file.Tag.Performers = [artist];
                 break;
             case TagEditAction.DoNotModify:
                 break;
