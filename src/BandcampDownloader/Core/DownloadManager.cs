@@ -233,7 +233,7 @@ internal sealed class DownloadManager
                 ProxyHelper.SetProxy(webClient);
 
                 // Update progress bar when downloading
-                webClient.DownloadProgressChanged += (s, e) => { currentFile.BytesReceived = e.BytesReceived; };
+                webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
 
                 // Register current download
                 _cancellationTokenSource.Token.Register(webClient.CancelAsync);
@@ -343,7 +343,7 @@ internal sealed class DownloadManager
                 ProxyHelper.SetProxy(webClient);
 
                 // Update progress bar when downloading
-                webClient.DownloadProgressChanged += (s, e) => { currentFile.BytesReceived = e.BytesReceived; };
+                webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
 
                 // Register current download
                 _cancellationTokenSource.Token.Register(webClient.CancelAsync);
