@@ -30,8 +30,9 @@ internal sealed partial class UserControlChangelog
     private async Task<string> DownloadChangelogAsync()
     {
         string changelog;
-        using (var webClient = new WebClient { Encoding = Encoding.UTF8 })
+        using (var webClient = new WebClient())
         {
+            webClient.Encoding = Encoding.UTF8;
             ProxyHelper.SetProxy(webClient);
             changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
         }

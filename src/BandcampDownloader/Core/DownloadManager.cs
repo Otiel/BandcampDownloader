@@ -473,8 +473,9 @@ internal sealed class DownloadManager
 
             // Retrieve URL HTML source code
             var htmlCode = "";
-            using (var webClient = new WebClient { Encoding = Encoding.UTF8 })
+            using (var webClient = new WebClient())
             {
+                webClient.Encoding = Encoding.UTF8;
                 ProxyHelper.SetProxy(webClient);
 
                 if (_cancelDownloads)
@@ -537,8 +538,9 @@ internal sealed class DownloadManager
 
             // Retrieve artist "music" page HTML source code
             var htmlCode = "";
-            using (var webClient = new WebClient { Encoding = Encoding.UTF8 })
+            using (var webClient = new WebClient())
             {
+                webClient.Encoding = Encoding.UTF8;
                 ProxyHelper.SetProxy(webClient);
 
                 if (_cancelDownloads)
