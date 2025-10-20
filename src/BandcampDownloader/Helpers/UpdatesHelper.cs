@@ -35,7 +35,7 @@ internal static class UpdatesHelper
         string latestVersionNumber;
         try
         {
-            latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v") + 2); // X.X.X
+            latestVersionNumber = redirectPage.Substring(redirectPage.LastIndexOf("/v", StringComparison.Ordinal) + 2); // X.X.X
         }
         catch
         {

@@ -104,14 +104,14 @@ internal static class BandcampHelper
         var startString = "data-tralbum=\"{";
         var stopString = "}\"";
 
-        if (htmlCode.IndexOf(startString) == -1)
+        if (htmlCode.IndexOf(startString, StringComparison.Ordinal) == -1)
         {
             // Could not find startString
             throw new Exception($"Could not find the following string in HTML code: {startString}");
         }
 
-        var albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString) + startString.Length - 1);
-        var albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString) + 1);
+        var albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString, StringComparison.Ordinal) + startString.Length - 1);
+        var albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString, StringComparison.Ordinal) + 1);
 
         albumData = WebUtility.HtmlDecode(albumData);
 
