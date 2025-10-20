@@ -99,7 +99,7 @@
     <value>_Zobacz zmiany</value>
   </data>
   <data name="changelogDownloadError" xml:space="preserve">
-    <value>Nie można pobrać pliku zmian</value>
+    <value>Nie można pobrać pliku zmian {0}</value>
   </data>
   <data name="checkBoxCheckForUpdates" xml:space="preserve">
     <value>Sprawdź uaktualnienia podczas startu</value>
