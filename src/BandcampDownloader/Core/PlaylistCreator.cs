@@ -30,7 +30,7 @@ internal sealed class PlaylistCreator
     {
         var fileContent = App.UserSettings.PlaylistFormat switch
         {
-            PlaylistFormat.m3u => CreateM3uPlaylist(),
+            PlaylistFormat.m3u => CreateM3UPlaylist(),
             PlaylistFormat.pls => CreatePlsPlaylist(),
             PlaylistFormat.wpl => CreateWplPlaylist(),
             PlaylistFormat.zpl => CreateZplPlaylist(),
@@ -43,7 +43,7 @@ internal sealed class PlaylistCreator
     /// <summary>
     /// Returns the playlist in m3u format.
     /// </summary>
-    private string CreateM3uPlaylist()
+    private string CreateM3UPlaylist()
     {
         var playlist = new M3uPlaylist
         {
