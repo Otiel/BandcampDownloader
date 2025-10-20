@@ -55,10 +55,7 @@ internal static class BandcampHelper
         foreach (var track in album.Tracks)
         {
             var lyricsElement = htmlDoc.GetElementbyId("lyrics_row_" + track.Number);
-            if (lyricsElement != null)
-            {
-                track.Lyrics = lyricsElement.InnerText.Trim();
-            }
+            track.Lyrics = lyricsElement.InnerText.Trim();
         }
 
         return album;
