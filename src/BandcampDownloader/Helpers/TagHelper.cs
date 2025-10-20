@@ -101,7 +101,7 @@ internal static class TagHelper
     /// Returns the file updated by changing the comments based on the specified TagEditAction.
     /// </summary>
     /// <param name="file">The file to update.</param>
-    /// <param name="editAction">The TagRemoveAction specifying how the tag should be updated.</param>
+    /// <param name="removeAction">The TagRemoveAction specifying how the tag should be updated.</param>
     public static File UpdateComments(File file, TagRemoveAction removeAction)
     {
         switch (removeAction)

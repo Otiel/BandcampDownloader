@@ -65,6 +65,7 @@ internal static class BandcampHelper
     /// Retrieves all the albums URL existing on the specified Bandcamp page.
     /// </summary>
     /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
+    /// <param name="artistPage">The URL to the artist page.</param>
     /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
     public static List<string> GetAlbumsUrl(string htmlCode, string artistPage)
     {
