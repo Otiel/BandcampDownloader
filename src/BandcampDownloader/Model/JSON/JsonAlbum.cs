@@ -7,8 +7,8 @@ namespace BandcampDownloader.Model.JSON;
 
 internal sealed class JsonAlbum
 {
-    private readonly string _urlEnd = "_0.jpg";
-    private readonly string _urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
+    private const string URL_END = "_0.jpg";
+    private const string URL_START = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
     [JsonProperty("current")]
     public JsonAlbumData AlbumData { get; set; }
@@ -28,7 +28,7 @@ internal sealed class JsonAlbum
     public Album ToAlbum()
     {
         // Some albums do not have a cover art
-        var artworkUrl = ArtId == null ? null : _urlStart + ArtId.PadLeft(10, '0') + _urlEnd;
+        var artworkUrl = ArtId == null ? null : URL_START + ArtId.PadLeft(10, '0') + URL_END;
 
         // Singles might not have a release date  #144
         if (ReleaseDate == new DateTime())

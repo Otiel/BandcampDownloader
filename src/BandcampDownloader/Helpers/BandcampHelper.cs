@@ -102,8 +102,8 @@ internal static class BandcampHelper
 
     private static string GetAlbumData(string htmlCode)
     {
-        var startString = "data-tralbum=\"{";
-        var stopString = "}\"";
+        const string startString = "data-tralbum=\"{";
+        const string stopString = "}\"";
 
         if (htmlCode.IndexOf(startString, StringComparison.Ordinal) == -1)
         {
