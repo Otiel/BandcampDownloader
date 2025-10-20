@@ -1,4 +1,5 @@
-﻿<Window
+﻿<!-- ReSharper disable once InconsistentNaming : renaming x:Name="windowUpdate" provokes a crash when opening the Settings window - need to investigate -->
+<Window
     x:Class="BandcampDownloader.UI.Dialogs.Update.WindowUpdate"
     x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:update="clr-namespace:BandcampDownloader.UI.Dialogs.Update"
     xmlns:core="clr-namespace:BandcampDownloader.Core"
+    x:Name="windowUpdate"
     Title="{lex:Loc}"
     Width="800"
     Height="500"

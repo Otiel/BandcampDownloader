@@ -1,4 +1,5 @@
-﻿<Window
+﻿<!-- ReSharper disable once InconsistentNaming : renaming x:Name="windowSettings" provokes a crash when opening the Settings window - need to investigate -->
+<Window
     x:Class="BandcampDownloader.UI.Dialogs.Settings.WindowSettings"
     x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
