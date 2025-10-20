@@ -2,7 +2,7 @@
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
-public sealed partial class UserControlSettingsNetwork : IUserControlSettings
+internal sealed partial class UserControlSettingsNetwork : IUserControlSettings
 {
     public UserControlSettingsNetwork()
     {

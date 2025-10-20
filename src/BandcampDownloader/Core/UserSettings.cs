@@ -134,6 +134,7 @@ public enum TagRemoveAction
     DoNotModify,
 }
 
+// ReSharper disable once MemberCanBeInternal : must be accessible to Config.Net
 public interface IUserSettings
 {
     [Option(DefaultValue = 0.05)]
