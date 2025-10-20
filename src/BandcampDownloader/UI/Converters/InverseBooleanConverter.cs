@@ -7,7 +7,7 @@ namespace BandcampDownloader.UI.Converters;
 /// <summary>
 /// Converts Boolean values to and from their inverse Boolean values.
 /// </summary>
-internal class InverseBooleanConverter : IValueConverter
+internal sealed class InverseBooleanConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

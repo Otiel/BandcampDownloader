@@ -21,7 +21,7 @@ using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs;
 
-public partial class WindowMain : Window
+public sealed partial class WindowMain : Window
 {
     /// <summary>
     /// True if there are active downloads; false otherwise.

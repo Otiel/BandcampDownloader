@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace BandcampDownloader.UI.Validation;
 
-internal class DoubleRule : ValidationRule
+internal sealed class DoubleRule : ValidationRule
 {
     public override ValidationResult Validate(object value, CultureInfo cultureInfo)
     {

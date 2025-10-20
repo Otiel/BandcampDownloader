@@ -2,7 +2,7 @@
 
 namespace BandcampDownloader.Core;
 
-internal class LogArgs : EventArgs
+internal sealed class LogArgs : EventArgs
 {
     public LogType LogType { get; private set; }
     public string Message { get; private set; }

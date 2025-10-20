@@ -7,7 +7,7 @@ namespace BandcampDownloader.UI.Converters;
 /// <summary>
 /// Converts Boolean values to their logical AND operation result.
 /// </summary>
-internal class BooleanAndConverter : IMultiValueConverter
+internal sealed class BooleanAndConverter : IMultiValueConverter
 {
     public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
     {

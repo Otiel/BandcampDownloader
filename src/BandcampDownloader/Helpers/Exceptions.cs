@@ -2,10 +2,10 @@
 
 namespace BandcampDownloader.Helpers;
 
-internal class CouldNotCheckForUpdatesException : Exception
+internal sealed class CouldNotCheckForUpdatesException : Exception
 {
 }
 
-internal class NoAlbumFoundException : Exception
+internal sealed class NoAlbumFoundException : Exception
 {
 }

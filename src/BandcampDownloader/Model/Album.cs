@@ -5,7 +5,7 @@ using BandcampDownloader.Helpers;
 
 namespace BandcampDownloader.Model;
 
-internal class Album
+internal sealed class Album
 {
     /// <summary>
     /// The album artist.

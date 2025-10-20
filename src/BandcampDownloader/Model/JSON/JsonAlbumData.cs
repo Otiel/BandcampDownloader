@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace BandcampDownloader.Model.JSON;
 
-internal class JsonAlbumData
+internal sealed class JsonAlbumData
 {
     [JsonProperty("title")]
     public string AlbumTitle { get; set; }

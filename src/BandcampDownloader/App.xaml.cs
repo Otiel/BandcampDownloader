@@ -10,7 +10,7 @@ using NLog.Targets;
 
 namespace BandcampDownloader;
 
-public partial class App : Application
+public sealed partial class App : Application
 {
     /// <summary>
     /// Random class used to create random numbers.

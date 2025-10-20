@@ -7,7 +7,7 @@ using PlaylistsNET.Models;
 
 namespace BandcampDownloader.Core;
 
-internal class PlaylistCreator
+internal sealed class PlaylistCreator
 {
     /// <summary>
     /// The album.

@@ -2,7 +2,7 @@
 
 namespace BandcampDownloader.Model;
 
-internal class Track
+internal sealed class Track
 {
     /// <summary>
     /// The track album.

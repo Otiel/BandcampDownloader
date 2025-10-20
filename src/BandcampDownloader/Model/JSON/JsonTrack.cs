@@ -2,7 +2,7 @@
 
 namespace BandcampDownloader.Model.JSON;
 
-internal class JsonTrack
+internal sealed class JsonTrack
 {
     [JsonProperty("duration")]
     public double Duration { get; set; }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace BandcampDownloader.Model.JSON;
 
-internal class JsonAlbum
+internal sealed class JsonAlbum
 {
     private readonly string _urlEnd = "_0.jpg";
     private readonly string _urlStart = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site

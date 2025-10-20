@@ -5,9 +5,9 @@ using System.Windows.Markup;
 
 namespace BandcampDownloader.Helpers;
 
-internal class EnumerationExtension : MarkupExtension
+internal sealed class EnumerationExtension : MarkupExtension
 {
-    public class EnumerationMember
+    public sealed class EnumerationMember
     {
         public string Description { get; set; }
         public object Value { get; set; }

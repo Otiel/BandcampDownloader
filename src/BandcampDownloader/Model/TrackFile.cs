@@ -1,6 +1,6 @@
 ﻿namespace BandcampDownloader.Model;
 
-internal class TrackFile
+internal sealed class TrackFile
 {
     public long BytesReceived { get; set; }
     public bool Downloaded { get; set; }

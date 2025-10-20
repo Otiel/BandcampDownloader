@@ -15,7 +15,7 @@ using File = System.IO.File;
 
 namespace BandcampDownloader.Core;
 
-internal class DownloadManager
+internal sealed class DownloadManager
 {
     /// <summary>
     /// Object used to lock on to prevent cancellation race condition.

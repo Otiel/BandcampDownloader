@@ -12,7 +12,7 @@ using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Update;
 
-public partial class UserControlChangelog : UserControl
+public sealed partial class UserControlChangelog : UserControl
 {
     public UserControlChangelog()
     {

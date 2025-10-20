@@ -11,7 +11,7 @@ using Microsoft.Win32;
 
 namespace BandcampDownloader.UI.Dialogs.Update;
 
-public partial class WindowUpdate : Window
+public sealed partial class WindowUpdate : Window
 {
     private Version _latestVersion;
 
