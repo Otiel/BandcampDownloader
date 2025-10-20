@@ -296,7 +296,7 @@ internal sealed class DownloadManager
                     {
                         // Save cover in tags when downloaded
                         var tagFile = TagLib.File.Create(track.Path);
-                        tagFile.Tag.Pictures = new IPicture[1] { artwork };
+                        tagFile.Tag.Pictures = new IPicture[] { artwork };
                         tagFile.Save();
                         LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                     }
