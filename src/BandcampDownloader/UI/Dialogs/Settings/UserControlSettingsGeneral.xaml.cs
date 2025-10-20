@@ -11,7 +11,7 @@ using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
-public sealed partial class UserControlSettingsGeneral : UserControl, IUserControlSettings
+public sealed partial class UserControlSettingsGeneral : IUserControlSettings
 {
     public UserControlSettingsGeneral()
     {

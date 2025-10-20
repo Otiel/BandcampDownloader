@@ -6,7 +6,7 @@ using BandcampDownloader.UI.Dialogs.Update;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
-public sealed partial class UserControlSettingsAbout : UserControl
+public sealed partial class UserControlSettingsAbout
 {
     public UserControlSettingsAbout()
     {
