@@ -28,25 +28,14 @@ internal sealed class PlaylistCreator
     /// </summary>
     public void SavePlaylistToFile()
     {
-        string fileContent;
-
-        switch (App.UserSettings.PlaylistFormat)
+        var fileContent = App.UserSettings.PlaylistFormat switch
         {
-            case PlaylistFormat.m3u:
-                fileContent = CreateM3uPlaylist();
-                break;
-            case PlaylistFormat.pls:
-                fileContent = CreatePlsPlaylist();
-                break;
-            case PlaylistFormat.wpl:
-                fileContent = CreateWplPlaylist();
-                break;
-            case PlaylistFormat.zpl:
-                fileContent = CreateZplPlaylist();
-                break;
-            default:
-                throw new NotImplementedException();
-        }
+            PlaylistFormat.m3u => CreateM3uPlaylist(),
+            PlaylistFormat.pls => CreatePlsPlaylist(),
+            PlaylistFormat.wpl => CreateWplPlaylist(),
+            PlaylistFormat.zpl => CreateZplPlaylist(),
+            _ => throw new NotImplementedException(),
+        };
 
         File.WriteAllText(_album.PlaylistPath, fileContent, Encoding.UTF8);
     }

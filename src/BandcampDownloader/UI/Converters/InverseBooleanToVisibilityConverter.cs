@@ -17,16 +17,12 @@ internal class InverseBooleanToVisibilityConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        switch ((Visibility)value)
+        return (Visibility)value switch
         {
-            case Visibility.Collapsed:
-                return true;
-            case Visibility.Hidden:
-                return true;
-            case Visibility.Visible:
-                return false;
-            default:
-                throw new NotImplementedException();
-        }
+            Visibility.Collapsed => true,
+            Visibility.Hidden => true,
+            Visibility.Visible => false,
+            _ => throw new NotImplementedException(),
+        };
     }
 }

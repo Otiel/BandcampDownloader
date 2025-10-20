@@ -78,19 +78,14 @@ internal sealed class Album
     /// </summary>
     private static string GetPlaylistFileExtension()
     {
-        switch (App.UserSettings.PlaylistFormat)
+        return App.UserSettings.PlaylistFormat switch
         {
-            case PlaylistFormat.m3u:
-                return ".m3u";
-            case PlaylistFormat.pls:
-                return ".pls";
-            case PlaylistFormat.wpl:
-                return ".wpl";
-            case PlaylistFormat.zpl:
-                return ".zpl";
-            default:
-                throw new NotImplementedException();
-        }
+            PlaylistFormat.m3u => ".m3u",
+            PlaylistFormat.pls => ".pls",
+            PlaylistFormat.wpl => ".wpl",
+            PlaylistFormat.zpl => ".zpl",
+            _ => throw new NotImplementedException(),
+        };
     }
 
     /// <summary>
