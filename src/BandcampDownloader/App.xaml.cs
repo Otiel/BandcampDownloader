@@ -9,7 +9,6 @@ using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;
-using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
 namespace BandcampDownloader;
@@ -27,30 +26,40 @@ internal sealed partial class App
     {
         var container = DependencyInjectionHelper.InitializeContainer();
 
-        var loggingService = container.GetRequiredService<ILoggingService>();
+        // 1. Initialize the logger first in order to be able to log any early errors
+        var loggingService = container.GetService<ILoggingService>();
         loggingService.InitializeLogger();
 
-        var exceptionHandler = container.GetRequiredService<IExceptionHandler>();
+        // 2. Register the handler for unhandled exception in order to catch and log early unhandled exceptions
+        var exceptionHandler = container.GetService<IExceptionHandler>();
         exceptionHandler.RegisterUnhandledExceptionHandler();
 
+        // 3. Log the application properties
         LogAppProperties();
 
+        // 4. Initialize less critical services
+        InitializeCoreServices(container);
+
+        // 5. Open the main window
+        var windowMain = container.GetService<WindowMain>();
+        windowMain.Show();
+    }
+
+    private static void InitializeCoreServices(IContainer container)
+    {
         // Define the default security protocol to use for connection as TLS (#109)
 #pragma warning disable SYSLIB0014
         ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 #pragma warning restore SYSLIB0014
 
-        var settingsService = container.GetRequiredService<ISettingsService>();
+        var settingsService = container.GetService<ISettingsService>();
         var userSettings = settingsService.InitializeSettings();
 
-        var languageService = container.GetRequiredService<ILanguageService>();
+        var languageService = container.GetService<ILanguageService>();
         languageService.ApplyLanguage(userSettings.Language);
 
-        var themeService = container.GetRequiredService<IThemeService>();
+        var themeService = container.GetService<IThemeService>();
         themeService.ApplySkin(userSettings.Theme);
-
-        var windowMain = container.GetRequiredService<WindowMain>();
-        windowMain.Show();
     }
 
     private static void LogAppProperties()
