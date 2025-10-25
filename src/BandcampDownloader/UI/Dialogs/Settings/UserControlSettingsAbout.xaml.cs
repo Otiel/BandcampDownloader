@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using BandcampDownloader.Helpers;
 using BandcampDownloader.UI.Dialogs.Update;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
@@ -26,7 +26,7 @@ internal sealed partial class UserControlSettingsAbout
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+        UrlHelper.OpenUrlInBrowser(e.Uri.AbsoluteUri);
         e.Handled = true;
     }
 }
