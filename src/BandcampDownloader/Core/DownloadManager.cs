@@ -7,7 +7,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
@@ -17,19 +16,40 @@ using File = System.IO.File;
 
 namespace BandcampDownloader.Core;
 
-internal sealed class DownloadManager
+internal interface IDownloadManager
+{
+    /// <summary>
+    /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
+    /// and the total bytes to download.
+    /// </summary>
+    List<TrackFile> DownloadingFiles { get; set; }
+
+    /// <summary>
+    /// Cancels all downloads.
+    /// </summary>
+    void CancelDownloads();
+
+    /// <summary>
+    /// Fetch albums data from the specified URLs.
+    /// </summary>
+    Task FetchUrlsAsync(string urls);
+
+    /// <summary>
+    /// Starts downloads.
+    /// </summary>
+    Task StartDownloadsAsync();
+
+    event DownloadManager.LogAddedEventHandler LogAdded;
+}
+
+internal sealed class DownloadManager : IDownloadManager
 {
     private readonly IUserSettings _userSettings;
 
     /// <summary>
     /// Object used to lock on to prevent cancellation race condition.
     /// </summary>
-    private readonly object _cancellationLock = new();
-
-    /// <summary>
-    /// The URLs to download.
-    /// </summary>
-    private readonly string _urls;
+    private readonly Lock _cancellationLock = new();
 
     /// <summary>
     /// The albums to download.
@@ -46,23 +66,15 @@ internal sealed class DownloadManager
     /// </summary>
     private CancellationTokenSource _cancellationTokenSource;
 
-
-    /// <summary>
-    /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
-    /// and the total bytes to download.
-    /// </summary>
     public List<TrackFile> DownloadingFiles { get; set; }
 
     public delegate void LogAddedEventHandler(object sender, LogArgs eventArgs);
 
-    /// <summary>
-    /// Initializes a new instance of DownloadManager.
-    /// </summary>
-    /// <param name="urls">The URLs we'll download from.</param>
-    public DownloadManager(string urls)
+    public event LogAddedEventHandler LogAdded;
+
+    public DownloadManager(ISettingsService settingsService)
     {
-        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
-        _urls = urls;
+        _userSettings = settingsService.GetUserSettings();
 
         // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
         // value) files at the same time
@@ -71,9 +83,6 @@ internal sealed class DownloadManager
 #pragma warning restore SYSLIB0014
     }
 
-    /// <summary>
-    /// Cancels all downloads.
-    /// </summary>
     public void CancelDownloads()
     {
         lock (_cancellationLock)
@@ -87,30 +96,24 @@ internal sealed class DownloadManager
         }
     }
 
-    /// <summary>
-    /// Fetch albums data from the URLs specified when creating this DownloadManager.
-    /// </summary>
-    public async Task FetchUrlsAsync()
+    public async Task FetchUrlsAsync(string urls)
     {
-        var urls = _urls.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-        urls = urls.Distinct().ToList();
+        var sanitizedUrls = urls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
+        sanitizedUrls = sanitizedUrls.Distinct().ToList();
 
         // Get URLs of albums to download
         if (_userSettings.DownloadArtistDiscography)
         {
-            urls = await GetArtistDiscographyAsync(urls);
+            sanitizedUrls = await GetArtistDiscographyAsync(sanitizedUrls);
         }
 
         // Get info on albums
-        _albums = await GetAlbumsAsync(urls);
+        _albums = await GetAlbumsAsync(sanitizedUrls);
 
         // Save the files to download and get their size
         DownloadingFiles = await GetFilesToDownloadAsync(_albums);
     }
 
-    /// <summary>
-    /// Starts downloads.
-    /// </summary>
     public async Task StartDownloadsAsync()
     {
         if (_albums == null)
@@ -724,6 +727,4 @@ internal sealed class DownloadManager
             await Task.Delay((int)(Math.Pow(_userSettings.DownloadRetryExponent, triesNumber) * _userSettings.DownloadRetryCooldown * 1000));
         }
     }
-
-    public event LogAddedEventHandler LogAdded;
 }

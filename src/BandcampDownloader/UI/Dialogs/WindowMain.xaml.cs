@@ -26,16 +26,12 @@ namespace BandcampDownloader.UI.Dialogs;
 internal sealed partial class WindowMain
 {
     private readonly IUserSettings _userSettings;
+    private readonly IDownloadManager _downloadManager;
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
     /// </summary>
     private bool _activeDownloads;
-
-    /// <summary>
-    /// The DownloadManager used to download albums.
-    /// </summary>
-    private DownloadManager _downloadManager;
 
     /// <summary>
     /// Used to compute and display the download speed.
@@ -52,9 +48,11 @@ internal sealed partial class WindowMain
     /// </summary>
     private bool _userCancelled;
 
-    public WindowMain(ISettingsService settingsService)
+    public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager)
     {
         _userSettings = settingsService.GetUserSettings();
+        _downloadManager = downloadManager;
+        _downloadManager.LogAdded += DownloadManager_LogAdded;
 
         // Save DataContext for bindings (must be called before initializing UI)
         DataContext = _userSettings;
@@ -259,12 +257,8 @@ internal sealed partial class WindowMain
     {
         _userCancelled = false;
 
-        // Initializes the DownloadManager
-        _downloadManager = new DownloadManager(TextBoxUrls.Text);
-        _downloadManager.LogAdded += DownloadManager_LogAdded;
-
         // Fetch URL to get the files size
-        await _downloadManager.FetchUrlsAsync();
+        await _downloadManager.FetchUrlsAsync(TextBoxUrls.Text);
 
         // Set progressBar max value
         long maxProgressBarValue;

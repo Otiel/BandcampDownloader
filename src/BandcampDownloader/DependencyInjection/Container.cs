@@ -1,4 +1,5 @@
-﻿using BandcampDownloader.Helpers;
+﻿using BandcampDownloader.Core;
+using BandcampDownloader.Helpers;
 using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
@@ -35,11 +36,12 @@ internal sealed class Container : IContainer
     {
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
         serviceCollection.AddSingleton<ILanguageService, LanguageService>();
         serviceCollection.AddSingleton<ILoggingService, LoggingService>();
-        serviceCollection.AddSingleton<IThemeService, ThemeService>();
         serviceCollection.AddSingleton<ISettingsService, SettingsService>();
+        serviceCollection.AddSingleton<IThemeService, ThemeService>();
         serviceCollection.AddSingleton<WindowMain>();
 
         return serviceCollection;
