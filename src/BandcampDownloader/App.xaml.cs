@@ -22,11 +22,6 @@ internal sealed partial class App
 
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-    /// <summary>
-    /// The settings chosen by the user.
-    /// </summary>
-    public static IUserSettings UserSettings { get; set; }
-
     protected override void OnStartup(StartupEventArgs e)
     {
         var container = DependencyInjectionHelper.InitializeContainer();
@@ -46,12 +41,12 @@ internal sealed partial class App
 
         var settingsService = container.GetRequiredService<ISettingsService>();
         settingsService.InitializeSettings();
-        UserSettings = settingsService.GetUserSettings();
+        var userSettings = settingsService.GetUserSettings();
 
-        LanguageHelper.ApplyLanguage(UserSettings.Language);
+        LanguageHelper.ApplyLanguage(userSettings.Language);
 
         var themeService = container.GetRequiredService<IThemeService>();
-        themeService.ApplySkin(UserSettings.Theme);
+        themeService.ApplySkin(userSettings.Theme);
 
         var windowMain = container.GetRequiredService<WindowMain>();
         windowMain.Show();

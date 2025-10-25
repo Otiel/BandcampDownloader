@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.Helpers;
@@ -12,7 +13,9 @@ internal static class ProxyHelper
     /// <param name="webClient">The WebClient to modify.</param>
     public static void SetProxy(WebClient webClient)
     {
-        switch (App.UserSettings.Proxy)
+        var userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+
+        switch (userSettings.Proxy)
         {
             case ProxyType.None:
                 webClient.Proxy = null;
@@ -25,7 +28,7 @@ internal static class ProxyHelper
 
                 break;
             case ProxyType.Manual:
-                webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
+                webClient.Proxy = new WebProxy(userSettings.ProxyHttpAddress, userSettings.ProxyHttpPort);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

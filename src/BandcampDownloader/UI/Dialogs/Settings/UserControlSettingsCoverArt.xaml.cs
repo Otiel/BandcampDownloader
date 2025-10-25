@@ -1,15 +1,21 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class UserControlSettingsCoverArt : IUserControlSettings
 {
+    private readonly IUserSettings _userSettings;
+
     public UserControlSettingsCoverArt()
     {
+        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+
         InitializeComponent();
         // Save data context for bindings
-        DataContext = App.UserSettings;
+        DataContext = _userSettings;
     }
 
     /// <summary>
@@ -21,17 +27,17 @@ internal sealed partial class UserControlSettingsCoverArt : IUserControlSettings
     }
 
     /// <summary>
-    /// Loads settings from App.UserSettings.
+    /// Loads settings from _userSettings.
     /// </summary>
     public void LoadSettings()
     {
         // Reload DataContext in case settings have changed
-        DataContext = App.UserSettings;
+        DataContext = _userSettings;
         // No need to call UpdateTarget, it is done automatically
     }
 
     /// <summary>
-    /// Saves settings to App.UserSettings.
+    /// Saves settings to _userSettings.
     /// </summary>
     public void SaveSettings()
     {

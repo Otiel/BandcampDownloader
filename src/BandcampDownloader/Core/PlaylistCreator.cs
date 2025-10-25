@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using PlaylistsNET.Content;
@@ -15,12 +16,15 @@ internal sealed class PlaylistCreator
     /// </summary>
     private readonly Album _album;
 
+    private readonly IUserSettings _userSettings;
+
     /// <summary>
     /// Initializes a new instance of PlaylistCreator.
     /// </summary>
     /// <param name="album"></param>
     public PlaylistCreator(Album album)
     {
+        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
         _album = album;
     }
 
@@ -29,7 +33,7 @@ internal sealed class PlaylistCreator
     /// </summary>
     public void SavePlaylistToFile()
     {
-        var fileContent = App.UserSettings.PlaylistFormat switch
+        var fileContent = _userSettings.PlaylistFormat switch
         {
             PlaylistFormat.m3u => CreateM3UPlaylist(),
             PlaylistFormat.pls => CreatePlsPlaylist(),
@@ -48,7 +52,7 @@ internal sealed class PlaylistCreator
     {
         var playlist = new M3uPlaylist
         {
-            IsExtended = App.UserSettings.M3uExtended,
+            IsExtended = _userSettings.M3uExtended,
         };
 
         foreach (var track in _album.Tracks)

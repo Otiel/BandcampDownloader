@@ -15,15 +15,18 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 {
+    private readonly ISettingsService _userSettingsService;
     private readonly IThemeService _themeService;
 
     public UserControlSettingsGeneral()
     {
+        _userSettingsService = DependencyInjectionHelper.GetService<ISettingsService>();
         _themeService = DependencyInjectionHelper.GetService<IThemeService>();
+        var userSettings = _userSettingsService.GetUserSettings();
 
         InitializeComponent();
         // Save data context for bindings
-        DataContext = App.UserSettings;
+        DataContext = userSettings;
     }
 
     /// <summary>
@@ -31,31 +34,33 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     /// </summary>
     public void CancelChanges()
     {
+        var userSettings = _userSettingsService.GetUserSettings();
+
         // Revert the language only if it has been changed
-        if ((Language)ComboBoxLanguage.SelectedValue != App.UserSettings.Language)
+        if ((Language)ComboBoxLanguage.SelectedValue != userSettings.Language)
         {
-            LanguageHelper.ApplyLanguage(App.UserSettings.Language);
+            LanguageHelper.ApplyLanguage(userSettings.Language);
         }
 
         // Revert the theme only if it has been changed
-        if ((Skin)ComboBoxTheme.SelectedItem != App.UserSettings.Theme)
+        if ((Skin)ComboBoxTheme.SelectedItem != userSettings.Theme)
         {
-            _themeService.ApplySkin(App.UserSettings.Theme);
+            _themeService.ApplySkin(userSettings.Theme);
         }
     }
 
     /// <summary>
-    /// Loads settings from App.UserSettings.
+    /// Loads settings from _userSettings.
     /// </summary>
     public void LoadSettings()
     {
         // Reload DataContext in case settings have changed
-        DataContext = App.UserSettings;
+        DataContext = _userSettings;
         // No need to call UpdateTarget, it is done automatically
     }
 
     /// <summary>
-    /// Saves settings to App.UserSettings.
+    /// Saves settings to _userSettings.
     /// </summary>
     public void SaveSettings()
     {

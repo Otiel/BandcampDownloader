@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Settings;
 
@@ -7,6 +8,8 @@ namespace BandcampDownloader.Model;
 
 internal sealed class Album
 {
+    private readonly IUserSettings _userSettings;
+
     /// <summary>
     /// The album artist.
     /// </summary>
@@ -62,6 +65,8 @@ internal sealed class Album
     /// </summary>
     public Album(string artist, string artworkUrl, DateTime releaseDate, string title)
     {
+        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+
         Artist = artist;
         ArtworkUrl = artworkUrl;
         ReleaseDate = releaseDate;
@@ -76,9 +81,9 @@ internal sealed class Album
     /// <summary>
     /// Returns the file extension to be used for the playlist, depending of the type of playlist defined in UserSettings.
     /// </summary>
-    private static string GetPlaylistFileExtension()
+    private string GetPlaylistFileExtension()
     {
-        return App.UserSettings.PlaylistFormat switch
+        return _userSettings.PlaylistFormat switch
         {
             PlaylistFormat.m3u => ".m3u",
             PlaylistFormat.pls => ".pls",
@@ -95,7 +100,7 @@ internal sealed class Album
     /// </summary>
     private string ParseCoverArtFileName()
     {
-        var fileName = App.UserSettings.CoverArtFileNameFormat
+        var fileName = _userSettings.CoverArtFileNameFormat
             .Replace("{year}", ReleaseDate.Year.ToString())
             .Replace("{month}", ReleaseDate.Month.ToString("00"))
             .Replace("{day}", ReleaseDate.Day.ToString("00"))
@@ -110,7 +115,7 @@ internal sealed class Album
     /// </summary>
     private string ParseFolderPath()
     {
-        var path = App.UserSettings.DownloadsPath;
+        var path = _userSettings.DownloadsPath;
         path = path.Replace("{year}", ReleaseDate.Year.ToString().ToAllowedFileName());
         path = path.Replace("{month}", ReleaseDate.Month.ToString("00").ToAllowedFileName());
         path = path.Replace("{day}", ReleaseDate.Day.ToString("00").ToAllowedFileName());
@@ -132,7 +137,7 @@ internal sealed class Album
     /// </summary>
     private string ParsePlaylistFileName()
     {
-        var fileName = App.UserSettings.PlaylistFileNameFormat
+        var fileName = _userSettings.PlaylistFileNameFormat
             .Replace("{year}", ReleaseDate.Year.ToString())
             .Replace("{month}", ReleaseDate.Month.ToString("00"))
             .Replace("{day}", ReleaseDate.Day.ToString("00"))

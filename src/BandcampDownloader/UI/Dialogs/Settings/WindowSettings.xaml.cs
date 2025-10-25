@@ -1,14 +1,17 @@
 ﻿using System.IO;
 using System.Windows;
 using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Settings;
-using Config.Net;
 using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class WindowSettings
 {
+    private readonly ISettingsService _settingsService;
+    private readonly IUserSettings _userSettings;
+
     /// <summary>
     /// True if there are active downloads; false otherwise.
     /// </summary>
@@ -20,8 +23,11 @@ internal sealed partial class WindowSettings
     /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
     public WindowSettings(bool activeDownloads)
     {
+        _settingsService = DependencyInjectionHelper.GetService<ISettingsService>();
+        _userSettings = _settingsService.GetUserSettings();
+
         ActiveDownloads = activeDownloads; // Must be done before UI initialization
-        DataContext = App.UserSettings;
+        DataContext = _userSettings;
         InitializeComponent();
     }
 
@@ -75,15 +81,15 @@ internal sealed partial class WindowSettings
     private void ResetSettings()
     {
         // Save settings we shouldn't reset (as they're not on the Settings window)
-        var downloadsPath = App.UserSettings.DownloadsPath;
-        var downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
+        var downloadsPath = _userSettings.DownloadsPath;
+        var downloadArtistDiscography = _userSettings.DownloadArtistDiscography;
 
         File.Delete(Constants.UserSettingsFilePath);
-        App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+        _settingsService.InitializeSettings();
 
         // Load back settings we shouldn't reset
-        App.UserSettings.DownloadsPath = downloadsPath;
-        App.UserSettings.DownloadArtistDiscography = downloadArtistDiscography;
+        _userSettings.DownloadsPath = downloadsPath;
+        _userSettings.DownloadArtistDiscography = downloadArtistDiscography;
 
         // Re-load settings on UI
         UserControlSettingsAdvanced.LoadSettings();

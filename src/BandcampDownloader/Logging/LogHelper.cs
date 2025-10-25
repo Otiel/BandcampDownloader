@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Settings;
 using NLog;
 
@@ -14,13 +15,15 @@ internal static class LogHelper
     /// <param name="logType">The type of the log.</param>
     public static SolidColorBrush GetColor(LogType logType)
     {
+        var userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+
         var color = logType switch
         {
-            LogType.Info => App.UserSettings.Theme == Skin.Dark ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f0f0f0")!) : Brushes.Black,
-            LogType.VerboseInfo => App.UserSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
-            LogType.IntermediateSuccess => App.UserSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
-            LogType.Success => App.UserSettings.Theme == Skin.Dark ? Brushes.Lime : Brushes.Green,
-            LogType.Warning => App.UserSettings.Theme == Skin.Dark ? Brushes.Orange : Brushes.OrangeRed,
+            LogType.Info => userSettings.Theme == Skin.Dark ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f0f0f0")!) : Brushes.Black,
+            LogType.VerboseInfo => userSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
+            LogType.IntermediateSuccess => userSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
+            LogType.Success => userSettings.Theme == Skin.Dark ? Brushes.Lime : Brushes.Green,
+            LogType.Warning => userSettings.Theme == Skin.Dark ? Brushes.Orange : Brushes.OrangeRed,
             LogType.Error => Brushes.Red,
             _ => throw new ArgumentOutOfRangeException(nameof(logType), logType, null)
         };

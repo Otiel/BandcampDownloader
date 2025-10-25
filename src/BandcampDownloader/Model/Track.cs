@@ -1,9 +1,13 @@
-﻿using BandcampDownloader.Helpers;
+﻿using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Helpers;
+using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.Model;
 
 internal sealed class Track
 {
+    private readonly IUserSettings _userSettings;
+
     /// <summary>
     /// The track album.
     /// </summary>
@@ -44,6 +48,8 @@ internal sealed class Track
     /// </summary>
     public Track(Album album, double duration, string lyrics, string mp3Url, int number, string title)
     {
+        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+
         Album = album;
         Duration = duration;
         Lyrics = lyrics;
@@ -60,7 +66,7 @@ internal sealed class Track
     /// </summary>
     private string ParseTrackFileName()
     {
-        var fileName = App.UserSettings.FileNameFormat
+        var fileName = _userSettings.FileNameFormat
             .Replace("{year}", Album.ReleaseDate.Year.ToString())
             .Replace("{month}", Album.ReleaseDate.Month.ToString("00"))
             .Replace("{day}", Album.ReleaseDate.Day.ToString("00"))
