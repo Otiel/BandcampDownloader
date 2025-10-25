@@ -2,8 +2,10 @@
 using System.Net;
 using System.Windows;
 using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using Config.Net;
+using Microsoft.Extensions.DependencyInjection;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
@@ -27,6 +29,7 @@ internal sealed partial class App
     protected override void OnStartup(StartupEventArgs e)
     {
         InitializeLogger();
+        var container = DependencyInjectionHelper.InitializeContainer();
 
         // Manage unhandled exceptions
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
