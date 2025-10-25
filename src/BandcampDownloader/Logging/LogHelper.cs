@@ -3,7 +3,7 @@ using System.Windows.Media;
 using BandcampDownloader.Core;
 using NLog;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Logging;
 
 internal static class LogHelper
 {

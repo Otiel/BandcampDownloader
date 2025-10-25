@@ -13,6 +13,7 @@ using System.Windows.Shell;
 using System.Windows.Threading;
 using BandcampDownloader.Core;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Logging;
 using BandcampDownloader.UI.Dialogs.Settings;
 using BandcampDownloader.UI.Dialogs.Update;
 using Microsoft.Win32;
