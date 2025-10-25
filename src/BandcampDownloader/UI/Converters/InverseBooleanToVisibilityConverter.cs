@@ -23,7 +23,7 @@ internal class InverseBooleanToVisibilityConverter : IValueConverter
             Visibility.Hidden => true,
             Visibility.Visible => false,
             null => false,
-            _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
+            _ => throw new ArgumentOutOfRangeException(nameof(value), value, null),
         };
     }
 }
