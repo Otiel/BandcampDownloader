@@ -39,7 +39,9 @@ internal sealed partial class WindowUpdate
         var path = dialog.FileName;
         var zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
 
+#pragma warning disable SYSLIB0014
         using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
         {
             ProxyHelper.SetProxy(webClient);
             await webClient.DownloadFileTaskAsync(zipUrl, path);

@@ -60,7 +60,9 @@ internal sealed class DownloadManager
 
         // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
         // value) files at the same time
+#pragma warning disable SYSLIB0014
         ServicePointManager.DefaultConnectionLimit = 50;
+#pragma warning restore SYSLIB0014
     }
 
     /// <summary>
@@ -228,7 +230,9 @@ internal sealed class DownloadManager
                 return false;
             }
 
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
                 ProxyHelper.SetProxy(webClient);
 
@@ -338,7 +342,9 @@ internal sealed class DownloadManager
                 return null;
             }
 
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
                 ProxyHelper.SetProxy(webClient);
 
@@ -473,7 +479,9 @@ internal sealed class DownloadManager
 
             // Retrieve URL HTML source code
             string htmlCode;
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
                 ProxyHelper.SetProxy(webClient);
@@ -538,7 +546,9 @@ internal sealed class DownloadManager
 
             // Retrieve artist "music" page HTML source code
             string htmlCode;
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
                 ProxyHelper.SetProxy(webClient);

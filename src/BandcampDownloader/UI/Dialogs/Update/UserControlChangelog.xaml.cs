@@ -30,7 +30,9 @@ internal sealed partial class UserControlChangelog
     private static async Task<string> DownloadChangelogAsync()
     {
         string changelog;
+#pragma warning disable SYSLIB0014
         using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
         {
             webClient.Encoding = Encoding.UTF8;
             ProxyHelper.SetProxy(webClient);

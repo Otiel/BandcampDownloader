@@ -36,7 +36,9 @@ internal static class FileHelper
     /// <returns>The size of the file located at the provided URL.</returns>
     public static async Task<long> GetFileSizeAsync(string url, string protocolMethod)
     {
+#pragma warning disable SYSLIB0014
         var webRequest = WebRequest.Create(UrlHelper.GetHttpUrlIfNeeded(url));
+#pragma warning restore SYSLIB0014
         webRequest.Method = protocolMethod;
         long fileSize;
         try

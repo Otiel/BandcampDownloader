@@ -35,7 +35,9 @@ internal sealed partial class App
         LogAppProperties();
 
         // Define the default security protocol to use for connection as TLS (#109)
+#pragma warning disable SYSLIB0014
         ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#pragma warning restore SYSLIB0014
 
         InitializeSettings();
         LanguageHelper.ApplyLanguage(UserSettings.Language);

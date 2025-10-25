@@ -15,7 +15,9 @@ internal static class UpdatesHelper
         // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
 
         // Retrieve the redirect page from the GitHub latest release page
+#pragma warning disable SYSLIB0014
         var request = WebRequest.CreateHttp(Constants.UrlLatestRelease);
+#pragma warning restore SYSLIB0014
         request.AllowAutoRedirect = false;
         string redirectPage;
         try
