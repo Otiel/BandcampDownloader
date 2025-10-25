@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using BandcampDownloader.DependencyInjection;
-using BandcampDownloader.Helpers;
+using BandcampDownloader.IO;
 using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.Model;

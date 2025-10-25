@@ -1,7 +1,9 @@
 ﻿using BandcampDownloader.Core;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.IO;
 using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
+using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;
@@ -39,6 +41,8 @@ internal sealed class Container : IContainer
         serviceCollection.AddSingleton<IBandcampHelper, BandcampHelper>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
+        serviceCollection.AddSingleton<IFileService, FileService>();
+        serviceCollection.AddSingleton<IHttpService, HttpService>();
         serviceCollection.AddSingleton<ILanguageService, LanguageService>();
         serviceCollection.AddSingleton<ILoggingService, LoggingService>();
         serviceCollection.AddSingleton<IPlaylistCreator, PlaylistCreator>();

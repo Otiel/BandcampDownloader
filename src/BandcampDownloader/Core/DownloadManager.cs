@@ -8,7 +8,9 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.IO;
 using BandcampDownloader.Model;
+using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
 using ImageResizer;
 using TagLib;
@@ -45,6 +47,8 @@ internal interface IDownloadManager
 internal sealed class DownloadManager : IDownloadManager
 {
     private readonly IBandcampHelper _bandcampHelper;
+    private readonly IFileService _fileService;
+    private readonly IHttpService _httpService;
     private readonly IPlaylistCreator _playlistCreator;
     private readonly IUserSettings _userSettings;
 
@@ -74,9 +78,11 @@ internal sealed class DownloadManager : IDownloadManager
 
     public event LogAddedEventHandler LogAdded;
 
-    public DownloadManager(IBandcampHelper bandcampHelper, IPlaylistCreator playlistCreator, ISettingsService settingsService)
+    public DownloadManager(IBandcampHelper bandcampHelper, IFileService fileService, IHttpService httpService, IPlaylistCreator playlistCreator, ISettingsService settingsService)
     {
         _bandcampHelper = bandcampHelper;
+        _fileService = fileService;
+        _httpService = httpService;
         _playlistCreator = playlistCreator;
         _userSettings = settingsService.GetUserSettings();
 
@@ -247,7 +253,7 @@ internal sealed class DownloadManager : IDownloadManager
             using (var webClient = new WebClient())
 #pragma warning restore SYSLIB0014
             {
-                ProxyHelper.SetProxy(webClient);
+                ProxyService.SetProxy(webClient);
 
                 // Update progress bar when downloading
                 webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
@@ -359,7 +365,7 @@ internal sealed class DownloadManager : IDownloadManager
             using (var webClient = new WebClient())
 #pragma warning restore SYSLIB0014
             {
-                ProxyHelper.SetProxy(webClient);
+                ProxyService.SetProxy(webClient);
 
                 // Update progress bar when downloading
                 webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
@@ -423,7 +429,7 @@ internal sealed class DownloadManager : IDownloadManager
                     }
                     else if (_userSettings.SaveCoverArtInFolder)
                     {
-                        await FileHelper.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
+                        await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
                     }
 
                     // Convert/resize artwork to be saved in tags
@@ -497,7 +503,7 @@ internal sealed class DownloadManager : IDownloadManager
 #pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
-                ProxyHelper.SetProxy(webClient);
+                ProxyService.SetProxy(webClient);
 
                 if (_cancelDownloads)
                 {
@@ -564,7 +570,7 @@ internal sealed class DownloadManager : IDownloadManager
 #pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
-                ProxyHelper.SetProxy(webClient);
+                ProxyService.SetProxy(webClient);
 
                 if (_cancelDownloads)
                 {
@@ -645,7 +651,7 @@ internal sealed class DownloadManager : IDownloadManager
 
             try
             {
-                size = await FileHelper.GetFileSizeAsync(url, protocolMethod);
+                size = await _httpService.GetFileSizeAsync(url, protocolMethod);
                 sizeRetrieved = true;
                 LogAdded?.Invoke(this, new LogArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo));
             }
