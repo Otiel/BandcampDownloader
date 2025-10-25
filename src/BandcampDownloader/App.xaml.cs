@@ -40,8 +40,7 @@ internal sealed partial class App
 #pragma warning restore SYSLIB0014
 
         var settingsService = container.GetRequiredService<ISettingsService>();
-        settingsService.InitializeSettings();
-        var userSettings = settingsService.GetUserSettings();
+        var userSettings = settingsService.InitializeSettings();
 
         LanguageHelper.ApplyLanguage(userSettings.Language);
 

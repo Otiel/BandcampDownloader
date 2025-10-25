@@ -7,15 +7,13 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class UserControlSettingsNetwork : IUserControlSettings
 {
-    private readonly IUserSettings _userSettings;
-
     public UserControlSettingsNetwork()
     {
-        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+        var userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
 
         InitializeComponent();
         // Save data context for bindings
-        DataContext = _userSettings;
+        DataContext = userSettings;
     }
 
     /// <summary>
@@ -29,10 +27,10 @@ internal sealed partial class UserControlSettingsNetwork : IUserControlSettings
     /// <summary>
     /// Loads settings from _userSettings.
     /// </summary>
-    public void LoadSettings()
+    public void LoadSettings(IUserSettings userSettings)
     {
         // Reload DataContext in case settings have changed
-        DataContext = _userSettings;
+        DataContext = userSettings;
         // No need to call UpdateTarget, it is done automatically
     }
 

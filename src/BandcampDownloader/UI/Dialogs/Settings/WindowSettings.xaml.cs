@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Windows;
-using BandcampDownloader.Core;
+﻿using System.Windows;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Settings;
 using WpfMessageBoxLibrary;
@@ -83,21 +81,21 @@ internal sealed partial class WindowSettings
         var downloadsPath = userSettings.DownloadsPath;
         var downloadArtistDiscography = userSettings.DownloadArtistDiscography;
 
-        File.Delete(Constants.UserSettingsFilePath);
-        _settingsService.InitializeSettings();
+        // Reset settings
+        userSettings = _settingsService.ResetSettings();
 
         // Load back settings we shouldn't reset
         userSettings.DownloadsPath = downloadsPath;
         userSettings.DownloadArtistDiscography = downloadArtistDiscography;
 
         // Re-load settings on UI
-        UserControlSettingsAdvanced.LoadSettings();
-        UserControlSettingsCoverArt.LoadSettings();
-        UserControlSettingsDownloads.LoadSettings();
-        UserControlSettingsGeneral.LoadSettings();
-        UserControlSettingsNetwork.LoadSettings();
-        UserControlSettingsPlaylist.LoadSettings();
-        UserControlSettingsTags.LoadSettings();
+        UserControlSettingsAdvanced.LoadSettings(userSettings);
+        UserControlSettingsCoverArt.LoadSettings(userSettings);
+        UserControlSettingsDownloads.LoadSettings(userSettings);
+        UserControlSettingsGeneral.LoadSettings(userSettings);
+        UserControlSettingsNetwork.LoadSettings(userSettings);
+        UserControlSettingsPlaylist.LoadSettings(userSettings);
+        UserControlSettingsTags.LoadSettings(userSettings);
     }
 
     /// <summary>

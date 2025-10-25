@@ -52,10 +52,10 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     /// <summary>
     /// Loads settings from _userSettings.
     /// </summary>
-    public void LoadSettings()
+    public void LoadSettings(IUserSettings userSettings)
     {
         // Reload DataContext in case settings have changed
-        DataContext = _userSettings;
+        DataContext = userSettings;
         // No need to call UpdateTarget, it is done automatically
     }
 

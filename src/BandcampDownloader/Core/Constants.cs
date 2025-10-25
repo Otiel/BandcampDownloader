@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace BandcampDownloader.Core;
 
@@ -44,9 +43,4 @@ internal static class Constants
     /// The website URL of BandcampDownloader.
     /// </summary>
     public const string UrlWebsite = "https://github.com/Otiel/BandcampDownloader";
-
-    /// <summary>
-    /// The absolute path to the settings file.
-    /// </summary>
-    public static readonly string UserSettingsFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.ini";
 }
