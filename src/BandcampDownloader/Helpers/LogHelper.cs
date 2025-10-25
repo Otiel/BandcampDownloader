@@ -28,31 +28,6 @@ internal static class LogHelper
     }
 
     /// <summary>
-    /// Writes the specified Exception and all its InnerException to the application log file.
-    /// </summary>
-    /// <param name="exception">The Exception to log.</param>
-    public static void LogExceptionAndInnerExceptionsToFile(Exception exception)
-    {
-        LogExceptionToFile(exception);
-
-        if (exception.InnerException != null)
-        {
-            LogExceptionAndInnerExceptionsToFile(exception.InnerException);
-        }
-    }
-
-    /// <summary>
-    /// Writes the specified Exception to the application log file.
-    /// </summary>
-    /// <param name="exception">The Exception to log.</param>
-    public static void LogExceptionToFile(Exception exception)
-    {
-        var logger = LogManager.GetCurrentClassLogger();
-        logger.Log(LogLevel.Fatal, string.Format("{0} {1}", exception.GetType(), exception.Message));
-        logger.Log(LogLevel.Fatal, exception.StackTrace);
-    }
-
-    /// <summary>
     /// Returns the NLog.LogLevel associated to the specified LogType.
     /// </summary>
     public static LogLevel ToNLogLevel(this LogType logType)

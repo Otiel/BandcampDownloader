@@ -1,4 +1,5 @@
 ﻿using System;
+using BandcampDownloader.Helpers;
 using BandcampDownloader.Logging;
 using BandcampDownloader.UI.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,7 @@ internal static class DependencyInjectionHelper
     {
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
         serviceCollection.AddSingleton<ILoggingService, LoggingService>();
         serviceCollection.AddSingleton<WindowMain>();
 

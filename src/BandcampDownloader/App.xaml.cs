@@ -33,8 +33,8 @@ internal sealed partial class App
         var loggingService = container.GetRequiredService<ILoggingService>();
         loggingService.InitializeLogger();
 
-        // Manage unhandled exceptions
-        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        var exceptionHandler = container.GetRequiredService<IExceptionHandler>();
+        exceptionHandler.RegisterUnhandledExceptionHandler();
 
         LogAppProperties();
 
@@ -49,13 +49,6 @@ internal sealed partial class App
 
         var windowMain = container.GetRequiredService<WindowMain>();
         windowMain.Show();
-    }
-
-    private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-    {
-        LogUnhandledExceptionToFile((Exception)e.ExceptionObject);
-
-        MessageBox.Show(string.Format(BandcampDownloader.Properties.Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
     /// <summary>
@@ -76,14 +69,5 @@ internal sealed partial class App
     {
         _logger.Info($"BandcampDownloader version: {Constants.AppVersion}");
         _logger.Info($".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
-    }
-
-    /// <summary>
-    /// Writes the specified Exception to the application log file, along with the .NET version.
-    /// </summary>
-    /// <param name="exception">The Exception to log.</param>
-    private static void LogUnhandledExceptionToFile(Exception exception)
-    {
-        LogHelper.LogExceptionAndInnerExceptionsToFile(exception);
     }
 }
