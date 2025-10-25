@@ -44,6 +44,7 @@ internal interface IDownloadManager
 
 internal sealed class DownloadManager : IDownloadManager
 {
+    private readonly IBandcampHelper _bandcampHelper;
     private readonly IPlaylistCreator _playlistCreator;
     private readonly IUserSettings _userSettings;
 
@@ -73,9 +74,9 @@ internal sealed class DownloadManager : IDownloadManager
 
     public event LogAddedEventHandler LogAdded;
 
-    public DownloadManager(ISettingsService settingsService)
-    public DownloadManager(IPlaylistCreator playlistCreator, ISettingsService settingsService)
+    public DownloadManager(IBandcampHelper bandcampHelper, IPlaylistCreator playlistCreator, ISettingsService settingsService)
     {
+        _bandcampHelper = bandcampHelper;
         _playlistCreator = playlistCreator;
         _userSettings = settingsService.GetUserSettings();
 
@@ -519,7 +520,7 @@ internal sealed class DownloadManager : IDownloadManager
             // Get info on album
             try
             {
-                var album = BandcampHelper.GetAlbum(htmlCode);
+                var album = _bandcampHelper.GetAlbum(htmlCode);
 
                 if (album.Tracks.Count > 0)
                 {
@@ -586,7 +587,7 @@ internal sealed class DownloadManager : IDownloadManager
             var count = albumsUrls.Count;
             try
             {
-                albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
+                albumsUrls.AddRange(_bandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
             }
             catch (NoAlbumFoundException)
             {

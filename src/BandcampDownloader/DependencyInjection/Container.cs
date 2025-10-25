@@ -36,6 +36,7 @@ internal sealed class Container : IContainer
     {
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddSingleton<IBandcampHelper, BandcampHelper>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
         serviceCollection.AddSingleton<ILanguageService, LanguageService>();

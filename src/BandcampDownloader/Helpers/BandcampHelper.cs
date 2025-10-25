@@ -10,14 +10,27 @@ using Newtonsoft.Json;
 
 namespace BandcampDownloader.Helpers;
 
-internal static class BandcampHelper
+internal interface IBandcampHelper
 {
     /// <summary>
     /// Retrieves the data on the album of the specified Bandcamp page.
     /// </summary>
     /// <param name="htmlCode">The HTML source code of a Bandcamp album page.</param>
     /// <returns>The data on the album of the specified Bandcamp page.</returns>
-    public static Album GetAlbum(string htmlCode)
+    Album GetAlbum(string htmlCode);
+
+    /// <summary>
+    /// Retrieves all the albums URL existing on the specified Bandcamp page.
+    /// </summary>
+    /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
+    /// <param name="artistPage">The URL to the artist page.</param>
+    /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
+    List<string> GetAlbumsUrl(string htmlCode, string artistPage);
+}
+
+internal sealed class BandcampHelper : IBandcampHelper
+{
+    public Album GetAlbum(string htmlCode)
     {
         // Keep the interesting part of htmlCode only
         string albumData;
@@ -61,13 +74,7 @@ internal static class BandcampHelper
         return album;
     }
 
-    /// <summary>
-    /// Retrieves all the albums URL existing on the specified Bandcamp page.
-    /// </summary>
-    /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
-    /// <param name="artistPage">The URL to the artist page.</param>
-    /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
-    public static List<string> GetAlbumsUrl(string htmlCode, string artistPage)
+    public List<string> GetAlbumsUrl(string htmlCode, string artistPage)
     {
         // Get albums ("real" albums or track-only pages) relative urls
         var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
