@@ -11,16 +11,6 @@ internal static class Constants
     public static readonly string AppVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3);
 
     /// <summary>
-    /// The absolute path to the log file.
-    /// </summary>
-    public static readonly string LogFilePath = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.log";
-
-    /// <summary>
-    /// The log file maximum size in bytes.
-    /// </summary>
-    public const long MaxLogSize = 1024 * 1024;
-
-    /// <summary>
     /// The URL redirecting to the changelog file on GitHub.
     /// </summary>
     public const string UrlChangelog = "https://raw.githubusercontent.com/Otiel/BandcampDownloader/master/CHANGELOG.md";

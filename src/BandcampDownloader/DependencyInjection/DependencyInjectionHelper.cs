@@ -22,6 +22,7 @@ internal static class DependencyInjectionHelper
     {
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddSingleton<ILoggingService, LoggingService>();
         serviceCollection.AddSingleton<WindowMain>();
 
         return serviceCollection;
