@@ -4,6 +4,7 @@ using System.Windows;
 using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.UI.Dialogs;
 using Config.Net;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
@@ -44,6 +45,9 @@ internal sealed partial class App
         InitializeSettings();
         LanguageHelper.ApplyLanguage(UserSettings.Language);
         ThemeHelper.ApplySkin(UserSettings.Theme);
+
+        var windowMain = container.GetRequiredService<WindowMain>();
+        windowMain.Show();
     }
 
     private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

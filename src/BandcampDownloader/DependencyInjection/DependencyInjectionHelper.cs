@@ -22,6 +22,8 @@ internal static class DependencyInjectionHelper
     {
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddSingleton<WindowMain>();
+
         return serviceCollection;
     }
 }
