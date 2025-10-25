@@ -5,12 +5,17 @@ using BandcampDownloader.Core;
 
 namespace BandcampDownloader.Helpers;
 
-internal static class UpdatesHelper
+internal interface IUpdatesService
 {
     /// <summary>
     /// Returns the latest version available.
     /// </summary>
-    public static async Task<Version> GetLatestVersionAsync()
+    Task<Version> GetLatestVersionAsync();
+}
+
+internal sealed class UpdatesService : IUpdatesService
+{
+    public async Task<Version> GetLatestVersionAsync()
     {
         // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
 

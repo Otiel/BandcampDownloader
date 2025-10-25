@@ -15,11 +15,13 @@ namespace BandcampDownloader.UI.Dialogs.Update;
 internal sealed partial class WindowUpdate
 {
     private readonly IHttpService _httpService;
+    private readonly IUpdatesService _updatesService;
     private Version _latestVersion;
 
     public WindowUpdate()
     {
         _httpService = DependencyInjectionHelper.GetService<IHttpService>();
+        _updatesService = DependencyInjectionHelper.GetService<IUpdatesService>();
         InitializeComponent();
     }
 
@@ -62,7 +64,7 @@ internal sealed partial class WindowUpdate
     {
         try
         {
-            _latestVersion = await UpdatesHelper.GetLatestVersionAsync();
+            _latestVersion = await _updatesService.GetLatestVersionAsync();
         }
         catch (CouldNotCheckForUpdatesException)
         {

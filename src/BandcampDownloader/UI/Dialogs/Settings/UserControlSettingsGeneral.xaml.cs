@@ -19,12 +19,14 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     private readonly ILanguageService _languageService;
     private readonly ISettingsService _userSettingsService;
     private readonly IThemeService _themeService;
+    private readonly IUpdatesService _updatesService;
 
     public UserControlSettingsGeneral()
     {
         _languageService = DependencyInjectionHelper.GetService<ILanguageService>();
         _userSettingsService = DependencyInjectionHelper.GetService<ISettingsService>();
         _themeService = DependencyInjectionHelper.GetService<IThemeService>();
+        _updatesService = DependencyInjectionHelper.GetService<IUpdatesService>();
         var userSettings = _userSettingsService.GetUserSettings();
 
         InitializeComponent();
@@ -79,7 +81,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         Version latestVersion;
         try
         {
-            latestVersion = await UpdatesHelper.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync();
         }
         catch (CouldNotCheckForUpdatesException)
         {

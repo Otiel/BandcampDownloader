@@ -48,6 +48,7 @@ internal sealed class Container : IContainer
         serviceCollection.AddSingleton<IPlaylistCreator, PlaylistCreator>();
         serviceCollection.AddSingleton<ISettingsService, SettingsService>();
         serviceCollection.AddSingleton<IThemeService, ThemeService>();
+        serviceCollection.AddSingleton<IUpdatesService, UpdatesService>();
         serviceCollection.AddSingleton<WindowMain>();
 
         return serviceCollection;

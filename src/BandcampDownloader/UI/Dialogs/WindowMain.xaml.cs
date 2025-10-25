@@ -27,6 +27,7 @@ internal sealed partial class WindowMain
 {
     private readonly IUserSettings _userSettings;
     private readonly IDownloadManager _downloadManager;
+    private readonly IUpdatesService _updatesService;
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
@@ -48,10 +49,11 @@ internal sealed partial class WindowMain
     /// </summary>
     private bool _userCancelled;
 
-    public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager)
+    public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager, IUpdatesService updatesService)
     {
         _userSettings = settingsService.GetUserSettings();
         _downloadManager = downloadManager;
+        _updatesService = updatesService;
         _downloadManager.LogAdded += DownloadManager_LogAdded;
 
         // Save DataContext for bindings (must be called before initializing UI)
@@ -180,7 +182,7 @@ internal sealed partial class WindowMain
         Version latestVersion;
         try
         {
-            latestVersion = await UpdatesHelper.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync();
         }
         catch (CouldNotCheckForUpdatesException)
         {
