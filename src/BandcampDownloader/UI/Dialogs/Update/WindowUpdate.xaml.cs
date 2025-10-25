@@ -5,17 +5,21 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Net;
 using Microsoft.Win32;
 
 namespace BandcampDownloader.UI.Dialogs.Update;
 
 internal sealed partial class WindowUpdate
 {
+    private readonly IHttpService _httpService;
     private Version _latestVersion;
 
     public WindowUpdate()
     {
+        _httpService = DependencyInjectionHelper.GetService<IHttpService>();
         InitializeComponent();
     }
 
@@ -43,7 +47,7 @@ internal sealed partial class WindowUpdate
         using (var webClient = new WebClient())
 #pragma warning restore SYSLIB0014
         {
-            ProxyHelper.SetProxy(webClient);
+            _httpService.SetProxy(webClient);
             await webClient.DownloadFileTaskAsync(zipUrl, path);
         }
     }

@@ -253,7 +253,7 @@ internal sealed class DownloadManager : IDownloadManager
             using (var webClient = new WebClient())
 #pragma warning restore SYSLIB0014
             {
-                ProxyService.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 // Update progress bar when downloading
                 webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
@@ -365,7 +365,7 @@ internal sealed class DownloadManager : IDownloadManager
             using (var webClient = new WebClient())
 #pragma warning restore SYSLIB0014
             {
-                ProxyService.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 // Update progress bar when downloading
                 webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
@@ -503,7 +503,7 @@ internal sealed class DownloadManager : IDownloadManager
 #pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
-                ProxyService.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 if (_cancelDownloads)
                 {
@@ -570,7 +570,7 @@ internal sealed class DownloadManager : IDownloadManager
 #pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
-                ProxyService.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 if (_cancelDownloads)
                 {
