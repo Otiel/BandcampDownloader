@@ -1,5 +1,5 @@
 ﻿using System;
-using BandcampDownloader.Core;
+using BandcampDownloader.Settings;
 using TagLib;
 
 namespace BandcampDownloader.Helpers;

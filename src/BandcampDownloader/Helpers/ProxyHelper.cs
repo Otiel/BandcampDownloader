@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using BandcampDownloader.Core;
+using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.Helpers;
 

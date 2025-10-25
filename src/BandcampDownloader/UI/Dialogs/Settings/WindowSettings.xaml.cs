@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using BandcampDownloader.Core;
+using BandcampDownloader.Settings;
 using Config.Net;
 using WpfMessageBoxLibrary;
 

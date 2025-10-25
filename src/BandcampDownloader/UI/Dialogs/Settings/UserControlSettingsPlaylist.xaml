@@ -7,7 +7,7 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="clr-namespace:BandcampDownloader.Helpers"
-    xmlns:core="clr-namespace:BandcampDownloader.Core"
+    xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
     Height="110"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -53,7 +53,7 @@
                 Height="22"
                 DisplayMemberPath="Description"
                 IsEnabled="{Binding ElementName=CheckBoxCreatePlaylist, Path=IsChecked}"
-                ItemsSource="{Binding Source={helpers:EnumerationExtension {x:Type core:PlaylistFormat}}}"
+                ItemsSource="{Binding Source={helpers:EnumerationExtension {x:Type settings:PlaylistFormat}}}"
                 SelectedValue="{Binding PlaylistFormat, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
                 TabIndex="1" />

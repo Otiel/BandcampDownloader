@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using BandcampDownloader.Core;
+using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.Themes;
 

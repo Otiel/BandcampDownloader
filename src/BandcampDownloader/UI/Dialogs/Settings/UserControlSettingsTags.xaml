@@ -7,7 +7,7 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:validation="clr-namespace:BandcampDownloader.UI.Validation"
-    xmlns:core="clr-namespace:BandcampDownloader.Core"
+    xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
     Height="280"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -93,7 +93,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagArtist, UpdateSourceTrigger=Explicit}"
                 TabIndex="2"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelTrackNumber"
                 Grid.Row="1"
@@ -111,7 +111,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagTrackNumber, UpdateSourceTrigger=Explicit}"
                 TabIndex="3"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelTrackTitle"
                 Grid.Row="2"
@@ -129,7 +129,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagTrackTitle, UpdateSourceTrigger=Explicit}"
                 TabIndex="4"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelAlbumTitle"
                 Grid.Row="3"
@@ -147,7 +147,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagAlbumTitle, UpdateSourceTrigger=Explicit}"
                 TabIndex="5"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelAlbumArtist"
                 Grid.Row="4"
@@ -165,7 +165,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagAlbumArtist, UpdateSourceTrigger=Explicit}"
                 TabIndex="6"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelYear"
                 Grid.Row="5"
@@ -183,7 +183,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagYear, UpdateSourceTrigger=Explicit}"
                 TabIndex="7"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelLyrics"
                 Grid.Row="6"
@@ -201,7 +201,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagLyrics, UpdateSourceTrigger=Explicit}"
                 TabIndex="8"
-                Type="{x:Type core:TagEditAction}" />
+                Type="{x:Type settings:TagEditAction}" />
             <Label
                 x:Name="LabelComments"
                 Grid.Row="7"
@@ -219,7 +219,7 @@
                 PrependType="True"
                 SelectedItem="{Binding TagComments, UpdateSourceTrigger=Explicit}"
                 TabIndex="9"
-                Type="{x:Type core:TagRemoveAction}" />
+                Type="{x:Type settings:TagRemoveAction}" />
         </Grid>
     </Grid>
 </UserControl>

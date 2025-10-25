@@ -5,6 +5,7 @@ using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Logging;
+using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;
 using Config.Net;

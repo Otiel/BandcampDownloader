@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using BandcampDownloader.Model;
+using BandcampDownloader.Settings;
 using PlaylistsNET.Content;
 using PlaylistsNET.Models;
 

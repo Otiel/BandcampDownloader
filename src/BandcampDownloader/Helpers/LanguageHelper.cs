@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Globalization;
-using BandcampDownloader.Core;
+using BandcampDownloader.Settings;
 using WPFLocalizeExtension.Engine;
 
 namespace BandcampDownloader.Helpers;

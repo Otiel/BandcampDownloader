@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 using BandcampDownloader.Core;
+using BandcampDownloader.Settings;
 using NLog;
 
 namespace BandcampDownloader.Logging;
