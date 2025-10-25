@@ -44,6 +44,7 @@ internal interface IDownloadManager
 
 internal sealed class DownloadManager : IDownloadManager
 {
+    private readonly IPlaylistCreator _playlistCreator;
     private readonly IUserSettings _userSettings;
 
     /// <summary>
@@ -73,7 +74,9 @@ internal sealed class DownloadManager : IDownloadManager
     public event LogAddedEventHandler LogAdded;
 
     public DownloadManager(ISettingsService settingsService)
+    public DownloadManager(IPlaylistCreator playlistCreator, ISettingsService settingsService)
     {
+        _playlistCreator = playlistCreator;
         _userSettings = settingsService.GetUserSettings();
 
         // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
@@ -187,7 +190,7 @@ internal sealed class DownloadManager : IDownloadManager
         // Create playlist file
         if (_userSettings.CreatePlaylist && !_cancelDownloads)
         {
-            new PlaylistCreator(album).SavePlaylistToFile();
+            _playlistCreator.SavePlaylistToFile(album);
             LogAdded?.Invoke(this, new LogArgs($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess));
         }
 
