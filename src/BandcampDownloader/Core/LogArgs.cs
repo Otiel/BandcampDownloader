@@ -1,4 +1,5 @@
 ﻿using System;
+using BandcampDownloader.Logging;
 
 namespace BandcampDownloader.Core;
 

@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.IO;
+using BandcampDownloader.Logging;
 using BandcampDownloader.Model;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
