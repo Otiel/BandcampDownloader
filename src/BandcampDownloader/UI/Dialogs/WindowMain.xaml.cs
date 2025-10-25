@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Shell;
 using System.Windows.Threading;
 using BandcampDownloader.Core;
-using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
@@ -53,9 +52,9 @@ internal sealed partial class WindowMain
     /// </summary>
     private bool _userCancelled;
 
-    public WindowMain()
+    public WindowMain(ISettingsService settingsService)
     {
-        _userSettings = DependencyInjectionHelper.GetService<ISettingsService>().GetUserSettings();
+        _userSettings = settingsService.GetUserSettings();
 
         // Save DataContext for bindings (must be called before initializing UI)
         DataContext = _userSettings;
