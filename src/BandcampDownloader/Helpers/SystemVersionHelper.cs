@@ -15,7 +15,7 @@ internal static class SystemVersionHelper
         {
             if (ndpKey != null && ndpKey.GetValue("Release") != null)
             {
-                return GetDotNetFrameworkVersion((int)ndpKey.GetValue("Release"));
+                return GetDotNetFrameworkVersion((int)ndpKey.GetValue("Release")!);
             }
 
             return "Version 4.5 or later is not detected.";

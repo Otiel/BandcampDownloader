@@ -83,7 +83,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
 
         var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion.CompareTo(latestVersion) < 0)
+        if (currentVersion!.CompareTo(latestVersion) < 0)
         {
             // The latest version is newer than the current one
             var windowUpdate = new WindowUpdate

@@ -15,7 +15,7 @@ internal static class LogHelper
     {
         var color = logType switch
         {
-            LogType.Info => App.UserSettings.Theme == Skin.Dark ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f0f0f0")) : Brushes.Black,
+            LogType.Info => App.UserSettings.Theme == Skin.Dark ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f0f0f0")!) : Brushes.Black,
             LogType.VerboseInfo => App.UserSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
             LogType.IntermediateSuccess => App.UserSettings.Theme == Skin.Dark ? Brushes.LightSkyBlue : Brushes.MediumBlue,
             LogType.Success => App.UserSettings.Theme == Skin.Dark ? Brushes.Lime : Brushes.Green,
