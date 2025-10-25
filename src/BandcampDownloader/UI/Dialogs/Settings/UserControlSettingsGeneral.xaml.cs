@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -132,7 +131,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
     {
-        Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+        UrlHelper.OpenUrlInBrowser(e.Uri.AbsoluteUri);
         e.Handled = true;
     }
 }
