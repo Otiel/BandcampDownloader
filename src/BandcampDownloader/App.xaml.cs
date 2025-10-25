@@ -26,7 +26,6 @@ internal sealed partial class App
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        base.OnStartup(e);
         InitializeLogger();
 
         // Manage unhandled exceptions
