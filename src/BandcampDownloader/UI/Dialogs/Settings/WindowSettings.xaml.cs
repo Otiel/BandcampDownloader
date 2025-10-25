@@ -10,7 +10,6 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 internal sealed partial class WindowSettings
 {
     private readonly ISettingsService _settingsService;
-    private readonly IUserSettings _userSettings;
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
@@ -24,10 +23,8 @@ internal sealed partial class WindowSettings
     public WindowSettings(bool activeDownloads)
     {
         _settingsService = DependencyInjectionHelper.GetService<ISettingsService>();
-        _userSettings = _settingsService.GetUserSettings();
 
         ActiveDownloads = activeDownloads; // Must be done before UI initialization
-        DataContext = _userSettings;
         InitializeComponent();
     }
 
@@ -80,16 +77,18 @@ internal sealed partial class WindowSettings
     /// </summary>
     private void ResetSettings()
     {
+        var userSettings = _settingsService.GetUserSettings();
+
         // Save settings we shouldn't reset (as they're not on the Settings window)
-        var downloadsPath = _userSettings.DownloadsPath;
-        var downloadArtistDiscography = _userSettings.DownloadArtistDiscography;
+        var downloadsPath = userSettings.DownloadsPath;
+        var downloadArtistDiscography = userSettings.DownloadArtistDiscography;
 
         File.Delete(Constants.UserSettingsFilePath);
         _settingsService.InitializeSettings();
 
         // Load back settings we shouldn't reset
-        _userSettings.DownloadsPath = downloadsPath;
-        _userSettings.DownloadArtistDiscography = downloadArtistDiscography;
+        userSettings.DownloadsPath = downloadsPath;
+        userSettings.DownloadArtistDiscography = downloadArtistDiscography;
 
         // Re-load settings on UI
         UserControlSettingsAdvanced.LoadSettings();
