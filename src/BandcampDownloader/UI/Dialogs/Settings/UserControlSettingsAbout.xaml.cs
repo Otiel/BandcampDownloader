@@ -1,31 +1,32 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
+using BandcampDownloader.UI.Dialogs.Update;
 
-namespace BandcampDownloader
+namespace BandcampDownloader.UI.Dialogs.Settings;
+
+internal sealed partial class UserControlSettingsAbout
 {
-    public partial class UserControlSettingsAbout : UserControl
+    public UserControlSettingsAbout()
     {
-        public UserControlSettingsAbout()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void ButtonViewChangelog_Click(object sender, RoutedEventArgs e)
+    private void ButtonViewChangelog_Click(object sender, RoutedEventArgs e)
+    {
+        var windowUpdate = new WindowUpdate
         {
-            var windowUpdate = new WindowUpdate()
-            {
-                Owner = (Window) ((Grid) Parent).Parent,
-                ShowInTaskbar = true,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-            };
-            windowUpdate.Show();
-        }
+            Owner = (Window)((Grid)Parent).Parent,
+            ShowInTaskbar = true,
+            WindowStartupLocation = WindowStartupLocation.CenterScreen,
+        };
+        windowUpdate.Show();
+    }
 
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
+    private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+    {
+        Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+        e.Handled = true;
     }
 }

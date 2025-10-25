@@ -14,7 +14,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    
+
     <VersionPrefix>1.4.1</VersionPrefix>
   </PropertyGroup>
 

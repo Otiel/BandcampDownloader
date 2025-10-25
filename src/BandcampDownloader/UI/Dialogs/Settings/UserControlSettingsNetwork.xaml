@@ -1,12 +1,13 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsNetwork"
+    x:Class="BandcampDownloader.UI.Dialogs.Settings.UserControlSettingsNetwork"
+    x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
-    xmlns:local="clr-namespace:BandcampDownloader"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="userControlSettingsNetwork"
+    xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
+    xmlns:core="clr-namespace:BandcampDownloader.Core"
     Width="410"
     Height="180"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -15,15 +16,15 @@
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <local:ComparisonConverter x:Key="ComparisonConverter" />
+        <converters:ComparisonConverter x:Key="ComparisonConverter" />
     </UserControl.Resources>
-    <Grid x:Name="gridMain">
+    <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <CheckBox
-            x:Name="checkBoxUseHttpInsteadOfHttps"
+            x:Name="CheckBoxUseHttpInsteadOfHttps"
             Grid.Row="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -41,38 +42,38 @@
                 <RowDefinition Height="26" />
             </Grid.RowDefinitions>
             <Label
-                x:Name="labelProxy"
+                x:Name="LabelProxy"
                 Grid.Row="0"
                 Content="{lex:Loc}" />
             <RadioButton
-                x:Name="radioButtonNoProxy"
+                x:Name="RadioButtonNoProxy"
                 Grid.Row="1"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.None}, UpdateSourceTrigger=Explicit}"
+                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:ProxyType.None}, UpdateSourceTrigger=Explicit}"
                 TabIndex="0" />
             <RadioButton
-                x:Name="radioButtonSystemProxy"
+                x:Name="RadioButtonSystemProxy"
                 Grid.Row="2"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.System}, UpdateSourceTrigger=Explicit}"
+                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:ProxyType.System}, UpdateSourceTrigger=Explicit}"
                 TabIndex="1" />
             <RadioButton
-                x:Name="radioButtonManualProxy"
+                x:Name="RadioButtonManualProxy"
                 Grid.Row="3"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:ProxyType.Manual}, UpdateSourceTrigger=Explicit}"
+                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:ProxyType.Manual}, UpdateSourceTrigger=Explicit}"
                 TabIndex="2" />
             <Grid
-                x:Name="gridManualProxy"
+                x:Name="GridManualProxy"
                 Grid.Row="4"
                 Margin="34,0,0,0"
                 HorizontalAlignment="Left">
@@ -83,33 +84,33 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Label
-                    x:Name="labelHttp"
+                    x:Name="LabelHttp"
                     Grid.Column="0"
                     HorizontalAlignment="Left"
                     Content="{lex:Loc}"
-                    Target="{Binding ElementName=textBoxHttpAddress}" />
+                    Target="{Binding ElementName=TextBoxHttpAddress}" />
                 <TextBox
-                    x:Name="textBoxHttpAddress"
+                    x:Name="TextBoxHttpAddress"
                     Grid.Column="1"
                     Width="100"
                     Height="20"
                     VerticalContentAlignment="Center"
-                    IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
+                    IsEnabled="{Binding ElementName=RadioButtonManualProxy, Path=IsChecked}"
                     TabIndex="3"
                     Text="{Binding ProxyHttpAddress, UpdateSourceTrigger=Explicit}" />
                 <Label
-                    x:Name="labelHttpPort"
+                    x:Name="LabelHttpPort"
                     Grid.Column="2"
                     Margin="15,0,0,0"
                     Content="{lex:Loc}"
-                    Target="{Binding ElementName=textBoxHttpPort}" />
+                    Target="{Binding ElementName=TextBoxHttpPort}" />
                 <TextBox
-                    x:Name="textBoxHttpPort"
+                    x:Name="TextBoxHttpPort"
                     Grid.Column="3"
                     Width="50"
                     Height="20"
                     VerticalContentAlignment="Center"
-                    IsEnabled="{Binding ElementName=radioButtonManualProxy, Path=IsChecked}"
+                    IsEnabled="{Binding ElementName=RadioButtonManualProxy, Path=IsChecked}"
                     TabIndex="4"
                     Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}"
                     TextChanged="TextBox_TextChanged" />

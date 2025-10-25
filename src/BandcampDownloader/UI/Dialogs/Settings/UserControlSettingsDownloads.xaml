@@ -1,11 +1,11 @@
 ﻿<UserControl
-    x:Class="BandcampDownloader.UserControlSettingsDownloads"
+    x:Class="BandcampDownloader.UI.Dialogs.Settings.UserControlSettingsDownloads"
+    x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="userControlSettingsDownloads"
     Width="410 "
     Height="60"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -13,13 +13,13 @@
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
-    <Grid x:Name="gridMain" VerticalAlignment="Top">
+    <Grid x:Name="GridMain" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
         <CheckBox
-            x:Name="checkBoxOneAlbumAtATime"
+            x:Name="CheckBoxOneAlbumAtATime"
             Grid.Row="0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
@@ -30,7 +30,7 @@
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
         <CheckBox
-            x:Name="checkBoxRetrieveFilesSize"
+            x:Name="CheckBoxRetrieveFilesSize"
             Grid.Row="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"

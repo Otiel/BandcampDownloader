@@ -1,110 +1,110 @@
 ﻿using System.IO;
 using System.Windows;
+using BandcampDownloader.Core;
 using Config.Net;
 using WpfMessageBoxLibrary;
 
-namespace BandcampDownloader
+namespace BandcampDownloader.UI.Dialogs.Settings;
+
+internal sealed partial class WindowSettings
 {
-    public partial class WindowSettings : Window
+    /// <summary>
+    /// True if there are active downloads; false otherwise.
+    /// </summary>
+    public bool ActiveDownloads { get; set; }
+
+    /// <summary>
+    /// Creates a new instance of SettingsWindow.
+    /// </summary>
+    /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
+    public WindowSettings(bool activeDownloads)
     {
-        /// <summary>
-        /// True if there are active downloads; false otherwise.
-        /// </summary>
-        public bool ActiveDownloads { get; set; }
+        ActiveDownloads = activeDownloads; // Must be done before UI initialization
+        DataContext = App.UserSettings;
+        InitializeComponent();
+    }
 
-        /// <summary>
-        /// Creates a new instance of SettingsWindow.
-        /// </summary>
-        /// <param name="activeDownloads">True if there are active downloads; false otherwise.</param>
-        public WindowSettings(bool activeDownloads)
+    private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+    {
+        CancelChanges();
+        Close();
+    }
+
+    private void ButtonResetSettings_Click(object sender, RoutedEventArgs e)
+    {
+        var msgProperties = new WpfMessageBoxProperties
         {
-            ActiveDownloads = activeDownloads; // Must be done before UI initialization
-            DataContext = App.UserSettings;
-            InitializeComponent();
-        }
+            Button = MessageBoxButton.OKCancel,
+            ButtonOkText = Properties.Resources.messageBoxResetSettingsButtonOk,
+            ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
+            Image = MessageBoxImage.Question,
+            Text = Properties.Resources.messageBoxResetSettingsText,
+            Title = "Bandcamp Downloader",
+        };
 
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK)
         {
-            CancelChanges();
-            Close();
+            ResetSettings();
         }
+    }
 
-        private void ButtonResetSettings_Click(object sender, RoutedEventArgs e)
-        {
-            var msgProperties = new WpfMessageBoxProperties()
-            {
-                Button = MessageBoxButton.OKCancel,
-                ButtonOkText = Properties.Resources.messageBoxResetSettingsButtonOk,
-                ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
-                Image = MessageBoxImage.Question,
-                Text = Properties.Resources.messageBoxResetSettingsText,
-                Title = "Bandcamp Downloader",
-            };
+    private void ButtonSave_Click(object sender, RoutedEventArgs e)
+    {
+        SaveSettings();
+        Close();
+    }
 
-            if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK)
-            {
-                ResetSettings();
-            }
-        }
+    /// <summary>
+    /// Cancels the changes already applied.
+    /// </summary>
+    private void CancelChanges()
+    {
+        UserControlSettingsAdvanced.CancelChanges();
+        UserControlSettingsCoverArt.CancelChanges();
+        UserControlSettingsDownloads.CancelChanges();
+        UserControlSettingsGeneral.CancelChanges();
+        UserControlSettingsNetwork.CancelChanges();
+        UserControlSettingsPlaylist.CancelChanges();
+        UserControlSettingsTags.CancelChanges();
+    }
 
-        private void ButtonSave_Click(object sender, RoutedEventArgs e)
-        {
-            SaveSettings();
-            Close();
-        }
+    /// <summary>
+    /// Resets settings to their default values.
+    /// </summary>
+    private void ResetSettings()
+    {
+        // Save settings we shouldn't reset (as they're not on the Settings window)
+        var downloadsPath = App.UserSettings.DownloadsPath;
+        var downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
 
-        /// <summary>
-        /// Cancels the changes already applied.
-        /// </summary>
-        private void CancelChanges()
-        {
-            userControlSettingsAdvanced.CancelChanges();
-            userControlSettingsCoverArt.CancelChanges();
-            userControlSettingsDownloads.CancelChanges();
-            userControlSettingsGeneral.CancelChanges();
-            userControlSettingsNetwork.CancelChanges();
-            userControlSettingsPlaylist.CancelChanges();
-            userControlSettingsTags.CancelChanges();
-        }
+        File.Delete(Constants.UserSettingsFilePath);
+        App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
 
-        /// <summary>
-        /// Resets settings to their default values.
-        /// </summary>
-        private void ResetSettings()
-        {
-            // Save settings we shouldn't reset (as they're not on the Settings window)
-            var downloadsPath = App.UserSettings.DownloadsPath;
-            var downloadArtistDiscography = App.UserSettings.DownloadArtistDiscography;
+        // Load back settings we shouldn't reset
+        App.UserSettings.DownloadsPath = downloadsPath;
+        App.UserSettings.DownloadArtistDiscography = downloadArtistDiscography;
 
-            File.Delete(Constants.UserSettingsFilePath);
-            App.UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
+        // Re-load settings on UI
+        UserControlSettingsAdvanced.LoadSettings();
+        UserControlSettingsCoverArt.LoadSettings();
+        UserControlSettingsDownloads.LoadSettings();
+        UserControlSettingsGeneral.LoadSettings();
+        UserControlSettingsNetwork.LoadSettings();
+        UserControlSettingsPlaylist.LoadSettings();
+        UserControlSettingsTags.LoadSettings();
+    }
 
-            // Load back settings we shouldn't reset
-            App.UserSettings.DownloadsPath = downloadsPath;
-            App.UserSettings.DownloadArtistDiscography = downloadArtistDiscography;
-
-            // Re-load settings on UI
-            userControlSettingsAdvanced.LoadSettings();
-            userControlSettingsCoverArt.LoadSettings();
-            userControlSettingsDownloads.LoadSettings();
-            userControlSettingsGeneral.LoadSettings();
-            userControlSettingsNetwork.LoadSettings();
-            userControlSettingsPlaylist.LoadSettings();
-            userControlSettingsTags.LoadSettings();
-        }
-
-        /// <summary>
-        /// Saves all settings.
-        /// </summary>
-        private void SaveSettings()
-        {
-            userControlSettingsAdvanced.SaveSettings();
-            userControlSettingsCoverArt.SaveSettings();
-            userControlSettingsDownloads.SaveSettings();
-            userControlSettingsGeneral.SaveSettings();
-            userControlSettingsNetwork.SaveSettings();
-            userControlSettingsPlaylist.SaveSettings();
-            userControlSettingsTags.SaveSettings();
-        }
+    /// <summary>
+    /// Saves all settings.
+    /// </summary>
+    private void SaveSettings()
+    {
+        UserControlSettingsAdvanced.SaveSettings();
+        UserControlSettingsCoverArt.SaveSettings();
+        UserControlSettingsDownloads.SaveSettings();
+        UserControlSettingsGeneral.SaveSettings();
+        UserControlSettingsNetwork.SaveSettings();
+        UserControlSettingsPlaylist.SaveSettings();
+        UserControlSettingsTags.SaveSettings();
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System.Windows.Controls;
 
-namespace BandcampDownloader
+namespace BandcampDownloader.Helpers;
+
+internal static class RichTextBoxHelper
 {
-    internal static class RichTextBoxHelper
+    /// <summary>
+    /// Returns true if scroll position of the current RichTextBox is at the end; false otherwise.
+    /// </summary>
+    public static bool IsScrolledToEnd(this RichTextBox richTextBox)
     {
-        /// <summary>
-        /// Returns true if scroll position of the current RichTextBox is at the end; false otherwise.
-        /// </summary>
-        public static bool IsScrolledToEnd(this RichTextBox richTextBox)
-        {
-            return richTextBox.VerticalOffset > richTextBox.ExtentHeight - richTextBox.ViewportHeight - 10;
-        }
+        return richTextBox.VerticalOffset > richTextBox.ExtentHeight - richTextBox.ViewportHeight - 10;
     }
 }

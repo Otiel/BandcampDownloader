@@ -1,8 +1,7 @@
-﻿namespace BandcampDownloader
+﻿namespace BandcampDownloader.Model;
+
+internal enum FileType
 {
-    internal enum FileType
-    {
-        Artwork,
-        Track
-    }
+    Artwork,
+    Track,
 }

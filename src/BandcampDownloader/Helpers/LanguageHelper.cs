@@ -1,83 +1,57 @@
 ﻿using System;
 using System.Globalization;
+using BandcampDownloader.Core;
 using WPFLocalizeExtension.Engine;
 
-namespace BandcampDownloader
-{
-    internal static class LanguageHelper
-    {
-        /// <summary>
-        /// Applies the specified language.
-        /// </summary>
-        /// <param name="language">The language to apply.</param>
-        public static void ApplyLanguage(Language language)
-        {
-            // Apply language
-            LocalizeDictionary.Instance.Culture = GetCultureInfo(language);
-        }
+namespace BandcampDownloader.Helpers;
 
-        /// <summary>
-        /// Returns the CultureInfo corresponding to the specified Language.
-        /// </summary>
-        /// <param name="language">The Language.</param>
-        private static CultureInfo GetCultureInfo(Language language)
+internal static class LanguageHelper
+{
+    /// <summary>
+    /// Applies the specified language.
+    /// </summary>
+    /// <param name="language">The language to apply.</param>
+    public static void ApplyLanguage(Language language)
+    {
+        // Apply language
+        LocalizeDictionary.Instance.Culture = GetCultureInfo(language);
+    }
+
+    /// <summary>
+    /// Returns the CultureInfo corresponding to the specified Language.
+    /// </summary>
+    /// <param name="language">The Language.</param>
+    private static CultureInfo GetCultureInfo(Language language)
+    {
+        // Existing cultures: https://dotnetfiddle.net/e1BX7M
+        return language switch
         {
-            // Existing cultures: https://dotnetfiddle.net/e1BX7M
-            switch (language)
-            {
-                case Language.ar:
-                    return new CultureInfo("ar");
-                case Language.ca:
-                    return new CultureInfo("ca");
-                case Language.de:
-                    return new CultureInfo("de");
-                case Language.en:
-                    return new CultureInfo("en");
-                //case Language.eo:
-                //    return new CultureInfo("eo");
-                case Language.es:
-                    return new CultureInfo("es");
-                case Language.fi:
-                    return new CultureInfo("fi");
-                case Language.fr:
-                    return new CultureInfo("fr");
-                case Language.hr:
-                    return new CultureInfo("hr");
-                case Language.hu:
-                    return new CultureInfo("hu");
-                case Language.id:
-                    return new CultureInfo("id");
-                case Language.it:
-                    return new CultureInfo("it");
-                // case Language.ja:
-                //     return new CultureInfo("ja");
-                //case Language.ko:
-                //    return new CultureInfo("ko");
-                case Language.nb_NO:
-                    return new CultureInfo("nb-NO");
-                case Language.pl:
-                    return new CultureInfo("pl");
-                case Language.nl:
-                    return new CultureInfo("nl");
-                case Language.pt:
-                    return new CultureInfo("pt");
-                case Language.pt_BR:
-                    return new CultureInfo("pt-BR");
-                case Language.ru:
-                    return new CultureInfo("ru");
-                case Language.sv:
-                    return new CultureInfo("sv");
-                case Language.tr:
-                    return new CultureInfo("tr");
-                case Language.uk:
-                    return new CultureInfo("uk");
-                case Language.vi:
-                    return new CultureInfo("vi");
-                case Language.zh:
-                    return new CultureInfo("zh");
-                default:
-                    throw new NotImplementedException();
-            }
-        }
+            Language.ar => new CultureInfo("ar"),
+            Language.ca => new CultureInfo("ca"),
+            Language.de => new CultureInfo("de"),
+            Language.en => new CultureInfo("en"),
+            // Language.eo => new CultureInfo("eo"),
+            Language.es => new CultureInfo("es"),
+            Language.fi => new CultureInfo("fi"),
+            Language.fr => new CultureInfo("fr"),
+            Language.hr => new CultureInfo("hr"),
+            Language.hu => new CultureInfo("hu"),
+            Language.id => new CultureInfo("id"),
+            Language.it => new CultureInfo("it"),
+            // Language.ja => new CultureInfo("ja"),
+            // Language.ko => new CultureInfo("ko"),
+            Language.nb_NO => new CultureInfo("nb-NO"),
+            Language.pl => new CultureInfo("pl"),
+            Language.nl => new CultureInfo("nl"),
+            Language.pt => new CultureInfo("pt"),
+            Language.pt_BR => new CultureInfo("pt-BR"),
+            Language.ru => new CultureInfo("ru"),
+            Language.sv => new CultureInfo("sv"),
+            Language.tr => new CultureInfo("tr"),
+            Language.uk => new CultureInfo("uk"),
+            Language.vi => new CultureInfo("vi"),
+            Language.zh => new CultureInfo("zh"),
+            _ => throw new NotImplementedException(),
+        };
     }
 }

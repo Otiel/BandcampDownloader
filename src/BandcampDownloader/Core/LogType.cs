@@ -1,12 +1,11 @@
-﻿namespace BandcampDownloader
+﻿namespace BandcampDownloader.Core;
+
+internal enum LogType
 {
-    internal enum LogType
-    {
-        VerboseInfo,
-        Info,
-        IntermediateSuccess,
-        Success,
-        Warning,
-        Error,
-    }
+    VerboseInfo,
+    Info,
+    IntermediateSuccess,
+    Success,
+    Warning,
+    Error,
 }

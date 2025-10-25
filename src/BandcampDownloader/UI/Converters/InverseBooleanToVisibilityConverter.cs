@@ -3,31 +3,27 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace BandcampDownloader
-{
-    /// <summary>
-    /// Inverts Boolean values then converts them to and from Visibility enumeration values.
-    /// </summary>
-    internal class InverseBooleanToVisibilityConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (bool) value ? Visibility.Hidden : Visibility.Visible;
-        }
+namespace BandcampDownloader.UI.Converters;
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+/// <summary>
+/// Inverts Boolean values then converts them to and from Visibility enumeration values.
+/// </summary>
+internal class InverseBooleanToVisibilityConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value is true ? Visibility.Hidden : Visibility.Visible;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return (Visibility?)value switch
         {
-            switch ((Visibility) value)
-            {
-                case Visibility.Collapsed:
-                    return true;
-                case Visibility.Hidden:
-                    return true;
-                case Visibility.Visible:
-                    return false;
-                default:
-                    throw new NotImplementedException();
-            }
-        }
+            Visibility.Collapsed => true,
+            Visibility.Hidden => true,
+            Visibility.Visible => false,
+            null => false,
+            _ => throw new NotImplementedException(),
+        };
     }
 }

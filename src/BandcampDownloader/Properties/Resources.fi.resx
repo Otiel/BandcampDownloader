@@ -53,10 +53,14 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089
+    </value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+      PublicKeyToken=b77a5c561934e089
+    </value>
   </resheader>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Voit käyttää paikkamerkkejä räätälöidäksesi tiedostonimen:
@@ -129,7 +133,7 @@ Suositeltu arvo = 5</value>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Ennalta-arvaamaton virhe tapahtui. Sovellus sulkeutuu nyt.
 
-Tee tästä uusi ilmoitus ja sisällytä siihen lokitiedoston tiedot: 
+Tee tästä uusi ilmoitus ja sisällytä siihen lokitiedoston tiedot:
 {0}</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
@@ -139,7 +143,7 @@ Tee tästä uusi ilmoitus ja sisällytä siihen lokitiedoston tiedot:
     <value>_Palauta oletusasetukset</value>
   </data>
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
-    <value>Ei voitu avata linkkiä: 
+    <value>Ei voitu avata linkkiä:
 {0}</value>
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
