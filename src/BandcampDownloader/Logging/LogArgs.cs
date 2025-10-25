@@ -1,7 +1,6 @@
 ﻿using System;
-using BandcampDownloader.Logging;
 
-namespace BandcampDownloader.Core;
+namespace BandcampDownloader.Logging;
 
 internal sealed class LogArgs : EventArgs
 {
