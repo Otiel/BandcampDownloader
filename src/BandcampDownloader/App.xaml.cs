@@ -8,7 +8,6 @@ using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;
-using Config.Net;
 using Microsoft.Extensions.DependencyInjection;
 using NLog;
 
@@ -45,7 +44,10 @@ internal sealed partial class App
         ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 #pragma warning restore SYSLIB0014
 
-        InitializeSettings();
+        var settingsService = container.GetRequiredService<ISettingsService>();
+        settingsService.InitializeSettings();
+        UserSettings = settingsService.GetUserSettings();
+
         LanguageHelper.ApplyLanguage(UserSettings.Language);
 
         var themeService = container.GetRequiredService<IThemeService>();
@@ -53,20 +55,6 @@ internal sealed partial class App
 
         var windowMain = container.GetRequiredService<WindowMain>();
         windowMain.Show();
-    }
-
-    /// <summary>
-    /// Initializes data context for bindings between settings values and settings controls. This must be called
-    /// before initializing UI forms.
-    /// </summary>
-    private static void InitializeSettings()
-    {
-        UserSettings = new ConfigurationBuilder<IUserSettings>().UseIniFile(Constants.UserSettingsFilePath).Build();
-        if (string.IsNullOrEmpty(UserSettings.DownloadsPath))
-        {
-            // Its default value cannot be set in settings as it isn't determined by a constant function
-            UserSettings.DownloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\{artist}\\{album}";
-        }
     }
 
     private static void LogAppProperties()
