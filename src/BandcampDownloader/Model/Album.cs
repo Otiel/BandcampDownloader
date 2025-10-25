@@ -84,7 +84,7 @@ internal sealed class Album
             PlaylistFormat.pls => ".pls",
             PlaylistFormat.wpl => ".wpl",
             PlaylistFormat.zpl => ".zpl",
-            _ => throw new NotImplementedException(),
+            _ => throw new ArgumentOutOfRangeException(),
         };
     }
 

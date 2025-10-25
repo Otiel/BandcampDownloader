@@ -34,7 +34,7 @@ internal sealed class PlaylistCreator
             PlaylistFormat.pls => CreatePlsPlaylist(),
             PlaylistFormat.wpl => CreateWplPlaylist(),
             PlaylistFormat.zpl => CreateZplPlaylist(),
-            _ => throw new NotImplementedException(),
+            _ => throw new ArgumentOutOfRangeException(),
         };
 
         File.WriteAllText(_album.PlaylistPath, fileContent, Encoding.UTF8);

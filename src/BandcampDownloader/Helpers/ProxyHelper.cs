@@ -28,7 +28,7 @@ internal static class ProxyHelper
                 webClient.Proxy = new WebProxy(App.UserSettings.ProxyHttpAddress, App.UserSettings.ProxyHttpPort);
                 break;
             default:
-                throw new NotImplementedException();
+                throw new ArgumentOutOfRangeException();
         }
     }
 }

@@ -51,7 +51,7 @@ internal static class LanguageHelper
             Language.uk => new CultureInfo("uk"),
             Language.vi => new CultureInfo("vi"),
             Language.zh => new CultureInfo("zh"),
-            _ => throw new NotImplementedException(),
+            _ => throw new ArgumentOutOfRangeException(nameof(language), language, null),
         };
     }
 }

@@ -21,7 +21,7 @@ internal static class LogHelper
             LogType.Success => App.UserSettings.Theme == Skin.Dark ? Brushes.Lime : Brushes.Green,
             LogType.Warning => App.UserSettings.Theme == Skin.Dark ? Brushes.Orange : Brushes.OrangeRed,
             LogType.Error => Brushes.Red,
-            _ => throw new NotImplementedException(),
+            _ => throw new ArgumentOutOfRangeException(nameof(logType), logType, null)
         };
 
         return color;
@@ -40,7 +40,7 @@ internal static class LogHelper
             LogType.Success => LogLevel.Info,
             LogType.Warning => LogLevel.Warn,
             LogType.Error => LogLevel.Error,
-            _ => throw new NotImplementedException(),
+            _ => throw new ArgumentOutOfRangeException(nameof(logType), logType, null)
         };
     }
 }

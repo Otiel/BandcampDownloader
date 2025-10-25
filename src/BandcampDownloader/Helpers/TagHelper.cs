@@ -1,4 +1,5 @@
-﻿using BandcampDownloader.Core;
+﻿using System;
+using BandcampDownloader.Core;
 using TagLib;
 
 namespace BandcampDownloader.Helpers;
@@ -23,6 +24,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;
@@ -46,6 +49,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;
@@ -69,6 +74,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;
@@ -92,6 +99,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;
@@ -111,6 +120,8 @@ internal static class TagHelper
                 break;
             case TagRemoveAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(removeAction), removeAction, null);
         }
 
         return file;
@@ -134,6 +145,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;
@@ -157,6 +170,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;
@@ -180,6 +195,8 @@ internal static class TagHelper
                 break;
             case TagEditAction.DoNotModify:
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
         return file;

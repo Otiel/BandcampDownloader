@@ -27,7 +27,7 @@ internal sealed class ThemeService : IThemeService
                 // Do nothing
                 break;
             default:
-                throw new NotImplementedException();
+                throw new ArgumentOutOfRangeException(nameof(skin), skin, null);
         }
     }
 }

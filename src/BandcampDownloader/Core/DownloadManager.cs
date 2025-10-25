@@ -619,7 +619,7 @@ internal sealed class DownloadManager
                 protocolMethod = "GET";
                 break;
             default:
-                throw new NotImplementedException();
+                throw new ArgumentOutOfRangeException(nameof(fileType), fileType, null);
         }
 
         do
