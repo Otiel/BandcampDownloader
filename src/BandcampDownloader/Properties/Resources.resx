@@ -418,7 +418,8 @@ If not, some bandwidth/time is saved.</value>
     <value>_Reset settings</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Reset all settings to their default values?</value>
+      <value>Reset all settings to their default values?
+This action cannot be reverted.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>An unhandled error occurred. The application will close now.
