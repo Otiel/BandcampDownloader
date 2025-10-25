@@ -2,15 +2,19 @@
 using System.Windows;
 using BandcampDownloader.Core;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Themes;
 
-internal static class ThemeHelper
+internal interface IThemeService
 {
     /// <summary>
-    /// Applies the specified skin to the application resources.
+    /// Applies the specified <see cref="Skin"/> to the application resources.
     /// </summary>
-    /// <param name="skin">The skin to apply.</param>
-    public static void ApplySkin(Skin skin)
+    void ApplySkin(Skin skin);
+}
+
+internal sealed class ThemeService : IThemeService
+{
+    public void ApplySkin(Skin skin)
     {
         Application.Current.Resources.MergedDictionaries.Clear();
 

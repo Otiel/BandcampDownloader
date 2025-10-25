@@ -5,7 +5,9 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs.Update;
 using WpfMessageBoxLibrary;
 
@@ -13,8 +15,12 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 {
+    private readonly IThemeService _themeService;
+
     public UserControlSettingsGeneral()
     {
+        _themeService = DependencyInjectionHelper.GetService<IThemeService>();
+
         InitializeComponent();
         // Save data context for bindings
         DataContext = App.UserSettings;
@@ -34,7 +40,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         // Revert the theme only if it has been changed
         if ((Skin)ComboBoxTheme.SelectedItem != App.UserSettings.Theme)
         {
-            ThemeHelper.ApplySkin(App.UserSettings.Theme);
+            _themeService.ApplySkin(App.UserSettings.Theme);
         }
     }
 
@@ -126,7 +132,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
 
         // Apply selected theme
-        ThemeHelper.ApplySkin((Skin)ComboBoxTheme.SelectedItem);
+        _themeService.ApplySkin((Skin)ComboBoxTheme.SelectedItem);
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
