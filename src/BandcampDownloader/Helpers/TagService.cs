@@ -4,7 +4,7 @@ using TagLib;
 
 namespace BandcampDownloader.Helpers;
 
-internal static class TagHelper
+internal interface ITagService
 {
     /// <summary>
     /// Returns the file updated with the specified album artist based on the specified TagEditAction.
@@ -12,7 +12,67 @@ internal static class TagHelper
     /// <param name="file">The file to update.</param>
     /// <param name="albumArtist">The value used if TagEditAction = Modify.</param>
     /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)
+    File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction);
+
+    /// <summary>
+    /// Returns the file updated with the specified album title based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="albumTitle">The value used if TagEditAction = Modify.</param>
+    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
+    File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction);
+
+    /// <summary>
+    /// Returns the file updated with the specified album year based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="albumYear">The value used if TagEditAction = Modify.</param>
+    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
+    File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction);
+
+    /// <summary>
+    /// Returns the file updated with the specified artist based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="artist">The value used if TagEditAction = Modify.</param>
+    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
+    File UpdateArtist(File file, string artist, TagEditAction editAction);
+
+    /// <summary>
+    /// Returns the file updated by changing the comments based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="removeAction">The TagRemoveAction specifying how the tag should be updated.</param>
+    File UpdateComments(File file, TagRemoveAction removeAction);
+
+    /// <summary>
+    /// Returns the file updated with the specified lyrics based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="trackLyrics">The value used if TagEditAction = Modify.</param>
+    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
+    File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction);
+
+    /// <summary>
+    /// Returns the file updated with the specified track number based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="trackNumber">The value used if TagEditAction = Modify.</param>
+    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
+    File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction);
+
+    /// <summary>
+    /// Returns the file updated with the specified track title based on the specified TagEditAction.
+    /// </summary>
+    /// <param name="file">The file to update.</param>
+    /// <param name="trackTitle">The value used if TagEditAction = Modify.</param>
+    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
+    File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction);
+}
+
+internal sealed class TagService : ITagService
+{
+    public File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -31,13 +91,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated with the specified album title based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="albumTitle">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction)
+    public File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -56,13 +110,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated with the specified album year based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="albumYear">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction)
+    public File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -81,13 +129,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated with the specified artist based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="artist">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateArtist(File file, string artist, TagEditAction editAction)
+    public File UpdateArtist(File file, string artist, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -106,12 +148,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated by changing the comments based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="removeAction">The TagRemoveAction specifying how the tag should be updated.</param>
-    public static File UpdateComments(File file, TagRemoveAction removeAction)
+    public File UpdateComments(File file, TagRemoveAction removeAction)
     {
         switch (removeAction)
         {
@@ -127,13 +164,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated with the specified lyrics based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="trackLyrics">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction)
+    public File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -152,13 +183,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated with the specified track number based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="trackNumber">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction)
+    public File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -177,13 +202,7 @@ internal static class TagHelper
         return file;
     }
 
-    /// <summary>
-    /// Returns the file updated with the specified track title based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="trackTitle">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    public static File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction)
+    public File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction)
     {
         switch (editAction)
         {

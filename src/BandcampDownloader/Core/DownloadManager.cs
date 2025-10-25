@@ -50,6 +50,7 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IFileService _fileService;
     private readonly IHttpService _httpService;
     private readonly IPlaylistCreator _playlistCreator;
+    private readonly ITagService _tagService;
     private readonly IUserSettings _userSettings;
 
     /// <summary>
@@ -78,12 +79,13 @@ internal sealed class DownloadManager : IDownloadManager
 
     public event LogAddedEventHandler LogAdded;
 
-    public DownloadManager(IBandcampHelper bandcampHelper, IFileService fileService, IHttpService httpService, IPlaylistCreator playlistCreator, ISettingsService settingsService)
+    public DownloadManager(IBandcampHelper bandcampHelper, IFileService fileService, IHttpService httpService, IPlaylistCreator playlistCreator, ISettingsService settingsService, ITagService tagService)
     {
         _bandcampHelper = bandcampHelper;
         _fileService = fileService;
         _httpService = httpService;
         _playlistCreator = playlistCreator;
+        _tagService = tagService;
         _userSettings = settingsService.GetUserSettings();
 
         // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
@@ -303,14 +305,14 @@ internal sealed class DownloadManager : IDownloadManager
                     {
                         // Tag (ID3) the file when downloaded
                         var tagFile = TagLib.File.Create(track.Path);
-                        tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
-                        tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
-                        tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
-                        tagFile = TagHelper.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
-                        tagFile = TagHelper.UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
-                        tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
-                        tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
-                        tagFile = TagHelper.UpdateComments(tagFile, _userSettings.TagComments);
+                        tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
+                        tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
+                        tagFile = _tagService.UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
+                        tagFile = _tagService.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
+                        tagFile = _tagService.UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
+                        tagFile = _tagService.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
+                        tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
+                        tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
                         tagFile.Save();
                         LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                     }
