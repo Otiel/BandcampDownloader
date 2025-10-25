@@ -65,6 +65,10 @@ internal sealed partial class App
     private static void LogAppProperties()
     {
         _logger.Info($"BandcampDownloader version: {Constants.AppVersion}");
-        _logger.Info($".NET Framework version: {SystemVersionHelper.GetDotNetFrameworkVersion()}");
+        _logger.Info($"Framework description: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}");
+        _logger.Info($"OS architecture: {System.Runtime.InteropServices.RuntimeInformation.OSArchitecture}");
+        _logger.Info($"OS description: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}");
+        _logger.Info($"Process architecture: {System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}");
+        _logger.Info($"Runtime identifier: {System.Runtime.InteropServices.RuntimeInformation.RuntimeIdentifier}");
     }
 }
