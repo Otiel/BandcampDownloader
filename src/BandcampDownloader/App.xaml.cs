@@ -4,6 +4,7 @@ using System.Windows;
 using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
@@ -42,7 +43,8 @@ internal sealed partial class App
         var settingsService = container.GetRequiredService<ISettingsService>();
         var userSettings = settingsService.InitializeSettings();
 
-        LanguageHelper.ApplyLanguage(userSettings.Language);
+        var languageService = container.GetRequiredService<ILanguageService>();
+        languageService.ApplyLanguage(userSettings.Language);
 
         var themeService = container.GetRequiredService<IThemeService>();
         themeService.ApplySkin(userSettings.Theme);

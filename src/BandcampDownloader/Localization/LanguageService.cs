@@ -3,15 +3,19 @@ using System.Globalization;
 using BandcampDownloader.Settings;
 using WPFLocalizeExtension.Engine;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Localization;
 
-internal static class LanguageHelper
+internal interface ILanguageService
 {
     /// <summary>
     /// Applies the specified language.
     /// </summary>
-    /// <param name="language">The language to apply.</param>
-    public static void ApplyLanguage(Language language)
+    void ApplyLanguage(Language language);
+}
+
+internal sealed class LanguageService : ILanguageService
+{
+    public void ApplyLanguage(Language language)
     {
         // Apply language
         LocalizeDictionary.Instance.Culture = GetCultureInfo(language);

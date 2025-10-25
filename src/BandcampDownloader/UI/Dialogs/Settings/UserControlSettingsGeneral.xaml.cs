@@ -6,6 +6,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Localization;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs.Update;
@@ -15,11 +16,13 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 {
+    private readonly ILanguageService _languageService;
     private readonly ISettingsService _userSettingsService;
     private readonly IThemeService _themeService;
 
     public UserControlSettingsGeneral()
     {
+        _languageService = DependencyInjectionHelper.GetService<ILanguageService>();
         _userSettingsService = DependencyInjectionHelper.GetService<ISettingsService>();
         _themeService = DependencyInjectionHelper.GetService<IThemeService>();
         var userSettings = _userSettingsService.GetUserSettings();
@@ -39,7 +42,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         // Revert the language only if it has been changed
         if ((Language)ComboBoxLanguage.SelectedValue != userSettings.Language)
         {
-            LanguageHelper.ApplyLanguage(userSettings.Language);
+            _languageService.ApplyLanguage(userSettings.Language);
         }
 
         // Revert the theme only if it has been changed
@@ -126,7 +129,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
 
         // Apply selected language
-        LanguageHelper.ApplyLanguage((Language)ComboBoxLanguage.SelectedValue);
+        _languageService.ApplyLanguage((Language)ComboBoxLanguage.SelectedValue);
     }
 
     private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)

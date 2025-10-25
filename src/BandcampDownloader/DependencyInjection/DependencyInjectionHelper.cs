@@ -1,5 +1,6 @@
 ﻿using System;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
@@ -34,6 +35,7 @@ internal static class DependencyInjectionHelper
         var serviceCollection = new ServiceCollection();
 
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
+        serviceCollection.AddSingleton<ILanguageService, LanguageService>();
         serviceCollection.AddSingleton<ILoggingService, LoggingService>();
         serviceCollection.AddSingleton<IThemeService, ThemeService>();
         serviceCollection.AddSingleton<ISettingsService, SettingsService>();
