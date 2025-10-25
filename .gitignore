@@ -13,3 +13,5 @@ _ReSharper*
 # Rider
 .idea
 
+# Temporary csproj during build
+*wpftmp.csproj
