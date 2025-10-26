@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Windows;
 using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
@@ -69,10 +70,10 @@ internal sealed partial class App
         _logger.Info("┻┛┗┻┛┗┗┻┗┗┻┛┗┗┣┛  ┻┛┗┛┗┻┛┛┗┗┗┛┗┻┗┻┗ ┛");
         _logger.Info("              ┛");
         _logger.Info($"BandcampDownloader version: {Constants.AppVersion}");
-        _logger.Info($"Framework description: {System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription}");
-        _logger.Info($"OS architecture: {System.Runtime.InteropServices.RuntimeInformation.OSArchitecture}");
-        _logger.Info($"OS description: {System.Runtime.InteropServices.RuntimeInformation.OSDescription}");
-        _logger.Info($"Process architecture: {System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}");
-        _logger.Info($"Runtime identifier: {System.Runtime.InteropServices.RuntimeInformation.RuntimeIdentifier}");
+        _logger.Info($"Framework description: {RuntimeInformation.FrameworkDescription}");
+        _logger.Info($"OS architecture: {RuntimeInformation.OSArchitecture}");
+        _logger.Info($"OS description: {RuntimeInformation.OSDescription}");
+        _logger.Info($"Process architecture: {RuntimeInformation.ProcessArchitecture}");
+        _logger.Info($"Runtime identifier: {RuntimeInformation.RuntimeIdentifier}");
     }
 }

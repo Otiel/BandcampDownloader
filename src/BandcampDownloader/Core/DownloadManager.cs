@@ -605,7 +605,7 @@ internal sealed class DownloadManager : IDownloadManager
 
             if (albumsUrls.Count - count == 0)
             {
-                // This seem to be a one-album artist with no "music" page => URL redirects to the unique album URL
+                // This seems to be a one-album artist with no "music" page => URL redirects to the unique album URL
                 albumsUrls.Add(url);
             }
         }
