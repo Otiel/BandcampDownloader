@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Media;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +16,7 @@ using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
 using BandcampDownloader.UI.Dialogs.Settings;
 using BandcampDownloader.UI.Dialogs.Update;
+using BandcampDownloader.Updates;
 using Microsoft.Win32;
 using NLog;
 using WpfMessageBoxLibrary;
@@ -28,6 +28,7 @@ internal sealed partial class WindowMain
     private readonly IUserSettings _userSettings;
     private readonly IDownloadManager _downloadManager;
     private readonly IUpdatesService _updatesService;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
@@ -177,24 +178,24 @@ internal sealed partial class WindowMain
     /// <summary>
     /// Displays a message if a new version is available.
     /// </summary>
-    private async Task CheckForUpdates()
+    private async Task CheckForUpdatesAsync()
     {
         Version latestVersion;
         try
         {
             latestVersion = await _updatesService.GetLatestVersionAsync();
         }
-        catch (CouldNotCheckForUpdatesException)
+        catch (Exception ex)
         {
+            _logger.Error(ex, "Failed to get latest version");
+
             LabelNewVersion.Content = Properties.Resources.labelVersionError;
             LabelNewVersion.Visibility = Visibility.Visible;
             return;
         }
 
-        var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion!.CompareTo(latestVersion) < 0)
+        if (latestVersion.IsNewerVersion())
         {
-            // The latest version is newer than the current one
             LabelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
             LabelNewVersion.Visibility = Visibility.Visible;
         }
@@ -434,7 +435,7 @@ internal sealed partial class WindowMain
     {
         if (_userSettings.CheckForUpdates)
         {
-            await CheckForUpdates();
+            await CheckForUpdatesAsync();
         }
     }
 }

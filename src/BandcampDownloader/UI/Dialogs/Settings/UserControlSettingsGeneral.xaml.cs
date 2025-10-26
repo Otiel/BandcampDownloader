@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -10,6 +9,8 @@ using BandcampDownloader.Localization;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs.Update;
+using BandcampDownloader.Updates;
+using NLog;
 using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
@@ -20,6 +21,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     private readonly ISettingsService _userSettingsService;
     private readonly IThemeService _themeService;
     private readonly IUpdatesService _updatesService;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     public UserControlSettingsGeneral()
     {
@@ -83,8 +85,10 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         {
             latestVersion = await _updatesService.GetLatestVersionAsync();
         }
-        catch (CouldNotCheckForUpdatesException)
+        catch (Exception ex)
         {
+            _logger.Error(ex, "Failed to get latest version");
+
             var msgProperties = new WpfMessageBoxProperties
             {
                 Button = MessageBoxButton.OK,
@@ -98,10 +102,8 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
             return;
         }
 
-        var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion!.CompareTo(latestVersion) < 0)
+        if (latestVersion.IsNewerVersion())
         {
-            // The latest version is newer than the current one
             var windowUpdate = new WindowUpdate
             {
                 ShowInTaskbar = true,
@@ -111,6 +113,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
         else
         {
+            var currentVersion = VersionHelper.GetCurrentVersion();
             var msgProperties = new WpfMessageBoxProperties
             {
                 Button = MessageBoxButton.OK,

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -8,7 +7,9 @@ using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
+using BandcampDownloader.Updates;
 using Microsoft.Win32;
+using NLog;
 
 namespace BandcampDownloader.UI.Dialogs.Update;
 
@@ -16,6 +17,7 @@ internal sealed partial class WindowUpdate
 {
     private readonly IHttpService _httpService;
     private readonly IUpdatesService _updatesService;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private Version _latestVersion;
 
     public WindowUpdate()
@@ -66,16 +68,16 @@ internal sealed partial class WindowUpdate
         {
             _latestVersion = await _updatesService.GetLatestVersionAsync();
         }
-        catch (CouldNotCheckForUpdatesException)
+        catch (Exception ex)
         {
-            // Do nothing, the button will stayed disabled
+            _logger.Error(ex, "Failed to get latest version");
+
+            // Do nothing, the button will stay disabled
             return;
         }
 
-        var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion!.CompareTo(_latestVersion) < 0)
+        if (_latestVersion.IsNewerVersion())
         {
-            // The latest version is newer than the current one
             ButtonDownloadUpdate.IsEnabled = true;
         }
     }
