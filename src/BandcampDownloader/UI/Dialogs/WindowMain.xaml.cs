@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Media;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -195,10 +194,8 @@ internal sealed partial class WindowMain
             return;
         }
 
-        var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion!.CompareTo(latestVersion) < 0)
+        if (latestVersion.IsNewerVersion())
         {
-            // The latest version is newer than the current one
             LabelNewVersion.Content = Properties.Resources.labelVersionNewUpdateAvailable;
             LabelNewVersion.Visibility = Visibility.Visible;
         }

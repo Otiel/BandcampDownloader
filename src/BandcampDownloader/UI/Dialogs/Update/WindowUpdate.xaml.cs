@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -77,10 +76,8 @@ internal sealed partial class WindowUpdate
             return;
         }
 
-        var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion!.CompareTo(_latestVersion) < 0)
+        if (_latestVersion.IsNewerVersion())
         {
-            // The latest version is newer than the current one
             ButtonDownloadUpdate.IsEnabled = true;
         }
     }

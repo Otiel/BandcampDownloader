@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -103,10 +102,8 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
             return;
         }
 
-        var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion!.CompareTo(latestVersion) < 0)
+        if (latestVersion.IsNewerVersion())
         {
-            // The latest version is newer than the current one
             var windowUpdate = new WindowUpdate
             {
                 ShowInTaskbar = true,
@@ -116,6 +113,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
         else
         {
+            var currentVersion = VersionHelper.GetCurrentVersion();
             var msgProperties = new WpfMessageBoxProperties
             {
                 Button = MessageBoxButton.OK,
