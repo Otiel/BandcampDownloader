@@ -18,10 +18,6 @@
     <VersionPrefix>1.4.1</VersionPrefix>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <VersionSuffix>pre$([System.DateTime]::Now.ToString("yyyyMMdd-HHmmss"))</VersionSuffix>
-  </PropertyGroup>
-  
   <ItemGroup>
     <InternalsVisibleTo Include="BandcampDownloader.UnitTests" />
     <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
