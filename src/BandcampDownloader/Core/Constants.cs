@@ -30,11 +30,6 @@ internal static class Constants
     public const string UrlReleases = "https://github.com/Otiel/BandcampDownloader/releases";
 
     /// <summary>
-    /// The URL redirecting to the zip file. Must be formatted with a version.
-    /// </summary>
-    public const string UrlReleaseZip = "https://github.com/Otiel/BandcampDownloader/releases/download/v{0}/BandcampDownloader.zip";
-
-    /// <summary>
     /// The website URL of BandcampDownloader.
     /// </summary>
     public const string UrlWebsite = "https://github.com/Otiel/BandcampDownloader";

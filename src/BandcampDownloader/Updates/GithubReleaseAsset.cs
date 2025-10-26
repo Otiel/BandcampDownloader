@@ -2,11 +2,9 @@
 
 namespace BandcampDownloader.Updates;
 
+// ReSharper disable once ClassNeverInstantiated.Global : use in deserialization
 public sealed class GithubReleaseAsset
 {
-    [JsonPropertyName("url")]
-    public string Url { get; init; }
-
     [JsonPropertyName("name")]
     public string Name { get; init; }
 

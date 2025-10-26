@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Net;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
@@ -18,6 +17,7 @@ internal sealed partial class WindowUpdate
     private readonly IHttpService _httpService;
     private readonly IUpdatesService _updatesService;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
     private Version _latestVersion;
 
     public WindowUpdate()
@@ -29,8 +29,10 @@ internal sealed partial class WindowUpdate
 
     private async void ButtonDownloadUpdate_Click(object sender, RoutedEventArgs e)
     {
-        var parts = Constants.UrlReleaseZip.Split(new[] { '/' });
-        var defaultFileName = parts[parts.Length - 1];
+        var latestReleaseAssetUrl = await _updatesService.GetLatestReleaseAssetUrlAsync();
+
+        var parts = latestReleaseAssetUrl.Split(new[] { '/' });
+        var defaultFileName = parts[^1];
 
         var dialog = new SaveFileDialog
         {
@@ -44,16 +46,9 @@ internal sealed partial class WindowUpdate
             return;
         }
 
-        var path = dialog.FileName;
-        var zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
+        var fileInfo = new FileInfo(dialog.FileName);
 
-#pragma warning disable SYSLIB0014
-        using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
-        {
-            _httpService.SetProxy(webClient);
-            await webClient.DownloadFileTaskAsync(zipUrl, path);
-        }
+        await _httpService.DownloadFileAsync(latestReleaseAssetUrl, fileInfo);
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
