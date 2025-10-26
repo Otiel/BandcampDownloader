@@ -8,6 +8,7 @@ using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
+using BandcampDownloader.Updates;
 using Microsoft.Win32;
 
 namespace BandcampDownloader.UI.Dialogs.Update;

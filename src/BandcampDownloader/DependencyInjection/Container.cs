@@ -7,6 +7,7 @@ using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;
+using BandcampDownloader.Updates;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BandcampDownloader.DependencyInjection;
@@ -38,6 +39,7 @@ internal sealed class Container : IContainer
     {
         var serviceCollection = new ServiceCollection();
 
+        serviceCollection.AddHttpClient();
         serviceCollection.AddSingleton<IBandcampHelper, BandcampHelper>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();

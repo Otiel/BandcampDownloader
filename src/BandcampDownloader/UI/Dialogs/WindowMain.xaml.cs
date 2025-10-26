@@ -17,6 +17,7 @@ using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
 using BandcampDownloader.UI.Dialogs.Settings;
 using BandcampDownloader.UI.Dialogs.Update;
+using BandcampDownloader.Updates;
 using Microsoft.Win32;
 using NLog;
 using WpfMessageBoxLibrary;

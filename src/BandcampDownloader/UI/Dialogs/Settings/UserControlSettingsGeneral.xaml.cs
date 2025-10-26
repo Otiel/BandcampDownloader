@@ -10,6 +10,7 @@ using BandcampDownloader.Localization;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs.Update;
+using BandcampDownloader.Updates;
 using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
