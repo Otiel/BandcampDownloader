@@ -41,7 +41,10 @@ internal sealed partial class App
         // 4. Initialize less critical services
         InitializeCoreServices(container);
 
-        // 5. Open the main window
+        // 5. Log the user settings
+        LogUserSettings(container);
+
+        // 6. Open the main window
         var windowMain = container.GetService<WindowMain>();
         windowMain.Show();
     }
@@ -75,5 +78,13 @@ internal sealed partial class App
         _logger.Info($"OS description: {RuntimeInformation.OSDescription}");
         _logger.Info($"Process architecture: {RuntimeInformation.ProcessArchitecture}");
         _logger.Info($"Runtime identifier: {RuntimeInformation.RuntimeIdentifier}");
+    }
+
+    private static void LogUserSettings(IContainer container)
+    {
+        var settingsService = container.GetService<ISettingsService>();
+        var userSettingsJson = settingsService.GetUserSettingsInJson();
+
+        _logger.Info($"Settings: {userSettingsJson}");
     }
 }

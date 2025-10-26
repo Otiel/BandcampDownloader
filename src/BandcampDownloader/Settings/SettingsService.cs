@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Text.Json;
 using Config.Net;
 
 namespace BandcampDownloader.Settings;
@@ -10,6 +11,7 @@ internal interface ISettingsService
     IUserSettings InitializeSettings();
     IUserSettings ResetSettings();
     IUserSettings GetUserSettings();
+    string GetUserSettingsInJson();
 }
 
 public sealed class SettingsService : ISettingsService
@@ -45,5 +47,11 @@ public sealed class SettingsService : ISettingsService
     public IUserSettings GetUserSettings()
     {
         return _userSettings;
+    }
+
+    public string GetUserSettingsInJson()
+    {
+        var serializedSettings = JsonSerializer.Serialize(_userSettings);
+        return serializedSettings;
     }
 }
