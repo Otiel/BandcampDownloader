@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ internal interface IHttpService
 {
     HttpClient CreateHttpClient();
     Task<long> GetFileSizeAsync(string url);
+    Task DownloadFileAsync(string url, FileInfo fileInfo);
 
     /// <summary>
     /// Sets the proxy of the specified WebClient according to the UserSettings.
@@ -51,6 +53,14 @@ internal sealed class HttpService : IHttpService
         }
 
         return fileSize.Value;
+    }
+
+    public async Task DownloadFileAsync(string url, FileInfo fileInfo)
+    {
+        var httpClient = CreateHttpClientInternal();
+        await using var httpStream = await httpClient.GetStreamAsync(url);
+        await using var fileStream = File.Create(fileInfo.FullName);
+        await httpStream.CopyToAsync(fileStream);
     }
 
     public void SetProxy(WebClient webClient)
