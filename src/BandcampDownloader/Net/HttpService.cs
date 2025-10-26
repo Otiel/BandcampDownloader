@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Settings;
@@ -21,15 +22,27 @@ internal interface IHttpService
     /// </summary>
     /// <param name="webClient">The WebClient to modify.</param>
     void SetProxy(WebClient webClient);
+
+    HttpClient CreateHttpClient();
 }
 
 internal sealed class HttpService : IHttpService
 {
     private readonly ISettingsService _settingsService;
+    private readonly IHttpClientFactory _httpClientFactory;
 
-    public HttpService(ISettingsService settingsService)
+    public HttpService(ISettingsService settingsService, IHttpClientFactory httpClientFactory)
     {
         _settingsService = settingsService;
+        _httpClientFactory = httpClientFactory;
+    }
+
+    public HttpClient CreateHttpClient()
+    {
+        var httpClient = _httpClientFactory.CreateClient();
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "BandcampDownloader");
+
+        return httpClient;
     }
 
     public async Task<long> GetFileSizeAsync(string url, string protocolMethod)
