@@ -568,29 +568,23 @@ internal sealed class DownloadManager : IDownloadManager
 
             // Retrieve artist "music" page HTML source code
             string htmlCode;
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
+
+            if (_cancelDownloads)
             {
-                webClient.Encoding = Encoding.UTF8;
-                _httpService.SetProxy(webClient);
+                // Abort
+                return new List<string>();
+            }
 
-                if (_cancelDownloads)
-                {
-                    // Abort
-                    return new List<string>();
-                }
-
-                try
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
-                    htmlCode = await webClient.DownloadStringTaskAsync(artistMusicPage);
-                }
-                catch
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
-                    continue;
-                }
+            try
+            {
+                LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
+                var httpClient = _httpService.CreateHttpClient();
+                htmlCode = await httpClient.GetStringAsync(artistMusicPage);
+            }
+            catch
+            {
+                LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
+                continue;
             }
 
             var count = albumsUrls.Count;
@@ -625,7 +619,7 @@ internal sealed class DownloadManager : IDownloadManager
         bool sizeRetrieved;
         var tries = 0;
 
-        string fileTypeForLog = fileType switch
+        var fileTypeForLog = fileType switch
         {
             FileType.Artwork => "cover art file for album",
             FileType.Track => "MP3 file for the track",
