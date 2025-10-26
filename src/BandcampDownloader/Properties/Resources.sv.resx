@@ -81,7 +81,8 @@
     <value>Spara som</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Återställ alla inställningar till deras standardvärden?</value>
+    <value>Återställ alla inställningar till standardvärden?
+Den här åtgärden kan inte återställas.</value>
   </data>
   <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
     <value>_Återställ inställningar</value>
