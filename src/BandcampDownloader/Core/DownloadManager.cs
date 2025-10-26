@@ -8,24 +8,56 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.IO;
+using BandcampDownloader.Logging;
 using BandcampDownloader.Model;
+using BandcampDownloader.Net;
+using BandcampDownloader.Settings;
 using ImageResizer;
 using TagLib;
 using File = System.IO.File;
 
 namespace BandcampDownloader.Core;
 
-internal sealed class DownloadManager
+internal interface IDownloadManager
 {
+    /// <summary>
+    /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
+    /// and the total bytes to download.
+    /// </summary>
+    List<TrackFile> DownloadingFiles { get; set; }
+
+    /// <summary>
+    /// Cancels all downloads.
+    /// </summary>
+    void CancelDownloads();
+
+    /// <summary>
+    /// Fetch albums data from the specified URLs.
+    /// </summary>
+    Task FetchUrlsAsync(string urls);
+
+    /// <summary>
+    /// Starts downloads.
+    /// </summary>
+    Task StartDownloadsAsync();
+
+    event DownloadManager.LogAddedEventHandler LogAdded;
+}
+
+internal sealed class DownloadManager : IDownloadManager
+{
+    private readonly IBandcampHelper _bandcampHelper;
+    private readonly IFileService _fileService;
+    private readonly IHttpService _httpService;
+    private readonly IPlaylistCreator _playlistCreator;
+    private readonly ITagService _tagService;
+    private readonly IUserSettings _userSettings;
+
     /// <summary>
     /// Object used to lock on to prevent cancellation race condition.
     /// </summary>
-    private readonly object _cancellationLock = new();
-
-    /// <summary>
-    /// The URLs to download.
-    /// </summary>
-    private readonly string _urls;
+    private readonly Lock _cancellationLock = new();
 
     /// <summary>
     /// The albums to download.
@@ -42,30 +74,28 @@ internal sealed class DownloadManager
     /// </summary>
     private CancellationTokenSource _cancellationTokenSource;
 
-    /// <summary>
-    /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
-    /// and the total bytes to download.
-    /// </summary>
     public List<TrackFile> DownloadingFiles { get; set; }
 
     public delegate void LogAddedEventHandler(object sender, LogArgs eventArgs);
 
-    /// <summary>
-    /// Initializes a new instance of DownloadManager.
-    /// </summary>
-    /// <param name="urls">The URLs we'll download from.</param>
-    public DownloadManager(string urls)
+    public event LogAddedEventHandler LogAdded;
+
+    public DownloadManager(IBandcampHelper bandcampHelper, IFileService fileService, IHttpService httpService, IPlaylistCreator playlistCreator, ISettingsService settingsService, ITagService tagService)
     {
-        _urls = urls;
+        _bandcampHelper = bandcampHelper;
+        _fileService = fileService;
+        _httpService = httpService;
+        _playlistCreator = playlistCreator;
+        _tagService = tagService;
+        _userSettings = settingsService.GetUserSettings();
 
         // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
         // value) files at the same time
+#pragma warning disable SYSLIB0014
         ServicePointManager.DefaultConnectionLimit = 50;
+#pragma warning restore SYSLIB0014
     }
 
-    /// <summary>
-    /// Cancels all downloads.
-    /// </summary>
     public void CancelDownloads()
     {
         lock (_cancellationLock)
@@ -79,30 +109,24 @@ internal sealed class DownloadManager
         }
     }
 
-    /// <summary>
-    /// Fetch albums data from the URLs specified when creating this DownloadManager.
-    /// </summary>
-    public async Task FetchUrlsAsync()
+    public async Task FetchUrlsAsync(string urls)
     {
-        var urls = _urls.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-        urls = urls.Distinct().ToList();
+        var sanitizedUrls = urls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
+        sanitizedUrls = sanitizedUrls.Distinct().ToList();
 
         // Get URLs of albums to download
-        if (App.UserSettings.DownloadArtistDiscography)
+        if (_userSettings.DownloadArtistDiscography)
         {
-            urls = await GetArtistDiscographyAsync(urls);
+            sanitizedUrls = await GetArtistDiscographyAsync(sanitizedUrls);
         }
 
         // Get info on albums
-        _albums = await GetAlbumsAsync(urls);
+        _albums = await GetAlbumsAsync(sanitizedUrls);
 
         // Save the files to download and get their size
         DownloadingFiles = await GetFilesToDownloadAsync(_albums);
     }
 
-    /// <summary>
-    /// Starts downloads.
-    /// </summary>
     public async Task StartDownloadsAsync()
     {
         if (_albums == null)
@@ -121,7 +145,7 @@ internal sealed class DownloadManager
         }
 
         // Start downloading albums
-        if (App.UserSettings.DownloadOneAlbumAtATime)
+        if (_userSettings.DownloadOneAlbumAtATime)
         {
             // Download one album at a time
             foreach (var album in _albums)
@@ -163,7 +187,7 @@ internal sealed class DownloadManager
         Picture artwork = null;
 
         // Download artwork
-        if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork)
+        if ((_userSettings.SaveCoverArtInTags || _userSettings.SaveCoverArtInFolder) && album.HasArtwork)
         {
             artwork = await DownloadCoverArtAsync(album);
         }
@@ -174,9 +198,9 @@ internal sealed class DownloadManager
         await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
 
         // Create playlist file
-        if (App.UserSettings.CreatePlaylist && !_cancelDownloads)
+        if (_userSettings.CreatePlaylist && !_cancelDownloads)
         {
-            new PlaylistCreator(album).SavePlaylistToFile();
+            _playlistCreator.SavePlaylistToFile(album);
             LogAdded?.Invoke(this, new LogArgs($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess));
         }
 
@@ -212,8 +236,8 @@ internal sealed class DownloadManager
         if (File.Exists(track.Path))
         {
             var length = new FileInfo(track.Path).Length;
-            if (currentFile.Size > length - currentFile.Size * App.UserSettings.AllowedFileSizeDifference &&
-                currentFile.Size < length + currentFile.Size * App.UserSettings.AllowedFileSizeDifference)
+            if (currentFile.Size > length - currentFile.Size * _userSettings.AllowedFileSizeDifference &&
+                currentFile.Size < length + currentFile.Size * _userSettings.AllowedFileSizeDifference)
             {
                 LogAdded?.Invoke(this, new LogArgs($"Track already exists within allowed file size range: track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\" - Skipping download!", LogType.IntermediateSuccess));
                 return false;
@@ -228,9 +252,11 @@ internal sealed class DownloadManager
                 return false;
             }
 
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
-                ProxyHelper.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 // Update progress bar when downloading
                 webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
@@ -264,35 +290,35 @@ internal sealed class DownloadManager
                 catch (WebException)
                 {
                     // Connection closed probably because no response from Bandcamp
-                    if (tries + 1 < App.UserSettings.DownloadMaxTries)
+                    if (tries + 1 < _userSettings.DownloadMaxTries)
                     {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
                     }
                     else
                     {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {_userSettings.DownloadMaxTries}", LogType.Error));
                     }
                 }
 
                 if (trackDownloaded)
                 {
-                    if (App.UserSettings.ModifyTags)
+                    if (_userSettings.ModifyTags)
                     {
                         // Tag (ID3) the file when downloaded
                         var tagFile = TagLib.File.Create(track.Path);
-                        tagFile = TagHelper.UpdateArtist(tagFile, album.Artist, App.UserSettings.TagArtist);
-                        tagFile = TagHelper.UpdateAlbumArtist(tagFile, album.Artist, App.UserSettings.TagAlbumArtist);
-                        tagFile = TagHelper.UpdateAlbumTitle(tagFile, album.Title, App.UserSettings.TagAlbumTitle);
-                        tagFile = TagHelper.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, App.UserSettings.TagYear);
-                        tagFile = TagHelper.UpdateTrackNumber(tagFile, (uint)track.Number, App.UserSettings.TagTrackNumber);
-                        tagFile = TagHelper.UpdateTrackTitle(tagFile, track.Title, App.UserSettings.TagTrackTitle);
-                        tagFile = TagHelper.UpdateTrackLyrics(tagFile, track.Lyrics, App.UserSettings.TagLyrics);
-                        tagFile = TagHelper.UpdateComments(tagFile, App.UserSettings.TagComments);
+                        tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
+                        tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
+                        tagFile = _tagService.UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
+                        tagFile = _tagService.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
+                        tagFile = _tagService.UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
+                        tagFile = _tagService.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
+                        tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
+                        tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
                         tagFile.Save();
                         LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                     }
 
-                    if (App.UserSettings.SaveCoverArtInTags && artwork != null)
+                    if (_userSettings.SaveCoverArtInTags && artwork != null)
                     {
                         // Save cover in tags when downloaded
                         var tagFile = TagLib.File.Create(track.Path);
@@ -307,12 +333,12 @@ internal sealed class DownloadManager
                 }
 
                 tries++;
-                if (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries)
+                if (!trackDownloaded && tries < _userSettings.DownloadMaxTries)
                 {
                     await WaitForCooldownAsync(tries);
                 }
             }
-        } while (!trackDownloaded && tries < App.UserSettings.DownloadMaxTries);
+        } while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return trackDownloaded;
     }
@@ -338,9 +364,11 @@ internal sealed class DownloadManager
                 return null;
             }
 
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
-                ProxyHelper.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 // Update progress bar when downloading
                 webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
@@ -369,32 +397,32 @@ internal sealed class DownloadManager
                 catch (WebException)
                 {
                     // Connection closed probably because no response from Bandcamp
-                    if (tries < App.UserSettings.DownloadMaxTries)
+                    if (tries < _userSettings.DownloadMaxTries)
                     {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
                     }
                     else
                     {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {App.UserSettings.DownloadMaxTries}", LogType.Error));
+                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {_userSettings.DownloadMaxTries}", LogType.Error));
                     }
                 }
 
                 if (artworkDownloaded)
                 {
                     // Convert/resize artwork to be saved in album folder
-                    if (App.UserSettings.SaveCoverArtInFolder && (App.UserSettings.CoverArtInFolderConvertToJpg || App.UserSettings.CoverArtInFolderResize))
+                    if (_userSettings.SaveCoverArtInFolder && (_userSettings.CoverArtInFolderConvertToJpg || _userSettings.CoverArtInFolderResize))
                     {
                         var settings = new ResizeSettings();
-                        if (App.UserSettings.CoverArtInFolderConvertToJpg)
+                        if (_userSettings.CoverArtInFolderConvertToJpg)
                         {
                             settings.Format = "jpg";
                             settings.Quality = 90;
                         }
 
-                        if (App.UserSettings.CoverArtInFolderResize)
+                        if (_userSettings.CoverArtInFolderResize)
                         {
-                            settings.MaxHeight = App.UserSettings.CoverArtInFolderMaxSize;
-                            settings.MaxWidth = App.UserSettings.CoverArtInFolderMaxSize;
+                            settings.MaxHeight = _userSettings.CoverArtInFolderMaxSize;
+                            settings.MaxWidth = _userSettings.CoverArtInFolderMaxSize;
                         }
 
                         await Task.Run(() =>
@@ -402,25 +430,25 @@ internal sealed class DownloadManager
                             ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
                         });
                     }
-                    else if (App.UserSettings.SaveCoverArtInFolder)
+                    else if (_userSettings.SaveCoverArtInFolder)
                     {
-                        await FileHelper.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
+                        await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
                     }
 
                     // Convert/resize artwork to be saved in tags
-                    if (App.UserSettings.SaveCoverArtInTags && (App.UserSettings.CoverArtInTagsConvertToJpg || App.UserSettings.CoverArtInTagsResize))
+                    if (_userSettings.SaveCoverArtInTags && (_userSettings.CoverArtInTagsConvertToJpg || _userSettings.CoverArtInTagsResize))
                     {
                         var settings = new ResizeSettings();
-                        if (App.UserSettings.CoverArtInTagsConvertToJpg)
+                        if (_userSettings.CoverArtInTagsConvertToJpg)
                         {
                             settings.Format = "jpg";
                             settings.Quality = 90;
                         }
 
-                        if (App.UserSettings.CoverArtInTagsResize)
+                        if (_userSettings.CoverArtInTagsResize)
                         {
-                            settings.MaxHeight = App.UserSettings.CoverArtInTagsMaxSize;
-                            settings.MaxWidth = App.UserSettings.CoverArtInTagsMaxSize;
+                            settings.MaxHeight = _userSettings.CoverArtInTagsMaxSize;
+                            settings.MaxWidth = _userSettings.CoverArtInTagsMaxSize;
                         }
 
                         await Task.Run(() =>
@@ -449,12 +477,12 @@ internal sealed class DownloadManager
                 }
 
                 tries++;
-                if (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries)
+                if (!artworkDownloaded && tries < _userSettings.DownloadMaxTries)
                 {
                     await WaitForCooldownAsync(tries);
                 }
             }
-        } while (!artworkDownloaded && tries < App.UserSettings.DownloadMaxTries);
+        } while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return artworkInTags;
     }
@@ -473,10 +501,12 @@ internal sealed class DownloadManager
 
             // Retrieve URL HTML source code
             string htmlCode;
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
-                ProxyHelper.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 if (_cancelDownloads)
                 {
@@ -499,7 +529,7 @@ internal sealed class DownloadManager
             // Get info on album
             try
             {
-                var album = BandcampHelper.GetAlbum(htmlCode);
+                var album = _bandcampHelper.GetAlbum(htmlCode);
 
                 if (album.Tracks.Count > 0)
                 {
@@ -538,10 +568,12 @@ internal sealed class DownloadManager
 
             // Retrieve artist "music" page HTML source code
             string htmlCode;
+#pragma warning disable SYSLIB0014
             using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
             {
                 webClient.Encoding = Encoding.UTF8;
-                ProxyHelper.SetProxy(webClient);
+                _httpService.SetProxy(webClient);
 
                 if (_cancelDownloads)
                 {
@@ -564,7 +596,7 @@ internal sealed class DownloadManager
             var count = albumsUrls.Count;
             try
             {
-                albumsUrls.AddRange(BandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
+                albumsUrls.AddRange(_bandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
             }
             catch (NoAlbumFoundException)
             {
@@ -609,7 +641,7 @@ internal sealed class DownloadManager
                 protocolMethod = "GET";
                 break;
             default:
-                throw new NotImplementedException();
+                throw new ArgumentOutOfRangeException(nameof(fileType), fileType, null);
         }
 
         do
@@ -622,29 +654,29 @@ internal sealed class DownloadManager
 
             try
             {
-                size = await FileHelper.GetFileSizeAsync(url, protocolMethod);
+                size = await _httpService.GetFileSizeAsync(url, protocolMethod);
                 sizeRetrieved = true;
                 LogAdded?.Invoke(this, new LogArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo));
             }
             catch
             {
                 sizeRetrieved = false;
-                if (tries + 1 < App.UserSettings.DownloadMaxTries)
+                if (tries + 1 < _userSettings.DownloadMaxTries)
                 {
-                    LogAdded?.Invoke(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Try {tries + 1} of {App.UserSettings.DownloadMaxTries}", LogType.Warning));
+                    LogAdded?.Invoke(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
                 }
                 else
                 {
-                    LogAdded?.Invoke(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Hit max retries of {App.UserSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error));
+                    LogAdded?.Invoke(this, new LogArgs($"Failed to retrieve the size of the {fileTypeForLog} \"{titleForLog}\". Hit max retries of {_userSettings.DownloadMaxTries}. Progress update may be wrong.", LogType.Error));
                 }
             }
 
             tries++;
-            if (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries)
+            if (!sizeRetrieved && tries < _userSettings.DownloadMaxTries)
             {
                 await WaitForCooldownAsync(tries);
             }
-        } while (!sizeRetrieved && tries < App.UserSettings.DownloadMaxTries);
+        } while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
 
         return size;
     }
@@ -661,9 +693,9 @@ internal sealed class DownloadManager
             LogAdded?.Invoke(this, new LogArgs($"Computing size for album \"{album.Title}\"...", LogType.Info));
 
             // Artwork
-            if ((App.UserSettings.SaveCoverArtInTags || App.UserSettings.SaveCoverArtInFolder) && album.HasArtwork)
+            if ((_userSettings.SaveCoverArtInTags || _userSettings.SaveCoverArtInFolder) && album.HasArtwork)
             {
-                if (App.UserSettings.RetrieveFilesSize)
+                if (_userSettings.RetrieveFilesSize)
                 {
                     var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
                     files.Add(new TrackFile(album.ArtworkUrl, 0, size));
@@ -675,7 +707,7 @@ internal sealed class DownloadManager
             }
 
             // Tracks
-            if (App.UserSettings.RetrieveFilesSize)
+            if (_userSettings.RetrieveFilesSize)
             {
                 var tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
                 await Task.WhenAll(tracksIndexes.Select(async i =>
@@ -701,13 +733,11 @@ internal sealed class DownloadManager
     /// </summary>
     /// <param name="triesNumber">The times count we tried to download the same file.</param>
     /// <returns></returns>
-    private static async Task WaitForCooldownAsync(int triesNumber)
+    private async Task WaitForCooldownAsync(int triesNumber)
     {
-        if (App.UserSettings.DownloadRetryCooldown != 0)
+        if (_userSettings.DownloadRetryCooldown != 0)
         {
-            await Task.Delay((int)(Math.Pow(App.UserSettings.DownloadRetryExponent, triesNumber) * App.UserSettings.DownloadRetryCooldown * 1000));
+            await Task.Delay((int)(Math.Pow(_userSettings.DownloadRetryExponent, triesNumber) * _userSettings.DownloadRetryCooldown * 1000));
         }
     }
-
-    public event LogAddedEventHandler LogAdded;
 }

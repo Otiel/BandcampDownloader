@@ -13,6 +13,8 @@ using System.Windows.Shell;
 using System.Windows.Threading;
 using BandcampDownloader.Core;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Logging;
+using BandcampDownloader.Settings;
 using BandcampDownloader.UI.Dialogs.Settings;
 using BandcampDownloader.UI.Dialogs.Update;
 using Microsoft.Win32;
@@ -23,15 +25,14 @@ namespace BandcampDownloader.UI.Dialogs;
 
 internal sealed partial class WindowMain
 {
+    private readonly IUserSettings _userSettings;
+    private readonly IDownloadManager _downloadManager;
+    private readonly IUpdatesService _updatesService;
+
     /// <summary>
     /// True if there are active downloads; false otherwise.
     /// </summary>
     private bool _activeDownloads;
-
-    /// <summary>
-    /// The DownloadManager used to download albums.
-    /// </summary>
-    private DownloadManager _downloadManager;
 
     /// <summary>
     /// Used to compute and display the download speed.
@@ -48,10 +49,15 @@ internal sealed partial class WindowMain
     /// </summary>
     private bool _userCancelled;
 
-    public WindowMain()
+    public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager, IUpdatesService updatesService)
     {
+        _userSettings = settingsService.GetUserSettings();
+        _downloadManager = downloadManager;
+        _updatesService = updatesService;
+        _downloadManager.LogAdded += DownloadManager_LogAdded;
+
         // Save DataContext for bindings (must be called before initializing UI)
-        DataContext = App.UserSettings;
+        DataContext = _userSettings;
 
         InitializeComponent();
 
@@ -125,7 +131,7 @@ internal sealed partial class WindowMain
         UpdateControlsState(false);
         Mouse.OverrideCursor = null;
 
-        if (App.UserSettings.EnableApplicationSounds)
+        if (_userSettings.EnableApplicationSounds)
         {
             // Play a sound
             try
@@ -137,8 +143,8 @@ internal sealed partial class WindowMain
             }
             catch (Exception ex)
             {
-                Log("Could not play 'finished' sound",  LogType.Error);
-                Log(ex.ToString(),  LogType.VerboseInfo);
+                Log("Could not play 'finished' sound", LogType.Error);
+                Log(ex.ToString(), LogType.VerboseInfo);
             }
         }
     }
@@ -176,7 +182,7 @@ internal sealed partial class WindowMain
         Version latestVersion;
         try
         {
-            latestVersion = await UpdatesHelper.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync();
         }
         catch (CouldNotCheckForUpdatesException)
         {
@@ -222,7 +228,7 @@ internal sealed partial class WindowMain
         logger.Log(logType.ToNLogLevel(), message);
 
         // Log to window
-        if (App.UserSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success)
+        if (_userSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success)
         {
             // Time
             var textRange = new TextRange(RichTextBoxLog.Document.ContentEnd, RichTextBoxLog.Document.ContentEnd)
@@ -253,16 +259,12 @@ internal sealed partial class WindowMain
     {
         _userCancelled = false;
 
-        // Initializes the DownloadManager
-        _downloadManager = new DownloadManager(TextBoxUrls.Text);
-        _downloadManager.LogAdded += DownloadManager_LogAdded;
-
         // Fetch URL to get the files size
-        await _downloadManager.FetchUrlsAsync();
+        await _downloadManager.FetchUrlsAsync(TextBoxUrls.Text);
 
         // Set progressBar max value
         long maxProgressBarValue;
-        if (App.UserSettings.RetrieveFilesSize)
+        if (_userSettings.RetrieveFilesSize)
         {
             maxProgressBarValue = _downloadManager.DownloadingFiles.Sum(f => f.Size); // Bytes to download
         }
@@ -381,9 +383,9 @@ internal sealed partial class WindowMain
         // Update progress label
         LabelProgress.Content =
             ((double)totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
-            (App.UserSettings.RetrieveFilesSize ? " / " + ((double)bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB" : "");
+            (_userSettings.RetrieveFilesSize ? " / " + ((double)bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB" : "");
 
-        if (App.UserSettings.RetrieveFilesSize)
+        if (_userSettings.RetrieveFilesSize)
         {
             // Update progress bar based on bytes received
             ProgressBar.Value = totalReceivedBytes;
@@ -430,7 +432,7 @@ internal sealed partial class WindowMain
 
     private async void WindowMain_Loaded(object sender, RoutedEventArgs e)
     {
-        if (App.UserSettings.CheckForUpdates)
+        if (_userSettings.CheckForUpdates)
         {
             await CheckForUpdates();
         }

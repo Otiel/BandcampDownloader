@@ -418,7 +418,8 @@ Décocher cette option permet de gagner du temps.</value>
     <value>_Réinitialiser les paramètres</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Réinitialiser tous les paramètres à leur valeur par défaut ?</value>
+      <value>Réinitialiser tous les paramètres à leur valeur par défaut ?
+Cette action ne peut pas être annulée.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Une erreur est intervenue. L'application va maintenant se fermer.

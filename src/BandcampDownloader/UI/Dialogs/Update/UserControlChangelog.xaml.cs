@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using BandcampDownloader.Core;
-using BandcampDownloader.Helpers;
+using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Net;
 using NLog;
 using WpfMessageBoxLibrary;
 
@@ -14,11 +15,12 @@ namespace BandcampDownloader.UI.Dialogs.Update;
 
 internal sealed partial class UserControlChangelog
 {
-    private readonly Logger _logger;
+    private readonly IHttpService _httpService;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     public UserControlChangelog()
     {
-        _logger = LogManager.GetCurrentClassLogger();
+        _httpService = DependencyInjectionHelper.GetService<IHttpService>();
 
         InitializeComponent();
         Loaded += OnLoaded;
@@ -27,13 +29,15 @@ internal sealed partial class UserControlChangelog
     /// <summary>
     /// Downloads the changelog file and returns its content.
     /// </summary>
-    private static async Task<string> DownloadChangelogAsync()
+    private async Task<string> DownloadChangelogAsync()
     {
         string changelog;
+#pragma warning disable SYSLIB0014
         using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
         {
             webClient.Encoding = Encoding.UTF8;
-            ProxyHelper.SetProxy(webClient);
+            _httpService.SetProxy(webClient);
             changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
         }
 

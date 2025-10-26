@@ -5,17 +5,24 @@ using BandcampDownloader.Core;
 
 namespace BandcampDownloader.Helpers;
 
-internal static class UpdatesHelper
+internal interface IUpdatesService
 {
     /// <summary>
     /// Returns the latest version available.
     /// </summary>
-    public static async Task<Version> GetLatestVersionAsync()
+    Task<Version> GetLatestVersionAsync();
+}
+
+internal sealed class UpdatesService : IUpdatesService
+{
+    public async Task<Version> GetLatestVersionAsync()
     {
         // Note: GitHub uses a HTTP redirect to redirect from the generic latest release page to the actual latest release page
 
         // Retrieve the redirect page from the GitHub latest release page
+#pragma warning disable SYSLIB0014
         var request = WebRequest.CreateHttp(Constants.UrlLatestRelease);
+#pragma warning restore SYSLIB0014
         request.AllowAutoRedirect = false;
         string redirectPage;
         try

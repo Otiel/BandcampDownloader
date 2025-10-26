@@ -7,7 +7,7 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
-    xmlns:core="clr-namespace:BandcampDownloader.Core"
+    xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
     Height="180"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -52,7 +52,7 @@
                 VerticalAlignment="Center"
                 Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:ProxyType.None}, UpdateSourceTrigger=Explicit}"
+                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.None}, UpdateSourceTrigger=Explicit}"
                 TabIndex="0" />
             <RadioButton
                 x:Name="RadioButtonSystemProxy"
@@ -61,7 +61,7 @@
                 VerticalAlignment="Center"
                 Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:ProxyType.System}, UpdateSourceTrigger=Explicit}"
+                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.System}, UpdateSourceTrigger=Explicit}"
                 TabIndex="1" />
             <RadioButton
                 x:Name="RadioButtonManualProxy"
@@ -70,7 +70,7 @@
                 VerticalAlignment="Center"
                 Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static core:ProxyType.Manual}, UpdateSourceTrigger=Explicit}"
+                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.Manual}, UpdateSourceTrigger=Explicit}"
                 TabIndex="2" />
             <Grid
                 x:Name="GridManualProxy"

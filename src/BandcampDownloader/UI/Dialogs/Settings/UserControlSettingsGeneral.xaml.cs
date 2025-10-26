@@ -4,8 +4,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
-using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Localization;
+using BandcampDownloader.Settings;
+using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs.Update;
 using WpfMessageBoxLibrary;
 
@@ -13,11 +16,22 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 
 internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 {
+    private readonly ILanguageService _languageService;
+    private readonly ISettingsService _userSettingsService;
+    private readonly IThemeService _themeService;
+    private readonly IUpdatesService _updatesService;
+
     public UserControlSettingsGeneral()
     {
+        _languageService = DependencyInjectionHelper.GetService<ILanguageService>();
+        _userSettingsService = DependencyInjectionHelper.GetService<ISettingsService>();
+        _themeService = DependencyInjectionHelper.GetService<IThemeService>();
+        _updatesService = DependencyInjectionHelper.GetService<IUpdatesService>();
+        var userSettings = _userSettingsService.GetUserSettings();
+
         InitializeComponent();
         // Save data context for bindings
-        DataContext = App.UserSettings;
+        DataContext = userSettings;
     }
 
     /// <summary>
@@ -25,31 +39,33 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
     /// </summary>
     public void CancelChanges()
     {
+        var userSettings = _userSettingsService.GetUserSettings();
+
         // Revert the language only if it has been changed
-        if ((Language)ComboBoxLanguage.SelectedValue != App.UserSettings.Language)
+        if ((Language)ComboBoxLanguage.SelectedValue != userSettings.Language)
         {
-            LanguageHelper.ApplyLanguage(App.UserSettings.Language);
+            _languageService.ApplyLanguage(userSettings.Language);
         }
 
         // Revert the theme only if it has been changed
-        if ((Skin)ComboBoxTheme.SelectedItem != App.UserSettings.Theme)
+        if ((Skin)ComboBoxTheme.SelectedItem != userSettings.Theme)
         {
-            ThemeHelper.ApplySkin(App.UserSettings.Theme);
+            _themeService.ApplySkin(userSettings.Theme);
         }
     }
 
     /// <summary>
-    /// Loads settings from App.UserSettings.
+    /// Loads settings from _userSettings.
     /// </summary>
-    public void LoadSettings()
+    public void LoadSettings(IUserSettings userSettings)
     {
         // Reload DataContext in case settings have changed
-        DataContext = App.UserSettings;
+        DataContext = userSettings;
         // No need to call UpdateTarget, it is done automatically
     }
 
     /// <summary>
-    /// Saves settings to App.UserSettings.
+    /// Saves settings to _userSettings.
     /// </summary>
     public void SaveSettings()
     {
@@ -65,7 +81,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         Version latestVersion;
         try
         {
-            latestVersion = await UpdatesHelper.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync();
         }
         catch (CouldNotCheckForUpdatesException)
         {
@@ -83,7 +99,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
 
         var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-        if (currentVersion.CompareTo(latestVersion) < 0)
+        if (currentVersion!.CompareTo(latestVersion) < 0)
         {
             // The latest version is newer than the current one
             var windowUpdate = new WindowUpdate
@@ -115,7 +131,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
 
         // Apply selected language
-        LanguageHelper.ApplyLanguage((Language)ComboBoxLanguage.SelectedValue);
+        _languageService.ApplyLanguage((Language)ComboBoxLanguage.SelectedValue);
     }
 
     private void ComboBoxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -126,7 +142,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
 
         // Apply selected theme
-        ThemeHelper.ApplySkin((Skin)ComboBoxTheme.SelectedItem);
+        _themeService.ApplySkin((Skin)ComboBoxTheme.SelectedItem);
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

@@ -27,6 +27,6 @@ internal sealed class DoubleToPercentConverter : IValueConverter
             return 0;
         }
 
-        return double.Parse(value.ToString(), NumberStyles.Any, CultureInfo.InvariantCulture) / 100; // 5% → 0.05
+        return double.Parse(value.ToString()!, NumberStyles.Any, CultureInfo.InvariantCulture) / 100; // 5% → 0.05
     }
 }

@@ -5,17 +5,23 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using BandcampDownloader.Core;
+using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Helpers;
+using BandcampDownloader.Net;
 using Microsoft.Win32;
 
 namespace BandcampDownloader.UI.Dialogs.Update;
 
 internal sealed partial class WindowUpdate
 {
+    private readonly IHttpService _httpService;
+    private readonly IUpdatesService _updatesService;
     private Version _latestVersion;
 
     public WindowUpdate()
     {
+        _httpService = DependencyInjectionHelper.GetService<IHttpService>();
+        _updatesService = DependencyInjectionHelper.GetService<IUpdatesService>();
         InitializeComponent();
     }
 
@@ -39,9 +45,11 @@ internal sealed partial class WindowUpdate
         var path = dialog.FileName;
         var zipUrl = string.Format(Constants.UrlReleaseZip, _latestVersion.ToString());
 
+#pragma warning disable SYSLIB0014
         using (var webClient = new WebClient())
+#pragma warning restore SYSLIB0014
         {
-            ProxyHelper.SetProxy(webClient);
+            _httpService.SetProxy(webClient);
             await webClient.DownloadFileTaskAsync(zipUrl, path);
         }
     }
@@ -56,7 +64,7 @@ internal sealed partial class WindowUpdate
     {
         try
         {
-            _latestVersion = await UpdatesHelper.GetLatestVersionAsync();
+            _latestVersion = await _updatesService.GetLatestVersionAsync();
         }
         catch (CouldNotCheckForUpdatesException)
         {

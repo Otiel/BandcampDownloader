@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:core="clr-namespace:BandcampDownloader.Core"
     xmlns:helpers="clr-namespace:BandcampDownloader.Helpers"
+    xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
     Height="150"
     lex:LocalizeDictionary.DesignCulture="en"
@@ -104,7 +105,7 @@
                 Width="150"
                 Height="22"
                 DisplayMemberPath="Description"
-                ItemsSource="{Binding Source={helpers:EnumerationExtension {x:Type core:Language}}}"
+                ItemsSource="{Binding Source={helpers:EnumerationExtension {x:Type settings:Language}}}"
                 SelectedValue="{Binding Language, UpdateSourceTrigger=Explicit}"
                 SelectedValuePath="Value"
                 SelectionChanged="ComboBoxLanguage_SelectionChanged"
@@ -144,7 +145,7 @@
                 SelectedItem="{Binding Theme, UpdateSourceTrigger=Explicit}"
                 SelectionChanged="ComboBoxTheme_SelectionChanged"
                 TabIndex="6"
-                Type="{x:Type core:Skin}" />
+                Type="{x:Type settings:Skin}" />
         </Grid>
     </Grid>
 </UserControl>

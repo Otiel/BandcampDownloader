@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
-    xmlns:core="clr-namespace:BandcampDownloader.Core"
+    xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Title="Bandcamp Downloader"
     Width="815"
     Height="440"
@@ -137,10 +137,10 @@
                 <Label.Style>
                     <Style TargetType="Label">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static core:Skin.Light}">
+                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static settings:Skin.Light}">
                                 <Setter Property="Foreground" Value="Red" />
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static core:Skin.Dark}">
+                            <DataTrigger Binding="{Binding Theme}" Value="{x:Static settings:Skin.Dark}">
                                 <Setter Property="Foreground" Value="Orange" />
                             </DataTrigger>
                         </Style.Triggers>
