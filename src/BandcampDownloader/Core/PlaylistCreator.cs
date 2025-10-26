@@ -10,9 +10,6 @@ namespace BandcampDownloader.Core;
 
 internal interface IPlaylistCreator
 {
-    /// <summary>
-    /// Saves the playlist to a file.
-    /// </summary>
     void SavePlaylistToFile(Album album);
 }
 
@@ -25,9 +22,6 @@ internal sealed class PlaylistCreator : IPlaylistCreator
         _userSettings = settingsService.GetUserSettings();
     }
 
-    /// <summary>
-    /// Saves the playlist to a file.
-    /// </summary>
     public void SavePlaylistToFile(Album album)
     {
         var fileContent = _userSettings.PlaylistFormat switch
@@ -42,9 +36,6 @@ internal sealed class PlaylistCreator : IPlaylistCreator
         File.WriteAllText(album.PlaylistPath, fileContent, Encoding.UTF8);
     }
 
-    /// <summary>
-    /// Returns the playlist in m3u format.
-    /// </summary>
     private string CreateM3UPlaylist(Album album)
     {
         var playlist = new M3uPlaylist
@@ -67,9 +58,6 @@ internal sealed class PlaylistCreator : IPlaylistCreator
         return new M3uContent().ToText(playlist);
     }
 
-    /// <summary>
-    /// Returns the playlist in pls format.
-    /// </summary>
     private static string CreatePlsPlaylist(Album album)
     {
         var playlist = new PlsPlaylist();
@@ -87,9 +75,6 @@ internal sealed class PlaylistCreator : IPlaylistCreator
         return new PlsContent().ToText(playlist);
     }
 
-    /// <summary>
-    /// Returns the playlist in wpl format.
-    /// </summary>
     private static string CreateWplPlaylist(Album album)
     {
         var playlist = new WplPlaylist
@@ -113,9 +98,6 @@ internal sealed class PlaylistCreator : IPlaylistCreator
         return new WplContent().ToText(playlist);
     }
 
-    /// <summary>
-    /// Returns the playlist in zpl format.
-    /// </summary>
     private static string CreateZplPlaylist(Album album)
     {
         var playlist = new ZplPlaylist
