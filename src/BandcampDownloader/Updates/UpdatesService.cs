@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using BandcampDownloader.Net;
 
 namespace BandcampDownloader.Updates;
 
@@ -15,19 +15,18 @@ internal interface IUpdatesService
 
 internal sealed class UpdatesService : IUpdatesService
 {
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IHttpService _httpService;
 
     private const string LATEST_RELEASE_URL = "https://api.github.com/repos/otiel/bandcampdownloader/releases/latest";
 
-    public UpdatesService(IHttpClientFactory httpClientFactory)
+    public UpdatesService(IHttpService httpService)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpService = httpService;
     }
 
     public async Task<Version> GetLatestVersionAsync()
     {
-        var httpClient = _httpClientFactory.CreateClient();
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "BandcampDownloader");
+        var httpClient = _httpService.CreateHttpClient();
 
         var latestRelease = await httpClient.GetFromJsonAsync<GithubRelease>(LATEST_RELEASE_URL);
 
