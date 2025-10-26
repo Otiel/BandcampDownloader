@@ -1,11 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Net;
 using NLog;
@@ -18,6 +15,8 @@ internal sealed partial class UserControlChangelog
     private readonly IHttpService _httpService;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
+    private const string CHANGELOG_URL = "https://raw.githubusercontent.com/Otiel/BandcampDownloader/master/CHANGELOG.md";
+
     public UserControlChangelog()
     {
         _httpService = DependencyInjectionHelper.GetService<IHttpService>();
@@ -26,21 +25,10 @@ internal sealed partial class UserControlChangelog
         Loaded += OnLoaded;
     }
 
-    /// <summary>
-    /// Downloads the changelog file and returns its content.
-    /// </summary>
     private async Task<string> DownloadChangelogAsync()
     {
-        string changelog;
-#pragma warning disable SYSLIB0014
-        using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
-        {
-            webClient.Encoding = Encoding.UTF8;
-            _httpService.SetProxy(webClient);
-            changelog = await webClient.DownloadStringTaskAsync(Constants.UrlChangelog);
-        }
-
+        var httpClient = _httpService.CreateHttpClient();
+        var changelog = await httpClient.GetStringAsync(CHANGELOG_URL);
         return changelog;
     }
 
@@ -53,7 +41,7 @@ internal sealed partial class UserControlChangelog
         }
         catch
         {
-            changelog = string.Format(Properties.Resources.changelogDownloadError, Constants.UrlChangelog);
+            changelog = string.Format(Properties.Resources.changelogDownloadError, CHANGELOG_URL);
         }
 
         MarkdownViewer.Markdown = changelog;
