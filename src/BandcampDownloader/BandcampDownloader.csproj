@@ -10,7 +10,7 @@
     <AppendPlatformToOutputPath>false</AppendPlatformToOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ApplicationIcon>Resources\Cloud.ico</ApplicationIcon>
-    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
