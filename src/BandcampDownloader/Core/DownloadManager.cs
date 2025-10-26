@@ -226,8 +226,7 @@ internal sealed class DownloadManager : IDownloadManager
     /// <param name="artwork">The cover art.</param>
     private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Picture artwork)
     {
-        var trackMp3Url = UrlHelper.GetHttpUrlIfNeeded(track.Mp3Url);
-        LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+        LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
 
         var tries = 0;
         var trackDownloaded = false;
@@ -272,10 +271,10 @@ internal sealed class DownloadManager : IDownloadManager
                         throw new InvalidOperationException("Track path is null");
                     }
 
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
-                    await webClient.DownloadFileTaskAsync(trackMp3Url, track.Path);
+                    LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
+                    await webClient.DownloadFileTaskAsync(track.Mp3Url, track.Path);
                     trackDownloaded = true;
-                    LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+                    LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", LogType.VerboseInfo));
                 }
                 catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
                 {
@@ -377,11 +376,10 @@ internal sealed class DownloadManager : IDownloadManager
                 _cancellationTokenSource.Token.Register(webClient.CancelAsync);
 
                 // Start download
-                var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
                 try
                 {
                     LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
-                    await webClient.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
+                    await webClient.DownloadFileTaskAsync(album.ArtworkUrl, album.ArtworkTempPath);
                     artworkDownloaded = true;
                 }
                 catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
@@ -495,7 +493,7 @@ internal sealed class DownloadManager : IDownloadManager
     {
         var albums = new List<Album>();
 
-        foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
+        foreach (var url in urls)
         {
             LogAdded?.Invoke(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
@@ -557,14 +555,14 @@ internal sealed class DownloadManager : IDownloadManager
     {
         var albumsUrls = new List<string>();
 
-        foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
+        foreach (var url in urls)
         {
             LogAdded?.Invoke(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
             // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
             var regex = new Regex("https?://[^/]*");
             var artistPage = regex.Match(url).ToString();
-            var artistMusicPage = UrlHelper.GetHttpUrlIfNeeded(artistPage + "/music");
+            var artistMusicPage = artistPage + "/music";
 
             // Retrieve artist "music" page HTML source code
             string htmlCode;

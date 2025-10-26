@@ -256,7 +256,4 @@ public interface IUserSettings
 
     [Option(DefaultValue = Skin.Light)]
     Skin Theme { get; set; }
-
-    [Option(DefaultValue = false)]
-    bool UseHttpInsteadOfHttps { get; set; }
 }

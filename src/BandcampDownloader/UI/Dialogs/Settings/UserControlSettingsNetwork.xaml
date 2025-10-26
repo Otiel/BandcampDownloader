@@ -9,7 +9,7 @@
     xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
     xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
-    Height="180"
+    Height="140"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -21,100 +21,84 @@
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
         </Grid.RowDefinitions>
-        <CheckBox
-            x:Name="CheckBoxUseHttpInsteadOfHttps"
+        <Label
+            x:Name="LabelProxy"
             Grid.Row="0"
+            Content="{lex:Loc}" />
+        <RadioButton
+            x:Name="RadioButtonNoProxy"
+            Grid.Row="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
+            Margin="20,0,0,0"
             Content="{lex:Loc}"
-            IsChecked="{Binding UseHttpInsteadOfHttps, UpdateSourceTrigger=Explicit}"
-            TabIndex="4"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-            </Grid.RowDefinitions>
+            IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.None}, UpdateSourceTrigger=Explicit}"
+            TabIndex="0" />
+        <RadioButton
+            x:Name="RadioButtonSystemProxy"
+            Grid.Row="2"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="20,0,0,0"
+            Content="{lex:Loc}"
+            IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.System}, UpdateSourceTrigger=Explicit}"
+            TabIndex="1" />
+        <RadioButton
+            x:Name="RadioButtonManualProxy"
+            Grid.Row="3"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="20,0,0,0"
+            Content="{lex:Loc}"
+            IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.Manual}, UpdateSourceTrigger=Explicit}"
+            TabIndex="2" />
+        <Grid
+            x:Name="GridManualProxy"
+            Grid.Row="4"
+            Margin="34,0,0,0"
+            HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Label
-                x:Name="LabelProxy"
-                Grid.Row="0"
-                Content="{lex:Loc}" />
-            <RadioButton
-                x:Name="RadioButtonNoProxy"
-                Grid.Row="1"
+                x:Name="LabelHttp"
+                Grid.Column="0"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="20,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.None}, UpdateSourceTrigger=Explicit}"
-                TabIndex="0" />
-            <RadioButton
-                x:Name="RadioButtonSystemProxy"
-                Grid.Row="2"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="20,0,0,0"
+                Target="{Binding ElementName=TextBoxHttpAddress}" />
+            <TextBox
+                x:Name="TextBoxHttpAddress"
+                Grid.Column="1"
+                Width="100"
+                Height="20"
+                VerticalContentAlignment="Center"
+                IsEnabled="{Binding ElementName=RadioButtonManualProxy, Path=IsChecked}"
+                TabIndex="3"
+                Text="{Binding ProxyHttpAddress, UpdateSourceTrigger=Explicit}" />
+            <Label
+                x:Name="LabelHttpPort"
+                Grid.Column="2"
+                Margin="15,0,0,0"
                 Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.System}, UpdateSourceTrigger=Explicit}"
-                TabIndex="1" />
-            <RadioButton
-                x:Name="RadioButtonManualProxy"
-                Grid.Row="3"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Margin="20,0,0,0"
-                Content="{lex:Loc}"
-                IsChecked="{Binding Proxy, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static settings:ProxyType.Manual}, UpdateSourceTrigger=Explicit}"
-                TabIndex="2" />
-            <Grid
-                x:Name="GridManualProxy"
-                Grid.Row="4"
-                Margin="34,0,0,0"
-                HorizontalAlignment="Left">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Label
-                    x:Name="LabelHttp"
-                    Grid.Column="0"
-                    HorizontalAlignment="Left"
-                    Content="{lex:Loc}"
-                    Target="{Binding ElementName=TextBoxHttpAddress}" />
-                <TextBox
-                    x:Name="TextBoxHttpAddress"
-                    Grid.Column="1"
-                    Width="100"
-                    Height="20"
-                    VerticalContentAlignment="Center"
-                    IsEnabled="{Binding ElementName=RadioButtonManualProxy, Path=IsChecked}"
-                    TabIndex="3"
-                    Text="{Binding ProxyHttpAddress, UpdateSourceTrigger=Explicit}" />
-                <Label
-                    x:Name="LabelHttpPort"
-                    Grid.Column="2"
-                    Margin="15,0,0,0"
-                    Content="{lex:Loc}"
-                    Target="{Binding ElementName=TextBoxHttpPort}" />
-                <TextBox
-                    x:Name="TextBoxHttpPort"
-                    Grid.Column="3"
-                    Width="50"
-                    Height="20"
-                    VerticalContentAlignment="Center"
-                    IsEnabled="{Binding ElementName=RadioButtonManualProxy, Path=IsChecked}"
-                    TabIndex="4"
-                    Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}"
-                    TextChanged="TextBox_TextChanged" />
-            </Grid>
+                Target="{Binding ElementName=TextBoxHttpPort}" />
+            <TextBox
+                x:Name="TextBoxHttpPort"
+                Grid.Column="3"
+                Width="50"
+                Height="20"
+                VerticalContentAlignment="Center"
+                IsEnabled="{Binding ElementName=RadioButtonManualProxy, Path=IsChecked}"
+                TabIndex="4"
+                Text="{Binding ProxyHttpPort, UpdateSourceTrigger=Explicit}"
+                TextChanged="TextBox_TextChanged" />
         </Grid>
     </Grid>
 </UserControl>
