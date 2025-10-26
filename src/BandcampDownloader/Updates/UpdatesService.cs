@@ -2,7 +2,6 @@
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using BandcampDownloader.Helpers;
 
 namespace BandcampDownloader.Updates;
 
@@ -35,10 +34,7 @@ internal sealed class UpdatesService : IUpdatesService
         // BandcampDownloader tags are usually "vX.Y.Z"
         var latestVersionNumber = latestRelease.TagName.Replace("v", "");
 
-        if (!Version.TryParse(latestVersionNumber, out var latestVersion))
-        {
-            throw new CouldNotCheckForUpdatesException();
-        }
+        var latestVersion = Version.Parse(latestVersionNumber);
 
         return latestVersion;
     }

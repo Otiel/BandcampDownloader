@@ -29,6 +29,7 @@ internal sealed partial class WindowMain
     private readonly IUserSettings _userSettings;
     private readonly IDownloadManager _downloadManager;
     private readonly IUpdatesService _updatesService;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
@@ -185,8 +186,10 @@ internal sealed partial class WindowMain
         {
             latestVersion = await _updatesService.GetLatestVersionAsync();
         }
-        catch (CouldNotCheckForUpdatesException)
+        catch (Exception ex)
         {
+            _logger.Error(ex, "Failed to get latest version");
+
             LabelNewVersion.Content = Properties.Resources.labelVersionError;
             LabelNewVersion.Visibility = Visibility.Visible;
             return;
