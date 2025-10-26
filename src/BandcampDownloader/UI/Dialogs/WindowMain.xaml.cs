@@ -178,7 +178,7 @@ internal sealed partial class WindowMain
     /// <summary>
     /// Displays a message if a new version is available.
     /// </summary>
-    private async Task CheckForUpdates()
+    private async Task CheckForUpdatesAsync()
     {
         Version latestVersion;
         try
@@ -435,7 +435,7 @@ internal sealed partial class WindowMain
     {
         if (_userSettings.CheckForUpdates)
         {
-            await CheckForUpdates();
+            await CheckForUpdatesAsync();
         }
     }
 }
