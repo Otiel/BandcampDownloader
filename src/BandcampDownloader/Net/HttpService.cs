@@ -2,34 +2,28 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using BandcampDownloader.Helpers;
 using BandcampDownloader.Settings;
+using NLog;
 
 namespace BandcampDownloader.Net;
 
 internal interface IHttpService
 {
-    /// <summary>
-    /// Returns the size of the file located at the provided URL.
-    /// </summary>
-    /// <param name="url">The URL.</param>
-    /// <param name="protocolMethod">The protocol method to use in order to retrieve the file size.</param>
-    /// <returns>The size of the file located at the provided URL.</returns>
-    Task<long> GetFileSizeAsync(string url, string protocolMethod);
+    HttpClient CreateHttpClient();
+    Task<long> GetFileSizeAsync(string url);
 
     /// <summary>
     /// Sets the proxy of the specified WebClient according to the UserSettings.
     /// </summary>
     /// <param name="webClient">The WebClient to modify.</param>
     void SetProxy(WebClient webClient);
-
-    HttpClient CreateHttpClient();
 }
 
 internal sealed class HttpService : IHttpService
 {
     private readonly ISettingsService _settingsService;
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     public HttpService(ISettingsService settingsService, IHttpClientFactory httpClientFactory)
     {
@@ -39,31 +33,24 @@ internal sealed class HttpService : IHttpService
 
     public HttpClient CreateHttpClient()
     {
-        var httpClient = _httpClientFactory.CreateClient();
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "BandcampDownloader");
-
-        return httpClient;
+        return CreateHttpClientInternal();
     }
 
-    public async Task<long> GetFileSizeAsync(string url, string protocolMethod)
+    public async Task<long> GetFileSizeAsync(string url)
     {
-#pragma warning disable SYSLIB0014
-        var webRequest = WebRequest.Create(UrlHelper.GetHttpUrlIfNeeded(url));
-#pragma warning restore SYSLIB0014
-        webRequest.Method = protocolMethod;
+        var httpClient = CreateHttpClientInternal();
+        var request = new HttpRequestMessage(HttpMethod.Head, url); // Use HEAD method in order to retrieve only headers
+        var response = await httpClient.SendAsync(request);
 
-        long fileSize;
-        try
+        var fileSize = response.Content.Headers.ContentLength;
+
+        if (fileSize == null)
         {
-            using var webResponse = await webRequest.GetResponseAsync();
-            fileSize = webResponse.ContentLength;
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Could not retrieve file size.", e);
+            _logger.Error($"No Content-Length header found for {url}");
+            throw new Exception();
         }
 
-        return fileSize;
+        return fileSize.Value;
     }
 
     public void SetProxy(WebClient webClient)
@@ -88,5 +75,13 @@ internal sealed class HttpService : IHttpService
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private HttpClient CreateHttpClientInternal()
+    {
+        var httpClient = _httpClientFactory.CreateClient();
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "BandcampDownloader");
+
+        return httpClient;
     }
 }
