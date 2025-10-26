@@ -21,6 +21,11 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <VersionSuffix>pre$([System.DateTime]::Now.ToString("yyyyMMdd-HHmmss"))</VersionSuffix>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="BandcampDownloader.UnitTests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Config.Net" Version="5.2.1" />
