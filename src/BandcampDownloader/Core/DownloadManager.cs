@@ -557,7 +557,7 @@ internal sealed class DownloadManager : IDownloadManager
     {
         var albumsUrls = new List<string>();
 
-        foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
+        foreach (var url in urls.Select(UrlHelper.GetHttpUrlIfNeeded))
         {
             LogAdded?.Invoke(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
