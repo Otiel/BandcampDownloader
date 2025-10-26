@@ -10,11 +10,6 @@ internal static class Constants
     public static readonly string AppVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3);
 
     /// <summary>
-    /// The URL redirecting to the changelog file on GitHub.
-    /// </summary>
-    public const string UrlChangelog = "https://raw.githubusercontent.com/Otiel/BandcampDownloader/master/CHANGELOG.md";
-
-    /// <summary>
     /// The URL redirecting to the help page on translating the app on GitHub.
     /// </summary>
     public const string UrlHelpTranslate = "https://github.com/Otiel/BandcampDownloader/blob/master/docs/help-translate.md";

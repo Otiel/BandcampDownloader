@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandcampDownloader", "BandcampDownloader\BandcampDownloader.csproj", "{F6E97E00-B958-4745-974E-14C6A72E5D03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandcampDownloader.UnitTests", "BandcampDownloader.UnitTests\BandcampDownloader.UnitTests.csproj", "{9B2D92E4-C643-4E76-8AF3-F0683AED9245}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -15,6 +17,10 @@ Global
 		{F6E97E00-B958-4745-974E-14C6A72E5D03}.Release|x64.Build.0 = Release|x64
 		{F6E97E00-B958-4745-974E-14C6A72E5D03}.Debug|x64.ActiveCfg = Debug|x64
 		{F6E97E00-B958-4745-974E-14C6A72E5D03}.Debug|x64.Build.0 = Debug|x64
+		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Debug|x64.ActiveCfg = Debug|x64
+		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Debug|x64.Build.0 = Debug|x64
+		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Release|x64.ActiveCfg = Release|x64
+		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

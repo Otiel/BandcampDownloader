@@ -605,7 +605,7 @@ internal sealed class DownloadManager : IDownloadManager
 
             if (albumsUrls.Count - count == 0)
             {
-                // This seem to be a one-album artist with no "music" page => URL redirects to the unique album URL
+                // This seems to be a one-album artist with no "music" page => URL redirects to the unique album URL
                 albumsUrls.Add(url);
             }
         }
@@ -624,25 +624,13 @@ internal sealed class DownloadManager : IDownloadManager
         long size = 0;
         bool sizeRetrieved;
         var tries = 0;
-        string fileTypeForLog;
-        string protocolMethod;
 
-        switch (fileType)
+        string fileTypeForLog = fileType switch
         {
-            case FileType.Artwork:
-                fileTypeForLog = "cover art file for album";
-                protocolMethod = "HEAD";
-                break;
-            case FileType.Track:
-                fileTypeForLog = "MP3 file for the track";
-                // Using the HEAD method on tracks urls does not work (Error 405: Method not allowed) Surprisingly,
-                // using the GET method does not seem to download the whole file, so we will use it to retrieve the
-                // mp3 sizes
-                protocolMethod = "GET";
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(fileType), fileType, null);
-        }
+            FileType.Artwork => "cover art file for album",
+            FileType.Track => "MP3 file for the track",
+            _ => throw new ArgumentOutOfRangeException(nameof(fileType), fileType, null),
+        };
 
         do
         {
@@ -654,7 +642,7 @@ internal sealed class DownloadManager : IDownloadManager
 
             try
             {
-                size = await _httpService.GetFileSizeAsync(url, protocolMethod);
+                size = await _httpService.GetFileSizeAsync(url);
                 sizeRetrieved = true;
                 LogAdded?.Invoke(this, new LogArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo));
             }
