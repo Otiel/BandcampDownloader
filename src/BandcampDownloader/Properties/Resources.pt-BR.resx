@@ -359,7 +359,8 @@ Se não, um pouco de uso de rede/tempo é poupado.</value>
     <value>_Redefinir configurações</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Redefinir todas as configurações para seus valores padrão?</value>
+    <value>Redefinir todas as configurações para seus valores padrão?
+Esta ação não pode ser desfeita.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Ocorreu um erro não tratado. O aplicativo será fechado agora.
