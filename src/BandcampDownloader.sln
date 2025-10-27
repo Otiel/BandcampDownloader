@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandcampDownloader", "Bandc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandcampDownloader.UnitTests", "BandcampDownloader.UnitTests\BandcampDownloader.UnitTests.csproj", "{9B2D92E4-C643-4E76-8AF3-F0683AED9245}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{4279F151-424C-45BB-A15B-F8BF6E185BE0}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		..\README.md = ..\README.md
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
