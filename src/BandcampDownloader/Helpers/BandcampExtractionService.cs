@@ -58,7 +58,12 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         foreach (var track in album.Tracks)
         {
             var lyricsElement = htmlDoc.GetElementbyId("lyrics_row_" + track.Number);
-            track.Lyrics = lyricsElement.InnerText.Trim();
+
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse : lyricsElement can be null
+            if (lyricsElement != null)
+            {
+                track.Lyrics = lyricsElement.InnerText.Trim();
+            }
         }
 
         return album;
