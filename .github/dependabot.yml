@@ -5,7 +5,7 @@ updates:
         schedule:
             interval: "weekly"
         groups:
-            bump-nunit:
+            NUnit:
                 applies-to: version-updates
                 patterns:
                     - "nunit*"
