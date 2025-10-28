@@ -4,3 +4,8 @@ updates:
         directory: "/src/"
         schedule:
             interval: "weekly"
+        groups:
+            bump-nunit:
+                applies-to: version-updates
+                patterns:
+                    - "nunit*"
