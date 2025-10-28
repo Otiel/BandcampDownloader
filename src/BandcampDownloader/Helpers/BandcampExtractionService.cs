@@ -7,6 +7,7 @@ using BandcampDownloader.Model;
 using BandcampDownloader.Model.JSON;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
+using NLog;
 
 namespace BandcampDownloader.Helpers;
 
@@ -30,37 +31,26 @@ internal interface IBandcampExtractionService
 
 internal sealed class BandcampExtractionService : IBandcampExtractionService
 {
+    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
     public Album GetAlbum(string htmlCode)
     {
         // Keep the interesting part of htmlCode only
-        string albumData;
-        try
+        if (!TryGetAlbumData(htmlCode, out var htmlAlbumData))
         {
-            albumData = GetAlbumData(htmlCode);
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Could not retrieve album data in HTML code.", e);
+            throw new Exception("Could not retrieve album data in HTML code.");
         }
 
         // Fix some wrongly formatted JSON in source code
-        albumData = FixJson(albumData);
+        htmlAlbumData = FixJson(htmlAlbumData);
 
         // Deserialize JSON
-        Album album;
-        try
+        var settings = new JsonSerializerSettings
         {
-            var settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                MissingMemberHandling = MissingMemberHandling.Ignore,
-            };
-            album = JsonConvert.DeserializeObject<JsonAlbum>(albumData, settings).ToAlbum();
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Could not deserialize JSON data.", e);
-        }
+            NullValueHandling = NullValueHandling.Ignore,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+        };
+        var album = JsonConvert.DeserializeObject<JsonAlbum>(htmlAlbumData, settings).ToAlbum();
 
         // Extract lyrics from album page
         var htmlDoc = new HtmlDocument();
@@ -107,22 +97,27 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         return fixedData;
     }
 
-    private static string GetAlbumData(string htmlCode)
+    private static bool TryGetAlbumData(string htmlCode, out string albumData)
     {
+        albumData = null;
+
         const string startString = "data-tralbum=\"{";
         const string stopString = "}\"";
 
-        if (htmlCode.IndexOf(startString, StringComparison.Ordinal) == -1)
+        if (!htmlCode.Contains(startString))
         {
-            // Could not find startString
-            throw new Exception($"Could not find the following string in HTML code: {startString}");
+            _logger.Warn($"Could not find {nameof(startString)} in {nameof(htmlCode)}");
+            return false;
         }
 
-        var albumDataTemp = htmlCode.Substring(htmlCode.IndexOf(startString, StringComparison.Ordinal) + startString.Length - 1);
-        var albumData = albumDataTemp.Substring(0, albumDataTemp.IndexOf(stopString, StringComparison.Ordinal) + 1);
+        var startIndex = htmlCode.IndexOf(startString, StringComparison.Ordinal) + startString.Length - 1;
+        var albumDataTemp = htmlCode[startIndex..];
 
-        albumData = WebUtility.HtmlDecode(albumData);
+        var length = albumDataTemp.IndexOf(stopString, StringComparison.Ordinal) + 1;
+        albumDataTemp = albumDataTemp[..length];
 
-        return albumData;
+        albumData = WebUtility.HtmlDecode(albumDataTemp);
+
+        return true;
     }
 }
