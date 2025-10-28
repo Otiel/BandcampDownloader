@@ -359,7 +359,8 @@ Ako ne, štedi se neka protočnost/vrijeme.</value>
     <value>_Obnovi postavke</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Obnoviti sve postavke na standardne vrijednosti?</value>
+    <value>Resetirati sve postavke na zadane vrijednosti?
+Ovo je nepovratna radnja.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Dogodila se neobradiva greška. Program će se sada zatvoriti.
