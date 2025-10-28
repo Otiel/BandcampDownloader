@@ -90,6 +90,7 @@ internal sealed class HttpService : IHttpService
     private HttpClient CreateHttpClientInternal()
     {
         var httpClient = _httpClientFactory.CreateClient();
+        httpClient.DefaultRequestVersion = HttpVersion.Version20;
         httpClient.DefaultRequestHeaders.Add("User-Agent", "BandcampDownloader");
 
         return httpClient;
