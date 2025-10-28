@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +13,7 @@ using BandcampDownloader.Model;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
 using ImageResizer;
+using NLog;
 using TagLib;
 using File = System.IO.File;
 
@@ -53,6 +53,7 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IPlaylistCreator _playlistCreator;
     private readonly ITagService _tagService;
     private readonly IUserSettings _userSettings;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
     /// Object used to lock on to prevent cancellation race condition.
@@ -501,29 +502,26 @@ internal sealed class DownloadManager : IDownloadManager
 
             // Retrieve URL HTML source code
             string htmlCode;
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
+
+            if (_cancelDownloads)
             {
-                webClient.Encoding = Encoding.UTF8;
-                _httpService.SetProxy(webClient);
+                // Abort
+                return new List<Album>();
+            }
 
-                if (_cancelDownloads)
-                {
-                    // Abort
-                    return new List<Album>();
-                }
+            LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
 
-                try
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
-                    htmlCode = await webClient.DownloadStringTaskAsync(url);
-                }
-                catch
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
-                    continue;
-                }
+            var httpClient = _httpService.CreateHttpClient();
+
+            try
+            {
+                htmlCode = await httpClient.GetStringAsync(url);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Error downloading album info from url: {url}");
+                LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
+                continue;
             }
 
             // Get info on album
@@ -540,8 +538,9 @@ internal sealed class DownloadManager : IDownloadManager
                     LogAdded?.Invoke(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _logger.Error(ex, $"Could not retrieve album info for {url}");
                 LogAdded?.Invoke(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
             }
         }
