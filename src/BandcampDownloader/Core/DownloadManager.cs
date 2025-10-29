@@ -364,24 +364,23 @@ internal sealed class DownloadManager : IDownloadManager
                 return null;
             }
 
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
-            {
-                _httpService.SetProxy(webClient);
+            var downloadService = new DownloadService();
 
             // Update progress bar when downloading
-                webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
+            downloadService.DownloadProgressChanged += (_, args) =>
+            {
+                currentFile.BytesReceived = args.ReceivedBytesSize;
+            };
 
             // Register current download
-                _cancellationTokenSource.Token.Register(webClient.CancelAsync);
+            _cancellationTokenSource.Token.Register(downloadService.CancelAsync);
 
             // Start download
             var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
             try
             {
                 LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
-                    await webClient.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
+                await downloadService.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
                 artworkDownloaded = true;
             }
             catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
@@ -480,7 +479,6 @@ internal sealed class DownloadManager : IDownloadManager
             if (!artworkDownloaded && tries < _userSettings.DownloadMaxTries)
             {
                 await WaitForCooldownAsync(tries);
-            }
             }
         } while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
