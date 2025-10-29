@@ -104,10 +104,7 @@ internal sealed class DownloadManager : IDownloadManager
         {
             _cancelDownloads = true;
             // Stop current downloads
-            if (_cancellationTokenSource != null)
-            {
-                _cancellationTokenSource.Cancel();
-            }
+            _cancellationTokenSource?.Cancel();
         }
     }
 
@@ -233,7 +230,7 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var trackDownloaded = false;
-        var currentFile = DownloadingFiles.Where(f => f.Url == track.Mp3Url).First();
+        var currentFile = DownloadingFiles.First(f => f.Url == track.Mp3Url);
 
         if (File.Exists(track.Path))
         {
@@ -338,7 +335,8 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 await WaitForCooldownAsync(tries);
             }
-        } while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
+        }
+        while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return trackDownloaded;
     }
@@ -354,7 +352,7 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var artworkDownloaded = false;
-        var currentFile = DownloadingFiles.Where(f => f.Url == album.ArtworkUrl).First();
+        var currentFile = DownloadingFiles.First(f => f.Url == album.ArtworkUrl);
 
         do
         {
@@ -480,7 +478,8 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 await WaitForCooldownAsync(tries);
             }
-        } while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
+        }
+        while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return artworkInTags;
     }
@@ -654,7 +653,8 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 await WaitForCooldownAsync(tries);
             }
-        } while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
+        }
+        while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
 
         return size;
     }
