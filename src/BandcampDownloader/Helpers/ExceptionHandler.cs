@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using BandcampDownloader.Core;
 using BandcampDownloader.Properties;
@@ -23,7 +24,7 @@ public sealed class ExceptionHandler : IExceptionHandler
     private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
     {
         LogExceptionAndInnerExceptionsRecursively((Exception)e.ExceptionObject);
-
+        Debugger.Break();
         MessageBox.Show(string.Format(Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
