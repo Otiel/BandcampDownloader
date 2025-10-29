@@ -90,12 +90,6 @@ internal sealed class DownloadManager : IDownloadManager
         _playlistCreator = playlistCreator;
         _tagService = tagService;
         _userSettings = settingsService.GetUserSettings();
-
-        // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
-        // value) files at the same time
-#pragma warning disable SYSLIB0014
-        ServicePointManager.DefaultConnectionLimit = 50;
-#pragma warning restore SYSLIB0014
     }
 
     public void CancelDownloads()
