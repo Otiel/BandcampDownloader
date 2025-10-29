@@ -297,6 +297,8 @@ internal sealed class DownloadManager : IDownloadManager
                 if (_userSettings.ModifyTags)
                 {
                     // Tag (ID3) the file when downloaded
+                    await Task.Run(() =>
+                    {
                     var tagFile = TagLib.File.Create(track.Path);
                     tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
                     tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
@@ -306,16 +308,20 @@ internal sealed class DownloadManager : IDownloadManager
                     tagFile = _tagService.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
                     tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
                     tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
-                    tagFile.Save();
+                        tagFile.Save();
+                    });
                     LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                 }
 
                 if (_userSettings.SaveCoverArtInTags && artwork != null)
                 {
                     // Save cover in tags when downloaded
+                    await Task.Run(() =>
+                    {
                     var tagFile = TagLib.File.Create(track.Path);
                     tagFile.Tag.Pictures = new IPicture[] { artwork };
-                    tagFile.Save();
+                        tagFile.Save();
+                    });
                     LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                 }
 
