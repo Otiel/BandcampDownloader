@@ -321,7 +321,7 @@ internal sealed class DownloadManager : IDownloadManager
                 // Downloads cancelled by the user
                 return false;
             }
-            catch (WebException)
+            catch (WebException) // TODO is this still a WebException?
             {
                 // Connection closed probably because no response from Bandcamp
                 if (tries + 1 < _userSettings.DownloadMaxTries)
@@ -437,7 +437,7 @@ internal sealed class DownloadManager : IDownloadManager
                 // Downloads cancelled by the user
                 return null;
             }
-            catch (WebException)
+            catch (WebException) // TODO is this still a WebException?
             {
                 // Connection closed probably because no response from Bandcamp
                 if (tries < _userSettings.DownloadMaxTries)
