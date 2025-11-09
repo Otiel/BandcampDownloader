@@ -30,7 +30,7 @@ public sealed class LoggingService : ILoggingService
             FileName = LOG_FILE_PATH,
             Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${logger}  ${message}  ${exception:format=tostring}",
             ArchiveAboveSize = MAX_LOG_SIZE,
-            MaxArchiveFiles = 1,
+            MaxArchiveFiles = 0,
         };
 
         var config = new LoggingConfiguration();
