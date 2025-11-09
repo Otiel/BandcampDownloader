@@ -103,6 +103,8 @@ internal sealed class DownloadManager : IDownloadManager
 
     public async Task FetchUrlsAsync(string urls)
     {
+        _cancelDownloads = false;
+
         var sanitizedUrls = urls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
         sanitizedUrls = sanitizedUrls.Distinct().ToList();
 
