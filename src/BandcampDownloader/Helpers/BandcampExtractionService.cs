@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading;
 using BandcampDownloader.Model;
 using BandcampDownloader.Model.JSON;
 using HtmlAgilityPack;
@@ -17,8 +18,9 @@ internal interface IBandcampExtractionService
     /// Retrieves the data on the album of the specified Bandcamp page.
     /// </summary>
     /// <param name="htmlCode">The HTML source code of a Bandcamp album page.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns>The data on the album of the specified Bandcamp page.</returns>
-    Album GetAlbum(string htmlCode);
+    Album GetAlbum(string htmlCode, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retrieves all the albums URL existing on the specified Bandcamp page.
@@ -33,13 +35,15 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-    public Album GetAlbum(string htmlCode)
+    public Album GetAlbum(string htmlCode, CancellationToken cancellationToken)
     {
         // Keep the interesting part of htmlCode only
         if (!TryGetAlbumData(htmlCode, out var htmlAlbumData))
         {
             throw new Exception("Could not retrieve album data in HTML code.");
         }
+
+        cancellationToken.ThrowIfCancellationRequested();
 
         // Fix some wrongly formatted JSON in source code
         htmlAlbumData = FixJson(htmlAlbumData);
@@ -51,6 +55,8 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
             MissingMemberHandling = MissingMemberHandling.Ignore,
         };
         var album = JsonConvert.DeserializeObject<JsonAlbum>(htmlAlbumData, settings).ToAlbum();
+
+        cancellationToken.ThrowIfCancellationRequested();
 
         // Extract lyrics from album page
         var htmlDoc = new HtmlDocument();

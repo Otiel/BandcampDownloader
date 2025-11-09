@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Settings;
 using NLog;
@@ -11,8 +12,8 @@ namespace BandcampDownloader.Net;
 internal interface IHttpService
 {
     HttpClient CreateHttpClient();
-    Task<long> GetFileSizeAsync(string url);
-    Task DownloadFileAsync(string url, FileInfo fileInfo);
+    Task<long> GetFileSizeAsync(string url, CancellationToken cancellationToken);
+    Task DownloadFileAsync(string url, FileInfo fileInfo, CancellationToken cancellationToken);
 
     /// <summary>
     /// Sets the proxy of the specified WebClient according to the UserSettings.
@@ -38,11 +39,11 @@ internal sealed class HttpService : IHttpService
         return CreateHttpClientInternal();
     }
 
-    public async Task<long> GetFileSizeAsync(string url)
+    public async Task<long> GetFileSizeAsync(string url, CancellationToken cancellationToken)
     {
         var httpClient = CreateHttpClientInternal();
         var request = new HttpRequestMessage(HttpMethod.Head, url); // Use HEAD method in order to retrieve only headers
-        var response = await httpClient.SendAsync(request);
+        var response = await httpClient.SendAsync(request, cancellationToken);
 
         var fileSize = response.Content.Headers.ContentLength;
 

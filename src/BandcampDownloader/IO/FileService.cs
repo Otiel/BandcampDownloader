@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BandcampDownloader.IO;
@@ -10,12 +11,13 @@ internal interface IFileService
     /// </summary>
     /// <param name="sourceFile">The file to copy.</param>
     /// <param name="destinationFile">The name of the destination file.</param>
-    Task CopyFileAsync(string sourceFile, string destinationFile);
+    /// <param name="cancellationToken"></param>
+    Task CopyFileAsync(string sourceFile, string destinationFile, CancellationToken cancellationToken);
 }
 
 internal sealed class FileService : IFileService
 {
-    public async Task CopyFileAsync(string sourceFile, string destinationFile)
+    public async Task CopyFileAsync(string sourceFile, string destinationFile, CancellationToken cancellationToken)
     {
         // https://stackoverflow.com/a/35467471/825024
         const FileOptions fileOptions = FileOptions.Asynchronous | FileOptions.SequentialScan;
@@ -23,6 +25,6 @@ internal sealed class FileService : IFileService
 
         await using var sourceStream = new FileStream(sourceFile, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize, fileOptions);
         await using var destinationStream = new FileStream(destinationFile, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize, fileOptions);
-        await sourceStream.CopyToAsync(destinationStream);
+        await sourceStream.CopyToAsync(destinationStream, cancellationToken);
     }
 }
