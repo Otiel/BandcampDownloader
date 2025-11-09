@@ -243,9 +243,6 @@ internal sealed class DownloadManager : IDownloadManager
                 currentFile.BytesReceived = args.ReceivedBytesSize;
             };
 
-            // Register current download
-            cancellationToken.Register(downloadService.CancelAsync); // TODO is this necessary since we pass the cancellationToken to DownloadFileTaskAsync?
-
             // Start download
             try
             {
@@ -350,9 +347,6 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 currentFile.BytesReceived = args.ReceivedBytesSize;
             };
-
-            // Register current download
-            cancellationToken.Register(downloadService.CancelAsync); // TODO is this necessary since we pass the cancellationToken to DownloadFileTaskAsync?
 
             // Start download
             var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
