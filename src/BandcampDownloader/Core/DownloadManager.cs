@@ -209,8 +209,6 @@ internal sealed class DownloadManager : IDownloadManager
     private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Picture artwork, CancellationToken cancellationToken)
     {
         var trackMp3Url = UrlHelper.GetHttpUrlIfNeeded(track.Mp3Url);
-        LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
-
         var tries = 0;
         var trackDownloaded = false;
 
