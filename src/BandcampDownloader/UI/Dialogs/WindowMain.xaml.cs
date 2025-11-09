@@ -29,6 +29,7 @@ internal sealed partial class WindowMain
     private readonly IDownloadManager _downloadManager;
     private readonly IUpdatesService _updatesService;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
+    private CancellationTokenSource _downloadCts;
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
@@ -45,11 +46,6 @@ internal sealed partial class WindowMain
     /// </summary>
     private long _lastTotalReceivedBytes;
 
-    /// <summary>
-    /// Used when user clicks on 'Cancel' to manage the cancellation (UI...).
-    /// </summary>
-    private bool _userCancelled;
-
     public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager, IUpdatesService updatesService)
     {
         _userSettings = settingsService.GetUserSettings();
@@ -65,7 +61,7 @@ internal sealed partial class WindowMain
 #if DEBUG
         TextBoxUrls.Text = ""
                            //+ "https://projectmooncircle.bandcamp.com" /* Lots of albums (124) */ + Environment.NewLine
-                           //+ "https://goataholicskjald.bandcamp.com/album/dogma" /* #65 Downloaded size ≠ predicted */ + Environment.NewLine
+                           //+ "https://goataholicskjald.bandcamp.com/album/dogma" /* #65 Downloaded size ≠ predicted */ + Environment.NewLine // TODO fix Could not retrieve data for https://goataholicskjald.bandcamp.com/track/europa"><span class="track-title
                            //+ "https://mstrvlk.bandcamp.com/album/-" /* #64 Album with big cover */ + Environment.NewLine
                            //+ "https://mstrvlk.bandcamp.com/track/-" /* #64 Track with big cover */ + Environment.NewLine
                            //+ "https://weneverlearnedtolive.bandcamp.com/album/silently-i-threw-them-skyward" /* #42 Album with lyrics */ + Environment.NewLine
@@ -76,7 +72,7 @@ internal sealed partial class WindowMain
                            //+ "https://liluglymane.bandcamp.com/album/study-of-the-hypothesized-removable-and-or-expandable-nature-of-human-capability-and-limitations-primarily-regarding-introductory-experiences-with-new-and-exciting-technologies-by-way-of-motivati-2" /* #54 Long path */ + Environment.NewLine
                            //+ "https://brzoskamarciniakmarkiewicz.bandcamp.com/album/wp-aw" /* #82 Tracks with diacritics */ + Environment.NewLine
                            //+ "https://empyrium.bandcamp.com/album/der-wie-ein-blitz-vom-himmel-fiel" /* #102 Album ending with '...' */ + Environment.NewLine
-                           + "https://tympanikaudio.bandcamp.com" /* #118 Different discography page */ + Environment.NewLine
+                           //+ "https://tympanikaudio.bandcamp.com" /* #118 Different discography page */ + Environment.NewLine
             ;
 #endif
     }
@@ -109,6 +105,8 @@ internal sealed partial class WindowMain
 
         await Task.Run(async () =>
         {
+            _downloadCts = new CancellationTokenSource();
+
             if (string.IsNullOrWhiteSpace(inputUrls))
             {
                 // No URL to look
@@ -122,11 +120,12 @@ internal sealed partial class WindowMain
 
             await LogAsync("Starting download...", LogType.Info);
 
-            await StartDownloadAsync(inputUrls);
-
-            if (_userCancelled)
+            try
             {
-                // Display message if user cancelled
+                await StartDownloadAsync(inputUrls, _downloadCts.Token);
+            }
+            catch (OperationCanceledException)
+            {
                 await LogAsync("Downloads cancelled by user", LogType.Info);
             }
 
@@ -167,17 +166,17 @@ internal sealed partial class WindowMain
             Title = "Bandcamp Downloader",
         };
 
-        if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes || !_activeDownloads)
+        if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes ||
+            !_activeDownloads)
         {
-            // If user cancelled the cancellation or if downloads finished while he choosed to cancel
+            // If user cancelled the cancellation or if downloads finished while he chose to cancel
             return;
         }
 
         await ModifyMouseCursorAsync(Cursors.Wait);
-        _userCancelled = true;
         ButtonStop.IsEnabled = false;
 
-        _downloadManager.CancelDownloads();
+        await _downloadCts.CancelAsync();
     }
 
     private static async Task ModifyMouseCursorAsync(Cursor cursor)
@@ -294,24 +293,13 @@ internal sealed partial class WindowMain
     /// <summary>
     /// Starts downloads.
     /// </summary>
-    /// <param name="inputUrls"></param>
-    private async Task StartDownloadAsync(string inputUrls)
+    private async Task StartDownloadAsync(string inputUrls, CancellationToken cancellationToken)
     {
-        _userCancelled = false;
-
         // Fetch URL to get the files size
-        await _downloadManager.FetchUrlsAsync(inputUrls);
+        await _downloadManager.FetchUrlsAsync(inputUrls, cancellationToken);
 
         // Set progressBar max value
-        long maxProgressBarValue;
-        if (_userSettings.RetrieveFilesSize)
-        {
-            maxProgressBarValue = _downloadManager.GetTotalBytesToDownload();
-        }
-        else
-        {
-            maxProgressBarValue = _downloadManager.GetTotalFilesCountToDownload();
-        }
+        var maxProgressBarValue = _userSettings.RetrieveFilesSize ? _downloadManager.GetTotalBytesToDownload() : _downloadManager.GetTotalFilesCountToDownload();
 
         if (maxProgressBarValue > 0)
         {
@@ -323,7 +311,7 @@ internal sealed partial class WindowMain
             });
         }
 
-        var timersCts = new CancellationTokenSource();
+        var timersCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
 
         // Start timer to update progress on UI
         var updateProgressTimer = new PeriodicTimer(TimeSpan.FromMilliseconds(500));
@@ -348,7 +336,8 @@ internal sealed partial class WindowMain
         }, timersCts.Token);
 
         // Start downloading albums
-        await _downloadManager.StartDownloadsAsync();
+        // ReSharper disable once PossiblyMistakenUseOfCancellationToken : this is the correct token
+        await _downloadManager.StartDownloadsAsync(cancellationToken);
 
         // Stop timers
         await timersCts.CancelAsync();

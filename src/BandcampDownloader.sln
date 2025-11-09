@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		..\.github\dependabot.yml = ..\.github\dependabot.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BandcampDownloader.IntegrationTests", "BandcampDownloader.IntegrationTests\BandcampDownloader.IntegrationTests.csproj", "{9C25FEB4-CB87-44D1-B0CA-8EE294B9F2AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -30,6 +32,10 @@ Global
 		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Debug|x64.Build.0 = Debug|x64
 		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Release|x64.ActiveCfg = Release|x64
 		{9B2D92E4-C643-4E76-8AF3-F0683AED9245}.Release|x64.Build.0 = Release|x64
+		{9C25FEB4-CB87-44D1-B0CA-8EE294B9F2AF}.Release|x64.ActiveCfg = Release|Any CPU
+		{9C25FEB4-CB87-44D1-B0CA-8EE294B9F2AF}.Release|x64.Build.0 = Release|Any CPU
+		{9C25FEB4-CB87-44D1-B0CA-8EE294B9F2AF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9C25FEB4-CB87-44D1-B0CA-8EE294B9F2AF}.Debug|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

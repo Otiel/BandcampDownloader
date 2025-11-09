@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using PlaylistsNET.Content;
@@ -13,7 +15,7 @@ internal interface IPlaylistCreator
     /// <summary>
     /// Saves the playlist to a file.
     /// </summary>
-    void SavePlaylistToFile(Album album);
+    Task SavePlaylistToFileAsync(Album album, CancellationToken cancellationToken);
 }
 
 internal sealed class PlaylistCreator : IPlaylistCreator
@@ -28,7 +30,7 @@ internal sealed class PlaylistCreator : IPlaylistCreator
     /// <summary>
     /// Saves the playlist to a file.
     /// </summary>
-    public void SavePlaylistToFile(Album album)
+    public async Task SavePlaylistToFileAsync(Album album, CancellationToken cancellationToken)
     {
         var fileContent = _userSettings.PlaylistFormat switch
         {
@@ -39,7 +41,7 @@ internal sealed class PlaylistCreator : IPlaylistCreator
             _ => throw new ArgumentOutOfRangeException(),
         };
 
-        File.WriteAllText(album.PlaylistPath, fileContent, Encoding.UTF8);
+        await File.WriteAllTextAsync(album.PlaylistPath, fileContent, Encoding.UTF8, cancellationToken);
     }
 
     /// <summary>

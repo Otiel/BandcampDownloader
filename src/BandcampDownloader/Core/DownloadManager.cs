@@ -23,19 +23,14 @@ namespace BandcampDownloader.Core;
 internal interface IDownloadManager
 {
     /// <summary>
-    /// Cancels all downloads.
-    /// </summary>
-    void CancelDownloads();
-
-    /// <summary>
     /// Fetch albums data from the specified URLs.
     /// </summary>
-    Task FetchUrlsAsync(string urls);
+    Task FetchUrlsAsync(string urls, CancellationToken cancellationToken);
 
     /// <summary>
     /// Starts downloads.
     /// </summary>
-    Task StartDownloadsAsync();
+    Task StartDownloadsAsync(CancellationToken cancellationToken);
 
     event DownloadManager.LogAddedEventHandler LogAdded;
     long GetTotalBytesReceived();
@@ -55,24 +50,9 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
-    /// Object used to lock on to prevent cancellation race condition.
-    /// </summary>
-    private readonly Lock _cancellationLock = new();
-
-    /// <summary>
     /// The albums to download.
     /// </summary>
     private List<Album> _albums;
-
-    /// <summary>
-    /// True if we received the order to cancel downloads; false otherwise.
-    /// </summary>
-    private bool _cancelDownloads;
-
-    /// <summary>
-    /// Used when downloads must be cancelled.
-    /// </summary>
-    private CancellationTokenSource _cancellationTokenSource;
 
     private readonly Lock _downloadingFilesLock = new();
     private List<TrackFile> _downloadingFiles;
@@ -91,55 +71,33 @@ internal sealed class DownloadManager : IDownloadManager
         _userSettings = settingsService.GetUserSettings();
     }
 
-    public void CancelDownloads()
+    public async Task FetchUrlsAsync(string urls, CancellationToken cancellationToken)
     {
-        lock (_cancellationLock)
-        {
-            _cancelDownloads = true;
-            // Stop current downloads
-            _cancellationTokenSource?.Cancel();
-        }
-    }
-
-    public async Task FetchUrlsAsync(string urls)
-    {
-        _cancelDownloads = false;
-
         var sanitizedUrls = urls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
         sanitizedUrls = sanitizedUrls.Distinct().ToList();
 
         // Get URLs of albums to download
         if (_userSettings.DownloadArtistDiscography)
         {
-            sanitizedUrls = await GetArtistDiscographyAsync(sanitizedUrls);
+            sanitizedUrls = await GetArtistDiscographyAsync(sanitizedUrls, cancellationToken);
         }
 
         // Get info on albums
-        _albums = await GetAlbumsAsync(sanitizedUrls);
+        _albums = await GetAlbumsAsync(sanitizedUrls, cancellationToken);
 
         // Save the files to download and get their size
-        var filesToDownload = await GetFilesToDownloadAsync(_albums);
+        var filesToDownload = await GetFilesToDownloadAsync(_albums, cancellationToken);
         lock (_downloadingFilesLock)
         {
             _downloadingFiles = filesToDownload;
         }
     }
 
-    public async Task StartDownloadsAsync()
+    public async Task StartDownloadsAsync(CancellationToken cancellationToken)
     {
         if (_albums == null)
         {
             throw new Exception("Must call FetchUrls before calling StartDownloadsAsync");
-        }
-
-        lock (_cancellationLock)
-        {
-            if (_cancelDownloads)
-            {
-                return;
-            }
-
-            _cancellationTokenSource = new CancellationTokenSource();
         }
 
         // Start downloading albums
@@ -148,14 +106,14 @@ internal sealed class DownloadManager : IDownloadManager
             // Download one album at a time
             foreach (var album in _albums)
             {
-                await DownloadAlbumAsync(album);
+                await DownloadAlbumAsync(album, cancellationToken);
             }
         }
         else
         {
             // Parallel download
             var albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
-            await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i])));
+            await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i], cancellationToken)));
         }
     }
 
@@ -195,15 +153,12 @@ internal sealed class DownloadManager : IDownloadManager
     /// Downloads an album.
     /// </summary>
     /// <param name="album">The album to download.</param>
-    private async Task DownloadAlbumAsync(Album album)
+    /// <param name="cancellationToken"></param>
+    private async Task DownloadAlbumAsync(Album album, CancellationToken cancellationToken)
     {
-        if (_cancelDownloads)
-        {
-            // Abort
-            return;
-        }
+        cancellationToken.ThrowIfCancellationRequested();
 
-        // Create directory to place track files
+        // Create a directory to place track files
         try
         {
             Directory.CreateDirectory(album.Path);
@@ -219,32 +174,28 @@ internal sealed class DownloadManager : IDownloadManager
         // Download artwork
         if ((_userSettings.SaveCoverArtInTags || _userSettings.SaveCoverArtInFolder) && album.HasArtwork)
         {
-            artwork = await DownloadCoverArtAsync(album);
+            artwork = await DownloadCoverArtAsync(album, cancellationToken);
         }
 
         // Download & tag tracks
         var tracksDownloaded = new bool[album.Tracks.Count];
         var indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-        await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork)));
+        await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], artwork, cancellationToken)));
 
         // Create playlist file
-        if (_userSettings.CreatePlaylist && !_cancelDownloads)
+        if (_userSettings.CreatePlaylist)
         {
-            _playlistCreator.SavePlaylistToFile(album);
+            await _playlistCreator.SavePlaylistToFileAsync(album, cancellationToken);
             LogAdded?.Invoke(this, new LogArgs($"Saved playlist for album \"{album.Title}\"", LogType.IntermediateSuccess));
         }
 
-        if (!_cancelDownloads)
+        if (tracksDownloaded.All(x => x))
         {
-            // Tasks have not been aborted
-            if (tracksDownloaded.All(x => x))
-            {
-                LogAdded?.Invoke(this, new LogArgs($"Successfully downloaded album \"{album.Title}\"", LogType.Success));
-            }
-            else
-            {
-                LogAdded?.Invoke(this, new LogArgs($"Finished downloading album \"{album.Title}\". Some tracks were not downloaded", LogType.Success));
-            }
+            LogAdded?.Invoke(this, new LogArgs($"Successfully downloaded album \"{album.Title}\"", LogType.Success));
+        }
+        else
+        {
+            LogAdded?.Invoke(this, new LogArgs($"Finished downloading album \"{album.Title}\". Some tracks were not downloaded", LogType.Success));
         }
     }
 
@@ -254,11 +205,10 @@ internal sealed class DownloadManager : IDownloadManager
     /// <param name="album">The album of the track to download.</param>
     /// <param name="track">The track to download.</param>
     /// <param name="artwork">The cover art.</param>
-    private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Picture artwork)
+    /// <param name="cancellationToken"></param>
+    private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Picture artwork, CancellationToken cancellationToken)
     {
         var trackMp3Url = UrlHelper.GetHttpUrlIfNeeded(track.Mp3Url);
-        LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
-
         var tries = 0;
         var trackDownloaded = false;
 
@@ -281,11 +231,7 @@ internal sealed class DownloadManager : IDownloadManager
 
         do
         {
-            if (_cancelDownloads)
-            {
-                // Abort
-                return false;
-            }
+            cancellationToken.ThrowIfCancellationRequested();
 
             var downloadService = new DownloadService();
 
@@ -294,9 +240,6 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 currentFile.BytesReceived = args.ReceivedBytesSize;
             };
-
-            // Register current download
-            _cancellationTokenSource.Token.Register(downloadService.CancelAsync);
 
             // Start download
             try
@@ -307,21 +250,12 @@ internal sealed class DownloadManager : IDownloadManager
                 }
 
                 LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
-                await downloadService.DownloadFileTaskAsync(trackMp3Url, track.Path);
+                await downloadService.DownloadFileTaskAsync(trackMp3Url, track.Path, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 trackDownloaded = true;
                 LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
             }
-            catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
-            {
-                // Downloads cancelled by the user
-                return false;
-            }
-            catch (TaskCanceledException)
-            {
-                // Downloads cancelled by the user
-                return false;
-            }
-            catch (WebException)
+            catch (WebException) // TODO is this still a WebException?
             {
                 // Connection closed probably because no response from Bandcamp
                 if (tries + 1 < _userSettings.DownloadMaxTries)
@@ -351,7 +285,7 @@ internal sealed class DownloadManager : IDownloadManager
                         tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
                         tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
                         tagFile.Save();
-                    });
+                    }, cancellationToken);
                     LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                 }
 
@@ -363,7 +297,7 @@ internal sealed class DownloadManager : IDownloadManager
                         var tagFile = TagLib.File.Create(track.Path);
                         tagFile.Tag.Pictures = new IPicture[] { artwork };
                         tagFile.Save();
-                    });
+                    }, cancellationToken);
                     LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                 }
 
@@ -375,7 +309,7 @@ internal sealed class DownloadManager : IDownloadManager
             tries++;
             if (!trackDownloaded && tries < _userSettings.DownloadMaxTries)
             {
-                await WaitForCooldownAsync(tries);
+                await WaitForCooldownAsync(tries, cancellationToken);
             }
         }
         while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
@@ -388,7 +322,8 @@ internal sealed class DownloadManager : IDownloadManager
     /// the album folder.
     /// </summary>
     /// <param name="album">The album.</param>
-    private async Task<Picture> DownloadCoverArtAsync(Album album)
+    /// <param name="cancellationToken"></param>
+    private async Task<Picture> DownloadCoverArtAsync(Album album, CancellationToken cancellationToken)
     {
         Picture artworkInTags = null;
 
@@ -402,11 +337,7 @@ internal sealed class DownloadManager : IDownloadManager
 
         do
         {
-            if (_cancelDownloads)
-            {
-                // Abort
-                return null;
-            }
+            cancellationToken.ThrowIfCancellationRequested();
 
             var downloadService = new DownloadService();
 
@@ -416,28 +347,16 @@ internal sealed class DownloadManager : IDownloadManager
                 currentFile.BytesReceived = args.ReceivedBytesSize;
             };
 
-            // Register current download
-            _cancellationTokenSource.Token.Register(downloadService.CancelAsync);
-
             // Start download
             var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
             try
             {
                 LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
-                await downloadService.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
+                await downloadService.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 artworkDownloaded = true;
             }
-            catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
-            {
-                // Downloads cancelled by the user
-                return null;
-            }
-            catch (TaskCanceledException)
-            {
-                // Downloads cancelled by the user
-                return null;
-            }
-            catch (WebException)
+            catch (WebException) // TODO is this still a WebException?
             {
                 // Connection closed probably because no response from Bandcamp
                 if (tries < _userSettings.DownloadMaxTries)
@@ -471,11 +390,11 @@ internal sealed class DownloadManager : IDownloadManager
                     await Task.Run(() =>
                     {
                         ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
-                    });
+                    }, cancellationToken);
                 }
                 else if (_userSettings.SaveCoverArtInFolder)
                 {
-                    await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
+                    await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath, cancellationToken);
                 }
 
                 // Convert/resize artwork to be saved in tags
@@ -497,7 +416,7 @@ internal sealed class DownloadManager : IDownloadManager
                     await Task.Run(() =>
                     {
                         ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
-                    });
+                    }, cancellationToken);
                 }
 
                 artworkInTags = new Picture(album.ArtworkTempPath)
@@ -522,7 +441,7 @@ internal sealed class DownloadManager : IDownloadManager
             tries++;
             if (!artworkDownloaded && tries < _userSettings.DownloadMaxTries)
             {
-                await WaitForCooldownAsync(tries);
+                await WaitForCooldownAsync(tries, cancellationToken);
             }
         }
         while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
@@ -534,32 +453,26 @@ internal sealed class DownloadManager : IDownloadManager
     /// Returns the albums located at the specified URLs.
     /// </summary>
     /// <param name="urls">The URLs.</param>
-    private async Task<List<Album>> GetAlbumsAsync(List<string> urls)
+    /// <param name="cancellationToken"></param>
+    private async Task<List<Album>> GetAlbumsAsync(List<string> urls, CancellationToken cancellationToken)
     {
         var albums = new List<Album>();
 
         foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             LogAdded?.Invoke(this, new LogArgs($"Retrieving album data for {url}", LogType.Info));
 
             // Retrieve URL HTML source code
             string htmlCode;
-
-            if (_cancelDownloads)
-            {
-                // Abort
-                return new List<Album>();
-            }
-
-            LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
-
-            var httpClient = _httpService.CreateHttpClient();
-
             try
             {
-                htmlCode = await httpClient.GetStringAsync(url);
+                LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
+                var httpClient = _httpService.CreateHttpClient();
+                htmlCode = await httpClient.GetStringAsync(url, cancellationToken);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is not OperationCanceledException)
             {
                 _logger.Error(ex, $"Error downloading album info from url: {url}");
                 LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
@@ -569,7 +482,7 @@ internal sealed class DownloadManager : IDownloadManager
             // Get info on album
             try
             {
-                var album = _bandcampExtractionService.GetAlbum(htmlCode);
+                var album = _bandcampExtractionService.GetAlbum(htmlCode, cancellationToken);
 
                 if (album.Tracks.Count > 0)
                 {
@@ -580,7 +493,7 @@ internal sealed class DownloadManager : IDownloadManager
                     LogAdded?.Invoke(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is not OperationCanceledException)
             {
                 _logger.Error(ex, $"Could not retrieve album info for {url}");
                 LogAdded?.Invoke(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
@@ -594,12 +507,15 @@ internal sealed class DownloadManager : IDownloadManager
     /// Returns the artists discography from any URL (artist, album, track).
     /// </summary>
     /// <param name="urls">The URLs.</param>
-    private async Task<List<string>> GetArtistDiscographyAsync(List<string> urls)
+    /// <param name="cancellationToken"></param>
+    private async Task<List<string>> GetArtistDiscographyAsync(List<string> urls, CancellationToken cancellationToken)
     {
         var albumsUrls = new List<string>();
 
         foreach (var url in urls.Select(o => UrlHelper.GetHttpUrlIfNeeded(o)))
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             LogAdded?.Invoke(this, new LogArgs($"Retrieving artist discography from {url}", LogType.Info));
 
             // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
@@ -610,19 +526,13 @@ internal sealed class DownloadManager : IDownloadManager
             // Retrieve artist "music" page HTML source code
             string htmlCode;
 
-            if (_cancelDownloads)
-            {
-                // Abort
-                return new List<string>();
-            }
-
             try
             {
                 LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlCode = await httpClient.GetStringAsync(artistMusicPage);
+                htmlCode = await httpClient.GetStringAsync(artistMusicPage, cancellationToken);
             }
-            catch
+            catch (Exception ex) when (ex is not OperationCanceledException)
             {
                 LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
                 continue;
@@ -631,7 +541,8 @@ internal sealed class DownloadManager : IDownloadManager
             var count = albumsUrls.Count;
             try
             {
-                albumsUrls.AddRange(_bandcampExtractionService.GetAlbumsUrl(htmlCode, artistPage));
+                var albumsUrl = _bandcampExtractionService.GetAlbumsUrl(htmlCode, artistPage);
+                albumsUrls.AddRange(albumsUrl);
             }
             catch (NoAlbumFoundException)
             {
@@ -654,7 +565,8 @@ internal sealed class DownloadManager : IDownloadManager
     /// <param name="url">The URL.</param>
     /// <param name="titleForLog">The title of the file to be displayed in the log.</param>
     /// <param name="fileType">The type of the file.</param>
-    private async Task<long> GetFileSizeAsync(string url, string titleForLog, FileType fileType)
+    /// <param name="cancellationToken"></param>
+    private async Task<long> GetFileSizeAsync(string url, string titleForLog, FileType fileType, CancellationToken cancellationToken)
     {
         long size = 0;
         bool sizeRetrieved;
@@ -669,19 +581,15 @@ internal sealed class DownloadManager : IDownloadManager
 
         do
         {
-            if (_cancelDownloads)
-            {
-                // Abort
-                return 0;
-            }
+            cancellationToken.ThrowIfCancellationRequested();
 
             try
             {
-                size = await _httpService.GetFileSizeAsync(url);
+                size = await _httpService.GetFileSizeAsync(url, cancellationToken);
                 sizeRetrieved = true;
                 LogAdded?.Invoke(this, new LogArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", LogType.VerboseInfo));
             }
-            catch
+            catch (Exception ex) when (ex is not OperationCanceledException)
             {
                 sizeRetrieved = false;
                 if (tries + 1 < _userSettings.DownloadMaxTries)
@@ -697,7 +605,7 @@ internal sealed class DownloadManager : IDownloadManager
             tries++;
             if (!sizeRetrieved && tries < _userSettings.DownloadMaxTries)
             {
-                await WaitForCooldownAsync(tries);
+                await WaitForCooldownAsync(tries, cancellationToken);
             }
         }
         while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
@@ -709,11 +617,14 @@ internal sealed class DownloadManager : IDownloadManager
     /// Returns the files to download from a list of albums.
     /// </summary>
     /// <param name="albums">The albums.</param>
-    private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums)
+    /// <param name="cancellationToken"></param>
+    private async Task<List<TrackFile>> GetFilesToDownloadAsync(List<Album> albums, CancellationToken cancellationToken)
     {
         var files = new List<TrackFile>();
         foreach (var album in albums)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             LogAdded?.Invoke(this, new LogArgs($"Computing size for album \"{album.Title}\"...", LogType.Info));
 
             // Artwork
@@ -721,7 +632,7 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 if (_userSettings.RetrieveFilesSize)
                 {
-                    var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork);
+                    var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork, cancellationToken);
                     files.Add(new TrackFile(album.ArtworkUrl, 0, size));
                 }
                 else
@@ -736,7 +647,7 @@ internal sealed class DownloadManager : IDownloadManager
                 var tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
                 await Task.WhenAll(tracksIndexes.Select(async i =>
                 {
-                    var size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track);
+                    var size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track, cancellationToken);
                     files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));
                 }));
             }
@@ -756,12 +667,14 @@ internal sealed class DownloadManager : IDownloadManager
     /// Waits for a "cooldown" time, computed from the specified number of download tries.
     /// </summary>
     /// <param name="triesNumber">The times count we tried to download the same file.</param>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    private async Task WaitForCooldownAsync(int triesNumber)
+    private async Task WaitForCooldownAsync(int triesNumber, CancellationToken cancellationToken)
     {
         if (_userSettings.DownloadRetryCooldown != 0)
         {
-            await Task.Delay((int)(Math.Pow(_userSettings.DownloadRetryExponent, triesNumber) * _userSettings.DownloadRetryCooldown * 1000));
+            var cooldownDelay = (int)(Math.Pow(_userSettings.DownloadRetryExponent, triesNumber) * _userSettings.DownloadRetryCooldown * 1000);
+            await Task.Delay(cooldownDelay, cancellationToken);
         }
     }
 }
