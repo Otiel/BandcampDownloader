@@ -251,6 +251,7 @@ internal sealed class DownloadManager : IDownloadManager
 
                 LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
                 await downloadService.DownloadFileTaskAsync(trackMp3Url, track.Path, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 trackDownloaded = true;
                 LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
             }
@@ -352,6 +353,7 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
                 await downloadService.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 artworkDownloaded = true;
             }
             catch (WebException) // TODO is this still a WebException?
