@@ -23,12 +23,6 @@ namespace BandcampDownloader.Core;
 internal interface IDownloadManager
 {
     /// <summary>
-    /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
-    /// and the total bytes to download.
-    /// </summary>
-    List<TrackFile> DownloadingFiles { get; set; }
-
-    /// <summary>
     /// Cancels all downloads.
     /// </summary>
     void CancelDownloads();
@@ -44,6 +38,10 @@ internal interface IDownloadManager
     Task StartDownloadsAsync();
 
     event DownloadManager.LogAddedEventHandler LogAdded;
+    long GetTotalBytesReceived();
+    long GetTotalBytesToDownload();
+    long GetTotalFilesCountToDownload();
+    double GetTotalFilesCountReceived();
 }
 
 internal sealed class DownloadManager : IDownloadManager
@@ -76,7 +74,8 @@ internal sealed class DownloadManager : IDownloadManager
     /// </summary>
     private CancellationTokenSource _cancellationTokenSource;
 
-    public List<TrackFile> DownloadingFiles { get; set; }
+    private readonly Lock _downloadingFilesLock = new();
+    private List<TrackFile> _downloadingFiles;
 
     public delegate void LogAddedEventHandler(object sender, LogArgs eventArgs);
 
@@ -117,7 +116,11 @@ internal sealed class DownloadManager : IDownloadManager
         _albums = await GetAlbumsAsync(sanitizedUrls);
 
         // Save the files to download and get their size
-        DownloadingFiles = await GetFilesToDownloadAsync(_albums);
+        var filesToDownload = await GetFilesToDownloadAsync(_albums);
+        lock (_downloadingFilesLock)
+        {
+            _downloadingFiles = filesToDownload;
+        }
     }
 
     public async Task StartDownloadsAsync()
@@ -151,6 +154,38 @@ internal sealed class DownloadManager : IDownloadManager
             // Parallel download
             var albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
             await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i])));
+        }
+    }
+
+    public long GetTotalBytesReceived()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Sum(f => f.BytesReceived);
+        }
+    }
+
+    public long GetTotalBytesToDownload()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Sum(f => f.Size);
+        }
+    }
+
+    public long GetTotalFilesCountToDownload()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Count;
+        }
+    }
+
+    public double GetTotalFilesCountReceived()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Count(f => f.Downloaded);
         }
     }
 
@@ -224,7 +259,12 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var trackDownloaded = false;
-        var currentFile = DownloadingFiles.First(f => f.Url == track.Mp3Url);
+
+        TrackFile currentFile;
+        lock (_downloadingFilesLock)
+        {
+            currentFile = _downloadingFiles.First(f => f.Url == track.Mp3Url);
+        }
 
         if (File.Exists(track.Path))
         {
@@ -299,15 +339,15 @@ internal sealed class DownloadManager : IDownloadManager
                     // Tag (ID3) the file when downloaded
                     await Task.Run(() =>
                     {
-                    var tagFile = TagLib.File.Create(track.Path);
-                    tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
-                    tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
-                    tagFile = _tagService.UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
-                    tagFile = _tagService.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
-                    tagFile = _tagService.UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
-                    tagFile = _tagService.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
-                    tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
-                    tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
+                        var tagFile = TagLib.File.Create(track.Path);
+                        tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
+                        tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
+                        tagFile = _tagService.UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
+                        tagFile = _tagService.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
+                        tagFile = _tagService.UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
+                        tagFile = _tagService.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
+                        tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
+                        tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
                         tagFile.Save();
                     });
                     LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
@@ -318,8 +358,8 @@ internal sealed class DownloadManager : IDownloadManager
                     // Save cover in tags when downloaded
                     await Task.Run(() =>
                     {
-                    var tagFile = TagLib.File.Create(track.Path);
-                    tagFile.Tag.Pictures = new IPicture[] { artwork };
+                        var tagFile = TagLib.File.Create(track.Path);
+                        tagFile.Tag.Pictures = new IPicture[] { artwork };
                         tagFile.Save();
                     });
                     LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
@@ -352,7 +392,11 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var artworkDownloaded = false;
-        var currentFile = DownloadingFiles.First(f => f.Url == album.ArtworkUrl);
+        TrackFile currentFile;
+        lock (_downloadingFilesLock)
+        {
+            currentFile = _downloadingFiles.First(f => f.Url == album.ArtworkUrl);
+        }
 
         do
         {
