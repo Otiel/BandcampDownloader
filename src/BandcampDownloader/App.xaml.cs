@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Windows;
 using BandcampDownloader.Core;
@@ -51,11 +50,6 @@ internal sealed partial class App
 
     private static void InitializeCoreServices(IContainer container)
     {
-        // Define the default security protocol to use for connection as TLS (#109)
-#pragma warning disable SYSLIB0014
-        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-#pragma warning restore SYSLIB0014
-
         var settingsService = container.GetService<ISettingsService>();
         var userSettings = settingsService.InitializeSettings();
 

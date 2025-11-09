@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,7 +12,9 @@ using BandcampDownloader.Logging;
 using BandcampDownloader.Model;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
+using Downloader;
 using ImageResizer;
+using NLog;
 using TagLib;
 using File = System.IO.File;
 
@@ -21,12 +22,6 @@ namespace BandcampDownloader.Core;
 
 internal interface IDownloadManager
 {
-    /// <summary>
-    /// The files to download, or being downloaded, or already downloaded. Used to compute the current received bytes
-    /// and the total bytes to download.
-    /// </summary>
-    List<TrackFile> DownloadingFiles { get; set; }
-
     /// <summary>
     /// Cancels all downloads.
     /// </summary>
@@ -43,16 +38,21 @@ internal interface IDownloadManager
     Task StartDownloadsAsync();
 
     event DownloadManager.LogAddedEventHandler LogAdded;
+    long GetTotalBytesReceived();
+    long GetTotalBytesToDownload();
+    long GetTotalFilesCountToDownload();
+    double GetTotalFilesCountReceived();
 }
 
 internal sealed class DownloadManager : IDownloadManager
 {
-    private readonly IBandcampHelper _bandcampHelper;
+    private readonly IBandcampExtractionService _bandcampExtractionService;
     private readonly IFileService _fileService;
     private readonly IHttpService _httpService;
     private readonly IPlaylistCreator _playlistCreator;
     private readonly ITagService _tagService;
     private readonly IUserSettings _userSettings;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
     /// Object used to lock on to prevent cancellation race condition.
@@ -74,26 +74,21 @@ internal sealed class DownloadManager : IDownloadManager
     /// </summary>
     private CancellationTokenSource _cancellationTokenSource;
 
-    public List<TrackFile> DownloadingFiles { get; set; }
+    private readonly Lock _downloadingFilesLock = new();
+    private List<TrackFile> _downloadingFiles;
 
     public delegate void LogAddedEventHandler(object sender, LogArgs eventArgs);
 
     public event LogAddedEventHandler LogAdded;
 
-    public DownloadManager(IBandcampHelper bandcampHelper, IFileService fileService, IHttpService httpService, IPlaylistCreator playlistCreator, ISettingsService settingsService, ITagService tagService)
+    public DownloadManager(IBandcampExtractionService bandcampExtractionService, IFileService fileService, IHttpService httpService, IPlaylistCreator playlistCreator, ISettingsService settingsService, ITagService tagService)
     {
-        _bandcampHelper = bandcampHelper;
+        _bandcampExtractionService = bandcampExtractionService;
         _fileService = fileService;
         _httpService = httpService;
         _playlistCreator = playlistCreator;
         _tagService = tagService;
         _userSettings = settingsService.GetUserSettings();
-
-        // Increase the maximum of concurrent connections to be able to download more than 2 (which is the default
-        // value) files at the same time
-#pragma warning disable SYSLIB0014
-        ServicePointManager.DefaultConnectionLimit = 50;
-#pragma warning restore SYSLIB0014
     }
 
     public void CancelDownloads()
@@ -102,10 +97,7 @@ internal sealed class DownloadManager : IDownloadManager
         {
             _cancelDownloads = true;
             // Stop current downloads
-            if (_cancellationTokenSource != null)
-            {
-                _cancellationTokenSource.Cancel();
-            }
+            _cancellationTokenSource?.Cancel();
         }
     }
 
@@ -124,7 +116,11 @@ internal sealed class DownloadManager : IDownloadManager
         _albums = await GetAlbumsAsync(sanitizedUrls);
 
         // Save the files to download and get their size
-        DownloadingFiles = await GetFilesToDownloadAsync(_albums);
+        var filesToDownload = await GetFilesToDownloadAsync(_albums);
+        lock (_downloadingFilesLock)
+        {
+            _downloadingFiles = filesToDownload;
+        }
     }
 
     public async Task StartDownloadsAsync()
@@ -158,6 +154,38 @@ internal sealed class DownloadManager : IDownloadManager
             // Parallel download
             var albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
             await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i])));
+        }
+    }
+
+    public long GetTotalBytesReceived()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Sum(f => f.BytesReceived);
+        }
+    }
+
+    public long GetTotalBytesToDownload()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Sum(f => f.Size);
+        }
+    }
+
+    public long GetTotalFilesCountToDownload()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Count;
+        }
+    }
+
+    public double GetTotalFilesCountReceived()
+    {
+        lock (_downloadingFilesLock)
+        {
+            return _downloadingFiles.Count(f => f.Downloaded);
         }
     }
 
@@ -231,7 +259,12 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var trackDownloaded = false;
-        var currentFile = DownloadingFiles.Where(f => f.Url == track.Mp3Url).First();
+
+        TrackFile currentFile;
+        lock (_downloadingFilesLock)
+        {
+            currentFile = _downloadingFiles.First(f => f.Url == track.Mp3Url);
+        }
 
         if (File.Exists(track.Path))
         {
@@ -252,59 +285,60 @@ internal sealed class DownloadManager : IDownloadManager
                 return false;
             }
 
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
+            var downloadService = new DownloadService();
+
+            // Update progress bar when downloading
+            downloadService.DownloadProgressChanged += (_, args) =>
             {
-                _httpService.SetProxy(webClient);
+                currentFile.BytesReceived = args.ReceivedBytesSize;
+            };
 
-                // Update progress bar when downloading
-                webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
+            // Register current download
+            _cancellationTokenSource.Token.Register(downloadService.CancelAsync);
 
-                // Register current download
-                _cancellationTokenSource.Token.Register(webClient.CancelAsync);
-
-                // Start download
-                try
+            // Start download
+            try
+            {
+                if (track.Path == null)
                 {
-                    if (track.Path == null)
-                    {
-                        throw new InvalidOperationException("Track path is null");
-                    }
-
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
-                    await webClient.DownloadFileTaskAsync(trackMp3Url, track.Path);
-                    trackDownloaded = true;
-                    LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
-                }
-                catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
-                {
-                    // Downloads cancelled by the user
-                    return false;
-                }
-                catch (TaskCanceledException)
-                {
-                    // Downloads cancelled by the user
-                    return false;
-                }
-                catch (WebException)
-                {
-                    // Connection closed probably because no response from Bandcamp
-                    if (tries + 1 < _userSettings.DownloadMaxTries)
-                    {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
-                    }
-                    else
-                    {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {_userSettings.DownloadMaxTries}", LogType.Error));
-                    }
+                    throw new InvalidOperationException("Track path is null");
                 }
 
-                if (trackDownloaded)
+                LogAdded?.Invoke(this, new LogArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+                await downloadService.DownloadFileTaskAsync(trackMp3Url, track.Path);
+                trackDownloaded = true;
+                LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", LogType.VerboseInfo));
+            }
+            catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
+            {
+                // Downloads cancelled by the user
+                return false;
+            }
+            catch (TaskCanceledException)
+            {
+                // Downloads cancelled by the user
+                return false;
+            }
+            catch (WebException)
+            {
+                // Connection closed probably because no response from Bandcamp
+                if (tries + 1 < _userSettings.DownloadMaxTries)
                 {
-                    if (_userSettings.ModifyTags)
+                    LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
+                }
+                else
+                {
+                    LogAdded?.Invoke(this, new LogArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Hit max retries of {_userSettings.DownloadMaxTries}", LogType.Error));
+                }
+            }
+
+            if (trackDownloaded)
+            {
+                if (_userSettings.ModifyTags)
+                {
+                    // Tag (ID3) the file when downloaded
+                    await Task.Run(() =>
                     {
-                        // Tag (ID3) the file when downloaded
                         var tagFile = TagLib.File.Create(track.Path);
                         tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
                         tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
@@ -315,30 +349,34 @@ internal sealed class DownloadManager : IDownloadManager
                         tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
                         tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
                         tagFile.Save();
-                        LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
-                    }
+                    });
+                    LogAdded?.Invoke(this, new LogArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
+                }
 
-                    if (_userSettings.SaveCoverArtInTags && artwork != null)
+                if (_userSettings.SaveCoverArtInTags && artwork != null)
+                {
+                    // Save cover in tags when downloaded
+                    await Task.Run(() =>
                     {
-                        // Save cover in tags when downloaded
                         var tagFile = TagLib.File.Create(track.Path);
                         tagFile.Tag.Pictures = new IPicture[] { artwork };
                         tagFile.Save();
-                        LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
-                    }
-
-                    // Note the file as downloaded
-                    currentFile.Downloaded = true;
-                    LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess));
+                    });
+                    LogAdded?.Invoke(this, new LogArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.VerboseInfo));
                 }
 
-                tries++;
-                if (!trackDownloaded && tries < _userSettings.DownloadMaxTries)
-                {
-                    await WaitForCooldownAsync(tries);
-                }
+                // Note the file as downloaded
+                currentFile.Downloaded = true;
+                LogAdded?.Invoke(this, new LogArgs($"Downloaded track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", LogType.IntermediateSuccess));
             }
-        } while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
+
+            tries++;
+            if (!trackDownloaded && tries < _userSettings.DownloadMaxTries)
+            {
+                await WaitForCooldownAsync(tries);
+            }
+        }
+        while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return trackDownloaded;
     }
@@ -354,7 +392,11 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var artworkDownloaded = false;
-        var currentFile = DownloadingFiles.Where(f => f.Url == album.ArtworkUrl).First();
+        TrackFile currentFile;
+        lock (_downloadingFilesLock)
+        {
+            currentFile = _downloadingFiles.First(f => f.Url == album.ArtworkUrl);
+        }
 
         do
         {
@@ -364,125 +406,124 @@ internal sealed class DownloadManager : IDownloadManager
                 return null;
             }
 
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
+            var downloadService = new DownloadService();
+
+            // Update progress bar when downloading
+            downloadService.DownloadProgressChanged += (_, args) =>
             {
-                _httpService.SetProxy(webClient);
+                currentFile.BytesReceived = args.ReceivedBytesSize;
+            };
 
-                // Update progress bar when downloading
-                webClient.DownloadProgressChanged += (_, e) => { currentFile.BytesReceived = e.BytesReceived; };
+            // Register current download
+            _cancellationTokenSource.Token.Register(downloadService.CancelAsync);
 
-                // Register current download
-                _cancellationTokenSource.Token.Register(webClient.CancelAsync);
-
-                // Start download
-                var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
-                try
+            // Start download
+            var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
+            try
+            {
+                LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
+                await downloadService.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
+                artworkDownloaded = true;
+            }
+            catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
+            {
+                // Downloads cancelled by the user
+                return null;
+            }
+            catch (TaskCanceledException)
+            {
+                // Downloads cancelled by the user
+                return null;
+            }
+            catch (WebException)
+            {
+                // Connection closed probably because no response from Bandcamp
+                if (tries < _userSettings.DownloadMaxTries)
                 {
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading artwork from url: {album.ArtworkUrl}", LogType.VerboseInfo));
-                    await webClient.DownloadFileTaskAsync(albumArtworkUrl, album.ArtworkTempPath);
-                    artworkDownloaded = true;
+                    LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
                 }
-                catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
+                else
                 {
-                    // Downloads cancelled by the user
-                    return null;
-                }
-                catch (TaskCanceledException)
-                {
-                    // Downloads cancelled by the user
-                    return null;
-                }
-                catch (WebException)
-                {
-                    // Connection closed probably because no response from Bandcamp
-                    if (tries < _userSettings.DownloadMaxTries)
-                    {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", LogType.Warning));
-                    }
-                    else
-                    {
-                        LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {_userSettings.DownloadMaxTries}", LogType.Error));
-                    }
-                }
-
-                if (artworkDownloaded)
-                {
-                    // Convert/resize artwork to be saved in album folder
-                    if (_userSettings.SaveCoverArtInFolder && (_userSettings.CoverArtInFolderConvertToJpg || _userSettings.CoverArtInFolderResize))
-                    {
-                        var settings = new ResizeSettings();
-                        if (_userSettings.CoverArtInFolderConvertToJpg)
-                        {
-                            settings.Format = "jpg";
-                            settings.Quality = 90;
-                        }
-
-                        if (_userSettings.CoverArtInFolderResize)
-                        {
-                            settings.MaxHeight = _userSettings.CoverArtInFolderMaxSize;
-                            settings.MaxWidth = _userSettings.CoverArtInFolderMaxSize;
-                        }
-
-                        await Task.Run(() =>
-                        {
-                            ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
-                        });
-                    }
-                    else if (_userSettings.SaveCoverArtInFolder)
-                    {
-                        await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
-                    }
-
-                    // Convert/resize artwork to be saved in tags
-                    if (_userSettings.SaveCoverArtInTags && (_userSettings.CoverArtInTagsConvertToJpg || _userSettings.CoverArtInTagsResize))
-                    {
-                        var settings = new ResizeSettings();
-                        if (_userSettings.CoverArtInTagsConvertToJpg)
-                        {
-                            settings.Format = "jpg";
-                            settings.Quality = 90;
-                        }
-
-                        if (_userSettings.CoverArtInTagsResize)
-                        {
-                            settings.MaxHeight = _userSettings.CoverArtInTagsMaxSize;
-                            settings.MaxWidth = _userSettings.CoverArtInTagsMaxSize;
-                        }
-
-                        await Task.Run(() =>
-                        {
-                            ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
-                        });
-                    }
-
-                    artworkInTags = new Picture(album.ArtworkTempPath)
-                    {
-                        Description = "Picture",
-                    };
-
-                    try
-                    {
-                        File.Delete(album.ArtworkTempPath);
-                    }
-                    catch
-                    {
-                        // Could not delete the file. Nevermind, it's in %Temp% folder...
-                    }
-
-                    // Note the file as downloaded
-                    currentFile.Downloaded = true;
-                    LogAdded?.Invoke(this, new LogArgs($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess));
-                }
-
-                tries++;
-                if (!artworkDownloaded && tries < _userSettings.DownloadMaxTries)
-                {
-                    await WaitForCooldownAsync(tries);
+                    LogAdded?.Invoke(this, new LogArgs($"Unable to download artwork for album \"{album.Title}\". Hit max retries of {_userSettings.DownloadMaxTries}", LogType.Error));
                 }
             }
-        } while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
+
+            if (artworkDownloaded)
+            {
+                // Convert/resize artwork to be saved in album folder
+                if (_userSettings.SaveCoverArtInFolder && (_userSettings.CoverArtInFolderConvertToJpg || _userSettings.CoverArtInFolderResize))
+                {
+                    var settings = new ResizeSettings();
+                    if (_userSettings.CoverArtInFolderConvertToJpg)
+                    {
+                        settings.Format = "jpg";
+                        settings.Quality = 90;
+                    }
+
+                    if (_userSettings.CoverArtInFolderResize)
+                    {
+                        settings.MaxHeight = _userSettings.CoverArtInFolderMaxSize;
+                        settings.MaxWidth = _userSettings.CoverArtInFolderMaxSize;
+                    }
+
+                    await Task.Run(() =>
+                    {
+                        ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
+                    });
+                }
+                else if (_userSettings.SaveCoverArtInFolder)
+                {
+                    await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath);
+                }
+
+                // Convert/resize artwork to be saved in tags
+                if (_userSettings.SaveCoverArtInTags && (_userSettings.CoverArtInTagsConvertToJpg || _userSettings.CoverArtInTagsResize))
+                {
+                    var settings = new ResizeSettings();
+                    if (_userSettings.CoverArtInTagsConvertToJpg)
+                    {
+                        settings.Format = "jpg";
+                        settings.Quality = 90;
+                    }
+
+                    if (_userSettings.CoverArtInTagsResize)
+                    {
+                        settings.MaxHeight = _userSettings.CoverArtInTagsMaxSize;
+                        settings.MaxWidth = _userSettings.CoverArtInTagsMaxSize;
+                    }
+
+                    await Task.Run(() =>
+                    {
+                        ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
+                    });
+                }
+
+                artworkInTags = new Picture(album.ArtworkTempPath)
+                {
+                    Description = "Picture",
+                };
+
+                try
+                {
+                    File.Delete(album.ArtworkTempPath);
+                }
+                catch
+                {
+                    // Could not delete the file. Nevermind, it's in %Temp% folder...
+                }
+
+                // Note the file as downloaded
+                currentFile.Downloaded = true;
+                LogAdded?.Invoke(this, new LogArgs($"Downloaded artwork for album \"{album.Title}\"", LogType.IntermediateSuccess));
+            }
+
+            tries++;
+            if (!artworkDownloaded && tries < _userSettings.DownloadMaxTries)
+            {
+                await WaitForCooldownAsync(tries);
+            }
+        }
+        while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return artworkInTags;
     }
@@ -501,35 +542,32 @@ internal sealed class DownloadManager : IDownloadManager
 
             // Retrieve URL HTML source code
             string htmlCode;
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
+
+            if (_cancelDownloads)
             {
-                webClient.Encoding = Encoding.UTF8;
-                _httpService.SetProxy(webClient);
+                // Abort
+                return new List<Album>();
+            }
 
-                if (_cancelDownloads)
-                {
-                    // Abort
-                    return new List<Album>();
-                }
+            LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
 
-                try
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
-                    htmlCode = await webClient.DownloadStringTaskAsync(url);
-                }
-                catch
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
-                    continue;
-                }
+            var httpClient = _httpService.CreateHttpClient();
+
+            try
+            {
+                htmlCode = await httpClient.GetStringAsync(url);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Error downloading album info from url: {url}");
+                LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {url}", LogType.Error));
+                continue;
             }
 
             // Get info on album
             try
             {
-                var album = _bandcampHelper.GetAlbum(htmlCode);
+                var album = _bandcampExtractionService.GetAlbum(htmlCode);
 
                 if (album.Tracks.Count > 0)
                 {
@@ -540,8 +578,9 @@ internal sealed class DownloadManager : IDownloadManager
                     LogAdded?.Invoke(this, new LogArgs($"No tracks found for {url}, album will not be downloaded", LogType.Warning));
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                _logger.Error(ex, $"Could not retrieve album info for {url}");
                 LogAdded?.Invoke(this, new LogArgs($"Could not retrieve album info for {url}", LogType.Error));
             }
         }
@@ -568,35 +607,29 @@ internal sealed class DownloadManager : IDownloadManager
 
             // Retrieve artist "music" page HTML source code
             string htmlCode;
-#pragma warning disable SYSLIB0014
-            using (var webClient = new WebClient())
-#pragma warning restore SYSLIB0014
+
+            if (_cancelDownloads)
             {
-                webClient.Encoding = Encoding.UTF8;
-                _httpService.SetProxy(webClient);
+                // Abort
+                return new List<string>();
+            }
 
-                if (_cancelDownloads)
-                {
-                    // Abort
-                    return new List<string>();
-                }
-
-                try
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
-                    htmlCode = await webClient.DownloadStringTaskAsync(artistMusicPage);
-                }
-                catch
-                {
-                    LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
-                    continue;
-                }
+            try
+            {
+                LogAdded?.Invoke(this, new LogArgs($"Downloading album info from url: {url}", LogType.VerboseInfo));
+                var httpClient = _httpService.CreateHttpClient();
+                htmlCode = await httpClient.GetStringAsync(artistMusicPage);
+            }
+            catch
+            {
+                LogAdded?.Invoke(this, new LogArgs($"Could not retrieve data for {artistMusicPage}", LogType.Error));
+                continue;
             }
 
             var count = albumsUrls.Count;
             try
             {
-                albumsUrls.AddRange(_bandcampHelper.GetAlbumsUrl(htmlCode, artistPage));
+                albumsUrls.AddRange(_bandcampExtractionService.GetAlbumsUrl(htmlCode, artistPage));
             }
             catch (NoAlbumFoundException)
             {
@@ -625,7 +658,7 @@ internal sealed class DownloadManager : IDownloadManager
         bool sizeRetrieved;
         var tries = 0;
 
-        string fileTypeForLog = fileType switch
+        var fileTypeForLog = fileType switch
         {
             FileType.Artwork => "cover art file for album",
             FileType.Track => "MP3 file for the track",
@@ -664,7 +697,8 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 await WaitForCooldownAsync(tries);
             }
-        } while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
+        }
+        while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
 
         return size;
     }

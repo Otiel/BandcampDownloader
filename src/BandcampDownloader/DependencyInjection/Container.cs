@@ -40,7 +40,7 @@ internal sealed class Container : IContainer
         var serviceCollection = new ServiceCollection();
 
         serviceCollection.AddHttpClient();
-        serviceCollection.AddSingleton<IBandcampHelper, BandcampHelper>();
+        serviceCollection.AddSingleton<IBandcampExtractionService, BandcampExtractionService>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
         serviceCollection.AddSingleton<IFileService, FileService>();

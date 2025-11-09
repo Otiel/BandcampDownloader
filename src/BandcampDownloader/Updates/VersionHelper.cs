@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace BandcampDownloader.Updates;
 
-public static class VersionHelper
+internal static class VersionHelper
 {
     public static Version GetCurrentVersion()
     {
