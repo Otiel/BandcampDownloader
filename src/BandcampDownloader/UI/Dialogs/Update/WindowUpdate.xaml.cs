@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -48,7 +49,7 @@ internal sealed partial class WindowUpdate
 
         var fileInfo = new FileInfo(dialog.FileName);
 
-        await _httpService.DownloadFileAsync(latestReleaseAssetUrl, fileInfo);
+        await _httpService.DownloadFileAsync(latestReleaseAssetUrl, fileInfo, CancellationToken.None);
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

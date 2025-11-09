@@ -55,12 +55,12 @@ internal sealed class HttpService : IHttpService
         return fileSize.Value;
     }
 
-    public async Task DownloadFileAsync(string url, FileInfo fileInfo)
+    public async Task DownloadFileAsync(string url, FileInfo fileInfo, CancellationToken cancellationToken)
     {
         var httpClient = CreateHttpClientInternal();
-        await using var httpStream = await httpClient.GetStreamAsync(url);
+        await using var httpStream = await httpClient.GetStreamAsync(url, cancellationToken);
         await using var fileStream = File.Create(fileInfo.FullName);
-        await httpStream.CopyToAsync(fileStream);
+        await httpStream.CopyToAsync(fileStream, cancellationToken);
     }
 
     public void SetProxy(WebClient webClient) // TODO fix unused
