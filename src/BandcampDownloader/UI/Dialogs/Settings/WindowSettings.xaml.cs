@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using BandcampDownloader.DependencyInjection;
 using BandcampDownloader.Settings;
+using NLog;
 using WpfMessageBoxLibrary;
 
 namespace BandcampDownloader.UI.Dialogs.Settings;
@@ -8,6 +9,7 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 internal sealed partial class WindowSettings
 {
     private readonly ISettingsService _settingsService;
+    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
     /// True if there are active downloads; false otherwise.
@@ -53,6 +55,7 @@ internal sealed partial class WindowSettings
     private void ButtonSave_Click(object sender, RoutedEventArgs e)
     {
         SaveSettings();
+        LogSettings();
         Close();
     }
 
@@ -110,5 +113,11 @@ internal sealed partial class WindowSettings
         UserControlSettingsNetwork.SaveSettings();
         UserControlSettingsPlaylist.SaveSettings();
         UserControlSettingsTags.SaveSettings();
+    }
+
+    private void LogSettings()
+    {
+        var userSettingsJson = _settingsService.GetUserSettingsInJson();
+        _logger.Info($"Settings saved: {userSettingsJson}");
     }
 }
