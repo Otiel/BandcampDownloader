@@ -126,7 +126,6 @@ internal sealed partial class WindowMain
 
             if (_userCancelled)
             {
-                // Display message if user cancelled
                 await LogAsync("Downloads cancelled by user", LogType.Info);
             }
 
@@ -167,9 +166,10 @@ internal sealed partial class WindowMain
             Title = "Bandcamp Downloader",
         };
 
-        if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes || !_activeDownloads)
+        if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes ||
+            !_activeDownloads)
         {
-            // If user cancelled the cancellation or if downloads finished while he choosed to cancel
+            // If user cancelled the cancellation or if downloads finished while he chose to cancel
             return;
         }
 
@@ -303,15 +303,7 @@ internal sealed partial class WindowMain
         await _downloadManager.FetchUrlsAsync(inputUrls);
 
         // Set progressBar max value
-        long maxProgressBarValue;
-        if (_userSettings.RetrieveFilesSize)
-        {
-            maxProgressBarValue = _downloadManager.GetTotalBytesToDownload();
-        }
-        else
-        {
-            maxProgressBarValue = _downloadManager.GetTotalFilesCountToDownload();
-        }
+        var maxProgressBarValue = _userSettings.RetrieveFilesSize ? _downloadManager.GetTotalBytesToDownload() : _downloadManager.GetTotalFilesCountToDownload();
 
         if (maxProgressBarValue > 0)
         {

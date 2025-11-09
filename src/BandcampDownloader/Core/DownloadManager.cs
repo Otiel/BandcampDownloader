@@ -203,7 +203,7 @@ internal sealed class DownloadManager : IDownloadManager
             return;
         }
 
-        // Create directory to place track files
+        // Create a directory to place track files
         try
         {
             Directory.CreateDirectory(album.Path);
