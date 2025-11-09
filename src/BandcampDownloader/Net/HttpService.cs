@@ -63,7 +63,7 @@ internal sealed class HttpService : IHttpService
         await httpStream.CopyToAsync(fileStream);
     }
 
-    public void SetProxy(WebClient webClient)
+    public void SetProxy(WebClient webClient) // TODO fix unused
     {
         var userSettings = _settingsService.GetUserSettings();
 
