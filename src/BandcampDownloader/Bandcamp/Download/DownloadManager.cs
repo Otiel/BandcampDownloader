@@ -12,6 +12,7 @@ using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using Downloader;
 using ImageResizer;
+using NLog;
 using TagLib;
 using File = System.IO.File;
 
@@ -38,6 +39,7 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IAlbumInfoRetriever _albumInfoRetriever;
     private readonly IResilienceService _resilienceService;
     private readonly IUserSettings _userSettings;
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private bool _isInitialized;
     private IReadOnlyList<TrackFile> _downloadingFiles;
     private IReadOnlyList<Album> _albums;
@@ -187,7 +189,16 @@ internal sealed class DownloadManager : IDownloadManager
         var tries = 0;
         var trackDownloaded = false;
 
-        var currentFile = _downloadingFiles.First(f => f.Url == track.Mp3Url);
+        TrackFile currentFile;
+        try
+        {
+            currentFile = _downloadingFiles.First(f => f.Url == track.Mp3Url);
+        }
+        catch (Exception ex)
+        {
+            _logger.Error(ex);
+            throw;
+        }
 
         if (File.Exists(track.Path))
         {
@@ -299,7 +310,17 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var artworkDownloaded = false;
-        var currentFile = _downloadingFiles.First(f => f.Url == album.ArtworkUrl);
+
+        TrackFile currentFile;
+        try
+        {
+            currentFile = _downloadingFiles.First(f => f.Url == album.ArtworkUrl);
+        }
+        catch (Exception ex)
+        {
+            _logger.Error(ex);
+            throw;
+        }
 
         do
         {
