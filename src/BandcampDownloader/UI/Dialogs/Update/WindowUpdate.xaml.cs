@@ -4,7 +4,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
 using BandcampDownloader.Updates;

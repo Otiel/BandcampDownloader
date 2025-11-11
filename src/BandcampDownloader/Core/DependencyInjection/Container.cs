@@ -1,6 +1,5 @@
 ﻿using BandcampDownloader.Audio;
 using BandcampDownloader.Bandcamp;
-using BandcampDownloader.Core;
 using BandcampDownloader.IO;
 using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
@@ -11,7 +10,7 @@ using BandcampDownloader.UI.Dialogs;
 using BandcampDownloader.Updates;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BandcampDownloader.DependencyInjection;
+namespace BandcampDownloader.Core.DependencyInjection;
 
 /// <summary>
 /// Wrapper around the underlying dependency injection container.

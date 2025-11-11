@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
-using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Settings;
 using NLog;
 

@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Settings;
 
 namespace BandcampDownloader.Helpers;

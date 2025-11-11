@@ -1,4 +1,4 @@
-﻿namespace BandcampDownloader.DependencyInjection;
+﻿namespace BandcampDownloader.Core.DependencyInjection;
 
 internal static class DependencyInjectionHelper
 {
