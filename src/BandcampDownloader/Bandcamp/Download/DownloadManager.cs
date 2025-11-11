@@ -39,7 +39,6 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IResilienceService _resilienceService;
     private readonly IUserSettings _userSettings;
     private bool _isInitialized;
-    private readonly Lock _downloadingFilesLock = new();
     private IReadOnlyList<TrackFile> _downloadingFiles;
     private IReadOnlyList<Album> _albums;
 
@@ -70,12 +69,7 @@ internal sealed class DownloadManager : IDownloadManager
     {
         var albumsUrls = await _albumUrlRetriever.RetrieveAlbumsUrlsAsync(inputUrls, _userSettings.DownloadArtistDiscography, cancellationToken);
         _albums = await _albumInfoRetriever.GetAlbumsAsync(albumsUrls, cancellationToken);
-        var trackFiles = await _trackFileService.GetFilesToDownloadAsync(_albums, cancellationToken);
-
-        lock (_downloadingFilesLock)
-        {
-            _downloadingFiles = trackFiles;
-        }
+        _downloadingFiles = await _trackFileService.GetFilesToDownloadAsync(_albums, cancellationToken);
 
         _isInitialized = true;
     }
@@ -109,34 +103,22 @@ internal sealed class DownloadManager : IDownloadManager
 
     public long GetTotalBytesReceived()
     {
-        lock (_downloadingFilesLock)
-        {
-            return _downloadingFiles.Sum(f => f.BytesReceived);
-        }
+        return _downloadingFiles.Sum(f => f.BytesReceived);
     }
 
     public long GetTotalBytesToDownload()
     {
-        lock (_downloadingFilesLock)
-        {
-            return _downloadingFiles.Sum(f => f.Size);
-        }
+        return _downloadingFiles.Sum(f => f.Size);
     }
 
     public int GetTotalFilesCountToDownload()
     {
-        lock (_downloadingFilesLock)
-        {
-            return _downloadingFiles.Count;
-        }
+        return _downloadingFiles.Count;
     }
 
     public int GetTotalFilesCountReceived()
     {
-        lock (_downloadingFilesLock)
-        {
-            return _downloadingFiles.Count(f => f.Downloaded);
-        }
+        return _downloadingFiles.Count(f => f.Downloaded);
     }
 
     private void ThrowIfNotInitialized()
@@ -205,11 +187,7 @@ internal sealed class DownloadManager : IDownloadManager
         var tries = 0;
         var trackDownloaded = false;
 
-        TrackFile currentFile;
-        lock (_downloadingFilesLock)
-        {
-            currentFile = _downloadingFiles.First(f => f.Url == track.Mp3Url);
-        }
+        var currentFile = _downloadingFiles.First(f => f.Url == track.Mp3Url);
 
         if (File.Exists(track.Path))
         {
@@ -321,11 +299,7 @@ internal sealed class DownloadManager : IDownloadManager
 
         var tries = 0;
         var artworkDownloaded = false;
-        TrackFile currentFile;
-        lock (_downloadingFilesLock)
-        {
-            currentFile = _downloadingFiles.First(f => f.Url == album.ArtworkUrl);
-        }
+        var currentFile = _downloadingFiles.First(f => f.Url == album.ArtworkUrl);
 
         do
         {
