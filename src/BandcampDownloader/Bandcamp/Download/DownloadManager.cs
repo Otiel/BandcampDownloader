@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Audio;
+using BandcampDownloader.Bandcamp.Extraction;
 using BandcampDownloader.Core.Logging;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.IO;

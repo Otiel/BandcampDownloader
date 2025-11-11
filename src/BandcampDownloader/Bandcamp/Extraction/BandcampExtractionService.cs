@@ -4,13 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
+using BandcampDownloader.Bandcamp.Extraction.Dto;
 using BandcampDownloader.Model;
-using BandcampDownloader.Model.JSON;
 using HtmlAgilityPack;
 using Newtonsoft.Json;
 using NLog;
 
-namespace BandcampDownloader.Bandcamp;
+namespace BandcampDownloader.Bandcamp.Extraction;
 
 internal interface IBandcampExtractionService
 {

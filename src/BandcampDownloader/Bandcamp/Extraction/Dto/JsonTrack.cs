@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using BandcampDownloader.Model;
+using Newtonsoft.Json;
 
-namespace BandcampDownloader.Model.JSON;
+namespace BandcampDownloader.Bandcamp.Extraction.Dto;
 
 internal sealed class JsonTrack
 {

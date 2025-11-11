@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader.Model.JSON;
+namespace BandcampDownloader.Bandcamp.Extraction.Dto;
 
 internal sealed class JsonAlbumData
 {

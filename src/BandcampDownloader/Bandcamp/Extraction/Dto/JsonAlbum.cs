@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BandcampDownloader.Model;
 using Newtonsoft.Json;
 
-namespace BandcampDownloader.Model.JSON;
+namespace BandcampDownloader.Bandcamp.Extraction.Dto;
 
 internal sealed class JsonAlbum
 {
