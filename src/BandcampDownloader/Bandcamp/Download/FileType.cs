@@ -1,4 +1,4 @@
-﻿namespace BandcampDownloader.Model;
+﻿namespace BandcampDownloader.Bandcamp.Download;
 
 internal enum FileType
 {
