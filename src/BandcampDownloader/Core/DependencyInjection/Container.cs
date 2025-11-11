@@ -5,6 +5,7 @@ using BandcampDownloader.Core.Localization;
 using BandcampDownloader.Core.Logging;
 using BandcampDownloader.Core.Themes;
 using BandcampDownloader.Core.Updates;
+using BandcampDownloader.Helpers;
 using BandcampDownloader.IO;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
@@ -41,6 +42,8 @@ internal sealed class Container : IContainer
         var serviceCollection = new ServiceCollection();
 
         serviceCollection.AddHttpClient();
+        serviceCollection.AddSingleton<IAlbumInfoRetriever, AlbumInfoRetriever>();
+        serviceCollection.AddSingleton<IAlbumUrlRetriever, AlbumUrlRetriever>();
         serviceCollection.AddSingleton<IBandcampExtractionService, BandcampExtractionService>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
@@ -49,9 +52,11 @@ internal sealed class Container : IContainer
         serviceCollection.AddSingleton<ILanguageService, LanguageService>();
         serviceCollection.AddSingleton<ILoggingService, LoggingService>();
         serviceCollection.AddSingleton<IPlaylistCreator, PlaylistCreator>();
+        serviceCollection.AddSingleton<IResilienceService, ResilienceService>();
         serviceCollection.AddSingleton<ISettingsService, SettingsService>();
         serviceCollection.AddSingleton<ITagService, TagService>();
         serviceCollection.AddSingleton<IThemeService, ThemeService>();
+        serviceCollection.AddSingleton<ITrackFileService, TrackFileService>();
         serviceCollection.AddSingleton<IUpdatesService, UpdatesService>();
         serviceCollection.AddSingleton<WindowMain>();
 

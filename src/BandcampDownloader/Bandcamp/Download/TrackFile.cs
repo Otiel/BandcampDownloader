@@ -4,8 +4,8 @@ internal sealed class TrackFile
 {
     public long BytesReceived { get; set; }
     public bool Downloaded { get; set; }
-    public long Size { get; set; }
-    public string Url { get; set; }
+    public long Size { get; }
+    public string Url { get; }
 
     public TrackFile(string url, long bytesReceived, long size)
     {

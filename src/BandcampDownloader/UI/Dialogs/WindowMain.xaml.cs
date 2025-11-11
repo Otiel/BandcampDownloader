@@ -46,12 +46,14 @@ internal sealed partial class WindowMain
     /// </summary>
     private long _lastTotalReceivedBytes;
 
+
     public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager, IUpdatesService updatesService)
     {
         _userSettings = settingsService.GetUserSettings();
         _downloadManager = downloadManager;
         _updatesService = updatesService;
-        _downloadManager.LogAdded += DownloadManager_LogAdded;
+
+        _downloadManager.DownloadProgressChanged += DownloadProgressChanged;
 
         // Save DataContext for bindings (must be called before initializing UI)
         DataContext = _userSettings;
@@ -110,7 +112,7 @@ internal sealed partial class WindowMain
             if (string.IsNullOrWhiteSpace(inputUrls))
             {
                 // No URL to look
-                await LogAsync("Paste some albums URLs to be downloaded", LogType.Error);
+                await LogAsync("Paste some albums URLs to be downloaded", DownloadProgressChangedLevel.Error);
                 return;
             }
 
@@ -118,7 +120,7 @@ internal sealed partial class WindowMain
             _activeDownloads = true;
             await UpdateControlsStateAsync(true);
 
-            await LogAsync("Starting download...", LogType.Info);
+            await LogAsync("Starting download...", DownloadProgressChangedLevel.Info);
 
             try
             {
@@ -126,7 +128,7 @@ internal sealed partial class WindowMain
             }
             catch (OperationCanceledException)
             {
-                await LogAsync("Downloads cancelled by user", LogType.Info);
+                await LogAsync("Downloads cancelled by user", DownloadProgressChangedLevel.Info);
             }
 
             // Reset controls to "ready" state
@@ -147,8 +149,8 @@ internal sealed partial class WindowMain
                 }
                 catch (Exception ex)
                 {
-                    await LogAsync("Could not play 'finished' sound", LogType.Error);
-                    await LogAsync(ex.ToString(), LogType.VerboseInfo);
+                    await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error);
+                    await LogAsync(ex.ToString(), DownloadProgressChangedLevel.VerboseInfo);
                 }
             }
         });
@@ -220,9 +222,9 @@ internal sealed partial class WindowMain
         });
     }
 
-    private async void DownloadManager_LogAdded(object sender, LogArgs eventArgs)
+    private async void DownloadProgressChanged(object sender, DownloadProgressChangedArgs eventArgs)
     {
-        await LogAsync(eventArgs.Message, eventArgs.LogType);
+        await LogAsync(eventArgs.Message, eventArgs.Level);
     }
 
     private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e)
@@ -240,14 +242,14 @@ internal sealed partial class WindowMain
     /// Logs to file and displays the specified message in the log textbox.
     /// </summary>
     /// <param name="message">The message.</param>
-    /// <param name="logType">The log type.</param>
-    private async Task LogAsync(string message, LogType logType)
+    /// <param name="downloadProgressChangedLevel">The log type.</param>
+    private async Task LogAsync(string message, DownloadProgressChangedLevel downloadProgressChangedLevel)
     {
         // Log to file
-        _logger.Log(logType.ToNLogLevel(), message);
+        _logger.Log(downloadProgressChangedLevel.ToNLogLevel(), message);
 
         // Log to window
-        if (_userSettings.ShowVerboseLog || logType == LogType.Error || logType == LogType.Info || logType == LogType.IntermediateSuccess || logType == LogType.Success)
+        if (_userSettings.ShowVerboseLog || downloadProgressChangedLevel == DownloadProgressChangedLevel.Error || downloadProgressChangedLevel == DownloadProgressChangedLevel.Info || downloadProgressChangedLevel == DownloadProgressChangedLevel.IntermediateSuccess || downloadProgressChangedLevel == DownloadProgressChangedLevel.Success)
         {
             var timestamp = DateTime.Now.ToString("HH:mm:ss") + " ";
 
@@ -272,7 +274,7 @@ internal sealed partial class WindowMain
                     {
                         Text = message,
                     };
-                    messageTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(logType));
+                    messageTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(downloadProgressChangedLevel));
 
                     // Line break
                     RichTextBoxLog.AppendText(Environment.NewLine);
@@ -295,8 +297,7 @@ internal sealed partial class WindowMain
     /// </summary>
     private async Task StartDownloadAsync(string inputUrls, CancellationToken cancellationToken)
     {
-        // Fetch URL to get the files size
-        await _downloadManager.FetchUrlsAsync(inputUrls, cancellationToken);
+        await _downloadManager.InitializeAsync(inputUrls, cancellationToken);
 
         // Set progressBar max value
         var maxProgressBarValue = _userSettings.RetrieveFilesSize ? _downloadManager.GetTotalBytesToDownload() : _downloadManager.GetTotalFilesCountToDownload();
