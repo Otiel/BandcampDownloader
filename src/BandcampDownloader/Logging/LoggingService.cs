@@ -21,7 +21,7 @@ public sealed class LoggingService : ILoggingService
     /// <summary>
     /// The log file maximum size in bytes.
     /// </summary>
-    private const long MAX_LOG_SIZE = 1024 * 1024;
+    private const long MAX_LOG_SIZE = 1024 * 1024 * 1024; // 10 MB
 
     public void InitializeLogger()
     {
@@ -30,7 +30,7 @@ public sealed class LoggingService : ILoggingService
             FileName = LOG_FILE_PATH,
             Layout = "${longdate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${logger}  ${message}  ${exception:format=tostring}",
             ArchiveAboveSize = MAX_LOG_SIZE,
-            MaxArchiveFiles = 1,
+            MaxArchiveFiles = 0,
         };
 
         var config = new LoggingConfiguration();

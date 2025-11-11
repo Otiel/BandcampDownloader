@@ -74,7 +74,7 @@ internal sealed class DownloadManager : IDownloadManager
     public async Task FetchUrlsAsync(string urls, CancellationToken cancellationToken)
     {
         var sanitizedUrls = urls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
-        sanitizedUrls = sanitizedUrls.Distinct().ToList();
+        sanitizedUrls = sanitizedUrls.Distinct().Select(o => o.Trim()).ToList();
 
         // Get URLs of albums to download
         if (_userSettings.DownloadArtistDiscography)
