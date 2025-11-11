@@ -9,7 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shell;
-using BandcampDownloader.Core;
+using BandcampDownloader.Bandcamp;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;

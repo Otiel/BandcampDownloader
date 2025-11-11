@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Bandcamp;
 
 internal sealed class NoAlbumFoundException : Exception
 {

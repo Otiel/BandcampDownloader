@@ -1,4 +1,4 @@
-﻿using BandcampDownloader.Core;
+﻿using BandcampDownloader.Bandcamp;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.IO;
 using BandcampDownloader.Localization;

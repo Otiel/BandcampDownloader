@@ -19,7 +19,7 @@ using NLog;
 using TagLib;
 using File = System.IO.File;
 
-namespace BandcampDownloader.Core;
+namespace BandcampDownloader.Bandcamp;
 
 internal interface IDownloadManager
 {

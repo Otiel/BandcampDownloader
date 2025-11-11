@@ -10,7 +10,7 @@ using HtmlAgilityPack;
 using Newtonsoft.Json;
 using NLog;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Bandcamp;
 
 internal interface IBandcampExtractionService
 {
