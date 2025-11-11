@@ -8,7 +8,7 @@ using BandcampDownloader.Settings;
 using PlaylistsNET.Content;
 using PlaylistsNET.Models;
 
-namespace BandcampDownloader.Playlist;
+namespace BandcampDownloader.Audio;
 
 internal interface IPlaylistCreator
 {

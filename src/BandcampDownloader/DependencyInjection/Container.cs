@@ -1,10 +1,10 @@
-﻿using BandcampDownloader.Bandcamp;
+﻿using BandcampDownloader.Audio;
+using BandcampDownloader.Bandcamp;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.IO;
 using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Net;
-using BandcampDownloader.Playlist;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;

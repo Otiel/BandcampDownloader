@@ -2,7 +2,7 @@
 using BandcampDownloader.Settings;
 using TagLib;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Audio;
 
 internal interface ITagService
 {
