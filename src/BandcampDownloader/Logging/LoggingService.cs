@@ -21,7 +21,7 @@ public sealed class LoggingService : ILoggingService
     /// <summary>
     /// The log file maximum size in bytes.
     /// </summary>
-    private const long MAX_LOG_SIZE = 1024 * 1024;
+    private const long MAX_LOG_SIZE = 1024 * 1024 * 1024; // 10 MB
 
     public void InitializeLogger()
     {
