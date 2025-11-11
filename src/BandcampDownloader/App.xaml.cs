@@ -5,8 +5,8 @@ using BandcampDownloader.Core;
 using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Core.Localization;
 using BandcampDownloader.Core.Logging;
+using BandcampDownloader.Core.Themes;
 using BandcampDownloader.Settings;
-using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs;
 using NLog;
 

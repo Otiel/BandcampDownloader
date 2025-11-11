@@ -2,7 +2,7 @@
 using System.Windows;
 using BandcampDownloader.Settings;
 
-namespace BandcampDownloader.Themes;
+namespace BandcampDownloader.Core.Themes;
 
 internal interface IThemeService
 {
@@ -21,7 +21,7 @@ internal sealed class ThemeService : IThemeService
         switch (skin)
         {
             case Skin.Dark:
-                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Themes\\DarkTheme.xaml", UriKind.Relative) });
+                Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("Core\\Themes\\DarkTheme.xaml", UriKind.Relative) });
                 break;
             case Skin.Light:
                 // Do nothing
