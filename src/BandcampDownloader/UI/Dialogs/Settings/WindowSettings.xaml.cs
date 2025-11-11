@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Settings;
 using NLog;
 using WpfMessageBoxLibrary;

@@ -45,4 +45,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Core\Themes\DarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
 </Project>

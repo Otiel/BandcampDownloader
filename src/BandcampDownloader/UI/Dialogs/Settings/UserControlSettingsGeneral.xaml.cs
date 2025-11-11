@@ -3,13 +3,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
-using BandcampDownloader.DependencyInjection;
+using BandcampDownloader.Core.DependencyInjection;
+using BandcampDownloader.Core.Localization;
+using BandcampDownloader.Core.Themes;
+using BandcampDownloader.Core.Updates;
 using BandcampDownloader.Helpers;
-using BandcampDownloader.Localization;
 using BandcampDownloader.Settings;
-using BandcampDownloader.Themes;
 using BandcampDownloader.UI.Dialogs.Update;
-using BandcampDownloader.Updates;
 using NLog;
 using WpfMessageBoxLibrary;
 

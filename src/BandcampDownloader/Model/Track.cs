@@ -1,4 +1,4 @@
-﻿using BandcampDownloader.DependencyInjection;
+﻿using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.IO;
 using BandcampDownloader.Settings;
 
