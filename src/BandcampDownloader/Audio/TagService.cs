@@ -1,4 +1,5 @@
 ﻿using System;
+using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using TagLib;
 
@@ -6,73 +7,41 @@ namespace BandcampDownloader.Audio;
 
 internal interface ITagService
 {
-    /// <summary>
-    /// Returns the file updated with the specified album artist based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="albumArtist">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction);
-
-    /// <summary>
-    /// Returns the file updated with the specified album title based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="albumTitle">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction);
-
-    /// <summary>
-    /// Returns the file updated with the specified album year based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="albumYear">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction);
-
-    /// <summary>
-    /// Returns the file updated with the specified artist based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="artist">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateArtist(File file, string artist, TagEditAction editAction);
-
-    /// <summary>
-    /// Returns the file updated by changing the comments based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="removeAction">The TagRemoveAction specifying how the tag should be updated.</param>
-    File UpdateComments(File file, TagRemoveAction removeAction);
-
-    /// <summary>
-    /// Returns the file updated with the specified lyrics based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="trackLyrics">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction);
-
-    /// <summary>
-    /// Returns the file updated with the specified track number based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="trackNumber">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction);
-
-    /// <summary>
-    /// Returns the file updated with the specified track title based on the specified TagEditAction.
-    /// </summary>
-    /// <param name="file">The file to update.</param>
-    /// <param name="trackTitle">The value used if TagEditAction = Modify.</param>
-    /// <param name="editAction">The TagEditAction specifying how the tag should be updated.</param>
-    File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction);
+    void SaveTagsInTrack(Track track, Album album);
+    void SaveCoverInTrack(Track track, Picture artwork);
 }
 
 internal sealed class TagService : ITagService
 {
-    public File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)
+    private readonly IUserSettings _userSettings;
+
+    public TagService(ISettingsService settingsService)
+    {
+        _userSettings = settingsService.GetUserSettings();
+    }
+
+    public void SaveTagsInTrack(Track track, Album album)
+    {
+        var tagFile = File.Create(track.Path);
+        tagFile = UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
+        tagFile = UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
+        tagFile = UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
+        tagFile = UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
+        tagFile = UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
+        tagFile = UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
+        tagFile = UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
+        tagFile = UpdateComments(tagFile, _userSettings.TagComments);
+        tagFile.Save();
+    }
+
+    public void SaveCoverInTrack(Track track, Picture artwork)
+    {
+        var tagFile = File.Create(track.Path);
+        tagFile.Tag.Pictures = [artwork];
+        tagFile.Save();
+    }
+
+    private static File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -91,7 +60,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction)
+    private static File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -110,7 +79,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction)
+    private static File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -129,7 +98,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateArtist(File file, string artist, TagEditAction editAction)
+    private static File UpdateArtist(File file, string artist, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -148,7 +117,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateComments(File file, TagRemoveAction removeAction)
+    private static File UpdateComments(File file, TagRemoveAction removeAction)
     {
         switch (removeAction)
         {
@@ -164,7 +133,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction)
+    private static File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -183,7 +152,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction)
+    private static File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction)
     {
         switch (editAction)
         {
@@ -202,7 +171,7 @@ internal sealed class TagService : ITagService
         return file;
     }
 
-    public File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction)
+    private static File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction)
     {
         switch (editAction)
         {

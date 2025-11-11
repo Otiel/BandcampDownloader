@@ -254,32 +254,13 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 if (_userSettings.ModifyTags)
                 {
-                    // Tag (ID3) the file when downloaded
-                    await Task.Run(() =>
-                    {
-                        var tagFile = TagLib.File.Create(track.Path);
-                        tagFile = _tagService.UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
-                        tagFile = _tagService.UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
-                        tagFile = _tagService.UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
-                        tagFile = _tagService.UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
-                        tagFile = _tagService.UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
-                        tagFile = _tagService.UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
-                        tagFile = _tagService.UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
-                        tagFile = _tagService.UpdateComments(tagFile, _userSettings.TagComments);
-                        tagFile.Save();
-                    }, cancellationToken);
+                    _tagService.SaveTagsInTrack(track, album);
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
                 }
 
                 if (_userSettings.SaveCoverArtInTags && artwork != null)
                 {
-                    // Save cover in tags when downloaded
-                    await Task.Run(() =>
-                    {
-                        var tagFile = TagLib.File.Create(track.Path);
-                        tagFile.Tag.Pictures = new IPicture[] { artwork };
-                        tagFile.Save();
-                    }, cancellationToken);
+                    _tagService.SaveCoverInTrack(track, artwork);
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
                 }
 
