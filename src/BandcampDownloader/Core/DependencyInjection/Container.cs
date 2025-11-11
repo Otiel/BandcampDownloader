@@ -3,11 +3,11 @@ using BandcampDownloader.Bandcamp;
 using BandcampDownloader.Core.Localization;
 using BandcampDownloader.Core.Logging;
 using BandcampDownloader.Core.Themes;
+using BandcampDownloader.Core.Updates;
 using BandcampDownloader.IO;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
 using BandcampDownloader.UI.Dialogs;
-using BandcampDownloader.Updates;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BandcampDownloader.Core.DependencyInjection;

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace BandcampDownloader.Updates;
+namespace BandcampDownloader.Core.Updates;
 
 public sealed class GithubRelease
 {

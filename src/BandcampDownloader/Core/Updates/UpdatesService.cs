@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using BandcampDownloader.Net;
 
-namespace BandcampDownloader.Updates;
+namespace BandcampDownloader.Core.Updates;
 
 internal interface IUpdatesService
 {

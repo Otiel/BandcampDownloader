@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace BandcampDownloader.Updates;
+namespace BandcampDownloader.Core.Updates;
 
 internal static class VersionHelper
 {

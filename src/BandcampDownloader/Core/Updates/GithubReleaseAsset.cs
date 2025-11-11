@@ -2,7 +2,7 @@
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global : used in deserialization
 
-namespace BandcampDownloader.Updates;
+namespace BandcampDownloader.Core.Updates;
 
 // ReSharper disable once ClassNeverInstantiated.Global : used in deserialization
 public sealed class GithubReleaseAsset
