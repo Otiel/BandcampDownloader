@@ -49,6 +49,7 @@ internal sealed class Container : IContainer
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();
         serviceCollection.AddSingleton<IFileService, FileService>();
         serviceCollection.AddSingleton<IHttpService, HttpService>();
+        serviceCollection.AddSingleton<IImageService, ImageService>();
         serviceCollection.AddSingleton<ILanguageService, LanguageService>();
         serviceCollection.AddSingleton<ILoggingService, LoggingService>();
         serviceCollection.AddSingleton<IPlaylistCreator, PlaylistCreator>();
