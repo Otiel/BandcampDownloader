@@ -4,7 +4,7 @@ using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Settings;
 using NLog;
 
-namespace BandcampDownloader.Logging;
+namespace BandcampDownloader.Core.Logging;
 
 internal static class LogHelper
 {

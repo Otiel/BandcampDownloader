@@ -4,7 +4,7 @@ using NLog;
 using NLog.Config;
 using NLog.Targets;
 
-namespace BandcampDownloader.Logging;
+namespace BandcampDownloader.Core.Logging;
 
 internal interface ILoggingService
 {
