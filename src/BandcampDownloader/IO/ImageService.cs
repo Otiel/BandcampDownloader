@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Jpeg;
@@ -8,27 +9,32 @@ namespace BandcampDownloader.IO;
 
 internal interface IImageService
 {
-    Task ConvertToJpegAsync(string inputImageFilePath, string outputJpegFilePath, CancellationToken cancellationToken);
-    Task ResizeImage(string inputImageFilePath, string outputImageFilePath, int maxWidth, int maxHeight, CancellationToken cancellationToken);
+    Task<Stream> ConvertToJpegAsync(Stream inputImage, CancellationToken cancellationToken);
+    Task<Stream> ResizeImage(Stream inputImage, int maxWidth, int maxHeight, CancellationToken cancellationToken);
 }
 
 internal sealed class ImageService : IImageService
 {
-    public async Task ConvertToJpegAsync(string inputImageFilePath, string outputJpegFilePath, CancellationToken cancellationToken)
+    public async Task<Stream> ConvertToJpegAsync(Stream inputImage, CancellationToken cancellationToken)
     {
-        using var image = await Image.LoadAsync(inputImageFilePath, cancellationToken);
+        inputImage.Position = 0;
+        using var image = await Image.LoadAsync(inputImage, cancellationToken);
 
         var jpegEncoder = new JpegEncoder
         {
             Quality = 90,
         };
 
-        await image.SaveAsJpegAsync(outputJpegFilePath, jpegEncoder, cancellationToken);
+        var outputStream = new MemoryStream();
+        await image.SaveAsJpegAsync(outputStream, jpegEncoder, cancellationToken);
+
+        return outputStream;
     }
 
-    public async Task ResizeImage(string inputImageFilePath, string outputImageFilePath, int maxWidth, int maxHeight, CancellationToken cancellationToken)
+    public async Task<Stream> ResizeImage(Stream inputImage, int maxWidth, int maxHeight, CancellationToken cancellationToken)
     {
-        using var image = await Image.LoadAsync(inputImageFilePath, cancellationToken);
+        inputImage.Position = 0;
+        using var image = await Image.LoadAsync(inputImage, cancellationToken);
 
         var resizeOptions = new ResizeOptions
         {
@@ -37,6 +43,17 @@ internal sealed class ImageService : IImageService
         };
         image.Mutate(x => x.Resize(resizeOptions));
 
-        await image.SaveAsync(outputImageFilePath, cancellationToken);
+        var outputStream = new MemoryStream();
+        if (image.Metadata.DecodedImageFormat != null)
+        {
+            await image.SaveAsync(outputStream, image.Metadata.DecodedImageFormat, cancellationToken);
+        }
+        else
+        {
+            // This shouldn't happen hopefully, but if it does, fallback to Jpeg
+            await image.SaveAsJpegAsync(outputStream, cancellationToken);
+        }
+
+        return outputStream;
     }
 }
