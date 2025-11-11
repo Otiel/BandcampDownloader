@@ -11,7 +11,6 @@ using BandcampDownloader.IO;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using Downloader;
-using ImageResizer;
 using NLog;
 using TagLib;
 using File = System.IO.File;
@@ -38,6 +37,7 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IAlbumUrlRetriever _albumUrlRetriever;
     private readonly IAlbumInfoRetriever _albumInfoRetriever;
     private readonly IResilienceService _resilienceService;
+    private readonly IImageService _imageService;
     private readonly IUserSettings _userSettings;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private bool _isInitialized;
@@ -46,7 +46,7 @@ internal sealed class DownloadManager : IDownloadManager
 
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
-    public DownloadManager(IFileService fileService, IPlaylistCreator playlistCreator, ITagService tagService, IResilienceService resilienceService, ITrackFileService trackFileService, IAlbumUrlRetriever albumUrlRetriever, IAlbumInfoRetriever albumInfoRetriever, ISettingsService settingsService)
+    public DownloadManager(IFileService fileService, IPlaylistCreator playlistCreator, ITagService tagService, IResilienceService resilienceService, ITrackFileService trackFileService, IAlbumUrlRetriever albumUrlRetriever, IAlbumInfoRetriever albumInfoRetriever, IImageService imageService, ISettingsService settingsService)
     {
         _fileService = fileService;
         _playlistCreator = playlistCreator;
@@ -55,6 +55,7 @@ internal sealed class DownloadManager : IDownloadManager
         _trackFileService = trackFileService;
         _albumUrlRetriever = albumUrlRetriever;
         _albumInfoRetriever = albumInfoRetriever;
+        _imageService = imageService;
         _userSettings = settingsService.GetUserSettings();
 
         _albumUrlRetriever.DownloadProgressChanged += OnDownloadProgressChanged;
@@ -339,61 +340,45 @@ internal sealed class DownloadManager : IDownloadManager
 
             if (artworkDownloaded)
             {
-                // Convert/resize artwork to be saved in album folder
-                if (_userSettings.SaveCoverArtInFolder && (_userSettings.CoverArtInFolderConvertToJpg || _userSettings.CoverArtInFolderResize))
+                var coverArtInFolderTempPath = Path.GetTempFileName();
+                if (_userSettings.SaveCoverArtInFolder)
                 {
-                    var settings = new ResizeSettings();
-                    if (_userSettings.CoverArtInFolderConvertToJpg)
-                    {
-                        settings.Format = "jpg";
-                        settings.Quality = 90;
-                    }
-
                     if (_userSettings.CoverArtInFolderResize)
                     {
-                        settings.MaxHeight = _userSettings.CoverArtInFolderMaxSize;
-                        settings.MaxWidth = _userSettings.CoverArtInFolderMaxSize;
+                        await _imageService.ResizeImage(album.ArtworkTempPath, coverArtInFolderTempPath, _userSettings.CoverArtInFolderMaxSize, _userSettings.CoverArtInFolderMaxSize, cancellationToken);
                     }
 
-                    await Task.Run(() =>
+                    if (_userSettings.CoverArtInFolderConvertToJpg)
                     {
-                        ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkPath, settings); // Save it to the album folder
-                    }, cancellationToken);
-                }
-                else if (_userSettings.SaveCoverArtInFolder)
-                {
-                    await _fileService.CopyFileAsync(album.ArtworkTempPath, album.ArtworkPath, cancellationToken);
-                }
-
-                // Convert/resize artwork to be saved in tags
-                if (_userSettings.SaveCoverArtInTags && (_userSettings.CoverArtInTagsConvertToJpg || _userSettings.CoverArtInTagsResize))
-                {
-                    var settings = new ResizeSettings();
-                    if (_userSettings.CoverArtInTagsConvertToJpg)
-                    {
-                        settings.Format = "jpg";
-                        settings.Quality = 90;
+                        await _imageService.ConvertToJpegAsync(album.ArtworkTempPath, coverArtInFolderTempPath, cancellationToken);
                     }
 
+                    await _fileService.CopyFileAsync(coverArtInFolderTempPath, album.ArtworkPath, cancellationToken);
+                }
+
+                var coverArtInTagsTempPath = Path.GetTempFileName();
+                if (_userSettings.SaveCoverArtInTags)
+                {
                     if (_userSettings.CoverArtInTagsResize)
                     {
-                        settings.MaxHeight = _userSettings.CoverArtInTagsMaxSize;
-                        settings.MaxWidth = _userSettings.CoverArtInTagsMaxSize;
+                        await _imageService.ResizeImage(album.ArtworkTempPath, coverArtInTagsTempPath, _userSettings.CoverArtInTagsMaxSize, _userSettings.CoverArtInTagsMaxSize, cancellationToken);
                     }
 
-                    await Task.Run(() =>
+                    if (_userSettings.CoverArtInTagsConvertToJpg)
                     {
-                        ImageBuilder.Current.Build(album.ArtworkTempPath, album.ArtworkTempPath, settings); // Save it to %Temp%
-                    }, cancellationToken);
+                        await _imageService.ConvertToJpegAsync(album.ArtworkTempPath, coverArtInTagsTempPath, cancellationToken);
+                    }
                 }
 
-                artworkInTags = new Picture(album.ArtworkTempPath)
+                artworkInTags = new Picture(coverArtInTagsTempPath)
                 {
                     Description = "Picture",
                 };
 
                 try
                 {
+                    File.Delete(coverArtInFolderTempPath);
+                    File.Delete(coverArtInTagsTempPath);
                     File.Delete(album.ArtworkTempPath);
                 }
                 catch
