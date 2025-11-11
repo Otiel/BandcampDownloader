@@ -11,6 +11,7 @@ using BandcampDownloader.IO;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Model;
 using BandcampDownloader.Net;
+using BandcampDownloader.Playlist;
 using BandcampDownloader.Settings;
 using Downloader;
 using ImageResizer;
