@@ -3,7 +3,7 @@ using System.Globalization;
 using BandcampDownloader.Settings;
 using WPFLocalizeExtension.Engine;
 
-namespace BandcampDownloader.Localization;
+namespace BandcampDownloader.Core.Localization;
 
 internal interface ILanguageService
 {

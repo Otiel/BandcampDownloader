@@ -1,8 +1,8 @@
 ﻿using BandcampDownloader.Audio;
 using BandcampDownloader.Bandcamp;
+using BandcampDownloader.Core.Localization;
 using BandcampDownloader.Core.Logging;
 using BandcampDownloader.IO;
-using BandcampDownloader.Localization;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
 using BandcampDownloader.Themes;
