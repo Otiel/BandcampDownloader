@@ -1,22 +1,29 @@
 ﻿using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using BandcampDownloader.IO;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using TagLib;
+using File = TagLib.File;
 
 namespace BandcampDownloader.Audio;
 
 internal interface ITagService
 {
     void SaveTagsInTrack(Track track, Album album);
-    void SaveCoverInTrack(Track track, Picture artwork);
+    Task SaveCoverInTrackAsync(Track track, Stream artworkStream, CancellationToken cancellationToken);
 }
 
 internal sealed class TagService : ITagService
 {
+    private readonly IFileService _fileService;
     private readonly IUserSettings _userSettings;
 
-    public TagService(ISettingsService settingsService)
+    public TagService(IFileService fileService, ISettingsService settingsService)
     {
+        _fileService = fileService;
         _userSettings = settingsService.GetUserSettings();
     }
 
@@ -34,11 +41,21 @@ internal sealed class TagService : ITagService
         tagFile.Save();
     }
 
-    public void SaveCoverInTrack(Track track, Picture artwork)
+    public async Task SaveCoverInTrackAsync(Track track, Stream artworkStream, CancellationToken cancellationToken)
     {
+        var tempFile = Path.GetTempFileName();
+        await _fileService.SaveStreamToFileAsync(artworkStream, tempFile, cancellationToken);
+
+        var artwork = new Picture(tempFile)
+        {
+            Description = "Picture",
+        };
+
         var tagFile = File.Create(track.Path);
         tagFile.Tag.Pictures = [artwork];
         tagFile.Save();
+
+        System.IO.File.Delete(tempFile);
     }
 
     private static File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)
