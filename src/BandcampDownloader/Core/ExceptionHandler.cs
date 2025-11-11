@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
-using BandcampDownloader.Core;
 using BandcampDownloader.Properties;
 using NLog;
 
-namespace BandcampDownloader.Helpers;
+namespace BandcampDownloader.Core;
 
 internal interface IExceptionHandler
 {

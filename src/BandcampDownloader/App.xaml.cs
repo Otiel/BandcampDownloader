@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using BandcampDownloader.Core;
 using BandcampDownloader.DependencyInjection;
-using BandcampDownloader.Helpers;
 using BandcampDownloader.Localization;
 using BandcampDownloader.Logging;
 using BandcampDownloader.Settings;
