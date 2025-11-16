@@ -33,6 +33,8 @@ internal sealed class TrackFileService : ITrackFileService
     public async Task<IReadOnlyList<TrackFile>> GetFilesToDownloadAsync(IReadOnlyList<Album> albums, CancellationToken cancellationToken)
     {
         var files = new List<TrackFile>();
+        var filesLock = new Lock();
+
         foreach (var album in albums)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -45,11 +47,13 @@ internal sealed class TrackFileService : ITrackFileService
                 if (_userSettings.RetrieveFilesSize)
                 {
                     var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork, cancellationToken);
-                    files.Add(new TrackFile(album.ArtworkUrl, 0, size));
+                    var trackFile = new TrackFile(album.ArtworkUrl, 0, size);
+                    files.Add(trackFile);
                 }
                 else
                 {
-                    files.Add(new TrackFile(album.ArtworkUrl, 0, 0));
+                    var trackFile = new TrackFile(album.ArtworkUrl, 0, 0);
+                    files.Add(trackFile);
                 }
             }
 
@@ -60,14 +64,20 @@ internal sealed class TrackFileService : ITrackFileService
                 await Task.WhenAll(tracksIndexes.Select(async i =>
                 {
                     var size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track, cancellationToken);
-                    files.Add(new TrackFile(album.Tracks[i].Mp3Url, 0, size));
+                    var trackFile = new TrackFile(album.Tracks[i].Mp3Url, 0, size);
+
+                    lock (filesLock)
+                    {
+                        files.Add(trackFile);
+                    }
                 }));
             }
             else
             {
                 foreach (var track in album.Tracks)
                 {
-                    files.Add(new TrackFile(track.Mp3Url, 0, 0));
+                    var trackFile = new TrackFile(track.Mp3Url, 0, 0);
+                    files.Add(trackFile);
                 }
             }
         }
