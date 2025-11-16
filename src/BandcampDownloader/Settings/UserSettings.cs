@@ -173,9 +173,6 @@ public interface IUserSettings
     [Option(DefaultValue = 7)]
     int DownloadMaxTries { get; set; }
 
-    [Option(DefaultValue = false)]
-    bool DownloadOneAlbumAtATime { get; set; }
-
     // Time in seconds between retries
     [Option(DefaultValue = 0.2)]
     double DownloadRetryCooldown { get; set; }
