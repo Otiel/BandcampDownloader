@@ -11,7 +11,7 @@ internal interface IResilienceService
     /// Waits for a "cooldown" time, computed from the specified number of download tries.
     /// </summary>
     /// <param name="triesNumber">The times count we tried to download the same file.</param>
-    /// <param name="cancellationToken"></param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     Task WaitForCooldownAsync(int triesNumber, CancellationToken cancellationToken);
 }
 
