@@ -222,13 +222,6 @@
 
 Wenn nicht, bleiben alle Tags unverändert, was der Einstellung „Nicht ändern“ für jeden Tag entspricht.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Nur ein Album gleichzeitig _herunterladen</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Lädt immer nur ein Album auf einmal herunter.
-Wenn nicht, werden alle Alben gleichzeitig heruntergeladen (Nur geeignet wenn eine hohe Bandbreite zur Verfügung steht).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>_Dateigröße vor dem Herunterladen von Titeln abrufen</value>
   </data>

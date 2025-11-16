@@ -323,10 +323,6 @@ Nếu không, tất cả các thẻ đều không thay đổi, tương đương 
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>Danh sách phát M3U ở định dạng mở rộng (các lệnh bắt đầu bằng ký tự #).</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Chỉ tải xuống một album tại một thời điểm.
-Nếu không, tất cả các album được tải xuống đồng thời (tốt hơn là có sẵn băng thông cao).</value>
-  </data>
   <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
     <value>Khi tải xuống một bản nhạc, nếu cùng một tệp (tên) đã tồn tại, nó sẽ được đối chiếu với bản nhạc để tải xuống.
 Nếu kích thước của cả hai tệp khác nhau nhỏ hơn giá trị này (tính bằng phần trăm), thì quá trình tải xuống bản nhạc sẽ bị bỏ qua.
@@ -364,9 +360,6 @@ Nếu không, một số băng thông/thời gian sẽ được tiết kiệm.</
   </data>
   <data name="buttonCheckForUpdates" xml:space="preserve">
     <value>Kiểm tra ng_ay bây giờ</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Tải xuống từng album một</value>
   </data>
   <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
     <value>Truy vấn địa chỉ sau khi khởi động ứng dụng:</value>

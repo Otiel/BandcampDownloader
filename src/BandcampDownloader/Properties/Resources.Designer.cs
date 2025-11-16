@@ -358,26 +358,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxModifyTags_ToolTip", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Download one album at a time.
-        /// </summary>
-        internal static string checkBoxOneAlbumAtATime {
-            get {
-                return ResourceManager.GetString("checkBoxOneAlbumAtATime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Downloads only one album at a time.
-        ///If not, all albums are downloaded concurrently (better provided high bandwidth is available)..
-        /// </summary>
-        internal static string checkBoxOneAlbumAtATime_ToolTip {
-            get {
-                return ResourceManager.GetString("checkBoxOneAlbumAtATime_ToolTip", resourceCulture);
-            }
-        }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Retrieve _file size before downloading tracks.
         /// </summary>

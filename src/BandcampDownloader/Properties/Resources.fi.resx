@@ -174,10 +174,6 @@ Tee tästä uusi ilmoitus ja sisällytä siihen lokitiedoston tiedot:
     <value>Selvittää tiedostokoon näyttääkseen latauksen edistymisen.
 Jos ei, säästetään hieman dataa/aikaa.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Lataa yhden albumin kerrallaan.
-Jos ei, kaikki albumit ladataan yhtäaikaisesti (toimii paremmin hyvällä verkkoyhteydellä).</value>
-  </data>
   <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
     <value>Muuntaa jokaisen tagin alla määritellyllä tavalla.
 
@@ -404,9 +400,6 @@ Liitä artistin sivut: http://[artisti].bandcamp.com ja valitse "☑ Tallenna ar
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Selvitä _tiedostokoko ennen kappaleiden lataamista</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Tallenna yksi albumi kerrallaan</value>
   </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Muokkaa kappaleiden tageja (ID3)</value>

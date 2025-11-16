@@ -23,17 +23,6 @@
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
-        <CheckBox
-            x:Name="CheckBoxOneAlbumAtATime"
-            Grid.Row="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Content="{lex:Loc}"
-            IsChecked="{Binding DownloadOneAlbumAtATime, UpdateSourceTrigger=Explicit}"
-            IsEnabled="True"
-            TabIndex="0"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
         <Label
             x:Name="LabelMaxConcurrentTracksDownloads"
             Grid.Row="1"

@@ -158,9 +158,6 @@
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Tags aanpassen (ID3)</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Eén album tegelijk _downloaden</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Haal _bestandsgrootte op voor het downloaden van tracks</value>
   </data>

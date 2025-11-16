@@ -62,10 +62,6 @@
       PublicKeyToken=b77a5c561934e089
     </value>
   </resheader>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Baixa només un àlbum alhora.
-Si no, tots els àlbums es descarreguen simultàniament (millor sempre que hi hagi una amplada de banda alta disponible).</value>
-  </data>
   <data name="textBoxUrlsPlaceholder" xml:space="preserve">
     <value>Enganxeu els URL dels àlbums per baixar-los aquí. Podeu especificar diversos URL escrivint un URL per línia.
 
@@ -229,9 +225,6 @@ Valor recomanat = 4</value>
   </data>
   <data name="checkBoxM3uExtended" xml:space="preserve">
     <value>Utilitzar el format estès (només per a M3U)</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Descarregar un àlbum alhora</value>
   </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Indicar el tamany del fitxer abans de descarregar pistes</value>

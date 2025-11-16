@@ -163,13 +163,6 @@
 
 إذا لم يكن الأمر كذلك ، فستظل جميع العلامات بدون تغيير ، أي ما يعادل إعداد "عدم التعديل" لكل علامة.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>قم بتنزيل ألبوم واحد في كل مرة</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>يقوم بتنزيل ألبوم واحد فقط في كل مرة.
-إذا لم يكن الأمر كذلك ، فسيتم تنزيل جميع الألبومات بشكل متزامن (يتوفر أفضل عرض نطاق ترددي عالٍ).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>استرجع حجم الملف قبل تنزيل الأغاني</value>
   </data>

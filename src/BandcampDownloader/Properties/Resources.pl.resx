@@ -163,13 +163,6 @@
 
 W przeciwnym wypadku, wszystkie tagi pozostają niezmienione, co jest równoważne ustawieniu "nie modyfikuj" dla każdego tagu.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Pobierz jeden album na raz</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Pobieranie albumów po kolei.
-W przeciwnym wypadku albumy są pobierane równocześnie (preferowane, jeśli masz wysoką przepustowość).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Pobierz _wielkość plików przed pobraniem utworów</value>
   </data>

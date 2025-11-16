@@ -262,9 +262,6 @@ Den här åtgärden kan inte återställas.</value>
   <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
     <value>Spara i _mapp</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Ladda ner ett album i taget</value>
-  </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Modifiera spårtaggar (ID3)</value>
   </data>
@@ -459,10 +456,6 @@ Klistra in artistsidor: http://[artist].bandcamp.com och markera "☑ Ladda ner 
   </data>
   <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
     <value>Det finns för närvarande aktiva nedladdningar. Är du säker på att du vill stänga programmet och stoppa alla nedladdningar?</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Laddar bara ned ett album åt gången.
-Om inte, laddas alla album ner samtidigt (bättre förutsatt att hög bandbredd är tillgänglig).</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
     <value>Används för att styra den exponentiella back-off-mekanismen.

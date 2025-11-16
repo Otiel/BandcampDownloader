@@ -222,13 +222,6 @@
 
 Si cette option est décochée, toutes les règles définies ci-dessous seront ignorées et les métadonnées seront conservées à l'identique du fichier téléchargé. Ceci revient à régler « Ne pas modifier » pour chaque métadonnée.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Télécharger un album à la _fois</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Un seul album sera téléchargé à la fois.
-Si cette option n'est pas cochée, tous les albums seront téléchargés en même temps (conseillé si vous avez une bande passante suffisante).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Récupérer la _taille des fichiers avant téléchargement</value>
   </data>

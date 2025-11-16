@@ -163,13 +163,6 @@
 
 Ako ne, sve oznake ostaju nepromijenjene, što odgovara postavci „Ne mijenjaj” za svaku oznaku.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Preuzmi albume pojedinačno</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Preuzima samo jedan album odjednom.
-Ako ne, svi se albumi preuzimaju istodobno (zahtijeva veliku protočnost).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Pronađi ve_ličinu datoteke prije preuzimanja pjesama</value>
   </data>

@@ -163,13 +163,6 @@
 
 如果不勾选，则文件中的标记都保持原样。</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>不同时下载多部专辑</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>不同时下载多部专辑。
-如果不勾选，则同时下载所有专辑（需要有较快的网速）。</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>在下载前确定文件大小</value>
   </data>

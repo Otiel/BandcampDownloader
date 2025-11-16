@@ -163,13 +163,6 @@
 
 Caso contrário, todos as tags não serão alteradas, equivalente a definir «Não modificar» para cada tag.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Descarregar um álbum de cada vez</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Descarrega apenas um álbum de cada vez.
-Caso contrário, todos os álbuns serão descarregados simultaneamente (melhor disponibilizar de uma alta largura de banda).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Recuperar o tamanho do _ficheiro antes de descarregar faixas</value>
   </data>
