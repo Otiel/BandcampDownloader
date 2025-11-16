@@ -185,6 +185,12 @@ internal sealed class DownloadManager : IDownloadManager
                 }
             });
 
+        // Cleanup
+        if (inTagsArtworkStream != null)
+        {
+            await inTagsArtworkStream.DisposeAsync();
+        }
+
         // Create playlist file
         if (_userSettings.CreatePlaylist)
         {
