@@ -81,20 +81,19 @@ internal sealed class DownloadManager : IDownloadManager
         {
             ThrowIfNotInitialized();
 
-            if (_userSettings.DownloadOneAlbumAtATime)
+            var parallelOptions = new ParallelOptions
             {
-                // Download one album at a time
-                foreach (var album in _albums)
+                CancellationToken = cancellationToken,
+                MaxDegreeOfParallelism = 1,
+            };
+
+            await Parallel.ForEachAsync(
+                _albums,
+                parallelOptions,
+                async (album, ct) =>
                 {
-                    await DownloadAlbumAsync(album, cancellationToken);
-                }
-            }
-            else
-            {
-                // Parallel download
-                var albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
-                await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i], cancellationToken)));
-            }
+                    await DownloadAlbumAsync(album, ct);
+                });
         }
         finally
         {
