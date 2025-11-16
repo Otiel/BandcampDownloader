@@ -167,15 +167,24 @@ internal sealed class DownloadManager : IDownloadManager
 
         // Download & tag tracks
         var downloadedTracksCount = 0;
-        var indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-        await Task.WhenAll(indexes.Select(async i =>
+
+        var parallelOptions = new ParallelOptions
         {
-            var trackDownloaded = await DownloadAndTagTrackAsync(album, album.Tracks[i], inTagsArtworkStream, cancellationToken);
-            if (trackDownloaded)
+            CancellationToken = cancellationToken,
+            MaxDegreeOfParallelism = 10,
+        };
+
+        await Parallel.ForEachAsync(
+            album.Tracks,
+            parallelOptions,
+            async (track, ct) =>
             {
-                Interlocked.Increment(ref downloadedTracksCount);
-            }
-        }));
+                var trackDownloaded = await DownloadAndTagTrackAsync(album, track, inTagsArtworkStream, ct);
+                if (trackDownloaded)
+                {
+                    Interlocked.Increment(ref downloadedTracksCount);
+                }
+            });
 
         // Create playlist file
         if (_userSettings.CreatePlaylist)
