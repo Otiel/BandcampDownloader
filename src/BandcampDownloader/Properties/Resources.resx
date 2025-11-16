@@ -537,8 +537,14 @@ Paste artist pages: http://[artist].bandcamp.com and check "☑ Download artist 
   <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
     <value>Use this option if your HTTPS traffic to Bandcamp is blocked.</value>
   </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+      <value>Max concurrent albums downloads</value>
+  </data>
   <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
       <value>Max concurrent tracks downloads</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+      <value>The maximum number of albums that can be downloaded simultaneously</value>
   </data>
   <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
       <value>The maximum number of tracks (within the same album) that can be downloaded simultaneously</value>

@@ -40,6 +40,7 @@ internal sealed partial class UserControlSettingsDownloads : IUserControlSetting
     public void SaveSettings()
     {
         CheckBoxRetrieveFilesSize.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        TextBoxMaxConcurrentAlbumsDownloads.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
         TextBoxMaxConcurrentTracksDownloads.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
     }
 

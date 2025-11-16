@@ -193,6 +193,9 @@ public interface IUserSettings
     [Option(DefaultValue = Language.en)]
     Language Language { get; set; }
 
+    [Option(DefaultValue = 1)]
+    int MaxConcurrentAlbumsDownloads { get; set; }
+
     [Option(DefaultValue = 10)]
     int MaxConcurrentTracksDownloads { get; set; }
 

@@ -84,7 +84,7 @@ internal sealed class DownloadManager : IDownloadManager
             var parallelOptions = new ParallelOptions
             {
                 CancellationToken = cancellationToken,
-                MaxDegreeOfParallelism = 1,
+                MaxDegreeOfParallelism = _userSettings.MaxConcurrentAlbumsDownloads,
             };
 
             await Parallel.ForEachAsync(
