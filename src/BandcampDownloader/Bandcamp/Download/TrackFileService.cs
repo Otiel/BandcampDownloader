@@ -62,7 +62,7 @@ internal sealed class TrackFileService : ITrackFileService
                 var parallelOptions = new ParallelOptions
                 {
                     CancellationToken = cancellationToken,
-                    MaxDegreeOfParallelism = 10, // Limit the number of HTTP requests
+                    MaxDegreeOfParallelism = _userSettings.MaxConcurrentTracksDownloads, // Limit the number of HTTP requests
                 };
 
                 await Parallel.ForEachAsync(

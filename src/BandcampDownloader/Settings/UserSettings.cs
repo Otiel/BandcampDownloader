@@ -196,6 +196,9 @@ public interface IUserSettings
     [Option(DefaultValue = Language.en)]
     Language Language { get; set; }
 
+    [Option(DefaultValue = 10)]
+    int MaxConcurrentTracksDownloads { get; set; }
+
     [Option(DefaultValue = true)]
     // ReSharper disable once InconsistentNaming : Would be a breaking change to rename. TODO add serialization value
     bool M3uExtended { get; set; }

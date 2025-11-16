@@ -171,7 +171,7 @@ internal sealed class DownloadManager : IDownloadManager
         var parallelOptions = new ParallelOptions
         {
             CancellationToken = cancellationToken,
-            MaxDegreeOfParallelism = 10,
+            MaxDegreeOfParallelism = _userSettings.MaxConcurrentTracksDownloads,
         };
 
         await Parallel.ForEachAsync(

@@ -7,14 +7,19 @@
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="410 "
-    Height="60"
+    Height="90"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <Grid x:Name="GridMain" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
             <RowDefinition Height="26" />
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
@@ -29,9 +34,30 @@
             TabIndex="0"
             ToolTip="{lex:Loc}"
             ToolTipService.ShowDuration="60000" />
+        <Label
+            x:Name="LabelMaxConcurrentTracksDownloads"
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="{lex:Loc}"
+            Target="{Binding ElementName=TextBoxMaxConcurrentTracksDownloads}" />
+        <TextBox
+            x:Name="TextBoxMaxConcurrentTracksDownloads"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="40"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalContentAlignment="Center"
+            TabIndex="1"
+            Text="{Binding Path=MaxConcurrentTracksDownloads, UpdateSourceTrigger=Explicit}"
+            TextChanged="TextBox_TextChanged"
+            ToolTip="{lex:Loc}"
+            ToolTipService.ShowDuration="60000" />
         <CheckBox
             x:Name="CheckBoxRetrieveFilesSize"
-            Grid.Row="1"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Content="{lex:Loc}"
