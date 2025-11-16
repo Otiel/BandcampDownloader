@@ -134,14 +134,14 @@ internal sealed class DownloadManager : IDownloadManager
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        // Create a directory to place track files
+        // Create a directory to save track files
         try
         {
             Directory.CreateDirectory(album.Path);
         }
         catch
         {
-            DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs("An error occured when creating the album folder. Make sure you have the rights to write files in the folder you chose", DownloadProgressChangedLevel.Error));
+            DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs("An error occurred when creating the album folder. Make sure you have the rights to write files in the folder you chose", DownloadProgressChangedLevel.Error));
             return;
         }
 
