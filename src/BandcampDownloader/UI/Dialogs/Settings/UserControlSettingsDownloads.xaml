@@ -24,6 +24,25 @@
             <RowDefinition Height="26" />
         </Grid.RowDefinitions>
         <Label
+            x:Name="LabelMaxConcurrentAlbumsDownloads"
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="{lex:Loc}"
+            Target="{Binding ElementName=TextBoxMaxConcurrentAlbumsDownloads}" />
+        <TextBox
+            x:Name="TextBoxMaxConcurrentAlbumsDownloads"
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="40"
+            Height="20"
+            HorizontalAlignment="Left"
+            VerticalContentAlignment="Center"
+            TabIndex="1"
+            Text="{Binding Path=MaxConcurrentAlbumsDownloads, UpdateSourceTrigger=Explicit}"
+            TextChanged="TextBox_TextChanged"
+            ToolTip="{lex:Loc}"
+            ToolTipService.ShowDuration="60000" />
+        <Label
             x:Name="LabelMaxConcurrentTracksDownloads"
             Grid.Row="1"
             Grid.Column="0"
