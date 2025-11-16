@@ -166,9 +166,16 @@ internal sealed class DownloadManager : IDownloadManager
         }
 
         // Download & tag tracks
-        var tracksDownloaded = new bool[album.Tracks.Count];
+        var downloadedTracksCount = 0;
         var indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-        await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], inTagsArtworkStream, cancellationToken)));
+        await Task.WhenAll(indexes.Select(async i =>
+        {
+            var trackDownloaded = await DownloadAndTagTrackAsync(album, album.Tracks[i], inTagsArtworkStream, cancellationToken);
+            if (trackDownloaded)
+            {
+                Interlocked.Increment(ref downloadedTracksCount);
+            }
+        }));
 
         // Create playlist file
         if (_userSettings.CreatePlaylist)
@@ -177,7 +184,7 @@ internal sealed class DownloadManager : IDownloadManager
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Saved playlist for album \"{album.Title}\"", DownloadProgressChangedLevel.IntermediateSuccess));
         }
 
-        if (tracksDownloaded.All(x => x))
+        if (album.Tracks.Count == downloadedTracksCount)
         {
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Successfully downloaded album \"{album.Title}\"", DownloadProgressChangedLevel.Success));
         }
