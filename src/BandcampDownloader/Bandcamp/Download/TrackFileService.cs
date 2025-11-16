@@ -60,17 +60,25 @@ internal sealed class TrackFileService : ITrackFileService
             // Tracks
             if (_userSettings.RetrieveFilesSize)
             {
-                var tracksIndexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-                await Task.WhenAll(tracksIndexes.Select(async i =>
+                var parallelOptions = new ParallelOptions
                 {
-                    var size = await GetFileSizeAsync(album.Tracks[i].Mp3Url, album.Tracks[i].Title, FileType.Track, cancellationToken);
-                    var trackFile = new TrackFile(album.Tracks[i].Mp3Url, 0, size);
+                    CancellationToken = cancellationToken,
+                    MaxDegreeOfParallelism = 10, // Limit the number of HTTP requests
+                };
 
-                    lock (filesLock)
+                await Parallel.ForEachAsync(
+                    album.Tracks,
+                    parallelOptions,
+                    async (track, ct) =>
                     {
-                        files.Add(trackFile);
-                    }
-                }));
+                        var size = await GetFileSizeAsync(track.Mp3Url, track.Title, FileType.Track, ct);
+                        var trackFile = new TrackFile(track.Mp3Url, 0, size);
+
+                        lock (filesLock)
+                        {
+                            files.Add(trackFile);
+                        }
+                    });
             }
             else
             {
