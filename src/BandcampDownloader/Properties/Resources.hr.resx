@@ -440,7 +440,7 @@ Preporučena vrijednost = 0,2</value>
 Nakon svakog neuspjelog preuzimanja pjesme, BandcampDownloader može pričekati određeno vrijeme prije ponovnog pokušaja
 preuzimanja pjesme, kako bi se izbjeglo golicanje Bandcampovog filtra protiv neželjene pošte.
 Formula koja se koristi za izračunavanje vremena prije ponovnog pokušaja preuzimanja je sljedeća:
-time = cooldown * (exponent ^ attempt-count)
+vrijeme = mirovanje * (potencija ^ broj pokušaja)
 
 Preporučena vrijednost = 4</value>
   </data>
