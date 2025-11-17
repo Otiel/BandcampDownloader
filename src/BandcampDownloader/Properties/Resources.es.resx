@@ -527,12 +527,6 @@ Pegue páginas de artista: http://[artista].bandcamp.com y cheque «☑ Descarga
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Actualizar</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Usar HTTP en vez de HTTPS</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Use esta opción si su conexión HTTPS a Bandcamp se encuentra bloqueada.</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
   </data>

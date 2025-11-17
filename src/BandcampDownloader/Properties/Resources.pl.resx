@@ -459,12 +459,6 @@ Zalecana wartość = 4</value>
   <data name="labelProxy" xml:space="preserve">
     <value>Serwer pośredniczący</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Użyj protokołu HTTP zamiast HTTPS</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Użyj tej opcji, jeśli Twój ruch HTTPS do Bandcamp jest zablokowany.</value>
-  </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>Używany do kontrolowania wykładniczego mechanizmu back-off.
 Po każdym niepowodzeniu pobrania utworu BandcampDownloader może odczekać określony czas przed ponowną próbą

@@ -469,13 +469,7 @@ Colar páginas de artistas: http://[artista]/.bandcamp.com e marque “☑ Baixa
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Atualizar</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Use esta opção se o tráfego HTTPS para o Bandcamp estiver bloqueado.</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Usar HTTP em vez de HTTPS</value>
   </data>
 </root>

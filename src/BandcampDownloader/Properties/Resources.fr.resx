@@ -529,14 +529,8 @@ de leurs albums.</value>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Mise à jour</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Utiliser HTTP au lieu de HTTPS</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Utilisez cette option si vos flux HTTPS vers Bandcamp sont filtrés.</value>
   </data>
   <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
       <value>Téléchargements d'albums simultanés max</value>

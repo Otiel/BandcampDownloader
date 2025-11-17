@@ -360,9 +360,6 @@ Om inte, är alla taggar oförändrade, vilket motsvarar inställningen "Ändra 
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>Försök igen c_ooldown (sek)</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Använd HTTP istället för HTTPS</value>
-  </data>
   <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
     <value>Skapar en albumspårfil för varje nedladdat album.</value>
   </data>
@@ -374,9 +371,6 @@ Om inte, är alla taggar oförändrade, vilket motsvarar inställningen "Ändra 
   </data>
   <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
     <value>Ändrar omslagsbilden till angiven maxbredd/höjd.</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Använd det här alternativet om din HTTPS-trafik till Bandcamp är blockerad.</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>Du kan använda platshållare för att anpassa filnamnet:

@@ -236,9 +236,6 @@
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
     <value>إعادة محاولة التهدئة (ثانية)</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>استخدم HTTP بدلاً من HTTPS</value>
-  </data>
   <data name="radioButtonNoProxy" xml:space="preserve">
     <value>لا شيء</value>
   </data>
@@ -260,9 +257,6 @@
   <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
     <value>عدم استطاعة فتح الرابط التالي:
 {0}</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>استخدم هذا الخيار إذا تم حظر حركة مرور HTTPS إلى Bandcamp.</value>
   </data>
   <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
     <value>الإصدار الجديد متاح</value>

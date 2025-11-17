@@ -468,13 +468,7 @@ http://[artist].bandcamp.com/track/[track]
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Обновить</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Использовать HTTP вместо HTTPS</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Прокси</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Используйте эту опцию, если ваш HTTPS-трафик к Bandcamp заблокирован.</value>
   </data>
 </root>
