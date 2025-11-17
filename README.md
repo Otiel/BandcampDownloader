@@ -47,7 +47,7 @@ BandcampDownloader is licensed under the MIT license - see the [LICENSE](LICENSE
 
 Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com) licensed under a [Creative Commons Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0).
 
-The list of open-source libraries used by BandcampDownloader can be found [here](docs/dependencies.md).
+The list of open-source libraries used by BandcampDownloader can be found on the [dependency graph](https://github.com/Otiel/BandcampDownloader/network/dependencies).
 
 ## Piracy
 
