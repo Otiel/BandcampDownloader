@@ -10,8 +10,8 @@
 
 namespace BandcampDownloader.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace BandcampDownloader.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace BandcampDownloader.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace BandcampDownloader.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to ….
         /// </summary>
@@ -68,7 +68,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonBrowse", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Browse for folder.
         /// </summary>
@@ -77,7 +77,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonBrowse_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Cancel.
         /// </summary>
@@ -86,7 +86,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonCancel", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Check no_w.
         /// </summary>
@@ -95,7 +95,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonCheckForUpdates", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Download new version.
         /// </summary>
@@ -104,7 +104,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonDownloadUpdate", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Settings.
         /// </summary>
@@ -113,7 +113,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonOpenSettingsWindow", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Open settings.
         /// </summary>
@@ -122,7 +122,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonOpenSettingsWindow_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reset settings to defaults.
         /// </summary>
@@ -131,7 +131,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonResetSettings_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Save.
         /// </summary>
@@ -140,7 +140,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonSave", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Download.
         /// </summary>
@@ -149,7 +149,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonStart", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Cancel.
         /// </summary>
@@ -158,7 +158,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonStop", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _View.
         /// </summary>
@@ -167,7 +167,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("buttonViewChangelog", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Could not download changelog from {0}.
         /// </summary>
@@ -176,7 +176,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("changelogDownloadError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Check for _updates at startup.
         /// </summary>
@@ -185,7 +185,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCheckForUpdates", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Queries the following address when starting the app:.
         /// </summary>
@@ -194,7 +194,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCheckForUpdates_ToolTip_Part", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Convert to _JPG.
         /// </summary>
@@ -203,7 +203,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInFolderConvertToJpg", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Converts cover art to JPG with a compression of 90 (excellent trade-off between size and quality)..
         /// </summary>
@@ -212,7 +212,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInFolderConvertToJpg_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Constrain _maximum width/height.
         /// </summary>
@@ -221,7 +221,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInFolderResize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resizes cover art to specified max width/height..
         /// </summary>
@@ -230,7 +230,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInFolderResize_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Convert to JP_G.
         /// </summary>
@@ -239,7 +239,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInTagsConvertToJpg", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Converts cover art to JPG with a compression of 90 (excellent trade-off between size and quality)..
         /// </summary>
@@ -248,7 +248,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInTagsConvertToJpg_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Constrain m_aximum width/height.
         /// </summary>
@@ -257,7 +257,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInTagsResize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Resizes cover art to specified max width/height..
         /// </summary>
@@ -266,7 +266,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCoverArtInTagsResize_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Create _playlist for each album.
         /// </summary>
@@ -275,7 +275,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCreatePlaylist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Creates an album track file for each downloaded album..
         /// </summary>
@@ -284,7 +284,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxCreatePlaylist_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Download _artist discography.
         /// </summary>
@@ -293,7 +293,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxDownloadDiscography", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Downloads the whole artist discography..
         /// </summary>
@@ -302,7 +302,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxDownloadDiscography_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Play _notifications sounds.
         /// </summary>
@@ -311,7 +311,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxEnableApplicationSounds", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Notification sound for finished downloads..
         /// </summary>
@@ -320,7 +320,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxEnableApplicationSounds_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Use _extended format (only for M3U).
         /// </summary>
@@ -329,7 +329,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxM3uExtended", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to M3U playlists in extended format (directives prefaced by the # character)..
         /// </summary>
@@ -338,7 +338,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxM3uExtended_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Modify tracks tags (ID3).
         /// </summary>
@@ -347,7 +347,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxModifyTags", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Modifies each tag as specified below.
         ///
@@ -367,7 +367,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxRetrieveFilesSize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Retrieves file size to show precise progress.
         ///If not, some bandwidth/time is saved..
@@ -377,7 +377,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxRetrieveFilesSize_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Save in _folder.
         /// </summary>
@@ -386,7 +386,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxSaveCoverArtInFolder", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Downloads cover art to the album folder..
         /// </summary>
@@ -395,7 +395,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxSaveCoverArtInFolder_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Save in _tags.
         /// </summary>
@@ -404,7 +404,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxSaveCoverArtInTags", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Saves cover art in the track tags..
         /// </summary>
@@ -413,7 +413,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxSaveCoverArtInTags_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Use HTTP instead of HTTPS.
         /// </summary>
@@ -422,7 +422,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxUseHttpInsteadOfHttps", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Use this option if your HTTPS traffic to Bandcamp is blocked..
         /// </summary>
@@ -431,7 +431,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxUseHttpInsteadOfHttps_Tooltip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Show _verbose log.
         /// </summary>
@@ -440,7 +440,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxVerboseLog", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Shows more info in the log..
         /// </summary>
@@ -449,7 +449,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("checkBoxVerboseLog_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Select folder to save albums in.
         /// </summary>
@@ -458,7 +458,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("folderBrowserDialogDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Change these settings at your own risk..
         /// </summary>
@@ -467,7 +467,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelAdvancedSettingsWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Album art_ist.
         /// </summary>
@@ -476,7 +476,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelAlbumArtist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Album _name.
         /// </summary>
@@ -485,7 +485,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelAlbumTitle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Allowed file size _difference (%).
         /// </summary>
@@ -494,7 +494,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelAllowedFileSizeDifference", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Artist.
         /// </summary>
@@ -503,7 +503,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelArtist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Reset settings.
         /// </summary>
@@ -512,7 +512,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelButtonResetSettings", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
@@ -521,7 +521,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelChangelog", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Changelog.
         /// </summary>
@@ -530,7 +530,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelChangelogTitle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Comm_ents.
         /// </summary>
@@ -539,7 +539,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelComments", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to File_name format.
         /// </summary>
@@ -548,7 +548,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelCoverArtFileNameFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Max size (_px).
         /// </summary>
@@ -557,7 +557,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelCoverArtInFolderMaxSize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Max size (p_x).
         /// </summary>
@@ -566,7 +566,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelCoverArtInTagsMaxSize", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Current version:.
         /// </summary>
@@ -575,7 +575,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelCurrentVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Max download attempts.
         /// </summary>
@@ -584,7 +584,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelDownloadMaxTries", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Retry c_ooldown (sec).
         /// </summary>
@@ -593,7 +593,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelDownloadRetryCooldown", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Retry _exponent.
         /// </summary>
@@ -602,7 +602,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelDownloadRetryExponent", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Save albums _to.
         /// </summary>
@@ -611,7 +611,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelDownloadsPath", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Filename format:.
         /// </summary>
@@ -620,7 +620,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelFileNameFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _HTTP(S) proxy.
         /// </summary>
@@ -629,7 +629,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelHttp", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Port.
         /// </summary>
@@ -638,7 +638,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelHttpPort", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Report a bug.
         /// </summary>
@@ -647,7 +647,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelIssues", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Language.
         /// </summary>
@@ -656,7 +656,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelLanguage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
@@ -665,7 +665,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemAbout", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Advanced settings.
         /// </summary>
@@ -674,7 +674,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemAdvanced", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cover art.
         /// </summary>
@@ -683,7 +683,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemCoverArt", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Downloads.
         /// </summary>
@@ -692,7 +692,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemDownloads", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to General.
         /// </summary>
@@ -701,7 +701,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemGeneral", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Network.
         /// </summary>
@@ -710,7 +710,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemNetwork", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Playlist.
         /// </summary>
@@ -719,7 +719,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemPlaylist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Naming and tags.
         /// </summary>
@@ -728,7 +728,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelListBoxItemTags", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Lyrics.
         /// </summary>
@@ -737,7 +737,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelLyrics", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to File_name format.
         /// </summary>
@@ -746,7 +746,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelPlaylistFileNameFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Playlist _format.
         /// </summary>
@@ -755,7 +755,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelPlaylistFormat", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Proxy.
         /// </summary>
@@ -764,7 +764,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelProxy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Some settings cannot be changed while tracks are downloading..
         /// </summary>
@@ -773,7 +773,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelSettingsInfo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Theme.
         /// </summary>
@@ -782,7 +782,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelTheme", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Track n_umber.
         /// </summary>
@@ -791,7 +791,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelTrackNumber", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Title.
         /// </summary>
@@ -800,7 +800,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelTrackTitle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to (the log file is always verbose).
         /// </summary>
@@ -809,7 +809,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelVerboseLogInfo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
@@ -818,7 +818,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelVersion", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Could not check for updates.
         /// </summary>
@@ -827,7 +827,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelVersionError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to New version available.
         /// </summary>
@@ -836,7 +836,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelVersionNewUpdateAvailable", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Website.
         /// </summary>
@@ -845,7 +845,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelWebsite", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Album release _year.
         /// </summary>
@@ -854,7 +854,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("labelYear", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Cancel.
         /// </summary>
@@ -863,7 +863,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxButtonCancel", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _No.
         /// </summary>
@@ -872,7 +872,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxButtonNo", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _OK.
         /// </summary>
@@ -881,7 +881,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxButtonOK", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Yes.
         /// </summary>
@@ -890,7 +890,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxButtonYes", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cancel all downloads?.
         /// </summary>
@@ -899,7 +899,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxCancelDownloadsText", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to An error occurred while checking for updates. Please retry later..
         /// </summary>
@@ -908,7 +908,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxCheckForUpdatesError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Close application.
         /// </summary>
@@ -917,7 +917,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxCloseWindowWhenDownloadingButtonOk", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to There are currently active downloads. Are you sure you want to close the application and stop all downloads?.
         /// </summary>
@@ -926,7 +926,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxCloseWindowWhenDownloadingText", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Could not open the following link:
         ///{0}.
@@ -936,7 +936,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxCouldNotOpenUrlError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You already have the latest version ({0})..
         /// </summary>
@@ -945,7 +945,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxNoUpdateAvailable", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Reset settings.
         /// </summary>
@@ -954,7 +954,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxResetSettingsButtonOk", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reset all settings to their default values?.
         /// </summary>
@@ -963,7 +963,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxResetSettingsText", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to An unhandled error occurred. The application will close now.
         ///
@@ -975,7 +975,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("messageBoxUnhandledException", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _Manual configuration.
         /// </summary>
@@ -984,7 +984,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("radioButtonManualProxy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to _None.
         /// </summary>
@@ -993,7 +993,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("radioButtonNoProxy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to S_ystem.
         /// </summary>
@@ -1002,7 +1002,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("radioButtonSystemProxy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Save as.
         /// </summary>
@@ -1011,7 +1011,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("saveFileDialogTitle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Dark.
         /// </summary>
@@ -1020,7 +1020,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("Skin_Dark", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Light.
         /// </summary>
@@ -1029,7 +1029,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("Skin_Light", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Do not modify.
         /// </summary>
@@ -1038,7 +1038,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("TagEditAction_DoNotModify", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Clear tag.
         /// </summary>
@@ -1047,7 +1047,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("TagEditAction_Empty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Save in tag.
         /// </summary>
@@ -1056,7 +1056,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("TagEditAction_Modify", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Do not modify.
         /// </summary>
@@ -1065,7 +1065,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("TagRemoveAction_DoNotModify", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Clear tag.
         /// </summary>
@@ -1074,7 +1074,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("TagRemoveAction_Empty", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Releases history.
         /// </summary>
@@ -1083,7 +1083,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBlockReleasesWebsite", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Help translate.
         /// </summary>
@@ -1092,7 +1092,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBlockTranslationHelp", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to When downloading a track, if the same file (name) already exists, it will be checked against the track to download.
         ///If the size of both files differ from less than this value (in percent), the track download will be skipped.
@@ -1105,7 +1105,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxAllowedFileSizeDifference_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You can use placeholders to customize the file name:
         ///- {artist} will be replaced by the album artist
@@ -1117,7 +1117,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxCoverArtFileNameFormat_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Maximum number of tries performed to download a track if it fails.
         ///After that number is reached (for each track), the track download will be skipped.
@@ -1129,7 +1129,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxDownloadMaxTries_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Used to control the exponential back-off mechanism.
         ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again
@@ -1144,10 +1144,10 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxDownloadRetryCooldown_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Used to control the exponential back-off mechanism.
-        ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again 
+        ///After each failure of a track download, BandcampDownloader can wait for a specific time before trying again
         ///to download the track in order to avoid tickling the Bandcamp anti-spam filter.
         ///The formula used to compute the time to wait before trying again a download is the following:
         ///time = cooldown * (exponent ^ attempt-count)
@@ -1159,7 +1159,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxDownloadRetryExponent_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You can use placeholders to customize the download folder depending on the album:
         ///- {artist} will be replaced by the album artist
@@ -1171,7 +1171,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxDownloadsPath_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You can use placeholders to customize the file name:
         ///- {artist} will be replaced by the album artist
@@ -1185,7 +1185,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxFileNameFormat_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You can use placeholders to customize the file name:
         ///- {artist} will be replaced by the album artist
@@ -1197,7 +1197,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxPlaylistFileNameFormat_ToolTip", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Paste URLs of albums to download here. You can specify multiple URLs by writing one URL per line.
         ///
@@ -1209,7 +1209,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("textBoxUrlsPlaceholder", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
@@ -1218,7 +1218,7 @@ namespace BandcampDownloader.Properties {
                 return ResourceManager.GetString("windowSettings_Title", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
