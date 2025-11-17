@@ -244,7 +244,6 @@ internal sealed class DownloadManager : IDownloadManager
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Stream artworkStream, CancellationToken cancellationToken)
     {
-        var trackMp3Url = UrlHelper.GetHttpUrlIfNeeded(track.Mp3Url);
         var tries = 0;
         var trackDownloaded = false;
 
@@ -290,11 +289,11 @@ internal sealed class DownloadManager : IDownloadManager
                     throw new InvalidOperationException("Track path is null");
                 }
 
-                DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading track \"{track.Title}\" from url: {trackMp3Url}", DownloadProgressChangedLevel.VerboseInfo));
-                await downloadService.DownloadFileTaskAsync(trackMp3Url, track.Path, cancellationToken);
+                DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", DownloadProgressChangedLevel.VerboseInfo));
+                await downloadService.DownloadFileTaskAsync(track.Mp3Url, track.Path, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 trackDownloaded = true;
-                DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloaded track \"{track.Title}\" from url: {trackMp3Url}", DownloadProgressChangedLevel.VerboseInfo));
+                DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", DownloadProgressChangedLevel.VerboseInfo));
             }
             catch (WebException) // TODO is this still a WebException?
             {
@@ -376,11 +375,10 @@ internal sealed class DownloadManager : IDownloadManager
 
             // Start download
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading artwork from url: {album.ArtworkUrl}", DownloadProgressChangedLevel.VerboseInfo));
-            var albumArtworkUrl = UrlHelper.GetHttpUrlIfNeeded(album.ArtworkUrl);
 
             try
             {
-                artworkStream = await downloadService.DownloadFileTaskAsync(albumArtworkUrl, cancellationToken);
+                artworkStream = await downloadService.DownloadFileTaskAsync(album.ArtworkUrl, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 artworkDownloaded = true;
             }

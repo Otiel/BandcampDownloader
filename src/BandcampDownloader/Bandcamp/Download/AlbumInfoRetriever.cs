@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Bandcamp.Extraction;
-using BandcampDownloader.Helpers;
 using BandcampDownloader.Model;
 using BandcampDownloader.Net;
 using NLog;
@@ -34,7 +32,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
     {
         var albums = new List<Album>();
 
-        foreach (var url in albumsUrls.Select(UrlHelper.GetHttpUrlIfNeeded))
+        foreach (var url in albumsUrls)
         {
             cancellationToken.ThrowIfCancellationRequested();
 

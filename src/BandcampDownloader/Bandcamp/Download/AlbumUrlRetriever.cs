@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Bandcamp.Extraction;
-using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
 
 namespace BandcampDownloader.Bandcamp.Download;
@@ -49,7 +48,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
     {
         var albumsUrls = new List<string>();
 
-        foreach (var url in urls.Select(UrlHelper.GetHttpUrlIfNeeded))
+        foreach (var url in urls)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -58,7 +57,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             // Get artist "music" bandcamp page (http://artist.bandcamp.com/music)
             var regex = new Regex("https?://[^/]*");
             var artistPage = regex.Match(url).ToString();
-            var artistMusicPage = UrlHelper.GetHttpUrlIfNeeded(artistPage + "/music");
+            var artistMusicPage = artistPage + "/music";
 
             // Retrieve artist "music" page HTML source code
             string htmlCode;
