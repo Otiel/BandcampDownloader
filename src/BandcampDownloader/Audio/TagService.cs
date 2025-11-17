@@ -1,10 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Net.Mime;
 using System.Threading;
 using System.Threading.Tasks;
+using BandcampDownloader.IO;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using TagLib;
+using TagLib.Id3v2;
 using File = TagLib.File;
 
 namespace BandcampDownloader.Audio;
@@ -17,9 +20,11 @@ internal interface ITagService
 internal sealed class TagService : ITagService
 {
     private readonly IUserSettings _userSettings;
+    private readonly IFileService _fileService;
 
-    public TagService(ISettingsService settingsService)
+    public TagService(ISettingsService settingsService, IFileService fileService)
     {
+        _fileService = fileService;
         _userSettings = settingsService.GetUserSettings();
     }
 
@@ -53,19 +58,26 @@ internal sealed class TagService : ITagService
         return tagFile;
     }
 
-    private static async Task<File> UpdateCoverArtTagAsync(File tagFile, Stream artworkStream, CancellationToken cancellationToken)
+    private async Task<File> UpdateCoverArtTagAsync(File tagFile, Stream artworkStream, CancellationToken cancellationToken)
     {
         // Copy the input stream to be thread-safe
         using var tmpStream = new MemoryStream();
         await artworkStream.CopyToAsync(tmpStream, cancellationToken);
+        tmpStream.Position = 0;
 
-        var artwork = new Picture
+        var tempFileName = Path.GetTempFileName();
+        await _fileService.SaveStreamToFileAsync(artworkStream, tempFileName, cancellationToken);
+
+        var attachmentFrame = new AttachmentFrame
         {
-            Description = "Picture",
+            Type = PictureType.FrontCover,
+            Description = "Cover",
+            MimeType = MediaTypeNames.Image.Jpeg,
             Data = ByteVector.FromStream(tmpStream),
+            TextEncoding = StringType.UTF16,
         };
 
-        tagFile.Tag.Pictures = [artwork];
+        tagFile.Tag.Pictures = [attachmentFrame];
         return tagFile;
     }
 
