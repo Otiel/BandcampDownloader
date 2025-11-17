@@ -8,11 +8,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
     xmlns:validation="clr-namespace:BandcampDownloader.UI.Validation"
+    xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
     Height="140"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+    d:DataContext="{d:DesignInstance settings:IUserSettings}"
     KeyboardNavigation.TabNavigation="Local"
     mc:Ignorable="d">
     <UserControl.Resources>

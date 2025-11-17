@@ -3,7 +3,9 @@
     x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Title="Bandcamp Downloader"
     Width="815"
@@ -13,12 +15,14 @@
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
+    d:DataContext="{d:DesignInstance settings:IUserSettings}"
     Closing="WindowMain_Closing"
     Icon="pack://application:,,,/Resources/Cloud.ico"
     Loaded="WindowMain_Loaded"
     TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="SingleBorderWindow">
+    WindowStyle="SingleBorderWindow"
+    mc:Ignorable="d">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
