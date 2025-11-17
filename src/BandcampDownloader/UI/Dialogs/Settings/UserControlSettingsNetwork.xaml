@@ -9,7 +9,7 @@
     xmlns:converters="clr-namespace:BandcampDownloader.UI.Converters"
     xmlns:settings="clr-namespace:BandcampDownloader.Settings"
     Width="410"
-    Height="180"
+    Height="160"
     lex:LocalizeDictionary.DesignCulture="en"
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
@@ -20,20 +20,9 @@
     </UserControl.Resources>
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
-            <RowDefinition Height="26" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <CheckBox
-            x:Name="CheckBoxUseHttpInsteadOfHttps"
-            Grid.Row="0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Content="{lex:Loc}"
-            IsChecked="{Binding UseHttpInsteadOfHttps, UpdateSourceTrigger=Explicit}"
-            TabIndex="4"
-            ToolTip="{lex:Loc}"
-            ToolTipService.ShowDuration="60000" />
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="26" />
                 <RowDefinition Height="26" />

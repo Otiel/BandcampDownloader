@@ -44,7 +44,6 @@ internal sealed partial class UserControlSettingsNetwork : IUserControlSettings
         RadioButtonSystemProxy.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
         TextBoxHttpAddress.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
         TextBoxHttpPort.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
-        CheckBoxUseHttpInsteadOfHttps.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
