@@ -171,9 +171,6 @@
   <data name="radioButtonNoProxy" xml:space="preserve">
     <value>_Nincs</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Használja ezt az opciót, ha blokkolt a HTTPS forgalma a Bandcamp felé.</value>
-  </data>
   <data name="changelogDownloadError" xml:space="preserve">
     <value>Nem sikerült a changelog letöltése a következő webcímről: {0}</value>
   </data>
@@ -206,9 +203,6 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
   </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>HTTP használata HTTPS helyett</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
     <value>Beállítások</value>

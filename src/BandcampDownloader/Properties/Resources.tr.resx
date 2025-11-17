@@ -468,13 +468,7 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Güncelleştirme</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>HTTPS yerine HTTP kullanın</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Vekil Sunucu</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Bandcamp'e giden HTTPS trafiğiniz engellenmişse bu seçeneği kullanın.</value>
   </data>
 </root>

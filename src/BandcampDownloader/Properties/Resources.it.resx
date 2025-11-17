@@ -527,13 +527,7 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta «☑
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aggiorna</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Usa HTTP invece di HTTPS</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Utilizza questa opzione se il traffico HTTPS verso Bandcamp è bloccato.</value>
   </data>
 </root>

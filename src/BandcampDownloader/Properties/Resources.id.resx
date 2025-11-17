@@ -468,13 +468,7 @@ Tempel halaman artis: http://[artis].bandcamp.com dan centang "☑ Unduh diskogr
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Perbarui</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Gunakan HTTP bukan HTTPS</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proksi</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Gunakan opsi ini jika lalu lintas HTTPS Anda ke Bandcamp diblokir.</value>
   </data>
 </root>

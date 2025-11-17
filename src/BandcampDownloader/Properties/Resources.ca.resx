@@ -169,9 +169,6 @@ Valor recomanat = 4</value>
 - {album} se substituirà pel nom de l'àlbum
 - {year}, {month} i {day} se substituiran per la data de llançament de l'àlbum</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Utilitzeu aquesta opció si el vostre trànsit HTTPS a Bandcamp està bloquejat.</value>
-  </data>
   <data name="messageBoxButtonYes" xml:space="preserve">
     <value>Sí</value>
   </data>
@@ -350,9 +347,6 @@ Obriu un problema nou amb el contingut del vostre fitxer de registre activat a
   </data>
   <data name="Skin_Light" xml:space="preserve">
     <value>Clar</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Emprar HTTP en comptes d'HTTPS</value>
   </data>
   <data name="buttonCancel" xml:space="preserve">
     <value>Cancelar</value>

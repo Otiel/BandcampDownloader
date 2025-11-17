@@ -415,24 +415,6 @@ namespace BandcampDownloader.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Use HTTP instead of HTTPS.
-        /// </summary>
-        internal static string checkBoxUseHttpInsteadOfHttps {
-            get {
-                return ResourceManager.GetString("checkBoxUseHttpInsteadOfHttps", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Use this option if your HTTPS traffic to Bandcamp is blocked..
-        /// </summary>
-        internal static string checkBoxUseHttpInsteadOfHttps_Tooltip {
-            get {
-                return ResourceManager.GetString("checkBoxUseHttpInsteadOfHttps_Tooltip", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Show _verbose log.
         /// </summary>
         internal static string checkBoxVerboseLog {

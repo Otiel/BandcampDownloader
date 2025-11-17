@@ -528,12 +528,6 @@ herunterzuladen.</value>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Aktualisierung</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>HTTP statt HTTPS verwenden</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Verwenden Sie diese Option, falls Ihre HTTPS-Verbindung zu Bandcamp blockiert wird.</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
   </data>

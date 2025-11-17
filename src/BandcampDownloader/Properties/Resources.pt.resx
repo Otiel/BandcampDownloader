@@ -468,13 +468,7 @@ Cole as páginas do artista: http://[artista].bandcamp.com e ative «☑ Baixar 
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Atualizar</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Usar HTTP em vez de HTTPS</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Utilize esta opção se o seu tráfego HTTPS para Bandcamp estiver bloqueado.</value>
   </data>
 </root>

@@ -470,12 +470,6 @@ Liitä artistin sivut: http://[artisti].bandcamp.com ja valitse "☑ Tallenna ar
   <data name="buttonBrowse" xml:space="preserve">
     <value>…</value>
   </data>
-  <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
-    <value>Käytä tätä vaihtoehtoa, jos HTTPS-liikenne Bandcampille on estetty.</value>
-  </data>
-  <data name="checkBoxUseHttpInsteadOfHttps" xml:space="preserve">
-    <value>Käytä HTTP:tä HTTPS:n sijaan</value>
-  </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Välityspalvelin</value>
   </data>
