@@ -222,13 +222,6 @@
 
 Якщо ні, всі теги залишаються незмінними, що еквівалентно налаштуванню "Не змінювати" для кожного тегу.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Завантажити один альбом за раз</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Завантажує лише один альбом за раз.
-Якщо ні, всі альбоми завантажуються одночасно (краще, якщо доступна висока пропускна здатність).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Отримайте розмір_файлу перед завантаженням композицій</value>
   </data>

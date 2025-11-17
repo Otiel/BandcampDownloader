@@ -163,13 +163,6 @@
 
 Değilse, tüm etiketler değişmez, her etiket için "Değiştirmeyin" ayarına eşdeğerdir.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Her seferde bir albüm indir</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Bir seferde yalnızca bir albüm indirir.
-Değilse, tüm albümler aynı anda indirilir (daha yüksek bant genişliği olması kaydıyla).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Parçaları _indirmeden önce dosya boyutunu al</value>
   </data>

@@ -348,9 +348,6 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>_Fájlméret meghatározása a zeneszámok letöltése előtt</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Egyszerre csak egy album letöltése</value>
-  </data>
   <data name="checkBoxModifyTags" xml:space="preserve">
     <value>_Zeneszámok címkéjének módosítása (ID3)</value>
   </data>
@@ -422,10 +419,6 @@ Ha nincs bejelölve, minden címke változatlan marad; ugyanezt éri el azzal is
   </data>
   <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
     <value>Bővített formátumú M3U-lejátszási listák használata (az irányelveket a # [kettőskereszt] karakter előzi meg).</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Egyszerre csak egy albumot tölt le.
-Ha nincs bejelölve, minden album egyszerre kerül letöltésre (nagyobb sávszélesség esetén célszerű kikapcsolva hagyni).</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
     <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:

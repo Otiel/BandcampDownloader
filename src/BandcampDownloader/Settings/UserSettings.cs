@@ -173,9 +173,6 @@ public interface IUserSettings
     [Option(DefaultValue = 7)]
     int DownloadMaxTries { get; set; }
 
-    [Option(DefaultValue = false)]
-    bool DownloadOneAlbumAtATime { get; set; }
-
     // Time in seconds between retries
     [Option(DefaultValue = 0.2)]
     double DownloadRetryCooldown { get; set; }
@@ -195,6 +192,12 @@ public interface IUserSettings
 
     [Option(DefaultValue = Language.en)]
     Language Language { get; set; }
+
+    [Option(DefaultValue = 1)]
+    int MaxConcurrentAlbumsDownloads { get; set; }
+
+    [Option(DefaultValue = 10)]
+    int MaxConcurrentTracksDownloads { get; set; }
 
     [Option(DefaultValue = true)]
     // ReSharper disable once InconsistentNaming : Would be a breaking change to rename. TODO add serialization value

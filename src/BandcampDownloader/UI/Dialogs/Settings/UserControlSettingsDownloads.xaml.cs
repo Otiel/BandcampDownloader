@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls.Primitives;
+﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Settings;
 
@@ -38,7 +39,13 @@ internal sealed partial class UserControlSettingsDownloads : IUserControlSetting
     /// </summary>
     public void SaveSettings()
     {
-        CheckBoxOneAlbumAtATime.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
         CheckBoxRetrieveFilesSize.GetBindingExpression(ToggleButton.IsCheckedProperty)?.UpdateSource();
+        TextBoxMaxConcurrentAlbumsDownloads.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+        TextBoxMaxConcurrentTracksDownloads.GetBindingExpression(TextBox.TextProperty)?.UpdateSource();
+    }
+
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        ((TextBox)sender).GetBindingExpression(TextBox.TextProperty)?.ValidateWithoutUpdate();
     }
 }

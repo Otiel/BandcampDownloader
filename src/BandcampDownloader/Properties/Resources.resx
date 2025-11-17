@@ -222,13 +222,6 @@
 
 If not, all tags are unchanged, equivalent to setting "Do not modify" for each tag.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>_Download one album at a time</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Downloads only one album at a time.
-If not, all albums are downloaded concurrently (better provided high bandwidth is available).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Retrieve _file size before downloading tracks</value>
   </data>
@@ -543,5 +536,17 @@ Paste artist pages: http://[artist].bandcamp.com and check "☑ Download artist 
   </data>
   <data name="checkBoxUseHttpInsteadOfHttps_Tooltip" xml:space="preserve">
     <value>Use this option if your HTTPS traffic to Bandcamp is blocked.</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+      <value>Max concurrent albums downloads</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+      <value>Max concurrent tracks downloads</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+      <value>The maximum number of albums that can be downloaded simultaneously</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+      <value>The maximum number of tracks (within the same album) that can be downloaded simultaneously</value>
   </data>
 </root>

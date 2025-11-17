@@ -81,20 +81,19 @@ internal sealed class DownloadManager : IDownloadManager
         {
             ThrowIfNotInitialized();
 
-            if (_userSettings.DownloadOneAlbumAtATime)
+            var parallelOptions = new ParallelOptions
             {
-                // Download one album at a time
-                foreach (var album in _albums)
+                CancellationToken = cancellationToken,
+                MaxDegreeOfParallelism = _userSettings.MaxConcurrentAlbumsDownloads,
+            };
+
+            await Parallel.ForEachAsync(
+                _albums,
+                parallelOptions,
+                async (album, ct) =>
                 {
-                    await DownloadAlbumAsync(album, cancellationToken);
-                }
-            }
-            else
-            {
-                // Parallel download
-                var albumsIndexes = Enumerable.Range(0, _albums.Count).ToArray();
-                await Task.WhenAll(albumsIndexes.Select(i => DownloadAlbumAsync(_albums[i], cancellationToken)));
-            }
+                    await DownloadAlbumAsync(album, ct);
+                });
         }
         finally
         {
@@ -166,9 +165,25 @@ internal sealed class DownloadManager : IDownloadManager
         }
 
         // Download & tag tracks
-        var tracksDownloaded = new bool[album.Tracks.Count];
-        var indexes = Enumerable.Range(0, album.Tracks.Count).ToArray();
-        await Task.WhenAll(indexes.Select(async i => tracksDownloaded[i] = await DownloadAndTagTrackAsync(album, album.Tracks[i], inTagsArtworkStream, cancellationToken)));
+        var downloadedTracksCount = 0;
+
+        var parallelOptions = new ParallelOptions
+        {
+            CancellationToken = cancellationToken,
+            MaxDegreeOfParallelism = _userSettings.MaxConcurrentTracksDownloads,
+        };
+
+        await Parallel.ForEachAsync(
+            album.Tracks,
+            parallelOptions,
+            async (track, ct) =>
+            {
+                var trackDownloaded = await DownloadAndTagTrackAsync(album, track, inTagsArtworkStream, ct);
+                if (trackDownloaded)
+                {
+                    Interlocked.Increment(ref downloadedTracksCount);
+                }
+            });
 
         // Create playlist file
         if (_userSettings.CreatePlaylist)
@@ -177,7 +192,7 @@ internal sealed class DownloadManager : IDownloadManager
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Saved playlist for album \"{album.Title}\"", DownloadProgressChangedLevel.IntermediateSuccess));
         }
 
-        if (tracksDownloaded.All(x => x))
+        if (album.Tracks.Count == downloadedTracksCount)
         {
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Successfully downloaded album \"{album.Title}\"", DownloadProgressChangedLevel.Success));
         }

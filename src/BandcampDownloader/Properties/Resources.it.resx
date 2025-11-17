@@ -222,13 +222,6 @@
 
 In caso contrario, i tag rimangono immutati, come se si impostasse «Non modificare» per ogni etichetta.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Scarica un album alla _volta</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Scarica un album alla volta.
-Altrimenti tutti gli album saranno scaricati contemporaneamente (consigliato per connessioni a banda larga).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Ottieni dimensioni _dei file</value>
   </data>

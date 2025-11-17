@@ -222,13 +222,6 @@
 
 Si no, todas las etiquetas permanecen sin cambiar, equivalente a seleccionar «No modificar» en cada etiqueta.</value>
   </data>
-  <data name="checkBoxOneAlbumAtATime" xml:space="preserve">
-    <value>Descargar un álbum a la vez</value>
-  </data>
-  <data name="checkBoxOneAlbumAtATime_ToolTip" xml:space="preserve">
-    <value>Descarga solo un álbum a la vez.
-Si no, todos los álbumes se descargan simultáneamente (se proveerá mayor ancho de banda en caso de ser posible).</value>
-  </data>
   <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
     <value>Recuperar el tamaño de los archivos antes de descargar las canciones</value>
   </data>
