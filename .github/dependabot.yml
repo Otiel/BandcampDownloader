@@ -5,6 +5,10 @@ updates:
         schedule:
             interval: "weekly"
         groups:
+            Microsoft.Extensions:
+                applies-to: version-updates
+                patterns:
+                    - "Microsoft.Extensions.*"
             NUnit:
                 applies-to: version-updates
                 patterns:
