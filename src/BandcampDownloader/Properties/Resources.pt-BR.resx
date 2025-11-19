@@ -472,4 +472,16 @@ Colar páginas de artistas: http://[artista]/.bandcamp.com e marque “☑ Baixa
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
   </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Máximo de downloads simultâneos de álbuns</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Máximo de downloads simultâneos de faixas</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>O número máximo de álbuns que podem ser baixados simultaneamente</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>O número máximo de faixas (do mesmo álbum) que podem ser baixadas simultaneamente.</value>
+  </data>
 </root>
