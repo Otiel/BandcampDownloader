@@ -352,7 +352,8 @@ If not, some bandwidth/time is saved.</value>
     <value>_Сбросить настройки</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Сбросить все настройки на их значения по умолчанию?</value>
+    <value>Сбросить все настройки на их значения по умолчанию?
+Это необратимо.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Произошла неизвестная ошибка. Приложение будет закрыто.
@@ -470,5 +471,11 @@ http://[artist].bandcamp.com/track/[track]
   </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Прокси</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Максимальное число загрузок альбомов сразу</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Максимальное число загрузок дорожек сразу</value>
   </data>
 </root>
