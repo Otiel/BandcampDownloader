@@ -1,4 +1,4 @@
-name: .NET
+name: build / test
 
 on:
     push:
@@ -17,7 +17,7 @@ jobs:
         runs-on: windows-latest  # For a list of available runner types, refer to https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
         env:
-            Solution: src/BandcampDownloader.sln
+            Solution: src/BandcampDownloader.slnx
             Configuration: ${{ matrix.configuration }}
 
         steps:
@@ -26,10 +26,10 @@ jobs:
                 with:
                     fetch-depth: 0
 
-            -   name: Install .NET Core
+            -   name: Install .NET
                 uses: actions/setup-dotnet@v4
                 with:
-                    dotnet-version: 9.0.x
+                    dotnet-version: 10.0.x
 
             -   name: Display dotnet version
                 run: dotnet --version
