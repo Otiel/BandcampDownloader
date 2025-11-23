@@ -1,6 +1,11 @@
 <Project>
 
   <PropertyGroup>
+    <AppendPlatformToOutputPath>false</AppendPlatformToOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <LangVersion>latest</LangVersion>
+    <Configurations>Release;Debug</Configurations>
+    <Platforms>x64</Platforms>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
   </PropertyGroup>

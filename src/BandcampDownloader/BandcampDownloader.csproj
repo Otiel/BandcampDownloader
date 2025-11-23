@@ -7,10 +7,7 @@
     <Product>BandcampDownloader</Product>
     <Copyright>ⓒ Otiel $([System.DateTime]::Now.Year)</Copyright>
 
-    <AppendPlatformToOutputPath>false</AppendPlatformToOutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ApplicationIcon>Resources\Cloud.ico</ApplicationIcon>
-    <Platforms>x64</Platforms>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
