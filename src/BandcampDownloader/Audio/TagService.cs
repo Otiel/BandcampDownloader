@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using BandcampDownloader.IO;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using TagLib;
@@ -12,24 +11,37 @@ namespace BandcampDownloader.Audio;
 
 internal interface ITagService
 {
-    void SaveTagsInTrack(Track track, Album album);
-    Task SaveCoverInTrackAsync(Track track, Stream artworkStream, CancellationToken cancellationToken);
+    Task SaveTagsInTrackAsync(Track track, Album album, Stream artworkStream, CancellationToken cancellationToken);
 }
 
 internal sealed class TagService : ITagService
 {
-    private readonly IFileService _fileService;
     private readonly IUserSettings _userSettings;
 
-    public TagService(IFileService fileService, ISettingsService settingsService)
+    public TagService(ISettingsService settingsService)
     {
-        _fileService = fileService;
         _userSettings = settingsService.GetUserSettings();
     }
 
-    public void SaveTagsInTrack(Track track, Album album)
+    public async Task SaveTagsInTrackAsync(Track track, Album album, Stream artworkStream, CancellationToken cancellationToken)
     {
         var tagFile = File.Create(track.Path);
+
+        if (_userSettings.ModifyTags)
+        {
+            tagFile = UpdateStringTags(tagFile, track, album);
+        }
+
+        if (_userSettings.SaveCoverArtInTags && artworkStream != null)
+        {
+            tagFile = await UpdateCoverArtTagAsync(tagFile, artworkStream, cancellationToken);
+        }
+
+        tagFile.Save();
+    }
+
+    private File UpdateStringTags(File tagFile, Track track, Album album)
+    {
         tagFile = UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
         tagFile = UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
         tagFile = UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
@@ -38,24 +50,23 @@ internal sealed class TagService : ITagService
         tagFile = UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
         tagFile = UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
         tagFile = UpdateComments(tagFile, _userSettings.TagComments);
-        tagFile.Save();
+        return tagFile;
     }
 
-    public async Task SaveCoverInTrackAsync(Track track, Stream artworkStream, CancellationToken cancellationToken)
+    private static async Task<File> UpdateCoverArtTagAsync(File tagFile, Stream artworkStream, CancellationToken cancellationToken)
     {
-        var tempFile = Path.GetTempFileName();
-        await _fileService.SaveStreamToFileAsync(artworkStream, tempFile, cancellationToken);
+        // Copy the input stream to be thread-safe
+        using var artworkStreamCopy = new MemoryStream();
+        await artworkStream.CopyToAsync(artworkStreamCopy, cancellationToken);
 
-        var artwork = new Picture(tempFile)
+        var artwork = new Picture
         {
             Description = "Picture",
+            Data = ByteVector.FromStream(artworkStreamCopy),
         };
 
-        var tagFile = File.Create(track.Path);
         tagFile.Tag.Pictures = [artwork];
-        tagFile.Save();
-
-        System.IO.File.Delete(tempFile);
+        return tagFile;
     }
 
     private static File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)

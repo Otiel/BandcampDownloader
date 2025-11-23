@@ -185,6 +185,12 @@ internal sealed class DownloadManager : IDownloadManager
                 }
             });
 
+        // Cleanup
+        if (inTagsArtworkStream != null)
+        {
+            await inTagsArtworkStream.DisposeAsync();
+        }
+
         // Create playlist file
         if (_userSettings.CreatePlaylist)
         {
@@ -310,16 +316,11 @@ internal sealed class DownloadManager : IDownloadManager
 
             if (trackDownloaded)
             {
-                if (_userSettings.ModifyTags)
+                if (_userSettings.ModifyTags ||
+                    _userSettings.SaveCoverArtInTags && artworkStream != null)
                 {
-                    _tagService.SaveTagsInTrack(track, album);
+                    await _tagService.SaveTagsInTrackAsync(track, album, artworkStream, cancellationToken);
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
-                }
-
-                if (_userSettings.SaveCoverArtInTags && artworkStream != null)
-                {
-                    await _tagService.SaveCoverInTrackAsync(track, artworkStream, cancellationToken);
-                    DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Cover art saved in tags for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
                 }
 
                 // Note the file as downloaded
