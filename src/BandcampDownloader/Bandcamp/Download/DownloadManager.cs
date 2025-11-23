@@ -28,7 +28,6 @@ internal interface IDownloadManager
 
 internal sealed class DownloadManager : IDownloadManager
 {
-    private readonly IFileService _fileService;
     private readonly IPlaylistCreator _playlistCreator;
     private readonly ITagService _tagService;
     private readonly ITrackFileService _trackFileService;
@@ -44,9 +43,8 @@ internal sealed class DownloadManager : IDownloadManager
 
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
-    public DownloadManager(IFileService fileService, IPlaylistCreator playlistCreator, ITagService tagService, IResilienceService resilienceService, ITrackFileService trackFileService, IAlbumUrlRetriever albumUrlRetriever, IAlbumInfoRetriever albumInfoRetriever, IImageService imageService, ISettingsService settingsService)
+    public DownloadManager(IPlaylistCreator playlistCreator, ITagService tagService, IResilienceService resilienceService, ITrackFileService trackFileService, IAlbumUrlRetriever albumUrlRetriever, IAlbumInfoRetriever albumInfoRetriever, IImageService imageService, ISettingsService settingsService)
     {
-        _fileService = fileService;
         _playlistCreator = playlistCreator;
         _tagService = tagService;
         _resilienceService = resilienceService;
@@ -144,23 +142,23 @@ internal sealed class DownloadManager : IDownloadManager
             return;
         }
 
-        Stream inTagsArtworkStream = null;
+        byte[] inTagsArtwork = null;
 
         // Download artwork
         if ((_userSettings.SaveCoverArtInTags || _userSettings.SaveCoverArtInFolder) && album.HasArtwork)
         {
-            await using var artworkStream = await DownloadCoverArtAsync(album, cancellationToken);
+            var artwork = await DownloadCoverArtAsync(album, cancellationToken);
 
             // Save artwork to folder
-            if (_userSettings.SaveCoverArtInFolder && artworkStream != null)
+            if (_userSettings.SaveCoverArtInFolder && artwork != null)
             {
-                await SaveCoverArtToFolder(album, artworkStream, cancellationToken);
+                await SaveCoverArtToFolder(album, artwork, cancellationToken);
             }
 
             // Prepare artwork for tags
-            if (_userSettings.SaveCoverArtInTags && artworkStream != null)
+            if (_userSettings.SaveCoverArtInTags && artwork != null)
             {
-                inTagsArtworkStream = await PrepareCoverArtForTags(artworkStream, cancellationToken);
+                inTagsArtwork = await PrepareCoverArtForTags(artwork, cancellationToken);
             }
         }
 
@@ -178,18 +176,12 @@ internal sealed class DownloadManager : IDownloadManager
             parallelOptions,
             async (track, ct) =>
             {
-                var trackDownloaded = await DownloadAndTagTrackAsync(album, track, inTagsArtworkStream, ct);
+                var trackDownloaded = await DownloadAndTagTrackAsync(album, track, inTagsArtwork, ct);
                 if (trackDownloaded)
                 {
                     Interlocked.Increment(ref downloadedTracksCount);
                 }
             });
-
-        // Cleanup
-        if (inTagsArtworkStream != null)
-        {
-            await inTagsArtworkStream.DisposeAsync();
-        }
 
         // Create playlist file
         if (_userSettings.CreatePlaylist)
@@ -208,37 +200,36 @@ internal sealed class DownloadManager : IDownloadManager
         }
     }
 
-    private async Task SaveCoverArtToFolder(Album album, Stream artworkStream, CancellationToken cancellationToken)
+    private async Task SaveCoverArtToFolder(Album album, byte[] artwork, CancellationToken cancellationToken)
     {
-        var inFolderArtworkStream = artworkStream;
+        var inFolderArtwork = artwork;
         if (_userSettings.CoverArtInFolderResize)
         {
-            inFolderArtworkStream = await _imageService.ResizeImage(inFolderArtworkStream, _userSettings.CoverArtInFolderMaxSize, _userSettings.CoverArtInFolderMaxSize, cancellationToken);
+            inFolderArtwork = await _imageService.ResizeImage(inFolderArtwork, _userSettings.CoverArtInFolderMaxSize, _userSettings.CoverArtInFolderMaxSize, cancellationToken);
         }
 
         if (_userSettings.CoverArtInFolderConvertToJpg)
         {
-            inFolderArtworkStream = await _imageService.ConvertToJpegAsync(inFolderArtworkStream, cancellationToken);
+            inFolderArtwork = await _imageService.ConvertToJpegAsync(inFolderArtwork, cancellationToken);
         }
 
-        await _fileService.SaveStreamToFileAsync(inFolderArtworkStream, album.ArtworkPath, cancellationToken);
-        await inFolderArtworkStream.DisposeAsync();
+        await File.WriteAllBytesAsync(album.ArtworkPath, inFolderArtwork, cancellationToken);
     }
 
-    private async Task<Stream> PrepareCoverArtForTags(Stream artworkStream, CancellationToken cancellationToken)
+    private async Task<byte[]> PrepareCoverArtForTags(byte[] artwork, CancellationToken cancellationToken)
     {
-        var inTagsArtworkStream = artworkStream;
+        var inTagsArtwork = artwork;
         if (_userSettings.CoverArtInTagsResize)
         {
-            inTagsArtworkStream = await _imageService.ResizeImage(inTagsArtworkStream, _userSettings.CoverArtInTagsMaxSize, _userSettings.CoverArtInTagsMaxSize, cancellationToken);
+            inTagsArtwork = await _imageService.ResizeImage(inTagsArtwork, _userSettings.CoverArtInTagsMaxSize, _userSettings.CoverArtInTagsMaxSize, cancellationToken);
         }
 
         if (_userSettings.CoverArtInTagsConvertToJpg)
         {
-            inTagsArtworkStream = await _imageService.ConvertToJpegAsync(inTagsArtworkStream, cancellationToken);
+            inTagsArtwork = await _imageService.ConvertToJpegAsync(inTagsArtwork, cancellationToken);
         }
 
-        return inTagsArtworkStream;
+        return inTagsArtwork;
     }
 
     /// <summary>
@@ -246,9 +237,9 @@ internal sealed class DownloadManager : IDownloadManager
     /// </summary>
     /// <param name="album">The album of the track to download.</param>
     /// <param name="track">The track to download.</param>
-    /// <param name="artworkStream">The cover art.</param>
+    /// <param name="artwork">The cover art.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, Stream artworkStream, CancellationToken cancellationToken)
+    private async Task<bool> DownloadAndTagTrackAsync(Album album, Track track, byte[] artwork, CancellationToken cancellationToken)
     {
         var tries = 0;
         var trackDownloaded = false;
@@ -317,9 +308,9 @@ internal sealed class DownloadManager : IDownloadManager
             if (trackDownloaded)
             {
                 if (_userSettings.ModifyTags ||
-                    _userSettings.SaveCoverArtInTags && artworkStream != null)
+                    _userSettings.SaveCoverArtInTags && artwork != null)
                 {
-                    await _tagService.SaveTagsInTrackAsync(track, album, artworkStream, cancellationToken);
+                    _tagService.SaveTagsInTrack(track, album, artwork, cancellationToken);
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
                 }
 
@@ -345,9 +336,9 @@ internal sealed class DownloadManager : IDownloadManager
     /// </summary>
     /// <param name="album">The album.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    private async Task<Stream> DownloadCoverArtAsync(Album album, CancellationToken cancellationToken)
+    private async Task<byte[]> DownloadCoverArtAsync(Album album, CancellationToken cancellationToken)
     {
-        Stream artworkStream = null;
+        byte[] artwork = null;
         var tries = 0;
         var artworkDownloaded = false;
 
@@ -379,8 +370,10 @@ internal sealed class DownloadManager : IDownloadManager
 
             try
             {
-                artworkStream = await downloadService.DownloadFileTaskAsync(album.ArtworkUrl, cancellationToken);
+                await using var artworkStream = await downloadService.DownloadFileTaskAsync(album.ArtworkUrl, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
+
+                artwork = await artworkStream.ToArrayAsync(cancellationToken);
                 artworkDownloaded = true;
             }
             catch (WebException) // TODO is this still a WebException?
@@ -410,6 +403,6 @@ internal sealed class DownloadManager : IDownloadManager
         }
         while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
-        return artworkStream;
+        return artwork;
     }
 }
