@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using ATL;
+using BandcampDownloader.Audio.AtlDotNet;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
-using TagLib;
-using File = TagLib.File;
+using Track = BandcampDownloader.Model.Track;
 
 namespace BandcampDownloader.Audio;
 
@@ -18,66 +20,65 @@ internal sealed class TagService : ITagService
 {
     private readonly IUserSettings _userSettings;
 
-    public TagService(ISettingsService settingsService)
+    public TagService(ISettingsService settingsService, IAtlLogInterceptor atlLogInterceptor)
     {
         _userSettings = settingsService.GetUserSettings();
+        atlLogInterceptor.Initialize();
     }
 
     public async Task SaveTagsInTrackAsync(Track track, Album album, Stream artworkStream, CancellationToken cancellationToken)
     {
-        var tagFile = File.Create(track.Path);
+        var atlTrack = new ATL.Track(track.Path);
 
         if (_userSettings.ModifyTags)
         {
-            tagFile = UpdateStringTags(tagFile, track, album);
+            atlTrack = UpdateStringTags(atlTrack, track, album);
         }
 
         if (_userSettings.SaveCoverArtInTags && artworkStream != null)
         {
-            tagFile = await UpdateCoverArtTagAsync(tagFile, artworkStream, cancellationToken);
+            atlTrack = await UpdateCoverArtTagAsync(atlTrack, artworkStream, cancellationToken);
         }
 
-        tagFile.Save();
+        atlTrack.Save();
     }
 
-    private File UpdateStringTags(File tagFile, Track track, Album album)
+    private ATL.Track UpdateStringTags(ATL.Track atlTrack, Track track, Album album)
     {
-        tagFile = UpdateArtist(tagFile, album.Artist, _userSettings.TagArtist);
-        tagFile = UpdateAlbumArtist(tagFile, album.Artist, _userSettings.TagAlbumArtist);
-        tagFile = UpdateAlbumTitle(tagFile, album.Title, _userSettings.TagAlbumTitle);
-        tagFile = UpdateAlbumYear(tagFile, (uint)album.ReleaseDate.Year, _userSettings.TagYear);
-        tagFile = UpdateTrackNumber(tagFile, (uint)track.Number, _userSettings.TagTrackNumber);
-        tagFile = UpdateTrackTitle(tagFile, track.Title, _userSettings.TagTrackTitle);
-        tagFile = UpdateTrackLyrics(tagFile, track.Lyrics, _userSettings.TagLyrics);
-        tagFile = UpdateComments(tagFile, _userSettings.TagComments);
-        return tagFile;
+        atlTrack = UpdateArtist(atlTrack, album.Artist, _userSettings.TagArtist);
+        atlTrack = UpdateAlbumArtist(atlTrack, album.Artist, _userSettings.TagAlbumArtist);
+        atlTrack = UpdateAlbumTitle(atlTrack, album.Title, _userSettings.TagAlbumTitle);
+        atlTrack = UpdateAlbumYear(atlTrack, album.ReleaseDate.Year, _userSettings.TagYear);
+        atlTrack = UpdateTrackNumber(atlTrack, track.Number, _userSettings.TagTrackNumber);
+        atlTrack = UpdateTrackTitle(atlTrack, track.Title, _userSettings.TagTrackTitle);
+        atlTrack = UpdateTrackLyrics(atlTrack, track.Lyrics, _userSettings.TagLyrics);
+        atlTrack = UpdateComments(atlTrack, _userSettings.TagComments);
+        return atlTrack;
     }
 
-    private static async Task<File> UpdateCoverArtTagAsync(File tagFile, Stream artworkStream, CancellationToken cancellationToken)
+    private static async Task<ATL.Track> UpdateCoverArtTagAsync(ATL.Track atlTrack, Stream artworkStream, CancellationToken cancellationToken)
     {
         // Copy the input stream to be thread-safe
         using var artworkStreamCopy = new MemoryStream();
+        artworkStream.Position = 0;
         await artworkStream.CopyToAsync(artworkStreamCopy, cancellationToken);
 
-        var artwork = new Picture
-        {
-            Description = "Picture",
-            Data = ByteVector.FromStream(artworkStreamCopy),
-        };
+        var pictureInfo = PictureInfo.fromBinaryData(artworkStreamCopy.ToArray());
 
-        tagFile.Tag.Pictures = [artwork];
-        return tagFile;
+        atlTrack.EmbeddedPictures.Clear();
+        atlTrack.EmbeddedPictures.Add(pictureInfo);
+        return atlTrack;
     }
 
-    private static File UpdateAlbumArtist(File file, string albumArtist, TagEditAction editAction)
+    private static ATL.Track UpdateAlbumArtist(ATL.Track atlTrack, string albumArtist, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.AlbumArtists = [""];
+                atlTrack.AlbumArtist = "";
                 break;
             case TagEditAction.Modify:
-                file.Tag.AlbumArtists = [albumArtist];
+                atlTrack.AlbumArtist = ToEmptyIfNull(albumArtist);
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -85,18 +86,18 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateAlbumTitle(File file, string albumTitle, TagEditAction editAction)
+    private static ATL.Track UpdateAlbumTitle(ATL.Track atlTrack, string albumTitle, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Album = "";
+                atlTrack.Album = "";
                 break;
             case TagEditAction.Modify:
-                file.Tag.Album = albumTitle;
+                atlTrack.Album = ToEmptyIfNull(albumTitle);
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -104,18 +105,18 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateAlbumYear(File file, uint albumYear, TagEditAction editAction)
+    private static ATL.Track UpdateAlbumYear(ATL.Track atlTrack, int albumYear, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Year = 0;
+                atlTrack.Year = 0;
                 break;
             case TagEditAction.Modify:
-                file.Tag.Year = albumYear;
+                atlTrack.Year = albumYear;
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -123,18 +124,18 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateArtist(File file, string artist, TagEditAction editAction)
+    private static ATL.Track UpdateArtist(ATL.Track atlTrack, string artist, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Performers = [""];
+                atlTrack.Artist = "";
                 break;
             case TagEditAction.Modify:
-                file.Tag.Performers = [artist];
+                atlTrack.Artist = ToEmptyIfNull(artist);
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -142,15 +143,15 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateComments(File file, TagRemoveAction removeAction)
+    private static ATL.Track UpdateComments(ATL.Track atlTrack, TagRemoveAction removeAction)
     {
         switch (removeAction)
         {
             case TagRemoveAction.Empty:
-                file.Tag.Comment = "";
+                atlTrack.Comment = "";
                 break;
             case TagRemoveAction.DoNotModify:
                 break;
@@ -158,18 +159,23 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(removeAction), removeAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateTrackLyrics(File file, string trackLyrics, TagEditAction editAction)
+    private static ATL.Track UpdateTrackLyrics(ATL.Track atlTrack, string trackLyrics, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Lyrics = "";
+            case TagEditAction.Modify when string.IsNullOrWhiteSpace(trackLyrics):
+                atlTrack.Lyrics = new List<LyricsInfo>();
                 break;
-            case TagEditAction.Modify:
-                file.Tag.Lyrics = trackLyrics;
+            case TagEditAction.Modify when !string.IsNullOrWhiteSpace(trackLyrics):
+                var lyricsInfo = new LyricsInfo
+                {
+                    UnsynchronizedLyrics = trackLyrics,
+                };
+                atlTrack.Lyrics = new List<LyricsInfo> { lyricsInfo };
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -177,18 +183,18 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateTrackNumber(File file, uint trackNumber, TagEditAction editAction)
+    private static ATL.Track UpdateTrackNumber(ATL.Track atlTrack, int trackNumber, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Track = 0;
+                atlTrack.TrackNumber = 0;
                 break;
             case TagEditAction.Modify:
-                file.Tag.Track = trackNumber;
+                atlTrack.TrackNumber = trackNumber;
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -196,18 +202,18 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
     }
 
-    private static File UpdateTrackTitle(File file, string trackTitle, TagEditAction editAction)
+    private static ATL.Track UpdateTrackTitle(ATL.Track atlTrack, string trackTitle, TagEditAction editAction)
     {
         switch (editAction)
         {
             case TagEditAction.Empty:
-                file.Tag.Title = "";
+                atlTrack.Title = "";
                 break;
             case TagEditAction.Modify:
-                file.Tag.Title = trackTitle;
+                atlTrack.Title = ToEmptyIfNull(trackTitle);
                 break;
             case TagEditAction.DoNotModify:
                 break;
@@ -215,6 +221,11 @@ internal sealed class TagService : ITagService
                 throw new ArgumentOutOfRangeException(nameof(editAction), editAction, null);
         }
 
-        return file;
+        return atlTrack;
+    }
+
+    private static string ToEmptyIfNull(string s)
+    {
+        return s ?? "";
     }
 }

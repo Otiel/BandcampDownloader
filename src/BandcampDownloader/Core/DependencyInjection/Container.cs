@@ -1,4 +1,5 @@
 ﻿using BandcampDownloader.Audio;
+using BandcampDownloader.Audio.AtlDotNet;
 using BandcampDownloader.Bandcamp.Download;
 using BandcampDownloader.Bandcamp.Extraction;
 using BandcampDownloader.Core.Localization;
@@ -44,6 +45,7 @@ internal sealed class Container : IContainer
         serviceCollection.AddHttpClient();
         serviceCollection.AddSingleton<IAlbumInfoRetriever, AlbumInfoRetriever>();
         serviceCollection.AddSingleton<IAlbumUrlRetriever, AlbumUrlRetriever>();
+        serviceCollection.AddSingleton<IAtlLogInterceptor, AtlLogInterceptor>();
         serviceCollection.AddSingleton<IBandcampExtractionService, BandcampExtractionService>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();

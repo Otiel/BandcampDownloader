@@ -34,9 +34,9 @@
     <PackageReference Include="NLog" Version="6.0.6" />
     <PackageReference Include="PlaylistsNET" Version="1.4.1" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
-    <PackageReference Include="TagLibSharp" Version="2.3.0" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
     <PackageReference Include="WpfMessageBox" Version="1.3.0" />
+    <PackageReference Include="z440.atl.core" Version="7.9.0" />
   </ItemGroup>
 
   <ItemGroup>
