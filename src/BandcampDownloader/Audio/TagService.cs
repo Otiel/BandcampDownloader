@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using BandcampDownloader.Model;
 using BandcampDownloader.Settings;
 using TagLib;
@@ -11,7 +9,7 @@ namespace BandcampDownloader.Audio;
 
 internal interface ITagService
 {
-    Task SaveTagsInTrackAsync(Track track, Album album, Stream artworkStream, CancellationToken cancellationToken);
+    void SaveTagsInTrack(Track track, Album album, byte[] artwork, CancellationToken cancellationToken);
 }
 
 internal sealed class TagService : ITagService
@@ -23,7 +21,7 @@ internal sealed class TagService : ITagService
         _userSettings = settingsService.GetUserSettings();
     }
 
-    public async Task SaveTagsInTrackAsync(Track track, Album album, Stream artworkStream, CancellationToken cancellationToken)
+    public void SaveTagsInTrack(Track track, Album album, byte[] artwork, CancellationToken cancellationToken)
     {
         var tagFile = File.Create(track.Path);
 
@@ -32,9 +30,9 @@ internal sealed class TagService : ITagService
             tagFile = UpdateStringTags(tagFile, track, album);
         }
 
-        if (_userSettings.SaveCoverArtInTags && artworkStream != null)
+        if (_userSettings.SaveCoverArtInTags && artwork != null)
         {
-            tagFile = await UpdateCoverArtTagAsync(tagFile, artworkStream, cancellationToken);
+            tagFile = UpdateCoverArtTag(tagFile, artwork);
         }
 
         tagFile.Save();
@@ -53,19 +51,15 @@ internal sealed class TagService : ITagService
         return tagFile;
     }
 
-    private static async Task<File> UpdateCoverArtTagAsync(File tagFile, Stream artworkStream, CancellationToken cancellationToken)
+    private static File UpdateCoverArtTag(File tagFile, byte[] artwork)
     {
-        // Copy the input stream to be thread-safe
-        using var artworkStreamCopy = new MemoryStream();
-        await artworkStream.CopyToAsync(artworkStreamCopy, cancellationToken);
-
-        var artwork = new Picture
+        var picture = new Picture
         {
             Description = "Picture",
-            Data = ByteVector.FromStream(artworkStreamCopy),
+            Data = artwork,
         };
 
-        tagFile.Tag.Pictures = [artwork];
+        tagFile.Tag.Pictures = [picture];
         return tagFile;
     }
 

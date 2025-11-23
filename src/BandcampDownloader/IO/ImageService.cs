@@ -9,16 +9,16 @@ namespace BandcampDownloader.IO;
 
 internal interface IImageService
 {
-    Task<Stream> ConvertToJpegAsync(Stream inputImage, CancellationToken cancellationToken);
-    Task<Stream> ResizeImage(Stream inputImage, int maxWidth, int maxHeight, CancellationToken cancellationToken);
+    Task<byte[]> ConvertToJpegAsync(byte[] inputImage, CancellationToken cancellationToken);
+    Task<byte[]> ResizeImage(byte[] inputImage, int maxWidth, int maxHeight, CancellationToken cancellationToken);
 }
 
 internal sealed class ImageService : IImageService
 {
-    public async Task<Stream> ConvertToJpegAsync(Stream inputImage, CancellationToken cancellationToken)
+    public async Task<byte[]> ConvertToJpegAsync(byte[] inputImage, CancellationToken cancellationToken)
     {
-        inputImage.Position = 0;
-        using var image = await Image.LoadAsync(inputImage, cancellationToken);
+        using var imageStream = new MemoryStream(inputImage);
+        using var image = await Image.LoadAsync(imageStream, cancellationToken);
 
         var jpegEncoder = new JpegEncoder
         {
@@ -28,13 +28,15 @@ internal sealed class ImageService : IImageService
         var outputStream = new MemoryStream();
         await image.SaveAsJpegAsync(outputStream, jpegEncoder, cancellationToken);
 
-        return outputStream;
+        var outputImage = outputStream.ToArray();
+
+        return outputImage;
     }
 
-    public async Task<Stream> ResizeImage(Stream inputImage, int maxWidth, int maxHeight, CancellationToken cancellationToken)
+    public async Task<byte[]> ResizeImage(byte[] inputImage, int maxWidth, int maxHeight, CancellationToken cancellationToken)
     {
-        inputImage.Position = 0;
-        using var image = await Image.LoadAsync(inputImage, cancellationToken);
+        using var imageStream = new MemoryStream(inputImage);
+        using var image = await Image.LoadAsync(imageStream, cancellationToken);
 
         var resizeOptions = new ResizeOptions
         {
@@ -54,6 +56,8 @@ internal sealed class ImageService : IImageService
             await image.SaveAsJpegAsync(outputStream, cancellationToken);
         }
 
-        return outputStream;
+        var outputImage = outputStream.ToArray();
+
+        return outputImage;
     }
 }
