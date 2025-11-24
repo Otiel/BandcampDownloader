@@ -1,18 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- Version -->
+    <VersionPrefix>1.4.1</VersionPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <!-- Assembly attributes -->
     <AssemblyTitle>BandcampDownloader</AssemblyTitle>
     <Description>Application used to download albums from Bandcamp</Description>
     <Product>BandcampDownloader</Product>
     <Copyright>ⓒ Otiel $([System.DateTime]::Now.Year)</Copyright>
+  </PropertyGroup>
 
+  <PropertyGroup>
     <ApplicationIcon>Resources\Cloud.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-
-    <VersionPrefix>1.4.1</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
