@@ -1,23 +1,23 @@
-﻿using BandcampDownloader.Model;
-using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using BandcampDownloader.Model;
 
 namespace BandcampDownloader.Bandcamp.Extraction.Dto;
 
 internal sealed class JsonTrack
 {
-    [JsonProperty("duration")]
+    [JsonPropertyName("duration")]
     public double Duration { get; set; }
 
-    [JsonProperty("file")]
+    [JsonPropertyName("file")]
     public JsonMp3File File { get; set; }
 
-    [JsonProperty("lyrics")]
+    [JsonPropertyName("lyrics")]
     public string Lyrics { get; set; }
 
-    [JsonProperty("track_num")]
+    [JsonPropertyName("track_num")]
     public int Number { get; set; }
 
-    [JsonProperty("title")]
+    [JsonPropertyName("title")]
     public string Title { get; set; }
 
     public Track ToTrack(Album album)

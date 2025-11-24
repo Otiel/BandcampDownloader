@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using BandcampDownloader.Bandcamp.Extraction.Dto;
 using BandcampDownloader.Model;
 using HtmlAgilityPack;
-using Newtonsoft.Json;
 using NLog;
 
 namespace BandcampDownloader.Bandcamp.Extraction;
@@ -49,12 +50,13 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         htmlAlbumData = FixJson(htmlAlbumData);
 
         // Deserialize JSON
-        var settings = new JsonSerializerSettings
+        var options = new JsonSerializerOptions
         {
-            NullValueHandling = NullValueHandling.Ignore,
-            MissingMemberHandling = MissingMemberHandling.Ignore,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         };
-        var album = JsonConvert.DeserializeObject<JsonAlbum>(htmlAlbumData, settings).ToAlbum();
+        options.Converters.Add(new BandcampDateTimeJsonConverter());
+
+        var album = JsonSerializer.Deserialize<JsonAlbum>(htmlAlbumData, options).ToAlbum();
 
         cancellationToken.ThrowIfCancellationRequested();
 

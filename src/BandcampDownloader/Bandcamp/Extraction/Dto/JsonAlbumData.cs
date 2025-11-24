@@ -1,13 +1,13 @@
 ﻿using System;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace BandcampDownloader.Bandcamp.Extraction.Dto;
 
 internal sealed class JsonAlbumData
 {
-    [JsonProperty("title")]
+    [JsonPropertyName("title")]
     public string AlbumTitle { get; set; }
 
-    [JsonProperty("release_date")]
+    [JsonPropertyName("release_date")]
     public DateTime ReleaseDate { get; set; }
 }
