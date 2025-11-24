@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 using System.Text.Json;
 using Config.Net;
 
@@ -19,7 +18,7 @@ public sealed class SettingsService : ISettingsService
     /// <summary>
     /// The absolute path to the settings file.
     /// </summary>
-    private static readonly string USER_SETTINGS_FILE_PATH = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.ini";
+    private static readonly string USER_SETTINGS_FILE_PATH = Directory.GetParent(AppContext.BaseDirectory) + @"\BandcampDownloader.ini";
 
     private IUserSettings _userSettings;
 
