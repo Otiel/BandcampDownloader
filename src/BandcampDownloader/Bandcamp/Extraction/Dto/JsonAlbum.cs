@@ -15,7 +15,7 @@ internal sealed class JsonAlbum
     public JsonAlbumData AlbumData { get; set; }
 
     [JsonPropertyName("art_id")]
-    public string ArtId { get; set; }
+    public int? ArtId { get; set; }
 
     [JsonPropertyName("artist")]
     public string Artist { get; set; }
@@ -29,7 +29,7 @@ internal sealed class JsonAlbum
     public Album ToAlbum()
     {
         // Some albums do not have a cover art
-        var artworkUrl = ArtId == null ? null : URL_START + ArtId.PadLeft(10, '0') + URL_END;
+        var artworkUrl = ArtId == null ? null : URL_START + ArtId.ToString().PadLeft(10, '0') + URL_END;
 
         // Singles might not have a release date  #144
         if (ReleaseDate == new DateTime())
