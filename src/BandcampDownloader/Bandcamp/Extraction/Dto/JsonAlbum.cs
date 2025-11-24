@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using BandcampDownloader.Model;
-using Newtonsoft.Json;
 
 namespace BandcampDownloader.Bandcamp.Extraction.Dto;
 
@@ -11,19 +11,19 @@ internal sealed class JsonAlbum
     private const string URL_END = "_0.jpg";
     private const string URL_START = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
-    [JsonProperty("current")]
+    [JsonPropertyName("current")]
     public JsonAlbumData AlbumData { get; set; }
 
-    [JsonProperty("art_id")]
+    [JsonPropertyName("art_id")]
     public string ArtId { get; set; }
 
-    [JsonProperty("artist")]
+    [JsonPropertyName("artist")]
     public string Artist { get; set; }
 
-    [JsonProperty("album_release_date")]
+    [JsonPropertyName("album_release_date")]
     public DateTime ReleaseDate { get; set; }
 
-    [JsonProperty("trackinfo")]
+    [JsonPropertyName("trackinfo")]
     public List<JsonTrack> Tracks { get; set; }
 
     public Album ToAlbum()
