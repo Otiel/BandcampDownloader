@@ -10,14 +10,13 @@
     <File Path="Directory.Build.props" />
     <File Path="global.json" />
   </Folder>
-  <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj" />
+  <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj">
+    <Platform Project="x64" />
+  </Project>
   <Project Path="BandcampDownloader.UnitTests/BandcampDownloader.UnitTests.csproj">
     <Platform Project="x64" />
   </Project>
   <Project Path="BandcampDownloader/BandcampDownloader.csproj">
     <Platform Project="x64" />
   </Project>
-  <Properties Name="ExtensibilityGlobals" Scope="PostLoad">
-    <Property Name="RESX_SortFileContentOnSave" Value="True" />
-  </Properties>
 </Solution>
