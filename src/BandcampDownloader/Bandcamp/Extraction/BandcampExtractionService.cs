@@ -54,6 +54,8 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         {
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         };
+        options.Converters.Add(new BandcampDateTimeJsonConverter());
+
         var album = JsonSerializer.Deserialize<JsonAlbum>(htmlAlbumData, options).ToAlbum();
 
         cancellationToken.ThrowIfCancellationRequested();
