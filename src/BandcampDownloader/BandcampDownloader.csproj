@@ -20,6 +20,16 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- Single file deployment -->
+    <!-- https://learn.microsoft.com/en-us/dotnet/core/deploying/single-file -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <InternalsVisibleTo Include="BandcampDownloader.UnitTests" />
     <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
