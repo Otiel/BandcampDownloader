@@ -1,6 +1,7 @@
 # Build Folders
 [Bb]in/
 [Oo]bj/
+artifacts/
 
 # User-specific files
 *.suo
