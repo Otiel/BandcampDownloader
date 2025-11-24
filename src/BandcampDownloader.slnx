@@ -10,7 +10,9 @@
     <File Path="Directory.Build.props" />
     <File Path="global.json" />
   </Folder>
-  <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj" />
+  <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj">
+    <Platform Project="x64" />
+  </Project>
   <Project Path="BandcampDownloader.UnitTests/BandcampDownloader.UnitTests.csproj">
     <Platform Project="x64" />
   </Project>
