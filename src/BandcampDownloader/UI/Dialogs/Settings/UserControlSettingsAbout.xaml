@@ -36,7 +36,7 @@
                 Width="32"
                 Height="32"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"
-                Source="pack://application:,,,/Resources/CloudSmall.png"
+                Source="/BandcampDownloader;component/Resources/CloudSmall.png"
                 Stretch="Fill" />
             <Label
                 x:Name="LabelAppName"

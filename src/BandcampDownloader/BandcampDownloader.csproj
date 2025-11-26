@@ -51,9 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Resources\**" />
   </ItemGroup>
 
   <ItemGroup>
