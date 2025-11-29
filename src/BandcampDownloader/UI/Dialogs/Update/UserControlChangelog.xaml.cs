@@ -65,9 +65,9 @@ internal sealed partial class UserControlChangelog
             // Probably a relative link like "/docs/help-translate.md"
             var msgProperties = new WpfMessageBoxProperties
             {
-                Button = MessageBoxButton.OK,
+                Button = WpfMessageBoxButton.OK,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
-                Image = MessageBoxImage.Error,
+                Image = WpfMessageBoxImage.Error,
                 Text = string.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
                 Title = "Bandcamp Downloader",
             };

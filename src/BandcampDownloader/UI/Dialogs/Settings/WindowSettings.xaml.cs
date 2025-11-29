@@ -38,15 +38,15 @@ internal sealed partial class WindowSettings
     {
         var msgProperties = new WpfMessageBoxProperties
         {
-            Button = MessageBoxButton.OKCancel,
+            Button = WpfMessageBoxButton.OKCancel,
             ButtonOkText = Properties.Resources.messageBoxResetSettingsButtonOk,
             ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
-            Image = MessageBoxImage.Question,
+            Image = WpfMessageBoxImage.Question,
             Text = Properties.Resources.messageBoxResetSettingsText,
             Title = "Bandcamp Downloader",
         };
 
-        if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.OK)
+        if (WpfMessageBox.Show(this, ref msgProperties) == WpfMessageBoxResult.OK)
         {
             ResetSettings();
         }

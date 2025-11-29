@@ -91,9 +91,9 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
 
             var msgProperties = new WpfMessageBoxProperties
             {
-                Button = MessageBoxButton.OK,
+                Button = WpfMessageBoxButton.OK,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
-                Image = MessageBoxImage.Error,
+                Image = WpfMessageBoxImage.Error,
                 Text = Properties.Resources.messageBoxCheckForUpdatesError,
                 Title = "Bandcamp Downloader",
             };
@@ -116,9 +116,9 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
             var currentVersion = VersionHelper.GetCurrentVersion();
             var msgProperties = new WpfMessageBoxProperties
             {
-                Button = MessageBoxButton.OK,
+                Button = WpfMessageBoxButton.OK,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
-                Image = MessageBoxImage.Information,
+                Image = WpfMessageBoxImage.Information,
                 Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion.ToString(3)),
                 Title = "Bandcamp Downloader",
             };
