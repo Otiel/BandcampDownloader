@@ -12,19 +12,19 @@ internal sealed class JsonAlbum
     private const string URL_START = "https://f4.bcbits.com/img/a"; // Uses the art_id variable to retrieve the image from Bandcamp hosting site
 
     [JsonPropertyName("current")]
-    public JsonAlbumData AlbumData { get; set; }
+    public JsonAlbumData AlbumData { get; init; }
 
     [JsonPropertyName("art_id")]
-    public long? ArtId { get; set; }
+    public long? ArtId { get; init; }
 
     [JsonPropertyName("artist")]
-    public string Artist { get; set; }
+    public string Artist { get; init; }
 
     [JsonPropertyName("album_release_date")]
     public DateTime ReleaseDate { get; set; }
 
     [JsonPropertyName("trackinfo")]
-    public List<JsonTrack> Tracks { get; set; }
+    public List<JsonTrack> Tracks { get; init; }
 
     public Album ToAlbum()
     {

@@ -11,7 +11,7 @@ internal sealed class Track
     /// <summary>
     /// The track album.
     /// </summary>
-    public Album Album { get; set; }
+    private Album Album { get; }
 
     /// <summary>
     /// The track length (in seconds).

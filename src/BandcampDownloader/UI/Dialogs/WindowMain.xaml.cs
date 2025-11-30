@@ -142,10 +142,8 @@ internal sealed partial class WindowMain
                     // Play a sound
                     try
                     {
-                        using (var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav"))
-                        {
-                            soundPlayer.Play();
-                        }
+                        using var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav");
+                        soundPlayer.Play();
                     }
                     catch (Exception ex)
                     {
