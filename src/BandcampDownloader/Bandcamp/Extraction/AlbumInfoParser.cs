@@ -24,7 +24,7 @@ internal interface IAlbumInfoParser
 
 internal sealed class AlbumInfoParser : IAlbumInfoParser
 {
-    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     public Album GetAlbumInfoFromAlbumPage(string htmlContent, CancellationToken cancellationToken)
     {
@@ -80,7 +80,7 @@ internal sealed class AlbumInfoParser : IAlbumInfoParser
         return fixedData;
     }
 
-    private static bool TryGetAlbumData(string htmlContent, out string albumData)
+    private bool TryGetAlbumData(string htmlContent, out string albumData)
     {
         albumData = null;
 
