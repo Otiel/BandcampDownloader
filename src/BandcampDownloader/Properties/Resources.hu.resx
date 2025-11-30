@@ -130,7 +130,8 @@
     <value>_Beállítások visszaállítása</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékre?</value>
+    <value>Biztosan visszaállít minden beállítást az alapértelmezett értékre?
+Ezt a műveletet nem lehet visszavonni.</value>
   </data>
   <data name="buttonViewChangelog" xml:space="preserve">
     <value>_Megtekint</value>
@@ -283,7 +284,7 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>Újrapróbálkozási képviselő</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Maximum méret (pixel)</value>
+    <value>Maximum méret (p_x)</value>
   </data>
   <data name="labelCurrentVersion" xml:space="preserve">
     <value>Jelenlegi verzió:</value>
@@ -295,7 +296,7 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>Megjegyzések</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
-    <value>Maximum méret (pixel)</value>
+    <value>Maximum méret (_px)</value>
   </data>
   <data name="labelCoverArtFileNameFormat" xml:space="preserve">
     <value>Fájlnév formátuma</value>
@@ -367,7 +368,7 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>A borítóképet a meghatározott maximális szélességre/magasságra méretezi át.</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Korlátozza a maximum szélességet/magasságot</value>
+    <value>Korlátozza a m_aximum szélességet/magasságot</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>A borítóképet JPG-formátumba konvertálja 90-es tömörítési szinten (tökéletes egyensúly a fájlméret és minőség között).</value>
@@ -379,7 +380,7 @@ Illesze be az előadók oldalát: http://[előadó].bandcamp.com és jelölje be
     <value>A borítóképet a meghatározott maximális szélességre/magasságra méretezi át.</value>
   </data>
   <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
-    <value>Korlátozza a maximum szélességet/magasságot</value>
+    <value>Korlátozza a _maximum szélességet/magasságot</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>A borítóképet JPG-formátumba konvertálja 90-es tömörítési szinten (tökéletes egyensúly a fájlméret és minőség között).</value>
@@ -445,7 +446,7 @@ Ajánlott érték = 5</value>
     <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
 – az {artist} helyére az album előadójának a neve kerül
 – az {album} helyére az album neve kerül
-– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül</value>
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül (év, hónap, nap; ebben a sorrendben)</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>Ezzel testre szabható az exponenciális újrapróbálkozási szerkezet.
@@ -466,9 +467,21 @@ idő = újrapróbálkozási idő * (exponens ^ próbálkozások száma)
 Ajánlott érték = 4</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
-    <value>A fájlnév testreszabása érdekében helyettesítő szövegcímkéket alkalmazhat:
+    <value>A fájlnév testreszabásához helyettesítő szövegcímkéket alkalmazhat:
 – az {artist} helyére az album előadójának a neve kerül
 – az {album} helyére az album neve kerül
-– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül</value>
+– a {year}, {month} és {day} helyére az album megjelenésének dátuma kerül (év, hónap, nap; ebben a sorrendben)</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Maximális egyidejű albumletöltési szám</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Maximális egyidejű zeneszám-letöltési szám</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>A maximális darabszáma az egyidejűleg letölthető albumoknak</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>A maximális darabszáma az egyidejűleg letölthető zeneszámoknak (egy albumon belül)</value>
   </data>
 </root>
