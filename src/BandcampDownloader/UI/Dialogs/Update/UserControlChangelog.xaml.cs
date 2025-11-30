@@ -6,6 +6,7 @@ using System.Windows.Input;
 using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
+using BandcampDownloader.Threading;
 using NLog;
 using WpfMessageBoxLibrary;
 
@@ -46,10 +47,10 @@ internal sealed partial class UserControlChangelog
             changelog = string.Format(Properties.Resources.changelogDownloadError, CHANGELOG_URL);
         }
 
-        MarkdownViewer.Markdown = changelog;
+        await ThreadUtils.ExecuteOnUiAsync(() => MarkdownViewer.Markdown = changelog).ConfigureAwait(false);
     }
 
-    private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
+    private async void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
     {
         var url = e.Parameter.ToString();
         if (string.IsNullOrWhiteSpace(url))
@@ -75,7 +76,13 @@ internal sealed partial class UserControlChangelog
                 Text = string.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
                 Title = "Bandcamp Downloader",
             };
-            WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
+
+            await ThreadUtils.ExecuteOnUiAsync(
+                () =>
+                {
+                    var ownerWindow = Window.GetWindow(this);
+                    WpfMessageBox.Show(ownerWindow, ref msgProperties);
+                }).ConfigureAwait(false);
         }
     }
 }
