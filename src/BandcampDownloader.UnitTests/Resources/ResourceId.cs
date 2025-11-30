@@ -13,4 +13,5 @@ internal enum ResourceId
     Music_Projectmooncircle_Html,
     Music_Tympanikaudio_Html,
     Music_Weneverlearnedtolive_Html,
+    Track_Ifellinlovewiththestars2_Html,
 }

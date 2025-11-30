@@ -30,4 +30,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Files\Album\" />
+  </ItemGroup>
+
 </Project>

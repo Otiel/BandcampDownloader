@@ -7,9 +7,11 @@ internal static class ResourceAccessor
     public static FileInfo GetFileInfo(ResourceId resourceId)
     {
         var musicRoot = Path.Combine(TestContext.CurrentContext.TestDirectory, "Resources", "Files", "Music");
+        var trackRoot = Path.Combine(TestContext.CurrentContext.TestDirectory, "Resources", "Files", "Track");
 
         return resourceId switch
         {
+            // Music
             ResourceId.Music_Affektrecordings_Html => new FileInfo(Path.Combine(musicRoot, "affektrecordings.html")),
             ResourceId.Music_Afterdarkrecordings_Html => new FileInfo(Path.Combine(musicRoot, "afterdarkrecordings.html")),
             ResourceId.Music_Cratediggers_Html => new FileInfo(Path.Combine(musicRoot, "cratediggers.html")),
@@ -18,6 +20,8 @@ internal static class ResourceAccessor
             ResourceId.Music_Projectmooncircle_Html => new FileInfo(Path.Combine(musicRoot, "projectmooncircle.html")),
             ResourceId.Music_Tympanikaudio_Html => new FileInfo(Path.Combine(musicRoot, "tympanikaudio.html")),
             ResourceId.Music_Weneverlearnedtolive_Html => new FileInfo(Path.Combine(musicRoot, "weneverlearnedtolive.html")),
+            // Track
+            ResourceId.Track_Ifellinlovewiththestars2_Html => new FileInfo(Path.Combine(trackRoot, "i-fell-in-love-with-the-stars-2.html")),
             _ => throw new ArgumentOutOfRangeException(nameof(resourceId), resourceId, null),
         };
     }
