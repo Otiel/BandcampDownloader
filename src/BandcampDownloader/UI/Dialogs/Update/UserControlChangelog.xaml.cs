@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using BandcampDownloader.Core.DependencyInjection;
+using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
 using NLog;
 using WpfMessageBoxLibrary;
@@ -60,7 +61,7 @@ internal sealed partial class UserControlChangelog
 
         try
         {
-            Process.Start(url);
+            UrlHelper.OpenUrlInBrowser(url);
         }
         catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified")
         {
