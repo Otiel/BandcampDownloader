@@ -18,8 +18,7 @@ internal sealed class DiscographyService : IDiscographyService
 {
     public IReadOnlyCollection<string> GetRelativeAlbumsUrlsFromArtistPage(string htmlContent)
     {
-        // Get albums ("real" albums or track-only pages) relative urls
-        var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
+        var regex = new Regex("(?<url>/(album|track)/.+?)(\"|&quot;)");
         if (!regex.IsMatch(htmlContent))
         {
             throw new NoAlbumFoundException();
@@ -32,7 +31,8 @@ internal sealed class DiscographyService : IDiscographyService
         }
 
         // Remove duplicates
-        albumsUrl = albumsUrl.Distinct().ToList();
-        return albumsUrl;
+        var distinctAlbumsUrl = albumsUrl.Distinct().ToList();
+
+        return distinctAlbumsUrl;
     }
 }
