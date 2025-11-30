@@ -19,13 +19,13 @@ internal interface IAlbumUrlRetriever
 internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
 {
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-    private readonly IBandcampExtractionService _bandcampExtractionService;
+    private readonly IDiscographyService _discographyService;
     private readonly IHttpService _httpService;
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
-    public AlbumUrlRetriever(IBandcampExtractionService bandcampExtractionService, IHttpService httpService)
+    public AlbumUrlRetriever(IDiscographyService discographyService, IHttpService httpService)
     {
-        _bandcampExtractionService = bandcampExtractionService;
+        _discographyService = discographyService;
         _httpService = httpService;
     }
 
@@ -80,7 +80,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             var count = albumsUrls.Count;
             try
             {
-                var relativeAlbumsUrl = _bandcampExtractionService.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
+                var relativeAlbumsUrl = _discographyService.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
                 var albumsUrl = relativeAlbumsUrl.Select(o => $"{artistPage}{o}");
                 albumsUrls.AddRange(albumsUrl);
             }
