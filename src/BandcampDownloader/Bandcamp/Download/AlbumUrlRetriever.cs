@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Bandcamp.Extraction;
 using BandcampDownloader.Net;
+using NLog;
 
 namespace BandcampDownloader.Bandcamp.Download;
 
@@ -17,6 +18,7 @@ internal interface IAlbumUrlRetriever
 
 internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
 {
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private readonly IBandcampExtractionService _bandcampExtractionService;
     private readonly IHttpService _httpService;
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
@@ -70,6 +72,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
+                _logger.Error(ex);
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Could not retrieve data for {artistMusicPage}", DownloadProgressChangedLevel.Error));
                 continue;
             }
@@ -80,8 +83,9 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
                 var albumsUrl = _bandcampExtractionService.GetAlbumsUrl(htmlCode, artistPage);
                 albumsUrls.AddRange(albumsUrl);
             }
-            catch (NoAlbumFoundException)
+            catch (NoAlbumFoundException ex)
             {
+                _logger.Error(ex);
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", DownloadProgressChangedLevel.Error));
             }
 

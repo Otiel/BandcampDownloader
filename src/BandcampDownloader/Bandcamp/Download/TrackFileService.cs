@@ -6,6 +6,7 @@ using BandcampDownloader.Helpers;
 using BandcampDownloader.Model;
 using BandcampDownloader.Net;
 using BandcampDownloader.Settings;
+using NLog;
 
 namespace BandcampDownloader.Bandcamp.Download;
 
@@ -17,6 +18,7 @@ internal interface ITrackFileService
 
 internal sealed class TrackFileService : ITrackFileService
 {
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private readonly IHttpService _httpService;
     private readonly IResilienceService _resilienceService;
     private readonly IUserSettings _userSettings;
@@ -117,6 +119,8 @@ internal sealed class TrackFileService : ITrackFileService
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
+                _logger.Error(ex);
+
                 sizeRetrieved = false;
                 if (tries + 1 < _userSettings.DownloadMaxTries)
                 {

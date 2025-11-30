@@ -6,20 +6,7 @@ namespace BandcampDownloader.IO;
 
 internal interface IFileService
 {
-    /// <summary>
-    /// Asynchronously copies an existing file to a new file.
-    /// </summary>
-    /// <param name="sourceFile">The file to copy.</param>
-    /// <param name="destinationFile">The name of the destination file.</param>
-    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     Task CopyFileAsync(string sourceFile, string destinationFile, CancellationToken cancellationToken);
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="stream"></param>
-    /// <param name="destinationFile"></param>
-    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     Task SaveStreamToFileAsync(Stream stream, string destinationFile, CancellationToken cancellationToken);
 }
 

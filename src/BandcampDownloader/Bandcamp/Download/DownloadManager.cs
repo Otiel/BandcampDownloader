@@ -136,8 +136,9 @@ internal sealed class DownloadManager : IDownloadManager
         {
             Directory.CreateDirectory(album.Path);
         }
-        catch
+        catch (Exception ex)
         {
+            _logger.Error(ex, "Could not create album directory");
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs("An error occurred when creating the album folder. Make sure you have the rights to write files in the folder you chose", DownloadProgressChangedLevel.Error));
             return;
         }
@@ -292,9 +293,11 @@ internal sealed class DownloadManager : IDownloadManager
                 trackDownloaded = true;
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", DownloadProgressChangedLevel.VerboseInfo));
             }
-            catch (WebException) // TODO is this still a WebException?
+            catch (WebException ex) // TODO is this still a WebException?
             {
                 // Connection closed probably because no response from Bandcamp
+                _logger.Error(ex);
+
                 if (tries + 1 < _userSettings.DownloadMaxTries)
                 {
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Unable to download track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", DownloadProgressChangedLevel.Warning));
@@ -308,7 +311,7 @@ internal sealed class DownloadManager : IDownloadManager
             if (trackDownloaded)
             {
                 if (_userSettings.ModifyTags ||
-                    _userSettings.SaveCoverArtInTags && artwork != null)
+                    (_userSettings.SaveCoverArtInTags && artwork != null))
                 {
                     _tagService.SaveTagsInTrack(track, album, artwork, cancellationToken);
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
@@ -376,9 +379,11 @@ internal sealed class DownloadManager : IDownloadManager
                 artwork = await artworkStream.ToArrayAsync(cancellationToken);
                 artworkDownloaded = true;
             }
-            catch (WebException) // TODO is this still a WebException?
+            catch (WebException ex) // TODO is this still a WebException?
             {
                 // Connection closed probably because no response from Bandcamp
+                _logger.Error(ex);
+
                 if (tries < _userSettings.DownloadMaxTries)
                 {
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Unable to download artwork for album \"{album.Title}\". Try {tries + 1} of {_userSettings.DownloadMaxTries}", DownloadProgressChangedLevel.Warning));

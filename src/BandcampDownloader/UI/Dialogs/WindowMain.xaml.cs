@@ -46,7 +46,6 @@ internal sealed partial class WindowMain
     /// </summary>
     private long _lastTotalReceivedBytes;
 
-
     public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager, IUpdatesService updatesService)
     {
         _userSettings = settingsService.GetUserSettings();
@@ -149,8 +148,8 @@ internal sealed partial class WindowMain
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error(ex);
                     await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error);
-                    await LogAsync(ex.ToString(), DownloadProgressChangedLevel.VerboseInfo);
                 }
             }
         });

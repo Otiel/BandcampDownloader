@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,8 +40,9 @@ internal sealed partial class UserControlChangelog
         {
             changelog = await DownloadChangelogAsync();
         }
-        catch
+        catch (Exception ex)
         {
+            _logger.Error(ex);
             changelog = string.Format(Properties.Resources.changelogDownloadError, CHANGELOG_URL);
         }
 
@@ -63,6 +65,8 @@ internal sealed partial class UserControlChangelog
         catch (Win32Exception ex) when (ex.Message == "The system cannot find the file specified")
         {
             // Probably a relative link like "/docs/help-translate.md"
+            _logger.Error(ex);
+
             var msgProperties = new WpfMessageBoxProperties
             {
                 Button = WpfMessageBoxButton.OK,
