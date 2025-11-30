@@ -7,63 +7,47 @@ on:
         branches: [ "master" ]
 
 jobs:
-
     build-test:
-
         strategy:
             matrix:
                 configuration: [ Debug, Release ]
-
         runs-on: windows-latest  # For a list of available runner types, refer to https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
-
         env:
             Solution: src/BandcampDownloader.slnx
             Configuration: ${{ matrix.configuration }}
-
         steps:
             -   name: Checkout
                 uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
-
             -   name: Install .NET
                 uses: actions/setup-dotnet@v4
                 with:
                     dotnet-version: 10.0.x
-
             -   name: Display dotnet version
                 run: dotnet --version
-
             -   name: Restore nugets
                 run: dotnet restore $env:Solution
-
             -   name: Build
                 run: dotnet build --no-restore --configuration $env:Configuration $env:Solution
-
             -   name: Run tests
                 run: dotnet test --no-restore --no-build --configuration $env:Configuration $env:Solution
 
     publish:
-
         runs-on: windows-latest
-
         env:
             Csproj: src\BandcampDownloader\BandcampDownloader.csproj
             Configuration: Release
-
         steps:
             -   name: Checkout
                 uses: actions/checkout@v4
                 with:
                     fetch-depth: 0
-
             -   name: Install .NET
                 uses: actions/setup-dotnet@v4
                 with:
                     dotnet-version: 10.0.x
-
             -   name: Display dotnet version
                 run: dotnet --version
-
             -   name: Publish
                 run: dotnet publish --configuration $env:Configuration --artifacts-path artifacts $env:Csproj
