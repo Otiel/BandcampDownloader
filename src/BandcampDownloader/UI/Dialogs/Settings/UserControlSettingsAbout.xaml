@@ -53,7 +53,7 @@
             Grid.Row="1"
             Grid.Column="1"
             VerticalAlignment="Center">
-            <Run Text="{Binding Source={x:Static core:Constants.AppVersionFormatted}, Mode=OneWay}" />
+            <Run Text="{Binding Source={x:Static core:Constants.APP_VERSION_FORMATTED}, Mode=OneWay}" />
         </TextBlock>
         <Label
             x:Name="LabelChangelog"
@@ -81,9 +81,9 @@
             VerticalAlignment="Center">
             <Hyperlink
                 x:Name="HyperlinkWebsite"
-                NavigateUri="{Binding Source={x:Static core:Constants.UrlWebsite}}"
+                NavigateUri="{Binding Source={x:Static core:Constants.URL_WEBSITE}}"
                 RequestNavigate="Hyperlink_RequestNavigate"
-                ToolTip="{Binding Source={x:Static core:Constants.UrlWebsite}}">
+                ToolTip="{Binding Source={x:Static core:Constants.URL_WEBSITE}}">
                 <TextBlock x:Name="TextBlockWebsite" Text="github.com/Otiel/BandcampDownloader" />
             </Hyperlink>
         </TextBlock>
@@ -98,9 +98,9 @@
             VerticalAlignment="Center">
             <Hyperlink
                 x:Name="HyperlinkIssuesWebsite"
-                NavigateUri="{Binding Source={x:Static core:Constants.UrlIssues}}"
+                NavigateUri="{Binding Source={x:Static core:Constants.URL_ISSUES}}"
                 RequestNavigate="Hyperlink_RequestNavigate"
-                ToolTip="{Binding Source={x:Static core:Constants.UrlIssues}}">
+                ToolTip="{Binding Source={x:Static core:Constants.URL_ISSUES}}">
                 <TextBlock x:Name="TextBlockIssuesWebsite" Text="github.com/Otiel/BandcampDownloader/issues" />
             </Hyperlink>
         </TextBlock>

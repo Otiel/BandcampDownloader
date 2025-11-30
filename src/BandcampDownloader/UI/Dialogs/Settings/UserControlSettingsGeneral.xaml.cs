@@ -119,7 +119,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
                 Button = WpfMessageBoxButton.OK,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
                 Image = WpfMessageBoxImage.Information,
-                Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, Constants.AppVersionFormatted),
+                Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, Constants.APP_VERSION_FORMATTED),
                 Title = "Bandcamp Downloader",
             };
             WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);

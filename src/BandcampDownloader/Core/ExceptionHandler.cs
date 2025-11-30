@@ -24,7 +24,7 @@ public sealed class ExceptionHandler : IExceptionHandler
     {
         LogExceptionAndInnerExceptionsRecursively((Exception)e.ExceptionObject);
         Debugger.Break();
-        MessageBox.Show(string.Format(Resources.messageBoxUnhandledException, Constants.UrlIssues), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(string.Format(Resources.messageBoxUnhandledException, Constants.URL_ISSUES), "Bandcamp Downloader", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
     /// <summary>

@@ -65,7 +65,7 @@ internal sealed partial class App
         _logger.Info("┣┫┏┓┏┓┏┫┏┏┓┏┳┓┏┓  ┃┃┏┓┓┏┏┏┓┃┏┓┏┓┏┫┏┓┏┓");
         _logger.Info("┻┛┗┻┛┗┗┻┗┗┻┛┗┗┣┛  ┻┛┗┛┗┻┛┛┗┗┗┛┗┻┗┻┗ ┛");
         _logger.Info("              ┛");
-        _logger.Info($"BandcampDownloader version: {Constants.AppVersionFormatted}");
+        _logger.Info($"BandcampDownloader version: {Constants.APP_VERSION_FORMATTED}");
         _logger.Info($"Framework description: {RuntimeInformation.FrameworkDescription}");
         _logger.Info($"OS architecture: {RuntimeInformation.OSArchitecture}");
         _logger.Info($"OS description: {RuntimeInformation.OSDescription}");
