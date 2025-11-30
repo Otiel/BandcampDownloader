@@ -55,7 +55,7 @@
                 HorizontalAlignment="Left">
                 <TextBlock>
                     <Run Text="{lex:Loc labelCurrentVersion}" />
-                    <Run Text="{Binding Source={x:Static core:Constants.AppVersion}, Mode=OneWay}" />
+                    <Run Text="{Binding Source={x:Static core:Constants.AppVersionFormatted}, Mode=OneWay}" />
                 </TextBlock>
             </Label>
             <TextBlock Grid.Column="1" VerticalAlignment="Center">

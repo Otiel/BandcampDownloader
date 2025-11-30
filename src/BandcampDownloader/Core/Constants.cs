@@ -1,13 +1,19 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace BandcampDownloader.Core;
 
 internal static class Constants
 {
     /// <summary>
-    /// The version number of BandcampDownloader.
+    /// The version of BandcampDownloader.
     /// </summary>
-    public static readonly string AppVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString(3);
+    public static readonly Version AppVersion = Assembly.GetEntryAssembly()?.GetName().Version;
+
+    /// <summary>
+    /// The formatted version (X.Y.Z) of BandcampDownloader.
+    /// </summary>
+    public static readonly string AppVersionFormatted = AppVersion.ToString(3);
 
     /// <summary>
     /// The URL redirecting to the help page on translating the app on GitHub.

@@ -53,7 +53,7 @@
             Grid.Row="1"
             Grid.Column="1"
             VerticalAlignment="Center">
-            <Run Text="{Binding Source={x:Static core:Constants.AppVersion}, Mode=OneWay}" />
+            <Run Text="{Binding Source={x:Static core:Constants.AppVersionFormatted}, Mode=OneWay}" />
         </TextBlock>
         <Label
             x:Name="LabelChangelog"

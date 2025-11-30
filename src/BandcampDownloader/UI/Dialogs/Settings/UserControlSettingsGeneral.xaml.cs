@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Navigation;
+using BandcampDownloader.Core;
 using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Core.Localization;
 using BandcampDownloader.Core.Themes;
@@ -113,13 +114,12 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         }
         else
         {
-            var currentVersion = VersionHelper.GetCurrentVersion();
             var msgProperties = new WpfMessageBoxProperties
             {
                 Button = WpfMessageBoxButton.OK,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
                 Image = WpfMessageBoxImage.Information,
-                Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, currentVersion.ToString(3)),
+                Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, Constants.AppVersionFormatted),
                 Title = "Bandcamp Downloader",
             };
             WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
