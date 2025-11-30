@@ -1,4 +1,4 @@
-# 1.4.1
+# 1.4.1 (2022-02-28)
 
 ## Improvements
 
@@ -8,7 +8,7 @@
 
 * Fixed an issue when trying to download tracks containing special characters in their title. [#189](https://github.com/Otiel/BandcampDownloader/issues/189)
 
-# 1.4.0
+# 1.4.0 (2022-02-20)
 
 ## New features
 
@@ -22,7 +22,7 @@
 
 * Fixed lyrics not saved. Thanks **@roonel**! [#176](https://github.com/Otiel/BandcampDownloader/issues/176) [#182](https://github.com/Otiel/BandcampDownloader/pull/182)
 
-# 1.3.5
+# 1.3.5 (2020-11-08)
 
 ## Bug fixes
 
@@ -32,7 +32,7 @@
 
 * Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/166): Italian.
 
-# 1.3.4
+# 1.3.4 (2020-10-30)
 
 ## Bug fixes
 
@@ -43,13 +43,13 @@
 * Added the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/160): Ukrainian.
 * Updated the following languages thanks to [contributors](https://github.com/Otiel/BandcampDownloader/pull/160): Portuguese.
 
-# 1.3.3
+# 1.3.3 (2020-09-24)
 
 ## Bug fixes
 
 * Fixed the reading of Bandcamp metadata since their changes. [#153](https://github.com/Otiel/BandcampDownloader/issues/153)
 
-# 1.3.2
+# 1.3.2 (2020-08-24)
 
 ## Improvements
 
@@ -60,7 +60,7 @@
 
 * Fixed a bug that caused the release date for tracks to be set to '1'. Thanks **@Nebula-Mechanica**! [#144](https://github.com/Otiel/BandcampDownloader/issues/144) [#145](https://github.com/Otiel/BandcampDownloader/pull/145)
 
-# 1.3.1
+# 1.3.1 (2019-11-02)
 
 ## Improvements
 
@@ -71,7 +71,7 @@
 
 * Fixed a bug preventing the app from downloading discography for some artists. Thanks **@yuyoyuppe**! [#118](https://github.com/Otiel/BandcampDownloader/pull/118)
 
-# 1.3.0
+# 1.3.0 (2019-08-07)
 
 ## Improvements
 
@@ -83,7 +83,7 @@
 
 * Fixed the log position reset when opening the Settings window. [#112](https://github.com/Otiel/BandcampDownloader/issues/112)
 
-# 1.2.0
+# 1.2.0 (2019-06-16)
 
 ## Improvements
 
@@ -96,7 +96,7 @@
 * Fixed a bug (another one) preventing downloads from being cancelled in some conditions.
 * Fixed some UI freeze when downloading big artwork files.
 
-# 1.1.0
+# 1.1.0 (2019-06-13)
 
 ## Improvements
 
@@ -109,7 +109,7 @@
 * Fixed a bug causing albums with no tracks to be downloaded. Thanks **@wilbishardis**! [#106](https://github.com/Otiel/BandcampDownloader/issues/106)
 * Fixed a bug preventing the app from getting updates info on Windows 7. [#109](https://github.com/Otiel/BandcampDownloader/issues/109)
 
-# 1.0.0
+# 1.0.0 (2019-06-12)
 
 ## New features
 
@@ -130,7 +130,7 @@
 * Fixed the crash occurring when clicking on a relative hyperlink on the changelog.
 * Fixed a bug preventing downloads from being cancelled in some conditions.
 
-# 0.2.10.0
+# 0.2.10.0 (2019-05-13)
 
 ## New features
 
@@ -144,7 +144,7 @@
 
 * Fixed a bug preventing the cover art to be saved in the tracks. [#88](https://github.com/Otiel/BandcampDownloader/issues/88)
 
-# 0.2.9.0
+# 0.2.9.0 (2019-05-04)
 
 ## New features
 
@@ -160,19 +160,19 @@
 * Fixed playlist creation for tracks with foreign characters. [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
 * Fixed application crash when saving tracks to a path with more than 260 characters.
 
-# 0.2.8.2
+# 0.2.8.2 (2019-04-25)
 
 ## Bug fixes
 
 * Fixed the track path stored in playlist files. [#82](https://github.com/Otiel/BandcampDownloader/issues/82)
 
-# 0.2.8.1
+# 0.2.8.1 (2019-04-24)
 
 ## Bug fixes
 
 * Fixed a bug preventing the "Playlist file name format" setting to be saved in the _ini_ file.
 
-# 0.2.8.0
+# 0.2.8.0 (2019-04-19)
 
 ## New features
 
@@ -188,7 +188,7 @@
 
 * Fixed a crash that could occur when "☑ Retrieve files size" was unchecked. [#74](https://github.com/Otiel/BandcampDownloader/issues/74)
 
-# 0.2.7.0
+# 0.2.7.0 (2019-04-17)
 
 ## New features
 
@@ -206,20 +206,20 @@
 
 * Minor bug fixes relative to the UI.
 
-# 0.2.6.0
+# 0.2.6.0 (2019-04-10)
 
 ## New features
 
 * Added localization [#67](https://github.com/Otiel/BandcampDownloader/issues/67) for english and french. If you wish to help translate the application in another language, please see the [guidelines](/docs/help-translate.md).
 
-# 0.2.5.0
+# 0.2.5.0 (2019-04-12)
 
 ## Improvements
 
 * When a new version is available, its number is displayed on the main window.
 * Updated dependencies to their latest version. This should fix issue [#76](https://github.com/Otiel/BandcampDownloader/issues/76) (false positive from Windows Defender).
 
-# 0.2.4.2
+# 0.2.4.2 (2019-04-08)
 
 ## Improvements
 
@@ -230,7 +230,7 @@
 * Fixed issue [#75](https://github.com/Otiel/BandcampDownloader/issues/75) that would prevent downloading tracks with a name with less than 3 characters.
 * Fixed exponential back-off mechanism that was inactive for artwork files.
 
-# 0.2.4.1
+# 0.2.4.1 (2019-01-22)
 
 ## Bug fixes
 
@@ -238,7 +238,7 @@
 * Fixed issue [#73](https://github.com/Otiel/BandcampDownloader/issues/73) that would stuck the downloads in an endless loop when downloading a cover art failed.
 * Fixed issue that would report an incorrect number of tries when downloading a cover art failed.
 
-# 0.2.4.0
+# 0.2.4.0 (2018-12-21)
 
 ## New features
 
@@ -248,7 +248,7 @@
 
 * {month} and {day} placeholders are now formatted on two digits; for instance: "05" instead of "5".
 
-# 0.2.3.0
+# 0.2.3.0 (2018-12-17)
 
 ## New features
 
@@ -259,7 +259,7 @@
 * Fixed race condition [#54](https://github.com/Otiel/BandcampDownloader/issues/54) that would make the program crash when downloading two albums with the same name.
 * Fixed issue with albums name too long to be supported by Windows.
 
-# 0.2.2.0
+# 0.2.2.0 (2018-12-07)
 
 ## New features
 
@@ -282,7 +282,7 @@
 * Fixed issue that would prevent the settings file to be correctly saved after clicking on "Browse".
 * "☑ Download artist discography" was (un)checkable during downloads. No more.
 
-# 0.2.1.0
+# 0.2.1.0 (2018-12-01)
 
 _Notes to upgraders:_
 
@@ -305,7 +305,7 @@ _Notes to upgraders:_
 * Fixed issue [#69](https://github.com/Otiel/BandcampDownloader/issues/69) that prevented from downloading albums that have no cover.
 * After selecting a folder via the "Browse" button, the placeholders were lost. The default placeholders will now be added back.
 
-# 0.2.0.0
+# 0.2.0.0 (2018-11-16)
 
 _Notes to upgraders:_
 
@@ -333,7 +333,7 @@ _Notes to upgraders:_
 
 * License has changed from [WTFPL](http://www.wtfpl.net) to MIT. See the [LICENSE](https://github.com/Otiel/BandcampDownloader/blob/master/LICENSE) file for details.
 
-# 0.1.9.3
+# 0.1.9.3 (2018-03-16)
 
 ## Improvements
 
@@ -344,7 +344,7 @@ _Notes to upgraders:_
 * Fixed issue [#40](https://github.com/Otiel/BandcampDownloader/issues/40) that prevented downloads of track when their name was too long.
 * Fixed issue [#21](https://github.com/Otiel/BandcampDownloader/issues/21) that prevented downloads of one-album artists when "☑Download artist discography" was checked.
 
-# 0.1.9.2
+# 0.1.9.2 (2017-11-03)
 
 ## New features
 
@@ -356,13 +356,13 @@ _Notes to upgraders:_
 * UI revamp. Thanks @M4lik for working on this!
 * Updated Json.NET and ImageResizer libraries to their latest version.
 
-# 0.1.9.1
+# 0.1.9.1 (2017-05-22)
 
 ## Bug fixes
 
 * Fixed issue [#34](https://github.com/Otiel/BandcampDownloader/issues/34) that prevented to download albums or tracks that contained whitespaces in their name.
 
-# 0.1.9.0
+# 0.1.9.0 (2017-05-05)
 
 ## New features
 
@@ -373,7 +373,7 @@ _Notes to upgraders:_
 * Fixed the issue that prevented the application to download the cover arts [#31](https://github.com/Otiel/BandcampDownloader/issues/31) [#33](https://github.com/Otiel/BandcampDownloader/issues/33)
 * Fixed the issue that caused the application to crash when the album name was too long [#22](https://github.com/Otiel/BandcampDownloader/issues/22)
 
-# 0.1.8.0
+# 0.1.8.0 (2017-04-07)
 
 ## New features
 
@@ -384,7 +384,7 @@ _Notes to upgraders:_
 
 * The default settings are now using the exponential back-off algorithm in order to prevent Bandcamp to throttle the downloads. Values can be tweaked in the settings file if you encounter some issues.
 
-# 0.1.7.0
+# 0.1.7.0 (2017-01-18)
 
 ## New features
 
@@ -393,19 +393,19 @@ _Notes to upgraders:_
 
 Thanks again to @ajsnyde!
 
-# 0.1.6.1
+# 0.1.6.1 (2017-01-11)
 
 ## Bug fixes
 
 * Fixed issue [#15](https://github.com/Otiel/BandcampDownloader/issues/15) that prevented BandcampDownloader to correctly save the cover art files.
 
-# 0.1.6.0
+# 0.1.6.0 (2017-01-03)
 
 ## New features
 
 * Added a new functionality to check for updates when starting the application.
 
-# 0.1.5.2
+# 0.1.5.2 (2017-01-03)
 
 ## New features
 
@@ -419,37 +419,37 @@ Thanks again to @ajsnyde!
 
 Huge thanks to @ajsnyde for implementing all these new features!
 
-# 0.1.5.1
+# 0.1.5.1 (2016-10-20)
 
 ## Bug fixes
 
 * Fixed issue [#9](https://github.com/Otiel/BandcampDownloader/issues/9) that prevented BandcampDownloader to retrieve the artwork file size. Thanks @dashWo for fixing this!
 
-# 0.1.5.0
+# 0.1.5.0 (2016-04-06)
 
 ## New features
 
 * Added option to save the current settings to a file (named BcDlSettings.json, located next to the .exe file). Settings are automatically loaded when starting the application.
 
-# 0.1.4.3
+# 0.1.4.3 (2016-01-26)
 
 ## Bug fixes
 
 * Fixed issue [#1](https://github.com/Otiel/BandcampDownloader/issues/1) that prevented BandcampDownloader to find the correct url to download tracks.
 
-# 0.1.4.2
+# 0.1.4.2 (2014-05-12)
 
 ## Improvements
 
 * Updated Json.NET and ImageResizer libraries to their latest version.
 
-# 0.1.4.1
+# 0.1.4.1 (2014-04-25)
 
 ## Improvements
 
 * The "Description" field of the ID3 tag containing the cover art is now set to "Picture".
 
-# 0.1.4.0
+# 0.1.4.0 (2014-04-16)
 
 ## Improvements
 
@@ -458,37 +458,37 @@ Huge thanks to @ajsnyde for implementing all these new features!
 * BandcampDownloader now retries (up to 10 times) to download a track if it previously failed (this seems to happen a lot when downloading a lot of albums in the same session).
 * Minor UI changes.
 
-# 0.1.3.0
+# 0.1.3.0 (2014-04-15)
 
 ## New features
 
 * Added functionality to resize cover art.
 
-# 0.1.2.4
+# 0.1.2.4 (2014-03-04)
 
 ## Bug fixes
 
 * Minor fix (tabstops were wrong).
 
-# 0.1.2.3
+# 0.1.2.3 (2014-02-28)
 
 ## Improvements
 
 * The cover art was downloaded even if both checkboxes ☑ Save cover art in tags and ☑ Save cover art in folder were unchecked. Not anymore.
 
-# 0.1.2.2
+# 0.1.2.2 (2014-02-28)
 
 ## Improvements
 
 * Got rid of unneeded references, resulting in one less file in bin files.
 
-# 0.1.2.1
+# 0.1.2.1 (2014-02-28)
 
 ## Improvements
 
 * Cover art is now deleted when it was only temporarily saved.
 
-# 0.1.2.0
+# 0.1.2.0 (2014-02-21)
 
 ## New features
 
@@ -498,24 +498,24 @@ Huge thanks to @ajsnyde for implementing all these new features!
 
 * Fixed encoding issue.
 
-# 0.1.1.1
+# 0.1.1.1 (2014-02-18)
 
 ## Bug fixes
 
 * Fixed a bug on the saving of the cover arts.
 
-# 0.1.1.0
+# 0.1.1.0 (2014-02-18)
 
 ## New features
 
 * Added option to download all albums of an artist.
 
-# 0.1.0.1
+# 0.1.0.1 (2014-02-14)
 
 ## Bug fixes
 
 * Fixed a bug that caused the application to crash when the user does not have rights to write in the downloads folder.
 
-# 0.1.0.0
+# 0.1.0.0 (2014-02-14)
 
 This is the first release of BandcampDownloader.
