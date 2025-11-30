@@ -7,7 +7,7 @@ namespace BandcampDownloader.Core.Themes;
 internal interface IThemeService
 {
     /// <summary>
-    /// Applies the specified <see cref="Skin"/> to the application resources.
+    /// Applies the specified <see cref="Skin" /> to the application resources.
     /// </summary>
     void ApplySkin(Skin skin);
 }

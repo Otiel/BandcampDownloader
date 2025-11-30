@@ -46,7 +46,6 @@ internal sealed partial class WindowMain
     /// </summary>
     private long _lastTotalReceivedBytes;
 
-
     public WindowMain(ISettingsService settingsService, IDownloadManager downloadManager, IUpdatesService updatesService)
     {
         _userSettings = settingsService.GetUserSettings();

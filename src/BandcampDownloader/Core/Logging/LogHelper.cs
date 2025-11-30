@@ -10,7 +10,7 @@ namespace BandcampDownloader.Core.Logging;
 internal static class LogHelper
 {
     /// <summary>
-    /// Returns the <see cref="SolidColorBrush"/> associated to the specified <see cref="DownloadProgressChangedLevel"/>.
+    /// Returns the <see cref="SolidColorBrush" /> associated to the specified <see cref="DownloadProgressChangedLevel" />.
     /// </summary>
     public static SolidColorBrush GetColor(DownloadProgressChangedLevel downloadProgressChangedLevel)
     {

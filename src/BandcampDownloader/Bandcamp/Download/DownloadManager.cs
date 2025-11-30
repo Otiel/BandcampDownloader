@@ -311,7 +311,7 @@ internal sealed class DownloadManager : IDownloadManager
             if (trackDownloaded)
             {
                 if (_userSettings.ModifyTags ||
-                    _userSettings.SaveCoverArtInTags && artwork != null)
+                    (_userSettings.SaveCoverArtInTags && artwork != null))
                 {
                     _tagService.SaveTagsInTrack(track, album, artwork, cancellationToken);
                     DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Tags saved for track \"{Path.GetFileName(track.Path)}\" from album \"{album.Title}\"", DownloadProgressChangedLevel.VerboseInfo));
