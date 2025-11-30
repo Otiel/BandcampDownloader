@@ -149,8 +149,8 @@ internal sealed partial class WindowMain
                 }
                 catch (Exception ex)
                 {
+                    _logger.Error(ex);
                     await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error);
-                    await LogAsync(ex.ToString(), DownloadProgressChangedLevel.VerboseInfo);
                 }
             }
         });
