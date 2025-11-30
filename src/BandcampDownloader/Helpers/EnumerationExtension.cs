@@ -7,20 +7,18 @@ namespace BandcampDownloader.Helpers;
 
 internal sealed class EnumerationExtension : MarkupExtension
 {
-    public sealed class EnumerationMember
+    private sealed class EnumerationMember
     {
         public string Description { get; set; }
         public object Value { get; set; }
     }
 
-    private Type _enumType;
-
     public Type EnumType
     {
-        get => _enumType;
-        private set
+        get;
+        private init
         {
-            if (_enumType == value)
+            if (field == value)
             {
                 return;
             }
@@ -31,7 +29,7 @@ internal sealed class EnumerationExtension : MarkupExtension
                 throw new ArgumentException("Type must be an Enum.");
             }
 
-            _enumType = value;
+            field = value;
         }
     }
 

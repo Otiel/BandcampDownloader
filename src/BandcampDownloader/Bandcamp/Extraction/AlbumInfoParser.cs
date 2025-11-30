@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -13,33 +11,25 @@ using NLog;
 
 namespace BandcampDownloader.Bandcamp.Extraction;
 
-internal interface IBandcampExtractionService
+internal interface IAlbumInfoParser
 {
     /// <summary>
     /// Retrieves the data on the album of the specified Bandcamp page.
     /// </summary>
-    /// <param name="htmlCode">The HTML source code of a Bandcamp album page.</param>
+    /// <param name="htmlContent">The HTML source code of a Bandcamp album page.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>The data on the album of the specified Bandcamp page.</returns>
-    Album GetAlbum(string htmlCode, CancellationToken cancellationToken);
-
-    /// <summary>
-    /// Retrieves all the albums URL existing on the specified Bandcamp page.
-    /// </summary>
-    /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
-    /// <param name="artistPage">The URL to the artist page.</param>
-    /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
-    List<string> GetAlbumsUrl(string htmlCode, string artistPage);
+    Album GetAlbumInfoFromAlbumPage(string htmlContent, CancellationToken cancellationToken);
 }
 
-internal sealed class BandcampExtractionService : IBandcampExtractionService
+internal sealed class AlbumInfoParser : IAlbumInfoParser
 {
-    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-    public Album GetAlbum(string htmlCode, CancellationToken cancellationToken)
+    public Album GetAlbumInfoFromAlbumPage(string htmlContent, CancellationToken cancellationToken)
     {
-        // Keep the interesting part of htmlCode only
-        if (!TryGetAlbumData(htmlCode, out var htmlAlbumData))
+        // Keep the interesting part of htmlContent only
+        if (!TryGetAlbumData(htmlContent, out var htmlAlbumData))
         {
             throw new Exception("Could not retrieve album data in HTML code.");
         }
@@ -62,7 +52,7 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
 
         // Extract lyrics from album page
         var htmlDoc = new HtmlDocument();
-        htmlDoc.LoadHtml(htmlCode);
+        htmlDoc.LoadHtml(htmlContent);
         foreach (var track in album.Tracks)
         {
             var lyricsElement = htmlDoc.GetElementbyId("lyrics_row_" + track.Number);
@@ -75,26 +65,6 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         }
 
         return album;
-    }
-
-    public List<string> GetAlbumsUrl(string htmlCode, string artistPage)
-    {
-        // Get albums ("real" albums or track-only pages) relative urls
-        var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
-        if (!regex.IsMatch(htmlCode))
-        {
-            throw new NoAlbumFoundException();
-        }
-
-        var albumsUrl = new List<string>();
-        foreach (Match m in regex.Matches(htmlCode))
-        {
-            albumsUrl.Add(artistPage + m.Groups["url"].Value);
-        }
-
-        // Remove duplicates
-        albumsUrl = albumsUrl.Distinct().ToList();
-        return albumsUrl;
     }
 
     private static string FixJson(string albumData)
@@ -110,21 +80,21 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         return fixedData;
     }
 
-    private static bool TryGetAlbumData(string htmlCode, out string albumData)
+    private bool TryGetAlbumData(string htmlContent, out string albumData)
     {
         albumData = null;
 
         const string startString = "data-tralbum=\"{";
         const string stopString = "}\"";
 
-        if (!htmlCode.Contains(startString))
+        if (!htmlContent.Contains(startString))
         {
-            _logger.Warn($"Could not find {nameof(startString)} in {nameof(htmlCode)}");
+            _logger.Warn($"Could not find {nameof(startString)} in {nameof(htmlContent)}");
             return false;
         }
 
-        var startIndex = htmlCode.IndexOf(startString, StringComparison.Ordinal) + startString.Length - 1;
-        var albumDataTemp = htmlCode[startIndex..];
+        var startIndex = htmlContent.IndexOf(startString, StringComparison.Ordinal) + startString.Length - 1;
+        var albumDataTemp = htmlContent[startIndex..];
 
         var length = albumDataTemp.IndexOf(stopString, StringComparison.Ordinal) + 1;
         albumDataTemp = albumDataTemp[..length];

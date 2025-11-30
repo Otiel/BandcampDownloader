@@ -10,6 +10,7 @@ using BandcampDownloader.Core.Themes;
 using BandcampDownloader.Core.Updates;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Settings;
+using BandcampDownloader.Threading;
 using BandcampDownloader.UI.Dialogs.Update;
 using NLog;
 using WpfMessageBoxLibrary;
@@ -84,7 +85,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         Version latestVersion;
         try
         {
-            latestVersion = await _updatesService.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -98,7 +99,13 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
                 Text = Properties.Resources.messageBoxCheckForUpdatesError,
                 Title = "Bandcamp Downloader",
             };
-            WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
+
+            await ThreadUtils.ExecuteOnUiAsync(
+                () =>
+                {
+                    var ownerWindow = Window.GetWindow(this);
+                    WpfMessageBox.Show(ownerWindow, ref msgProperties);
+                }).ConfigureAwait(false);
 
             return;
         }
@@ -119,10 +126,16 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
                 Button = WpfMessageBoxButton.OK,
                 ButtonOkText = Properties.Resources.messageBoxButtonOK,
                 Image = WpfMessageBoxImage.Information,
-                Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, Constants.AppVersionFormatted),
+                Text = string.Format(Properties.Resources.messageBoxNoUpdateAvailable, Constants.APP_VERSION_FORMATTED),
                 Title = "Bandcamp Downloader",
             };
-            WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
+
+            await ThreadUtils.ExecuteOnUiAsync(
+                () =>
+                {
+                    var ownerWindow = Window.GetWindow(this);
+                    WpfMessageBox.Show(ownerWindow, ref msgProperties);
+                }).ConfigureAwait(false);
         }
     }
 

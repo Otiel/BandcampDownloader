@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using BandcampDownloader.Core.DependencyInjection;
 using BandcampDownloader.Helpers;
 using BandcampDownloader.Net;
+using BandcampDownloader.Threading;
 using NLog;
 using WpfMessageBoxLibrary;
 
@@ -30,7 +30,7 @@ internal sealed partial class UserControlChangelog
     private async Task<string> DownloadChangelogAsync()
     {
         var httpClient = _httpService.CreateHttpClient();
-        var changelog = await httpClient.GetStringAsync(CHANGELOG_URL);
+        var changelog = await httpClient.GetStringAsync(CHANGELOG_URL).ConfigureAwait(false);
         return changelog;
     }
 
@@ -39,7 +39,7 @@ internal sealed partial class UserControlChangelog
         string changelog;
         try
         {
-            changelog = await DownloadChangelogAsync();
+            changelog = await DownloadChangelogAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -47,10 +47,10 @@ internal sealed partial class UserControlChangelog
             changelog = string.Format(Properties.Resources.changelogDownloadError, CHANGELOG_URL);
         }
 
-        MarkdownViewer.Markdown = changelog;
+        await ThreadUtils.ExecuteOnUiAsync(() => MarkdownViewer.Markdown = changelog).ConfigureAwait(false);
     }
 
-    private void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
+    private async void OpenHyperlink(object sender, ExecutedRoutedEventArgs e)
     {
         var url = e.Parameter.ToString();
         if (string.IsNullOrWhiteSpace(url))
@@ -76,7 +76,13 @@ internal sealed partial class UserControlChangelog
                 Text = string.Format(Properties.Resources.messageBoxCouldNotOpenUrlError, url),
                 Title = "Bandcamp Downloader",
             };
-            WpfMessageBox.Show(Window.GetWindow(this), ref msgProperties);
+
+            await ThreadUtils.ExecuteOnUiAsync(
+                () =>
+                {
+                    var ownerWindow = Window.GetWindow(this);
+                    WpfMessageBox.Show(ownerWindow, ref msgProperties);
+                }).ConfigureAwait(false);
         }
     }
 }

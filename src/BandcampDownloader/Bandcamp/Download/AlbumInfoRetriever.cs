@@ -11,24 +11,24 @@ namespace BandcampDownloader.Bandcamp.Download;
 
 internal interface IAlbumInfoRetriever
 {
-    Task<IReadOnlyList<Album>> GetAlbumsAsync(IReadOnlyList<string> albumsUrls, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Album>> GetAlbumsAsync(IReadOnlyCollection<string> albumsUrls, CancellationToken cancellationToken);
     event DownloadProgressChangedEventHandler DownloadProgressChanged;
 }
 
 internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
 {
-    private readonly IBandcampExtractionService _bandcampExtractionService;
+    private readonly IAlbumInfoParser _albumInfoParser;
     private readonly IHttpService _httpService;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
-    public AlbumInfoRetriever(IBandcampExtractionService bandcampExtractionService, IHttpService httpService)
+    public AlbumInfoRetriever(IAlbumInfoParser albumInfoParser, IHttpService httpService)
     {
-        _bandcampExtractionService = bandcampExtractionService;
+        _albumInfoParser = albumInfoParser;
         _httpService = httpService;
     }
 
-    public async Task<IReadOnlyList<Album>> GetAlbumsAsync(IReadOnlyList<string> albumsUrls, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Album>> GetAlbumsAsync(IReadOnlyCollection<string> albumsUrls, CancellationToken cancellationToken)
     {
         var albums = new List<Album>();
 
@@ -39,12 +39,12 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Retrieving album data for {url}", DownloadProgressChangedLevel.Info));
 
             // Retrieve URL HTML source code
-            string htmlCode;
+            string htmlContent;
             try
             {
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading album info from url: {url}", DownloadProgressChangedLevel.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlCode = await httpClient.GetStringAsync(url, cancellationToken);
+                htmlContent = await httpClient.GetStringAsync(url, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -56,7 +56,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             // Get info on album
             try
             {
-                var album = _bandcampExtractionService.GetAlbum(htmlCode, cancellationToken);
+                var album = _albumInfoParser.GetAlbumInfoFromAlbumPage(htmlContent, cancellationToken);
 
                 if (album.Tracks.Count > 0)
                 {

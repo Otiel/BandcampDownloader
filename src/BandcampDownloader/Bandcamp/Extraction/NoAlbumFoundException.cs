@@ -2,6 +2,4 @@
 
 namespace BandcampDownloader.Bandcamp.Extraction;
 
-internal sealed class NoAlbumFoundException : Exception
-{
-}
+internal sealed class NoAlbumFoundException : Exception;

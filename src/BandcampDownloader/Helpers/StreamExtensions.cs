@@ -11,7 +11,7 @@ public static class StreamExtensions
         await using var memoryStream = new MemoryStream();
 
         stream.Position = 0;
-        await stream.CopyToAsync(memoryStream, cancellationToken);
+        await stream.CopyToAsync(memoryStream, cancellationToken).ConfigureAwait(false);
 
         return memoryStream.ToArray();
     }

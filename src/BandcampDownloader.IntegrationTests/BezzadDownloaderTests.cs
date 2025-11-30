@@ -21,11 +21,12 @@ public sealed class BezzadDownloaderTests
         var cts = new CancellationTokenSource();
         cts.CancelAfter(500);
 
-        Assert.ThrowsAsync<OperationCanceledException>(async () =>
-        {
-            // Act
-            await _sut.DownloadFileTaskAsync(fileUrl, cts.Token);
-        });
+        Assert.ThrowsAsync<OperationCanceledException>(
+            async () =>
+            {
+                // Act
+                await _sut.DownloadFileTaskAsync(fileUrl, cts.Token).ConfigureAwait(false);
+            });
     }
 
     [TearDown]

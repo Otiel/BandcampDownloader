@@ -9,7 +9,7 @@ namespace BandcampDownloader.UI.Dialogs.Settings;
 internal sealed partial class WindowSettings
 {
     private readonly ISettingsService _settingsService;
-    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+    private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     /// <summary>
     /// True if there are active downloads; false otherwise.

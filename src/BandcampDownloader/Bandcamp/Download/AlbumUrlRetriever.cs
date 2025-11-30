@@ -12,24 +12,24 @@ namespace BandcampDownloader.Bandcamp.Download;
 
 internal interface IAlbumUrlRetriever
 {
-    Task<IReadOnlyList<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken);
     event DownloadProgressChangedEventHandler DownloadProgressChanged;
 }
 
 internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
 {
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
-    private readonly IBandcampExtractionService _bandcampExtractionService;
+    private readonly IDiscographyService _discographyService;
     private readonly IHttpService _httpService;
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
-    public AlbumUrlRetriever(IBandcampExtractionService bandcampExtractionService, IHttpService httpService)
+    public AlbumUrlRetriever(IDiscographyService discographyService, IHttpService httpService)
     {
-        _bandcampExtractionService = bandcampExtractionService;
+        _discographyService = discographyService;
         _httpService = httpService;
     }
 
-    public async Task<IReadOnlyList<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken)
     {
         var splitUrls = inputUrls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
         var sanitizedUrls = splitUrls.Distinct().Select(o => o.Trim()).ToList();
@@ -39,14 +39,14 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             return sanitizedUrls;
         }
 
-        var albumsUrls = await GetArtistDiscographyAlbumsUrlsAsync(sanitizedUrls, cancellationToken);
+        var albumsUrls = await GetArtistDiscographyAlbumsUrlsAsync(sanitizedUrls, cancellationToken).ConfigureAwait(false);
         return albumsUrls;
     }
 
     /// <summary>
     /// Returns the artists discography from any URL (artist, album, track).
     /// </summary>
-    private async Task<IReadOnlyList<string>> GetArtistDiscographyAlbumsUrlsAsync(IReadOnlyList<string> urls, CancellationToken cancellationToken)
+    private async Task<IReadOnlyCollection<string>> GetArtistDiscographyAlbumsUrlsAsync(IReadOnlyCollection<string> urls, CancellationToken cancellationToken)
     {
         var albumsUrls = new List<string>();
 
@@ -62,13 +62,13 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             var artistMusicPage = artistPage + "/music";
 
             // Retrieve artist "music" page HTML source code
-            string htmlCode;
+            string htmlContent;
 
             try
             {
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading album info from url: {url}", DownloadProgressChangedLevel.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlCode = await httpClient.GetStringAsync(artistMusicPage, cancellationToken);
+                htmlContent = await httpClient.GetStringAsync(artistMusicPage, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -77,22 +77,16 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
                 continue;
             }
 
-            var count = albumsUrls.Count;
             try
             {
-                var albumsUrl = _bandcampExtractionService.GetAlbumsUrl(htmlCode, artistPage);
+                var relativeAlbumsUrl = _discographyService.GetReferredAlbumsRelativeUrls(htmlContent);
+                var albumsUrl = relativeAlbumsUrl.Select(o => $"{artistPage}{o}");
                 albumsUrls.AddRange(albumsUrl);
             }
             catch (NoAlbumFoundException ex)
             {
                 _logger.Error(ex);
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", DownloadProgressChangedLevel.Error));
-            }
-
-            if (albumsUrls.Count - count == 0)
-            {
-                // This seems to be a one-album artist with no "music" page => URL redirects to the unique album URL
-                albumsUrls.Add(url);
             }
         }
 

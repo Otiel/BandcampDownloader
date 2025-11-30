@@ -12,7 +12,7 @@ namespace BandcampDownloader.Bandcamp.Download;
 
 internal interface ITrackFileService
 {
-    Task<IReadOnlyList<TrackFile>> GetFilesToDownloadAsync(IReadOnlyList<Album> albums, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<TrackFile>> GetFilesToDownloadAsync(IReadOnlyCollection<Album> albums, CancellationToken cancellationToken);
     event DownloadProgressChangedEventHandler DownloadProgressChanged;
 }
 
@@ -31,7 +31,7 @@ internal sealed class TrackFileService : ITrackFileService
         _userSettings = settingsService.GetUserSettings();
     }
 
-    public async Task<IReadOnlyList<TrackFile>> GetFilesToDownloadAsync(IReadOnlyList<Album> albums, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<TrackFile>> GetFilesToDownloadAsync(IReadOnlyCollection<Album> albums, CancellationToken cancellationToken)
     {
         var files = new List<TrackFile>();
         var filesLock = new Lock();
@@ -47,7 +47,7 @@ internal sealed class TrackFileService : ITrackFileService
             {
                 if (_userSettings.RetrieveFilesSize)
                 {
-                    var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork, cancellationToken);
+                    var size = await GetFileSizeAsync(album.ArtworkUrl, album.Title, FileType.Artwork, cancellationToken).ConfigureAwait(false);
                     var trackFile = new TrackFile(album.ArtworkUrl, 0, size);
                     files.Add(trackFile);
                 }
@@ -72,14 +72,14 @@ internal sealed class TrackFileService : ITrackFileService
                     parallelOptions,
                     async (track, ct) =>
                     {
-                        var size = await GetFileSizeAsync(track.Mp3Url, track.Title, FileType.Track, ct);
+                        var size = await GetFileSizeAsync(track.Mp3Url, track.Title, FileType.Track, ct).ConfigureAwait(false);
                         var trackFile = new TrackFile(track.Mp3Url, 0, size);
 
                         lock (filesLock)
                         {
                             files.Add(trackFile);
                         }
-                    });
+                    }).ConfigureAwait(false);
             }
             else
             {
@@ -113,7 +113,7 @@ internal sealed class TrackFileService : ITrackFileService
 
             try
             {
-                size = await _httpService.GetFileSizeAsync(url, cancellationToken);
+                size = await _httpService.GetFileSizeAsync(url, cancellationToken).ConfigureAwait(false);
                 sizeRetrieved = true;
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Retrieved the size of the {fileTypeForLog} \"{titleForLog}\"", DownloadProgressChangedLevel.VerboseInfo));
             }
@@ -135,10 +135,9 @@ internal sealed class TrackFileService : ITrackFileService
             tries++;
             if (!sizeRetrieved && tries < _userSettings.DownloadMaxTries)
             {
-                await _resilienceService.WaitForCooldownAsync(tries, cancellationToken);
+                await _resilienceService.WaitForCooldownAsync(tries, cancellationToken).ConfigureAwait(false);
             }
-        }
-        while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
+        } while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
 
         return size;
     }

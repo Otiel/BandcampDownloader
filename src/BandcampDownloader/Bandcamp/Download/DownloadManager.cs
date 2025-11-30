@@ -38,8 +38,8 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IUserSettings _userSettings;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private bool _isInitialized;
-    private IReadOnlyList<TrackFile> _downloadingFiles;
-    private IReadOnlyList<Album> _albums;
+    private IReadOnlyCollection<TrackFile> _downloadingFiles;
+    private IReadOnlyCollection<Album> _albums;
 
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
@@ -66,9 +66,9 @@ internal sealed class DownloadManager : IDownloadManager
 
     public async Task InitializeAsync(string inputUrls, CancellationToken cancellationToken)
     {
-        var albumsUrls = await _albumUrlRetriever.RetrieveAlbumsUrlsAsync(inputUrls, _userSettings.DownloadArtistDiscography, cancellationToken);
-        _albums = await _albumInfoRetriever.GetAlbumsAsync(albumsUrls, cancellationToken);
-        _downloadingFiles = await _trackFileService.GetFilesToDownloadAsync(_albums, cancellationToken);
+        var albumsUrls = await _albumUrlRetriever.RetrieveAlbumsUrlsAsync(inputUrls, _userSettings.DownloadArtistDiscography, cancellationToken).ConfigureAwait(false);
+        _albums = await _albumInfoRetriever.GetAlbumsAsync(albumsUrls, cancellationToken).ConfigureAwait(false);
+        _downloadingFiles = await _trackFileService.GetFilesToDownloadAsync(_albums, cancellationToken).ConfigureAwait(false);
 
         _isInitialized = true;
     }
@@ -90,8 +90,8 @@ internal sealed class DownloadManager : IDownloadManager
                 parallelOptions,
                 async (album, ct) =>
                 {
-                    await DownloadAlbumAsync(album, ct);
-                });
+                    await DownloadAlbumAsync(album, ct).ConfigureAwait(false);
+                }).ConfigureAwait(false);
         }
         finally
         {
@@ -148,18 +148,18 @@ internal sealed class DownloadManager : IDownloadManager
         // Download artwork
         if ((_userSettings.SaveCoverArtInTags || _userSettings.SaveCoverArtInFolder) && album.HasArtwork)
         {
-            var artwork = await DownloadCoverArtAsync(album, cancellationToken);
+            var artwork = await DownloadCoverArtAsync(album, cancellationToken).ConfigureAwait(false);
 
             // Save artwork to folder
             if (_userSettings.SaveCoverArtInFolder && artwork != null)
             {
-                await SaveCoverArtToFolder(album, artwork, cancellationToken);
+                await SaveCoverArtToFolder(album, artwork, cancellationToken).ConfigureAwait(false);
             }
 
             // Prepare artwork for tags
             if (_userSettings.SaveCoverArtInTags && artwork != null)
             {
-                inTagsArtwork = await PrepareCoverArtForTags(artwork, cancellationToken);
+                inTagsArtwork = await PrepareCoverArtForTags(artwork, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -177,17 +177,17 @@ internal sealed class DownloadManager : IDownloadManager
             parallelOptions,
             async (track, ct) =>
             {
-                var trackDownloaded = await DownloadAndTagTrackAsync(album, track, inTagsArtwork, ct);
+                var trackDownloaded = await DownloadAndTagTrackAsync(album, track, inTagsArtwork, ct).ConfigureAwait(false);
                 if (trackDownloaded)
                 {
                     Interlocked.Increment(ref downloadedTracksCount);
                 }
-            });
+            }).ConfigureAwait(false);
 
         // Create playlist file
         if (_userSettings.CreatePlaylist)
         {
-            await _playlistCreator.SavePlaylistToFileAsync(album, cancellationToken);
+            await _playlistCreator.SavePlaylistToFileAsync(album, cancellationToken).ConfigureAwait(false);
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Saved playlist for album \"{album.Title}\"", DownloadProgressChangedLevel.IntermediateSuccess));
         }
 
@@ -206,15 +206,15 @@ internal sealed class DownloadManager : IDownloadManager
         var inFolderArtwork = artwork;
         if (_userSettings.CoverArtInFolderResize)
         {
-            inFolderArtwork = await _imageService.ResizeImage(inFolderArtwork, _userSettings.CoverArtInFolderMaxSize, _userSettings.CoverArtInFolderMaxSize, cancellationToken);
+            inFolderArtwork = await _imageService.ResizeImage(inFolderArtwork, _userSettings.CoverArtInFolderMaxSize, _userSettings.CoverArtInFolderMaxSize, cancellationToken).ConfigureAwait(false);
         }
 
         if (_userSettings.CoverArtInFolderConvertToJpg)
         {
-            inFolderArtwork = await _imageService.ConvertToJpegAsync(inFolderArtwork, cancellationToken);
+            inFolderArtwork = await _imageService.ConvertToJpegAsync(inFolderArtwork, cancellationToken).ConfigureAwait(false);
         }
 
-        await File.WriteAllBytesAsync(album.ArtworkPath, inFolderArtwork, cancellationToken);
+        await File.WriteAllBytesAsync(album.ArtworkPath, inFolderArtwork, cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<byte[]> PrepareCoverArtForTags(byte[] artwork, CancellationToken cancellationToken)
@@ -222,12 +222,12 @@ internal sealed class DownloadManager : IDownloadManager
         var inTagsArtwork = artwork;
         if (_userSettings.CoverArtInTagsResize)
         {
-            inTagsArtwork = await _imageService.ResizeImage(inTagsArtwork, _userSettings.CoverArtInTagsMaxSize, _userSettings.CoverArtInTagsMaxSize, cancellationToken);
+            inTagsArtwork = await _imageService.ResizeImage(inTagsArtwork, _userSettings.CoverArtInTagsMaxSize, _userSettings.CoverArtInTagsMaxSize, cancellationToken).ConfigureAwait(false);
         }
 
         if (_userSettings.CoverArtInTagsConvertToJpg)
         {
-            inTagsArtwork = await _imageService.ConvertToJpegAsync(inTagsArtwork, cancellationToken);
+            inTagsArtwork = await _imageService.ConvertToJpegAsync(inTagsArtwork, cancellationToken).ConfigureAwait(false);
         }
 
         return inTagsArtwork;
@@ -288,7 +288,7 @@ internal sealed class DownloadManager : IDownloadManager
                 }
 
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading track \"{track.Title}\" from url: {track.Mp3Url}", DownloadProgressChangedLevel.VerboseInfo));
-                await downloadService.DownloadFileTaskAsync(track.Mp3Url, track.Path, cancellationToken);
+                await downloadService.DownloadFileTaskAsync(track.Mp3Url, track.Path, cancellationToken).ConfigureAwait(false);
                 cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
                 trackDownloaded = true;
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", DownloadProgressChangedLevel.VerboseInfo));
@@ -325,10 +325,9 @@ internal sealed class DownloadManager : IDownloadManager
             tries++;
             if (!trackDownloaded && tries < _userSettings.DownloadMaxTries)
             {
-                await _resilienceService.WaitForCooldownAsync(tries, cancellationToken);
+                await _resilienceService.WaitForCooldownAsync(tries, cancellationToken).ConfigureAwait(false);
             }
-        }
-        while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
+        } while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return trackDownloaded;
     }
@@ -373,10 +372,10 @@ internal sealed class DownloadManager : IDownloadManager
 
             try
             {
-                await using var artworkStream = await downloadService.DownloadFileTaskAsync(album.ArtworkUrl, cancellationToken);
+                await using var artworkStream = await downloadService.DownloadFileTaskAsync(album.ArtworkUrl, cancellationToken).ConfigureAwait(false);
                 cancellationToken.ThrowIfCancellationRequested(); // See https://github.com/bezzad/Downloader/issues/203
 
-                artwork = await artworkStream.ToArrayAsync(cancellationToken);
+                artwork = await artworkStream.ToArrayAsync(cancellationToken).ConfigureAwait(false);
                 artworkDownloaded = true;
             }
             catch (WebException ex) // TODO is this still a WebException?
@@ -403,10 +402,9 @@ internal sealed class DownloadManager : IDownloadManager
             tries++;
             if (!artworkDownloaded && tries < _userSettings.DownloadMaxTries)
             {
-                await _resilienceService.WaitForCooldownAsync(tries, cancellationToken);
+                await _resilienceService.WaitForCooldownAsync(tries, cancellationToken).ConfigureAwait(false);
             }
-        }
-        while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
+        } while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return artwork;
     }

@@ -6,6 +6,6 @@ internal static class VersionHelper
 {
     public static bool IsNewerVersion(this Version version)
     {
-        return Constants.AppVersion.CompareTo(version) < 0;
+        return Constants.APP_VERSION.CompareTo(version) < 0;
     }
 }

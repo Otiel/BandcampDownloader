@@ -55,15 +55,15 @@
                 HorizontalAlignment="Left">
                 <TextBlock>
                     <Run Text="{lex:Loc labelCurrentVersion}" />
-                    <Run Text="{Binding Source={x:Static core:Constants.AppVersionFormatted}, Mode=OneWay}" />
+                    <Run Text="{Binding Source={x:Static core:Constants.APP_VERSION_FORMATTED}, Mode=OneWay}" />
                 </TextBlock>
             </Label>
             <TextBlock Grid.Column="1" VerticalAlignment="Center">
                 <Hyperlink
                     x:Name="HyperlinkReleases"
-                    NavigateUri="{Binding Source={x:Static core:Constants.UrlReleases}}"
+                    NavigateUri="{Binding Source={x:Static core:Constants.URL_RELEASES}}"
                     RequestNavigate="Hyperlink_RequestNavigate"
-                    ToolTip="{Binding Source={x:Static core:Constants.UrlReleases}}">
+                    ToolTip="{Binding Source={x:Static core:Constants.URL_RELEASES}}">
                     <TextBlock x:Name="TextBlockReleasesWebsite" Text="{lex:Loc}" />
                 </Hyperlink>
             </TextBlock>

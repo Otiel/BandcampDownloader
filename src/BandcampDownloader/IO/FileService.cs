@@ -20,13 +20,13 @@ internal sealed class FileService : IFileService
 
         await using var sourceStream = new FileStream(sourceFile, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize, fileOptions);
         await using var destinationStream = new FileStream(destinationFile, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize, fileOptions);
-        await sourceStream.CopyToAsync(destinationStream, cancellationToken);
+        await sourceStream.CopyToAsync(destinationStream, cancellationToken).ConfigureAwait(false);
     }
 
     public async Task SaveStreamToFileAsync(Stream stream, string destinationFile, CancellationToken cancellationToken)
     {
         stream.Position = 0;
         await using var fileStream = new FileStream(destinationFile, FileMode.Create);
-        await stream.CopyToAsync(fileStream, cancellationToken);
+        await stream.CopyToAsync(fileStream, cancellationToken).ConfigureAwait(false);
     }
 }

@@ -41,7 +41,7 @@ internal sealed class PlaylistCreator : IPlaylistCreator
             _ => throw new ArgumentOutOfRangeException(),
         };
 
-        await File.WriteAllTextAsync(album.PlaylistPath, fileContent, Encoding.UTF8, cancellationToken);
+        await File.WriteAllTextAsync(album.PlaylistPath, fileContent, Encoding.UTF8, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -56,14 +56,15 @@ internal sealed class PlaylistCreator : IPlaylistCreator
 
         foreach (var track in album.Tracks)
         {
-            playlist.PlaylistEntries.Add(new M3uPlaylistEntry
-            {
-                Album = album.Title,
-                AlbumArtist = album.Artist,
-                Duration = TimeSpan.FromSeconds(track.Duration),
-                Path = Path.GetFileName(track.Path),
-                Title = track.Title,
-            });
+            playlist.PlaylistEntries.Add(
+                new M3uPlaylistEntry
+                {
+                    Album = album.Title,
+                    AlbumArtist = album.Artist,
+                    Duration = TimeSpan.FromSeconds(track.Duration),
+                    Path = Path.GetFileName(track.Path),
+                    Title = track.Title,
+                });
         }
 
         return new M3uContent().ToText(playlist);
@@ -78,12 +79,13 @@ internal sealed class PlaylistCreator : IPlaylistCreator
 
         foreach (var track in album.Tracks)
         {
-            playlist.PlaylistEntries.Add(new PlsPlaylistEntry
-            {
-                Length = TimeSpan.FromSeconds(track.Duration),
-                Path = Path.GetFileName(track.Path),
-                Title = track.Title,
-            });
+            playlist.PlaylistEntries.Add(
+                new PlsPlaylistEntry
+                {
+                    Length = TimeSpan.FromSeconds(track.Duration),
+                    Path = Path.GetFileName(track.Path),
+                    Title = track.Title,
+                });
         }
 
         return new PlsContent().ToText(playlist);
@@ -101,15 +103,16 @@ internal sealed class PlaylistCreator : IPlaylistCreator
 
         foreach (var track in album.Tracks)
         {
-            playlist.PlaylistEntries.Add(new WplPlaylistEntry
-            {
-                AlbumArtist = album.Artist,
-                AlbumTitle = album.Title,
-                Duration = TimeSpan.FromSeconds(track.Duration),
-                Path = Path.GetFileName(track.Path),
-                TrackArtist = album.Artist,
-                TrackTitle = track.Title,
-            });
+            playlist.PlaylistEntries.Add(
+                new WplPlaylistEntry
+                {
+                    AlbumArtist = album.Artist,
+                    AlbumTitle = album.Title,
+                    Duration = TimeSpan.FromSeconds(track.Duration),
+                    Path = Path.GetFileName(track.Path),
+                    TrackArtist = album.Artist,
+                    TrackTitle = track.Title,
+                });
         }
 
         return new WplContent().ToText(playlist);
@@ -127,15 +130,16 @@ internal sealed class PlaylistCreator : IPlaylistCreator
 
         foreach (var track in album.Tracks)
         {
-            playlist.PlaylistEntries.Add(new ZplPlaylistEntry
-            {
-                AlbumArtist = album.Artist,
-                AlbumTitle = album.Title,
-                Duration = TimeSpan.FromSeconds(track.Duration),
-                Path = Path.GetFileName(track.Path),
-                TrackArtist = album.Artist,
-                TrackTitle = track.Title,
-            });
+            playlist.PlaylistEntries.Add(
+                new ZplPlaylistEntry
+                {
+                    AlbumArtist = album.Artist,
+                    AlbumTitle = album.Title,
+                    Duration = TimeSpan.FromSeconds(track.Duration),
+                    Path = Path.GetFileName(track.Path),
+                    TrackArtist = album.Artist,
+                    TrackTitle = track.Title,
+                });
         }
 
         return new ZplContent().ToText(playlist);
