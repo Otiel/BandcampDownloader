@@ -43,8 +43,8 @@ internal sealed class Container : IContainer
 
         serviceCollection.AddHttpClient();
         serviceCollection.AddSingleton<IAlbumInfoRetriever, AlbumInfoRetriever>();
+        serviceCollection.AddSingleton<IAlbumInfoParser, AlbumInfoParser>();
         serviceCollection.AddSingleton<IAlbumUrlRetriever, AlbumUrlRetriever>();
-        serviceCollection.AddSingleton<IBandcampExtractionService, BandcampExtractionService>();
         serviceCollection.AddSingleton<IDiscographyService, DiscographyService>();
         serviceCollection.AddSingleton<IDownloadManager, DownloadManager>();
         serviceCollection.AddSingleton<IExceptionHandler, ExceptionHandler>();

@@ -17,14 +17,14 @@ internal interface IAlbumInfoRetriever
 
 internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
 {
-    private readonly IBandcampExtractionService _bandcampExtractionService;
+    private readonly IAlbumInfoParser _albumInfoParser;
     private readonly IHttpService _httpService;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 
-    public AlbumInfoRetriever(IBandcampExtractionService bandcampExtractionService, IHttpService httpService)
+    public AlbumInfoRetriever(IAlbumInfoParser albumInfoParser, IHttpService httpService)
     {
-        _bandcampExtractionService = bandcampExtractionService;
+        _albumInfoParser = albumInfoParser;
         _httpService = httpService;
     }
 
@@ -56,7 +56,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             // Get info on album
             try
             {
-                var album = _bandcampExtractionService.GetAlbumInfoFromAlbumPage(htmlContent, cancellationToken);
+                var album = _albumInfoParser.GetAlbumInfoFromAlbumPage(htmlContent, cancellationToken);
 
                 if (album.Tracks.Count > 0)
                 {

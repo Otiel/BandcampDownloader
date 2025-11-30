@@ -11,7 +11,7 @@ using NLog;
 
 namespace BandcampDownloader.Bandcamp.Extraction;
 
-internal interface IBandcampExtractionService
+internal interface IAlbumInfoParser
 {
     /// <summary>
     /// Retrieves the data on the album of the specified Bandcamp page.
@@ -22,7 +22,7 @@ internal interface IBandcampExtractionService
     Album GetAlbumInfoFromAlbumPage(string htmlContent, CancellationToken cancellationToken);
 }
 
-internal sealed class BandcampExtractionService : IBandcampExtractionService
+internal sealed class AlbumInfoParser : IAlbumInfoParser
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
