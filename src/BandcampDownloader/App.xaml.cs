@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Windows;
 using BandcampDownloader.Core;
 using BandcampDownloader.Core.DependencyInjection;
@@ -14,11 +13,6 @@ namespace BandcampDownloader;
 
 internal sealed partial class App
 {
-    /// <summary>
-    /// Random class used to create random numbers.
-    /// </summary>
-    public static readonly Random Random = new();
-
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
     protected override void OnStartup(StartupEventArgs e)
