@@ -12,6 +12,7 @@ internal static class ResourceAccessor
         {
             ResourceId.Music_Affektrecordings_Html => new FileInfo(Path.Combine(musicRoot, "affektrecordings.html")),
             ResourceId.Music_Afterdarkrecordings_Html => new FileInfo(Path.Combine(musicRoot, "afterdarkrecordings.html")),
+            ResourceId.Music_Astropilotmusic_Html => new FileInfo(Path.Combine(musicRoot, "astropilotmusic.html")),
             ResourceId.Music_Cratediggers_Html => new FileInfo(Path.Combine(musicRoot, "cratediggers.html")),
             ResourceId.Music_Goataholicskjald_Html => new FileInfo(Path.Combine(musicRoot, "goataholicskjald.html")),
             ResourceId.Music_Mstrvlk_Html => new FileInfo(Path.Combine(musicRoot, "mstrvlk.html")),

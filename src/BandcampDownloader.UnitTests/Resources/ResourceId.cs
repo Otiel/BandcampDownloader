@@ -7,6 +7,7 @@ internal enum ResourceId
 {
     Music_Affektrecordings_Html,
     Music_Afterdarkrecordings_Html,
+    Music_Astropilotmusic_Html,
     Music_Cratediggers_Html,
     Music_Goataholicskjald_Html,
     Music_Mstrvlk_Html,

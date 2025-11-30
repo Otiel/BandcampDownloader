@@ -31,7 +31,7 @@ internal sealed class DiscographyService : IDiscographyService
             return [albumUrl];
         }
 
-        var regex = new Regex("(?<url>/(album|track)/.+?)(\"|&quot;)");
+        var regex = new Regex("(?<url>/(album|track)/.+?)(\"|&quot;|[?])");
         if (!regex.IsMatch(musicPageHtmlContent))
         {
             throw new NoAlbumFoundException();
