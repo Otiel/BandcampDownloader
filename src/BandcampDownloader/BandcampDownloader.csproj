@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- Version -->
-    <VersionPrefix>1.5.0</VersionPrefix>
+    <VersionPrefix>1.5.1</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>
