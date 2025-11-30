@@ -77,10 +77,9 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
                 continue;
             }
 
-            var count = albumsUrls.Count;
             try
             {
-                var relativeAlbumsUrl = _discographyService.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
+                var relativeAlbumsUrl = _discographyService.GetReferredAlbumsRelativeUrls(htmlContent);
                 var albumsUrl = relativeAlbumsUrl.Select(o => $"{artistPage}{o}");
                 albumsUrls.AddRange(albumsUrl);
             }
@@ -88,12 +87,6 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             {
                 _logger.Error(ex);
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"No referred album could be found on {artistMusicPage}. Try to uncheck the \"Download artist discography\" option", DownloadProgressChangedLevel.Error));
-            }
-
-            if (albumsUrls.Count - count == 0)
-            {
-                // This seems to be a one-album artist with no "music" page => URL redirects to the unique album URL
-                albumsUrls.Add(url);
             }
         }
 

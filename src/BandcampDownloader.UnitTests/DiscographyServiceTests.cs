@@ -14,14 +14,32 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetRelativeAlbumsUrl_Returns_Expected_Given_AffektrecordingsHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_GoataholicskjaldHtml()
+    {
+        // Arrange
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.GoataholicskjaldHtml);
+        var htmlContent = File.ReadAllText(htmlFile.FullName);
+
+        // Act
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(albumsUrls, Has.Count.EqualTo(1));
+            Assert.That(albumsUrls, Does.Contain("/album/dogma"));
+        }
+    }
+
+    [Test]
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_AffektrecordingsHtml()
     {
         // Arrange
         var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.AffektrecordingsHtml);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
-        var albumsUrls = _sut.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -114,14 +132,14 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetRelativeAlbumsUrl_Returns_Expected_Given_ProjectmooncircleHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_ProjectmooncircleHtml()
     {
         // Arrange
         var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.ProjectmooncircleHtml);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
-        var albumsUrls = _sut.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
 
         // Assert
         using (Assert.EnterMultipleScope())
@@ -251,14 +269,14 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetRelativeAlbumsUrl_Returns_Expected_Given_TympanikaudioHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_TympanikaudioHtml()
     {
         // Arrange
         var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.TympanikaudioHtml);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
-        var albumsUrls = _sut.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
 
         // Assert
         using (Assert.EnterMultipleScope())
