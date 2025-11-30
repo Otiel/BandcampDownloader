@@ -16,7 +16,7 @@ internal sealed class JsonTrack
     public string Lyrics { get; set; }
 
     [JsonPropertyName("track_num")]
-    public int Number { get; set; }
+    public int? Number { get; set; }
 
     [JsonPropertyName("title")]
     public string Title { get; set; }
@@ -24,7 +24,7 @@ internal sealed class JsonTrack
     public Track ToTrack(Album album)
     {
         var mp3Url = (File.Url.StartsWith("//", StringComparison.Ordinal) ? "http:" : "") + File.Url; // "//example.com" Uri lacks protocol
-        var number = Number == 0 ? 1 : Number; // For bandcamp track pages, Number will be 0. Set 1 instead
+        var number = Number ?? 1; // For bandcamp track pages, Number will be null. Set 1 instead
 
         return new Track(album, Duration, Lyrics, mp3Url, number, Title);
     }

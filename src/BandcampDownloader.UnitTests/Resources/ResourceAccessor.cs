@@ -6,18 +6,18 @@ internal static class ResourceAccessor
 {
     public static FileInfo GetFileInfo(ResourceId resourceId)
     {
-        var resourcesFilesRoot = Path.Combine(TestContext.CurrentContext.TestDirectory, "Resources", "Files");
+        var musicRoot = Path.Combine(TestContext.CurrentContext.TestDirectory, "Resources", "Files", "Music");
 
         return resourceId switch
         {
-            ResourceId.AffektrecordingsHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "affektrecordings.html")),
-            ResourceId.AfterdarkrecordingsHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "afterdarkrecordings.html")),
-            ResourceId.CratediggersHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "cratediggers.html")),
-            ResourceId.GoataholicskjaldHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "goataholicskjald.html")),
-            ResourceId.MstrvlkHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "mstrvlk.html")),
-            ResourceId.ProjectmooncircleHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "projectmooncircle.html")),
-            ResourceId.TympanikaudioHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "tympanikaudio.html")),
-            ResourceId.WeneverlearnedtoliveHtml => new FileInfo(Path.Combine(resourcesFilesRoot, "weneverlearnedtolive.html")),
+            ResourceId.Music_Affektrecordings_Html => new FileInfo(Path.Combine(musicRoot, "affektrecordings.html")),
+            ResourceId.Music_Afterdarkrecordings_Html => new FileInfo(Path.Combine(musicRoot, "afterdarkrecordings.html")),
+            ResourceId.Music_Cratediggers_Html => new FileInfo(Path.Combine(musicRoot, "cratediggers.html")),
+            ResourceId.Music_Goataholicskjald_Html => new FileInfo(Path.Combine(musicRoot, "goataholicskjald.html")),
+            ResourceId.Music_Mstrvlk_Html => new FileInfo(Path.Combine(musicRoot, "mstrvlk.html")),
+            ResourceId.Music_Projectmooncircle_Html => new FileInfo(Path.Combine(musicRoot, "projectmooncircle.html")),
+            ResourceId.Music_Tympanikaudio_Html => new FileInfo(Path.Combine(musicRoot, "tympanikaudio.html")),
+            ResourceId.Music_Weneverlearnedtolive_Html => new FileInfo(Path.Combine(musicRoot, "weneverlearnedtolive.html")),
             _ => throw new ArgumentOutOfRangeException(nameof(resourceId), resourceId, null),
         };
     }

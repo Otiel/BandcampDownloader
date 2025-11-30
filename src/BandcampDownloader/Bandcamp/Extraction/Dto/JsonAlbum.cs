@@ -21,7 +21,7 @@ internal sealed class JsonAlbum
     public string Artist { get; init; }
 
     [JsonPropertyName("album_release_date")]
-    public DateTime ReleaseDate { get; set; }
+    public DateTime? ReleaseDate { get; set; }
 
     [JsonPropertyName("trackinfo")]
     public List<JsonTrack> Tracks { get; init; }
@@ -32,12 +32,9 @@ internal sealed class JsonAlbum
         var artworkUrl = ArtId == null ? null : URL_START + ArtId.ToString().PadLeft(10, '0') + URL_END;
 
         // Singles might not have a release date  #144
-        if (ReleaseDate == new DateTime())
-        {
-            ReleaseDate = AlbumData.ReleaseDate;
-        }
+        var releaseDate = ReleaseDate ?? AlbumData.ReleaseDate;
 
-        var album = new Album(Artist, artworkUrl, ReleaseDate, AlbumData.AlbumTitle);
+        var album = new Album(Artist, artworkUrl, releaseDate, AlbumData.AlbumTitle);
 
         // Some tracks do not have their URL filled on some albums (pre-release...)
         // Forget those tracks here
