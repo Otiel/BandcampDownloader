@@ -15,7 +15,7 @@ internal sealed class JsonAlbum
     public JsonAlbumData AlbumData { get; set; }
 
     [JsonPropertyName("art_id")]
-    public int? ArtId { get; set; }
+    public long? ArtId { get; set; }
 
     [JsonPropertyName("artist")]
     public string Artist { get; set; }
