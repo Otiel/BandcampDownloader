@@ -27,9 +27,8 @@ internal interface IBandcampExtractionService
     /// Retrieves all the albums URL existing on the specified Bandcamp page.
     /// </summary>
     /// <param name="htmlContent">The HTML source code of a Bandcamp page.</param>
-    /// <param name="artistPage">The URL to the artist page.</param>
     /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
-    IReadOnlyCollection<string> GetAlbumsUrlsFromArtistPage(string htmlContent, string artistPage);
+    IReadOnlyCollection<string> GetRelativeAlbumsUrlsFromArtistPage(string htmlContent);
 }
 
 internal sealed class BandcampExtractionService : IBandcampExtractionService
@@ -77,7 +76,7 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         return album;
     }
 
-    public IReadOnlyCollection<string> GetAlbumsUrlsFromArtistPage(string htmlContent, string artistPage)
+    public IReadOnlyCollection<string> GetRelativeAlbumsUrlsFromArtistPage(string htmlContent)
     {
         // Get albums ("real" albums or track-only pages) relative urls
         var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
@@ -89,7 +88,7 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         var albumsUrl = new List<string>();
         foreach (Match m in regex.Matches(htmlContent))
         {
-            albumsUrl.Add(artistPage + m.Groups["url"].Value);
+            albumsUrl.Add(m.Groups["url"].Value);
         }
 
         // Remove duplicates

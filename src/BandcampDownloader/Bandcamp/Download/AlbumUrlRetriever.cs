@@ -80,7 +80,8 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             var count = albumsUrls.Count;
             try
             {
-                var albumsUrl = _bandcampExtractionService.GetAlbumsUrlsFromArtistPage(htmlContent, artistPage);
+                var relativeAlbumsUrl = _bandcampExtractionService.GetRelativeAlbumsUrlsFromArtistPage(htmlContent);
+                var albumsUrl = relativeAlbumsUrl.Select(o => $"{artistPage}{o}");
                 albumsUrls.AddRange(albumsUrl);
             }
             catch (NoAlbumFoundException ex)
