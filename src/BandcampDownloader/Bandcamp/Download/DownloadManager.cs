@@ -38,8 +38,8 @@ internal sealed class DownloadManager : IDownloadManager
     private readonly IUserSettings _userSettings;
     private readonly Logger _logger = LogManager.GetCurrentClassLogger();
     private bool _isInitialized;
-    private IReadOnlyList<TrackFile> _downloadingFiles;
-    private IReadOnlyList<Album> _albums;
+    private IReadOnlyCollection<TrackFile> _downloadingFiles;
+    private IReadOnlyCollection<Album> _albums;
 
     public event DownloadProgressChangedEventHandler DownloadProgressChanged;
 

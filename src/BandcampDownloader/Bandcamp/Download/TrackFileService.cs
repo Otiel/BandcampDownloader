@@ -12,7 +12,7 @@ namespace BandcampDownloader.Bandcamp.Download;
 
 internal interface ITrackFileService
 {
-    Task<IReadOnlyList<TrackFile>> GetFilesToDownloadAsync(IReadOnlyList<Album> albums, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<TrackFile>> GetFilesToDownloadAsync(IReadOnlyCollection<Album> albums, CancellationToken cancellationToken);
     event DownloadProgressChangedEventHandler DownloadProgressChanged;
 }
 
@@ -31,7 +31,7 @@ internal sealed class TrackFileService : ITrackFileService
         _userSettings = settingsService.GetUserSettings();
     }
 
-    public async Task<IReadOnlyList<TrackFile>> GetFilesToDownloadAsync(IReadOnlyList<Album> albums, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<TrackFile>> GetFilesToDownloadAsync(IReadOnlyCollection<Album> albums, CancellationToken cancellationToken)
     {
         var files = new List<TrackFile>();
         var filesLock = new Lock();

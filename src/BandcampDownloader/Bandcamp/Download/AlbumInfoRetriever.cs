@@ -11,7 +11,7 @@ namespace BandcampDownloader.Bandcamp.Download;
 
 internal interface IAlbumInfoRetriever
 {
-    Task<IReadOnlyList<Album>> GetAlbumsAsync(IReadOnlyList<string> albumsUrls, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<Album>> GetAlbumsAsync(IReadOnlyCollection<string> albumsUrls, CancellationToken cancellationToken);
     event DownloadProgressChangedEventHandler DownloadProgressChanged;
 }
 
@@ -28,7 +28,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
         _httpService = httpService;
     }
 
-    public async Task<IReadOnlyList<Album>> GetAlbumsAsync(IReadOnlyList<string> albumsUrls, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<Album>> GetAlbumsAsync(IReadOnlyCollection<string> albumsUrls, CancellationToken cancellationToken)
     {
         var albums = new List<Album>();
 

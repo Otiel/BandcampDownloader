@@ -12,7 +12,7 @@ namespace BandcampDownloader.Bandcamp.Download;
 
 internal interface IAlbumUrlRetriever
 {
-    Task<IReadOnlyList<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken);
     event DownloadProgressChangedEventHandler DownloadProgressChanged;
 }
 
@@ -29,7 +29,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
         _httpService = httpService;
     }
 
-    public async Task<IReadOnlyList<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<string>> RetrieveAlbumsUrlsAsync(string inputUrls, bool downloadArtistDiscography, CancellationToken cancellationToken)
     {
         var splitUrls = inputUrls.Split([Environment.NewLine], StringSplitOptions.RemoveEmptyEntries).ToList();
         var sanitizedUrls = splitUrls.Distinct().Select(o => o.Trim()).ToList();
@@ -46,7 +46,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
     /// <summary>
     /// Returns the artists discography from any URL (artist, album, track).
     /// </summary>
-    private async Task<IReadOnlyList<string>> GetArtistDiscographyAlbumsUrlsAsync(IReadOnlyList<string> urls, CancellationToken cancellationToken)
+    private async Task<IReadOnlyCollection<string>> GetArtistDiscographyAlbumsUrlsAsync(IReadOnlyCollection<string> urls, CancellationToken cancellationToken)
     {
         var albumsUrls = new List<string>();
 
