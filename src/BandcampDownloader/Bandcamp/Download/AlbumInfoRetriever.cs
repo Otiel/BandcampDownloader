@@ -39,12 +39,12 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Retrieving album data for {url}", DownloadProgressChangedLevel.Info));
 
             // Retrieve URL HTML source code
-            string htmlCode;
+            string htmlContent;
             try
             {
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading album info from url: {url}", DownloadProgressChangedLevel.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlCode = await httpClient.GetStringAsync(url, cancellationToken);
+                htmlContent = await httpClient.GetStringAsync(url, cancellationToken);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -56,7 +56,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             // Get info on album
             try
             {
-                var album = _bandcampExtractionService.GetAlbumInfoFromAlbumPage(htmlCode, cancellationToken);
+                var album = _bandcampExtractionService.GetAlbumInfoFromAlbumPage(htmlContent, cancellationToken);
 
                 if (album.Tracks.Count > 0)
                 {

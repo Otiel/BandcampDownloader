@@ -62,13 +62,13 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             var artistMusicPage = artistPage + "/music";
 
             // Retrieve artist "music" page HTML source code
-            string htmlCode;
+            string htmlContent;
 
             try
             {
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading album info from url: {url}", DownloadProgressChangedLevel.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlCode = await httpClient.GetStringAsync(artistMusicPage, cancellationToken);
+                htmlContent = await httpClient.GetStringAsync(artistMusicPage, cancellationToken);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
@@ -80,7 +80,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             var count = albumsUrls.Count;
             try
             {
-                var albumsUrl = _bandcampExtractionService.GetAlbumsUrlsFromArtistPage(htmlCode, artistPage);
+                var albumsUrl = _bandcampExtractionService.GetAlbumsUrlsFromArtistPage(htmlContent, artistPage);
                 albumsUrls.AddRange(albumsUrl);
             }
             catch (NoAlbumFoundException ex)
