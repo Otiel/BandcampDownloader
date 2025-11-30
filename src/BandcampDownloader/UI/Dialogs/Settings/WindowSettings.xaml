@@ -17,7 +17,7 @@
     lex:ResxLocalizationProvider.DefaultAssembly="BandcampDownloader"
     lex:ResxLocalizationProvider.DefaultDictionary="Resources"
     FocusManager.FocusedElement="{Binding ElementName=ListBoxSections}"
-    Icon="pack://application:,,,/Resources/Cloud.ico"
+    Icon="/BandcampDownloader;component/Resources/Cloud.ico"
     ResizeMode="NoResize"
     TextOptions.TextFormattingMode="Display"
     WindowStartupLocation="CenterOwner"
@@ -40,7 +40,7 @@
                 Height="16"
                 Margin="5,0,0,0"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"
-                Source="pack://application:,,,/Resources/InformationSmallWhite.png"
+                Source="/BandcampDownloader;component/Resources/InformationSmallWhite.png"
                 Stretch="None" />
             <Label
                 x:Name="LabelSettingsInfo"
@@ -63,7 +63,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/ApplicationBlue.png" />
+                        Source="/BandcampDownloader;component/Resources/ApplicationBlue.png" />
                     <Label x:Name="LabelListBoxItemGeneral" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -74,7 +74,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/Tags.png" />
+                        Source="/BandcampDownloader;component/Resources/Tags.png" />
                     <Label x:Name="LabelListBoxItemTags" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -85,7 +85,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/Picture.png" />
+                        Source="/BandcampDownloader;component/Resources/Picture.png" />
                     <Label x:Name="LabelListBoxItemCoverArt" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -96,7 +96,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/DocumentMusicPlaylist.png" />
+                        Source="/BandcampDownloader;component/Resources/DocumentMusicPlaylist.png" />
                     <Label x:Name="LabelListBoxItemPlaylist" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -107,7 +107,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/DriveDownload.png" />
+                        Source="/BandcampDownloader;component/Resources/DriveDownload.png" />
                     <Label x:Name="LabelListBoxItemDownloads" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -118,7 +118,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/GlobeNetwork.png" />
+                        Source="/BandcampDownloader;component/Resources/GlobeNetwork.png" />
                     <Label x:Name="LabelListBoxItemNetwork" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -129,7 +129,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/Gear.png" />
+                        Source="/BandcampDownloader;component/Resources/Gear.png" />
                     <Label x:Name="LabelListBoxItemAdvanced" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -140,7 +140,7 @@
                         Width="16"
                         Height="16"
                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                        Source="pack://application:,,,/Resources/Information.png" />
+                        Source="/BandcampDownloader;component/Resources/Information.png" />
                     <Label x:Name="LabelListBoxItemAbout" Content="{lex:Loc}" />
                 </StackPanel>
             </ListBoxItem>
@@ -224,7 +224,7 @@
                     Width="16"
                     Height="16"
                     RenderOptions.BitmapScalingMode="NearestNeighbor"
-                    Source="pack://application:,,,/Resources/ArrowCircle225Left.png"
+                    Source="/BandcampDownloader;component/Resources/ArrowCircle225Left.png"
                     Stretch="None" />
                 <Label
                     x:Name="LabelButtonResetSettings"

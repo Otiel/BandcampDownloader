@@ -160,15 +160,15 @@ internal sealed partial class WindowMain
     {
         var msgProperties = new WpfMessageBoxProperties
         {
-            Button = MessageBoxButton.YesNo,
+            Button = WpfMessageBoxButton.YesNo,
             ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
             ButtonOkText = Properties.Resources.messageBoxButtonOK,
-            Image = MessageBoxImage.Question,
+            Image = WpfMessageBoxImage.Question,
             Text = Properties.Resources.messageBoxCancelDownloadsText,
             Title = "Bandcamp Downloader",
         };
 
-        if (WpfMessageBox.Show(this, ref msgProperties) != MessageBoxResult.Yes ||
+        if (WpfMessageBox.Show(this, ref msgProperties) != WpfMessageBoxResult.Yes ||
             !_activeDownloads)
         {
             // If user cancelled the cancellation or if downloads finished while he chose to cancel
@@ -460,15 +460,15 @@ internal sealed partial class WindowMain
             // There are active downloads, ask for confirmation
             var msgProperties = new WpfMessageBoxProperties
             {
-                Button = MessageBoxButton.OKCancel,
+                Button = WpfMessageBoxButton.OKCancel,
                 ButtonCancelText = Properties.Resources.messageBoxButtonCancel,
                 ButtonOkText = Properties.Resources.messageBoxCloseWindowWhenDownloadingButtonOk,
-                Image = MessageBoxImage.Warning,
+                Image = WpfMessageBoxImage.Exclamation,
                 Text = Properties.Resources.messageBoxCloseWindowWhenDownloadingText,
                 Title = "Bandcamp Downloader",
             };
 
-            if (WpfMessageBox.Show(this, ref msgProperties) == MessageBoxResult.Cancel)
+            if (WpfMessageBox.Show(this, ref msgProperties) == WpfMessageBoxResult.Cancel)
             {
                 // Cancel closing the window
                 e.Cancel = true;

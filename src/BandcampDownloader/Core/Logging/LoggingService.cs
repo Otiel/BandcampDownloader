@@ -1,5 +1,5 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System;
+using System.IO;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
@@ -16,7 +16,7 @@ public sealed class LoggingService : ILoggingService
     /// <summary>
     /// The absolute path to the log file.
     /// </summary>
-    private static readonly string LOG_FILE_PATH = Directory.GetParent(Assembly.GetExecutingAssembly().Location) + @"\BandcampDownloader.log";
+    private static readonly string LOG_FILE_PATH = Directory.GetParent(AppContext.BaseDirectory) + @"\BandcampDownloader.log";
 
     /// <summary>
     /// The log file maximum size in bytes.
