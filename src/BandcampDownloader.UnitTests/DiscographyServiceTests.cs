@@ -32,6 +32,106 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_CratediggersHtml()
+    {
+        // Arrange
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.CratediggersHtml);
+        var htmlContent = File.ReadAllText(htmlFile.FullName);
+
+        // Act
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(albumsUrls, Has.Count.EqualTo(1));
+            Assert.That(albumsUrls, Does.Contain("/album/concrete-canvases"));
+        }
+    }
+
+    [Test]
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_MstrvlkHtml()
+    {
+        // Arrange
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.MstrvlkHtml);
+        var htmlContent = File.ReadAllText(htmlFile.FullName);
+
+        // Act
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(albumsUrls, Has.Count.EqualTo(3));
+            Assert.That(albumsUrls, Does.Contain("/album/dec-cem-ber"));
+            Assert.That(albumsUrls, Does.Contain("/album/mv-1"));
+            Assert.That(albumsUrls, Does.Contain("/album/-"));
+        }
+    }
+
+    [Test]
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_WeneverlearnedtoliveHtml()
+    {
+        // Arrange
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.WeneverlearnedtoliveHtml);
+        var htmlContent = File.ReadAllText(htmlFile.FullName);
+
+        // Act
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(albumsUrls, Has.Count.EqualTo(6));
+            Assert.That(albumsUrls, Does.Contain("/album/ode"));
+            Assert.That(albumsUrls, Does.Contain("/album/the-sleepwalk-transmissions"));
+            Assert.That(albumsUrls, Does.Contain("/album/silently-i-threw-them-skyward"));
+            Assert.That(albumsUrls, Does.Contain("/track/crystalline-so-serene"));
+            Assert.That(albumsUrls, Does.Contain("/track/shadows-in-hibernation"));
+            Assert.That(albumsUrls, Does.Contain("/album/s-t"));
+        }
+    }
+
+    [Test]
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_AfterdarkrecordingsHtml()
+    {
+        // Arrange
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.AfterdarkrecordingsHtml);
+        var htmlContent = File.ReadAllText(htmlFile.FullName);
+
+        // Act
+        var albumsUrls = _sut.GetReferredAlbumsRelativeUrls(htmlContent);
+
+        // Assert
+        using (Assert.EnterMultipleScope())
+        {
+            Assert.That(albumsUrls, Has.Count.EqualTo(22));
+            Assert.That(albumsUrls, Does.Contain("/album/misc-trax"));
+            Assert.That(albumsUrls, Does.Contain("/album/time-travel-records"));
+            Assert.That(albumsUrls, Does.Contain("/album/paradise-records"));
+            Assert.That(albumsUrls, Does.Contain("/track/empire"));
+            Assert.That(albumsUrls, Does.Contain("/album/adr"));
+            Assert.That(albumsUrls, Does.Contain("/album/afterdark-collection"));
+            Assert.That(albumsUrls, Does.Contain("/album/set-your-body-free-amp-destructor"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-5"));
+            Assert.That(albumsUrls, Does.Contain("/album/the-guinness-track"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-1"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-2-2"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-3-2"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-4-2"));
+            Assert.That(albumsUrls, Does.Contain("/album/the-elevator-odyssey"));
+            Assert.That(albumsUrls, Does.Contain("/track/guinness-track-peshay-remix"));
+            Assert.That(albumsUrls, Does.Contain("/album/guinness-track-remastered"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-2"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-3"));
+            Assert.That(albumsUrls, Does.Contain("/album/energizer-4"));
+            Assert.That(albumsUrls, Does.Contain("/album/the-energizers-1"));
+            Assert.That(albumsUrls, Does.Contain("/album/adr-unreleased-tracks"));
+            Assert.That(albumsUrls, Does.Contain("/album/universe-records"));
+        }
+    }
+
+    [Test]
     public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_AffektrecordingsHtml()
     {
         // Arrange
