@@ -29,7 +29,7 @@ internal sealed class ResilienceService : IResilienceService
         if (_userSettings.DownloadRetryCooldown != 0)
         {
             var cooldownDelay = (int)(Math.Pow(_userSettings.DownloadRetryExponent, triesNumber) * _userSettings.DownloadRetryCooldown * 1000);
-            await Task.Delay(cooldownDelay, cancellationToken);
+            await Task.Delay(cooldownDelay, cancellationToken).ConfigureAwait(false);
         }
     }
 }

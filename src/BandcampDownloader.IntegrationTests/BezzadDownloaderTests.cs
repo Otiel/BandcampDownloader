@@ -24,7 +24,7 @@ public sealed class BezzadDownloaderTests
         Assert.ThrowsAsync<OperationCanceledException>(async () =>
         {
             // Act
-            await _sut.DownloadFileTaskAsync(fileUrl, cts.Token);
+            await _sut.DownloadFileTaskAsync(fileUrl, cts.Token).ConfigureAwait(false);
         });
     }
 

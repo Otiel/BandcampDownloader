@@ -84,7 +84,7 @@ internal sealed partial class UserControlSettingsGeneral : IUserControlSettings
         Version latestVersion;
         try
         {
-            latestVersion = await _updatesService.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {

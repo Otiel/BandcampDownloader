@@ -43,7 +43,7 @@ internal sealed class HttpService : IHttpService
     {
         var httpClient = CreateHttpClientInternal();
         var request = new HttpRequestMessage(HttpMethod.Head, url); // Use HEAD method in order to retrieve only headers
-        var response = await httpClient.SendAsync(request, cancellationToken);
+        var response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
         var fileSize = response.Content.Headers.ContentLength;
 
@@ -59,9 +59,9 @@ internal sealed class HttpService : IHttpService
     public async Task DownloadFileAsync(string url, FileInfo fileInfo, CancellationToken cancellationToken)
     {
         var httpClient = CreateHttpClientInternal();
-        await using var httpStream = await httpClient.GetStreamAsync(url, cancellationToken);
+        await using var httpStream = await httpClient.GetStreamAsync(url, cancellationToken).ConfigureAwait(false);
         await using var fileStream = File.Create(fileInfo.FullName);
-        await httpStream.CopyToAsync(fileStream, cancellationToken);
+        await httpStream.CopyToAsync(fileStream, cancellationToken).ConfigureAwait(false);
     }
 
     public void SetProxy(WebClient webClient) // TODO fix unused

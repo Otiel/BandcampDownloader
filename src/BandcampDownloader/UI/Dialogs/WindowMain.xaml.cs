@@ -111,30 +111,30 @@ internal sealed partial class WindowMain
             if (string.IsNullOrWhiteSpace(inputUrls))
             {
                 // No URL to look
-                await LogAsync("Paste some albums URLs to be downloaded", DownloadProgressChangedLevel.Error);
+                await LogAsync("Paste some albums URLs to be downloaded", DownloadProgressChangedLevel.Error).ConfigureAwait(false);
                 return;
             }
 
             // Set controls to "downloading..." state
             _activeDownloads = true;
-            await UpdateControlsStateAsync(true);
+            await UpdateControlsStateAsync(true).ConfigureAwait(false);
 
-            await LogAsync("Starting download...", DownloadProgressChangedLevel.Info);
+            await LogAsync("Starting download...", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
 
             try
             {
-                await StartDownloadAsync(inputUrls, _downloadCts.Token);
+                await StartDownloadAsync(inputUrls, _downloadCts.Token).ConfigureAwait(false);
             }
             catch (OperationCanceledException)
             {
-                await LogAsync("Downloads cancelled by user", DownloadProgressChangedLevel.Info);
+                await LogAsync("Downloads cancelled by user", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
             }
 
             // Reset controls to "ready" state
             _activeDownloads = false;
             _lastTotalReceivedBytes = 0;
-            await UpdateControlsStateAsync(false);
-            await ModifyMouseCursorAsync(null);
+            await UpdateControlsStateAsync(false).ConfigureAwait(false);
+            await ModifyMouseCursorAsync(null).ConfigureAwait(false);
 
             if (_userSettings.EnableApplicationSounds)
             {
@@ -149,10 +149,10 @@ internal sealed partial class WindowMain
                 catch (Exception ex)
                 {
                     _logger.Error(ex);
-                    await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error);
+                    await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error).ConfigureAwait(false);
                 }
             }
-        });
+        }).ConfigureAwait(false);
     }
 
     private async void ButtonStop_Click(object sender, RoutedEventArgs e)
@@ -174,10 +174,10 @@ internal sealed partial class WindowMain
             return;
         }
 
-        await ModifyMouseCursorAsync(Cursors.Wait);
+        await ModifyMouseCursorAsync(Cursors.Wait).ConfigureAwait(false);
         ButtonStop.IsEnabled = false;
 
-        await _downloadCts.CancelAsync();
+        await _downloadCts.CancelAsync().ConfigureAwait(false);
     }
 
     private static async Task ModifyMouseCursorAsync(Cursor cursor)
@@ -185,7 +185,7 @@ internal sealed partial class WindowMain
         await ThreadUtils.ExecuteOnUiAsync(() =>
         {
             Mouse.OverrideCursor = cursor;
-        });
+        }).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -196,19 +196,19 @@ internal sealed partial class WindowMain
         Version latestVersion;
         try
         {
-            latestVersion = await _updatesService.GetLatestVersionAsync();
+            latestVersion = await _updatesService.GetLatestVersionAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {
             _logger.Error(ex, "Failed to get latest version");
 
-            await ShowNewVersionLabelAsync(Properties.Resources.labelVersionError);
+            await ShowNewVersionLabelAsync(Properties.Resources.labelVersionError).ConfigureAwait(false);
             return;
         }
 
         if (latestVersion.IsNewerVersion())
         {
-            await ShowNewVersionLabelAsync(Properties.Resources.labelVersionNewUpdateAvailable);
+            await ShowNewVersionLabelAsync(Properties.Resources.labelVersionNewUpdateAvailable).ConfigureAwait(false);
         }
     }
 
@@ -218,12 +218,12 @@ internal sealed partial class WindowMain
         {
             LabelNewVersion.Content = content;
             LabelNewVersion.Visibility = Visibility.Visible;
-        });
+        }).ConfigureAwait(false);
     }
 
     private async void DownloadProgressChanged(object sender, DownloadProgressChangedArgs eventArgs)
     {
-        await LogAsync(eventArgs.Message, eventArgs.Level);
+        await LogAsync(eventArgs.Message, eventArgs.Level).ConfigureAwait(false);
     }
 
     private void LabelNewVersion_MouseDown(object sender, MouseButtonEventArgs e)
@@ -287,7 +287,7 @@ internal sealed partial class WindowMain
                 {
                     RichTextBoxLog.EndChange();
                 }
-            });
+            }).ConfigureAwait(false);
         }
     }
 
@@ -296,7 +296,7 @@ internal sealed partial class WindowMain
     /// </summary>
     private async Task StartDownloadAsync(string inputUrls, CancellationToken cancellationToken)
     {
-        await _downloadManager.InitializeAsync(inputUrls, cancellationToken);
+        await _downloadManager.InitializeAsync(inputUrls, cancellationToken).ConfigureAwait(false);
 
         // Set progressBar max value
         var maxProgressBarValue = _userSettings.RetrieveFilesSize ? _downloadManager.GetTotalBytesToDownload() : _downloadManager.GetTotalFilesCountToDownload();
@@ -308,7 +308,7 @@ internal sealed partial class WindowMain
                 ProgressBar.IsIndeterminate = false;
                 ProgressBar.Maximum = maxProgressBarValue;
                 TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
-            });
+            }).ConfigureAwait(false);
         }
 
         var timersCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
@@ -318,9 +318,9 @@ internal sealed partial class WindowMain
         // In fire and forget
         _ = Task.Run(async () =>
         {
-            while (await updateProgressTimer.WaitForNextTickAsync(timersCts.Token))
+            while (await updateProgressTimer.WaitForNextTickAsync(timersCts.Token).ConfigureAwait(false))
             {
-                await UpdateProgressAsync();
+                await UpdateProgressAsync().ConfigureAwait(false);
             }
         }, timersCts.Token);
 
@@ -329,21 +329,21 @@ internal sealed partial class WindowMain
         // In fire and forget
         _ = Task.Run(async () =>
         {
-            while (await updateDownloadSpeedTimer.WaitForNextTickAsync(timersCts.Token))
+            while (await updateDownloadSpeedTimer.WaitForNextTickAsync(timersCts.Token).ConfigureAwait(false))
             {
-                await UpdateDownloadSpeedAsync();
+                await UpdateDownloadSpeedAsync().ConfigureAwait(false);
             }
         }, timersCts.Token);
 
         // Start downloading albums
         // ReSharper disable once PossiblyMistakenUseOfCancellationToken : this is the correct token
-        await _downloadManager.StartDownloadsAsync(cancellationToken);
+        await _downloadManager.StartDownloadsAsync(cancellationToken).ConfigureAwait(false);
 
         // Stop timers
-        await timersCts.CancelAsync();
+        await timersCts.CancelAsync().ConfigureAwait(false);
 
         // Update progress one last time to make sure the downloaded bytes displayed on UI is up-to-date
-        await UpdateProgressAsync();
+        await UpdateProgressAsync().ConfigureAwait(false);
     }
 
     /// <summary>
@@ -385,7 +385,7 @@ internal sealed partial class WindowMain
                 TextBoxDownloadsPath.IsReadOnly = false;
                 TextBoxUrls.IsReadOnly = false;
             }
-        });
+        }).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -409,7 +409,7 @@ internal sealed partial class WindowMain
         {
             // Update download speed on UI
             LabelDownloadSpeed.Content = downloadSpeedLabelContent;
-        });
+        }).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -425,7 +425,7 @@ internal sealed partial class WindowMain
         var labelProgressContent = (totalReceivedBytes / (1024 * 1024)).ToString("0.00") + " MB" +
                                    (_userSettings.RetrieveFilesSize ? " / " + (bytesToDownload / (1024 * 1024)).ToString("0.00") + " MB" : "");
 
-        var progressBarMaximum = await ThreadUtils.ExecuteOnUiAsync(() => ProgressBar.Maximum);
+        var progressBarMaximum = await ThreadUtils.ExecuteOnUiAsync(() => ProgressBar.Maximum).ConfigureAwait(false);
         double progressBarValue;
         double taskbarProgressBarValue;
         if (_userSettings.RetrieveFilesSize)
@@ -449,7 +449,7 @@ internal sealed partial class WindowMain
             LabelProgress.Content = labelProgressContent;
             ProgressBar.Value = progressBarValue;
             TaskbarItemInfo.ProgressValue = taskbarProgressBarValue;
-        });
+        }).ConfigureAwait(false);
     }
 
     private void WindowMain_Closing(object sender, CancelEventArgs e)
@@ -484,7 +484,7 @@ internal sealed partial class WindowMain
         {
             if (_userSettings.CheckForUpdates)
             {
-                await CheckForUpdatesAsync();
+                await CheckForUpdatesAsync().ConfigureAwait(false);
             }
         });
     }

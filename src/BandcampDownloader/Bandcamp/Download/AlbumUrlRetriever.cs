@@ -39,7 +39,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             return sanitizedUrls;
         }
 
-        var albumsUrls = await GetArtistDiscographyAlbumsUrlsAsync(sanitizedUrls, cancellationToken);
+        var albumsUrls = await GetArtistDiscographyAlbumsUrlsAsync(sanitizedUrls, cancellationToken).ConfigureAwait(false);
         return albumsUrls;
     }
 
@@ -68,7 +68,7 @@ internal sealed class AlbumUrlRetriever : IAlbumUrlRetriever
             {
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading album info from url: {url}", DownloadProgressChangedLevel.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlContent = await httpClient.GetStringAsync(artistMusicPage, cancellationToken);
+                htmlContent = await httpClient.GetStringAsync(artistMusicPage, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {

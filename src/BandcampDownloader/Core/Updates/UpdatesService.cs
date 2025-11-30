@@ -27,7 +27,7 @@ internal sealed class UpdatesService : IUpdatesService
     public async Task<Version> GetLatestVersionAsync()
     {
         var httpClient = _httpService.CreateHttpClient();
-        var latestRelease = await httpClient.GetFromJsonAsync<GithubRelease>(LATEST_RELEASE_URL);
+        var latestRelease = await httpClient.GetFromJsonAsync<GithubRelease>(LATEST_RELEASE_URL).ConfigureAwait(false);
 
         // BandcampDownloader tags are usually "vX.Y.Z"
         var latestVersionNumber = latestRelease.TagName.Replace("v", "");
@@ -39,7 +39,7 @@ internal sealed class UpdatesService : IUpdatesService
     public async Task<string> GetLatestReleaseAssetUrlAsync()
     {
         var httpClient = _httpService.CreateHttpClient();
-        var latestRelease = await httpClient.GetFromJsonAsync<GithubRelease>(LATEST_RELEASE_URL);
+        var latestRelease = await httpClient.GetFromJsonAsync<GithubRelease>(LATEST_RELEASE_URL).ConfigureAwait(false);
         var latestReleaseAsset = latestRelease.Assets.Single(x => x.Name == RELEASE_ASSET_NAME);
         return latestReleaseAsset.DownloadUrl;
     }

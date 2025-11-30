@@ -44,7 +44,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             {
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloading album info from url: {url}", DownloadProgressChangedLevel.VerboseInfo));
                 var httpClient = _httpService.CreateHttpClient();
-                htmlContent = await httpClient.GetStringAsync(url, cancellationToken);
+                htmlContent = await httpClient.GetStringAsync(url, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {

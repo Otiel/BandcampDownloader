@@ -41,7 +41,7 @@ internal sealed class PlaylistCreator : IPlaylistCreator
             _ => throw new ArgumentOutOfRangeException(),
         };
 
-        await File.WriteAllTextAsync(album.PlaylistPath, fileContent, Encoding.UTF8, cancellationToken);
+        await File.WriteAllTextAsync(album.PlaylistPath, fileContent, Encoding.UTF8, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>

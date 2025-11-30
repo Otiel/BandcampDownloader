@@ -29,7 +29,7 @@ internal sealed partial class UserControlChangelog
     private async Task<string> DownloadChangelogAsync()
     {
         var httpClient = _httpService.CreateHttpClient();
-        var changelog = await httpClient.GetStringAsync(CHANGELOG_URL);
+        var changelog = await httpClient.GetStringAsync(CHANGELOG_URL).ConfigureAwait(false);
         return changelog;
     }
 
@@ -38,7 +38,7 @@ internal sealed partial class UserControlChangelog
         string changelog;
         try
         {
-            changelog = await DownloadChangelogAsync();
+            changelog = await DownloadChangelogAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {

@@ -30,7 +30,7 @@ internal sealed partial class WindowUpdate
 
     private async void ButtonDownloadUpdate_Click(object sender, RoutedEventArgs e)
     {
-        var latestReleaseAssetUrl = await _updatesService.GetLatestReleaseAssetUrlAsync();
+        var latestReleaseAssetUrl = await _updatesService.GetLatestReleaseAssetUrlAsync().ConfigureAwait(false);
 
         var parts = latestReleaseAssetUrl.Split(new[] { '/' });
         var defaultFileName = parts[^1];
@@ -49,7 +49,7 @@ internal sealed partial class WindowUpdate
 
         var fileInfo = new FileInfo(dialog.FileName);
 
-        await _httpService.DownloadFileAsync(latestReleaseAssetUrl, fileInfo, CancellationToken.None);
+        await _httpService.DownloadFileAsync(latestReleaseAssetUrl, fileInfo, CancellationToken.None).ConfigureAwait(false);
     }
 
     private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -62,7 +62,7 @@ internal sealed partial class WindowUpdate
     {
         try
         {
-            _latestVersion = await _updatesService.GetLatestVersionAsync();
+            _latestVersion = await _updatesService.GetLatestVersionAsync().ConfigureAwait(false);
         }
         catch (Exception ex)
         {
