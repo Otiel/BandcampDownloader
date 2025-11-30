@@ -14,10 +14,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_GoataholicskjaldHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Goataholicskjald()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.GoataholicskjaldHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Goataholicskjald_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -32,10 +32,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_CratediggersHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Cratediggers()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.CratediggersHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Cratediggers_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -50,10 +50,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_MstrvlkHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Mstrvlk()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.MstrvlkHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Mstrvlk_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -70,10 +70,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_WeneverlearnedtoliveHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Weneverlearnedtolive()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.WeneverlearnedtoliveHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Weneverlearnedtolive_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -93,10 +93,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_AfterdarkrecordingsHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Afterdarkrecordings()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.AfterdarkrecordingsHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Afterdarkrecordings_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -132,10 +132,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_AffektrecordingsHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Affektrecordings()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.AffektrecordingsHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Affektrecordings_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -232,10 +232,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_ProjectmooncircleHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Projectmooncircle()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.ProjectmooncircleHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Projectmooncircle_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
@@ -369,10 +369,10 @@ public sealed class DiscographyServiceTests
     }
 
     [Test]
-    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_TympanikaudioHtml()
+    public void GetReferredAlbumsRelativeUrls_Returns_Expected_Given_Tympanikaudio()
     {
         // Arrange
-        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.TympanikaudioHtml);
+        var htmlFile = ResourceAccessor.GetFileInfo(ResourceId.Music_Tympanikaudio_Html);
         var htmlContent = File.ReadAllText(htmlFile.FullName);
 
         // Act
