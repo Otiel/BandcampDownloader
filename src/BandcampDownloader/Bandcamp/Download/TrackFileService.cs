@@ -137,8 +137,7 @@ internal sealed class TrackFileService : ITrackFileService
             {
                 await _resilienceService.WaitForCooldownAsync(tries, cancellationToken).ConfigureAwait(false);
             }
-        }
-        while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
+        } while (!sizeRetrieved && tries < _userSettings.DownloadMaxTries);
 
         return size;
     }

@@ -327,8 +327,7 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 await _resilienceService.WaitForCooldownAsync(tries, cancellationToken).ConfigureAwait(false);
             }
-        }
-        while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
+        } while (!trackDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return trackDownloaded;
     }
@@ -405,8 +404,7 @@ internal sealed class DownloadManager : IDownloadManager
             {
                 await _resilienceService.WaitForCooldownAsync(tries, cancellationToken).ConfigureAwait(false);
             }
-        }
-        while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
+        } while (!artworkDownloaded && tries < _userSettings.DownloadMaxTries);
 
         return artwork;
     }

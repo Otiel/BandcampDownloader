@@ -74,7 +74,7 @@ internal sealed partial class WindowMain
                            //+ "https://brzoskamarciniakmarkiewicz.bandcamp.com/album/wp-aw" /* #82 Tracks with diacritics */ + Environment.NewLine
                            //+ "https://empyrium.bandcamp.com/album/der-wie-ein-blitz-vom-himmel-fiel" /* #102 Album ending with '...' */ + Environment.NewLine
                            //+ "https://tympanikaudio.bandcamp.com" /* #118 Different discography page */ + Environment.NewLine
-            ;
+                           ;
 #endif
     }
 
@@ -104,55 +104,56 @@ internal sealed partial class WindowMain
     {
         var inputUrls = TextBoxUrls.Text;
 
-        await Task.Run(async () =>
-        {
-            _downloadCts = new CancellationTokenSource();
-
-            if (string.IsNullOrWhiteSpace(inputUrls))
+        await Task.Run(
+            async () =>
             {
-                // No URL to look
-                await LogAsync("Paste some albums URLs to be downloaded", DownloadProgressChangedLevel.Error).ConfigureAwait(false);
-                return;
-            }
+                _downloadCts = new CancellationTokenSource();
 
-            // Set controls to "downloading..." state
-            _activeDownloads = true;
-            await UpdateControlsStateAsync(true).ConfigureAwait(false);
+                if (string.IsNullOrWhiteSpace(inputUrls))
+                {
+                    // No URL to look
+                    await LogAsync("Paste some albums URLs to be downloaded", DownloadProgressChangedLevel.Error).ConfigureAwait(false);
+                    return;
+                }
 
-            await LogAsync("Starting download...", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
+                // Set controls to "downloading..." state
+                _activeDownloads = true;
+                await UpdateControlsStateAsync(true).ConfigureAwait(false);
 
-            try
-            {
-                await StartDownloadAsync(inputUrls, _downloadCts.Token).ConfigureAwait(false);
-            }
-            catch (OperationCanceledException)
-            {
-                await LogAsync("Downloads cancelled by user", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
-            }
+                await LogAsync("Starting download...", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
 
-            // Reset controls to "ready" state
-            _activeDownloads = false;
-            _lastTotalReceivedBytes = 0;
-            await UpdateControlsStateAsync(false).ConfigureAwait(false);
-            await ModifyMouseCursorAsync(null).ConfigureAwait(false);
-
-            if (_userSettings.EnableApplicationSounds)
-            {
-                // Play a sound
                 try
                 {
-                    using (var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav"))
+                    await StartDownloadAsync(inputUrls, _downloadCts.Token).ConfigureAwait(false);
+                }
+                catch (OperationCanceledException)
+                {
+                    await LogAsync("Downloads cancelled by user", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
+                }
+
+                // Reset controls to "ready" state
+                _activeDownloads = false;
+                _lastTotalReceivedBytes = 0;
+                await UpdateControlsStateAsync(false).ConfigureAwait(false);
+                await ModifyMouseCursorAsync(null).ConfigureAwait(false);
+
+                if (_userSettings.EnableApplicationSounds)
+                {
+                    // Play a sound
+                    try
                     {
-                        soundPlayer.Play();
+                        using (var soundPlayer = new SoundPlayer(@"C:\Windows\Media\Windows Ding.wav"))
+                        {
+                            soundPlayer.Play();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.Error(ex);
+                        await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error).ConfigureAwait(false);
                     }
                 }
-                catch (Exception ex)
-                {
-                    _logger.Error(ex);
-                    await LogAsync("Could not play 'finished' sound", DownloadProgressChangedLevel.Error).ConfigureAwait(false);
-                }
-            }
-        }).ConfigureAwait(false);
+            }).ConfigureAwait(false);
     }
 
     private async void ButtonStop_Click(object sender, RoutedEventArgs e)
@@ -182,10 +183,11 @@ internal sealed partial class WindowMain
 
     private static async Task ModifyMouseCursorAsync(Cursor cursor)
     {
-        await ThreadUtils.ExecuteOnUiAsync(() =>
-        {
-            Mouse.OverrideCursor = cursor;
-        }).ConfigureAwait(false);
+        await ThreadUtils.ExecuteOnUiAsync(
+            () =>
+            {
+                Mouse.OverrideCursor = cursor;
+            }).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -214,11 +216,12 @@ internal sealed partial class WindowMain
 
     private async Task ShowNewVersionLabelAsync(string content)
     {
-        await ThreadUtils.ExecuteOnUiAsync(() =>
-        {
-            LabelNewVersion.Content = content;
-            LabelNewVersion.Visibility = Visibility.Visible;
-        }).ConfigureAwait(false);
+        await ThreadUtils.ExecuteOnUiAsync(
+            () =>
+            {
+                LabelNewVersion.Content = content;
+                LabelNewVersion.Visibility = Visibility.Visible;
+            }).ConfigureAwait(false);
     }
 
     private async void DownloadProgressChanged(object sender, DownloadProgressChangedArgs eventArgs)
@@ -252,42 +255,43 @@ internal sealed partial class WindowMain
         {
             var timestamp = DateTime.Now.ToString("HH:mm:ss") + " ";
 
-            await ThreadUtils.ExecuteOnUiAsync(() =>
-            {
-                try
+            await ThreadUtils.ExecuteOnUiAsync(
+                () =>
                 {
-                    // Make changes to RichTextBox in a block to minimize UI freeze
-                    RichTextBoxLog.BeginChange();
-
-                    // Time
-                    var documentContentEnd = RichTextBoxLog.Document.ContentEnd;
-                    var timestampTextRange = new TextRange(documentContentEnd, documentContentEnd)
+                    try
                     {
-                        Text = timestamp,
-                    };
-                    timestampTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
+                        // Make changes to RichTextBox in a block to minimize UI freeze
+                        RichTextBoxLog.BeginChange();
 
-                    // Message
-                    documentContentEnd = RichTextBoxLog.Document.ContentEnd;
-                    var messageTextRange = new TextRange(documentContentEnd, documentContentEnd)
-                    {
-                        Text = message,
-                    };
-                    messageTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(downloadProgressChangedLevel));
+                        // Time
+                        var documentContentEnd = RichTextBoxLog.Document.ContentEnd;
+                        var timestampTextRange = new TextRange(documentContentEnd, documentContentEnd)
+                        {
+                            Text = timestamp,
+                        };
+                        timestampTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.Gray);
 
-                    // Line break
-                    RichTextBoxLog.AppendText(Environment.NewLine);
+                        // Message
+                        documentContentEnd = RichTextBoxLog.Document.ContentEnd;
+                        var messageTextRange = new TextRange(documentContentEnd, documentContentEnd)
+                        {
+                            Text = message,
+                        };
+                        messageTextRange.ApplyPropertyValue(TextElement.ForegroundProperty, LogHelper.GetColor(downloadProgressChangedLevel));
 
-                    if (RichTextBoxLog.IsScrolledToEnd())
-                    {
-                        RichTextBoxLog.ScrollToEnd();
+                        // Line break
+                        RichTextBoxLog.AppendText(Environment.NewLine);
+
+                        if (RichTextBoxLog.IsScrolledToEnd())
+                        {
+                            RichTextBoxLog.ScrollToEnd();
+                        }
                     }
-                }
-                finally
-                {
-                    RichTextBoxLog.EndChange();
-                }
-            }).ConfigureAwait(false);
+                    finally
+                    {
+                        RichTextBoxLog.EndChange();
+                    }
+                }).ConfigureAwait(false);
         }
     }
 
@@ -303,12 +307,13 @@ internal sealed partial class WindowMain
 
         if (maxProgressBarValue > 0)
         {
-            await ThreadUtils.ExecuteOnUiAsync(() =>
-            {
-                ProgressBar.IsIndeterminate = false;
-                ProgressBar.Maximum = maxProgressBarValue;
-                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
-            }).ConfigureAwait(false);
+            await ThreadUtils.ExecuteOnUiAsync(
+                () =>
+                {
+                    ProgressBar.IsIndeterminate = false;
+                    ProgressBar.Maximum = maxProgressBarValue;
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
+                }).ConfigureAwait(false);
         }
 
         var timersCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
@@ -316,24 +321,28 @@ internal sealed partial class WindowMain
         // Start timer to update progress on UI
         var updateProgressTimer = new PeriodicTimer(TimeSpan.FromMilliseconds(500));
         // In fire and forget
-        _ = Task.Run(async () =>
-        {
-            while (await updateProgressTimer.WaitForNextTickAsync(timersCts.Token).ConfigureAwait(false))
+        _ = Task.Run(
+            async () =>
             {
-                await UpdateProgressAsync().ConfigureAwait(false);
-            }
-        }, timersCts.Token);
+                while (await updateProgressTimer.WaitForNextTickAsync(timersCts.Token).ConfigureAwait(false))
+                {
+                    await UpdateProgressAsync().ConfigureAwait(false);
+                }
+            },
+            timersCts.Token);
 
         // Start timer to update download speed on UI
         var updateDownloadSpeedTimer = new PeriodicTimer(TimeSpan.FromMilliseconds(1000));
         // In fire and forget
-        _ = Task.Run(async () =>
-        {
-            while (await updateDownloadSpeedTimer.WaitForNextTickAsync(timersCts.Token).ConfigureAwait(false))
+        _ = Task.Run(
+            async () =>
             {
-                await UpdateDownloadSpeedAsync().ConfigureAwait(false);
-            }
-        }, timersCts.Token);
+                while (await updateDownloadSpeedTimer.WaitForNextTickAsync(timersCts.Token).ConfigureAwait(false))
+                {
+                    await UpdateDownloadSpeedAsync().ConfigureAwait(false);
+                }
+            },
+            timersCts.Token);
 
         // Start downloading albums
         // ReSharper disable once PossiblyMistakenUseOfCancellationToken : this is the correct token
@@ -352,40 +361,41 @@ internal sealed partial class WindowMain
     /// <param name="downloadStarted">True if the download just started; false if it just stopped.</param>
     private async Task UpdateControlsStateAsync(bool downloadStarted)
     {
-        await ThreadUtils.ExecuteOnUiAsync(() =>
-        {
-            if (downloadStarted)
+        await ThreadUtils.ExecuteOnUiAsync(
+            () =>
             {
-                // We just started the download
-                ButtonBrowse.IsEnabled = false;
-                ButtonStart.IsEnabled = false;
-                ButtonStop.IsEnabled = true;
-                CheckBoxDownloadDiscography.IsEnabled = false;
-                LabelProgress.Content = "";
-                ProgressBar.IsIndeterminate = true;
-                ProgressBar.Value = ProgressBar.Minimum;
-                RichTextBoxLog.Document.Blocks.Clear();
-                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
-                TaskbarItemInfo.ProgressValue = 0;
-                TextBoxDownloadsPath.IsReadOnly = true;
-                TextBoxUrls.IsReadOnly = true;
-            }
-            else
-            {
-                // We just finished the download (or user has cancelled)
-                ButtonBrowse.IsEnabled = true;
-                ButtonStart.IsEnabled = true;
-                ButtonStop.IsEnabled = false;
-                CheckBoxDownloadDiscography.IsEnabled = true;
-                LabelDownloadSpeed.Content = "";
-                ProgressBar.IsIndeterminate = false;
-                ProgressBar.Value = ProgressBar.Minimum;
-                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
-                TaskbarItemInfo.ProgressValue = 0;
-                TextBoxDownloadsPath.IsReadOnly = false;
-                TextBoxUrls.IsReadOnly = false;
-            }
-        }).ConfigureAwait(false);
+                if (downloadStarted)
+                {
+                    // We just started the download
+                    ButtonBrowse.IsEnabled = false;
+                    ButtonStart.IsEnabled = false;
+                    ButtonStop.IsEnabled = true;
+                    CheckBoxDownloadDiscography.IsEnabled = false;
+                    LabelProgress.Content = "";
+                    ProgressBar.IsIndeterminate = true;
+                    ProgressBar.Value = ProgressBar.Minimum;
+                    RichTextBoxLog.Document.Blocks.Clear();
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
+                    TaskbarItemInfo.ProgressValue = 0;
+                    TextBoxDownloadsPath.IsReadOnly = true;
+                    TextBoxUrls.IsReadOnly = true;
+                }
+                else
+                {
+                    // We just finished the download (or user has cancelled)
+                    ButtonBrowse.IsEnabled = true;
+                    ButtonStart.IsEnabled = true;
+                    ButtonStop.IsEnabled = false;
+                    CheckBoxDownloadDiscography.IsEnabled = true;
+                    LabelDownloadSpeed.Content = "";
+                    ProgressBar.IsIndeterminate = false;
+                    ProgressBar.Value = ProgressBar.Minimum;
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+                    TaskbarItemInfo.ProgressValue = 0;
+                    TextBoxDownloadsPath.IsReadOnly = false;
+                    TextBoxUrls.IsReadOnly = false;
+                }
+            }).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -405,11 +415,12 @@ internal sealed partial class WindowMain
 
         var downloadSpeedLabelContent = (bytesPerSecond / 1024).ToString("0.0") + " kB/s";
 
-        await ThreadUtils.ExecuteOnUiAsync(() =>
-        {
-            // Update download speed on UI
-            LabelDownloadSpeed.Content = downloadSpeedLabelContent;
-        }).ConfigureAwait(false);
+        await ThreadUtils.ExecuteOnUiAsync(
+            () =>
+            {
+                // Update download speed on UI
+                LabelDownloadSpeed.Content = downloadSpeedLabelContent;
+            }).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -444,12 +455,13 @@ internal sealed partial class WindowMain
             taskbarProgressBarValue = downloadedFilesCount / progressBarMaximum;
         }
 
-        await ThreadUtils.ExecuteOnUiAsync(() =>
-        {
-            LabelProgress.Content = labelProgressContent;
-            ProgressBar.Value = progressBarValue;
-            TaskbarItemInfo.ProgressValue = taskbarProgressBarValue;
-        }).ConfigureAwait(false);
+        await ThreadUtils.ExecuteOnUiAsync(
+            () =>
+            {
+                LabelProgress.Content = labelProgressContent;
+                ProgressBar.Value = progressBarValue;
+                TaskbarItemInfo.ProgressValue = taskbarProgressBarValue;
+            }).ConfigureAwait(false);
     }
 
     private void WindowMain_Closing(object sender, CancelEventArgs e)
@@ -479,13 +491,14 @@ internal sealed partial class WindowMain
     {
         // In fire and forget in order to prevent delaying the window access
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-        Task.Run(async () =>
+        Task.Run(
+            async () =>
 #pragma warning restore CS4014
-        {
-            if (_userSettings.CheckForUpdates)
             {
-                await CheckForUpdatesAsync().ConfigureAwait(false);
-            }
-        });
+                if (_userSettings.CheckForUpdates)
+                {
+                    await CheckForUpdatesAsync().ConfigureAwait(false);
+                }
+            });
     }
 }
