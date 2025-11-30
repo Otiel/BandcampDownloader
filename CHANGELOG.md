@@ -1,3 +1,37 @@
+# 1.5.0 (2025-11-30)
+
+> This release fixes the issue preventing _BandcampDownloader_ from downloading tracks on Windows 10/11.
+>
+> A lot of changes have been made under the hood, please do not hesitate to create a [new issue](https://github.com/Otiel/BandcampDownloader/issues) for any bug you might encounter.
+
+## Improvements
+
+* Replaced the setting `"Download one album at a time"` by `"Max concurrent albums downloads"`. It is advised to let this value to `1` in order to avoid triggering Bandcamp anti-spam mechanism. I might remove this option later to avoid such issues. [#305](https://github.com/Otiel/BandcampDownloader/pull/305)
+* Added new setting `"Max concurrent track downloads"`. It is advised to keep this value under `10` in order to avoid triggering Bandcamp anti-spam mechanism. You can try to lower this value if you're having lots of "Hit max retries" errors. [#225](https://github.com/Otiel/BandcampDownloader/issues/225) [#228](https://github.com/Otiel/BandcampDownloader/issues/228) [#305](https://github.com/Otiel/BandcampDownloader/pull/305)
+* Removed the `"Use HTTP instead of HTTPS"` option. It was not working anymore as Bandcamp now automatically redirects all HTTP connections to HTTPS. [#306](https://github.com/Otiel/BandcampDownloader/pull/306)
+* Improved the performance when saving tags. [#319](https://github.com/Otiel/BandcampDownloader/pull/319)
+* Added / updated translations thanks to contributors. Thank you! The application is now available in the following additional languages: Arabic, Catalan, Hungarian. [#268](https://github.com/Otiel/BandcampDownloader/pull/268) [#275](https://github.com/Otiel/BandcampDownloader/pull/275) [#288](https://github.com/Otiel/BandcampDownloader/pull/288) [#316](https://github.com/Otiel/BandcampDownloader/pull/316)
+
+## Bug fixes
+
+* Fixed the issue preventing the application from downloading any track. [#265](https://github.com/Otiel/BandcampDownloader/issues/265) [#203](https://github.com/Otiel/BandcampDownloader/pull/203) [#301](https://github.com/Otiel/BandcampDownloader/pull/301)
+* Fixed an issue preventing to start downloads again after cancelling them. [#294](https://github.com/Otiel/BandcampDownloader/pull/294)
+* Fixed an issue when downloading albums named ".". [#238](https://github.com/Otiel/BandcampDownloader/issues/238)
+* Fixed an issue when downloading some covers. [#214](https://github.com/Otiel/BandcampDownloader/issues/214)
+* Fixed an issue causing multiple threads to write on the same file concurrently. [#141](https://github.com/Otiel/BandcampDownloader/issues/141)
+* Fixed an issue causing some tracks downloads to be skipped. [#122](https://github.com/Otiel/BandcampDownloader/issues/122)
+* Other minor bug fixes.
+
+## Known issues
+
+* The `Proxy` setting is not functional anymore and any custom proxy will be ignored. I'm looking for a fix for a future version.
+
+## Notable changes
+
+* Upgraded .NET framework 4.7.2 to .NET 10.
+* The .NET framework is now contained in _BandcampDownloader.exe_ file. Hopefully that will fix issues encountered by users who didn't have the correct .NET framework installed on their machine, or a corrupted .NET framework. The drawback is that the executable file is now around 60 MB instead of 2 MB. [#263](https://github.com/Otiel/BandcampDownloader/issues/263) [#249](https://github.com/Otiel/BandcampDownloader/issues/249) [#215](https://github.com/Otiel/BandcampDownloader/issues/215)
+* The log file can now grow to 10 MB instead of 1 MB to prevent loosing useful info. [#300](https://github.com/Otiel/BandcampDownloader/pull/300)
+
 # 1.4.1 (2022-02-28)
 
 ## Improvements
