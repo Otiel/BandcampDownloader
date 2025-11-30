@@ -56,7 +56,7 @@ internal sealed class AlbumInfoRetriever : IAlbumInfoRetriever
             // Get info on album
             try
             {
-                var album = _bandcampExtractionService.GetAlbum(htmlCode, cancellationToken);
+                var album = _bandcampExtractionService.GetAlbumInfoFromAlbumPage(htmlCode, cancellationToken);
 
                 if (album.Tracks.Count > 0)
                 {

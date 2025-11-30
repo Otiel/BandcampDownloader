@@ -21,7 +21,7 @@ internal interface IBandcampExtractionService
     /// <param name="htmlCode">The HTML source code of a Bandcamp album page.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>The data on the album of the specified Bandcamp page.</returns>
-    Album GetAlbum(string htmlCode, CancellationToken cancellationToken);
+    Album GetAlbumInfoFromAlbumPage(string htmlCode, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retrieves all the albums URL existing on the specified Bandcamp page.
@@ -36,7 +36,7 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-    public Album GetAlbum(string htmlCode, CancellationToken cancellationToken)
+    public Album GetAlbumInfoFromAlbumPage(string htmlCode, CancellationToken cancellationToken)
     {
         // Keep the interesting part of htmlCode only
         if (!TryGetAlbumData(htmlCode, out var htmlAlbumData))
