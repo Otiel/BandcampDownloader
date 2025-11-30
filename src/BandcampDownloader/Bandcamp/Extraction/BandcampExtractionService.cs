@@ -29,7 +29,7 @@ internal interface IBandcampExtractionService
     /// <param name="htmlCode">The HTML source code of a Bandcamp page.</param>
     /// <param name="artistPage">The URL to the artist page.</param>
     /// <returns>The albums URL existing on the specified Bandcamp page.</returns>
-    List<string> GetAlbumsUrl(string htmlCode, string artistPage);
+    List<string> GetAlbumsUrlsFromArtistPage(string htmlCode, string artistPage);
 }
 
 internal sealed class BandcampExtractionService : IBandcampExtractionService
@@ -77,7 +77,7 @@ internal sealed class BandcampExtractionService : IBandcampExtractionService
         return album;
     }
 
-    public List<string> GetAlbumsUrl(string htmlCode, string artistPage)
+    public List<string> GetAlbumsUrlsFromArtistPage(string htmlCode, string artistPage)
     {
         // Get albums ("real" albums or track-only pages) relative urls
         var regex = new Regex("href=\"(?<url>/(album|track)/.*)\"");
