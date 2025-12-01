@@ -126,7 +126,7 @@
     <value>Преобразовать обложку в JPG со сжатием 90 (отличный компромисс между размером и качеством).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Ограничить _максимальную ширину/высоту</value>
+    <value>Ограничить м_аксимальную ширину/высоту</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Изменить размер обложки до указанной максимальной ширины/высоты.</value>
@@ -138,10 +138,10 @@
     <value>Создает файл дорожки альбома для каждого загруженного альбома.</value>
   </data>
   <data name="checkBoxDownloadDiscography" xml:space="preserve">
-    <value>Загрузить всю дискографию _артиста</value>
+    <value>Загрузить всю дискографию _исполнителя</value>
   </data>
   <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
-    <value>Загрузить всю дискографию артиста.</value>
+    <value>Загружает всю дискографию исполнителя.</value>
   </data>
   <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
     <value>Воспроизвести звуковое _уведомление</value>
@@ -231,10 +231,10 @@ If not, some bandwidth/time is saved.</value>
     <value>_Максимум попыток загрузки</value>
   </data>
   <data name="labelDownloadRetryCooldown" xml:space="preserve">
-    <value>Повторная _перезарядка (сек)</value>
+    <value>Время _восстановления (сек)</value>
   </data>
   <data name="labelDownloadRetryExponent" xml:space="preserve">
-    <value>Повторная _попытка</value>
+    <value>_Экспонента повторной попытки</value>
   </data>
   <data name="labelDownloadsPath" xml:space="preserve">
     <value>Сохранить альбомы _в</value>
@@ -409,7 +409,7 @@ If not, some bandwidth/time is saved.</value>
   </data>
   <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
     <value>Вы можете использовать заполнители для настройки имени файла:
-- {Artist} будет заменен исполнителем альбома
+- {artist} будет заменен исполнителем альбома
 - {album} будет заменен на название альбома
 - {year}, {month} и {day} будут заменены датой выпуска альбома</value>
   </data>
@@ -420,31 +420,32 @@ If not, some bandwidth/time is saved.</value>
 Рекомендуемое значение = 7</value>
   </data>
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
-    <value>Используется для управления экспоненциальным механизмом отката.
-После каждого сбоя загрузки трека BandcampDownloader может подождать определенное время, прежде чем снова попытается загрузить трек, чтобы избежать лимит фильтра спама Bandcamp.
-Формула, используемая для вычисления времени ожидания перед повторной попыткой загрузки, выглядит следующим образом:
-время = время перезарядки * (экспонента ^ количество попыток)
+    <value>Используется для управления механизмом экспоненциального замедления.
+После каждого сбоя при загрузке трека BandcampDownloader может подождать определенное время, прежде чем
+повторить попытку загрузки трека, чтобы избежать воздействия антиспам-фильтра Bandcamp.
+Для вычисления времени ожидания перед повторной попыткой загрузки используется следующая формула:
+время = время-восстановления * (экспонента ^ количество-попыток)
 
-Рекомендуемое значение = 0,2</value>
+Рекомендуемое значение = 0.2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Используется для управления экспоненциальным механизмом отката.
-После каждой неудачной загрузки трека BandcampDownloader может подождать определенное время, прежде чем пытаться снова
-скачать трек, чтобы не лимита фильтр спама Bandcamp.
-Формула, используемая для вычисления времени ожидания перед повторной попыткой загрузки, выглядит следующим образом:
-время = время перезарядки * (экспонента ^ количество попыток)
+    <value>Используется для управления механизмом экспоненциального замедления.
+После каждого сбоя при загрузке трека BandcampDownloader может подождать определенное время, прежде чем
+повторить попытку загрузки трека, чтобы избежать воздействия антиспам-фильтра Bandcamp.
+Для вычисления времени ожидания перед повторной попыткой загрузки используется следующая формула:
+время = время-восстановления * (экспонента ^ количество-попыток)
 
 Рекомендуемое значение = 4</value>
   </data>
   <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
-    <value>Вы можете использовать заполнители для настройки имени файла:
-- {Artist} будет заменен исполнителем альбома
+    <value>Вы можете использовать заполнители для настройки папки загрузки в зависимости от альбома:
+- {artist} будет заменен исполнителем альбома
 - {album} будет заменен на название альбома
 - {year}, {month} и {day} будут заменены датой выпуска альбома</value>
   </data>
   <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
     <value>Вы можете использовать заполнители для настройки имени файла:
-- {Artist} будет заменен исполнителем альбома
+- {artist} будет заменен исполнителем альбома
 - {title} будет заменен на название трека
 - {tracknum} будет заменен номером трека
 - {album} будет заменен на название альбома
@@ -452,7 +453,7 @@ If not, some bandwidth/time is saved.</value>
   </data>
   <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
     <value>Вы можете использовать заполнители для настройки имени файла:
-- {Artist} будет заменен исполнителем альбома
+- {artist} будет заменен исполнителем альбома
 - {album} будет заменен на название альбома
 - {year}, {month} и {day} будут заменены датой выпуска альбома</value>
   </data>
@@ -477,5 +478,11 @@ http://[artist].bandcamp.com/track/[track]
   </data>
   <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
     <value>Максимальное число загрузок дорожек сразу</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Максимальное количество треков (в пределах одного альбома), которые могут быть загружены одновременно</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Максимальное количество альбомов, которые могут быть загружены одновременно</value>
   </data>
 </root>
