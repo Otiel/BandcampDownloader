@@ -2,11 +2,11 @@
 
 ## Improvements
 
-* Added / updated translations thanks to contributors. Thank you! [#334](https://github.com/Otiel/BandcampDownloader/pull/334)
+* Added / updated translations thanks to contributors. [#334](https://github.com/Otiel/BandcampDownloader/pull/334)
 
 ## Bug fixes
 
-* Fixed the issue preventing from download from tracks page. [#336](https://github.com/Otiel/BandcampDownloader/issues/336) [#339](https://github.com/Otiel/BandcampDownloader/pull/339)
+* Fixed the issue preventing from downloading from tracks page. [#336](https://github.com/Otiel/BandcampDownloader/issues/336) [#339](https://github.com/Otiel/BandcampDownloader/pull/339)
 * Fixed the issue causing only the top 16 albums of the discography of an artist to be discovered. [#252](https://github.com/Otiel/BandcampDownloader/issues/252) [#257](https://github.com/Otiel/BandcampDownloader/issues/257) [#338](https://github.com/Otiel/BandcampDownloader/pull/338)
 
 # 1.5.0 (2025-11-30)
