@@ -120,6 +120,7 @@ internal sealed partial class WindowMain
                 _activeDownloads = true;
                 await UpdateControlsStateAsync(true).ConfigureAwait(false);
 
+                _logger.Info($"Starting download with the following input URLs:{Environment.NewLine}{inputUrls}");
                 await LogAsync("Starting download...", DownloadProgressChangedLevel.Info).ConfigureAwait(false);
 
                 try
