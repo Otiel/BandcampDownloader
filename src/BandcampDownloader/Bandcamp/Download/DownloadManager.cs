@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using BandcampDownloader.Audio;
@@ -293,7 +294,7 @@ internal sealed class DownloadManager : IDownloadManager
                 trackDownloaded = true;
                 DownloadProgressChanged?.Invoke(this, new DownloadProgressChangedArgs($"Downloaded track \"{track.Title}\" from url: {track.Mp3Url}", DownloadProgressChangedLevel.VerboseInfo));
             }
-            catch (WebException ex) // TODO is this still a WebException?
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.TooManyRequests)
             {
                 // Connection closed probably because no response from Bandcamp
                 _logger.Error(ex);
@@ -378,7 +379,7 @@ internal sealed class DownloadManager : IDownloadManager
                 artwork = await artworkStream.ToArrayAsync(cancellationToken).ConfigureAwait(false);
                 artworkDownloaded = true;
             }
-            catch (WebException ex) // TODO is this still a WebException?
+            catch (HttpRequestException ex) when (ex.StatusCode == HttpStatusCode.TooManyRequests)
             {
                 // Connection closed probably because no response from Bandcamp
                 _logger.Error(ex);
