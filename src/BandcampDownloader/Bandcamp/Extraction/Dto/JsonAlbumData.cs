@@ -9,5 +9,8 @@ internal sealed class JsonAlbumData
     public string AlbumTitle { get; set; }
 
     [JsonPropertyName("release_date")]
-    public DateTime ReleaseDate { get; set; }
+    public DateTime? ReleaseDate { get; set; }
+
+    [JsonPropertyName("publish_date")]
+    public DateTime? PublishDate { get; set; }
 }
