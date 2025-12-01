@@ -31,8 +31,8 @@ internal sealed class JsonAlbum
         // Some albums do not have a cover art
         var artworkUrl = ArtId == null ? null : URL_START + ArtId.ToString().PadLeft(10, '0') + URL_END;
 
-        // Singles might not have a release date  #144
-        var releaseDate = ReleaseDate ?? AlbumData.ReleaseDate;
+        // Albums might not have an "album_release_date", especially when they're composed of a single track
+        var releaseDate = ReleaseDate ?? AlbumData.ReleaseDate ?? AlbumData.PublishDate ?? new DateTime();
 
         var album = new Album(Artist, artworkUrl, releaseDate, AlbumData.AlbumTitle);
 
