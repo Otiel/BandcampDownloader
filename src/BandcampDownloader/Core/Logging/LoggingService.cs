@@ -28,7 +28,7 @@ public sealed class LoggingService : ILoggingService
         var fileTarget = new FileTarget
         {
             FileName = LOG_FILE_PATH,
-            Layout = "${longDate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${logger}  ${message}  ${exception:format=toString}",
+            Layout = "${longDate}  ${level:uppercase=true:padding=-5:padCharacter= }  ${logger}  ${message:withException=true:exceptionSeparator=  }",
             ArchiveAboveSize = MAX_LOG_SIZE,
             MaxArchiveFiles = 0,
         };
