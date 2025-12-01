@@ -1,3 +1,14 @@
+# 1.5.2 (2025-12-01)
+
+## Improvements
+
+* Added / updated translations thanks to contributors. [#343](https://github.com/Otiel/BandcampDownloader/pull/343)
+
+## Bug fixes
+
+* Fixed the issue preventing from downloading tracks with no related album release date, or no release date (in that case, rely on the publish date). [#342](https://github.com/Otiel/BandcampDownloader/issues/342) [#347](https://github.com/Otiel/BandcampDownloader/pull/347)
+* Fixed the issue causing the retry mechanism to fail when Bandcamp antispam is triggered. [#344](https://github.com/Otiel/BandcampDownloader/issues/344) [#346](https://github.com/Otiel/BandcampDownloader/pull/346)
+
 # 1.5.1 (2025-11-30)
 
 ## Improvements
