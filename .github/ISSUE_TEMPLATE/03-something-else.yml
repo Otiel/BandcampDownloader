@@ -1,0 +1,10 @@
+name: "🤷‍♂️ Something else"
+description: If none of the above templates fit your needs, please use this template to submit your issue.
+body:
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Description
+      placeholder: What's on your mind?
+    validations:
+      required: true

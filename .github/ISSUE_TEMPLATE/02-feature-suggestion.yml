@@ -1,0 +1,12 @@
+name: "✨ Feature suggestion"
+description: Is there a new feature you'd like to see?
+labels: ["feature-request"]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature description
+      description: A detailed description of the feature you are suggesting and how it would help you/others.
+      placeholder: Please provide a detailed description of the feature you are suggesting and how it would help you/others.
+    validations:
+      required: true
