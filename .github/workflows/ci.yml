@@ -17,7 +17,7 @@ jobs:
             Configuration: ${{ matrix.configuration }}
         steps:
             -   name: Checkout
-                uses: actions/checkout@v4
+                uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
             -   name: Install .NET
@@ -41,7 +41,7 @@ jobs:
             Configuration: ${{ matrix.configuration }}
         steps:
             -   name: Checkout
-                uses: actions/checkout@v4
+                uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
             -   name: Install .NET
@@ -60,7 +60,7 @@ jobs:
             Configuration: Release
         steps:
             -   name: Checkout
-                uses: actions/checkout@v4
+                uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
             -   name: Install .NET
