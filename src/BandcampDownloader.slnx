@@ -3,12 +3,16 @@
     <Platform Name="x64" />
   </Configurations>
   <Folder Name="/SolutionItems/">
-    <File Path="../.github/dependabot.yml" />
-    <File Path="../.github/workflows/ci.yml" />
     <File Path="../CHANGELOG.md" />
     <File Path="../README.md" />
     <File Path="Directory.Build.props" />
     <File Path="global.json" />
+  </Folder>
+  <Folder Name="/SolutionItems/.github/">
+    <File Path="../.github/dependabot.yml" />
+  </Folder>
+  <Folder Name="/SolutionItems/.github/workflows/">
+    <File Path="../.github/workflows/ci.yml" />
   </Folder>
   <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj">
     <Platform Project="x64" />
