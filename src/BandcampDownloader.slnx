@@ -12,7 +12,7 @@
     <File Path="../.github/dependabot.yml" />
   </Folder>
   <Folder Name="/SolutionItems/.github/workflows/">
-    <File Path="../.github/workflows/ci.yml" />
+    <File Path="../.github/workflows/dotnet.yml" />
   </Folder>
   <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj">
     <Platform Project="x64" />
