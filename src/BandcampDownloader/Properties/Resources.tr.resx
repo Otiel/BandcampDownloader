@@ -471,4 +471,10 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
   <data name="labelProxy" xml:space="preserve">
     <value>Vekil Sunucu</value>
   </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Maksimum eşzamanlı albüm indirimleri</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Maksimum eşzamanlı şarkı indirimleri</value>
+  </data>
 </root>
