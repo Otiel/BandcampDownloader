@@ -58,6 +58,7 @@ jobs:
         env:
             Csproj: src\BandcampDownloader\BandcampDownloader.csproj
             Configuration: Release
+            PublishOutput: artifacts
         steps:
             -   name: Checkout
                 uses: actions/checkout@v6
@@ -70,4 +71,4 @@ jobs:
             -   name: Display dotnet version
                 run: dotnet --version
             -   name: Publish
-                run: dotnet publish --configuration $env:Configuration --artifacts-path artifacts $env:Csproj
+                run: dotnet publish --configuration $env:Configuration --output $env:PublishOutput $env:Csproj
