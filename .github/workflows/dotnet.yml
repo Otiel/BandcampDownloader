@@ -7,68 +7,89 @@ on:
         branches: [ "master" ]
 
 jobs:
+    # Build solution
     build:
         strategy:
             matrix:
                 configuration: [ Debug, Release ]
+
         runs-on: windows-latest
+
         env:
             Solution: src/BandcampDownloader.slnx
             Configuration: ${{ matrix.configuration }}
+
         steps:
             -   name: Checkout
                 uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
+
             -   name: Install .NET
                 uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: 10.0.x
+
             -   name: Display dotnet version
                 run: dotnet --version
+
             -   name: Restore nugets
                 run: dotnet restore $env:Solution
+
             -   name: Build
                 run: dotnet build --no-restore --configuration $env:Configuration $env:Solution
 
+    # Run tests
     test:
         strategy:
             matrix:
                 configuration: [ Debug, Release ]
+
         runs-on: windows-latest
+
         env:
             Solution: src/BandcampDownloader.slnx
             Configuration: ${{ matrix.configuration }}
+
         steps:
             -   name: Checkout
                 uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
+
             -   name: Install .NET
                 uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: 10.0.x
+
             -   name: Display dotnet version
                 run: dotnet --version
+
             -   name: Run tests
                 run: dotnet test --configuration $env:Configuration $env:Solution
 
+    # Publish project
     publish:
         runs-on: windows-latest
+
         env:
             Csproj: src\BandcampDownloader\BandcampDownloader.csproj
             Configuration: Release
             PublishOutput: artifacts
+
         steps:
             -   name: Checkout
                 uses: actions/checkout@v6
                 with:
                     fetch-depth: 0
+
             -   name: Install .NET
                 uses: actions/setup-dotnet@v5
                 with:
                     dotnet-version: 10.0.x
+
             -   name: Display dotnet version
                 run: dotnet --version
+
             -   name: Publish
                 run: dotnet publish --configuration $env:Configuration --output $env:PublishOutput $env:Csproj
