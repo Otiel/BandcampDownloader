@@ -5,6 +5,7 @@
   <Folder Name="/SolutionItems/">
     <File Path="../CHANGELOG.md" />
     <File Path="../README.md" />
+    <File Path="../tools/ExtractChangelog.ps1" />
     <File Path="Directory.Build.props" />
     <File Path="global.json" />
   </Folder>
@@ -13,6 +14,7 @@
   </Folder>
   <Folder Name="/SolutionItems/.github/workflows/">
     <File Path="../.github/workflows/dotnet.yml" />
+    <File Path="../.github/workflows/github-release.yml" />
   </Folder>
   <Project Path="BandcampDownloader.IntegrationTests/BandcampDownloader.IntegrationTests.csproj">
     <Platform Project="x64" />
