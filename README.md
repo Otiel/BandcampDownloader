@@ -4,7 +4,7 @@
     <a href="https://github.com/Otiel/BandcampDownloader/releases/latest"><img alt="Download" src="docs/images/DownloadButton.png"></a>
 </p>
 
-[![Workflow status](https://github.com/Otiel/BandcampDownloader/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/Otiel/BandcampDownloader/actions/workflows/ci.yml) [![Translation status](https://hosted.weblate.org/widgets/bandcampdownloader/-/bandcampdownloader/svg-badge.svg)](https://hosted.weblate.org/engage/bandcampdownloader/)
+[![Workflow status](https://github.com/Otiel/BandcampDownloader/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/Otiel/BandcampDownloader/actions/workflows/dotnet.yml) [![Translation status](https://hosted.weblate.org/widgets/bandcampdownloader/-/bandcampdownloader/svg-badge.svg)](https://hosted.weblate.org/engage/bandcampdownloader/)
 
 ## Description
 
