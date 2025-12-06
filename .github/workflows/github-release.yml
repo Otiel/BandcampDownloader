@@ -1,0 +1,55 @@
+name: Github Release
+
+on:
+    push:
+        tags:
+            - "v[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+    contents: write
+
+jobs:
+    release:
+        runs-on: windows-latest
+
+        env:
+            Csproj: src\BandcampDownloader\BandcampDownloader.csproj
+            Configuration: Release
+            PublishOutput: artifacts
+            PublishedExe: artifacts/BandcampDownloader.exe
+            PublishedZip: artifacts/BandcampDownloader.zip
+            Changelog: CHANGELOG.md
+            ChangelogExtract: artifacts/CHANGELOG-extract.md
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v6
+                with:
+                    fetch-depth: 0
+
+            -   name: Install .NET
+                uses: actions/setup-dotnet@v5
+                with:
+                    dotnet-version: 10.0.x
+            -   name: Display dotnet version
+                run: dotnet --info
+
+            -   name: Publish project
+                run: dotnet publish --configuration $env:Configuration --output $env:PublishOutput $env:Csproj
+
+            -   name: Create archive
+                run: |
+                    Compress-Archive -Path $env:PublishedExe -DestinationPath $env:PublishedZip
+                    dir $env:PublishOutput
+
+            -   name: Extract changelog entry
+                run: tools\ExtractChangelog.ps1 -tag ${{ github.ref_name }} -changelogPath $env:Changelog -extractedChangelogPath $env:ChangelogExtract
+
+            -   name: Create Release
+                uses: softprops/action-gh-release@v2
+                with:
+                    draft: true
+                    name: ${{ github.ref_name }}
+                    body_path: ${{ env.ChangelogExtract }} # /!\ Path separator must be '/'
+                    files: ${{ env.PublishedZip }} # /!\ Path separator must be '/'
+                    fail_on_unmatched_files: true

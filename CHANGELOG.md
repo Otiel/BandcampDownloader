@@ -250,7 +250,7 @@
 
 * Added an option to customize the cover art file name. [#77](https://github.com/Otiel/BandcampDownloader/issues/77)
 * Added german localization. Thanks **@Simonwep** for the complete translation! [#78](https://github.com/Otiel/BandcampDownloader/pull/78)
-* Added link to the translation [guidelines](/docs/help-translate.md) next to the language setting.
+* Added link to the translation [guidelines](https://github.com/Otiel/BandcampDownloader/blob/master/docs/help-translate.md) next to the language setting.
 
 ## Improvements
 
@@ -266,7 +266,7 @@
 
 ## New features
 
-* Added localization [#67](https://github.com/Otiel/BandcampDownloader/issues/67) for english and french. If you wish to help translate the application in another language, please see the [guidelines](/docs/help-translate.md).
+* Added localization [#67](https://github.com/Otiel/BandcampDownloader/issues/67) for english and french. If you wish to help translate the application in another language, please see the [guidelines](https://github.com/Otiel/BandcampDownloader/blob/master/docs/help-translate.md).
 
 # 0.2.5.0 (2019-04-12)
 
