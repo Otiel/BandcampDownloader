@@ -31,7 +31,7 @@ jobs:
                     dotnet-version: 10.0.x
 
             -   name: Display dotnet version
-                run: dotnet --version
+                run: dotnet --info
 
             -   name: Restore nugets
                 run: dotnet restore $env:Solution
@@ -63,7 +63,7 @@ jobs:
                     dotnet-version: 10.0.x
 
             -   name: Display dotnet version
-                run: dotnet --version
+                run: dotnet --info
 
             -   name: Run tests
                 run: dotnet test --configuration $env:Configuration $env:Solution
@@ -89,7 +89,7 @@ jobs:
                     dotnet-version: 10.0.x
 
             -   name: Display dotnet version
-                run: dotnet --version
+                run: dotnet --info
 
             -   name: Publish
                 run: dotnet publish --configuration $env:Configuration --output $env:PublishOutput $env:Csproj
