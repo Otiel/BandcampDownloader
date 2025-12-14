@@ -411,7 +411,8 @@ Wenn nicht, wird etwas Bandbreite/Zeit eingespart.</value>
     <value>_Einstellungen zurücksetzen</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Alle Einstellungen zurücksetzen?</value>
+    <value>Alle Einstellungen zurücksetzen?
+Die Aktion kann nicht rückgängig gemacht werden.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Unbekannter Fehler aufgetreten. Die Anwendung wird nun geschlossen.
@@ -530,5 +531,17 @@ herunterzuladen.</value>
   </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Max gleichzeitige Album Downloads</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Max gleichzeitige Titel Downloads</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Maximale Anzahl an Albums, die gleichzeitig heruntergeladen werden können</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Die maximale Anzahl an Songs (innerhalb des selben Albums), die gleichzeitig heruntergeladen werden können</value>
   </data>
 </root>
