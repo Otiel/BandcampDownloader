@@ -453,7 +453,7 @@ Klistra in artistsidor: http://[artist].bandcamp.com och markera "☑ Ladda ner 
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
     <value>Används för att styra den exponentiella back-off-mekanismen.
-Efter varje misslyckande med en låtnedladdning kan BandcampDownloader vänta en viss tid innan du försöker igen
+Efter varje misslyckande med en låtnedladdning kan BandcampDownloader vänta en viss tid innan du försöker igen 
 för att ladda ner spåret för att undvika att kittla Bandcamp anti-spam-filtret.
 Formeln som används för att beräkna tiden att vänta innan du försöker igen en nedladdning är följande:
 tid = cooldown * (exponent ^ försöksantal)
@@ -471,5 +471,8 @@ Rekommenderat värde = 4</value>
 När det numret har nåtts (för varje spår), kommer spårnedladdningen att hoppas över.
 
 Rekommenderat värde = 7</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Maximalt sammanhängande album-hämtningar</value>
   </data>
 </root>
