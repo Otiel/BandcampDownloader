@@ -472,4 +472,16 @@ Umetni stranice izvođača: http://[artist].bandcamp.com i označi „☑ Preuzm
   <data name="labelProxy" xml:space="preserve">
     <value>Posrednički poslužitelj</value>
   </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Maksimalan broj istovremenih preuzimanja albuma</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Maksimalan broj istovremenih preuzimanja pjesama</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Maksimalan broj albuma koji se mogu istovremeno preuzeti</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Maksimalan broj pjesama (unutar istog albuma) koje se mogu istovremeno preuzeti</value>
+  </data>
 </root>

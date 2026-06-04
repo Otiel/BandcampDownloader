@@ -475,4 +475,13 @@ Rekommenderat värde = 7</value>
   <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
     <value>Maximalt sammanhängande album-hämtningar</value>
   </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Max antal samtidiga nedladdningar av spår</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Maximalt antal album som kan laddas ner samtidigt</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Det maximala antalet spår (inom samma album) som kan laddas ner samtidigt</value>
+  </data>
 </root>

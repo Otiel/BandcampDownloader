@@ -352,7 +352,8 @@
     <value>恢复初始设置</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>确认要恢复初始设置吗？</value>
+    <value>确认要恢复初始设置吗？
+此操作无法撤销</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>发生了无法处理的错误。程序将会关闭。
@@ -421,7 +422,7 @@
   <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
     <value>用于控制“指数退避机制”。
 在每次下载失败后，BandcampDownloader可以等待特定时间再重试
-下载该文件，从而避免触发Bandcamp反刷屏过滤器。
+下载该文件，从而避免触发Bandcamp反垃圾机制。
 用于计算再次尝试下载之前等待的时间的公式如下：
 等待时间 = 冷却时间 * (该数字 ^ 已尝试的次数)
 
@@ -430,9 +431,9 @@
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
     <value>用于控制“指数退避机制”。
 在每次下载失败后，BandcampDownloader可以等待特定时间再重试
-下载该文件，从而避免触发Bandcamp反刷屏过滤器。
-用于计算再次尝试下载之前等待的时间的公式如下：
-等待时间 = 该数字 * (重试指数 ^ 已尝试的次数)
+下载该文件，从而避免触发Bandcamp的反垃圾机制。
+计算重试前等待时间的公式如下：
+等待时间 = 冷却时间 * (该数字 ^ 已尝试的次数)
 
 推荐设为4</value>
   </data>
@@ -470,5 +471,17 @@ Bandcamp的链接如下所示：http://[艺术家名称].bandcamp.com/album/[alb
   </data>
   <data name="labelProxy" xml:space="preserve">
     <value>代理</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>最大并发专辑下载数</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>最大并发单曲下载数</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>可同时下载的最大专辑数量</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>同一张专辑中可同时下载的最大曲目数量</value>
   </data>
 </root>

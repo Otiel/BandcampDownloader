@@ -120,13 +120,13 @@
     <value>Redimensiona a arte de capa para a largura/altura máxima especificada.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Converter para _JPG</value>
+    <value>Converter para JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Converte a arte de capa para JPG com uma compressão de 90 (excelente relação entre tamanho e qualidade).</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
-    <value>Restringir largura/altura _máxima</value>
+    <value>Restringir largura/altura máxim_a</value>
   </data>
   <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
     <value>Redimensiona a arte de capa para a largura/altura máxima especificada.</value>
@@ -222,7 +222,7 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>Tamanho máximo (_px)</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Tamanho máximo (_px)</value>
+    <value>Tamanho máximo (p_x)</value>
   </data>
   <data name="labelCurrentVersion" xml:space="preserve">
     <value>Versão atual:</value>
@@ -352,7 +352,8 @@ Se não, alguma largura de banda/hora é salva.</value>
     <value>_Redefinir configurações</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Redefinir todas as configurações para seus valores padrão?</value>
+    <value>Redefinir todas as configurações para os seus valores predefinidos?
+Esta ação não pode ser desfeita.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Ocorreu um erro não processado. A aplicação será fechada agora.
@@ -431,7 +432,7 @@ Valor recomendado = 0.2</value>
     <value>Usado para controlar o mecanismo de recuo exponencial.
 Após cada falha de uma descarrega de faixa, o BandcampDownloader pode esperar por um tempo específico antes de tentar
 descarregar a faixa novamente de modo a evitar o filtro anti-spam do Bandcamp.
-A fórmula usada para calcular o tempo de espera antes de tentar a descarrega novamente é o seguinte:
+A fórmula usada para calcular o tempo de espera antes de tentar novamente a descarrega é o seguinte:
 tempo = tempo de espera * (expoente ^ contagem de tentativas)
 
 Valor recomendado = 4</value>
@@ -481,6 +482,6 @@ Cole as páginas do artista: http://[artista].bandcamp.com e ative «☑ Baixar 
     <value>O número máximo de álbuns que podem ser baixados simultaneamente</value>
   </data>
   <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
-    <value>O número máximo de faixas (do mesmo álbum) que podem ser baixadas simultaneamente.</value>
+    <value>O número máximo de faixas (do mesmo álbum) que podem ser descarregadas simultaneamente</value>
   </data>
 </root>

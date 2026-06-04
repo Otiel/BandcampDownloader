@@ -137,7 +137,7 @@
     <value>Descargar versión nueva</value>
   </data>
   <data name="buttonOpenSettingsWindow" xml:space="preserve">
-    <value>Configuración</value>
+    <value>Aju_stes</value>
   </data>
   <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
     <value>Abrir configuración</value>
@@ -167,7 +167,7 @@
     <value>Consulta la siguiente dirección al iniciar la aplicación:</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
-    <value>Convertir a JPG</value>
+    <value>Convertir a _JPG</value>
   </data>
   <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
     <value>Convierte la portada a JPG con una compresión de 90 (balance excelente entre tamaño y calidad).</value>
@@ -179,7 +179,7 @@
     <value>Redimensiona la portada a las dimensiones especificadas.</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
-    <value>Convertir a JPG</value>
+    <value>Convertir a JP_G</value>
   </data>
   <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
     <value>Convierte la portada en JPG con una compresión de 90 (excelente equilibrio entre tamaño y calidad).</value>
@@ -278,10 +278,10 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Formato de archivo</value>
   </data>
   <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
-    <value>Tamaño máximo (px)</value>
+    <value>Tamaño máximo (_px)</value>
   </data>
   <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
-    <value>Tamaño máximo (px)</value>
+    <value>Tamaño máximo (p_x)</value>
   </data>
   <data name="labelCurrentVersion" xml:space="preserve">
     <value>Versión actual:</value>
@@ -411,7 +411,8 @@ Si no, se ahorra algo de ancho de banda y tiempo.</value>
     <value>Reiniciar configuración</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>¿Restaurar la configuración a sus valores por defecto?</value>
+    <value>¿Restaurar los ajustes a sus valores por defecto?
+Esta acción no puede ser revertida.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Ocurrió un error imprevisto. La aplicación se cerrará.
@@ -522,12 +523,24 @@ Una URL de Bandcamp se ve como: http://[artista].bandcamp.com/album/[álbum] o h
 Pegue páginas de artista: http://[artista].bandcamp.com y cheque «☑ Descargar discografía del artista» para descargar todos su(s) álbumes.</value>
   </data>
   <data name="windowSettings_Title" xml:space="preserve">
-    <value>Configuración</value>
+    <value>Ajustes</value>
   </data>
   <data name="windowUpdate_Title" xml:space="preserve">
     <value>Actualizar</value>
   </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Congruencia máx de descargas de álbumes</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Trazas máximas concurrentes de descargas</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>El número máximo de álbumes que pueden ser descargados simultaneamente</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>El número máximo de pistas (con el mismo álbum) que puede ser descargado simultáneamente</value>
   </data>
 </root>

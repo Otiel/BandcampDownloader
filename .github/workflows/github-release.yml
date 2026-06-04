@@ -46,7 +46,7 @@ jobs:
                 run: tools\ExtractChangelog.ps1 -tag ${{ github.ref_name }} -changelogPath $env:Changelog -extractedChangelogPath $env:ChangelogExtract
 
             -   name: Create Release
-                uses: softprops/action-gh-release@v2
+                uses: softprops/action-gh-release@v3
                 with:
                     draft: true
                     name: ${{ github.ref_name }}

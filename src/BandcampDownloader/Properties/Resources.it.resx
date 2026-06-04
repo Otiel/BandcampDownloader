@@ -411,7 +411,8 @@ Disabilitare questa opzione per risparmiare banda/tempo.</value>
     <value>_Ripristina impostazioni</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Ripristinare i valori predefiniti delle impostazioni?</value>
+    <value>Ripristinare tutte le impostazioni ai valori predefiniti?
+Questa azione non può essere annullata.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Si è verificato un errore non gestito. L'applicazione si chiuderà ora.
@@ -487,7 +488,7 @@ tempo = cooldown * (esponente ^ conta-tentativi)
 Valore consigliato = 0.2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Controlla il meccanismo di backoff esponenziale.
+    <value>Usato per controllare il meccanismo di backoff esponenziale.
 Dopo ogni scaricamento fallito, BandcampDownloader può aspettare un certo tempo prima di riprovare
 a scaricare la traccia, cosí da non attivare il filtro anti spam di Bandcamp.
 La formula usata per calcolare il tempo d'attesa è:
@@ -529,5 +530,17 @@ Incolla l'URL di una pagina artista http://[artista].bandcamp.com e spunta «☑
   </data>
   <data name="labelProxy" xml:space="preserve">
     <value>Proxy</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Numero max scaricamenti simultanei di album</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Scaricamenti max simultanei di tracce</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Il numero massimo di album scaricabili contemporaneamente</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Il numero massimo di brani (all'interno dello stesso album) scaricabili contemporaneamente</value>
   </data>
 </root>

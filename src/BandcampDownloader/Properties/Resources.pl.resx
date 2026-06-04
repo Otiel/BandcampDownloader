@@ -349,7 +349,7 @@ Wydłuża pobieranie i zużywa więcej transferu (nieznacznie).</value>
     <value>_Przywróć ustawienia domyślne</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Przywrócić wszystkie ustawienia do domyślnych wartości?</value>
+    <value>Przywrócić wszystkie ustawienia do domyślnych wartości? Ta akcja nie może być przywrócona.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>Wystąpił nieznany błąd. Aplikacja zostanie zamknięta.
@@ -470,5 +470,17 @@ Zalecana wartość = 0.2</value>
   </data>
   <data name="labelDownloadRetryExponent" xml:space="preserve">
     <value>Spróbuj ponownie _exponent</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>Maksymalna liczba jednoczesnych pobrań utworów</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>Maksymalna liczba jednoczesnych pobrań albumów</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Maksymalna liczba albumów, które mogą się pobrać jednocześnie</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Maksymalna liczba utworów (które są w albumie), które mogą być pobrane jednocześnie</value>
   </data>
 </root>
