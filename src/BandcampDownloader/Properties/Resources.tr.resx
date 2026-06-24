@@ -477,4 +477,10 @@ Sanatçı sayfalarını yapıştırın: http://[sanatçı].bandcamp.com ve tüm 
   <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
     <value>Maksimum eşzamanlı şarkı indirimleri</value>
   </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>Tek seferde indirebileceğiniz en fazla albüm sayısı</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>Aynı albüm içinde aynı anda indirebileceğiniz maksimum parça sayısı</value>
+  </data>
 </root>
