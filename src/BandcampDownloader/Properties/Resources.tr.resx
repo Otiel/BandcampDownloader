@@ -352,7 +352,8 @@ Aksi takdirde, bazı bant genişliği / zaman tasarrufu sağlanır.</value>
     <value>Ayarları Sıfırla</value>
   </data>
   <data name="messageBoxResetSettingsText" xml:space="preserve">
-    <value>Tüm ayarlar varsayılan değerlerine sıfırlansın mı?</value>
+    <value>Tüm ayarlar varsayılan değerlerine sıfırlansın mı?
+Bu işlem geri alınamaz.</value>
   </data>
   <data name="messageBoxUnhandledException" xml:space="preserve">
     <value>İşlenmeyen bir hata oluştu. Uygulama şimdi kapanacak.
@@ -428,11 +429,11 @@ zaman = bekleme süresi * (üs ^ ^ deneme sayısı)
 Önerilen değer = 0,2</value>
   </data>
   <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
-    <value>Üstel geri çekilme mekanizmasını kontrol etmek için kullanılır.
-Bir parçanın indirilmesinin her başarısızlığından sonra, BandcampDownloader tekrar denemeden önce belirli bir süre bekleyebilir
-Bandcamp anti-spam filtresine takılmadan parçayı indirmek için.
+    <value>Üstel geri çekilme mekanizmasını denetlemek için kullanılır.
+Bir parçanın indirilmesinde her başarısızlık sonrasında, BandcampDownloader, Bandcamp’in spam önleme filtresini
+tetiklememek amacıyla, parçayı yeniden indirmeye çalışmadan önce belirli bir süre bekleyebilir
 Bir indirme işlemini tekrar denemeden önce beklenecek süreyi hesaplamak için kullanılan formül:
-Zaman = bekleme süresi * (üs ^ ^ deneme sayısı)
+Zaman = bekleme süresi * (üs ^ deneme sayısı)
 
 Önerilen değer = 4</value>
   </data>
