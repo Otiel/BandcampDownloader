@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,167 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>फ़ोल्डर के लिए ब्राउज़ करें</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>सेटिंग्स खोलें</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>सेटिंग्स को डिफ़ॉल्ट पर रीसेट करें</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>{0} से चेंजलॉग डाउनलोड नहीं किया जा सका</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>ऐप शुरू करते समय निम्नलिखित पते पर पूछताछ करें:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>कवर आर्ट को ९० के संपीड़न के साथ JPG में बदलें (आकार और गुणवत्ता के बीच बेहतरीन तालमेल)।</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_रद्द करें</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>जाँच कर_ें</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>_नया वर्शन डाउनलोड करें</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_सेटिंग्स</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_सहेजें</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>_डाउनलोड करें</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_रद्द करें</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>_देखें</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_रद्द करें</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>_नहीं</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_ठीक</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_हाँ</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>_संशोधित न करें</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>टैग साफ़ करें</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>टैग में सेव करें</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>_संशोधित न करें</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>टैग साफ़ करें</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>स्टार्टअप पर_ अपडेट चेक करें</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>_JPG में बदलें</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>अधिकतम चौड़ाई/ऊँचाई को प्र_तिबंधित करें</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>JPG में बदल_ें</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>अधिकतम चौड़ाई/ऊँचाई को प्रतिबं_धित करें</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>निर्दिष्ट अधिकतम चौड़ाई/ऊँचाई के अनुसार कवर आर्ट का आकार बदें।</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>कवर आर्ट को ९० के संपीड़न के साथ JPG में बदलें (आकार और गुणवत्ता के बीच बेहतरीन तालमेल)।</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>निर्दिष्ट अधिकतम चौड़ाई/ऊँचाई के अनुसार कवर आर्ट का आकार बदें।</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>प्रत्येक डाउनलोड किए गए एल्बम के लिए एक एल्बम ट्रैक फ़ाइल बनाएं।</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>प्रत्येक एल्बम के लिए _प्लेलिस्ट बनाएं</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>जब कोई ट्रैक डाउनलोड किया जाता है, तो यदि वही फ़ाइल (नाम) पहले से मौजूद है, तो उसकी तुलना डाउनलोड किए जाने वाले ट्रैक से की जाएगी।
+यदि दोनों फ़ाइलों का आकार इस मान (प्रतिशत में) से कम भिन्न होता है, तो ट्रैक डाउनलोड छोड़ दिया जाएगा।
+डिस्क पर पहले से मौजूद होने पर भी हमेशा ट्रैक डाउनलोड करने के लिए इस मान को 0 पर सेट करें।
+
+अनुशंसित मान = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>फ़ाइल नाम को कस्टमाइज़ करने के लिए आप प्लेसहोल्डर का उपयोग कर सकते हैं:
+- {artist} को एल्बम कलाकार द्वारा प्रतिस्थापित किया जाएगा
+- {album} को एल्बम के नाम द्वारा प्रतिस्थापित किया जाएगा
+- {year}, {month} और {day} को एल्बम की रिलीज़ की तारीख द्वारा प्रतिस्थापित किया जाएगा</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>ट्रैक डाउनलोड विफल होने पर उसे डाउनलोड करने के लिए किए जाने वाले प्रयासों की अधिकतम संख्या।
+उस संख्या तक पहुँचने के बाद (प्रत्येक ट्रैक के लिए), ट्रैक डाउनलोड छोड़ दिया जाएगा।
+
+अनुशंसित मान = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>एक्सपोनेंटियल बैक-ऑफ़ मैकेनिज्म को नियंत्रित करने के लिए उपयोग किया जाता है।
+ट्रैक डाउनलोड विफल होने के बाद, बैंडकैंप एंटी-स्पैम फ़िल्टर से बचने के लिए बैंडकैंपडाउनलोड (BandcampDownloader) ट्रैक को फिर से डाउनलोड करने की कोशिश करने से पहले एक निश्चित समय तक प्रतीक्षा कर सकता है।
+डाउनलोड को दोबारा कोशिश करने से पहले प्रतीक्षा करने के समय की गणना करने के लिए उपयोग किया जाने वाला सूत्र निम्नलिखित है:
+time = cooldown * (exponent ^ attempt-count)
+
+अनुशंसित मान = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>एक्सपोनेंटियल बैक-ऑफ़ मैकेनिज्म को नियंत्रित करने के लिए उपयोग किया जाता है।
+ट्रैक डाउनलोड विफल होने के बाद, बैंडकैंप एंटी-स्पैम फ़िल्टर से बचने के लिए बैंडकैंपडाउनलोड (BandcampDownloader) ट्रैक को फिर से डाउनलोड करने की कोशिश करने से पहले एक निश्चित समय तक प्रतीक्षा कर सकता है।
+डाउनलोड को दोबारा कोशिश करने से पहले प्रतीक्षा करने के समय की गणना करने के लिए उपयोग किया जाने वाला सूत्र निम्नलिखित है:
+time = cooldown * (exponent ^ attempt-count)
+
+अनुशंसित मान = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>फ़ाइल नाम को कस्टमाइज़ करने के लिए आप प्लेसहोल्डर का उपयोग कर सकते हैं:
+- {artist} को एल्बम कलाकार द्वारा प्रतिस्थापित किया जाएगा
+- {album} को एल्बम के नाम द्वारा प्रतिस्थापित किया जाएगा
+- {year}, {month} और {day} को एल्बम की रिलीज़ की तारीख द्वारा प्रतिस्थापित किया जाएगा</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>फ़ाइल नाम को कस्टमाइज़ करने के लिए आप प्लेसहोल्डर का उपयोग कर सकते हैं:
+- {artist} को एल्बम कलाकार द्वारा प्रतिस्थापित किया जाएगा
+- {title} को ट्रैक के नाम द्वारा प्रतिस्थापित किया जाएगा
+- {tracknum} को ट्रैक नंबर द्वारा प्रतिस्थापित किया जाएगा
+- {album} को एल्बम के नाम द्वारा प्रतिस्थापित किया जाएगा
+- {year}, {month} और {day} को एल्बम की रिलीज़ की तारीख द्वारा प्रतिस्थापित किया जाएगा</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>फ़ाइल नाम को कस्टमाइज़ करने के लिए आप प्लेसहोल्डर का उपयोग कर सकते हैं:
+- {artist} को एल्बम कलाकार द्वारा प्रतिस्थापित किया जाएगा
+- {album} को एल्बम के नाम द्वारा प्रतिस्थापित किया जाएगा
+- {year}, {month} और {day} को एल्बम की रिलीज़ की तारीख द्वारा प्रतिस्थापित किया जाएगा</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>प्रॉक्सी</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>सेटिंग्स</value>
+  </data>
 </root>
