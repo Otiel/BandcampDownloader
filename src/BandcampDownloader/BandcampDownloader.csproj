@@ -45,7 +45,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
     <PackageReference Include="NLog" Version="6.2.0" />
     <PackageReference Include="PlaylistsNET" Version="1.4.1" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="4.1.0" />
     <PackageReference Include="TagLibSharp" Version="2.3.0" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.10.0" />
     <PackageReference Include="WpfMessageBox" Version="2.0.0" />
