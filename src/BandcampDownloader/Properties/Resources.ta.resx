@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonBrowse" xml:space="preserve">
+    <value>…</value>
+  </data>
+  <data name="buttonBrowse_ToolTip" xml:space="preserve">
+    <value>கோப்புறையை உலாவுக</value>
+  </data>
+  <data name="buttonCancel" xml:space="preserve">
+    <value>_ரத்துசெய்</value>
+  </data>
+  <data name="buttonCheckForUpdates" xml:space="preserve">
+    <value>no_w சரிபார்க்கவும்</value>
+  </data>
+  <data name="buttonDownloadUpdate" xml:space="preserve">
+    <value>புதிய பதிப்பைப் பதிவிறக்கவும்</value>
+  </data>
+  <data name="buttonOpenSettingsWindow" xml:space="preserve">
+    <value>_அமைப்புகள்</value>
+  </data>
+  <data name="buttonOpenSettingsWindow_ToolTip" xml:space="preserve">
+    <value>அமைப்புகளைத் திறக்கவும்</value>
+  </data>
+  <data name="buttonResetSettings_ToolTip" xml:space="preserve">
+    <value>அமைப்புகளை இயல்புநிலைக்கு மீட்டமைக்கவும்</value>
+  </data>
+  <data name="buttonSave" xml:space="preserve">
+    <value>_சேமி</value>
+  </data>
+  <data name="buttonStart" xml:space="preserve">
+    <value>பதிவிறக்கவும்</value>
+  </data>
+  <data name="buttonStop" xml:space="preserve">
+    <value>_ரத்துசெய்</value>
+  </data>
+  <data name="buttonViewChangelog" xml:space="preserve">
+    <value>காட்சி (_V)</value>
+  </data>
+  <data name="changelogDownloadError" xml:space="preserve">
+    <value>{0} இலிருந்து சேஞ்ச்லாக்கைப் பதிவிறக்க முடியவில்லை</value>
+  </data>
+  <data name="checkBoxCheckForUpdates" xml:space="preserve">
+    <value>தொடக்கத்தில் புதுப்பிப்புகளை சரிபார்க்கவும்</value>
+  </data>
+  <data name="checkBoxCheckForUpdates_ToolTip_Part" xml:space="preserve">
+    <value>பயன்பாட்டைத் தொடங்கும்போது பின்வரும் முகவரியைக் கேட்கவும்:</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg" xml:space="preserve">
+    <value>_JPGக்கு மாற்றவும்</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderConvertToJpg_ToolTip" xml:space="preserve">
+    <value>90 (அளவு மற்றும் தகுதி இடையே சிறந்த வர்த்தகம்) சுருக்கத்துடன் JPG க்கு கவர் ஆர்ட்டை மாற்றுகிறது.</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize" xml:space="preserve">
+    <value>கட்டுப்பாடு _அதிகபட்ச அகலம்/உயரம்</value>
+  </data>
+  <data name="checkBoxCoverArtInFolderResize_ToolTip" xml:space="preserve">
+    <value>குறிப்பிட்ட அதிகபட்ச அகலம்/உயரத்திற்கு கவர் ஆர்ட் அளவை மாற்றுகிறது.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg" xml:space="preserve">
+    <value>JPGக்கு மாற்றவும்</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsConvertToJpg_ToolTip" xml:space="preserve">
+    <value>90 (அளவு மற்றும் தகுதி இடையே சிறந்த வர்த்தகம்) சுருக்கத்துடன் JPG க்கு கவர் ஆர்ட்டை மாற்றுகிறது.</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize" xml:space="preserve">
+    <value>m_aximum அகலம்/உயரத்தைக் கட்டுப்படுத்தவும்</value>
+  </data>
+  <data name="checkBoxCoverArtInTagsResize_ToolTip" xml:space="preserve">
+    <value>குறிப்பிட்ட அதிகபட்ச அகலம்/உயரத்திற்கு கவர் ஆர்ட் அளவை மாற்றுகிறது.</value>
+  </data>
+  <data name="checkBoxCreatePlaylist" xml:space="preserve">
+    <value>ஒவ்வொரு ஆல்பத்திற்கும் பிளேலிச்ட்டை உருவாக்கவும்</value>
+  </data>
+  <data name="checkBoxCreatePlaylist_ToolTip" xml:space="preserve">
+    <value>பதிவிறக்கம் செய்யப்பட்ட ஒவ்வொரு ஆல்பத்திற்கும் ஆல்பம் டிராக் கோப்பை உருவாக்குகிறது.</value>
+  </data>
+  <data name="checkBoxDownloadDiscography" xml:space="preserve">
+    <value>_ஆர்ட்டிச்ட் டிச்கோகிராபியைப் பதிவிறக்கவும்</value>
+  </data>
+  <data name="checkBoxDownloadDiscography_ToolTip" xml:space="preserve">
+    <value>முழு கலைஞர் டிச்கோகிராபியையும் பதிவிறக்குகிறது.</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds" xml:space="preserve">
+    <value>_அறிவிப்பு ஒலிகளை இயக்கவும்</value>
+  </data>
+  <data name="checkBoxEnableApplicationSounds_ToolTip" xml:space="preserve">
+    <value>முடிக்கப்பட்ட பதிவிறக்கங்களுக்கான அறிவிப்பு ஒலி.</value>
+  </data>
+  <data name="checkBoxM3uExtended" xml:space="preserve">
+    <value>_ நீட்டிக்கப்பட்ட வடிவமைப்பைப் பயன்படுத்தவும் (M3U க்கு மட்டும்)</value>
+  </data>
+  <data name="checkBoxM3uExtended_ToolTip" xml:space="preserve">
+    <value>நீட்டிக்கப்பட்ட வடிவத்தில் M3U பிளேலிச்ட்கள் (# எழுத்து மூலம் முன்னுரைக்கப்பட்ட வழிமுறைகள்).</value>
+  </data>
+  <data name="checkBoxModifyTags" xml:space="preserve">
+    <value>தடங்கள் குறிச்சொற்களை மாற்றவும் (ID3)</value>
+  </data>
+  <data name="checkBoxModifyTags_ToolTip" xml:space="preserve">
+    <value>கீழே குறிப்பிட்டுள்ளபடி ஒவ்வொரு குறிச்சொல்லையும் மாற்றுகிறது. 
+
+இல்லையெனில், எல்லா குறிச்சொற்களும் மாறாமல் இருக்கும், ஒவ்வொரு குறிச்சொல்லுக்கும் "மாற்ற வேண்டாம்" என்பதை அமைப்பதற்கு சமம்.</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize" xml:space="preserve">
+    <value>டிராக்குகளைப் பதிவிறக்கும் முன் கோப்பு அளவைப் பெறவும்</value>
+  </data>
+  <data name="checkBoxRetrieveFilesSize_ToolTip" xml:space="preserve">
+    <value>துல்லியமான முன்னேற்றத்தைக் காட்ட கோப்பு அளவை மீட்டெடுக்கிறது. 
+இல்லையெனில், சில அலைவரிசை/நேரம் சேமிக்கப்படும்.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder" xml:space="preserve">
+    <value>கோப்புறையில் சேமிக்கவும்</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInFolder_ToolTip" xml:space="preserve">
+    <value>பதிவிறக்கங்கள் ஆல்பம் கோப்புறையில் கலை கவர்.</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags" xml:space="preserve">
+    <value>_குறிச்சொற்களில் சேமிக்கவும்</value>
+  </data>
+  <data name="checkBoxSaveCoverArtInTags_ToolTip" xml:space="preserve">
+    <value>டிராக் குறிச்சொற்களில் கவர் கலையைச் சேமிக்கிறது.</value>
+  </data>
+  <data name="checkBoxVerboseLog" xml:space="preserve">
+    <value>வார்த்தைப் பதிவைக் காட்டு</value>
+  </data>
+  <data name="checkBoxVerboseLog_ToolTip" xml:space="preserve">
+    <value>பதிவில் கூடுதல் தகவலைக் காட்டுகிறது.</value>
+  </data>
+  <data name="labelAdvancedSettingsWarning" xml:space="preserve">
+    <value>உங்கள் சொந்த ஆபத்தில் இந்த அமைப்புகளை மாற்றவும்.</value>
+  </data>
+  <data name="labelAlbumArtist" xml:space="preserve">
+    <value>ஆல்பம் கலைஞர்</value>
+  </data>
+  <data name="labelAlbumTitle" xml:space="preserve">
+    <value>ஆல்பம் _பெயர்</value>
+  </data>
+  <data name="labelAllowedFileSizeDifference" xml:space="preserve">
+    <value>அனுமதிக்கப்பட்ட கோப்பு அளவு வேறுபாடு (%)</value>
+  </data>
+  <data name="labelArtist" xml:space="preserve">
+    <value>_கலைஞர்</value>
+  </data>
+  <data name="labelButtonResetSettings" xml:space="preserve">
+    <value>_அமைப்புகளை மீட்டமைக்கவும்</value>
+  </data>
+  <data name="labelChangelog" xml:space="preserve">
+    <value>மாற்றபதிவு</value>
+  </data>
+  <data name="labelChangelogTitle" xml:space="preserve">
+    <value>மாற்றபதிவு</value>
+  </data>
+  <data name="labelComments" xml:space="preserve">
+    <value>கருத்துகள்</value>
+  </data>
+  <data name="labelCoverArtFileNameFormat" xml:space="preserve">
+    <value>கோப்பு_பெயர் வடிவம்</value>
+  </data>
+  <data name="labelCoverArtInFolderMaxSize" xml:space="preserve">
+    <value>அதிகபட்ச அளவு (_px)</value>
+  </data>
+  <data name="labelCoverArtInTagsMaxSize" xml:space="preserve">
+    <value>அதிகபட்ச அளவு (p_x)</value>
+  </data>
+  <data name="labelCurrentVersion" xml:space="preserve">
+    <value>தற்போதைய பதிப்பு:</value>
+  </data>
+  <data name="labelDownloadMaxTries" xml:space="preserve">
+    <value>_அதிகபட்ச பதிவிறக்க முயற்சிகள்</value>
+  </data>
+  <data name="labelDownloadRetryCooldown" xml:space="preserve">
+    <value>c_ooldown மீண்டும் முயற்சிக்கவும் (வினாடி)</value>
+  </data>
+  <data name="labelDownloadRetryExponent" xml:space="preserve">
+    <value>மீண்டும் முயற்சி _அடுக்கு</value>
+  </data>
+  <data name="labelDownloadsPath" xml:space="preserve">
+    <value>ஆல்பத்தைச் சேமி</value>
+  </data>
+  <data name="labelFileNameFormat" xml:space="preserve">
+    <value>_கோப்பு பெயர் வடிவம்:</value>
+  </data>
+  <data name="labelHttp" xml:space="preserve">
+    <value>HTTP(S) பதிலாள்</value>
+  </data>
+  <data name="labelHttpPort" xml:space="preserve">
+    <value>_துறைமுகம்</value>
+  </data>
+  <data name="labelIssues" xml:space="preserve">
+    <value>பிழையைப் புகாரளிக்கவும்</value>
+  </data>
+  <data name="labelLanguage" xml:space="preserve">
+    <value>_மொழி</value>
+  </data>
+  <data name="labelListBoxItemAbout" xml:space="preserve">
+    <value>பற்றி</value>
+  </data>
+  <data name="labelListBoxItemAdvanced" xml:space="preserve">
+    <value>மேம்பட்ட அமைப்புகள்</value>
+  </data>
+  <data name="labelListBoxItemCoverArt" xml:space="preserve">
+    <value>கவர் கலை</value>
+  </data>
+  <data name="labelListBoxItemDownloads" xml:space="preserve">
+    <value>பதிவிறக்கங்கள்</value>
+  </data>
+  <data name="labelListBoxItemGeneral" xml:space="preserve">
+    <value>பொது</value>
+  </data>
+  <data name="labelListBoxItemNetwork" xml:space="preserve">
+    <value>பிணையம்</value>
+  </data>
+  <data name="labelListBoxItemPlaylist" xml:space="preserve">
+    <value>பிளேலிச்ட்</value>
+  </data>
+  <data name="labelListBoxItemTags" xml:space="preserve">
+    <value>பெயரிடுதல் மற்றும் குறிச்சொற்கள்</value>
+  </data>
+  <data name="labelLyrics" xml:space="preserve">
+    <value>_பாடல் வரிகள்</value>
+  </data>
+  <data name="labelPlaylistFileNameFormat" xml:space="preserve">
+    <value>கோப்பு_பெயர் வடிவம்</value>
+  </data>
+  <data name="labelPlaylistFormat" xml:space="preserve">
+    <value>பிளேலிச்ட் _ வடிவம்</value>
+  </data>
+  <data name="labelSettingsInfo" xml:space="preserve">
+    <value>டிராக்குகள் பதிவிறக்கம் செய்யும்போது சில அமைப்புகளை மாற்ற முடியாது.</value>
+  </data>
+  <data name="labelTheme" xml:space="preserve">
+    <value>_தீம்</value>
+  </data>
+  <data name="labelTrackNumber" xml:space="preserve">
+    <value>ட்ராக் எண்</value>
+  </data>
+  <data name="labelTrackTitle" xml:space="preserve">
+    <value>_தலைப்பு</value>
+  </data>
+  <data name="labelVerboseLogInfo" xml:space="preserve">
+    <value>(பதிவுக் கோப்பு எப்போதும் வாய்மொழியாகவே இருக்கும்)</value>
+  </data>
+  <data name="labelVersion" xml:space="preserve">
+    <value>பதிப்பு</value>
+  </data>
+  <data name="labelVersionError" xml:space="preserve">
+    <value>புதுப்பிப்புகளைச் சரிபார்க்க முடியவில்லை</value>
+  </data>
+  <data name="labelVersionNewUpdateAvailable" xml:space="preserve">
+    <value>புதிய பதிப்பு கிடைக்கிறது</value>
+  </data>
+  <data name="labelWebsite" xml:space="preserve">
+    <value>இணையதளம்</value>
+  </data>
+  <data name="labelYear" xml:space="preserve">
+    <value>ஆல்பம் வெளியீடு _ஆண்டு</value>
+  </data>
+  <data name="messageBoxButtonCancel" xml:space="preserve">
+    <value>_ரத்துசெய்</value>
+  </data>
+  <data name="messageBoxButtonNo" xml:space="preserve">
+    <value>இல்லை</value>
+  </data>
+  <data name="messageBoxButtonOK" xml:space="preserve">
+    <value>_சரி</value>
+  </data>
+  <data name="messageBoxButtonYes" xml:space="preserve">
+    <value>_ஆம்</value>
+  </data>
+  <data name="messageBoxCancelDownloadsText" xml:space="preserve">
+    <value>எல்லா பதிவிறக்கங்களையும் ரத்துசெய்யவா?</value>
+  </data>
+  <data name="messageBoxCheckForUpdatesError" xml:space="preserve">
+    <value>புதுப்பிப்புகளைச் சரிபார்க்கும்போது பிழை ஏற்பட்டது. தயவுசெய்து பிறகு முயற்சிக்கவும்.</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingButtonOk" xml:space="preserve">
+    <value>_ பயன்பாட்டை மூடு</value>
+  </data>
+  <data name="messageBoxCloseWindowWhenDownloadingText" xml:space="preserve">
+    <value>தற்போது செயலில் பதிவிறக்கங்கள் உள்ளன. பயன்பாட்டை மூடிவிட்டு அனைத்து பதிவிறக்கங்களையும் நிறுத்த விரும்புகிறீர்களா?</value>
+  </data>
+  <data name="messageBoxCouldNotOpenUrlError" xml:space="preserve">
+    <value>பின்வரும் இணைப்பைத் திறக்க முடியவில்லை: 
+{0}</value>
+  </data>
+  <data name="messageBoxNoUpdateAvailable" xml:space="preserve">
+    <value>உங்களிடம் ஏற்கனவே அண்மைக் கால பதிப்பு ({0}) உள்ளது.</value>
+  </data>
+  <data name="messageBoxResetSettingsButtonOk" xml:space="preserve">
+    <value>_அமைப்புகளை மீட்டமைக்கவும்</value>
+  </data>
+  <data name="messageBoxResetSettingsText" xml:space="preserve">
+    <value>எல்லா அமைப்புகளையும் அவற்றின் இயல்புநிலை மதிப்புகளுக்கு மீட்டமைக்கவா? 
+இந்தச் செயலைத் திரும்பப்பெற முடியாது.</value>
+  </data>
+  <data name="messageBoxUnhandledException" xml:space="preserve">
+    <value>கையாளப்படாத பிழை ஏற்பட்டது. விண்ணப்பம் இப்போது மூடப்படும். 
+
+உங்கள் பதிவுக் கோப்பின் உள்ளடக்கத்தில் புதிய சிக்கலைத் திறக்கவும் 
+{0}</value>
+  </data>
+  <data name="radioButtonManualProxy" xml:space="preserve">
+    <value>_ கையேடு கட்டமைப்பு</value>
+  </data>
+  <data name="radioButtonNoProxy" xml:space="preserve">
+    <value>ஒன்றுமில்லை</value>
+  </data>
+  <data name="radioButtonSystemProxy" xml:space="preserve">
+    <value>S_அமைப்பு</value>
+  </data>
+  <data name="saveFileDialogTitle" xml:space="preserve">
+    <value>என சேமி</value>
+  </data>
+  <data name="Skin_Dark" xml:space="preserve">
+    <value>இருள்</value>
+  </data>
+  <data name="Skin_Light" xml:space="preserve">
+    <value>ஒளி</value>
+  </data>
+  <data name="TagEditAction_DoNotModify" xml:space="preserve">
+    <value>மாற்ற வேண்டாம்</value>
+  </data>
+  <data name="TagEditAction_Empty" xml:space="preserve">
+    <value>தெளிவான குறிச்சொல்</value>
+  </data>
+  <data name="TagEditAction_Modify" xml:space="preserve">
+    <value>குறிச்சொல்லில் சேமிக்கவும்</value>
+  </data>
+  <data name="TagRemoveAction_DoNotModify" xml:space="preserve">
+    <value>மாற்ற வேண்டாம்</value>
+  </data>
+  <data name="TagRemoveAction_Empty" xml:space="preserve">
+    <value>தெளிவான குறிச்சொல்</value>
+  </data>
+  <data name="textBlockReleasesWebsite" xml:space="preserve">
+    <value>வரலாற்றை வெளியிடுகிறது</value>
+  </data>
+  <data name="textBlockTranslationHelp" xml:space="preserve">
+    <value>மொழிபெயர்க்க உதவுங்கள்</value>
+  </data>
+  <data name="textBoxAllowedFileSizeDifference_ToolTip" xml:space="preserve">
+    <value>டிராக்கைப் பதிவிறக்கும் போது, அதே கோப்பு (பெயர்) ஏற்கனவே இருந்தால், அது பதிவிறக்குவதற்கு டிராக்கிற்கு எதிராகச் சரிபார்க்கப்படும். 
+இரண்டு கோப்புகளின் அளவும் இந்த மதிப்பை விட (சதவீதத்தில்) குறைவாக இருந்தால், டிராக் பதிவிறக்கம் தவிர்க்கப்படும். 
+வட்டில் ஏற்கனவே இருந்தாலும், டிராக்குகளை எப்போதும் பதிவிறக்கம் செய்ய இந்த மதிப்பை 0 ஆக அமைக்கவும். 
+
+பரிந்துரைக்கப்பட்ட மதிப்பு = 5</value>
+  </data>
+  <data name="textBoxCoverArtFileNameFormat_ToolTip" xml:space="preserve">
+    <value>கோப்பு பெயரைத் தனிப்பயனாக்க, நீங்கள் ஒதுக்கிடங்களைப் பயன்படுத்தலாம்: 
+- {artist} ஆல்பம் கலைஞரால் மாற்றப்படுவார் 
+- {album} ஆல்பத்தின் பெயரால் மாற்றப்படும் 
+- {year}, {month} மற்றும் {day} ஆகியவை ஆல்பம் வெளியீட்டு தேதியால் மாற்றப்படும்</value>
+  </data>
+  <data name="textBoxDownloadMaxTries_ToolTip" xml:space="preserve">
+    <value>ஒரு ட்ராக் தோல்வியுற்றால் அதைப் பதிவிறக்குவதற்கு அதிகபட்ச முயற்சிகள் மேற்கொள்ளப்படுகின்றன. 
+அந்த எண்ணை அடைந்த பிறகு (ஒவ்வொரு டிராக்கிற்கும்), டிராக் பதிவிறக்கம் தவிர்க்கப்படும். 
+
+பரிந்துரைக்கப்பட்ட மதிப்பு = 7</value>
+  </data>
+  <data name="textBoxDownloadRetryCooldown_ToolTip" xml:space="preserve">
+    <value>அதிவேக பேக்-ஆஃப் பொறிமுறையைக் கட்டுப்படுத்தப் பயன்படுகிறது. 
+டிராக் பதிவிறக்கத்தின் ஒவ்வொரு தோல்விக்குப் பிறகு, BandcampDownloader மீண்டும் முயற்சிக்கும் முன் குறிப்பிட்ட நேரத்திற்கு காத்திருக்கலாம் 
+பேண்ட்கேம்ப் ஆன்டி-ச்பேம் ஃபில்டரில் டிக்லிங் செய்வதைத் தவிர்ப்பதற்காக டிராக்கைப் பதிவிறக்க. 
+பதிவிறக்கத்தை மீண்டும் முயற்சிக்கும் முன் காத்திருக்க வேண்டிய நேரத்தைக் கணக்கிடப் பயன்படுத்தப்படும் தேற்றம் பின்வருமாறு: 
+நேரம் = கூல்டவுன் * (அடுக்கு ^ முயற்சி-எண்ணிக்கை) 
+
+பரிந்துரைக்கப்பட்ட மதிப்பு = 0.2</value>
+  </data>
+  <data name="textBoxDownloadRetryExponent_ToolTip" xml:space="preserve">
+    <value>அதிவேக பேக்-ஆஃப் பொறிமுறையைக் கட்டுப்படுத்தப் பயன்படுகிறது. 
+டிராக் பதிவிறக்கத்தின் ஒவ்வொரு தோல்விக்குப் பிறகு, BandcampDownloader மீண்டும் முயற்சிக்கும் முன் குறிப்பிட்ட நேரத்திற்கு காத்திருக்கலாம் 
+பேண்ட்கேம்ப் ஆன்டி-ச்பேம் ஃபில்டரில் டிக்லிங் செய்வதைத் தவிர்ப்பதற்காக டிராக்கைப் பதிவிறக்க. 
+பதிவிறக்கத்தை மீண்டும் முயற்சிக்கும் முன் காத்திருக்க வேண்டிய நேரத்தைக் கணக்கிடப் பயன்படுத்தப்படும் தேற்றம் பின்வருமாறு: 
+நேரம் = கூல்டவுன் * (அடுக்கு ^ முயற்சி-எண்ணிக்கை) 
+
+பரிந்துரைக்கப்பட்ட மதிப்பு = 4</value>
+  </data>
+  <data name="textBoxDownloadsPath_ToolTip" xml:space="preserve">
+    <value>ஆல்பத்தைப் பொறுத்து பதிவிறக்கக் கோப்புறையைத் தனிப்பயனாக்க, நீங்கள் ஒதுக்கிடங்களைப் பயன்படுத்தலாம்: 
+- {artist} ஆல்பம் கலைஞரால் மாற்றப்படுவார் 
+- {album} ஆல்பத்தின் பெயரால் மாற்றப்படும் 
+- {year}, {month} மற்றும் {day} ஆகியவை ஆல்பம் வெளியீட்டு தேதியால் மாற்றப்படும்</value>
+  </data>
+  <data name="textBoxFileNameFormat_ToolTip" xml:space="preserve">
+    <value>கோப்பு பெயரைத் தனிப்பயனாக்க, நீங்கள் ஒதுக்கிடங்களைப் பயன்படுத்தலாம்: 
+- {artist} ஆல்பம் கலைஞரால் மாற்றப்படுவார் 
+- {title} ட்ராக் பெயரால் மாற்றப்படும் 
+- {tracknum} ட்ராக் எண்ணால் மாற்றப்படும் 
+- {album} ஆல்பத்தின் பெயரால் மாற்றப்படும் 
+- {year}, {month} மற்றும் {day} ஆகியவை ஆல்பம் வெளியீட்டு தேதியால் மாற்றப்படும்</value>
+  </data>
+  <data name="textBoxPlaylistFileNameFormat_ToolTip" xml:space="preserve">
+    <value>கோப்பு பெயரைத் தனிப்பயனாக்க, நீங்கள் ஒதுக்கிடங்களைப் பயன்படுத்தலாம்: 
+- {artist} ஆல்பம் கலைஞரால் மாற்றப்படுவார் 
+- {album} ஆல்பத்தின் பெயரால் மாற்றப்படும் 
+- {year}, {month} மற்றும் {day} ஆகியவை ஆல்பம் வெளியீட்டு தேதியால் மாற்றப்படும்</value>
+  </data>
+  <data name="textBoxUrlsPlaceholder" xml:space="preserve">
+    <value>பதிவிறக்க ஆல்பங்களின் URLகளை இங்கே ஒட்டவும். ஒரு வரிக்கு ஒரு முகவரி என எழுதுவதன் மூலம் பல URLகளைக் குறிப்பிடலாம். 
+
+பேண்ட்கேம்ப் முகவரி இப்படி இருக்கும்: http://[artist].bandcamp.com/album/[album] அல்லது http://[artist].bandcamp.com/track/[track] 
+கலைஞர் பக்கங்களை ஒட்டவும்: http://[artist].bandcamp.com மற்றும் அவர்களின் அனைத்து ஆல்பங்களையும் பதிவிறக்க "☑ கலைஞர் டிச்கோகிராஃபியைப் பதிவிறக்கு" என்பதைச் சரிபார்க்கவும்.</value>
+  </data>
+  <data name="windowSettings_Title" xml:space="preserve">
+    <value>அமைப்புகள்</value>
+  </data>
+  <data name="windowUpdate_Title" xml:space="preserve">
+    <value>புதுப்பிப்பு</value>
+  </data>
+  <data name="labelProxy" xml:space="preserve">
+    <value>பதிலாள்</value>
+  </data>
+  <data name="labelMaxConcurrentAlbumsDownloads" xml:space="preserve">
+    <value>ஒரே நேரத்தில் ஆல்பங்களின் அதிகபட்ச பதிவிறக்கங்கள்</value>
+  </data>
+  <data name="labelMaxConcurrentTracksDownloads" xml:space="preserve">
+    <value>அதிகபட்ச ஒரே நேரத்தில் டிராக்குகள் பதிவிறக்கங்கள்</value>
+  </data>
+  <data name="textBoxMaxConcurrentAlbumsDownloads_ToolTip" xml:space="preserve">
+    <value>ஒரே நேரத்தில் பதிவிறக்கம் செய்யக்கூடிய ஆல்பங்களின் அதிகபட்ச எண்ணிக்கை</value>
+  </data>
+  <data name="textBoxMaxConcurrentTracksDownloads_ToolTip" xml:space="preserve">
+    <value>ஒரே நேரத்தில் பதிவிறக்கம் செய்யக்கூடிய அதிகபட்ச டிராக்குகள் (ஒரே ஆல்பத்தில் உள்ளவை)</value>
+  </data>
+</root>
